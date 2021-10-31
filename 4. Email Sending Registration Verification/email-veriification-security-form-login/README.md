@@ -2,14 +2,11 @@
 * Images issue troubleshoot
 
 ## Dependencies
+<h2>
 <img src="./Dependencies.JPG">
+</h2>
 
 
-# Add Image as url
-![ScreenShot](./Dependencies.JPG)
-
-*
-![Image](https://github.com/sshalem/Spring-Boot/blob/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG)
 
 
 * In this exapmle I used the following security configuration:
