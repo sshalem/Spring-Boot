@@ -6,7 +6,9 @@
 
 
 # Add Image as url
-![ScreenShot](/Dependencies.JPG)
+![ScreenShot](./Dependencies.JPG)
+
+*
 ![Image](https://github.com/sshalem/Spring-Boot/blob/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG)
 
 
