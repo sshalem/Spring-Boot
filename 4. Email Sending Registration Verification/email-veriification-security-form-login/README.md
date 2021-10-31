@@ -2,10 +2,8 @@
 * Images issue troubleshoot
 
 ## Dependencies
-<h2>
-<img src="./Dependencies.JPG">
-</h2>
 
+<img src="./Dependencies.JPG">
 
 
 
