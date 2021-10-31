@@ -3,6 +3,7 @@
 ## Dependencies
 <img src="./Dependencies.JPG">
 <img src="./Dependencies.JPG" width="800">
+![alt text](https://github.com/sshalem/Spring-Boot/tree/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG)
 
 * In this exapmle I used the following security configuration:
 1. Form Login
