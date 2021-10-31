@@ -3,7 +3,7 @@
 
 ## Dependencies
 
-![Capture](https://github.com/sshalem/Spring-Boot/blob/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG)
+![Capture](https://github.com/sshalem/Spring-Boot/blob/main/EmailSendingRegistrationVerification/email-veriification-security-form-login/Dependencies.JPG)
 
 <img src="./Dependencies.JPG">
 
