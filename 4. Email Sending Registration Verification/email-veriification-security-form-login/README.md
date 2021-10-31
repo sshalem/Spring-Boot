@@ -5,7 +5,7 @@
 
 
 
-<img src="Dependencies.JPG">
+<img src="Dependencies.JPG" width="100">
 
 
 * In this exapmle I used the following security configuration:
