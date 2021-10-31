@@ -3,11 +3,9 @@
 
 ## Dependencies
 
-![Capture](https://raw.githubusercontent.com/sshalem/Spring-Boot/c3e8ce5744641570e61c2d3006807dc5e7aa67c0/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/DisableAvast_3.png?token=AIUTZWWVQUAF4SZ7VFYI6NDBP4AMW)
 
-![Capture](https://user-images.githubusercontent.com/36256986/139600098-8e9e00a0-8e42-4361-bbab-8bc829254b18.JPG)
 
-<img src="./Dependencies.JPG">
+<img src="Dependencies.JPG">
 
 
 * In this exapmle I used the following security configuration:
