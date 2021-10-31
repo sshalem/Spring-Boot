@@ -3,9 +3,9 @@
 
 ## Dependencies
 
-![Capture]("./Dependencies.JPG")
-
 ![Capture](https://raw.githubusercontent.com/sshalem/Spring-Boot/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG?token=AIUTZWTWALICBXX7Q47LDWTBP36W2)
+
+![Capture](https://raw.githubusercontent.com/sshalem/Spring-Boot/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG)
 
 <img src="./Dependencies.JPG">
 
