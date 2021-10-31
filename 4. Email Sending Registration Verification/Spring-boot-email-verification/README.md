@@ -1,7 +1,7 @@
 # FormLogin with email-verification
 
 ## Dependencies
-<img src="../Dependencies.JPG">
+<img src="./Dependencies.JPG">
 
 * In this exapmle I used the following security configuration:
 1. Form Login
