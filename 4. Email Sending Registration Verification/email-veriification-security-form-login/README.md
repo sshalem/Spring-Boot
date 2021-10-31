@@ -5,8 +5,6 @@
 
 ![Capture](https://raw.githubusercontent.com/sshalem/Spring-Boot/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG?token=AIUTZWTWALICBXX7Q47LDWTBP36W2)
 
-![Capture](https://www.google.com/search?q=https%3A%2F%2Fgithub.com%2Fsshalem%2FSpring-Boot%2Fblob%2F5ed25509c11a0f546ed25950ba3bfc840ddd3212%2F4.%2520Email%2520Sending%2520Registration%2520Verification%2Femail-veriification-security-form-login%2FDependencies.JPG&rlz=1C1CHBF_en__875__875&oq=https%3A%2F%2Fgithub.com%2Fsshalem%2FSpring-Boot%2Fblob%2F5ed25509c11a0f546ed25950ba3bfc840ddd3212%2F4.%2520Email%2520Sending%2520Registration%2520Verification%2Femail-veriification-security-form-login%2FDependencies.JPG&aqs=chrome..69i58j69i57.5428j0j7&sourceid=chrome&ie=UTF-8)
-
 <img src="./Dependencies.JPG">
 
 ![Capture](https://user-images.githubusercontent.com/36256986/139600098-8e9e00a0-8e42-4361-bbab-8bc829254b18.JPG)
