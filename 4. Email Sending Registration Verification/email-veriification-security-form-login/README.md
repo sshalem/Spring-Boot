@@ -2,7 +2,7 @@
 * Images issue troubleshoot
 
 ## Dependencies
-<img src="./Dependencies.jpg">
+<img src="./Dependencies.JPG">
 
 * In this exapmle I used the following security configuration:
 1. Form Login
