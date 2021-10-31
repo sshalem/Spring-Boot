@@ -1,4 +1,5 @@
 # FormLogin with email-verification
+* Images issue troubleshoot
 
 ## Dependencies
 <img src="./Dependencies.JPG">
