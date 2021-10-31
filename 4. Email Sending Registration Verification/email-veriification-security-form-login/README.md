@@ -3,7 +3,7 @@
 
 ## Dependencies
 
-![Capture](./Dependencies.JPG)
+![Capture]("./Dependencies.JPG")
 
 <img src="./Dependencies.JPG">
 
