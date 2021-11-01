@@ -4,6 +4,10 @@
 
 <img src="Dependencies.JPG" width="100">
 
+![dependencies](https://user-images.githubusercontent.com/36256986/139697073-27ffc35d-30f7-4875-82d9-545d50297a3f.JPG)
+
+
+
 * In this exapmle I used the following security configuration:
 1. Form Login
 2. Failure Handler 
