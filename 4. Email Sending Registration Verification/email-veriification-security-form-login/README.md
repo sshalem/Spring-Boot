@@ -1,14 +1,8 @@
 # FormLogin with email-verification
-* Images issue troubleshoot
 
 ## Dependencies
 
-
-
 <img src="Dependencies.JPG" width="100">
-
-<img src="https://raw.githubusercontent.com/sshalem/Spring-Boot/main/4.%20Email%20Sending%20Registration%20Verification/email-veriification-security-form-login/Dependencies.JPG?token=AIUTZWXTU4CRIPBIEODY4WLBP4BK2" width="100">
-
 
 * In this exapmle I used the following security configuration:
 1. Form Login
