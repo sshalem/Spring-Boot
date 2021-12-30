@@ -10,4 +10,8 @@ Hibernate: drop table if exists customer
 logging.level.org.hibernate.SQL=debug
 shows the logging as below: with the time satamp and the package name 
 2021-04-21 12:02:27.553 DEBUG 496 --- [  restartedMain] org.hibernate.SQL   : drop table if exists customer
+
+
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 ```
+
