@@ -56,3 +56,9 @@ public class CustomerController {
 	}
 }
 ```
+
+### Once we run the code , and send request to the following url as http://localhost:8080/customer/karin 
+### Postman and Spring console shows the message as follows::
+
+![Capture](https://user-images.githubusercontent.com/36256986/147885907-2be2a2df-de43-46bd-b9d7-f0b5f3143845.PNG)
+
