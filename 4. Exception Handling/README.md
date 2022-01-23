@@ -77,6 +77,28 @@ public class CustomerController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
+In this (B) Project I am using the same Code from (A) project (Service , Exception, Controller).</br>
+I only add the following configuration in the **_application.properties_** file</br>
+
+```java
+# ==========================================
+# format the returned error format 
+# when exception is thrown back to client
+# ==========================================
+server.error.path=/
+server.error.include-binding-errors=always
+server.error.include-exception=true
+server.error.include-message=always
+server.error.include-stacktrace=never
+server.error.whitelabel.enabled=true
+```
+
+### Sending Request via Postman gives back following result:
+
+- We can see that the message is more clear w/o the stacktrace (I disable it in the config file)
+
+![B_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680528-6ab71b23-1f9a-4ea1-bb83-3eccbbad9227.PNG)
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
