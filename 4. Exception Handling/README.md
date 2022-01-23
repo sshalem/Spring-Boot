@@ -66,8 +66,6 @@ public class CustomerController {
 ### Sending Request via Postman gives back following result:
 
 ![A_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680152-bf30bb1f-61ba-4e21-b80c-7866dcee16bc.PNG)
-
-<img src="https://user-images.githubusercontent.com/36256986/150680152-bf30bb1f-61ba-4e21-b80c-7866dcee16bc.PNG" height=250px width=500px>
      
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
