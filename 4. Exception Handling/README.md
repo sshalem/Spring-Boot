@@ -11,7 +11,7 @@
 
 
 ###### __
-<img src="https://img.shields.io/badge/-(1) Services: Customer, Order%20-orange" height=40px>
+<img src="https://img.shields.io/badge/-(A) Handle RuntimeException%20-orange" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
