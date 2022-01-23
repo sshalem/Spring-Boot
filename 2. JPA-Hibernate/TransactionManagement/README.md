@@ -1,6 +1,9 @@
-<img src="https://img.shields.io/badge/-Exception Handling%20-blue" height=40px>
+<img src="https://img.shields.io/badge/-Transaction Management%20-blue" height=40px>
 
 ###### _
+
+https://www.appsdeveloperblog.com/rollback-using-transactional-in-spring-with-jpa/
+
 
 |     |  Subject           |
 |:---:|:------------------------------| 
