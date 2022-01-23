@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-Data Structures%20-brightgreen" height=70px>
+<img src="https://img.shields.io/badge/-JAVA Course%20-blue" height=70px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
