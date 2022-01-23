@@ -240,7 +240,9 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 
 ### Sending Post Request via Postman gives back following result:
 
-we see thedifference in the response between (C) and (D) . With D we have more details about the error message.
+we see the difference in the response between (C) and (D) . With D we have more details about the error message.</br>
+We still using try/catch clause in the controller. </br>
+In next project (E) we will see how to centrolize all exceptions in one class.
 
 
 ![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681227-846db85b-4429-43d4-87e5-c1a79b567ff2.PNG)
@@ -255,7 +257,74 @@ we see thedifference in the response between (C) and (D) . With D we have more d
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
+In this project (E) we will see how to centrolize all exceptions in one class.</br>
+1. For that I created an ew Class named it **_AppExceptionsHandler_** (see the annotations I added to the class </br>
+2. I remove the try/catch clause in my controller , because it will be handled by the **_AppExceptionsHandler_**
+
+### _AppExceptionsHandler_
+
+```java
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class AppExceptionsHandler {
+
+	@ExceptionHandler(value = { NameAlreadyExistException.class })
+	public ResponseEntity<Object> handleUserServiceException(NameAlreadyExistException ex) {
+
+		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
+		errorMessage.setTimestamp(new Date());
+		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
+		errorMessage.setException(NameAlreadyExistException.class.getName());
+		errorMessage.setMessage(ex.getMessage());
+
+		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(value = { Exception.class })
+	public ResponseEntity<Object> handleOtherExceptions(Exception ex) {
+
+		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
+
+		errorMessage.setTimestamp(new Date());
+		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
+		errorMessage.setException(Exception.class.getName());
+		errorMessage.setMessage(ex.getMessage());
+
+		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}
+```
+
+### _Controller w/o try/catch clause_
+
+```java
+/**
+ * Since I have AppExceptionsHandler who handles all Exceptions for my Rest API
+ * Thus code doesn't need to have a try/catch clause
+ */
+@PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
+	return new ResponseEntity<Object>(customerService.createUser(userEntity), new HttpHeaders(), HttpStatus.OK);
+}
+```
+
+### Sending POST or GET Request via Postman gives back following result:
+
+* this is because both methods throw at service layer an exception (Same exception)
+* Thus same Exception will be throw same exception if the logic demands that
+
+![E_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681554-3855c259-f85e-4683-9d74-ea8ed7643df0.PNG)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
+
 
 
 
