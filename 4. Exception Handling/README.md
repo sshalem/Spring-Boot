@@ -140,6 +140,7 @@ public class CustomerService {
 /**
 * In this exapmle I config ResponseEntity
 * to return the exception message
+* we have here a try/catch clause
 */
 @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
@@ -153,9 +154,9 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 
 ### Sending Post Request via Postman gives back following result:
 
-![C_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680853-df553636-2213-4a15-a6fd-4941b89edc5e.PNG)
+We get 500 response back, and the message (em.getMessage()).
 
-
+![C_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680927-c7655830-d3c1-465d-a412-3b15ca43ea5c.PNG)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
