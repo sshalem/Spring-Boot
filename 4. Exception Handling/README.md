@@ -109,6 +109,52 @@ server.error.whitelabel.enabled=true
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
+In this project (C) I added to the **service** and **Controller** layers a new method:
+
+### Service
+
+```java
+@Component
+public class CustomerService {
+
+	private final String NAME = "karin";
+
+	public String getName(String name) {
+		if (name.equals(this.NAME))
+			throw new NameAlreadyExistException("Name " + this.NAME + " already exist");
+		return name;
+	}
+
+	public UserEntity createUser(UserEntity userEntity) {
+		if (userEntity.getFirstName().equals("karin")) {
+			throw new NameAlreadyExistException("Name " + userEntity.getFirstName() + " already Exist");
+		}
+		return userEntity;
+	}
+}
+```
+
+### Controller
+
+```java
+/**
+* In this exapmle I config ResponseEntity
+* to return the exception message
+*/
+@PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
+	try {
+		return new ResponseEntity<Object>(customerService.createUser(userEntity), new HttpHeaders(), HttpStatus.OK);
+	} catch (Exception em) {
+		return new ResponseEntity<Object>(em.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}
+```
+
+### Sending Post Request via Postman gives back following result:
+
+![C_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680853-df553636-2213-4a15-a6fd-4941b89edc5e.PNG)
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
