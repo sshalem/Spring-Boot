@@ -167,6 +167,82 @@ We get 500 response back, and the message (em.getMessage()).
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
+In this project (D) I added to the ENUM of **ErrorMessages** , **ExceptionErrorMessage**.</br>
+In mY controller , I changed the code to return my custom message.
+
+### ENUM ErrorMessages
+
+```java
+public enum ErrorMessages {
+
+	MISSING_REQUIRED_FIELD("Missing required field. Please check documentation for required fields"),
+	RECORD_ALREADY_EXISTS("Record already exists"), 
+	INTERNAL_SERVER_ERROR("Internal server error"),
+	NO_RECORD_FOUND("Record with provided id is not found"), 
+	AUTHENTICATION_FAILED("Authentication failed"),
+	COULD_NOT_UPDATE_RECORD("Could not update record"), 
+	COULD_NOT_DELETE_RECORD("Could not delete record"),
+	EMAIL_ADDRESS_NOT_VERIFIED("Email address could not be verified");
+
+	private String errorMessage;
+
+	private ErrorMessages(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+}
+```
+
+### Entity ExceptionErrorMessage
+
+```java
+private Date timestamp;
+	private int status;
+	private String error;
+	private String exception;
+	private String message;
+
+	public ExceptionErrorMessage() {
+		super();
+	}
+	G/S
+}
+```
+
+### Controller
+
+```java
+/**
+ * In this example I send custom ExceptionMessage created by me
+ * 
+ */
+@PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
+	try {
+		return new ResponseEntity<Object>(customerService.createUser(userEntity), new HttpHeaders(), HttpStatus.OK);
+	} catch (Exception em) {
+		
+		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
+		
+		errorMessage.setTimestamp(new Date());
+		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
+		errorMessage.setException(NameAlreadyExistException.class.getName());
+		errorMessage.setMessage(em.getMessage());
+		
+		return new ResponseEntity<Object>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}
+```
+
+### Sending Post Request via Postman gives back following result:
+
+![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681227-846db85b-4429-43d4-87e5-c1a79b567ff2.PNG)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
 ----------------------------------------------------------------------------------------------------------
