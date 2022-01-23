@@ -1,0 +1,25 @@
+package com.cachem.service;
+
+import org.springframework.stereotype.Component;
+
+import com.cachem.entity.UserEntity;
+import com.cachem.exception.NameAlreadyExistException;
+
+@Component
+public class CustomerService {
+
+	private final String NAME = "karin";
+
+	public String getName(String name) {
+		if (name.equals(this.NAME))
+			throw new NameAlreadyExistException("Name " + this.NAME + " already exist");
+		return name;
+	}
+
+	public UserEntity createUser(UserEntity userEntity) {
+		if (userEntity.getFirstName().equals("karin")) {
+			throw new NameAlreadyExistException("Name " + userEntity.getFirstName() + " already Exist");
+		}
+		return userEntity;
+	}
+}
