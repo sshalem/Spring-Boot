@@ -240,6 +240,9 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 
 ### Sending Post Request via Postman gives back following result:
 
+we see thedifference in the response between (C) and (D) . With D we have more details about the error message.
+
+
 ![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681227-846db85b-4429-43d4-87e5-c1a79b567ff2.PNG)
 
 
