@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-Exception Handling%20-blue" height=40px>
+<img src="https://img.shields.io/badge/-Exception Handling%20-red" height=40px>
 
 ###### _
 
