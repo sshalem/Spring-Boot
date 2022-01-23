@@ -17,7 +17,51 @@
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
+### Exception
 
+```java
+public class NameAlreadyExistException extends RuntimeException {
+	private static final long serialVersionUID = -6209521422884301225L;
+
+	public NameAlreadyExistException(String msg) {
+		super(msg);
+	}
+}
+```
+### Service
+
+```java
+import com.hre.exception.NameAlreadyExistException;
+
+@Component
+public class CustomerService {
+
+	private final String NAME = "karin";
+
+	public String testMethod(String name) {
+		if (name.equals(this.NAME))
+			throw new NameAlreadyExistException("Name " + this.NAME + " already exist");
+		return name;
+	}
+}
+```
+
+### Controller
+
+```java
+@RestController
+@RequestMapping("/customer")
+public class CustomerController {
+
+	@Autowired
+	private CustomerService customerService;
+
+	@GetMapping("/{name}")
+	public String getName(@PathVariable("name") String name) {
+		return customerService.testMethod(name);
+	}
+}
+```
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
 
