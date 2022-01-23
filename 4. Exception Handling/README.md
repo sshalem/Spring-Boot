@@ -15,7 +15,7 @@
 ###### __
 <img src="https://img.shields.io/badge/-(A) Handle RuntimeException%20-red" height=30px>
 
-[<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=20px>](#_)
 
 ### Exception
 
@@ -67,7 +67,7 @@ public class CustomerController {
 
 ![A_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150680152-bf30bb1f-61ba-4e21-b80c-7866dcee16bc.PNG)
      
-[<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=20px>](#_)
 
 
 ----------------------------------------------------------------------------------------------------------
