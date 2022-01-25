@@ -2,7 +2,7 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[Application Properties]()   | 
+|  1  |[Application Properties](https://github.com/sshalem/Spring-Boot/tree/main/1.%20application.properties)   | 
 |  2  |[JPA-Hibernate]()  |   
 |  3  |[REST-API]() |   
 |  4  |[Exception Handling]() |   
