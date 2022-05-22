@@ -1,3 +1,0 @@
-# REST API
-
-1. REST API
