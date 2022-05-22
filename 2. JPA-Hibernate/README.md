@@ -2,9 +2,14 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[One2Many and Many2One](#-)   | 
-|  2  |[One2Many and Many2One](#-)   | 
-|  3  |[One2Many and Many2One](#-)   | 
-|  4  |[One2Many and Many2One](#-)   | 
-|  5  |[One2Many and Many2One](#-)   | 
-|  6  |[One2Many and Many2One](#-)   | 
+|  1  |[OneToMany and ManyToOne Uni-Directional](#-)   | 
+|  2  |[OneToMany and ManyToOne Bi-Directional](#-)   | 
+|  3  |[ManyToMany](#-)   | 
+|  4  |[OneToone](#-)   | 
+
+default values .
+
+@OneToOne – The default fetch type is EAGER.
+@OneToMany – The default fetch type is LAZY.
+@ManyToOne – The default fetch type is EAGER.
+@ManyToMany – The default fetch type is LAZY.
