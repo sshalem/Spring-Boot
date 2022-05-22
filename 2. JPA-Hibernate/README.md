@@ -9,7 +9,7 @@
 
 default values .
 
-@OneToOne – The default fetch type is EAGER.
-@OneToMany – The default fetch type is LAZY.
-@ManyToOne – The default fetch type is EAGER.
-@ManyToMany – The default fetch type is LAZY.
+@OneToOne – The default fetch type is EAGER. </br>
+@OneToMany – The default fetch type is LAZY. </br>
+@ManyToOne – The default fetch type is EAGER. </br>
+@ManyToMany – The default fetch type is LAZY. </br>
