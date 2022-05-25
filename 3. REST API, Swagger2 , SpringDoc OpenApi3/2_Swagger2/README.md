@@ -159,15 +159,32 @@ In order to config Swagger2 with Spring boot we need to do the following:
 * Create a config class for swagger2 with annotation of ```@Configuration```
 * add annotation of ```@EnableSwagger2```
 
+### [Package Layout](#-)
 
+![image](https://user-images.githubusercontent.com/36256986/170343821-2272b8b0-5171-4ba8-a440-204f74eef25f.png)
+
+```java
+package com.swagger2.config;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+} 
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
-###### 
+###### Run_App_Test_API_with_Swagger_UI
 
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+<img src="https://img.shields.io/badge/-2.3. Run App Test API with SwaggerUI %20-yellow" height=35px>
+
+1. Let's run the app.
+2. Browse to url where th UI of swagger is displayed [localhost:8080/swagger-ui](#-)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
