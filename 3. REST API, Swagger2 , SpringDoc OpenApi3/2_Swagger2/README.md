@@ -10,7 +10,7 @@
 |     |2.1. [Add Swagger2 dependency](#add_Swagger2_dependency) |   
 |     |2.2. [Config Swagger2](#config_swagger2) |   
 |     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
-|  2  |[Reconfig Swagger2](#Reconfig_Swagger2)    | 
+|  3  |[Customize Swagger2 configuration](#Customize_Swagger2_configuration)    | 
 
 
 
@@ -186,23 +186,13 @@ public class SwaggerConfig {
 1. Let's run the app.
 2. Browse to url where th UI of swagger is displayed [localhost:8080/swagger-ui/](#-)
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+We can see in Swagger UI several things:
+1. Our Controllers of Author and Book are shown. Click on them to see the API we have in the Controller
+2. 'Select a Defenition' - Default 
+3. 'Servers' - inferred Url
+4. Schemas
 
---------------------------------------------------------------------------------------------------
-
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+![image](https://user-images.githubusercontent.com/36256986/170345871-ddac3f63-f595-4f91-8c79-fd6c4bca5252.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -234,6 +224,7 @@ public class SwaggerConfig {
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
+
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 ---------------------------------------------------------
@@ -241,33 +232,15 @@ public class SwaggerConfig {
 ---------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 
-###### 
+###### Customize_Swagger2_configuration
 
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-3. Customize Swagger2 configuration  %20-blue" height=40px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
 
 ###### 
 
@@ -287,40 +260,22 @@ public class SwaggerConfig {
 
 --------------------------------------------------------------------------------------------------
 
-###### Customer_Service
+###### 
 
-<img src="https://img.shields.io/badge/-2. Customer Service  %20-yellow" height=45px>
+<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
 
-###### Customer_Dependencies_POM_file
-
-### [Dependencies](#-)
-
-### [POM](#-)
-
-```sql
-```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
-###### Customer_application_properties
+###### 
 
-<img src="https://img.shields.io/badge/-2.2. Customer application.properties   %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
 
-```sql
-```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
-###### Customer_package_layout
 
-<img src="https://img.shields.io/badge/-2.3. Customer package layout   %20-blue" height=40px>
-
-### [Expand pakcages to see Classes in each package](#-)
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
