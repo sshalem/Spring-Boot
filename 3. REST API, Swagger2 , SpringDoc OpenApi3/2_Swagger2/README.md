@@ -12,6 +12,9 @@
 |     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
 |  3  |[Customize Swagger2 configuration](#Customize_Swagger2_configuration)    | 
 |     |3.1. [Run App Test API with Swagger UI reconfig](#Run_App_Test_API_with_Swagger_UI_reconfig) |  
+|  4  |[Add details to API](#Add details to API)    | 
+|     |3.1. [test App](#test_app) |  
+
 
 
 
