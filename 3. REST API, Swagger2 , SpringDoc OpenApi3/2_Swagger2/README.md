@@ -21,6 +21,25 @@
 
 <img src="https://img.shields.io/badge/- What is Swagger %20-blue" height=40px>
 
+from https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+
+* Reference documentation should simultaneously describe every change in the API. Accomplishing this manually is a tedious exercise, so automation of the process was inevitable. </br>
+We'll look at Swagger 2 for a Spring REST web service, using the [Springfox implementation of the Swagger 2](#-) specification. It's important to mention that the latest version of Swagger specification, now known as [OpenAPI 3.0](#-), is better supported by the Springdoc project and should be used for documenting Spring REST API.
+
+If you are not familiar with Swagger, visit its web page to learn more before continuing with this tutorial.
+
+Swagger can be used for:
+1. Devlope API's
+2. Interact with API's
+3. Document API's
+
+[Document API's](#-) is whats giving Swagger it's popularity. It is Excelent tool for documenting API's. </br>
+It has various ways which we can document , the most popular is using **_Swagger UI_**. </br>
+Swagger is more than just documenting, But I'll focus on the Docdumenting part. </br>
+
+With Swagger to generate the DATA we need , we need to add Swagger MetaaData to our API's.</br>
+Developers write the MetaData , and the tool generates the document. </br>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
