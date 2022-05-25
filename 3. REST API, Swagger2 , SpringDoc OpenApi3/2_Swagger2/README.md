@@ -150,18 +150,16 @@ It includes the ```<artifactId>springfox-swagger2</artifactId>``` and also ```<a
 
 --------------------------------------------------------------------------------------------------
 
+###### config_swagger2
 
-###### 
+<img src="https://img.shields.io/badge/-2.2. config_swagger2  %20-yellow" height=35px>
 
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+In order to config Swagger2 with Spring boot we need to do the following:
+* create config package
+* Create a config class for swagger2 with annotation of ```@Configuration```
+* add annotation of ```@EnableSwagger2```
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -169,18 +167,56 @@ It includes the ```<artifactId>springfox-swagger2</artifactId>``` and also ```<a
 
 ###### 
 
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
+
 ###### 
 
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+--------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 ---------------------------------------------------------
