@@ -11,6 +11,7 @@
 |     |2.2. [Config Swagger2](#config_swagger2) |   
 |     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
 |  3  |[Customize Swagger2 configuration](#Customize_Swagger2_configuration)    | 
+|     |3.1. [Run App Test API with Swagger UI reconfig](#Run_App_Test_API_with_Swagger_UI_reconfig) |  
 
 
 
@@ -157,7 +158,8 @@ It includes the ```<artifactId>springfox-swagger2</artifactId>``` and also ```<a
 In order to config Swagger2 with Spring boot we need to do the following:
 * create config package
 * Create a config class for swagger2 with annotation of ```@Configuration```
-* add annotation of ```@EnableSwagger2```
+* It seems that with dependency of ```<artifactId>springfox-boot-starter</artifactId>``` we don't have to add annotation of ```@EnableSwagger2```
+But I still add it.
 
 ### [Package Layout](#-)
 
@@ -198,54 +200,121 @@ We can see in Swagger UI several things:
 
 --------------------------------------------------------------------------------------------------
 
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-
-###### 
-
-<img src="https://img.shields.io/badge/-X.  %20-yellow" height=35px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------
----------------------------------------------------------
----------------------------------------------------------
----------------------------------------------------------
---------------------------------------------------------------------------------------------------
-
 ###### Customize_Swagger2_configuration
 
 <img src="https://img.shields.io/badge/-3. Customize Swagger2 configuration  %20-blue" height=40px>
 
+```java
+import java.util.Collections;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.groupName("shabtay")
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.swagger2.controller")) 
+				.paths(PathSelectors.ant("/project/**"))				
+				.build()
+				.useDefaultResponseMessages(false)
+				.apiInfo(apiShabtayDetails());
+	}
+
+	@Bean
+	public Docket apiKarin() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.groupName("karin")
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.swagger2.controller")) 
+				.paths(PathSelectors.ant("/project/**"))				
+				.build()
+				.useDefaultResponseMessages(false)
+				.apiInfo(apiKarinDetails());
+	}
+	
+	@Bean
+	public Docket apiOdel() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.groupName("odel")
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.swagger2.controller")) 
+				.paths(PathSelectors.ant("/project/**"))				
+				.build()
+				.useDefaultResponseMessages(false)
+				.apiInfo(apiOdelDetails());
+	}
+	
+	private ApiInfo apiShabtayDetails() { 
+		return new ApiInfo(
+				"Project Author/Book", 
+				"Documentation API", 
+				"V1.0", 
+				"Free to use",
+				new Contact("shabtay shalem", "url - NA", "shabtay.shalem@gmail.com"), 
+				"API licesnse",
+				"license URL",				
+				Collections.emptyList());		
+	}
+	
+	private ApiInfo apiKarinDetails() { 
+		return new ApiInfoBuilder()
+				.title("Project Author/Book")
+				.description("Documentation API")
+				.version("V1.0")
+				.termsOfServiceUrl("free to use")
+				.contact(new Contact("Karin shalem", "url - NA", "karin.shalem@gmail.com"))
+				.license("API licesnse")
+				.licenseUrl("license URL")
+				.extensions(Collections.emptyList())
+				.build();
+	}
+	
+	private ApiInfo apiOdelDetails() { 
+		return new ApiInfoBuilder()
+				.title("Project Author/Book")
+				.description("Documentation API")
+				.version("V1.0")
+				.termsOfServiceUrl("free to use")
+				.contact(new Contact("Odel shalem", "url - NA", "Odel.shalem@gmail.com"))
+				.license("API licesnse")
+				.licenseUrl("license URL")
+				.extensions(Collections.emptyList())
+				.build();
+	}
+}
+```
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
+###### Run_App_Test_API_with_Swagger_UI_reconfig
 
-###### 
+<img src="https://img.shields.io/badge/-3.1. Run App Test API with Swagger UI reconfig  %20-blue" height=40px>
 
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+We can see , we can select from 3 different definitions.</br>
+Error Controller is not shown.</br>
 
+![image](https://user-images.githubusercontent.com/36256986/170362385-f1d24dd9-2fce-41af-bf4f-eca1fbc1086c.png)
+
+Since we define ```useDefaultResponseMessages(false)``` thus we see response only for 200.
+
+![image](https://user-images.githubusercontent.com/36256986/170362710-3ca995f5-f9ad-40c2-9d7d-6ea07b748f01.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
