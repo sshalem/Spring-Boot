@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-Spring Boot Course%20-blue" height=70px>
+<img src="https://img.shields.io/badge/-REST API, SWAGGER, OpenApi3 %20-blue" height=70px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
