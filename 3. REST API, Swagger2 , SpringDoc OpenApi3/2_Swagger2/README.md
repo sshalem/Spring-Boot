@@ -137,7 +137,7 @@ spring.h2.console.path=/h2
 I'll be using the following dependency to add Swagger2. </br>
 It includes the ```<artifactId>springfox-swagger2</artifactId>``` and also ```<artifactId>springfox-swagger-ui</artifactId>```
 
-```
+```sql
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
 <dependency>
 	<groupId>io.springfox</groupId>
