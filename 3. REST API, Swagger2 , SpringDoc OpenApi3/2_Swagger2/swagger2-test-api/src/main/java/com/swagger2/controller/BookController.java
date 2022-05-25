@@ -13,7 +13,7 @@ import com.swagger2.dao.BookDaoImpl;
 import com.swagger2.entity.Book;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/project/book")
 public class BookController {
 
 	@Autowired

@@ -15,7 +15,7 @@ import com.swagger2.dao.AuthorDaoImpl;
 import com.swagger2.entity.Author;
 
 @RestController
-@RequestMapping("/author")
+@RequestMapping("/project/author")
 public class AuthorController {
 
 	@Autowired
