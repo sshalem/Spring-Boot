@@ -5,11 +5,11 @@
 |     |  Subject           |
 |:---:|:------------------------------| 
 |     |[What is Swagger2](#swagger2_introduction)   | 
-|  1  |[Spring Boot project with swagger2](#Spring_Boot_project_with_swagger2)  |   
-|     |1.1. [Spring boot project](#Spring_boot_project) |   
-|     |1.2. [Swagger2 dependency](#Swagger2_dependency) |   
-|     |1.3. [Config Swagger2](#config_swagger2) |   
-|     |1.4. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
+|  1  |[Spring Boot project](#Spring_Boot_project)  |   
+|  2  |[Add Swagger2 to Spring Boot Project](#Add_Swagger2_to_Spring_Boot_Project) | 
+|     |2.1. [Add Swagger2 dependency](#add_Swagger2_dependency) |   
+|     |2.2. [Config Swagger2](#config_swagger2) |   
+|     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
 |  2  |[Reconfig Swagger2](#Reconfig_Swagger2)    | 
 
 
@@ -25,11 +25,9 @@
 
 --------------------------------------------------------------------------------------------------
 
-###### Spring_Boot_project_with_swagger2
+###### Spring_Boot_project
 
-<img src="https://img.shields.io/badge/-1. Spring Boot project with swagger2  %20-blue" height=40px>
-
-<img src="https://img.shields.io/badge/-1.1. Spring boot project %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-1. Spring Boot project %20-blue" height=40px>
 
 ### [Dependencies](#-)
 
@@ -128,11 +126,16 @@ spring.h2.console.path=/h2
 
 --------------------------------------------------------------------------------------------------
 
-###### Swagger2_dependency
+###### Add_Swagger2_to_Spring_Boot_Project
 
-<img src="https://img.shields.io/badge/-1.2. Swagger2 dependency %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-2. Add Swagger2 to Spring Boot Project %20- blue" height=40px>
 
-I'll be using the following dcependency to add Swagger2:
+###### add_Swagger2_dependency
+
+<img src="https://img.shields.io/badge/-2.1. Add Swagger2 dependency %20-yellow" height=35px>
+
+I'll be using the following dependency to add Swagger2. </br>
+It includes the ```<artifactId>springfox-swagger2</artifactId>``` and also ```<artifactId>springfox-swagger-ui</artifactId>```
 
 ```
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
