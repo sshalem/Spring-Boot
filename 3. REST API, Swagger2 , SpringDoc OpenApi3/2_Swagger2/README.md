@@ -118,15 +118,56 @@ spring.h2.console.path=/h2
 
 --------------------------------------------------------------------------------------------------
 
-###### Customer_package_layout
+###### package_layout
 
 <img src="https://img.shields.io/badge/-2.3. package layout   %20-blue" height=40px>
 
-### [Expand pakcages to see Classes in each package](#-)
+![image](https://user-images.githubusercontent.com/36256986/170337728-3392b5f7-a77b-40ed-88d4-5faa6cf192ed.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+--------------------------------------------------------------------------------------------------
 
+###### Swagger2_dependency
+
+<img src="https://img.shields.io/badge/-1.2. Swagger2 dependency %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 ---------------------------------------------------------
 ---------------------------------------------------------
