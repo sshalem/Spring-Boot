@@ -184,7 +184,7 @@ public class SwaggerConfig {
 <img src="https://img.shields.io/badge/-2.3. Run App Test API with SwaggerUI %20-yellow" height=35px>
 
 1. Let's run the app.
-2. Browse to url where th UI of swagger is displayed [localhost:8080/swagger-ui](#-)
+2. Browse to url where th UI of swagger is displayed [localhost:8080/swagger-ui/](#-)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
