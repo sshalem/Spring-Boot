@@ -132,6 +132,17 @@ spring.h2.console.path=/h2
 
 <img src="https://img.shields.io/badge/-1.2. Swagger2 dependency %20-yellow" height=40px>
 
+I'll be using the following dcependency to add Swagger2:
+
+```
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-boot-starter</artifactId>
+	<version>3.0.0</version>
+</dependency>
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
