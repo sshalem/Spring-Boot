@@ -188,9 +188,9 @@ public class SwaggerConfig {
 
 We can see in Swagger UI several things:
 1. Our Controllers of Author and Book are shown. Click on them to see the API we have in the Controller
-2. 'Select a Defenition' - Default 
+2. 'Select a Defenition' - Default , we can have several defenitions 
 3. 'Servers' - inferred Url
-4. Schemas
+4. Schemas (Or Models)
 
 ![image](https://user-images.githubusercontent.com/36256986/170345871-ddac3f63-f595-4f91-8c79-fd6c4bca5252.png)
 
