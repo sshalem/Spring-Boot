@@ -37,8 +37,6 @@
 
 ### [POM](#-)
 
-<img src="https://img.shields.io/badge/-POM %20-yellow" height=40px>
-
 ```sql
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -100,11 +98,7 @@
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
-
 ###### application_properties
-
-<img src="https://img.shields.io/badge/-application.properties %20-yellow" height=40px>
 
 ```sql
 spring.datasource.url=jdbc:h2:mem:testdb
