@@ -12,8 +12,8 @@
 |     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
 |  3  |[Customize Swagger2 configuration](#Customize_Swagger2_configuration)    | 
 |     |3.1. [Run App Test API with Swagger UI reconfig](#Run_App_Test_API_with_Swagger_UI_reconfig) |  
-|  4  |[Add details to API](#Add details to API)    | 
-|     |3.1. [test App](#test_app) |  
+|  4  |[Add details to API](#Add_details_to_API)    | 
+|     |4.1. [test App](#test_app) |  
 
 
 
@@ -342,9 +342,11 @@ Since we define ```useDefaultResponseMessages(false)``` thus we see response onl
 
 --------------------------------------------------------------------------------------------------
 
-###### 
+###### Add_details_to_API
 
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-4. Add details to API  %20-blue" height=40px>
+
+Let's see how to add details annotations to our API so swagger will be able to see this documentation.
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
