@@ -2,9 +2,9 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[Basic Authentication](https://github.com/sshalem/spring-security/tree/main/_1_BasicAuth)   | 
-|  2  |[Form Login](https://github.com/sshalem/spring-security/tree/main/_2_FormLogin)  |   
-|  3  |[JWT](https://github.com/sshalem/spring-security/tree/main/_3_JWT)  |   
+|  1  |[Basic Authentication](https://github.com/sshalem/Spring-Boot/tree/main/7_Spring_Security/_1_BasicAuth)   | 
+|  2  |[Form Login](https://github.com/sshalem/Spring-Boot/tree/main/7_Spring_Security/_2_FormLogin) |   
+|  3  |[JWT](https://github.com/sshalem/Spring-Boot/tree/main/7_Spring_Security/_3_JWT) |   
 |  4  |[]()  |   
 |  5  |[]()  |   
 |  6  |[]()  | 
