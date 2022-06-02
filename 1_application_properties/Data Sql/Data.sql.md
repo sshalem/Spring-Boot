@@ -15,8 +15,9 @@ spring.datasource.initialization-mode=always
 # to create data.sql file need to add following properties
 # from Baeldung https://www.baeldung.com/spring-boot-data-sql-and-schema-sql
 # script-based initialization is performed by default only for embedded databases, to always initialize a database using scripts, we'll have to use:
+# spring.sql.init.mode=always
 # =================================================================================
-spring.sql.init.mode=always
+
 spring.jpa.defer-datasource-initialization=true
 spring.data.jpa.repositories.bootstrap-mode=default
 ```
