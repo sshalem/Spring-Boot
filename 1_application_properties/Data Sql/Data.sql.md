@@ -1,4 +1,4 @@
-```java
+```sql
 # =================================================================================
 # to Initialize DB by using a file of "data.sql" 
 # need to set the following features
