@@ -21,6 +21,13 @@ spring.datasource.initialization-mode=always
 #          if Using MySql, PostgreSql we must add spring.sql.init.mode=always , otherwise we won't be able to Init DB with data.sql  
 # =================================================================================
 
+spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.generate-ddl=true
+
 spring.sql.init.mode=always
 spring.jpa.defer-datasource-initialization=true
 spring.data.jpa.repositories.bootstrap-mode=default
