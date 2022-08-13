@@ -27,13 +27,13 @@ public class AuthorController {
 		return new ResponseEntity<Author>(createAuthor, HttpStatus.CREATED);
 	}
 
-	@GetMapping(path = "/get/{firstname}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/get/firstname/{firstname}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Author> getAuthorByFirstName(@PathVariable("firstname") String firstname) {
 		Author author = authorDaoImpl.getAuthorFirstName(firstname);
 		return new ResponseEntity<Author>(author, HttpStatus.CREATED);
 	}
 
-	@GetMapping(path = "/get/{lastname}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/get/lastname/{lastname}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Author> getAuthorByLastName(@PathVariable("lastname") String lastname) {
 		Author author = authorDaoImpl.getAuthorLastName(lastname);
 		return new ResponseEntity<Author>(author, HttpStatus.CREATED);
