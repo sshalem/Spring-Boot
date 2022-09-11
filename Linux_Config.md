@@ -13,14 +13,15 @@ Password : aa77aa80
 
 ---------------------------------------------------------------------------------
 
-### Setup server - Setting Up and Securing a Compute Instance 
+### [Setup server - Setting Up and Securing a Compute Instance](#-)
 
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04 
 
 Basic package update and upgrade 
 `sudo apt-get update && sudo apt-get upgrade`
 
-Date time Zone Modification: </br>
+#### [Date time Zone Modification:](#-)
+
 `date`</br>
 `timedatectl`</br>
 `sudo timedatectl set-timezone Asia/Jerusalem`</br>
@@ -30,12 +31,12 @@ Because of the heightened privileges of the root account, you are discoura
 This is because the root account is able to make very destructive changes, even by accident. 
 
 
-Add a Limited User Account 
+#### [Add a Limited User Account ](#-)
 
 `adduser shabtay`</br>
 `usermod -aG sudo shabtay`  (password 1234)</br>
 
-Firewall config 
+#### [Firewall config](#-)
 
 `ufw app list`</br>
 `ufw allow OpenSSH`</br>
