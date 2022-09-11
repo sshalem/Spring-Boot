@@ -13,10 +13,11 @@ Password : aa77aa80
 
 ---------------------------------------------------------------------------------
 
-### [Setup server - Setting Up and Securing a Compute Instance](#-)
+### [1. Setup server - Setting Up and Securing a Compute Instance](#-)
 
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04 
 
+Setup server - Setting Up and Securing a Compute Instance.</br>
 Basic package update and upgrade :
 
 `sudo apt-get update && sudo apt-get upgrade`
