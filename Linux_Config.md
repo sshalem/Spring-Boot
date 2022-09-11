@@ -54,3 +54,18 @@ Now to connect with new user type:  `ssh shabtay@ip_address_of_server`
 
 ![image](https://user-images.githubusercontent.com/36256986/189514767-a8ae6370-30bf-4400-8506-eda8bac39b01.png)
 
+--------------------------------------------------------------------------------------------------------
+
+### [2. JDK Install](#-)
+
+From Digital Ocean  Ubuntu 20.04 : </br> 
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-10-on-ubuntu-20-04 
+
+JDK Install  : 
+
+`sudo apt update` </br>
+`sudo apt install default-jdk` </br>
+`Java -version` </br>
+
+--------------------------------------------------------------------------------------------------------
+
