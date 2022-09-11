@@ -21,9 +21,9 @@ Basic package update and upgrade
 `sudo apt-get update && sudo apt-get upgrade`
 
 Date time Zone Modification: 
-`date`
-`timedatectl`
-`sudo timedatectl set-timezone Asia/Jerusalem`
+`date`</br>
+`timedatectl`</br>
+`sudo timedatectl set-timezone Asia/Jerusalem`</br>
 
 The root user is the administrative user in a Linux environment that has very broad privileges. </br>
 Because of the heightened privileges of the root account, you are discouraged from using it on a regular basis. </br>
