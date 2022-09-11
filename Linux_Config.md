@@ -212,36 +212,20 @@ sudo mysql_secure_installation
 Click n , since we don't want to change the password again</br>  
 (Somehow If I don't want to change I get the same error) 
 
-Check MySql version: 
+Add new user to mysql:
+
+```sql
+CREATE USER 'sshb'@'localhost' IDENTIFIED BY 'password123';
+```
+
+
+Some useful commands:
 
 ```sql
 sudo mysql --version
-```
-
-Connect to MySQL server: 
-
-```sql
 sudo mysql -u root -p
-```
-
-
-Show all databases: 
-
-```sql
 show databases;
-```
- 
-
-Check if MySql is live 
-
-```sql
 sudo systemctl status mysql
-```
- 
-
-Restart MySql server: 
-
-```sql
 sudo systemctl restart mysql
 ```
 
