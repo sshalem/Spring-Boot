@@ -17,7 +17,8 @@ Password : aa77aa80
 
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04 
 
-Basic package update and upgrade 
+Basic package update and upgrade :
+
 `sudo apt-get update && sudo apt-get upgrade`
 
 #### [Date time Zone Modification:](#-)
