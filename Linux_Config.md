@@ -162,3 +162,22 @@ Open firewall port:
 
 --------------------------------------------------------------------------------------------------------
 
+### [4. MySql on Ubuntu](#-)
+
+https://hevodata.com/learn/installing-mysql-on-ubuntu-20-04/ 
+
+```java
+sudo apt update
+sudo apt upgrade
+sudo apt install mysql-server
+mysql --version
+```
+
+In order to use a password to connect to MySQL as root, you will need to switch its authentication method from </br>
+`auth_socket` to `mysql_native_password`. </br>
+To do this, open up the MySQL prompt from your terminal: </br>
+From <https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04>  
+
+![image](https://user-images.githubusercontent.com/36256986/189515240-7a9a77b6-52d7-4d47-9bd9-106bb720ca8a.png)
+
+
