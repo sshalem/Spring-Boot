@@ -195,23 +195,13 @@ SELECT User, host, Grant_priv ,  plugin , authentication_string, password_last_c
 
 ```sql
 sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'mynewpassword';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'root';
 ```
 
 See work around for error below in link, Great Link : </br>
 https://ostechnix.com/fix-mysql-error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements/ 
 
 `ERROR 1819 (HY000): Your password does not satisfy the current policy requirements`
-
-```sql
-FLUSH PRIVILEGES;
-exit
-sudo mysql
-mysql -u root -p
-CREATE USER 'shabtay'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'shabtay'@'localhost' WITH GRANT OPTION;
-exit
-```
 
 I must [```install mysql_secure_installation```](#-) because this way I can enable to Remote connect with MySql Workbench </br>
 
