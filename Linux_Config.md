@@ -192,10 +192,8 @@ SELECT User, host, Grant_priv ,  plugin , authentication_string, password_last_c
 
 ```sql
 sudo mysql
-```
-
-```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'root';
+FLUSH PRIVILEGES;
 ```
 
 See work around for error below in link, Great Link : </br>
@@ -216,6 +214,7 @@ Add new user to mysql:
 
 ```sql
 CREATE USER 'sshb'@'localhost' IDENTIFIED BY 'password123';
+GRANT ALL PRIVILEGES ON *.* TO 'sshb'@'localhost' WITH GRANT OPTION;
 ```
 
 
