@@ -214,6 +214,7 @@ Add new user to mysql:
 ```sql
 CREATE USER 'sshb'@'localhost' IDENTIFIED BY 'password123';
 GRANT ALL PRIVILEGES ON *.* TO 'sshb'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR sshb;
 ```
 
 
