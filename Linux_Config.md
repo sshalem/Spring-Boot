@@ -36,7 +36,7 @@ This is because the root account is able to make very destructive changes, e
 #### [Add a Limited User Account ](#-)
 
 `adduser shabtay`</br>
-`usermod -aG sudo shabtay`  (password 1234)</br>
+`usermod -aG sudo shabtay`  (password 123)</br>
 
 #### [Firewall config](#-)
 
