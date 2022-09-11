@@ -32,15 +32,15 @@ This is because the root account is able to make very destructive changes, e
 
 Add a Limited User Account 
 
-`adduser shabtay`
-`usermod -aG sudo shabtay`  (password 1234)
+`adduser shabtay`</br>
+`usermod -aG sudo shabtay`  (password 1234)</br>
 
 Firewall config 
 
-`ufw app list`
-`ufw allow OpenSSH`
-`ufw enable`
-`ufw status`
+`ufw app list`</br>
+`ufw allow OpenSSH`</br>
+`ufw enable`</br>
+`ufw status`</br>
 
  
 
