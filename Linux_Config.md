@@ -189,23 +189,25 @@ SELECT User, host, Grant_priv ,  plugin , authentication_string, password_last_c
 
 ![image](https://user-images.githubusercontent.com/36256986/189515548-2c6860e4-9a70-4cd2-836e-9d988f96b705.png)
 
-`SET GLOBAL validate_password.policy = 0;`
-
-![image](https://user-images.githubusercontent.com/36256986/189515556-e71e1eae-cc7a-40c3-8f85-0b9f1803b5b1.png)
 
 ```sql
 sudo mysql
+```
+
+```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'root';
 ```
 
 See work around for error below in link, Great Link : </br>
 https://ostechnix.com/fix-mysql-error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements/ 
 
-`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements`
+```ERROR 1819 (HY000): Your password does not satisfy the current policy requirements```
 
 I must [```install mysql_secure_installation```](#-) because this way I can enable to Remote connect with MySql Workbench </br>
 
-`sudo mysql_secure_installation` </br>
+```sql
+sudo mysql_secure_installation
+``` 
 
 Click n , since we don't want to change the password again</br>  
 (Somehow If I don't want to change I get the same error) 
