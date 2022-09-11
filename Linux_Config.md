@@ -207,8 +207,7 @@ I must [```install mysql_secure_installation```](#-) because this way I can enab
 sudo mysql_secure_installation
 ``` 
 
-Click n , since we don't want to change the password again</br>  
-(Somehow If I don't want to change I get the same error) 
+Click n , since we don't want to change the password again, (Somehow If I don't want to change I get the same error) 
 
 Add new user to mysql:
 
