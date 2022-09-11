@@ -238,7 +238,7 @@ Open MySql workbench, and fill it as follows:
 Connection name: whatever name I want </br>
 SSH Hostname : [```194.195.241.160```](#-) IP of the server from Linode </br>
 SSH Username: [```shabtay```](#-) (When I setup the server , I add new user, this is the username I gave the user when I created it ) </br>
-SSH Password : [```aa77aa80```](#-) (When I setup the server , I add new user, this is the password I gave the user when I created it ) </br>
+SSH Password : [```123```](#-) (When I setup the server , I add new user, this is the password I gave the user when I created it ) </br>
 MySql Hostname : [```127.0.0.1```](#-) </br>
 MySql Server Port : [```3306```](#-) </br>
 Username : [```root```](#-) </br>
