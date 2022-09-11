@@ -180,6 +180,10 @@ From <https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-u
 
 ![image](https://user-images.githubusercontent.com/36256986/189515240-7a9a77b6-52d7-4d47-9bd9-106bb720ca8a.png)
 
+```sql
+SELECT USER, HOST from mysql.user; 
+SELECT User, host, Grant_priv ,  plugin , authentication_string, password_last_changed FROM mysql.user; 
+```
 
 `SHOW VARIABLES LIKE 'validate_password%';`
 
@@ -212,6 +216,58 @@ exit
 I must [```install mysql_secure_installation```](#-) because this way I can enable to Remote connect with MySql Workbench </br>
 
 `sudo mysql_secure_installation` </br>
+
 Click n , since we don't want to change the password again</br>  
 (Somehow If I don't want to change I get the same error) 
+
+Check MySql version: 
+
+```sql
+sudo mysql --version
+```
+
+Connect to MySQL server: 
+
+```sql
+sudo mysql -u root -p
+```
+
+
+Show all databases: 
+
+```sql
+mysql> show databases; 
+```
+ 
+
+Check if MySql is live 
+
+```sql
+sudo systemctl status mysql
+```
+ 
+
+Restart MySql server: 
+
+```sql
+sudo systemctl restart mysql
+```
+
+
+#### [How to Connect to a Database Remotely Using the MySQL Workbench Tool](#-)
+
+https://www.linode.com/docs/guides/deploy-mysql-workbench-for-database-administration/ 
+
+Open MySql workbench, and fill it as follows: 
+
+Connection name: whatever name I want </br>
+SSH Hostname : 194.195.241.160 IP of the server from Linode </br>
+SSH Username: sshb (When I setup the server , I add new user, this is the username I gave the user when I created it ) </br>
+SSH Password : aa77aa80 (When I setup the server , I add new user, this is the password I gave the user when I created it ) </br>
+MySql Hostname : 127.0.0.1 </br>
+MySql Server Port : 3306 </br>
+Username : root </br>
+Password : mynewpassword </br>
+
+![image](https://user-images.githubusercontent.com/36256986/189515704-886303ca-6c7e-42e0-9b1e-fb7640ce33fa.png)
 
