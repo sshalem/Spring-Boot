@@ -228,7 +228,7 @@ sudo mysql -u root -p
 Show all databases: 
 
 ```sql
-mysql> show databases; 
+show databases;
 ```
  
 
@@ -253,13 +253,13 @@ https://www.linode.com/docs/guides/deploy-mysql-workbench-for-database-administr
 Open MySql workbench, and fill it as follows: 
 
 Connection name: whatever name I want </br>
-SSH Hostname : 194.195.241.160 IP of the server from Linode </br>
-SSH Username: sshb (When I setup the server , I add new user, this is the username I gave the user when I created it ) </br>
-SSH Password : aa77aa80 (When I setup the server , I add new user, this is the password I gave the user when I created it ) </br>
-MySql Hostname : 127.0.0.1 </br>
-MySql Server Port : 3306 </br>
-Username : root </br>
-Password : mynewpassword </br>
+SSH Hostname : [```194.195.241.160```](#-) IP of the server from Linode </br>
+SSH Username: [```shabtay```](#-) (When I setup the server , I add new user, this is the username I gave the user when I created it ) </br>
+SSH Password : [```aa77aa80```](#-) (When I setup the server , I add new user, this is the password I gave the user when I created it ) </br>
+MySql Hostname : [```127.0.0.1```](#-) </br>
+MySql Server Port : [```3306```](#-) </br>
+Username : [```root```](#-) </br>
+Password : [```roor```](#-) </br>
 
 ![image](https://user-images.githubusercontent.com/36256986/189515704-886303ca-6c7e-42e0-9b1e-fb7640ce33fa.png)
 
