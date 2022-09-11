@@ -20,7 +20,7 @@ https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubunt
 Basic package update and upgrade 
 `sudo apt-get update && sudo apt-get upgrade`
 
-Date time Zone Modification: 
+Date time Zone Modification: </br>
 `date`</br>
 `timedatectl`</br>
 `sudo timedatectl set-timezone Asia/Jerusalem`</br>
