@@ -47,4 +47,7 @@ Firewall config
 I didn’t perform the set up SSH keys instead of using password authentication</br>
 This is to enhance your server’s security, It is strongly recommend setting up SSH keys instead of using password authentication.  
 
-Now to connect with new user type:  ssh shabtay@ip_address_of_server 
+Now to connect with new user type:  `ssh shabtay@ip_address_of_server`
+
+![image](https://user-images.githubusercontent.com/36256986/189514767-a8ae6370-30bf-4400-8506-eda8bac39b01.png)
+
