@@ -181,3 +181,37 @@ From <https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-u
 ![image](https://user-images.githubusercontent.com/36256986/189515240-7a9a77b6-52d7-4d47-9bd9-106bb720ca8a.png)
 
 
+`SHOW VARIABLES LIKE 'validate_password%';`
+
+![image](https://user-images.githubusercontent.com/36256986/189515548-2c6860e4-9a70-4cd2-836e-9d988f96b705.png)
+
+`SET GLOBAL validate_password.policy = 0;`
+
+![image](https://user-images.githubusercontent.com/36256986/189515556-e71e1eae-cc7a-40c3-8f85-0b9f1803b5b1.png)
+
+```sql
+sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'mynewpassword';
+```
+
+See work around for error below in link, Great Link : </br>
+https://ostechnix.com/fix-mysql-error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements/ 
+
+`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements`
+
+```sql
+FLUSH PRIVILEGES;
+exit
+sudo mysql
+mysql -u root -p
+CREATE USER 'shabtay'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'shabtay'@'localhost' WITH GRANT OPTION;
+exit
+```
+
+I must [```install mysql_secure_installation```](#-) because this way I can enable to Remote connect with MySql Workbench </br>
+
+`sudo mysql_secure_installation` </br>
+Click n , since we don't want to change the password again</br>  
+(Somehow If I don't want to change I get the same error) 
+
