@@ -1,3 +1,11 @@
+<img src="https://img.shields.io/badge/-schemae and data initialization%20-blue" height=70px>
+
+|     |  Subject           |
+|:---:|:------------------------------| 
+|  1  |[H2](#-)   | 
+|  2  |[MySql](#-)  |   
+
+
 see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
 
 From spring-boot 2.5.0 and up use the following config from Spring docs:
