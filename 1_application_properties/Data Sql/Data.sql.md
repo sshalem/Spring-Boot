@@ -9,9 +9,22 @@ This is  ony work on Sprig-boot version up to 2.4.12
 spring.datasource.platform=mysql
 spring.datasource.initialization-mode=always
 ```
+see the answer fro stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
 
+If you're using Spring Boot 2, database initialization only works for embedded databases (H2, HSQLDB, ...). </br>
+If you want to use it for other databases as well, you need to change the initialization mode property: 
 
-From spring-boot 2.5.0and up use the following config:
+#### [Spring Boot < v2.5.0](#-)
+```sql
+spring.datasource.initialization-mode=always 
+```
+
+#### [Spring Boot >= v2.5.0](#-)
+```sql 
+spring.sql.init.mode=always # 
+```
+
+From spring-boot 2.5.0 and up use the following config from Spring docs:
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 
