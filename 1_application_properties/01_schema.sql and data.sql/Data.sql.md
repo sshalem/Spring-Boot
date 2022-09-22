@@ -15,11 +15,13 @@ Note:
 set [```spring.jpa.defer-datasource-initialization=true```](#-).
 * In other words ,if you want to use [```data.sql```](#-) to populate a [```schema```](#-) created by Hibernate, set [```spring.jpa.defer-datasource-initialization=true```](#-) </br>.
 
+-------------------------------------------------------------------------------------------
 
 ### SQL database initialization Summary , Applicable for [Spring Boot >= v2.5.0](#-) and up : 
 *  If you're using Spring Boot 2 , and Using H2 DB for developement [**NO NEED**](#-) to add the feature of [```spring.sql.init.mode=always```](#-) .database initialization only works for embedded databases (H2, HSQLDB, ...). </br>
 * If you want to use it for other databases as well, you need to change the initialization mode property. If Using MySql, PostgreSql we must add [```spring.sql.init.mode=always```](#-) , otherwise we won't be able to Init DB with [```data.sql```](#-)
 
+-------------------------------------------------------------------------------------------
 
 # [h2 database ](#-)
 
