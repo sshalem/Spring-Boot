@@ -6,11 +6,10 @@
 |  2  |[MySql](#-)  |   
 
 
-see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
+From spring-boot 2.5.0 and up use the following config from Spring docs: </br>
+* [stackoverflow](https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data)
+* [spring docs](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts)
 
-From spring-boot 2.5.0 and up use the following config from Spring docs:
-
-https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 
 * By default, SQL database initialization is only performed when using an embedded in-memory database. </br>
 * To always initialize an SQL database, irrespective of its type, set [```spring.sql.init.mode=always```](#-) </br>
