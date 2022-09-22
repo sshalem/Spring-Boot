@@ -16,11 +16,34 @@ set [```spring.jpa.defer-datasource-initialization=true```](#-).
 * If you want to use it for other databases as well, you need to change the initialization mode property. If Using MySql, PostgreSql we must add [```spring.sql.init.mode=always```](#-) , otherwise we won't be able to Init DB with [```data.sql```](#-)
 
 
-### [h2 database ](#-)
+## [h2 database ](#-)
 
 If using during dev only h2 DB , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
 
-application properties
+##### [```schema.sql```](#-)
+
+```sql
+CREATE TABLE user_entity(
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (20),
+email VARCHAR(50)
+);
+
+CREATE TABLE role_entity(
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (20)
+);
+```
+
+##### [```data.sql```](#-)
+
+```sql
+INSERT INTO user_entity(id ,name ,email) VALUES (1, 'shabtay' , 'shabtay.shalem@gmail.com');
+INSERT INTO user_entity(id ,name ,email) VALUES (2, 'karin' , 'karin.shalem@gmail.com');
+INSERT INTO user_entity(id ,name ,email) VALUES (3, 'odel' , 'odel.shalem@gmail.com');
+```
+
+##### [```application.properties```](#-)
 
 ```sql
 spring.datasource.url=jdbc:h2:mem:testdb
