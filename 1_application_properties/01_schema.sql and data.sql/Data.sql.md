@@ -33,13 +33,16 @@ I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.s
 ##### [```schema.sql```](#-)
 
 ```sql
-CREATE TABLE user_entity(
+DROP TABLE IF EXISTS user_entity;
+DROP TABLE IF EXISTS role_entity;
+
+CREATE TABLE IF NOT EXISTS user_entity(
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR (20),
 email VARCHAR(50)
 );
 
-CREATE TABLE role_entity(
+CREATE TABLE IF NOT EXISTS role_entity(
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR (20)
 );
@@ -96,13 +99,16 @@ I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.s
 ##### [```schema.sql```](#-)
 
 ```sql
-CREATE TABLE user_entity(
+DROP TABLE IF EXISTS user_entity;
+DROP TABLE IF EXISTS role_entity;
+
+CREATE TABLE IF NOT EXISTS user_entity(
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR (20),
 email VARCHAR(50)
 );
 
-CREATE TABLE role_entity(
+CREATE TABLE IF NOT EXISTS role_entity(
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR (20)
 );
@@ -121,22 +127,26 @@ INSERT INTO user_entity(id ,name ,email) VALUES (3, 'odel' , 'odel.shalem@gmail.
 ##### [```application.properties```](#-)
 
 ```sql
-spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://localhost:3306/jpa?useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=root
 
 # this ensures script-based initialization is performed using schema.sql and data.sql directly.
 spring.jpa.hibernate.ddl-auto=none
-# spring.jpa.hibernate.ddl-auto=create
 
 spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.format_sql=true 
 
+
+# we must add this config as well for schema.sql and data.sql could work
 spring.sql.init.mode=always
 spring.jpa.defer-datasource-initialization=true
-spring.data.jpa.repositories.bootstrap-mode=default
+#spring.data.jpa.repositories.bootstrap-mode=default
 ```
 
-### 4. run the app and check h2 console that :
+### 4. run the app and check musql database :
 
 1. DB created 
 2. Tables cretaed
