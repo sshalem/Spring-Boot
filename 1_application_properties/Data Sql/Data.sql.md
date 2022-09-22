@@ -32,7 +32,10 @@ spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&s
 spring.datasource.username=root
 spring.datasource.password=root
 
-spring.jpa.hibernate.ddl-auto=create
+# this ensures script-based initialization is performed using schema.sql and data.sql directly.
+spring.jpa.hibernate.ddl-auto=none
+# spring.jpa.hibernate.ddl-auto=create
+
 spring.jpa.generate-ddl=true
 
 spring.sql.init.mode=always
