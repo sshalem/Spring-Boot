@@ -1,3 +1,4 @@
+This is  ony work on Sprig-boot version up to 2.4.12
 ```sql
 # =================================================================================
 # to Initialize DB by using a file of "data.sql" 
@@ -8,6 +9,11 @@
 spring.datasource.platform=mysql
 spring.datasource.initialization-mode=always
 ```
+
+
+From spring-boot 2.5.0and up use the following config:
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 
 ```sql
 # =================================================================================
