@@ -1,0 +1,317 @@
+:root {
+    --color: rgb(100, 160, 221);
+    --color-errorBackgroundColor: #f1c6cc;
+    --color-errorColor: brown;
+    --color-seperator: rgb(229, 235, 142);
+    --color-update: rgb(27, 27, 214);
+    --color-delete: rgb(235, 58, 19);
+    --color-error-message-title: rgb(136 18 128);
+    --color-error-message-description: rgb(176, 50, 50);
+    --color-error-message-description-status: blue;
+    --font-size-error-message: 0.75rem;
+    --font-family-error-message: consolas, lucida console, courier new, monospace;
+    --font-weight-error-message: 800;
+    --font-weight-error-message-description: 525;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input {
+    border-radius: 8px;
+    list-style: none;
+    border: 1px solid var(--color);
+    text-align: center;
+    height: 100%;
+    width: 13rem;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid var(--color);
+    box-shadow: 0 0 10px #719ece;
+}
+
+.container {
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1140px;
+    /* width: 100vw; */
+}
+
+.seperator {
+    margin: 1rem 0;
+    background-color: var(--color-seperator);
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 10px;
+}
+
+header {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.logout {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+.logout-btn {
+    margin-bottom: 5px;
+    width: 5rem;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    background-color: var(--color);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-style: oblique;
+}
+
+.logout-btn:hover {
+    border: 1px solid var(--color);
+    color: rgb(163, 186, 209);
+    background-color: white;
+}
+
+h1 {
+    color: var(--color);
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.8rem;
+    font-style: oblique;
+}
+
+/*************************
+Start Section get methods
+*************************/
+.get_methods {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: space-evenly; */
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+    width: 90%;
+}
+
+.get_methods_div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    /* width: 15rem; */
+}
+
+.get_methods_btn {
+    margin-bottom: 5px;
+    width: 13rem;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    background-color: var(--color);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.get_methods_label {
+    font-size: 1.1rem;
+}
+
+.get_methods_btn:hover {
+    border: 1px solid var(--color);
+    color: rgb(163, 186, 209);
+    background-color: white;
+}
+.get_methods_input {
+    margin: 15px auto;
+    height: 1.5rem;
+}
+
+.get_methods_validate {
+    height: 2rem;
+    width: 13rem;
+}
+
+.show_error {
+    height: 2rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    height: 1.5rem;
+    color: var(--color-errorColor);
+    background-color: var(--color-errorBackgroundColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden_id,
+.hidden_username {
+    display: none;
+}
+
+.createUser__input {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.createUser__input_div_child {
+    /* border: 1px solid red; */
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    text-align: center;
+    height: 1.5rem;
+}
+
+select {
+    /* border: 1px solid red; */
+    border-radius: 8px;
+    list-style: none;
+    border: 1px solid var(--color);
+    text-align: center;
+    height: 1.5rem;
+    width: 13rem;
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid var(--color);
+    box-shadow: 0 0 10px #719ece;
+}
+
+.createBtn {
+    margin-bottom: 5px;
+    width: 13rem;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    background-color: var(--color);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.createBtn:hover {
+    border: 1px solid var(--color);
+    color: rgb(163, 186, 209);
+    background-color: white;
+}
+
+.visible {
+    display: none;
+}
+/*********************
+Section Show Data
+**********************/
+table {
+    /* border: none; */
+}
+
+th {
+    /* border: 1px solid red; */
+    width: 200px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+    font-size: 1.2rem;
+    background-color: var(--color);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 30px;
+}
+
+td {
+    /* width: 200px; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* text-align: center; */
+    font-size: 17px;
+}
+
+.btn {
+    margin-bottom: 5px;
+    width: 90px;
+    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.update {
+    background-color: var(--color-update);
+}
+
+.delete {
+    background-color: var(--color-delete);
+}
+
+/*************************
+Start Section Error-message
+*************************/
+.error-message {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: space-evenly; */
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* height: 200px; */
+    /* width: 90%; */
+}
+
+.error-message-div {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* width: 15rem; */
+}
+
+.em-title,
+.em-title-description {
+    font-family: var(--font-family-error-message);
+    font-size: var(--font-size-error-message);
+    margin-top: 2.5px;
+    margin-bottom: 5px;
+}
+
+.em-title {
+    color: var(--color-error-message-title);
+    font-weight: var(--font-weight-error-message);
+}
+
+.em-title-description {
+    margin-left: 0.5rem;
+    color: var(--color-error-message-description);
+    font-weight: var(--font-weight-error-message-description);
+}
+
+#em-status {
+    color: var(--color-error-message-description-status);
+}

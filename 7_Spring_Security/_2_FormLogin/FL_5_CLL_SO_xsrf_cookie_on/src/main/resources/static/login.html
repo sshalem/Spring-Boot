@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/c3d49f7cef.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div style="width: 400px; margin-left: auto; margin-right: auto; margin-top: 24px; padding: 24px; text-align: left">
+                <div class="card">
+                    <div class="card-header" style="background-color: #1e90ff"><i class="fa fa-user" style="font-size: 24px"></i> Sign In</div>
+                    <div class="card-block" style="padding: 24px">
+                        <form class="form-signin" method="post" action="http://localhost:8080/login">
+                            <div class="form-group">
+                                <label for="username">username</label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    class="form-control"
+                                    placeholder="username"
+                                    required=""
+                                    autofocus=""
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">password</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="password" required="" />
+                            </div>
+                            <input name="state" type="hidden" value="login" id="state" />
+                            <input name="_csrf" type="hidden" value="" id="csrfId" />
+                            <div class="form-actions" style="margin-top: 12px">
+                                <button type="submit" class="btn btn-success btn-block" style="background-color: #1e90ff">login</button>
+                            </div>
+                            <br />
+                            <div id="err"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./js/login.js"></script>
+    </body>
+</html>
