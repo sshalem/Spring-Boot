@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-schemae and data initialization%20-blue" height=70px>
+<img src="https://img.shields.io/badge/-schema and data initialization%20-blue" height=40px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
