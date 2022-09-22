@@ -1,15 +1,4 @@
-This is  ony work on Sprig-boot version up to 2.4.12
-```sql
-# =================================================================================
-# to Initialize DB by using a file of "data.sql" 
-# need to set the following features
-# on Spring Boot vewrsion 2.4.12 it worked as expected
-# when tried on Spring boot version 2.5.8 -> did not work as expected , alot of problems created
-# =================================================================================
-spring.datasource.platform=mysql
-spring.datasource.initialization-mode=always
-```
-see the answer fro stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
+see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
 
 If you're using Spring Boot 2, database initialization only works for embedded databases (H2, HSQLDB, ...). </br>
 If you want to use it for other databases as well, you need to change the initialization mode property: 
