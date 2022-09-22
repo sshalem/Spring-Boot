@@ -16,15 +16,15 @@ set [```spring.jpa.defer-datasource-initialization=true```](#-).
 * If you want to use it for other databases as well, you need to change the initialization mode property. If Using MySql, PostgreSql we must add [```spring.sql.init.mode=always```](#-) , otherwise we won't be able to Init DB with [```data.sql```](#-)
 
 
-## [h2 database ](#-)
+# [h2 database ](#-)
 
 If using during dev [only h2 DB](#-) , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
 
-#### 1. create new Spring-Boot app version 2.5 and up (While writing this lines the current version is 2.6.11) with following dependencies:
+### 1. create new Spring-Boot app version 2.5 and up (While writing this lines the current version is 2.6.11) with following dependencies:
 
 ![image](https://user-images.githubusercontent.com/36256986/191862030-bb8986c9-808e-4ac9-82db-2283b1798095.png)
 
-#### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
+### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
 
 I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in H2 DB w/o any java code.
 
@@ -53,7 +53,7 @@ INSERT INTO user_entity(id ,name ,email) VALUES (2, 'karin' , 'karin.shalem@gmai
 INSERT INTO user_entity(id ,name ,email) VALUES (3, 'odel' , 'odel.shalem@gmail.com');
 ```
 
-#### 3. config [```application.properties```](#-) as follows :
+### 3. config [```application.properties```](#-) as follows :
 
 ##### [```application.properties```](#-)
 
@@ -71,17 +71,14 @@ spring.h2.console.enabled=true
 spring.h2.console.path=/h2
 ```
 
-folder sturcture and dependencies , [```schema.sql```](#-) and [```data.sql```](#-) are in the root path . </br>
+### 4. run the app and check h2 console that :
+
+1. DB created 
+2. Tables cretaed
+3. Data inserted to tables
 
 
-![image](https://user-images.githubusercontent.com/36256986/191862030-bb8986c9-808e-4ac9-82db-2283b1798095.png)
-
-![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
-
-
-
-
-### [mysql database ](#-)
+# [mysql database ](#-)
 
 ```sql
 spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&serverTimezone=UTC
