@@ -18,7 +18,13 @@ set [```spring.jpa.defer-datasource-initialization=true```](#-).
 
 ## [h2 database ](#-)
 
-If using during dev only h2 DB , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
+If using during dev [only h2 DB](#-) , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
+
+create new Spring-Boot app version 2.5 and up (While writing this lines the current version is 2.6.11) with following dependencies:
+
+![image](https://user-images.githubusercontent.com/36256986/191862030-bb8986c9-808e-4ac9-82db-2283b1798095.png)
+
+![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
 
 ##### [```schema.sql```](#-)
 
