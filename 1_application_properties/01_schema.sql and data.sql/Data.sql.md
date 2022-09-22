@@ -48,7 +48,13 @@ spring.h2.console.enabled=true
 spring.h2.console.path=/h2
 ```
 
-folder sturcture , [```schema.sql```](#-) and [```data.sql```](#-) are in the root path 
+folder sturcture and dependencies , [```schema.sql```](#-) and [```data.sql```](#-) are in the root path . </br>
+I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/191862030-bb8986c9-808e-4ac9-82db-2283b1798095.png)
+
+![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
+
 
 
 
