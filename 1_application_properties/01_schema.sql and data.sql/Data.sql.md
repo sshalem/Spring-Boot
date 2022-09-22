@@ -77,8 +77,48 @@ spring.h2.console.path=/h2
 2. Tables cretaed
 3. Data inserted to tables
 
+---------------------------------------------------------------------------------------------------
 
 # [mysql database ](#-)
+
+If using during dev [mysql DB](#-) , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
+
+### 1. create new Spring-Boot app version 2.5 and up with following dependencies (w/o any java code):
+
+![image](https://user-images.githubusercontent.com/36256986/191862030-bb8986c9-808e-4ac9-82db-2283b1798095.png)
+
+### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
+
+I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in H2 DB w/o any java code.
+
+![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
+
+##### [```schema.sql```](#-)
+
+```sql
+CREATE TABLE user_entity(
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (20),
+email VARCHAR(50)
+);
+
+CREATE TABLE role_entity(
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (20)
+);
+```
+
+##### [```data.sql```](#-)
+
+```sql
+INSERT INTO user_entity(id ,name ,email) VALUES (1, 'shabtay' , 'shabtay.shalem@gmail.com');
+INSERT INTO user_entity(id ,name ,email) VALUES (2, 'karin' , 'karin.shalem@gmail.com');
+INSERT INTO user_entity(id ,name ,email) VALUES (3, 'odel' , 'odel.shalem@gmail.com');
+```
+
+### 3. config [```application.properties```](#-) as follows :
+
+##### [```application.properties```](#-)
 
 ```sql
 spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&serverTimezone=UTC
@@ -95,3 +135,9 @@ spring.sql.init.mode=always
 spring.jpa.defer-datasource-initialization=true
 spring.data.jpa.repositories.bootstrap-mode=default
 ```
+
+### 4. run the app and check h2 console that :
+
+1. DB created 
+2. Tables cretaed
+3. Data inserted to tables
