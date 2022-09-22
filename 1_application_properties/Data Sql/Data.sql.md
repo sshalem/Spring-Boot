@@ -23,9 +23,36 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.
 set [```spring.jpa.defer-datasource-initialization=true```](#-). In other words ,if you want to use [```data.sql```](#-) to populate a [```schema```](#-) created by Hibernate, set [```spring.jpa.defer-datasource-initialization=true```](#-) </br>.
 
 
-### Example: 
+### Summarize : 
 * if Using H2 DB for developement [**NO NEED**](#-) to add the feature of [```spring.sql.init.mode=always```](#-)
 * if Using MySql, PostgreSql we must add [```spring.sql.init.mode=always```](#-) , otherwise we won't be able to Init DB with [```data.sql```](#-)
+
+
+### [h2 database ](#-)
+
+If using during dev only h2 DB , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
+
+application properties
+
+```sql
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Enabling H2 Console
+spring.h2.console.enabled=true
+
+# Custom H2 Console URL from /h2-console to /h2
+spring.h2.console.path=/h2
+```
+
+folder sturcture , [```schema.sql```](#-) and [```data.sql```](#-) are in the root path 
+
+
+
+### [mysql database ](#-)
 
 ```sql
 spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>?useSSL=false&serverTimezone=UTC
