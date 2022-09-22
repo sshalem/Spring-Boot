@@ -47,6 +47,9 @@ spring.jpa.properties.hibernate.format_sql=true
 ```java
 # MySql Dialect for to use with MySql 8 on JDK8 is MySQL5Dialect
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+
+# When using java version JDK11 use with mysql dialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 ```
 
 ```java
