@@ -19,15 +19,16 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private long pid;
 	private String name;
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
-		super();		
+		super();
 	}
 
 	public long getId() {
@@ -36,6 +37,14 @@ public class UserEntity {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getPid() {
+		return pid;
+	}
+
+	public void setPid(long pid) {
+		this.pid = pid;
 	}
 
 	public String getName() {
@@ -71,7 +80,7 @@ public class UserEntity {
 	}
 
 	public void addRole(RoleEntity role) {
-		if(this.roles == null) {
+		if (this.roles == null) {
 			this.roles = new HashSet<>();
 		}
 		this.roles.add(role);
@@ -79,8 +88,14 @@ public class UserEntity {
 	}
 
 	public void removeRole(RoleEntity role) {
+		System.out.println(role);
 		this.roles.remove(role);
-		role.setUser(this);
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
+				+ password + ", roles=" + roles + "]";
 	}
 
 }

@@ -57,4 +57,9 @@ public class RoleEntity {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "RoleEntity [id=" + id + ", role=" + role + "]";
+	}
+
 }

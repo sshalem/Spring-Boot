@@ -3,6 +3,7 @@ package com.jpa.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.jpa.entity.UserEntity;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin("*")
 public class UserController {
 
 	@Autowired
@@ -25,23 +27,20 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
 	}
 
-	@PostMapping("/addRole/{userId}")
-	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity , @PathVariable("userId") long id) {
+	@PostMapping("/addRole/{userPid}")
+	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
 
-		UserEntity userEntity = userDaoImpl.getUserById(id);
-		
-		UserEntity returnedValue = userDaoImpl.addRoleToUser(userEntity, roleEntity);
-		
+		UserEntity returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
+
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 
-	@PostMapping("/removeRole/{userId}")
-	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity , @PathVariable("userId") long id) {
+	@PostMapping("/removeRole/{userPid}")
+	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
 
-		UserEntity userEntity = userDaoImpl.getUserById(id);
-		
-		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userEntity, roleEntity);
-		
+		System.out.println(userPid);
+		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);
+
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 }

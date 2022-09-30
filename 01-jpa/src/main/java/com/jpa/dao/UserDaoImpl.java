@@ -1,5 +1,7 @@
 package com.jpa.dao;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,10 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public UserEntity addRoleToUser(UserEntity userEntity, RoleEntity roleEntity) {
+	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
 
+		UserEntity userEntity = userRepository.findByPid(userPid);
+		
 		userEntity.addRole(roleEntity);
 
 		UserEntity returnedValue = userRepository.save(userEntity);
@@ -29,15 +33,32 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public UserEntity removeRoleFromUser(UserEntity userEntity, RoleEntity roleEntity) {
-		userEntity.removeRole(roleEntity);
+	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
+		
+		UserEntity userEntity = userRepository.findByPid(userPid);
+		
+		System.out.println(userEntity);
+		
+		Set<RoleEntity> roles = userEntity.getRoles();
+		
+		roles.forEach(r -> {
+			if(r.getRole().equals(roleEntity.getRole())) {
+				userEntity.removeRole(r);
+			}
+		});
+		
+//		userEntity.removeRole(roleEntity);
+		
 		UserEntity returnedValue = userRepository.save(userEntity);
-		return returnedValue;
+		
+		System.out.println(returnedValue);
+		
+		return returnedValue; 
 	}
 
 	@Override
-	public UserEntity getUserById(long id) { 
-		return userRepository.findById(id).get();
+	public UserEntity getUserByPid(long pid) { 
+		return userRepository.findByPid(pid);
 	}
 
 }

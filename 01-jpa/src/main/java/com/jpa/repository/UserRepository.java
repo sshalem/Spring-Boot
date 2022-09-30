@@ -8,4 +8,5 @@ import com.jpa.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
+	UserEntity findByPid(long pid);
 }

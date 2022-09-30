@@ -7,9 +7,9 @@ public interface UserDao {
 
 	UserEntity createUser(UserEntity userEntity);
 
-	UserEntity addRoleToUser(UserEntity userEntity, RoleEntity roleEntity);
+	UserEntity addRoleToUser(long userPid, RoleEntity roleEntity);
 
-	UserEntity removeRoleFromUser(UserEntity userEntity, RoleEntity roleEntity);
+	UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity);
 
-	UserEntity getUserById(long id);
+	UserEntity getUserByPid(long id);
 }
