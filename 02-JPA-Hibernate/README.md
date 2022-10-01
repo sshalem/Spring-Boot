@@ -2,10 +2,10 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[OneToMany and ManyToOne Uni-Directional](#-)   | 
-|  2  |[OneToMany and ManyToOne Bi-Directional](#-)   | 
+|  1  |[OneToMany Uni-Directional](#-)   | 
+|  2  |[OneToMany Bi-Directional](#-)   | 
 |  3  |[ManyToMany](#-)   | 
-|  4  |[OneToone](#-)   | 
+|  4  |[OneToOne](#-)   | 
 
 default values .
 
