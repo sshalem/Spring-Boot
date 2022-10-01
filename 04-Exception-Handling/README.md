@@ -85,7 +85,10 @@ I only add the following configuration in the **_application.properties_** file<
 # format the returned error format 
 # when exception is thrown back to client
 # ==========================================
-server.error.path=/
+
+# Don't use this , since it makes problems when using servelts :
+# the server.error.path=/
+
 server.error.include-binding-errors=always
 server.error.include-exception=true
 server.error.include-message=always
