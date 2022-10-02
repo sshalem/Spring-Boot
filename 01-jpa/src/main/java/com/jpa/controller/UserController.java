@@ -37,10 +37,8 @@ public class UserController {
 
 	@PostMapping("/removeRole/{userPid}")
 	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-
-		System.out.println(userPid);
+		
 		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);
-
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 }

@@ -2,6 +2,7 @@ import { users, rolesAriel, rolesKarin, rolesShabtay, rolesOdel } from './utils.
 
 const createUsers = document.getElementById('createUsers');
 const updateUserWithRoles = document.getElementById('updateUserWithRoles');
+const removeRole = document.getElementById('removeRole');
 
 const baseUrl = `http://localhost:8080`;
 const CREATE_URL = `http://localhost:8080/create`;
@@ -12,6 +13,14 @@ createUsers.addEventListener('click', () => {
   users.forEach((user) => {
     executeFetch(CREATE_URL, user, 'post');
   });
+});
+
+removeRole.addEventListener('click', () => {
+  const roleEntity = {
+    role: 'ADMIN',
+  };
+
+  executeFetch(`${REMOVE_ROLE_URL}/1111`, roleEntity, 'post');
 });
 
 updateUserWithRoles.addEventListener('click', () => {

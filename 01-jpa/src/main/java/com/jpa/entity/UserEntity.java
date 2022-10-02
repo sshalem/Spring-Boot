@@ -87,15 +87,14 @@ public class UserEntity {
 		role.setUser(this);
 	}
 
-	public void removeRole(RoleEntity role) {
-		System.out.println(role);
+	public void removeRole(RoleEntity role) {		
 		this.roles.remove(role);
 	}
 
 	@Override
 	public String toString() {
 		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
-				+ password + ", roles=" + roles + "]";
+				+ password + "]";
 	}
 
 }

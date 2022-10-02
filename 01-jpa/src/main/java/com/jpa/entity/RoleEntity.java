@@ -18,6 +18,7 @@ public class RoleEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String role;
+	private long pid;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -49,6 +50,14 @@ public class RoleEntity {
 		this.role = role;
 	}
 
+	public long getPid() {
+		return pid;
+	}
+
+	public void setPid(long pid) {
+		this.pid = pid;
+	}
+
 	public UserEntity getUser() {
 		return user;
 	}
@@ -59,7 +68,7 @@ public class RoleEntity {
 
 	@Override
 	public String toString() {
-		return "RoleEntity [id=" + id + ", role=" + role + "]";
+		return "RoleEntity [id=" + id + ", role=" + role + ", pid=" + pid + ", user=" + user + "]";
 	}
 
 }
