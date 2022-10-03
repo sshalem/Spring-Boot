@@ -25,6 +25,7 @@ public class UserEntity {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -87,7 +88,7 @@ public class UserEntity {
 		role.setUser(this);
 	}
 
-	public void removeRole(RoleEntity role) {		
+	public void removeRole(RoleEntity role) {
 		this.roles.remove(role);
 	}
 

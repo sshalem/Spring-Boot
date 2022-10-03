@@ -68,7 +68,7 @@ public class RoleEntity {
 
 	@Override
 	public String toString() {
-		return "RoleEntity [id=" + id + ", role=" + role + ", pid=" + pid + ", user=" + user + "]";
+		return "RoleEntity [id=" + id + ", role=" + role + ", pid=" + pid + "]";
 	}
 
 }
