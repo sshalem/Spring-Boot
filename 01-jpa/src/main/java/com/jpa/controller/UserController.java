@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import com.jpa.entity.UserEntity;
 @RestController
 @RequestMapping("/")
 @CrossOrigin("*")
-@Transactional
+//@Transactional
 public class UserController {
 
 	@Autowired
@@ -36,8 +37,8 @@ public class UserController {
 
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
-
-	@PostMapping("/removeRole/{userPid}")
+ 
+	@DeleteMapping("/removeRole/{userPid}")
 	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
 		
 		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);

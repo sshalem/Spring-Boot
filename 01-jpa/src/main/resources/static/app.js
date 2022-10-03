@@ -20,7 +20,7 @@ removeRole.addEventListener('click', () => {
     role: 'ADMIN',
   };
 
-  executeFetch(`${REMOVE_ROLE_URL}/1111`, roleEntity, 'post');
+  executeFetch(`${REMOVE_ROLE_URL}/1111`, roleEntity, 'delete');
 });
 
 updateUserWithRoles.addEventListener('click', () => {

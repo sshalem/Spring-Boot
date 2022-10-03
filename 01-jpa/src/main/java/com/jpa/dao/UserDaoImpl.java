@@ -1,5 +1,6 @@
 package com.jpa.dao;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,21 +44,16 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
 
+		/**
+		 * This is getting role by ID and NOT by PID
+		 */
 //		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
-
-//		System.out.println("----> Role " + role);
-//
-//		userEntity.removeRole(role);
-
-//		Set<RoleEntity> roles = userEntity.getRoles();
-//		
-//		roles.remove(role);
 
 //		UserEntity returnedValue = imp1(userPid, roleEntity);
 
-//		UserEntity returnedValue = imp2(userPid, roleEntity);
-		
-		UserEntity returnedValue = imp3(userPid, roleEntity);
+		UserEntity returnedValue = imp2(userPid, roleEntity);
+
+//		UserEntity returnedValue = imp3(userPid, roleEntity);
 
 		return returnedValue;
 	}
@@ -71,14 +67,18 @@ public class UserDaoImpl implements UserDao {
 
 		/**
 		 * In this Implementation 
-		 * 1. I add the orphanRemoval to the UserEntity
+		 * 1. I add the orphanRemoval to the UserEntity 
 		 * 2. I Search For RoleEntity 
-		 * 3. remove the Entity from the SET collection
-		 * 3. Save the the info to UserEntity
+		 * 3. remove the Entity from the SET collection 
+		 * 4. Save the the info to UserEntity
 		 */
-		
-		UserEntity userEntity = userRepository.findByPid(userPid);
 
+		UserEntity userEntity = userRepository.findByPid(userPid);
+		
+//		long start = LocalDateTime.now().getNano();
+		long start = System.nanoTime();
+		
+		
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity temp = null;
@@ -87,24 +87,71 @@ public class UserDaoImpl implements UserDao {
 			if (r.getRole().equals(roleEntity.getRole())) {
 				temp = r;
 			}
-		}
+		}		
 
 		userEntity.removeRole(temp);
 		UserEntity returnedValue = userRepository.save(userEntity);
 
+//		long end = LocalDateTime.now().getNano();
+		
+		long end = System.nanoTime();		
+		long diff = end - start;		
+		System.out.println(diff);		
 		return returnedValue;
 	}
 
 	@Transactional
 	private UserEntity imp2(long userPid, RoleEntity roleEntity) {
+
+		/**
+		 * In this Implementation
+		 * 1. I remove the orphanRemoval from the UserEntity 
+		 * 2. I Query For RoleEntity (I try with 2 different implementations) 
+		 * 3. remove the Entity from the SET collection 
+		 * 3. Save the the info to UserEntity
+		 */
+
+		UserEntity userEntity = userRepository.findByPid(userPid);
+
+//		long start = LocalDateTime.now().getNano();
+		long start = System.nanoTime();
 		
 		/**
-		 * In this IMplementation 
-		 * 1. I remove the orphanRemoval from the Entity
-		 * 2. I remove the Entity from the SET collection
-		 * 3. I delete the RoleENtity from DB using RoleRepo
-		 * 4. I add the @Transactional annotation org.springframework.transaction.annotation.Transactional;
-		 *    to all classes in path including the controller   
+		 * Query from UserRepository
+		 */
+//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
+
+		/**
+		 * Query from RoleRepository
+		 */
+		RoleEntity role = roleRepository.findRole(userPid, roleEntity.getRole());
+
+		System.out.println(role);
+
+		userEntity.removeRole(role);
+
+		UserEntity returnedValue = userRepository.save(userEntity);
+
+//		long end = LocalDateTime.now().getNano();
+		long end = System.nanoTime();
+		
+		long diff = end - start;
+		
+		System.out.println(diff);
+		
+		return returnedValue;
+	}
+
+	@Transactional
+	private UserEntity imp3(long userPid, RoleEntity roleEntity) {
+
+		/**
+		 * In this Implementation 
+		 * 1. I remove the orphanRemoval from the Entity 
+		 * 2. I remove the Entity from the SET collection 
+		 * 3. I delete the RoleENtity from DB using RoleRepo 
+		 * 4. I add the @Transactional annotation org.springframework.transaction.annotation.Transactional; 
+		 * 		to all classes in path including the controller
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
@@ -112,36 +159,10 @@ public class UserDaoImpl implements UserDao {
 		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
 
 		userEntity.removeRole(role);
-		
-//		roleRepository.deleteUserRole(userPid, roleEntity.getRole());
 
-		roleRepository.delete(role);
+		roleRepository.deleteUserRole(userPid, roleEntity.getRole());
 
-		UserEntity returnedValue = userRepository.save(userEntity);
-
-		return returnedValue;
-	}
-	
-
-	private UserEntity imp3(long userPid, RoleEntity roleEntity) {
-
-		/**
-		 * In this Implementation 
-		 * 1. I add the orphanRemoval to the UserEntity
-		 * 2. I Search For RoleEntity 
-		 * 3. remove the Entity from the SET collection
-		 * 3. Save the the info to UserEntity
-		 */
-		
-		UserEntity userEntity = userRepository.findByPid(userPid);
-
-//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
-
-		RoleEntity role = roleRepository.findRole(roleEntity.getPid(), roleEntity.getRole());
-		
-		System.out.println(role);
-		
-		userEntity.removeRole(role);
+//		roleRepository.delete(role);
 
 		UserEntity returnedValue = userRepository.save(userEntity);
 
