@@ -1,10 +1,11 @@
 package com.jpa.dao;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpa.entity.RoleEntity;
@@ -13,7 +14,6 @@ import com.jpa.repository.RoleRepository;
 import com.jpa.repository.UserRepository;
 
 @Service
-@Transactional
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
@@ -41,13 +41,15 @@ public class UserDaoImpl implements UserDao {
 		return returnedValue;
 	}
 
+	/**
+	 * @Transactional Annotation - 
+	 * 			Should be only on 
+	 * 			'PUBLIC' methods that returns value to higher level layer
+	 */
+	
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
 	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
-
-		/**
-		 * This is getting role by ID and NOT by PID
-		 */
-//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
 
 //		UserEntity returnedValue = imp1(userPid, roleEntity);
 
@@ -63,7 +65,7 @@ public class UserDaoImpl implements UserDao {
 		return userRepository.findByPid(pid);
 	}
 
-	private UserEntity imp1(long userPid, RoleEntity roleEntity) {
+	public UserEntity imp1(long userPid, RoleEntity roleEntity) {
 
 		/**
 		 * In this Implementation 
@@ -100,8 +102,8 @@ public class UserDaoImpl implements UserDao {
 		return returnedValue;
 	}
 
-	@Transactional
-	private UserEntity imp2(long userPid, RoleEntity roleEntity) {
+	
+	public UserEntity imp2(long userPid, RoleEntity roleEntity) {
 
 		/**
 		 * In this Implementation
@@ -142,31 +144,30 @@ public class UserDaoImpl implements UserDao {
 		return returnedValue;
 	}
 
-	@Transactional
-	private UserEntity imp3(long userPid, RoleEntity roleEntity) {
-
-		/**
-		 * In this Implementation 
-		 * 1. I remove the orphanRemoval from the Entity 
-		 * 2. I remove the Entity from the SET collection 
-		 * 3. I delete the RoleENtity from DB using RoleRepo 
-		 * 4. I add the @Transactional annotation org.springframework.transaction.annotation.Transactional; 
-		 * 		to all classes in path including the controller
-		 */
-
-		UserEntity userEntity = userRepository.findByPid(userPid);
-
-		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
-
-		userEntity.removeRole(role);
-
-		roleRepository.deleteUserRole(userPid, roleEntity.getRole());
-
-//		roleRepository.delete(role);
-
-		UserEntity returnedValue = userRepository.save(userEntity);
-
-		return returnedValue;
-	}
+//	public UserEntity imp3(long userPid, RoleEntity roleEntity) {
+//
+//		/**
+//		 * In this Implementation 
+//		 * 1. I remove the orphanRemoval from the Entity 
+//		 * 2. I remove the Entity from the SET collection 
+//		 * 3. I delete the RoleENtity from DB using RoleRepo 
+//		 * 4. I add the @Transactional annotation org.springframework.transaction.annotation.Transactional; 
+//		 * 		to all classes in path including the controller
+//		 */
+//
+//		UserEntity userEntity = userRepository.findByPid(userPid);
+//
+//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
+//
+//		userEntity.removeRole(role);
+//
+//		roleRepository.deleteUserRole(userPid, roleEntity.getRole());
+//
+////		roleRepository.delete(role);
+//
+//		UserEntity returnedValue = userRepository.save(userEntity);
+//
+//		return returnedValue;
+//	}
 
 }

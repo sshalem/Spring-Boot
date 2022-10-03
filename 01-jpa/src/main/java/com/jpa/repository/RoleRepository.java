@@ -20,6 +20,7 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	 * We will get Stuck Overflow 
 	 */
 	
+	
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity findRole(@Param("pid") long pid, @Param("role") String role);
 
