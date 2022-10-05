@@ -11,15 +11,16 @@ import com.jpa.entity.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
-//	RoleEntity findByPidAndRole(long pid, String role);
+	
 
 	/**
 	 * I Must remove from the toString() methods in the Entities the associationEntity
 	 * Otherwise the queries won't work
 	 * Meaning If I have UserEntity with Set<RoleEntity> son't add the RoleEntity to the to String method
 	 * We will get Stuck Overflow 
-	 */
+	 */ 
 	
+	RoleEntity findByPidAndRole(long pid, String role);
 	
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity findRole(@Param("pid") long pid, @Param("role") String role);

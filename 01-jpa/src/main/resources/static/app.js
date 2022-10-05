@@ -28,25 +28,25 @@ updateUserWithRoles.addEventListener('click', () => {
     if (user.name === 'shabtay shalem') {
       rolesShabtay.forEach((role) => {
         const url = `${ADD_ROLE_URL}/1111`;
-        executeFetch(url, role, 'post');
+        executeFetch(url, role, 'put');
       });
     }
     if (user.name === 'karin shalem') {
       rolesKarin.forEach((role) => {
         const url = `${ADD_ROLE_URL}/2222`;
-        executeFetch(url, role, 'post');
+        executeFetch(url, role, 'put');
       });
     }
     if (user.name === 'ariel shalem') {
       rolesAriel.forEach((role) => {
         const url = `${ADD_ROLE_URL}/3333`;
-        executeFetch(url, role, 'post');
+        executeFetch(url, role, 'put');
       });
     }
     if (user.name === 'odel shalem') {
       rolesOdel.forEach((role) => {
         const url = `${ADD_ROLE_URL}/4444`;
-        executeFetch(url, role, 'post');
+        executeFetch(url, role, 'put');
       });
     }
   });
@@ -64,6 +64,9 @@ function executeFetch(url, data, requestMethod) {
 
   fetch(url, options)
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      if (requestMethod === `delete`) console.log(data);
+      else console.log('execute');
+    })
     .catch((error) => console.log('error', error));
 }

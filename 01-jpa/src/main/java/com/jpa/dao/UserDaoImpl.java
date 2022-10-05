@@ -4,8 +4,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpa.entity.RoleEntity;
@@ -48,14 +46,12 @@ public class UserDaoImpl implements UserDao {
 	 */
 	
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
+	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
 
 //		UserEntity returnedValue = imp1(userPid, roleEntity);
 
 		UserEntity returnedValue = imp2(userPid, roleEntity);
-
-//		UserEntity returnedValue = imp3(userPid, roleEntity);
 
 		return returnedValue;
 	}
@@ -77,10 +73,6 @@ public class UserDaoImpl implements UserDao {
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		
-//		long start = LocalDateTime.now().getNano();
-		long start = System.nanoTime();
-		
-		
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity temp = null;
@@ -94,11 +86,6 @@ public class UserDaoImpl implements UserDao {
 		userEntity.removeRole(temp);
 		UserEntity returnedValue = userRepository.save(userEntity);
 
-//		long end = LocalDateTime.now().getNano();
-		
-		long end = System.nanoTime();		
-		long diff = end - start;		
-		System.out.println(diff);		
 		return returnedValue;
 	}
 
@@ -107,17 +94,15 @@ public class UserDaoImpl implements UserDao {
 
 		/**
 		 * In this Implementation
-		 * 1. I remove the orphanRemoval from the UserEntity 
+		 * 1. I add the orphanRemoval to UserEntity One2Many 
 		 * 2. I Query For RoleEntity (I try with 2 different implementations) 
 		 * 3. remove the Entity from the SET collection 
-		 * 3. Save the the info to UserEntity
+		 * 4. Save the the info to UserEntity
+		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` that returns from service layer to controller layer
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
-
-//		long start = LocalDateTime.now().getNano();
-		long start = System.nanoTime();
-		
+				
 		/**
 		 * Query from UserRepository
 		 */
@@ -126,48 +111,17 @@ public class UserDaoImpl implements UserDao {
 		/**
 		 * Query from RoleRepository
 		 */
-		RoleEntity role = roleRepository.findRole(userPid, roleEntity.getRole());
-
-		System.out.println(role);
-
+//		RoleEntity role = roleRepository.findRole(userPid, roleEntity.getRole());
+		
+		/**
+		 * Query from RoleRepository
+		 */
+		RoleEntity role = roleRepository.findByPidAndRole(userPid, roleEntity.getRole());
+				
 		userEntity.removeRole(role);
-
 		UserEntity returnedValue = userRepository.save(userEntity);
-
-//		long end = LocalDateTime.now().getNano();
-		long end = System.nanoTime();
-		
-		long diff = end - start;
-		
-		System.out.println(diff);
 		
 		return returnedValue;
 	}
-
-//	public UserEntity imp3(long userPid, RoleEntity roleEntity) {
-//
-//		/**
-//		 * In this Implementation 
-//		 * 1. I remove the orphanRemoval from the Entity 
-//		 * 2. I remove the Entity from the SET collection 
-//		 * 3. I delete the RoleENtity from DB using RoleRepo 
-//		 * 4. I add the @Transactional annotation org.springframework.transaction.annotation.Transactional; 
-//		 * 		to all classes in path including the controller
-//		 */
-//
-//		UserEntity userEntity = userRepository.findByPid(userPid);
-//
-//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
-//
-//		userEntity.removeRole(role);
-//
-//		roleRepository.deleteUserRole(userPid, roleEntity.getRole());
-//
-////		roleRepository.delete(role);
-//
-//		UserEntity returnedValue = userRepository.save(userEntity);
-//
-//		return returnedValue;
-//	}
 
 }
