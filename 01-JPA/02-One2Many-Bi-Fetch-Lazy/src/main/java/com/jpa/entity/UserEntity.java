@@ -1,5 +1,6 @@
 package com.jpa.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,8 +15,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS_TB")
-public class UserEntity {
+public class UserEntity implements Serializable{
 
+	private static final long serialVersionUID = -5199469587304114249L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -24,8 +27,7 @@ public class UserEntity {
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)	
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -91,6 +93,12 @@ public class UserEntity {
 	public void removeRole(RoleEntity role) {
 		this.roles.remove(role);
 	}
+
+//	@Override
+//	public String toString() {
+//		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
+//				+ password + ", roles=" + roles + "]";
+//	}
 
 	@Override
 	public String toString() {

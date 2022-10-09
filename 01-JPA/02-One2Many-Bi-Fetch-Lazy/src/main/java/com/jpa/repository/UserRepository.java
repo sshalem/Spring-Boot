@@ -23,6 +23,4 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	@Query("SELECT re from RoleEntity re where re.user.id = ?1 AND re.role like ?2")
 	RoleEntity getRoleByIdAndRole(long id, String role);
 
-	
-
 }

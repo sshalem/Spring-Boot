@@ -1,5 +1,7 @@
 package com.jpa.repository;
 
+import java.util.Set;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +26,9 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity findRole(@Param("pid") long pid, @Param("role") String role);
+	
+	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid")
+	Set<RoleEntity> findAllRoles(@Param("pid") long pid);
 
 	@Modifying
 	@Query("delete from RoleEntity re where re.pid=:pid AND re.role=:role")

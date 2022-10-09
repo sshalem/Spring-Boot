@@ -2,10 +2,11 @@ package com.jpa.dao;
 
 import java.util.Set;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.jpa.dto.UserDto;
 import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 import com.jpa.repository.RoleRepository;
@@ -25,11 +26,37 @@ public class UserDaoImpl implements UserDao {
 		return userRepository.save(userEntity);
 	}
 	
-	@Override
-	public UserEntity getUserByName(String name) {
-		return userRepository.findByName(name);
+	/**
+	 * Since I use LazyLoading , I must return a DTO and not a UserEntity , otherwise I get the following warn which :
+	 *  
+		.w.s.m.s.DefaultHandlerExceptionResolver :
+		Resolved [org.springframework.http.converter.HttpMessageNotWritableException: 
+		Could not write JSON: failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
+		could not initialize proxy - no Session; 
+		nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
+		failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
+		
+		This is thrown by the RestController , and Not by the service layer 
+		Thus I define here to return a DTO object
+	*/
+	@Override	
+	public UserDto getUserByName(String name) {		
+		
+		UserDto userDto = new UserDto();
+		
+		UserEntity userEntity = userRepository.findByName(name);
+		
+		BeanUtils.copyProperties(userEntity, userDto);
+		
+		return userDto;
 	}
 
+	@Override	
+	public Set<RoleEntity> getUserRoles(long pid) {
+		Set<RoleEntity> roleEntities = roleRepository.findAllRoles(pid);
+		return roleEntities;
+	}
+	
 	@Override
 	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
 
@@ -51,7 +78,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	
 	@Override
-	@Transactional
+//	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
 
 //		UserEntity returnedValue = imp1(userPid, roleEntity);
@@ -128,4 +155,5 @@ public class UserDaoImpl implements UserDao {
 		
 		return returnedValue;
 	}
+
 }

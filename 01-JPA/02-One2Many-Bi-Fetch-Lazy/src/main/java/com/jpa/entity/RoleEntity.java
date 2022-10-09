@@ -1,5 +1,7 @@
 package com.jpa.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ROLES_TB")
-public class RoleEntity {
+public class RoleEntity implements Serializable {
+
+	private static final long serialVersionUID = 4547155074103443567L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

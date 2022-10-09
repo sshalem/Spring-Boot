@@ -25,9 +25,20 @@ public class UserController {
 	@Autowired
 	private UserDaoImpl userDaoImpl;
 
+	/**
+	 * Here I return UserDto object,
+	 * Why UserDto and Not UserEntity?
+	 * because If I return UserEntity from RestController , I get a error that Session proxy not possible with Lazy Loading.
+	 * Thus , In service layer I return a DTO
+	 */
 	@GetMapping("/getUser/{name}")
 	public ResponseEntity<?> getUser(@PathVariable("name") String name) {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
+	}
+	
+	@GetMapping("/getUserRoles/{pid}")	
+	public ResponseEntity<?> getUserRoles(@PathVariable("pid") long pid) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserRoles(pid), null, HttpStatus.FOUND);
 	}
 	
 	@PostMapping("/create")

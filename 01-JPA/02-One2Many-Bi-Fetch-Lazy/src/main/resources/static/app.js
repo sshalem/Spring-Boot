@@ -1,11 +1,13 @@
 import { users, rolesAriel, rolesKarin, rolesShabtay, rolesOdel } from './utils.js';
 
 const getUser = document.getElementById('getUser');
+const getUserRoles = document.getElementById('getUserRoles');
 const createUsers = document.getElementById('createUsers');
 const updateUserWithRoles = document.getElementById('updateUserWithRoles');
 const removeRole = document.getElementById('removeRole');
 
 const GET_USER_URL = `http://localhost:8080/getUser`;
+const GET_USER_ROLES_URL = `http://localhost:8080/getUserRoles`;
 const CREATE_URL = `http://localhost:8080/create`;
 const ADD_ROLE_URL = `http://localhost:8080/addRole`;
 const REMOVE_ROLE_URL = `http://localhost:8080/removeRole`;
@@ -22,6 +24,23 @@ getUser.addEventListener('click', () => {
   };
 
   fetch(`${GET_USER_URL}/${username}`, options)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log('error', error));
+});
+
+getUserRoles.addEventListener('click', () => {
+  const pid = 1111;
+
+  const options = {
+    method: 'get',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+
+  fetch(`${GET_USER_ROLES_URL}/${pid}`, options)
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch((error) => console.log('error', error));
