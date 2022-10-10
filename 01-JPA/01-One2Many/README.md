@@ -9,3 +9,10 @@
 |  5  |[One2Many-Bi-](#)  | 
 |  6  |[One2Many-Bi-](#)  | 
 |  7  |[One2Many-Bi-](#)  | 
+
+## [General Note](#-)
+
+In the following examples I define my entities as follows:
+* [UserEntity ](#-) - Is parent Entity
+* [RoleEntity ](#-) - Is Child Entity
+
