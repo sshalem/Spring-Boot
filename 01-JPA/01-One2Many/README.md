@@ -29,6 +29,15 @@ In the following examples I define my entities as follows:
 
 How to define the Entity's
 
+### [UserEntity ](#-) 
+
+In the Parent Entity I add the :
+1. `mappedBy`
+2. `cascade`
+3. `fetch`
+4. `orphanRemoval`
+
+
 ```java
 @Entity
 @Table(name = "USERS_TB")
@@ -45,6 +54,8 @@ public class UserEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<RoleEntity> roles;
 ```
+
+### [RoleEntity ](#-)
 
 ```java
 @Entity
