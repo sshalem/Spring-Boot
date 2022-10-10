@@ -13,8 +13,6 @@ import com.jpa.entity.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
-	
-
 	/**
 	 * I Must remove from the toString() methods in the Entities the associationEntity
 	 * Otherwise the queries won't work
@@ -32,6 +30,6 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
 	@Modifying
 	@Query("delete from RoleEntity re where re.pid=:pid AND re.role=:role")
-	void deleteUserRole(@Param("pid") long pid, @Param("role") String role);
-
+	void deleteUserRole(@Param("pid") long pid, @Param("role") String role);	
+	
 }
