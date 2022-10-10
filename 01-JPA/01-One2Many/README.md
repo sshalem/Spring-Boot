@@ -30,7 +30,37 @@ In the following examples I define my entities as follows:
 How to define the Entity's
 
 ```java
+@Entity
+@Table(name = "USERS_TB")
+public class UserEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private long pid;
+	private String name;
+	private String email;
+	private String password;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	private Set<RoleEntity> roles;
+```
+
+```java
+@Entity
+@Table(name = "ROLES_TB")
+public class RoleEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String role;
+	private long pid;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@JsonIgnore
+	private UserEntity user;
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
