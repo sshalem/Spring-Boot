@@ -1,62 +1,46 @@
 const users = [
   {
-    pid: 1111,
-    name: 'shabtay shalem',
-    email: 'shabtay.shalem@gmail.com',
-    password: 123,
-  },
-  {
-    pid: 2222,
-    name: 'karin shalem',
-    email: 'karin.shalem@gmail.com',
-    password: 456,
-  },
-  {
-    pid: 3333,
+    pid: 5555,
     name: 'ariel shalem',
     email: 'ariel.shalem@gmail.com',
     password: 789,
   },
   {
-    pid: 4444,
-    name: 'odel shalem',
-    email: 'odel.shalem@gmail.com',
+    pid: 7777,
+    name: 'itamar shalem',
+    email: 'itamar.shalem@gmail.com',
     password: 102030,
   },
 ];
 
-const rolesShabtay = [
-  {
-    role: 'MANAGER',
-  },
-  {
-    role: 'ADMIN',
-  },
-  {
-    role: 'SUPER-ADMIN',
-  },
-];
-
-const rolesKarin = [
-  {
-    role: 'MANAGER',
-  },
-  {
-    role: 'ADMIN',
-  },
-  {
-    role: 'SUPER-ADMIN',
-  },
-];
 const rolesAriel = [
   {
     role: 'MANAGER',
   },
-];
-const rolesOdel = [
   {
-    role: 'MANAGER',
+    role: 'ADMIN',
+  },
+  {
+    role: 'SUPER-ADMIN',
+  },
+  {
+    role: 'USER',
   },
 ];
 
-export { users, rolesShabtay, rolesKarin, rolesAriel, rolesOdel };
+const rolesItamar = [
+  {
+    role: 'MANAGER',
+  },
+  {
+    role: 'ADMIN',
+  },
+  {
+    role: 'SUPER-ADMIN',
+  },
+  {
+    role: 'USER',
+  },
+];
+
+export { users, rolesAriel, rolesItamar };

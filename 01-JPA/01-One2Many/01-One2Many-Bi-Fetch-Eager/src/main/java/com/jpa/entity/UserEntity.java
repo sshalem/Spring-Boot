@@ -25,7 +25,6 @@ public class UserEntity {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {

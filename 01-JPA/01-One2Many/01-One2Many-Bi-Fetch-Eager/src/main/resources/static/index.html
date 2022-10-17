@@ -4,20 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
+    <h2>OneToMany</h2>
+    <ul>
+      <li>Bi-Directional</li>
+      <li>Fetch Eager</li>
+    </ul>
     <div>
-      <button id="getUser">get user by name</button>
+      <span>GET Methods</span>
+      <span><input type="text" id="userId" /><button id="getUserById">get user By Id</button></span>
+      <span><input type="text" id="userPid" /><button id="getUserByPid">get user By Pid</button></span>
+      <span><input type="text" id="userName" /><button id="getUserByName">get user By Name</button></span>
+      <span><input type="text" id="userEmail" /><button id="getUserByEmail">get user By Email</button></span>
     </div>
     <div>
-      <button id="createUsers">create users</button>
+      <span>POST</span>
+      <button id="createUsers">create users (w/o Roles) : Ariel and Itamar</button>
     </div>
     <div>
-      <button id="updateUserWithRoles">update users with roles</button>
+      <span>PUT</span>
+      <button id="updateUserWithRoles">update the created users with roles</button>
     </div>
     <div>
-      <button id="removeRole">remove Role</button>
+      <span>DELETE</span>
+      <button id="removeRole">remove Role ADMIN from "shabtay "shalem"</button>
     </div>
     <script src="app.js" type="module"></script>
   </body>

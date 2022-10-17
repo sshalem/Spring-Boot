@@ -5,13 +5,19 @@ import com.jpa.entity.UserEntity;
 
 public interface UserDao {
 	
-	UserEntity createUser(UserEntity userEntity);
-
+	UserEntity createUser(UserEntity userEntity);	
+	
+	UserEntity getUserById(long id);
+	
+	UserEntity getUserByPid(long id);
+	
 	UserEntity getUserByName(String name);
+	
+	UserEntity getUserByEmail(String email);
 	
 	UserEntity addRoleToUser(long userPid, RoleEntity roleEntity);
 
 	UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity);
 
-	UserEntity getUserByPid(long id);
+	
 }

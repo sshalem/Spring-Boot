@@ -1,0 +1,56 @@
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+ul,
+li {
+  font-size: 1.2rem;
+}
+
+div {
+  /* height: 2.5rem; */
+  margin: 1.5rem 0;
+}
+
+span {
+  display: block;
+  color: dodgerblue;
+  font-weight: 900;
+}
+
+button {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 1.5rem;
+  background-color: dodgerblue;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  width: 20.5rem;
+  text-align: justify;
+}
+
+button:hover {
+  cursor: pointer;
+  color: dodgerblue;
+  background-color: white;
+  border: 1px solid dodgerblue;
+}
+
+input {
+  color: dodgerblue;
+  background-color: white;
+  border: 1px solid dodgerblue;
+  border-radius: 5px;
+}
+
+input:hover {
+  border: 1.8px solid dodgerblue;
+}
+
+input:focus {
+  outline-color: dodgerblue;
+}

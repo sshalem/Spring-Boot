@@ -25,10 +25,32 @@ public class UserController {
 	@Autowired
 	private UserDaoImpl userDaoImpl;
 
-	@GetMapping("/getUser/{name}")
-	public ResponseEntity<?> getUser(@PathVariable("name") String name) {
+	// *********************
+	// ***** Get Methods ***
+	// *********************
+	@GetMapping("/getUserById/{id}")
+	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserById(id), null, HttpStatus.FOUND);
+	}
+	
+	@GetMapping("/getUserByPid/{pid}")
+	public ResponseEntity<?> getUserByPid(@PathVariable("pid") long pid) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserByPid(pid), null, HttpStatus.FOUND);
+	}
+	 
+	@GetMapping("/getUserByName/{name}")
+	public ResponseEntity<?> getUserByName(@PathVariable("name") String name) {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
 	}
+
+	@GetMapping("/getUserEmail/{email}")
+	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
+	}
+	
+	// *********************
+	// ***** Get Methods ***
+	// *********************
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
@@ -37,15 +59,12 @@ public class UserController {
 
 	@PutMapping("/addRole/{userPid}")
 	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-
 		UserEntity returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
-
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
  
 	@DeleteMapping("/removeRole/{userPid}")
-	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-		
+	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {		
 		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}

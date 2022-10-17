@@ -24,11 +24,27 @@ public class UserDaoImpl implements UserDao {
 	public UserEntity createUser(UserEntity userEntity) {
 		return userRepository.save(userEntity);
 	}
+
+	@Override
+	public UserEntity getUserById(long id) {
+		return userRepository.findById(id);
+//		return userRepository.JPQLfindById(id);
+	}
+	
+	@Override
+	public UserEntity getUserByPid(long pid) {
+		return userRepository.findByPid(pid);
+	}
 	
 	@Override
 	public UserEntity getUserByName(String name) {
 		return userRepository.findByName(name);
-	}
+	}	
+
+	@Override
+	public UserEntity getUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}	
 
 	@Override
 	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
@@ -61,10 +77,6 @@ public class UserDaoImpl implements UserDao {
 		return returnedValue;
 	}
 
-	@Override
-	public UserEntity getUserByPid(long pid) {
-		return userRepository.findByPid(pid);
-	}
 
 	public UserEntity imp1(long userPid, RoleEntity roleEntity) {
 
@@ -128,4 +140,5 @@ public class UserDaoImpl implements UserDao {
 		
 		return returnedValue;
 	}
+
 }
