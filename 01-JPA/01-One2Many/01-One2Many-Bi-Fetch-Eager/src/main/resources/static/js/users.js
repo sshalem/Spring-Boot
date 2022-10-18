@@ -1,10 +1,13 @@
 import { users, rolesAriel, rolesItamar } from './utils.js';
 
+// Input targeting
 const userId = document.getElementById('userId');
 const userPid = document.getElementById('userPid');
 const userName = document.getElementById('userName');
 const userEmail = document.getElementById('userEmail');
 const allUsers = document.getElementById('allUsers');
+// End Input targeting
+
 // Initial value Set
 userId.value = 3;
 userPid.value = 2222;
@@ -17,6 +20,8 @@ const getUserByPid = document.getElementById('getUserByPid');
 const getUserByName = document.getElementById('getUserByName');
 const getUserByEmail = document.getElementById('getUserByEmail');
 const getAllUsers = document.getElementById('getAllUsers');
+
+const dataDisplay = document.querySelector('.data');
 
 const createUsers = document.getElementById('createUsers');
 const updateUserWithRoles = document.getElementById('updateUserWithRoles');
@@ -43,7 +48,11 @@ getUserById.addEventListener('click', () => {
 
   fetch(`${GET_USER_BY_ID_URL}/${userId.value}`, options)
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      const { id, pid, email, name, password } = data;
+      dataDisplay.innerHTML = `{id:${id}, pid:${pid}, name:"${name}", email:"${email}", password:"${password}}`;
+    })
     .catch((error) => console.log('error', error));
 });
 

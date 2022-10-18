@@ -136,7 +136,7 @@ public class UserDaoImpl implements UserDao {
 		/**
 		 * Query from RoleRepository
 		 */
-//		RoleEntity role = roleRepository.findRole(userPid, roleEntity.getRole());
+//		RoleEntity role = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, roleEntity.getRole());
 		
 		/**
 		 * Query from RoleRepository

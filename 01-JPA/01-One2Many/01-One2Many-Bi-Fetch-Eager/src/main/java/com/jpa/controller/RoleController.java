@@ -1,0 +1,45 @@
+package com.jpa.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jpa.dao.RoleDaoImpl;
+
+@RestController
+@RequestMapping("/roles")
+@CrossOrigin("*")
+public class RoleController {
+
+	@Autowired
+	private RoleDaoImpl roleDaoImpl;
+
+	// *********************
+	// ***** Get Methods ***
+	// *********************
+
+	@GetMapping("/getRolesById/{id}")
+	public ResponseEntity<?> getRolesById(@PathVariable("id") long id) {
+		return new ResponseEntity<Object>(roleDaoImpl.getRoleById(id), null, HttpStatus.FOUND);
+	}
+
+	@GetMapping("/getRolesByRoleName/{role}")
+	public ResponseEntity<?> getRolesByRoleName(@PathVariable("role") String role) {
+		return new ResponseEntity<Object>(roleDaoImpl.getRoleByName(role), null, HttpStatus.FOUND);
+	}
+
+	@GetMapping("/getRolesByPid/{pid}")
+	public ResponseEntity<?> getRolesByPid(@PathVariable("pid") long pid) {
+		return new ResponseEntity<Object>(roleDaoImpl.getRoleByPid(pid), null, HttpStatus.FOUND);
+	}
+
+	@GetMapping("/allRoles")
+	public ResponseEntity<?> geAlltUser() {
+		return new ResponseEntity<Object>(roleDaoImpl.getAllRoles(), null, HttpStatus.FOUND);
+	}
+}

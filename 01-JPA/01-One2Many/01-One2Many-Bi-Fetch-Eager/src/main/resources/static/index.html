@@ -8,31 +8,50 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>OneToMany</h2>
-    <ul>
-      <li>Bi-Directional</li>
-      <li>Fetch Eager</li>
-    </ul>
-    <div>
-      <span>GET Methods</span>
-      <span><input type="text" id="userId" /><button id="getUserById">get user By Id</button></span>
-      <span><input type="text" id="userPid" /><button id="getUserByPid">get user By Pid</button></span>
-      <span><input type="text" id="userName" /><button id="getUserByName">get user By Name</button></span>
-      <span><input type="text" id="userEmail" /><button id="getUserByEmail">get user By Email</button></span>
-      <span><input type="text" id="allUsers" disabled /><button id="getAllUsers">get All users</button></span>
-    </div>
-    <div>
-      <span>POST</span>
-      <button id="createUsers">create users (w/o Roles) : Ariel and Itamar</button>
-    </div>
-    <div>
-      <span>PUT</span>
-      <button id="updateUserWithRoles">update the created users with roles</button>
-    </div>
-    <div>
-      <span>DELETE</span>
-      <button id="removeRole">remove Role ADMIN from "shabtay "shalem"</button>
-    </div>
-    <script src="app.js" type="module"></script>
+    <h2>OneToMany , Bi-Directional , <span class="eager">Fetch Eager</span></h2>
+    <main>
+      <section>
+        <article class="users">
+          <p>User Controller API</p>
+          <div class="methods-container">
+            <div>
+              <span>GET Methods</span>
+              <span><input type="text" id="userId" /><button id="getUserById">get user By Id</button></span>
+              <span><input type="text" id="userPid" /><button id="getUserByPid">get user By Pid</button></span>
+              <span><input type="text" id="userName" /><button id="getUserByName">get user By Name</button></span>
+              <span><input type="text" id="userEmail" /><button id="getUserByEmail">get user By Email</button></span>
+              <span><input type="text" id="allUsers" disabled /><button id="getAllUsers">get All users</button></span>
+            </div>
+            <div>
+              <span>POST</span>
+              <button id="createUsers">create users (w/o Roles)</button>
+            </div>
+            <div>
+              <span>PUT</span>
+              <button id="updateUserWithRoles">update users with roles</button>
+            </div>
+            <div>
+              <span>DELETE</span>
+              <button id="removeRole">remove Role ADMIN from "shabtay "shalem"</button>
+            </div>
+          </div>
+        </article>
+        <article class="roles">
+          <p>Roles Controller API</p>
+          <div class="methods-container">
+            <div>
+              <span>GET Methods</span>
+              <span><input type="text" id="roleId" /><button id="getRoleById">get Role By Id</button></span>
+              <span><input type="text" id="roleRolename" /><button id="getRoleByRolename">get Role By role name</button></span>
+              <span><input type="text" id="rolePid" /><button id="getRoleByPid">get Role By pid</button></span>
+              <span><input type="text" id="allRoles" disabled /><button id="getAllRoles">get All roles</button></span>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="data"></section>
+    </main>
+    <script src="./js/users.js" type="module"></script>
+    <script src="./js/roles.js" type="module"></script>
   </body>
 </html>

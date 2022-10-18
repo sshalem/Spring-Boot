@@ -1,56 +1,136 @@
+:root {
+  --colorUsers: rgb(0, 128, 255);
+  --colorRoles: rgb(14, 131, 8);
+  --colorTitle: rgb(222, 21, 61);
+}
+
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.users {
+  color: var(--colorUsers);
+}
+
+.roles {
+  color: var(--colorRoles);
 }
 
 h2 {
   text-decoration: underline;
 }
 
-ul,
-li {
-  font-size: 1.2rem;
-}
-
 div {
-  /* height: 2.5rem; */
   margin: 1.5rem 0;
 }
 
 span {
   display: block;
-  color: dodgerblue;
   font-weight: 900;
+}
+
+.eager {
+  display: inline;
+  color: var(--colorTitle);
+  font-weight: 900;
+  font-style: italic;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.methods-container {
+  margin-left: 1.5rem;
 }
 
 button {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   height: 1.5rem;
-  background-color: dodgerblue;
-  border: 1px solid white;
   border-radius: 5px;
-  color: white;
-  width: 20.5rem;
+  width: 19.5rem;
   text-align: justify;
 }
 
-button:hover {
-  cursor: pointer;
-  color: dodgerblue;
-  background-color: white;
-  border: 1px solid dodgerblue;
+.users button {
+  background-color: var(--colorUsers);
+  border: 1px solid white;
+  color: white;
+  width: 10.5rem;
 }
 
-input {
-  color: dodgerblue;
+.roles button {
+  background-color: var(--colorRoles);
+  border: 1px solid white;
+  color: white;
+  width: 10.5rem;
+}
+
+.users button:hover {
+  cursor: pointer;
+  color: var(--colorUsers);
   background-color: white;
-  border: 1px solid dodgerblue;
+  border: 1px solid var(--colorUsers);
+}
+
+.roles button:hover {
+  cursor: pointer;
+  color: var(--colorRoles);
+  background-color: white;
+  border: 1px solid var(--colorRoles);
+}
+
+.users input {
+  color: var(--colorUsers);
+  background-color: white;
+  border: 1px solid var(--colorUsers);
   border-radius: 5px;
 }
 
-input:hover {
-  border: 1.8px solid dodgerblue;
+.roles input {
+  color: var(--colorRoles);
+  background-color: white;
+  border: 1px solid var(--colorRoles);
+  border-radius: 5px;
 }
 
-input:focus {
-  outline-color: dodgerblue;
+#allUsers,
+#allRoles {
+  background-color: thistle;
+}
+
+.users input:hover {
+  border: 1.8px solid var(--colorUsers);
+}
+
+.users input:focus {
+  outline-color: var(--colorUsers);
+}
+
+.roles input:hover {
+  border: 1.8px solid var(--colorRoles);
+}
+
+.roles input:focus {
+  outline-color: var(--colorRoles);
+}
+
+.data {
+  border: 1px solid var(--colorTitle);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+}
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width: 776px) {
 }
