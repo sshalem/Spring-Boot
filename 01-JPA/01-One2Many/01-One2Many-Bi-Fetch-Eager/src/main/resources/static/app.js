@@ -4,30 +4,33 @@ const userId = document.getElementById('userId');
 const userPid = document.getElementById('userPid');
 const userName = document.getElementById('userName');
 const userEmail = document.getElementById('userEmail');
-
+const allUsers = document.getElementById('allUsers');
 // Initial value Set
 userId.value = 3;
 userPid.value = 2222;
 userName.value = `shabtay shalem`;
 userEmail.value = `odel.shalem@gmail.com`;
+allUsers.value = `NA`;
 
 const getUserById = document.getElementById('getUserById');
 const getUserByPid = document.getElementById('getUserByPid');
 const getUserByName = document.getElementById('getUserByName');
 const getUserByEmail = document.getElementById('getUserByEmail');
+const getAllUsers = document.getElementById('getAllUsers');
 
 const createUsers = document.getElementById('createUsers');
 const updateUserWithRoles = document.getElementById('updateUserWithRoles');
 const removeRole = document.getElementById('removeRole');
 
-const GET_USER_BY_ID_URL = `http://localhost:8080/getUserById`;
-const GET_USER_BY_PID_URL = `http://localhost:8080/getUserByPid`;
-const GET_USER_BY_NAME_URL = `http://localhost:8080/getUserByName`;
-const GET_USER_BY_EMAIL_URL = `http://localhost:8080/getUserEmail`;
+const GET_USER_BY_ID_URL = `http://localhost:8080/users/getUserById`;
+const GET_USER_BY_PID_URL = `http://localhost:8080/users/getUserByPid`;
+const GET_USER_BY_NAME_URL = `http://localhost:8080/users/getUserByName`;
+const GET_USER_BY_EMAIL_URL = `http://localhost:8080/users/getUserEmail`;
+const GET_ALL_USERS_URL = `http://localhost:8080/users/allUsers`;
 
-const CREATE_URL = `http://localhost:8080/create`;
-const ADD_ROLE_URL = `http://localhost:8080/addRole`;
-const REMOVE_ROLE_URL = `http://localhost:8080/removeRole`;
+const CREATE_URL = `http://localhost:8080/users/create`;
+const ADD_ROLE_URL = `http://localhost:8080/users/addRole`;
+const REMOVE_ROLE_URL = `http://localhost:8080/users/removeRole`;
 
 getUserById.addEventListener('click', () => {
   const options = {
@@ -84,6 +87,21 @@ getUserByEmail.addEventListener('click', () => {
   };
 
   fetch(`${GET_USER_BY_EMAIL_URL}/${userEmail.value}`, options)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log('error', error));
+});
+
+getAllUsers.addEventListener('click', () => {
+  const options = {
+    method: 'get',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+
+  fetch(`${GET_ALL_USERS_URL}`, options)
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch((error) => console.log('error', error));

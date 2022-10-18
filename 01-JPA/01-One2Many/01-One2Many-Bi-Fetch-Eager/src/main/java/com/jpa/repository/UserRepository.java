@@ -11,34 +11,81 @@ import com.jpa.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-	// ***************************************
-	// *******    find Methods    ************
-	// ***************************************	
-	
-	// Only one Hiberante Query
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************
+
+	// One Hiberante Query which uses LEFT OUTER JOIN
 	UserEntity findById(long id);
+
+	@Query("SELECT user from UserEntity user WHERE user.id=:id")
+	UserEntity jpqlFindById(@Param("id") long id);
 	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.id = ?1")
+	 * UserEntity jpqlFindById(long id);
+	 */
+
+	@Query(value = "SELECT * FROM USERS_TB WHERE id=:id", nativeQuery = true)
+	UserEntity nativeFindById(@Param("id") long id);
+	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************
+
 	UserEntity findByPid(long pid);
 
+	@Query("SELECT user from UserEntity user WHERE user.pid=:pid")
+	UserEntity jpqlFindByPid(@Param("pid") long pid);
+	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.pid = ?1")
+	 * UserEntity jpqlFindByPid(long pid);
+	 */
+	
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE pid=:pid", nativeQuery = true)
+	UserEntity nativeFindByPid(@Param("pid") long pid);
+	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************
+
 	UserEntity findByName(String name);
+
+	@Query("SELECT user from UserEntity user WHERE user.name=:name")
+	UserEntity jpqlFindByName(@Param("name") String name);
 	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.name = ?1")
+	 * UserEntity jpqlFindByName(String name);
+	 */
+	
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE name=:name", nativeQuery = true)
+	UserEntity nativeFindByName(@Param("name") String name);
+	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************
+
 	UserEntity findByEmail(String email);
+
+	@Query("SELECT user from UserEntity user WHERE user.email=:email")
+	UserEntity jpqlFindByEmail(@Param("email") String email);
 	
-	UserEntity findByPassword(String password);
-		
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.email = ?1")
+	 * UserEntity jpqlFindByEmail(String email);
+	 */
 	
-	// ***************************************
-	// *******    JPQL Query Methods     *****
-	// ***************************************
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE email=:email", nativeQuery = true)
+	UserEntity nativeFindByEmail(@Param("email") String email);
 	
-	// Two Hiberante Query
-	@Query("SELECT user from UserEntity user WHERE user.id=:id")
-	UserEntity JPQLfindById(@Param("id") long id);	
-	
-	// Need to check the QUery with LEFT OUTER JOIN since Hibrenate makes on line of Query
-	// @Query("SELECT user from UserEntity user WHERE user.id=:id")
-	// UserEntity JPQLJoinLeftOuterfindById(@Param("id") long id);	
-	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************
 	
 	/**
 	 * I Must remove from the toString() methods in the Entities the association Entity
@@ -48,8 +95,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	 */
 	@Query("SELECT re from RoleEntity re where re.user.id = ?1 AND re.role like ?2")
 	RoleEntity getRoleByIdAndRole(long id, String role);
-
-	
-	
 
 }

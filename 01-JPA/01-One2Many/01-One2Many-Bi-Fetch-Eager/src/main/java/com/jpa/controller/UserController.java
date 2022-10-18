@@ -18,7 +18,7 @@ import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 @CrossOrigin("*")
 public class UserController {
 
@@ -48,9 +48,14 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
 	}
 	
-	// *********************
-	// ***** Get Methods ***
-	// *********************
+	@GetMapping("/allUsers")
+	public ResponseEntity<?> geAlltUser() {
+		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
+	}
+	
+	// **************************************
+	// ***** Modification Methods ***
+	// **************************************
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {

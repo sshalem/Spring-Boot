@@ -1,5 +1,7 @@
 package com.jpa.dao;
 
+import java.util.List;
+
 import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 
@@ -14,6 +16,8 @@ public interface UserDao {
 	UserEntity getUserByName(String name);
 	
 	UserEntity getUserByEmail(String email);
+	
+	List<UserEntity> getAllUsers();
 	
 	UserEntity addRoleToUser(long userPid, RoleEntity roleEntity);
 

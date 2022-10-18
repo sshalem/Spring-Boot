@@ -10,9 +10,7 @@ import com.jpa.entity.RoleEntity;
 
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
-
 	
-
 	/**
 	 * I Must remove from the toString() methods in the Entities the associationEntity
 	 * Otherwise the queries won't work

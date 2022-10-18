@@ -1,5 +1,6 @@
 package com.jpa.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserEntity getUserById(long id) {
-		return userRepository.findById(id);
-//		return userRepository.JPQLfindById(id);
+//		return userRepository.findById(id);
+		return userRepository.jpqlFindById(id);
+//		return userRepository.nativeFindById(id);
 	}
 	
 	@Override
@@ -46,6 +48,11 @@ public class UserDaoImpl implements UserDao {
 		return userRepository.findByEmail(email);
 	}	
 
+	@Override
+	public List<UserEntity> getAllUsers() {
+		return userRepository.findAll();
+	}
+	
 	@Override
 	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
 
@@ -115,7 +122,8 @@ public class UserDaoImpl implements UserDao {
 		 * 2. I Query For RoleEntity (I try with 2 different implementations) 
 		 * 3. remove the Entity from the SET collection 
 		 * 4. Save the the info to UserEntity
-		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` that returns from service layer to controller layer
+		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` 
+		 * 	  which returns returnedValue from service layer to controller layer
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
