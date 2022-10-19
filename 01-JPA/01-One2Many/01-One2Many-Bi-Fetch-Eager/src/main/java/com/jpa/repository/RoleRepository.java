@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.jpa.entity.RoleEntity;
+import com.jpa.entity.UserEntity;
 
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
@@ -75,6 +76,28 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	// *****************************************************************************
 	// *****************************************************************************	
 	
+	// This JPQL Query works as Expected	
+	@Query("SELECT u FROM UserEntity u JOIN u.roles AS r WHERE r.role=:role")
+	List<UserEntity> jpqlFindUsersWithRoleName(@Param("role") String role);
+
+	/**
+	 * we cannot set SELECT *	 * 
+	 * NonUniqueDiscoveredSqlAliasException: Encountered a duplicated sql alias [id] during auto-discovery of a native-sql query
+	 * The NATIVE Query below does't work here in RoleRepo,
+	 * This Native Query as is , works great in UserRepo
+	 */
+
+	//	@Query(value = "SELECT * "			
+	//			+ "FROM USERS_TB utb "
+	//			+ "JOIN ROLES_TB rtb "
+	//			+ "ON rtb.user_id=utb.id "
+	//			+ "WHERE rtb.role=:role" ,nativeQuery = true)
+	//	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
+	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************	
+	
 	RoleEntity findByPidAndRole(long pid, String role);
 	
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
@@ -83,5 +106,6 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	@Modifying
 	@Query("delete from RoleEntity re where re.pid=:pid AND re.role=:role")
 	void jpqlDeleteUserRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
-
+	
+	
 }

@@ -28,9 +28,9 @@ public class RoleController {
 		return new ResponseEntity<Object>(roleDaoImpl.getRoleById(id), null, HttpStatus.FOUND);
 	}
 
-	@GetMapping("/getRolesByRoleName/{role}")
-	public ResponseEntity<?> getRolesByRoleName(@PathVariable("role") String role) {
-		return new ResponseEntity<Object>(roleDaoImpl.getRoleByName(role), null, HttpStatus.FOUND);
+	@GetMapping("/getUsersWithRoleName/{role}")
+	public ResponseEntity<?> getUsersWhoHaveRoleName(@PathVariable("role") String role) {
+		return new ResponseEntity<Object>(roleDaoImpl.getUsersWithRoleName(role), null, HttpStatus.FOUND);
 	}
 
 	@GetMapping("/getRolesByPid/{pid}")
@@ -39,7 +39,7 @@ public class RoleController {
 	}
 
 	@GetMapping("/allRoles")
-	public ResponseEntity<?> geAlltUser() {
+	public ResponseEntity<?> geAlltRoles() {
 		return new ResponseEntity<Object>(roleDaoImpl.getAllRoles(), null, HttpStatus.FOUND);
 	}
 }

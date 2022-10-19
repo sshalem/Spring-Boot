@@ -25,17 +25,24 @@
           <div class="modification-methods">
             <span>POST</span>
             <button id="createUsers">create user</button>
+            <span><input type="text" id="createUserPid" placeholder="pid" /></span>
+            <span><input type="text" id="createUserName" placeholder="name" /></span>
+            <span><input type="text" id="createUserEmail" placeholder="email" /></span>
+            <span><input type="text" id="createUserPassword" placeholder="password" /></span>
           </div>
           <div class="modification-methods">
             <span>PUT</span>
-            <button id="updateUserWithRoles">update Roles to User</button>
+            <span>
+              <button id="updateUserWithRoles">add Role to User</button><input type="text" id="updateRoleName" placeholder="role name" />
+              <input type="text" id="updatePid" placeholder="pid" />
+            </span>
           </div>
           <div>
             <span>DELETE</span>
             <span>
-              <button id="removeRole">remove Role</button><input type="text" id="inputRoleName" placeholder="role name" /><input
+              <button id="removeRole">remove Role</button><input type="text" id="deleteRoleName" placeholder="role name" /><input
                 type="text"
-                id="inputPid"
+                id="deleteRolePid"
                 placeholder="pid"
               />
             </span>
@@ -50,8 +57,8 @@
           <div>
             <span>GET Methods</span>
             <span><button id="getRoleById">get Role By Id</button><input type="text" id="roleId" /></span>
-            <span><button id="getRoleByRolename">get Role By role name</button><input type="text" id="roleRolename" /></span>
-            <span><button id="getRoleByPid">get Role By pid</button><input type="text" id="rolePid" /></span>
+            <span><button id="getUsersWithRolename">get Users with role</button><input type="text" id="roleRolename" /></span>
+            <span><button id="getRoleByPid">get Roles By pid</button><input type="text" id="rolePid" /></span>
             <span><button id="getAllRoles">get All roles</button><input type="text" id="allRoles" disabled /></span>
           </div>
         </div>

@@ -1,16 +1,12 @@
 const getRoleById = document.getElementById('getRoleById');
-const getRoleByRolename = document.getElementById('getRoleByRolename');
+const getUsersWithRolename = document.getElementById('getUsersWithRolename');
 const getRoleByPid = document.getElementById('getRoleByPid');
 const getAllRoles = document.getElementById('getAllRoles');
 
 const GET_ROLES_BY_ID_URL = `http://localhost:8080/roles/getRolesById`;
-const GET_ROLES_BY_ROLE_NAME_URL = `http://localhost:8080/roles/getRolesByRoleName`;
+const GET_USERS_WITH_ROLE_NAME_URL = `http://localhost:8080/roles/getUsersWithRoleName`;
 const GET_ROLES_BY_PID_URL = `http://localhost:8080/roles/getRolesByPid`;
 const GET_ALL_ROLES_URL = `http://localhost:8080/roles/allRoles`;
-
-const CREATE_URL = `http://localhost:8080/users/create`;
-const ADD_ROLE_URL = `http://localhost:8080/users/addRole`;
-const REMOVE_ROLE_URL = `http://localhost:8080/users/removeRole`;
 
 // ******************
 // ****   Roles *****
@@ -26,7 +22,7 @@ const allRoles = document.getElementById('allRoles');
 // Initial value Set
 roleId.value = 3;
 rolePid.value = 2222;
-roleRolename.value = `ADMIN`;
+roleRolename.value = `CEO`;
 allRoles.value = `NA`;
 
 // ********************
@@ -50,7 +46,7 @@ getRoleById.addEventListener('click', () => {
     .catch((error) => console.log('error', error));
 });
 
-getRoleByRolename.addEventListener('click', () => {
+getUsersWithRolename.addEventListener('click', () => {
   const options = {
     method: 'get',
     headers: {
@@ -59,7 +55,7 @@ getRoleByRolename.addEventListener('click', () => {
     },
   };
 
-  fetch(`${GET_ROLES_BY_ROLE_NAME_URL}/${roleRolename.value}`, options)
+  fetch(`${GET_USERS_WITH_ROLE_NAME_URL}/${roleRolename.value}`, options)
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch((error) => console.log('error', error));

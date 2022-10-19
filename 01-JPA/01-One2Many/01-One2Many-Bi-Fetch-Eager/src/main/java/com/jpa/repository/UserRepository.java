@@ -1,5 +1,7 @@
 package com.jpa.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -96,4 +98,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	@Query("SELECT re from RoleEntity re where re.user.id = ?1 AND re.role like ?2")
 	RoleEntity getRoleByIdAndRole(long id, String role);
 
+	@Query(value = "SELECT * "
+			+ "FROM USERS_TB utb " 
+			+ "LEFT JOIN ROLES_TB rtb " 
+			+ "ON rtb.user_id=utb.id "
+			+ "WHERE rtb.role=:role" ,nativeQuery = true)
+	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
 }

@@ -1,16 +1,34 @@
 import { users, rolesTemp } from './utils.js';
 
 // ***********************
-// Input targeting
+// start Input targeting
 // ***********************
 const userId = document.getElementById('userId');
 const userPid = document.getElementById('userPid');
 const userName = document.getElementById('userName');
 const userEmail = document.getElementById('userEmail');
 const allUsers = document.getElementById('allUsers');
-const inputRoleName = document.getElementById('inputRoleName');
-const inputPid = document.getElementById('inputPid');
+
+// create (POST)
+const createUserPid = document.getElementById('createUserPid');
+const createUserName = document.getElementById('createUserName');
+const createUserEmail = document.getElementById('createUserEmail');
+const createUserPassword = document.getElementById('createUserPassword');
+
+// update (PUT)
+const updateRoleName = document.getElementById('updateRoleName');
+const updatePid = document.getElementById('updatePid');
+
+// delete role
+const deleteRolePid = document.getElementById('deleteRolePid');
+const deleteRoleName = document.getElementById('deleteRoleName');
+
+// delet user
 const inputRemoveUser = document.getElementById('inputRemoveUser');
+
+// ***********************
+// end Input targeting
+// ***********************
 
 // ***********************
 // Initial value Set
@@ -20,8 +38,18 @@ userPid.value = 2222;
 userName.value = `shabtay shalem`;
 userEmail.value = `odel.shalem@gmail.com`;
 allUsers.value = `NA`;
-inputRoleName.value = 'ADMIN';
-inputPid.value = 1111;
+
+createUserPid.value = 5555;
+createUserName.value = 'temp';
+createUserEmail.value = 'temp@gmail.com';
+createUserPassword.value = 102030;
+
+updateRoleName.value = 'SUPER-TEMP';
+updatePid.value = 5555;
+
+deleteRoleName.value = 'ADMIN';
+deleteRolePid.value = 1111;
+
 inputRemoveUser.value = 5555;
 
 // ***********************
@@ -134,16 +162,20 @@ getAllUsers.addEventListener('click', () => {
 //          Post
 // ****************************
 createUsers.addEventListener('click', () => {
-  users.forEach((user) => {
-    executeFetch(CREATE_URL, user, 'post');
-  });
+  const user = {
+    pid: createUserPid.value,
+    name: createUserName.value,
+    email: createUserEmail.value,
+    password: createUserPassword.value,
+  };
+  executeFetch(CREATE_URL, user, 'post');
 });
 
 // ******************************
 //          Delete
 // ******************************
 removeRole.addEventListener('click', () => {
-  executeFetch(`${REMOVE_ROLE_URL}/${inputPid.value}/${inputRoleName.value}`, '', 'delete');
+  executeFetch(`${REMOVE_ROLE_URL}/${deleteRolePid.value}/${deleteRoleName.value}`, '', 'delete');
 });
 
 removeUser.addEventListener('click', () => {
@@ -154,14 +186,11 @@ removeUser.addEventListener('click', () => {
 //          PUT
 // ******************************
 updateUserWithRoles.addEventListener('click', () => {
-  users.forEach((user) => {
-    if (user.name === 'temp') {
-      rolesTemp.forEach((role) => {
-        const url = `${ADD_ROLE_URL}/5555`;
-        executeFetch(url, role, 'put');
-      });
-    }
-  });
+  const role = {
+    role: updateRoleName.value,
+  };
+  const url = `${ADD_ROLE_URL}/${updatePid.value}`;
+  executeFetch(url, role, 'put');
 });
 
 // *********************************
