@@ -19,9 +19,10 @@ public interface UserDao {
 	
 	List<UserEntity> getAllUsers();
 	
+	void removeUserByPid(long pid);
+	
 	UserEntity addRoleToUser(long userPid, RoleEntity roleEntity);
 
-	UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity);
+	UserEntity removeRoleFromUser(long userPid, String role);
 
-	
 }

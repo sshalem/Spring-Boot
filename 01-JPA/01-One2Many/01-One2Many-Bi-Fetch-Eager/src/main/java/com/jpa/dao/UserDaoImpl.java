@@ -54,6 +54,12 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	public void removeUserByPid(long pid) {
+		UserEntity userEntity = userRepository.findByPid(pid);
+		userRepository.delete(userEntity);
+	}
+	
+	@Override
 	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
@@ -75,11 +81,11 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	@Transactional
-	public UserEntity removeRoleFromUser(long userPid, RoleEntity roleEntity) {
+	public UserEntity removeRoleFromUser(long userPid, String role) {
 
 //		UserEntity returnedValue = imp1(userPid, roleEntity);
 
-		UserEntity returnedValue = imp2(userPid, roleEntity);
+		UserEntity returnedValue = imp2(userPid, role);
 
 		return returnedValue;
 	}
@@ -114,7 +120,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
-	public UserEntity imp2(long userPid, RoleEntity roleEntity) {
+	public UserEntity imp2(long userPid, String role) {
 
 		/**
 		 * In this Implementation
@@ -131,22 +137,24 @@ public class UserDaoImpl implements UserDao {
 		/**
 		 * Query from UserRepository
 		 */
-//		RoleEntity role = userRepository.getRoleByIdAndRole(userEntity.getId(), roleEntity.getRole());
+//		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
 
 		/**
 		 * Query from RoleRepository
 		 */
-//		RoleEntity role = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, roleEntity.getRole());
+//		RoleEntity roleEntity = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, role);
 		
 		/**
 		 * Query from RoleRepository
 		 */
-		RoleEntity role = roleRepository.findByPidAndRole(userPid, roleEntity.getRole());
+		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
 				
-		userEntity.removeRole(role);
+		userEntity.removeRole(roleEntity);
 		UserEntity returnedValue = userRepository.save(userEntity);
 		
 		return returnedValue;
 	}
+
+
 
 }

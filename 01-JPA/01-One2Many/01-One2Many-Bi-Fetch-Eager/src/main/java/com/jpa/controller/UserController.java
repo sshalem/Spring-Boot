@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	// **************************************
-	// ***** Modification Methods ***
+	// ***** Post Methods ***
 	// **************************************
 	
 	@PostMapping("/create")
@@ -62,15 +62,32 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
 	}
 
+
+	// **************************************
+	// ***** Put Methods ***
+	// **************************************
+	
 	@PutMapping("/addRole/{userPid}")
 	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
 		UserEntity returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
  
-	@DeleteMapping("/removeRole/{userPid}")
-	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {		
-		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);
+
+	// **************************************
+	// ***** Delete Methods ***
+	// **************************************
+	@DeleteMapping("/removeRole/{userPid}/{role}")
+	public ResponseEntity<?> removeRoleFromUser(@PathVariable("role") String role, @PathVariable("userPid") long userPid) {		
+		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, role);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
+	
+	@DeleteMapping("/removeUser/{userPid}")
+	public ResponseEntity<?> removeUser(@PathVariable("userPid") long userPid) {
+		System.out.println(userPid);
+		userDaoImpl.removeUserByPid(userPid);
+		return new ResponseEntity<Object>(new String("User removed"), null, HttpStatus.ACCEPTED);
+	}
+	
 }
