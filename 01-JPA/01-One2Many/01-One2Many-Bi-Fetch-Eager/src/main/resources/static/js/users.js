@@ -48,11 +48,7 @@ getUserById.addEventListener('click', () => {
 
   fetch(`${GET_USER_BY_ID_URL}/${userId.value}`, options)
     .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      const { id, pid, email, name, password } = data;
-      dataDisplay.innerHTML = `{id:${id}, pid:${pid}, name:"${name}", email:"${email}", password:"${password}}`;
-    })
+    .then((data) => console.log(data))
     .catch((error) => console.log('error', error));
 });
 

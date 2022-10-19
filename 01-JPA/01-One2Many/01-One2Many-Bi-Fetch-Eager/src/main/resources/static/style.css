@@ -8,11 +8,6 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .users {
   color: var(--colorUsers);
 }
@@ -101,6 +96,10 @@ button {
   background-color: white;
   border: 1px solid var(--colorRoles);
   border-radius: 5px;
+}
+
+.modification-methods button {
+  width: 20rem;
 }
 
 #allUsers,
