@@ -84,10 +84,9 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/removeUser/{userPid}")
-	public ResponseEntity<?> removeUser(@PathVariable("userPid") long userPid) {
-		System.out.println(userPid);
+	public ResponseEntity<?> removeUser(@PathVariable("userPid") long userPid) {		
 		userDaoImpl.removeUserByPid(userPid);
-		return new ResponseEntity<Object>(new String("User removed"), null, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.ACCEPTED);
 	}
 	
 }
