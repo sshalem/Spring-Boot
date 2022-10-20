@@ -56,6 +56,9 @@ public class UserEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<RoleEntity> roles;
 	
+	// Default Constructor , Getters / Setters
+	// toString: don't add the associated entity in the toString method 
+	// This will cause ```ERROR```
 	public void addRole(RoleEntity role) {
 		if (this.roles == null) {
 			this.roles = new HashSet<>();
