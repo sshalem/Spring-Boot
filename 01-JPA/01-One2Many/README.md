@@ -59,6 +59,10 @@ public class UserEntity {
 	// Default Constructor , Getters / Setters
 	// toString: don't add the associated entity in the toString method 
 	// This will cause ```ERROR```
+	.
+	.
+	.
+	
 	public void addRole(RoleEntity role) {
 		if (this.roles == null) {
 			this.roles = new HashSet<>();
@@ -96,6 +100,13 @@ public class RoleEntity {
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private UserEntity user;
+	
+	// Default Constructor , Getters / Setters
+	// toString: don't add the associated entity in the toString method 
+	// This will cause ```ERROR```
+	.
+	.
+	.	
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
