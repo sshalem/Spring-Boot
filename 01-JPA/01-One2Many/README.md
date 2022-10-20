@@ -23,8 +23,8 @@
 ## [General Note](#-)
 
 In the following examples I define my entities as follows:
-* [UserEntity ](#-) - Is parent Entity
-* [RoleEntity ](#-) - Is Child Entity
+* `[UserEntity]`(#-) - Is parent Entity
+* `[RoleEntity]`(#-) - Is Child Entity
 
 How to define the Entity's
 
@@ -36,7 +36,8 @@ In the Parent Entity I add the :
 3. `fetch` - By default in One2Many the Fetch is Lazy
 4. `orphanRemoval` - need to set to `true` so we can remove child Entity from Parent Entity
 5. Add 2 methods 
-	* addRole(RoleEntity role
+	* `addRole`
+	* `removeRole`
 
 
 ```java
