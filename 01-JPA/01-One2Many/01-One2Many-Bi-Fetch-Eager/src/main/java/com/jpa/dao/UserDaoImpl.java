@@ -103,7 +103,7 @@ public class UserDaoImpl implements UserDao {
 		long start = System.nanoTime();
 		
 		/**
-		 * (1)  
+		 * (1) We Don't need to add @Transactional If we search with For loop  
 		 */
 		Set<RoleEntity> roles = userEntity.getRoles();
 

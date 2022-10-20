@@ -94,12 +94,6 @@ public class UserEntity implements Serializable{
 		this.roles.remove(role);
 	}
 
-//	@Override
-//	public String toString() {
-//		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
-//				+ password + ", roles=" + roles + "]";
-//	}
-
 	@Override
 	public String toString() {
 		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="

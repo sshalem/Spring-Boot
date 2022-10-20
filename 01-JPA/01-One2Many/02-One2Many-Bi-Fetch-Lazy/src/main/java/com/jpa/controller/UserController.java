@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.dao.UserDaoImpl;
+import com.jpa.dto.UserDto;
 import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 @CrossOrigin("*")
 public class UserController {
 
@@ -31,33 +32,68 @@ public class UserController {
 	 * because If I return UserEntity from RestController , I get a error that Session proxy not possible with Lazy Loading.
 	 * Thus , In service layer I return a DTO
 	 */
-	@GetMapping("/getUser/{name}")
-	public ResponseEntity<?> getUser(@PathVariable("name") String name) {
-		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
+	
+	// *********************
+	// ***** Get Methods ***
+	// *********************
+	@GetMapping("/getUserById/{id}")
+	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserById(id), null, HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/getUserRoles/{pid}")	
-	public ResponseEntity<?> getUserRoles(@PathVariable("pid") long pid) {
-		return new ResponseEntity<Object>(userDaoImpl.getUserRoles(pid), null, HttpStatus.FOUND);
+	@GetMapping("/getUserByPid/{pid}")
+	public ResponseEntity<UserDto> getUserByPid(@PathVariable("pid") long pid) {
+		return new ResponseEntity<UserDto>(userDaoImpl.getUserByPid(pid), null, HttpStatus.FOUND);
 	}
+	 
+	@GetMapping("/getUserByName/{name}")
+	public ResponseEntity<?> getUserByName(@PathVariable("name") String name) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
+	}
+
+	@GetMapping("/getUserEmail/{email}")
+	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
+		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
+	}
+		
+	@GetMapping("/allUsers")
+	public ResponseEntity<?> geAlltUser() {
+		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
+	}
+	
+	// **************************************
+	// ***** Post Methods ***
+	// **************************************
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
 		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
 	}
-
+	
+	// **************************************
+	// ***** Put Methods ***
+	// **************************************
+	
 	@PutMapping("/addRole/{userPid}")
 	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-
-		UserEntity returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
-
+		UserDto returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
  
-	@DeleteMapping("/removeRole/{userPid}")
-	public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-		
-		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, roleEntity);
+	// **************************************
+	// ***** Delete Methods ***
+	// **************************************
+	
+	@DeleteMapping("/removeRole/{userPid}/{role}")
+	public ResponseEntity<?> removeRoleFromUser(@PathVariable("role") String role, @PathVariable("userPid") long userPid) {		
+		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, role);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
+	
+	@DeleteMapping("/removeUser/{userPid}")
+	public ResponseEntity<?> removeUser(@PathVariable("userPid") long userPid) {		
+		userDaoImpl.removeUserByPid(userPid);
+		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.ACCEPTED);
+	}
+
 }
