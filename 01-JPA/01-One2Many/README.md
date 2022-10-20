@@ -23,8 +23,8 @@
 ## [General Note](#-)
 
 In the following examples I define my entities as follows:
-* `[UserEntity]`(#-) - Is parent Entity
-* `[RoleEntity]`(#-) - Is Child Entity
+* [```UserEntity```](#-) - Is parent Entity
+* [```RoleEntity```](#-) - Is Child Entity
 
 How to define the Entity's
 
