@@ -31,10 +31,12 @@ How to define the Entity's
 ### [UserEntity ](#-) 
 
 In the Parent Entity I add the :
-1. `mappedBy`
-2. `cascade`
-3. `fetch`
-4. `orphanRemoval`
+1. `mappedBy` - need to add the filed name of the cahild entity
+2. `cascade` 
+3. `fetch` - By default in One2Many the Fetch is Lazy
+4. `orphanRemoval` - need to set to `true` so we can remove child Entity from Parent Entity
+5. Add 2 methods 
+	* addRole(RoleEntity role
 
 
 ```java
@@ -52,9 +54,28 @@ public class UserEntity {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<RoleEntity> roles;
+	
+	public void addRole(RoleEntity role) {
+		if (this.roles == null) {
+			this.roles = new HashSet<>();
+		}
+		this.roles.add(role);
+		role.setUser(this);
+	}
+
+	public void removeRole(RoleEntity role) {
+		this.roles.remove(role);
+		// role.setUser(null);
+	}
 ```
 
 ### [RoleEntity ](#-)
+
+In the Child Entity I add the :
+1. `@ManyToOne` 
+2. `@JoinColumn(name = "user_id")` - thats the foreign key from UserEntity 
+3. `fetch` - By default in Many2One the Fetch is Eager
+4. `@JsonIgnore` - must add it to child entity, otherwise we will have a `stack overflow` error.
 
 ```java
 @Entity
