@@ -83,78 +83,61 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, String role) {
 
-//		UserEntity returnedValue = imp1(userPid, roleEntity);
-
-		UserEntity returnedValue = imp2(userPid, role);
-
-		return returnedValue;
-	}
-
-
-	public UserEntity imp1(long userPid, RoleEntity roleEntity) {
-
-		/**
-		 * In this Implementation 
-		 * 1. I add the orphanRemoval to the UserEntity 
-		 * 2. I Search For RoleEntity 
-		 * 3. remove the Entity from the SET collection 
-		 * 4. Save the the info to UserEntity
-		 */
-
-		UserEntity userEntity = userRepository.findByPid(userPid);
-		
-		Set<RoleEntity> roles = userEntity.getRoles();
-
-		RoleEntity temp = null;
-
-		for (RoleEntity r : roles) {
-			if (r.getRole().equals(roleEntity.getRole())) {
-				temp = r;
-			}
-		}		
-
-		userEntity.removeRole(temp);
-		UserEntity returnedValue = userRepository.save(userEntity);
-
-		return returnedValue;
-	}
-
-	
-	public UserEntity imp2(long userPid, String role) {
-
 		/**
 		 * In this Implementation
 		 * 1. I add the orphanRemoval to UserEntity One2Many 
 		 * 2. I Query For RoleEntity (I try with 2 different implementations) 
-		 * 3. remove the Entity from the SET collection 
+		 * 3. remove the Entity from the SET<RoleEntity> collection 
 		 * 4. Save the the info to UserEntity
 		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` 
-		 * 	  which returns returnedValue from service layer to controller layer
+		 * 	  which returns returnedValue(Of UserEntity) from service layer to controller layer,
+		 *    Only if I use a query from Repository
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
-				
+		
 		/**
-		 * Query from UserRepository
+		 * there are 4 different ways to retrieve roleEntity from DB
+		 */
+		
+		long start = System.nanoTime();
+		
+		/**
+		 * (1)  
+		 */
+		Set<RoleEntity> roles = userEntity.getRoles();
+
+		RoleEntity roleEntity = null;
+
+		for (RoleEntity r : roles) {
+			if (r.getRole().equals(role)) {
+				roleEntity = r;
+			}
+		}
+
+		/**
+		 * (2) Query from UserRepo  
 		 */
 //		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
 
 		/**
-		 * Query from RoleRepository
+		 * (3) Query from RoleRepo	
 		 */
 //		RoleEntity roleEntity = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, role);
 		
 		/**
-		 * Query from RoleRepository
+		 * (4) Query from RoleRepo
 		 */
-		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
-				
+//		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
+																											
 		userEntity.removeRole(roleEntity);
+		
+		long end = System.nanoTime();
+		
+		System.out.println(end - start);
+		
 		UserEntity returnedValue = userRepository.save(userEntity);
 		
 		return returnedValue;
 	}
-
-
-
 }
