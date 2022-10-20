@@ -4,14 +4,13 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[One2Many-Bi-introduction](#introduction)  | 
+|  1  |[One2Many-Bi-introduction](#Bi_introduction)  | 
 |  2  |[One2Many-Bi-Eager](#)  | 
 |  3  |[One2Many-Bi-Lazy](#)  | 
-|  4  |[One2Many-Bi-Delete-Update](#)  | 
-|  5  |[One2Many-Bi-](#)  | 
-|  6  |[One2Many-Bi-](#)  | 
-|  7  |[One2Many-Bi-](#)  | 
-|  8  |[One2Many-Bi-](#)  | 
+|  4  |[One2Many-Uni-introduction](#Uni_introduction)  | 
+|  5  |[One2Many-Uni-](#)  | 
+|  6  |[One2Many-Uni-](#)  | 
+
 
 
 
