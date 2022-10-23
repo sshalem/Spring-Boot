@@ -165,7 +165,7 @@ Customer findWithJoinFetchFirstName(String firstname);
 Spring-boot version [`2.6.11`](#-) </br>
 POM file:
 
-```xml
+```java
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
