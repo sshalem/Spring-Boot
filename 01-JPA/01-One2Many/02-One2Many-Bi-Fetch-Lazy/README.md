@@ -1071,7 +1071,22 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 
 ![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
 
-Makes  1 SQL query w/o fetching Roles , so lazy Loading works:
+Following Methods are tested from `UserRepository`
+
+1. `UserEntity findById(long id);`
+2 `@Query("SELECT user from UserEntity user WHERE user.id=:id")` </br>
+  `UserEntity jpqlFindById(@Param("id") long id);` </br>
+
+   Another way to write the Query: </br>
+  `@Query("SELECT user from UserEntity user WHERE user.id = ?1")` </br>
+  `UserEntity jpqlFindById(long id);
+
+
+3. `@Query(value = "SELECT * FROM USERS_TB WHERE id=:id", nativeQuery = true)` </br>
+   `UserEntity nativeFindById(@Param("id") long id);`
+
+
+methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
 
 ```sql
 Hibernate: 
@@ -1086,6 +1101,19 @@ Hibernate:
     where
         userentity0_.id=?
 ```
+
+methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
+
+```sql
+Hibernate: 
+    SELECT
+        * 
+    FROM
+        USERS_TB 
+    WHERE
+        id=?
+```
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
