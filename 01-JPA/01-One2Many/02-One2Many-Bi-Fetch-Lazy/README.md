@@ -1047,6 +1047,13 @@ public class RoleDaoImpl implements RoleDao{
 
 <img src="https://img.shields.io/badge/-4. test app %20-blue" height=40px>
 
+Let's Run the App, adn test our API.
+I have 2 Controllers, whith these Controllers I test the API's :
+1. UserController API
+2. RoleController API
+
+![image](https://user-images.githubusercontent.com/36256986/197419012-317b3223-2db9-48ac-9f66-dc6b7465d760.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
