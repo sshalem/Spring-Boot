@@ -428,10 +428,249 @@ public class RoleEntity implements Serializable {
 
 --------------------------------------------------------------------------------------------------
 
-###### x
+###### 3_3_Repository
 
-<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-3.3 Repository  %20-yellow" height=40px>
 
+### [`UserRepository`](#-)
+
+```java
+package com.jpa.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.jpa.entity.RoleEntity;
+import com.jpa.entity.UserEntity;
+
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+	
+	/**
+	 * I Must remove from the toString() methods in the Entities the association Entity
+	 * Otherwise the queries won't work
+	 * Meaning If I have UserEntity with Set<RoleEntity> son't add the RoleEntity to the to String method
+	 * We will get Stuck Overflow 
+	 */
+	
+	
+	// One Hiberante Query which uses LEFT OUTER JOIN
+	UserEntity findById(long id);
+
+	@Query("SELECT user from UserEntity user WHERE user.id=:id")
+	UserEntity jpqlFindById(@Param("id") long id);
+	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.id = ?1")
+	 * UserEntity jpqlFindById(long id);
+	 */
+
+	@Query(value = "SELECT * FROM USERS_TB WHERE id=:id", nativeQuery = true)
+	UserEntity nativeFindById(@Param("id") long id);
+	
+	/**
+	 *  
+	 */
+
+	UserEntity findByPid(long pid);
+
+	@Query("SELECT user from UserEntity user WHERE user.pid=:pid")
+	UserEntity jpqlFindByPid(@Param("pid") long pid);
+	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.pid = ?1")
+	 * UserEntity jpqlFindByPid(long pid);
+	 */
+	
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE pid=:pid", nativeQuery = true)
+	UserEntity nativeFindByPid(@Param("pid") long pid);
+	
+	/**
+	 *  
+	 */
+
+	UserEntity findByName(String name);
+
+	@Query("SELECT user from UserEntity user WHERE user.name=:name")
+	UserEntity jpqlFindByName(@Param("name") String name);
+	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.name = ?1")
+	 * UserEntity jpqlFindByName(String name);
+	 */
+	
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE name=:name", nativeQuery = true)
+	UserEntity nativeFindByName(@Param("name") String name);
+	
+	/**
+	 *  
+	 */
+
+	UserEntity findByEmail(String email);
+
+	@Query("SELECT user from UserEntity user WHERE user.email=:email")
+	UserEntity jpqlFindByEmail(@Param("email") String email);
+	
+	/**
+	 * @Query("SELECT user from UserEntity user WHERE user.email = ?1")
+	 * UserEntity jpqlFindByEmail(String email);
+	 */
+	
+	// the * means return all fields
+	@Query(value = "SELECT * FROM USERS_TB WHERE email=:email", nativeQuery = true)
+	UserEntity nativeFindByEmail(@Param("email") String email);
+	
+	/**
+	 *  
+	 */
+
+	@Query(value = "SELECT * "
+			+ "FROM USERS_TB utb " 
+			+ "LEFT JOIN ROLES_TB rtb " 
+			+ "ON rtb.user_id=utb.id "
+			+ "WHERE rtb.role=:role" ,nativeQuery = true)
+	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
+	
+	/**
+	 * 
+	 */
+	
+	@Query("SELECT re from RoleEntity re where re.user.id = ?1 AND re.role like ?2")
+	RoleEntity getRoleByIdAndRole(long id, String role);
+	
+	@Query("SELECT re from RoleEntity re WHERE re.user.id=:id AND re.role=:role")
+	RoleEntity getRoleByIdAndRoleParamQuery(@Param("id")long id, @Param("role") String role);
+		
+	@Query("SELECT re from RoleEntity re WHERE re.user.id = ?1 AND re.role like ?2")
+	RoleEntity getRoleByIdAndRoleLikeOperator(long id, String role);
+
+	@Query("SELECT re from RoleEntity re WHERE re.user.id=:id AND re.role LIKE :role")
+	RoleEntity getRoleByIdAndRoleLikeOperatorParamQuery(@Param("id")long id, @Param("role") String role);	
+}
+```
+
+### [`RoleRepository`](#-)
+
+```java
+package com.jpa.repository;
+
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.jpa.entity.RoleEntity;
+import com.jpa.entity.UserEntity;
+
+@Repository
+public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+
+	/**
+	 * I Must remove from the toString() methods in the Entities the associationEntity
+	 * Otherwise the queries won't work
+	 * Meaning If I have UserEntity with Set<RoleEntity> son't add the RoleEntity to the to String method
+	 * We will get Stuck Overflow 
+	 */ 
+
+	List<RoleEntity> findById(long id);
+
+	@Query("SELECT role FROM RoleEntity role WHERE role.id=:id")
+	List<RoleEntity> jpqlFindById(@Param("id") long id);
+		
+	/**
+	 * @Query("SELECT role FROM RoleEntity role WHERE role.id = ?1")
+	 * List<RoleEntity> jpqlFindById(long id);
+	 */
+
+	@Query(value = "SELECT * FROM ROLES_TB WHERE id=:id", nativeQuery = true)
+	List<RoleEntity> nativeFindById(@Param("id") long id);
+
+	/**
+	 * 
+	 */
+	
+	List<RoleEntity> findByRole(String role);
+
+	@Query("SELECT r FROM RoleEntity r WHERE r.role=:role")
+	List<RoleEntity> jpqlFindByRole(@Param("role") String role);
+		
+	/**
+	 * @Query("SELECT r FROM RoleEntity r WHERE r.role = ?1")
+	 * List<RoleEntity> jpqlFindByRole(String role);
+	 */
+
+	@Query(value = "SELECT * FROM ROLES_TB WHERE role=:role", nativeQuery = true)
+	List<RoleEntity> nativeFindByRole(@Param("role") String role);
+
+	/**
+	 * 
+	 */
+	
+	List<RoleEntity> findByPid(long pid);
+
+	@Query("SELECT role FROM RoleEntity role WHERE role.pid=:pid")
+	List<RoleEntity> jpqlFindByPid(@Param("pid") long pid);
+		
+	/**
+	 * @Query("SELECT role from RoleEntity role WHERE role.pid = ?1")
+	 * List<RoleEntity> jpqlFindByPid(long pid);
+	 */
+
+	@Query(value = "SELECT * FROM ROLES_TB WHERE pid=:pid", nativeQuery = true)
+	List<RoleEntity> nativeFindByPid(@Param("pid") long pid);
+
+	/**
+	 * 
+	 */	
+	
+	// This JPQL Query works as Expected	
+	@Query("SELECT u FROM UserEntity u JOIN u.roles AS r WHERE r.role=:role")
+	List<UserEntity> jpqlFindUsersWithRoleName(@Param("role") String role);
+
+	/**
+	 * we cannot set SELECT *	 * 
+	 * NonUniqueDiscoveredSqlAliasException: Encountered a duplicated sql alias [id] during auto-discovery of a native-sql query
+	 * The NATIVE Query below does't work here in RoleRepo,
+	 * This Native Query as is , works great in UserRepo
+	 */
+
+	//	@Query(value = "SELECT * "			
+	//			+ "FROM USERS_TB utb "
+	//			+ "JOIN ROLES_TB rtb "
+	//			+ "ON rtb.user_id=utb.id "
+	//			+ "WHERE rtb.role=:role" ,nativeQuery = true)
+	//	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
+	
+	// *****************************************************************************
+	// *****************************************************************************
+	// *****************************************************************************	
+	
+	RoleEntity findByPidAndRole(long pid, String role);
+	
+	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
+	RoleEntity jpqlFindRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
+
+	@Modifying
+	@Query("DELETE FROM RoleEntity re WHERE re.pid=:pid AND re.role=:role")
+	void jpqlDeleteUserRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
+	
+	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
+	RoleEntity jpqlFindRole(@Param("pid") long pid, @Param("role") String role);
+	
+	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid")
+	Set<RoleEntity> jpqlFindAllRoles(@Param("pid") long pid);	
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
