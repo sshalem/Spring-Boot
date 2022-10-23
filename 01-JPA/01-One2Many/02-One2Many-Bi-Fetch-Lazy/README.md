@@ -1074,7 +1074,7 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 
 ![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
 
-Following Methods are tested from `UserRepository`
+#### [`Following Methods are tested from `UserRepository` `](#-)
 
 ```sql
 // (1)
@@ -1094,7 +1094,23 @@ UserEntity jpqlFindById(@Param("id") long id);
 UserEntity nativeFindById(@Param("id") long id);
 ```
 
-methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
+#### [`UserDaoImpl method`](#-)
+
+```java
+@Override
+public UserDto getUserById(long id) {
+	UserDto userDto = new UserDto();
+//	UserEntity userEntity =  userRepository.findById(id);
+//	UserEntity userEntity =  userRepository.jpqlFindById(id);
+	UserEntity userEntity =  userRepository.nativeFindById(id);
+	BeanUtils.copyProperties(userEntity, userDto);		
+	return userDto;		
+}
+```
+
+#### [`Hibernate Queries`](#-)
+
+with methods 1/2 , Hibernate makes one SQL query w/o fetching Roles , so lazy Loading works:
 
 ```sql
 Hibernate: 
@@ -1110,7 +1126,7 @@ Hibernate:
         userentity0_.id=?
 ```
 
-methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
+with method 3 , Hibernate makes one SQL query w/o fetching Roles (native SQL query) :
 
 ```sql
 Hibernate: 
@@ -1121,6 +1137,18 @@ Hibernate:
     WHERE
         id=?
 ```
+
+#### [`Response Data`](#-)
+
+Console log shows we got a DTO object of `UserDTO`
+
+![image](https://user-images.githubusercontent.com/36256986/197420376-e47438c1-7045-49e9-aafd-76b2edb1e06f.png)
+
+* Question :
+	What if I will return a `UserEntity` instead of `UserDto` what will happend?
+
+* Answer :
+	
 
 
 
