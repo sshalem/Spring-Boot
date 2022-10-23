@@ -1,20 +1,15 @@
 ###### _
 
-<img src="https://img.shields.io/badge/-One2Many Bi Direc Lazy Loading %20-blue" height=70px>
+<img src="https://img.shields.io/badge/-1. One2Many Bi directional Lazy Loading %20-blue" height=40px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[One2Many-Bi-Lazy Loading](#1_Bi_directional_Lazy_Loading)  | 
 |  2  |[OSIV Open Session In View](#2_OSIV_Open_Session_In_View)  | 
 
-
-
-
 --------------------------------------------------------------------------------------------------
 
 ###### 1_Bi_directional_Lazy_Loading
-
-<img src="https://img.shields.io/badge/-1. Bi directional Lazy Loading %20-blue" height=40px>
 
 ## [General Note](#-)
 
