@@ -14,6 +14,8 @@
 |     |3.4  [Dao](#3_4_Dao) | 
 |     |3.5  [DaoImpl](#3_5_Dao_Impl) | 
 |     |3.6  [Dto](#3_6_Dto) | 
+|     |3.7  [FrontEnd](#3_7_FrontEnd) | 
+|  4  |[Test App](#3_8_test_app) | 
 
 
 --------------------------------------------------------------------------------------------------
@@ -705,7 +707,7 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
 ###### 3_4_Dao
 
-<img src="https://img.shields.io/badge/-3.4. Dao %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-3.4. Dao  %20-yellow" height=40px>
 
 ### [`UserDao`](#-)
 
@@ -756,7 +758,7 @@ public interface RoleDao {
 
 ###### 3_5_Dao_Impl
 
-<img src="https://img.shields.io/badge/-3.5. DaoImpl %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-3.5. DaoImpl  %20-yellow" height=40px>
 
 ### [`UserDaoImpl`](#-)
 
@@ -1019,6 +1021,41 @@ public class RoleDaoImpl implements RoleDao{
 	}
 }
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 3_6_Dto
+
+<img src="https://img.shields.io/badge/-3.6. Dto  %20-yellow" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 3_7_FrontEnd
+
+<img src="https://img.shields.io/badge/-3.7. FrontEnd  %20-yellow" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
