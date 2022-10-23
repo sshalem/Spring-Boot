@@ -4,12 +4,46 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
+|     |[links](#links)  | 
 |  1  |[One2Many-Bi-EAGER Loading](#1_Bi_directional_EAGER_Loading)  | 
 |  2  |[](#)  | 
+|  3  |[Code](#3_code) |   
+|     |3.1  [dependencies](#3_1_dependencies) | 
+|     |3.2  [Entities](#3_2_Entitiy) | 
+|     |3.3  [Repository](#3_3_Repository) | 
+|     |3.4  [Dao](#3_4_Dao) | 
+|     |3.5  [Dao_Impl](#3_5_Dao_Impl) | 
+
+
+--------------------------------------------------------------------------------------------------
+
+###### links
+
+<img src="https://img.shields.io/badge/- links %20-blue" height=40px>
+
+### OneToMany:
+1. [The best way to map a @OneToMany relationship with JPA and Hibernate](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
+
+
+### DELETE with JPA:
+1. [Deleting Data in Spring Boot with JPA and Hibernate](https://hellokoding.com/deleting-data-with-jpa-hibernate/)
+2. [different ways to delete a child entity in JPA/hibernate](https://fullstackdeveloper.guru/2020/08/17/what-are-the-different-ways-to-delete-a-child-entity-in-jpa-hibernate-through-spring-data/)
+3. [How does orphanRemoval work with JPA and Hibernate](https://vladmihalcea.com/orphanremoval-jpa-hibernate/)
+4. [JPA how to remove parent without delete children](https://itecnote.com/tecnote/jpa-how-to-remove-parent-without-delete-children/)
+
+### Lazy Loading :
+1. [Lazy Loading options](https://www.youtube.com/watch?v=XbT5oRJFp2E&ab_channel=TechnoTownTechie)
+2. [LazyLoadin another good explained](https://www.linkedin.com/pulse/spring-boot-lazy-initialized-entities-ashley-shookhye?trk=articles_directory)
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 --------------------------------------------------------------------------------------------------
 
 ###### 1_Bi_directional_EAGER_Loading
+
+<img src="https://img.shields.io/badge/- 1. Bi directional EAGER Loading %20-blue" height=40px>
 
 ## [General Note](#-)
 
