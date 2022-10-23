@@ -115,23 +115,21 @@ public class RoleEntity {
 
 <img src="https://img.shields.io/badge/-2. OSIV Open Session In View %20-blue" height=40px>
 
-In application.properties file I define the property of: [`spring.jpa.open-in-view=false`](#-)
-
+In application.properties file I define the property of: [`spring.jpa.open-in-view=false`](#-) </br>
 Becuase of following error:
-          ```WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. 
-          Therefore, database queries may be performed during view rendering. 
-          Explicitly configure spring.jpa.open-in-view to disable this warning```
+
+	  WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. </br>
+          Therefore, database queries may be performed during view rendering. </br>
+          Explicitly configure spring.jpa.open-in-view to disable this warning</br>
+ 
  BUT,
- 	when using this parameter as set to false, and we are using FetchType.LAZY, it will throw Lazy fetch error
- 	So , 2 options are :
-  1. No to add it at all (this way we still see the warning but it won't affect the lazy loading
-  2. add this : 'spring.jpa.open-in-view=true'  and set it to true, 
-	  this will make  the warining disappear and lazy loading still works as expected 
- Note:
- accordint the following link: 
- 	[spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot)
- 	Unfortunately, OSIV (Open Session in View) 
-   is enabled by default in Spring Boot, and OSIV is really a bad idea from a performance and scalability perspective.
+ when using this parameter as set to `false`, and we are using `FetchType.LAZY`, it will throw Lazy fetch error.</br>
+ So , 2 options are :
+ 1. No to add it at all (this way we still see the warning but it won't affect the lazy loading)
+ 2. add this : [`spring.jpa.open-in-view=true`](#-) and set it to true, this will make  the warining disappear and lazy loading still works as expected.
+ 
+ Note: </br>
+ accordint the following link: [spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot) , Unfortunately, OSIV (Open Session in View) is `enabled by default in Spring Boot`, and OSIV is really a bad idea from a performance and scalability perspective.
 
 	So, make sure that in the application.properties configuration file, you have the following entry:
 		spring.jpa.open-in-view=false
