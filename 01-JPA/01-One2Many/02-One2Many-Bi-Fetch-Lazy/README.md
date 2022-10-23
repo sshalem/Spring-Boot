@@ -16,8 +16,11 @@
 |     |3.6  [Dto](#3_6_Dto) | 
 |     |3.7  [FrontEnd](#3_7_FrontEnd) | 
 |  4  |[Test App](#4_test_app) | 
-|     |4.1  [User API](#4_1_User_API) | 
-|     |4.2  [Role API](#4_2_Role_API) | 
+|     |4.1  [User API - GET](#4_1_User_API_GET) | 
+|     |4.2  [User API - POST](#4_2_User_API_POST) | 
+|     |4.3  [User API - PUT](#4_3_User_API_PUT) | 
+|     |4.4  [User API - DELETE](#4_4_User_API_DELETE) | 
+|     |4.5  [Role API](#4_2_Role_API) | 
 
 
 --------------------------------------------------------------------------------------------------
@@ -1061,9 +1064,9 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 --------------------------------------------------------------------------------------------------
 
-###### 4_1_User_API
+###### 4_1_User_API_GET
 
-<img src="https://img.shields.io/badge/-4.1. User API  %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-4.1. User API GET %20-yellow" height=40px>
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
@@ -1125,9 +1128,106 @@ Hibernate:
 
 --------------------------------------------------------------------------------------------------
 
-###### 4_2_Role_API
+###### 4_2_User_API_POST
 
-<img src="https://img.shields.io/badge/-4.2. Role API  %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-4.2. User API POST %20-yellow" height=40px>
+
+Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
+
+### POST Methods:
+
+![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
+
+Following Methods are tested from `UserRepository`
+
+```sql
+
+```
+
+methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
+
+```sql
+
+```
+
+methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
+
+```sql
+
+```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 4_3_User_API_PUT
+
+<img src="https://img.shields.io/badge/-4.3. User API PUT %20-yellow" height=40px>
+
+Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
+
+### POST Methods:
+
+![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
+
+Following Methods are tested from `UserRepository`
+
+```sql
+
+```
+
+methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
+
+```sql
+
+```
+
+methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
+
+```sql
+
+```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 4_4_User_API_PUT
+
+<img src="https://img.shields.io/badge/-4.4. User API DELETE %20-yellow" height=40px>
+
+Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
+
+### POST Methods:
+
+![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
+
+Following Methods are tested from `UserRepository`
+
+```sql
+
+```
+
+methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
+
+```sql
+
+```
+
+methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
+
+```sql
+
+```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+
+###### 4_5_Role_API
+
+<img src="https://img.shields.io/badge/-4.5. Role API  %20-yellow" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
