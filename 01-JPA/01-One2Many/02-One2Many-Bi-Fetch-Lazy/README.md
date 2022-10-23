@@ -207,8 +207,221 @@ Code  :
 
 <img src="https://img.shields.io/badge/-3.1. dependencies  %20-yellow" height=40px>
 
+Dependencies:
+
 ![image](https://user-images.githubusercontent.com/36256986/197414794-b5aba6e7-591a-40ee-bf84-87781f6b9876.png)
 
+Package Layout:
+
+![image](https://user-images.githubusercontent.com/36256986/197415424-d2565f01-f099-4022-9c17-d09832ebc4d0.png)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 3_2_Entitiy
+
+<img src="https://img.shields.io/badge/-3.1. Entity  %20-yellow" height=40px>
+
+### [`UserEntity`](#-)
+
+```java
+package com.jpa.entity;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "USERS_TB")
+public class UserEntity implements Serializable {
+
+	private static final long serialVersionUID = -5199469587304114249L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private long pid;
+	private String name;
+	private String email;
+	private String password;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
+	private Set<RoleEntity> roles;
+
+	public UserEntity() {
+		super();
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getPid() {
+		return pid;
+	}
+
+	public void setPid(long pid) {
+		this.pid = pid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<RoleEntity> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(RoleEntity role) {
+		if (this.roles == null) {
+			this.roles = new HashSet<>();
+		}
+		this.roles.add(role);
+		role.setUser(this);
+	}
+
+	public void removeRole(RoleEntity role) {
+		this.roles.remove(role);
+//		role.setUser(null);
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
+				+ password + "]";
+	}
+
+}
+
+```
+
+### [`RoleEntity`](#-)
+
+```java
+package com.jpa.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "ROLES_TB")
+public class RoleEntity implements Serializable {
+
+	private static final long serialVersionUID = 4547155074103443567L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String role;
+	private long pid;
+
+	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
+	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
+	@ManyToOne(fetch = FetchType.LAZY)	
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
+	@JsonIgnore
+	private UserEntity user;
+
+	public RoleEntity() {
+		super();
+	}
+
+	public RoleEntity(String role) {
+		super();
+		this.role = role;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public long getPid() {
+		return pid;
+	}
+
+	public void setPid(long pid) {
+		this.pid = pid;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "RoleEntity [id=" + id + ", role=" + role + ", pid=" + pid + "]";
+	}
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -232,3 +445,38 @@ Code  :
 
 --------------------------------------------------------------------------------------------------
 
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### x
+
+<img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
