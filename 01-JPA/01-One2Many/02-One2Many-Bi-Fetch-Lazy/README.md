@@ -139,9 +139,9 @@ Anyway, DO NOT use the following Anti-Patterns as suggested by some of the answe
 1. `Open Session in View (OSIV)` or `hibernate.enable_lazy_load_no_trans`. </br>
 2. Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any `LazyInitializationException`.
 
-Question: </br>
+* Question: </br>
 How to handle the LazyInitializationException the right way?
-Answer:</br>
+* Answer:</br>
 see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
 
  Since I'm using JPQL, 
