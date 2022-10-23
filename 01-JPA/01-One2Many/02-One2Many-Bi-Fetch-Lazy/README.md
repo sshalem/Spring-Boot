@@ -1067,6 +1067,25 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
+### Get Methods:
+
+![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
+
+Makes  1 SQL query w/o fetching Roles , so lazy Loading works:
+
+```sql
+Hibernate: 
+    select
+        userentity0_.id as id1_1_,
+        userentity0_.email as email2_1_,
+        userentity0_.name as name3_1_,
+        userentity0_.password as password4_1_,
+        userentity0_.pid as pid5_1_ 
+    from
+        users_tb userentity0_ 
+    where
+        userentity0_.id=?
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
