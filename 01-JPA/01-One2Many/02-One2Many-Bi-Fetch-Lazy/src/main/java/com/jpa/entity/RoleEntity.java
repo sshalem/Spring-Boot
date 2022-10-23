@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,8 +26,10 @@ public class RoleEntity implements Serializable {
 	private String role;
 	private long pid;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
+	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
+	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
 	@JsonIgnore
 	private UserEntity user;
 

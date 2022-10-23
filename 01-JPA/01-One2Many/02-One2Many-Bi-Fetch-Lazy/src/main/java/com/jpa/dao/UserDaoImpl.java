@@ -170,11 +170,11 @@ public class UserDaoImpl implements UserDao {
 		/**
 		 * there are 4 different ways to retrieve roleEntity from DB
 		 */
-		
-		long start = System.nanoTime();
+
 		
 		/**
 		 * (1) We Don't need to add @Transactional If we search with For loop  
+		 *     Since we search for roelEntity from getRoles() and not from a Repository
 		 */
 		Set<RoleEntity> roles = userEntity.getRoles();
 
@@ -200,16 +200,19 @@ public class UserDaoImpl implements UserDao {
 		 * (4) Query from RoleRepo
 		 */
 //		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
-																											
+
+		/**
+		 * When Using the "roleRepository.delete(roleEntity)" from the roleRepo ,
+		 *  no need to use the "orphanRemoval = true"
+		 * If we want to return userEntity , we must keep @Transactional at method level, to keep session open
+		 */
+//		roleRepository.delete(roleEntity);
+		
 		userEntity.removeRole(roleEntity);
-		
-		long end = System.nanoTime();
-		
-		System.out.println(end - start);
 		
 		UserEntity returnedValue = userRepository.save(userEntity);
 		
 		return returnedValue;
-	}
+	}	
 	
 }
