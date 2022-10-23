@@ -11,11 +11,11 @@ import com.jpa.repository.RoleRepository;
 import com.jpa.repository.UserRepository;
 
 @Service
-public class RoleDaoImpl implements RoleDao{
+public class RoleDaoImpl implements RoleDao {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -24,12 +24,12 @@ public class RoleDaoImpl implements RoleDao{
 		return roleRepository.findById(id);
 	}
 
-	@Override	
+	@Override
 	public List<UserEntity> getUsersWithRoleName(String role) {
 //		return roleRepository.jpqlFindUsersWithRoleName(role);
 		return userRepository.nativeFindUsersWithRoleName(role);
 	}
- 
+
 	@Override
 	public List<RoleEntity> getRoleByPid(long pid) {
 		return roleRepository.findByPid(pid);
@@ -39,5 +39,4 @@ public class RoleDaoImpl implements RoleDao{
 	public List<RoleEntity> getAllRoles() {
 		return roleRepository.findAll();
 	}
-
 }
