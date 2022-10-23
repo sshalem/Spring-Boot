@@ -116,7 +116,8 @@ public class RoleEntity {
 <img src="https://img.shields.io/badge/-2. OSIV Open Session In View %20-blue" height=40px>
 
 In application.properties file I define the property of:
-	`spring.jpa.open-in-view=false`
+
+	`[spring.jpa.open-in-view=false](#-)`
 
 Becuase of following error:
           ```WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. 
