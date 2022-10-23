@@ -1,7 +1,6 @@
 ###### _
 
-<img src="https://img.shields.io/badge/-One2Many Bi-Direc Lazy Loading %20-blue" height=70px>
-
+<img src="https://img.shields.io/badge/-One2Many Bi Direc Lazy Loading %20-blue" height=70px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
