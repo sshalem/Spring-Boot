@@ -16,6 +16,8 @@
 |     |3.6  [Dto](#3_6_Dto) | 
 |     |3.7  [FrontEnd](#3_7_FrontEnd) | 
 |  4  |[Test App](#4_test_app) | 
+|     |4.1  [User API](#4_1_User_API) | 
+|     |4.2  [Role API](#4_2_Role_API) | 
 
 
 --------------------------------------------------------------------------------------------------
@@ -1054,6 +1056,26 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 ![image](https://user-images.githubusercontent.com/36256986/197419012-317b3223-2db9-48ac-9f66-dc6b7465d760.png)
 
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 4_1_User_API
+
+<img src="https://img.shields.io/badge/-4.1. User API  %20-yellow" height=40px>
+
+Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 4_2_Role_API
+
+<img src="https://img.shields.io/badge/-4.2. Role API  %20-yellow" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
