@@ -24,7 +24,7 @@ public class RoleDaoImpl implements RoleDao{
 		return roleRepository.findById(id);
 	}
 
-	@Override
+	@Override	
 	public List<UserEntity> getUsersWithRoleName(String role) {
 //		return roleRepository.jpqlFindUsersWithRoleName(role);
 		return userRepository.nativeFindUsersWithRoleName(role);

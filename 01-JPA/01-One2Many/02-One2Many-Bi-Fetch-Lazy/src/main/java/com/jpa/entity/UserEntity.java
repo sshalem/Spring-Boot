@@ -13,12 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "USERS_TB")
-public class UserEntity implements Serializable{
+public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -5199469587304114249L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -27,7 +29,8 @@ public class UserEntity implements Serializable{
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -92,6 +95,7 @@ public class UserEntity implements Serializable{
 
 	public void removeRole(RoleEntity role) {
 		this.roles.remove(role);
+//		role.setUser(null);
 	}
 
 	@Override

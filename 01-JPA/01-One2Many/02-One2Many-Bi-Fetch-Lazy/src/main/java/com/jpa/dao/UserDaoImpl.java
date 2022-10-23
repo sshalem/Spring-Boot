@@ -107,7 +107,8 @@ public class UserDaoImpl implements UserDao {
 	 * I got this error when tried to add role to user 
 	 * 	org.hibernate.LazyInitializationException: 
 	 * 		failed to lazily initialize a collection of role: 
-	 * 			com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session
+	 * 			com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session
 	 * 
 	 * Thus , I need to add annotation of @Transactional
 	 * From BAELDUNG:
@@ -121,7 +122,10 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public UserDto addRoleToUser(long userPid, RoleEntity roleEntity) {
-
+		
+		// Best Practice to return UserDto and not UserEntity , 
+		// But since I know that we have few rows of RoleEntity thus I return UserEntity
+		
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		roleEntity.setPid(userPid);
 		userEntity.addRole(roleEntity); 
@@ -132,28 +136,32 @@ public class UserDaoImpl implements UserDao {
 		return userDto;		
 	}
 	
-//	@Override
-//	@Transactional
-//	public UserEntity addRoleToUser(long userPid, RoleEntity roleEntity) {
-//
-//		UserEntity userEntity = userRepository.findByPid(userPid);
-//		roleEntity.setPid(userPid);
-//		userEntity.addRole(roleEntity); 
-//		
-//		UserEntity savedUserEntity = userRepository.save(userEntity);		
-//		return savedUserEntity;		
-//	}
-	
 	/**
 	 * @Transactional Annotation - 
 	 * 			Should be only on 
 	 * 			'PUBLIC' methods that returns value to higher level layer
 	 */
-	
+	/**
+	 * I got this error when tried to add role to user 
+	 * 	org.hibernate.LazyInitializationException: 
+	 * 		failed to lazily initialize a collection of role: 
+	 * 			com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session
+	 * 
+	 * Thus , I need to add annotation of @Transactional
+	 * From BAELDUNG:
+	 * 
+	 * The @Transactional annotation configures a transactional proxy around the instance of the related test class.
+	 * Moreover, the transaction is associated with the thread executing it. 
+	 * Considering the default transaction propagation setting, every Persistence Context created from this method joins to this same transaction.
+	 * Consequently, the transaction persistence context is bound to the transaction scope of the test method.
+	 */
 	@Override
 	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, String role) {
 
+		// Best Practice to return UserDto and not UserEntity , 
+		// But since I know that we have few rows of RoleEntity thus I return UserEntity
 		/**
 		 * In this Implementation
 		 * 1. I add the orphanRemoval to UserEntity One2Many 
@@ -161,21 +169,17 @@ public class UserDaoImpl implements UserDao {
 		 * 3. remove the Entity from the SET<RoleEntity> collection 
 		 * 4. Save the the info to UserEntity
 		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` 
-		 * 	  which returns returnedValue(Of UserEntity) from service layer to controller layer,
-		 *    Only if I use a query from Repository
+		 */
+		
+		/**
+		 * there are 2 different ways to retrieve roleEntity from DB:
+		 * (1) search for roelEntity from getRoles()
+		 * (2) Query from UserRepo or RoleRepo 
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		
-		/**
-		 * there are 4 different ways to retrieve roleEntity from DB
-		 */
-
-		
-		/**
-		 * (1) We Don't need to add @Transactional If we search with For loop  
-		 *     Since we search for roelEntity from getRoles() and not from a Repository
-		 */
+		// (1) search for roelEntity from getRoles()		 
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
@@ -186,19 +190,9 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 
-		/**
-		 * (2) Query from UserRepo  
-		 */
+//		(2) Query from UserRepo or RoleRepo
 //		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
-
-		/**
-		 * (3) Query from RoleRepo	
-		 */
 //		RoleEntity roleEntity = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, role);
-		
-		/**
-		 * (4) Query from RoleRepo
-		 */
 //		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
 
 		/**
@@ -211,8 +205,8 @@ public class UserDaoImpl implements UserDao {
 		userEntity.removeRole(roleEntity);
 		
 		UserEntity returnedValue = userRepository.save(userEntity);
-		
-		return returnedValue;
+			
+		return returnedValue;		
 	}	
-	
+		
 }
