@@ -29,7 +29,7 @@ How to define the Entity's
 In the Parent Entity I add the :
 1. `mappedBy` - need to add the filed name of the cahild entity
 2. `cascade` 
-3. `fetch` - By default in One2Many the Fetch is Lazy
+3. `fetch` - `FetchType.EAGER` , By default in One2Many the Fetch is Lazy
 4. `orphanRemoval` - need to set to `true` so we can remove child Entity from Parent Entity
 5. Add 2 methods 
 	* `addRole`
