@@ -22,6 +22,11 @@
 
 <img src="https://img.shields.io/badge/- links %20-blue" height=40px>
 
+DELETE with JPA:
+1. [Deleting Data in Spring Boot with JPA and Hibernate](https://hellokoding.com/deleting-data-with-jpa-hibernate/)
+2. [different ways to delete a child entity in JPA/hibernate](https://fullstackdeveloper.guru/2020/08/17/what-are-the-different-ways-to-delete-a-child-entity-in-jpa-hibernate-through-spring-data/)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
