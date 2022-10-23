@@ -1073,8 +1073,8 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 
 Following Methods are tested from `UserRepository`
 
-1. `UserEntity findById(long id);`
-2 `@Query("SELECT user from UserEntity user WHERE user.id=:id")` </br>
+1. `UserEntity findById(long id);`</br>
+2. `@Query("SELECT user from UserEntity user WHERE user.id=:id")` </br>
   `UserEntity jpqlFindById(@Param("id") long id);` </br>
 
    Another way to write the Query: </br>
