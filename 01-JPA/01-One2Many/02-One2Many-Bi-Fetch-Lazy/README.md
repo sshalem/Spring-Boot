@@ -131,16 +131,18 @@ Becuase of following error:
  Note: </br>
  accordint the following link: [spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot) , Unfortunately, OSIV (Open Session in View) is `enabled by default in Spring Boot`, and OSIV is really a bad idea from a performance and scalability perspective.
 
-So, make sure that in the application.properties configuration file, you have the following entry: [`spring.jpa.open-in-view=false`](#-) </br>
+So, make sure that in the application.properties configuration file, you have the following entry set as false: </br>
+* [`spring.jpa.open-in-view=false`](#-) </br>
+
 This will disable OSIV so that you can handle the `LazyInitializationException` the right way. </br>
 Anyway, DO NOT use the following Anti-Patterns as suggested by some of the answers: </br>
-`Open Session in View (OSIV)` or `hibernate.enable_lazy_load_no_trans`. </br>
-Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any `LazyInitializationException`.
+1. `Open Session in View (OSIV)` or `hibernate.enable_lazy_load_no_trans`. </br>
+2. Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any `LazyInitializationException`.
 
- Question: 
-	How to handle the LazyInitializationException the right way?
- Answer:
-	see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
+Question: </br>
+How to handle the LazyInitializationException the right way?
+Answer:</br>
+see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
 
  Since I'm using JPQL, 
  better use JOIN FETCH is the easiest way in the CustomerRepository 
