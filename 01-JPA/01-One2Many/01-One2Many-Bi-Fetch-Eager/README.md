@@ -1,20 +1,15 @@
 ###### _
 
-<img src="https://img.shields.io/badge/-One2Many Bi-Direc EAGER Loading %20-blue" height=70px>
+<img src="https://img.shields.io/badge/-1. One2Many Bi directional EAGER Loading %20-blue" height=40px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[One2Many-Bi-EAGER Loading](#1_Bi_directional_EAGER_Loading)  | 
 |  2  |[](#)  | 
 
-
-
-
 --------------------------------------------------------------------------------------------------
 
 ###### 1_Bi_directional_EAGER_Loading
-
-<img src="https://img.shields.io/badge/-1. Bi directional EAGER Loading %20-blue" height=40px>
 
 ## [General Note](#-)
 
