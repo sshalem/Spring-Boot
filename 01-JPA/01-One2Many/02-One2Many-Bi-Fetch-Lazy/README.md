@@ -118,9 +118,9 @@ public class RoleEntity {
 In application.properties file I define the property of: [`spring.jpa.open-in-view=false`](#-) </br>
 Becuase of following error:
 
-	  WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. </br>
-          Therefore, database queries may be performed during view rendering. </br>
-          Explicitly configure spring.jpa.open-in-view to disable this warning</br>
+	  WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default.
+          Therefore, database queries may be performed during view rendering.
+          Explicitly configure spring.jpa.open-in-view to disable this warning
  
  BUT,
  when using this parameter as set to `false`, and we are using `FetchType.LAZY`, it will throw Lazy fetch error.</br>
@@ -131,26 +131,24 @@ Becuase of following error:
  Note: </br>
  accordint the following link: [spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot) , Unfortunately, OSIV (Open Session in View) is `enabled by default in Spring Boot`, and OSIV is really a bad idea from a performance and scalability perspective.
 
-	So, make sure that in the application.properties configuration file, you have the following entry:
-		spring.jpa.open-in-view=false
-	This will disable OSIV so that you can handle the LazyInitializationException the right way.
-	Anyway, DO NOT use the following Anti-Patterns as suggested by some of the answers:
-		Open Session in View (OSIV)
- 		hibernate.enable_lazy_load_no_trans
-	Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any LazyInitializationException.
+So, make sure that in the application.properties configuration file, you have the following entry: [`spring.jpa.open-in-view=false`](#-) </br>
+This will disable OSIV so that you can handle the `LazyInitializationException` the right way. </br>
+Anyway, DO NOT use the following Anti-Patterns as suggested by some of the answers: </br>
+`Open Session in View (OSIV)` or `hibernate.enable_lazy_load_no_trans`. </br>
+Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any `LazyInitializationException`.
 
  Question: 
-		How to handle the LazyInitializationException the right way?
+	How to handle the LazyInitializationException the right way?
  Answer:
-		see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
+	see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
 
  Since I'm using JPQL, 
  better use JOIN FETCH is the easiest way in the CustomerRepository 
 
  ```java
-	@Query("SELECT c FROM Customer c JOIN FETCH c.phoneNumbers")
-	Customer findWithJoinFetchFirstName(String firstname);
-  ```
+@Query("SELECT c FROM Customer c JOIN FETCH c.phoneNumbers")
+Customer findWithJoinFetchFirstName(String firstname);
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
