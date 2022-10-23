@@ -1,9 +1,10 @@
 ###### _
 
-<img src="https://img.shields.io/badge/-2. One2Many Bi directional Lazy Loading %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-2. One2Many Bi directional Lazy Loading %20-blue" height=50px>
 
 |     |  Subject           |
 |:---:|:------------------------------| 
+|     |[links](#links)  | 
 |  1  |[One2Many-Bi-Lazy Loading](#1_Bi_directional_Lazy_Loading)  | 
 |  2  |[OSIV Open Session In View](#2_OSIV_Open_Session_In_View)  | 
 |  3  |[Code](#3_code) |   
@@ -17,7 +18,18 @@
 
 --------------------------------------------------------------------------------------------------
 
+###### links
+
+<img src="https://img.shields.io/badge/- links %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
 ###### 1_Bi_directional_Lazy_Loading
+
+<img src="https://img.shields.io/badge/- 1. Bi_directional_Lazy_Loading %20-blue" height=40px>
 
 ## [General Note](#-)
 
