@@ -822,7 +822,8 @@ public class UserDaoImpl implements UserDao {
 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
 				could not initialize proxy - no Session; 
 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
-				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
+				failed to lazily initialize a collection of role: 
+					com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
 		
 		This is thrown by the RestController , and Not by the service layer 
 		Thus I define here to return a:
