@@ -19,11 +19,12 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	// One Hiberante Query which uses LEFT OUTER JOIN
 	UserEntity findById(long id);
-
+	
+	// Query with Named Parameters
 	@Query("SELECT user from UserEntity user WHERE user.id=:id")
 	UserEntity jpqlFindById(@Param("id") long id);
 	
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT user from UserEntity user WHERE user.id = ?1")
 	 * UserEntity jpqlFindById(long id);
 	 */
@@ -37,10 +38,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	UserEntity findByPid(long pid);
 
+	// Query with Named Parameters
 	@Query("SELECT user from UserEntity user WHERE user.pid=:pid")
 	UserEntity jpqlFindByPid(@Param("pid") long pid);
 	
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT user from UserEntity user WHERE user.pid = ?1")
 	 * UserEntity jpqlFindByPid(long pid);
 	 */
@@ -55,10 +57,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	UserEntity findByName(String name);
 
+	// Query with Named Parameters
 	@Query("SELECT user from UserEntity user WHERE user.name=:name")
 	UserEntity jpqlFindByName(@Param("name") String name);
 	
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT user from UserEntity user WHERE user.name = ?1")
 	 * UserEntity jpqlFindByName(String name);
 	 */
@@ -73,10 +76,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	UserEntity findByEmail(String email);
 
+	// Query with Named Parameters
 	@Query("SELECT user from UserEntity user WHERE user.email=:email")
 	UserEntity jpqlFindByEmail(@Param("email") String email);
 	
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT user from UserEntity user WHERE user.email = ?1")
 	 * UserEntity jpqlFindByEmail(String email);
 	 */
