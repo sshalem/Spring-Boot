@@ -104,12 +104,10 @@ public class UserEntity {
 			this.roles = new HashSet<>();
 		}
 		this.roles.add(role);
-		role.setUser(this);
 	}
 
 	public void removeRole(RoleEntity role) {
-		this.roles.remove(role);
-		// role.setUser(null);
+		this.roles.remove(role);		
 	}
 ```
 
@@ -131,11 +129,6 @@ public class RoleEntity {
 	private long id;
 	private String role;
 	private long pid;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	@JsonIgnore
-	private UserEntity user;
 	
 	// Default Constructor , Getters / Setters
 	// toString: don't add the associated entity in the toString method 
@@ -263,114 +256,6 @@ Package Layout:
 ### [`UserEntity`](#-)
 
 ```java
-package com.jpa.entity;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name = "USERS_TB")
-public class UserEntity implements Serializable {
-
-	private static final long serialVersionUID = -5199469587304114249L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private long pid;
-	private String name;
-	private String email;
-	private String password;
-
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
-	private Set<RoleEntity> roles;
-
-	public UserEntity() {
-		super();
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getPid() {
-		return pid;
-	}
-
-	public void setPid(long pid) {
-		this.pid = pid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Set<RoleEntity> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<RoleEntity> roles) {
-		this.roles = roles;
-	}
-
-	public void addRole(RoleEntity role) {
-		if (this.roles == null) {
-			this.roles = new HashSet<>();
-		}
-		this.roles.add(role);
-		role.setUser(this);
-	}
-
-	public void removeRole(RoleEntity role) {
-		this.roles.remove(role);
-//		role.setUser(null);
-	}
-
-	@Override
-	public String toString() {
-		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
-				+ password + "]";
-	}
-
-}
-
 ```
 
 ### [`RoleEntity`](#-)
@@ -404,13 +289,6 @@ public class RoleEntity implements Serializable {
 	private String role;
 	private long pid;
 
-	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
-	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
-	@ManyToOne(fetch = FetchType.LAZY)	
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
-	@JsonIgnore
-	private UserEntity user;
-
 	public RoleEntity() {
 		super();
 	}
@@ -442,14 +320,6 @@ public class RoleEntity implements Serializable {
 
 	public void setPid(long pid) {
 		this.pid = pid;
-	}
-
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
 	}
 
 	@Override
