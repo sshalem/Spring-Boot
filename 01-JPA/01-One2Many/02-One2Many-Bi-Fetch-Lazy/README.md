@@ -61,7 +61,7 @@ In the following examples I define my entities as follows:
 
 How to define the Entity's
 
-### [UserEntity ](#-) 
+### [UserEntity ](#-)  
 
 In the Parent Entity I add the :
 1. `mappedBy` - need to add the filed name of the cahild entity
