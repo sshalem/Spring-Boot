@@ -27,10 +27,11 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
 	List<RoleEntity> findById(long id);
 
+	// Query with Named Parameters
 	@Query("SELECT role FROM RoleEntity role WHERE role.id=:id")
 	List<RoleEntity> jpqlFindById(@Param("id") long id);
 		
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT role FROM RoleEntity role WHERE role.id = ?1")
 	 * List<RoleEntity> jpqlFindById(long id);
 	 */
@@ -44,10 +45,11 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
 	List<RoleEntity> findByRole(String role);
 
+	// Query with Named Parameters
 	@Query("SELECT r FROM RoleEntity r WHERE r.role=:role")
 	List<RoleEntity> jpqlFindByRole(@Param("role") String role);
 		
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT r FROM RoleEntity r WHERE r.role = ?1")
 	 * List<RoleEntity> jpqlFindByRole(String role);
 	 */
@@ -61,10 +63,11 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	
 	List<RoleEntity> findByPid(long pid);
 
+	// Query with Named Parameters
 	@Query("SELECT role FROM RoleEntity role WHERE role.pid=:pid")
 	List<RoleEntity> jpqlFindByPid(@Param("pid") long pid);
 		
-	/**
+	/** Query with Positioned Parameters
 	 * @Query("SELECT role from RoleEntity role WHERE role.pid = ?1")
 	 * List<RoleEntity> jpqlFindByPid(long pid);
 	 */
@@ -100,6 +103,7 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	
 	RoleEntity findByPidAndRole(long pid, String role);
 	
+	// Query with Named Parameters
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity jpqlFindRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
 
