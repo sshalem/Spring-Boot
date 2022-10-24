@@ -23,6 +23,7 @@
 
 ### OneToMany:
 1. [The best way to map a @OneToMany relationship with JPA and Hibernate](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
+2. [Most efficient way to map a @OneToMany relationship with JPA and Hibernate](https://medium.com/@rajibrath20/the-best-way-to-map-a-onetomany-relationship-with-jpa-and-hibernate-dbbf6dba00d3)
 
 
 ### DELETE with JPA:
@@ -34,7 +35,6 @@
 ### Lazy Loading :
 1. [Lazy Loading options](https://www.youtube.com/watch?v=XbT5oRJFp2E&ab_channel=TechnoTownTechie)
 2. [Lazy Loading another good explained](https://www.linkedin.com/pulse/spring-boot-lazy-initialized-entities-ashley-shookhye?trk=articles_directory)
-3. [Lazy JOIN FETCH - Baeldung](https://www.baeldung.com/java-jpa-lazy-collections)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
