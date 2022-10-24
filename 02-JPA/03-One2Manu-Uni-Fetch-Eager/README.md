@@ -31,6 +31,7 @@
 
 ### OneToMany:
 1. [The best way to map a @OneToMany relationship with JPA and Hibernate](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
+2. [Most efficient way to map a @OneToMany relationship with JPA and Hibernate](https://medium.com/@rajibrath20/the-best-way-to-map-a-onetomany-relationship-with-jpa-and-hibernate-dbbf6dba00d3)
 
 
 ### DELETE with JPA:
