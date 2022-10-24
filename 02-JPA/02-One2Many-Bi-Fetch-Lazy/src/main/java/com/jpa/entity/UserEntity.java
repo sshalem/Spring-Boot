@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "USERS_TB")
 public class UserEntity implements Serializable {
@@ -30,7 +28,6 @@ public class UserEntity implements Serializable {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {

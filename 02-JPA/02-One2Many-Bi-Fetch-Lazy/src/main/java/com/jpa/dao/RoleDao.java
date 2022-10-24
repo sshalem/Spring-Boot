@@ -2,16 +2,16 @@ package com.jpa.dao;
 
 import java.util.List;
 
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
+import com.jpa.dto.RoleDto;
+import com.jpa.dto.UserDto;
 
 public interface RoleDao {
 
-	List<RoleEntity> getRoleById(long id);
+	List<RoleDto> getRoleById(long id);
 
-	List<UserEntity> getUsersWithRoleName(String role);
+	List<UserDto> getUsersWithRoleName(String role);
 
-	List<RoleEntity> getRoleByPid(long pid);
+	List<RoleDto> getRoleByPid(long pid);
 
-	List<RoleEntity> getAllRoles();
+	List<RoleDto> getAllRoles();
 }
