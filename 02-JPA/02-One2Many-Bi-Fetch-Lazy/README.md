@@ -1144,10 +1144,10 @@ Console log shows we got a DTO object of `UserDTO`
 
 ![image](https://user-images.githubusercontent.com/36256986/197420376-e47438c1-7045-49e9-aafd-76b2edb1e06f.png)
 
-* Question :
+* Question : </br>
 	What if I will return a `UserEntity` instead of `UserDto` what will happend?
 
-* Answer :
+* Answer : </br>
 	
 
 
