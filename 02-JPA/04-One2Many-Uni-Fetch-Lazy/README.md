@@ -87,8 +87,7 @@ public class UserEntity {
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<RoleEntity> roles;
 	
 	// Default Constructor , Getters / Setters
@@ -102,13 +101,11 @@ public class UserEntity {
 		if (this.roles == null) {
 			this.roles = new HashSet<>();
 		}
-		this.roles.add(role);
-		role.setUser(this);
+		this.roles.add(role);		
 	}
 
 	public void removeRole(RoleEntity role) {
 		this.roles.remove(role);
-		// role.setUser(null);
 	}
 ```
 
@@ -131,11 +128,6 @@ public class RoleEntity {
 	private String role;
 	private long pid;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	@JsonIgnore
-	private UserEntity user;
-	
 	// Default Constructor , Getters / Setters
 	// toString: don't add the associated entity in the toString method 
 	// This will cause ```ERROR```
