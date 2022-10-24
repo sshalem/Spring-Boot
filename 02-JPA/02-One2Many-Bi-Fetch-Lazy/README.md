@@ -88,7 +88,6 @@ public class UserEntity {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
 	private Set<RoleEntity> roles;
 	
 	// Default Constructor , Getters / Setters
