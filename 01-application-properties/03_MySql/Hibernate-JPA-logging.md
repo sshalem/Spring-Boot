@@ -7,6 +7,12 @@ What is difference between [`spring.jpa.show-sql=true`](#-) & [`logging.level.or
 [`logging.level.org.hibernate.SQL=debug`](#-) - shows the logging as below: with the time stamp and the package name </br>
 `2021-04-21 12:02:27.553 DEBUG 496 --- [  restartedMain] org.hibernate.SQL   : drop table if exists customer` 
 
+Better to use the following  :
+```java
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+spring.jpa.properties.hibernate.format_sql=true
+```
 
 ```java
 # ===============================
