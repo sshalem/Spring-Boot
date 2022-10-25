@@ -1132,10 +1132,6 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
-### Get Methods:
-
-![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
-
 #### [`Following Methods are tested from `UserRepository`](#-)
 	
 ![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
