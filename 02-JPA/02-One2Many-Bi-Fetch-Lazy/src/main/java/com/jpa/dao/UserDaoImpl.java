@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ import com.jpa.repository.UserRepository;
 @Service
 public class UserDaoImpl implements UserDao {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -27,6 +31,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto createUser(UserEntity userEntity) {		
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : createUser(UserEntity userEntity)");
 		UserEntity userEntityFromDB = userRepository.save(userEntity);		
 		BeanUtils.copyProperties(userEntityFromDB, userDto);		
 		return userDto;
@@ -35,6 +40,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserById(long id) {
 		UserDto userDto = new UserDto();
+		LOGGER.info("method : getUserById(long id)");		
 //		UserEntity userEntity =  userRepository.findById(id);
 		UserEntity userEntity =  userRepository.jpqlFindById(id);
 //		UserEntity userEntity =  userRepository.nativeFindById(id);
@@ -44,7 +50,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserDto getUserByPid(long pid) {
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByPid(long pid)");		
 		UserEntity userEntity = userRepository.findByPid(pid);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -67,7 +74,8 @@ public class UserDaoImpl implements UserDao {
 	*/
 	@Override	
 	public UserDto getUserByName(String name) {				
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByName(String name)");
 		UserEntity userEntity = userRepository.findByName(name);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -76,6 +84,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserByEmail(String email) {
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : getUserByEmail(String email)");		
 		UserEntity userEntity = userRepository.findByEmail(email);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -83,9 +92,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		
-		List<UserEntity> userEntities = userRepository.findAll();
-		
+		LOGGER.info("method : getAllUsers()");	
+		// This Line invokes 1 query line
+		List<UserEntity> userEntities = userRepository.findAll();		
 		List<UserDto> returnedValue = new ArrayList<>();
 		UserDto userDto = new UserDto();
 		
@@ -98,6 +107,8 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public void removeUserByPid(long pid) {
+		LOGGER.info("method : removeUserByPid(long pid)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(pid);
 		userRepository.delete(userEntity);
 	}
@@ -125,9 +136,16 @@ public class UserDaoImpl implements UserDao {
 		
 		// Best Practice to return UserDto and not UserEntity , 
 		// But since I know that we have few rows of RoleEntity thus I return UserEntity
-		
+		LOGGER.info("method : addRoleToUser(long userPid, RoleEntity roleEntity)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		roleEntity.setPid(userPid);
+		/**
+		 * This line : userEntity.addRole(roleEntity) 
+		 * invokes 2 Queries lines:
+		 * select roles0_.user_id as user_id4_0_0_, roles0_.id as id1_0_0_, roles0_.id as id1_0_1_, roles0_.pid as pid2_0_1_, roles0_.role as role3_0_1_, roles0_.user_id as user_id4_0_1_ from roles_tb roles0_ where roles0_.user_id=?
+		 * insert into roles_tb (pid, role, user_id) values (?, ?, ?)
+		 */		
 		userEntity.addRole(roleEntity); 
 		
 		UserEntity savedUserEntity = userRepository.save(userEntity);		
@@ -177,13 +195,17 @@ public class UserDaoImpl implements UserDao {
 		 * (2) Query from UserRepo or RoleRepo 
 		 */
 
+		LOGGER.info("method : removeRoleFromUser(long userPid, String role)");
+		
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		
-		// (1) search for roelEntity from getRoles()		 
+		// (1) search for roelEntity from getRoles()	
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
 
+		// Looping thru the Set>RoleEntity> to get RoleEntiity: invokes 1 query line
 		for (RoleEntity r : roles) {
 			if (r.getRole().equals(role)) {
 				roleEntity = r;
@@ -202,11 +224,12 @@ public class UserDaoImpl implements UserDao {
 		 */
 //		roleRepository.delete(roleEntity);
 		
+		// This Line invokes 1 query line : userEntity.removeRole(roleEntity)
 		userEntity.removeRole(roleEntity);
 		
 		UserEntity returnedValue = userRepository.save(userEntity);
 			
-		return returnedValue;		
+		return returnedValue;
 	}	
 		
 }
