@@ -1214,8 +1214,7 @@ Console log shows we got a DTO object of `UserDTO`
 
 * Answer : </br>
 	
-
-
+![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
