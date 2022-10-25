@@ -1128,11 +1128,11 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 ###### 4_1_GET_POST_PUT_DELETE
 
-<img src="https://img.shields.io/badge/-4.1. User API GET %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-4.1. User API GET POST PUT DELETE %20-yellow" height=40px>
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
-#### [`Following Methods are tested from `UserRepository`](#-)
+#### [`Following Methods are tested from UserRepository`](#-)
 	
 ![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
 
