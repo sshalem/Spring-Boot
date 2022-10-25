@@ -276,8 +276,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "USERS_TB")
 public class UserEntity implements Serializable {
@@ -293,7 +291,6 @@ public class UserEntity implements Serializable {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -366,9 +363,7 @@ public class UserEntity implements Serializable {
 		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
 				+ password + "]";
 	}
-
 }
-
 ```
 
 ### [`RoleEntity`](#-)
@@ -749,10 +744,10 @@ import com.jpa.entity.UserEntity;
 
 public interface RoleDao {
 
-	List<RoleEntity> getRoleById(long id);
-	List<UserEntity> getUsersWithRoleName(String role);
-	List<RoleEntity> getRoleByPid(long pid);
-	List<RoleEntity> getAllRoles();
+	List<RoleDto> getRoleById(long id);
+	List<UserDto> getUsersWithRoleName(String role);
+	List<RoleDto> getRoleByPid(long pid);
+	List<RoleDto> getAllRoles();
 }
 ```
 
@@ -773,6 +768,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -787,6 +784,8 @@ import com.jpa.repository.UserRepository;
 @Service
 public class UserDaoImpl implements UserDao {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -796,6 +795,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto createUser(UserEntity userEntity) {		
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : createUser(UserEntity userEntity)");
 		UserEntity userEntityFromDB = userRepository.save(userEntity);		
 		BeanUtils.copyProperties(userEntityFromDB, userDto);		
 		return userDto;
@@ -804,6 +804,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserById(long id) {
 		UserDto userDto = new UserDto();
+		LOGGER.info("method : getUserById(long id)");		
 //		UserEntity userEntity =  userRepository.findById(id);
 		UserEntity userEntity =  userRepository.jpqlFindById(id);
 //		UserEntity userEntity =  userRepository.nativeFindById(id);
@@ -813,7 +814,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserDto getUserByPid(long pid) {
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByPid(long pid)");		
 		UserEntity userEntity = userRepository.findByPid(pid);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -828,8 +830,7 @@ public class UserDaoImpl implements UserDao {
 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
 				could not initialize proxy - no Session; 
 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
-				failed to lazily initialize a collection of role: 
-					com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
+				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
 		
 		This is thrown by the RestController , and Not by the service layer 
 		Thus I define here to return a:
@@ -837,7 +838,8 @@ public class UserDaoImpl implements UserDao {
 	*/
 	@Override	
 	public UserDto getUserByName(String name) {				
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByName(String name)");
 		UserEntity userEntity = userRepository.findByName(name);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -846,6 +848,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserByEmail(String email) {
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : getUserByEmail(String email)");		
 		UserEntity userEntity = userRepository.findByEmail(email);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -853,9 +856,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		
-		List<UserEntity> userEntities = userRepository.findAll();
-		
+		LOGGER.info("method : getAllUsers()");	
+		// This Line invokes 1 query line
+		List<UserEntity> userEntities = userRepository.findAll();		
 		List<UserDto> returnedValue = new ArrayList<>();
 		UserDto userDto = new UserDto();
 		
@@ -868,6 +871,8 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public void removeUserByPid(long pid) {
+		LOGGER.info("method : removeUserByPid(long pid)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(pid);
 		userRepository.delete(userEntity);
 	}
@@ -895,9 +900,16 @@ public class UserDaoImpl implements UserDao {
 		
 		// Best Practice to return UserDto and not UserEntity , 
 		// But since I know that we have few rows of RoleEntity thus I return UserEntity
-		
+		LOGGER.info("method : addRoleToUser(long userPid, RoleEntity roleEntity)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		roleEntity.setPid(userPid);
+		/**
+		 * This line : userEntity.addRole(roleEntity) 
+		 * invokes 2 Queries lines:
+		 * (1) select query
+		 * (2) insert into roles_tb (pid, role, user_id) values (?, ?, ?)
+		 */		
 		userEntity.addRole(roleEntity); 
 		
 		UserEntity savedUserEntity = userRepository.save(userEntity);		
@@ -947,13 +959,17 @@ public class UserDaoImpl implements UserDao {
 		 * (2) Query from UserRepo or RoleRepo 
 		 */
 
+		LOGGER.info("method : removeRoleFromUser(long userPid, String role)");
+		
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		
-		// (1) search for roelEntity from getRoles()		 
+		// (1) search for roelEntity from getRoles()	
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
 
+		// Looping thru the Set>RoleEntity> to get RoleEntiity: invokes 1 query line
 		for (RoleEntity r : roles) {
 			if (r.getRole().equals(role)) {
 				roleEntity = r;
@@ -972,9 +988,10 @@ public class UserDaoImpl implements UserDao {
 		 */
 //		roleRepository.delete(roleEntity);
 		
+		// This Line invokes 1 query line : userEntity.removeRole(roleEntity)
 		userEntity.removeRole(roleEntity);		
 		UserEntity returnedValue = userRepository.save(userEntity);			
-		return returnedValue;		
+		return returnedValue;
 	}			
 }
 ```
@@ -984,44 +1001,93 @@ public class UserDaoImpl implements UserDao {
 ```java
 package com.jpa.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jpa.dto.RoleDto;
+import com.jpa.dto.UserDto;
 import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 import com.jpa.repository.RoleRepository;
 import com.jpa.repository.UserRepository;
 
 @Service
-public class RoleDaoImpl implements RoleDao{
+public class RoleDaoImpl implements RoleDao {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
+	/**
+	 * Since I have @JsonIgnore on my RoleEntity association 
+	 * Thus I don'g have to return a List<RoleDto> 
+	 * I could return List<RoleEntity>
+	 * But best practice is to return a DTO object
+	 */
 	@Override
-	public List<RoleEntity> getRoleById(long id) {
-		return roleRepository.findById(id);
+	public List<RoleDto> getRoleById(long id) {
+		List<RoleEntity> roles = roleRepository.findById(id);		
+		return roleDtoConverter(roles);
 	}
 
-	@Override	
-	public List<UserEntity> getUsersWithRoleName(String role) {
+	/**
+	 * I must return a List<UserDto> with FETCH.LAZY other wise I will get error
+	 * 		.w.s.m.s.DefaultHandlerExceptionResolver : 
+	 * 		Resolved [org.springframework.http.converter.HttpMessageNotWritableException: 
+	 * 			Could not write JSON: 
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session; 
+	 * 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session 
+	 * 				(through reference chain: java.util.ArrayList[0]->com.jpa.entity.UserEntity["roles"])]
+	 * 
+	 * 1. Best Practice : must return List<UserDto>
+	 * 2. this will work as well : add @JsonIgnore annotation at UserEntity to the Association 
+	 */
+	@Override
+	public List<UserDto> getUsersWithRoleName(String role) {
 //		return roleRepository.jpqlFindUsersWithRoleName(role);
-		return userRepository.nativeFindUsersWithRoleName(role);
-	}
- 
-	@Override
-	public List<RoleEntity> getRoleByPid(long pid) {
-		return roleRepository.findByPid(pid);
+		List<UserEntity> users = userRepository.nativeFindUsersWithRoleName(role);
+		return userDtoConverter(users);		
 	}
 
 	@Override
-	public List<RoleEntity> getAllRoles() {
-		return roleRepository.findAll();
+	public List<RoleDto> getRoleByPid(long pid) {
+		List<RoleEntity> roles = roleRepository.findByPid(pid);
+		return roleDtoConverter(roles);
+	}
+
+	@Override
+	public List<RoleDto> getAllRoles() {
+		List<RoleEntity> roles = roleRepository.findAll();
+		return roleDtoConverter(roles);
+	}
+	
+	private List<UserDto> userDtoConverter(List<UserEntity> users) {
+		List<UserDto> returnedValue = new ArrayList<>();
+		UserDto userDto = new UserDto();
+		for(UserEntity user: users) {
+			BeanUtils.copyProperties(user, userDto);
+			returnedValue.add(userDto);	
+		}
+		return returnedValue;
+	}
+	
+	private List<RoleDto> roleDtoConverter(List<RoleEntity> roles) {
+		List<RoleDto> returnedValue = new ArrayList<>();
+		RoleDto roleDto = new RoleDto();
+		for(RoleEntity role: roles) {
+			BeanUtils.copyProperties(role, roleDto);
+			returnedValue.add(roleDto);	
+		}
+		return returnedValue;
 	}
 }
 ```
