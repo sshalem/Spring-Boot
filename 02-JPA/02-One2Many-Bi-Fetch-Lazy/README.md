@@ -16,10 +16,7 @@
 |     |3.6  [Dto](#3_6_Dto) | 
 |     |3.7  [FrontEnd](#3_7_FrontEnd) | 
 |  4  |[Test App](#4_test_app) | 
-|     |4.1  [User API - GET](#4_1_User_API_GET) | 
-|     |4.2  [User API - POST](#4_2_User_API_POST) | 
-|     |4.3  [User API - PUT](#4_3_User_API_PUT) | 
-|     |4.4  [User API - DELETE](#4_4_User_API_DELETE) | 
+|     |4.1  [User API - GET, POST, PUT, DELETE](#4_1_GET_POST_PUT_DELETE) | 
 |     |4.5  [Role API](#4_2_Role_API) | 
 
 
@@ -1129,7 +1126,7 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 --------------------------------------------------------------------------------------------------
 
-###### 4_1_User_API_GET
+###### 4_1_GET_POST_PUT_DELETE
 
 <img src="https://img.shields.io/badge/-4.1. User API GET %20-yellow" height=40px>
 
@@ -1139,16 +1136,7 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 
 ![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
 
-#### [`Following Methods are tested from `UserRepository` `](#-)
-
-Console log shows we got a DTO object of `UserDTO`
-
-![image](https://user-images.githubusercontent.com/36256986/197420376-e47438c1-7045-49e9-aafd-76b2edb1e06f.png)
-
-* Question : </br>
-	What if I will return a `UserEntity` instead of `UserDto` what will happend?
-
-* Answer : </br>
+#### [`Following Methods are tested from `UserRepository`](#-)
 	
 ![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
 
