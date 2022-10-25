@@ -16,10 +16,7 @@
 |     |3.6  [Dto](#3_6_Dto) | 
 |     |3.7  [FrontEnd](#3_7_FrontEnd) | 
 |  4  |[Test App](#4_test_app) | 
-|     |4.1  [User API - GET](#4_1_User_API_GET) | 
-|     |4.2  [User API - POST](#4_2_User_API_POST) | 
-|     |4.3  [User API - PUT](#4_3_User_API_PUT) | 
-|     |4.4  [User API - DELETE](#4_4_User_API_DELETE) | 
+|     |4.1  [User API - GET, POST, PUT, DELETE](#4_1_GET_POST_PUT_DELETE) | 
 |     |4.5  [Role API](#4_2_Role_API) | 
 
 
@@ -276,8 +273,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "USERS_TB")
 public class UserEntity implements Serializable {
@@ -293,7 +288,6 @@ public class UserEntity implements Serializable {
 	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JsonIgnore
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -366,9 +360,7 @@ public class UserEntity implements Serializable {
 		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
 				+ password + "]";
 	}
-
 }
-
 ```
 
 ### [`RoleEntity`](#-)
@@ -749,10 +741,10 @@ import com.jpa.entity.UserEntity;
 
 public interface RoleDao {
 
-	List<RoleEntity> getRoleById(long id);
-	List<UserEntity> getUsersWithRoleName(String role);
-	List<RoleEntity> getRoleByPid(long pid);
-	List<RoleEntity> getAllRoles();
+	List<RoleDto> getRoleById(long id);
+	List<UserDto> getUsersWithRoleName(String role);
+	List<RoleDto> getRoleByPid(long pid);
+	List<RoleDto> getAllRoles();
 }
 ```
 
@@ -773,6 +765,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -787,6 +781,8 @@ import com.jpa.repository.UserRepository;
 @Service
 public class UserDaoImpl implements UserDao {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -796,6 +792,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto createUser(UserEntity userEntity) {		
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : createUser(UserEntity userEntity)");
 		UserEntity userEntityFromDB = userRepository.save(userEntity);		
 		BeanUtils.copyProperties(userEntityFromDB, userDto);		
 		return userDto;
@@ -804,6 +801,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserById(long id) {
 		UserDto userDto = new UserDto();
+		LOGGER.info("method : getUserById(long id)");		
 //		UserEntity userEntity =  userRepository.findById(id);
 		UserEntity userEntity =  userRepository.jpqlFindById(id);
 //		UserEntity userEntity =  userRepository.nativeFindById(id);
@@ -813,7 +811,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserDto getUserByPid(long pid) {
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByPid(long pid)");		
 		UserEntity userEntity = userRepository.findByPid(pid);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -828,8 +827,7 @@ public class UserDaoImpl implements UserDao {
 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
 				could not initialize proxy - no Session; 
 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
-				failed to lazily initialize a collection of role: 
-					com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
+				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
 		
 		This is thrown by the RestController , and Not by the service layer 
 		Thus I define here to return a:
@@ -837,7 +835,8 @@ public class UserDaoImpl implements UserDao {
 	*/
 	@Override	
 	public UserDto getUserByName(String name) {				
-		UserDto userDto = new UserDto();		
+		UserDto userDto = new UserDto();	
+		LOGGER.info("method : getUserByName(String name)");
 		UserEntity userEntity = userRepository.findByName(name);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -846,6 +845,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDto getUserByEmail(String email) {
 		UserDto userDto = new UserDto();		
+		LOGGER.info("method : getUserByEmail(String email)");		
 		UserEntity userEntity = userRepository.findByEmail(email);		
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
@@ -853,9 +853,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		
-		List<UserEntity> userEntities = userRepository.findAll();
-		
+		LOGGER.info("method : getAllUsers()");	
+		// This Line invokes 1 query line
+		List<UserEntity> userEntities = userRepository.findAll();		
 		List<UserDto> returnedValue = new ArrayList<>();
 		UserDto userDto = new UserDto();
 		
@@ -868,6 +868,8 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public void removeUserByPid(long pid) {
+		LOGGER.info("method : removeUserByPid(long pid)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(pid);
 		userRepository.delete(userEntity);
 	}
@@ -895,9 +897,16 @@ public class UserDaoImpl implements UserDao {
 		
 		// Best Practice to return UserDto and not UserEntity , 
 		// But since I know that we have few rows of RoleEntity thus I return UserEntity
-		
+		LOGGER.info("method : addRoleToUser(long userPid, RoleEntity roleEntity)");
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		roleEntity.setPid(userPid);
+		/**
+		 * This line : userEntity.addRole(roleEntity) 
+		 * invokes 2 Queries lines:
+		 * (1) select query
+		 * (2) insert into roles_tb (pid, role, user_id) values (?, ?, ?)
+		 */		
 		userEntity.addRole(roleEntity); 
 		
 		UserEntity savedUserEntity = userRepository.save(userEntity);		
@@ -947,13 +956,17 @@ public class UserDaoImpl implements UserDao {
 		 * (2) Query from UserRepo or RoleRepo 
 		 */
 
+		LOGGER.info("method : removeRoleFromUser(long userPid, String role)");
+		
+		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		
-		// (1) search for roelEntity from getRoles()		 
+		// (1) search for roelEntity from getRoles()	
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
 
+		// Looping thru the Set>RoleEntity> to get RoleEntiity: invokes 1 query line
 		for (RoleEntity r : roles) {
 			if (r.getRole().equals(role)) {
 				roleEntity = r;
@@ -972,9 +985,10 @@ public class UserDaoImpl implements UserDao {
 		 */
 //		roleRepository.delete(roleEntity);
 		
+		// This Line invokes 1 query line : userEntity.removeRole(roleEntity)
 		userEntity.removeRole(roleEntity);		
 		UserEntity returnedValue = userRepository.save(userEntity);			
-		return returnedValue;		
+		return returnedValue;
 	}			
 }
 ```
@@ -984,44 +998,93 @@ public class UserDaoImpl implements UserDao {
 ```java
 package com.jpa.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jpa.dto.RoleDto;
+import com.jpa.dto.UserDto;
 import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 import com.jpa.repository.RoleRepository;
 import com.jpa.repository.UserRepository;
 
 @Service
-public class RoleDaoImpl implements RoleDao{
+public class RoleDaoImpl implements RoleDao {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
+	/**
+	 * Since I have @JsonIgnore on my RoleEntity association 
+	 * Thus I don'g have to return a List<RoleDto> 
+	 * I could return List<RoleEntity>
+	 * But best practice is to return a DTO object
+	 */
 	@Override
-	public List<RoleEntity> getRoleById(long id) {
-		return roleRepository.findById(id);
+	public List<RoleDto> getRoleById(long id) {
+		List<RoleEntity> roles = roleRepository.findById(id);		
+		return roleDtoConverter(roles);
 	}
 
-	@Override	
-	public List<UserEntity> getUsersWithRoleName(String role) {
+	/**
+	 * I must return a List<UserDto> with FETCH.LAZY other wise I will get error
+	 * 		.w.s.m.s.DefaultHandlerExceptionResolver : 
+	 * 		Resolved [org.springframework.http.converter.HttpMessageNotWritableException: 
+	 * 			Could not write JSON: 
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session; 
+	 * 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
+	 * 				could not initialize proxy - no Session 
+	 * 				(through reference chain: java.util.ArrayList[0]->com.jpa.entity.UserEntity["roles"])]
+	 * 
+	 * 1. Best Practice : must return List<UserDto>
+	 * 2. this will work as well : add @JsonIgnore annotation at UserEntity to the Association 
+	 */
+	@Override
+	public List<UserDto> getUsersWithRoleName(String role) {
 //		return roleRepository.jpqlFindUsersWithRoleName(role);
-		return userRepository.nativeFindUsersWithRoleName(role);
-	}
- 
-	@Override
-	public List<RoleEntity> getRoleByPid(long pid) {
-		return roleRepository.findByPid(pid);
+		List<UserEntity> users = userRepository.nativeFindUsersWithRoleName(role);
+		return userDtoConverter(users);		
 	}
 
 	@Override
-	public List<RoleEntity> getAllRoles() {
-		return roleRepository.findAll();
+	public List<RoleDto> getRoleByPid(long pid) {
+		List<RoleEntity> roles = roleRepository.findByPid(pid);
+		return roleDtoConverter(roles);
+	}
+
+	@Override
+	public List<RoleDto> getAllRoles() {
+		List<RoleEntity> roles = roleRepository.findAll();
+		return roleDtoConverter(roles);
+	}
+	
+	private List<UserDto> userDtoConverter(List<UserEntity> users) {
+		List<UserDto> returnedValue = new ArrayList<>();
+		UserDto userDto = new UserDto();
+		for(UserEntity user: users) {
+			BeanUtils.copyProperties(user, userDto);
+			returnedValue.add(userDto);	
+		}
+		return returnedValue;
+	}
+	
+	private List<RoleDto> roleDtoConverter(List<RoleEntity> roles) {
+		List<RoleDto> returnedValue = new ArrayList<>();
+		RoleDto roleDto = new RoleDto();
+		for(RoleEntity role: roles) {
+			BeanUtils.copyProperties(role, roleDto);
+			returnedValue.add(roleDto);	
+		}
+		return returnedValue;
 	}
 }
 ```
@@ -1063,193 +1126,17 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 --------------------------------------------------------------------------------------------------
 
-###### 4_1_User_API_GET
+###### 4_1_GET_POST_PUT_DELETE
 
-<img src="https://img.shields.io/badge/-4.1. User API GET %20-yellow" height=40px>
+<img src="https://img.shields.io/badge/-4.1. User API GET POST PUT DELETE %20-yellow" height=40px>
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
-### Get Methods:
-
-![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
-
-#### [`Following Methods are tested from `UserRepository` `](#-)
-
-```sql
-// (1)
-UserEntity findById(long id);
-
-// (2)
-@Query("SELECT user from UserEntity user WHERE user.id=:id")
-UserEntity jpqlFindById(@Param("id") long id);
+#### [`Following Methods are tested from UserRepository`](#-)
 	
-/** Another way to write above query
- * @Query("SELECT user from UserEntity user WHERE user.id = ?1")
- * UserEntity jpqlFindById(long id);
- */
-
-// (3)
-@Query(value = "SELECT * FROM USERS_TB WHERE id=:id", nativeQuery = true)
-UserEntity nativeFindById(@Param("id") long id);
-```
-
-#### [`UserDaoImpl method`](#-)
-
-```java
-@Override
-public UserDto getUserById(long id) {
-	UserDto userDto = new UserDto();
-//	UserEntity userEntity =  userRepository.findById(id);
-//	UserEntity userEntity =  userRepository.jpqlFindById(id);
-	UserEntity userEntity =  userRepository.nativeFindById(id);
-	BeanUtils.copyProperties(userEntity, userDto);		
-	return userDto;		
-}
-```
-
-#### [`Hibernate Queries`](#-)
-
-with methods 1/2 , Hibernate makes one SQL query w/o fetching Roles , so lazy Loading works:
-
-```sql
-Hibernate: 
-    select
-        userentity0_.id as id1_1_,
-        userentity0_.email as email2_1_,
-        userentity0_.name as name3_1_,
-        userentity0_.password as password4_1_,
-        userentity0_.pid as pid5_1_ 
-    from
-        users_tb userentity0_ 
-    where
-        userentity0_.id=?
-```
-
-with method 3 , Hibernate makes one SQL query w/o fetching Roles (native SQL query) :
-
-```sql
-Hibernate: 
-    SELECT
-        * 
-    FROM
-        USERS_TB 
-    WHERE
-        id=?
-```
-
-#### [`Response Data`](#-)
-
-Console log shows we got a DTO object of `UserDTO`
-
-![image](https://user-images.githubusercontent.com/36256986/197420376-e47438c1-7045-49e9-aafd-76b2edb1e06f.png)
-
-* Question : </br>
-	What if I will return a `UserEntity` instead of `UserDto` what will happend?
-
-* Answer : </br>
-	
-
-
+![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-###### 4_2_User_API_POST
-
-<img src="https://img.shields.io/badge/-4.2. User API POST %20-yellow" height=40px>
-
-Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
-
-### POST Methods:
-
-![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
-
-Following Methods are tested from `UserRepository`
-
-```sql
-
-```
-
-methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
-
-```sql
-
-```
-
-methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
-
-```sql
-
-```
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-###### 4_3_User_API_PUT
-
-<img src="https://img.shields.io/badge/-4.3. User API PUT %20-yellow" height=40px>
-
-Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
-
-### POST Methods:
-
-![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
-
-Following Methods are tested from `UserRepository`
-
-```sql
-
-```
-
-methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
-
-```sql
-
-```
-
-methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
-
-```sql
-
-```
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
-
-###### 4_4_User_API_PUT
-
-<img src="https://img.shields.io/badge/-4.4. User API DELETE %20-yellow" height=40px>
-
-Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
-
-### POST Methods:
-
-![image](https://user-images.githubusercontent.com/36256986/197419708-ff8fa985-a081-434b-a2db-d20aba904386.png)
-
-Following Methods are tested from `UserRepository`
-
-```sql
-
-```
-
-methods 1/2  makes one SQL query w/o fetching Roles , so lazy Loading works:
-
-```sql
-
-```
-
-methods 3 makes one SQL query w/o fetching Roles (native SQL query) :
-
-```sql
-
-```
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---------------------------------------------------------------------------------------------------
 
 
 ###### 4_5_Role_API
