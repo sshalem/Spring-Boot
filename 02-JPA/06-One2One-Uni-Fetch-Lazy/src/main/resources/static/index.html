@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>OneToMany , Uni-Directional , <span class="lazy">Fetch Lazy</span></h2>
+    <section>
+      <article class="users">
+        <p>User Controller API</p>
+        <div class="methods-container">
+          <div>
+            <span>GET Methods</span>
+            <span><button id="getUserById">get user By Id</button><input type="text" id="userId" placeholder="id" /></span>
+            <span><button id="getUserByPid">get user By Pid</button><input type="text" id="userPid" placeholder="Pid" /></span>
+            <span><button id="getUserByName">get user By Name</button><input type="text" id="userName" placeholder="name" /></span>
+            <span><button id="getUserByEmail">get user By Email</button><input type="text" id="userEmail" placeholder="Email" /></span>
+            <span><button id="getAllUsers">get All users</button><input type="text" id="allUsers" disabled /></span>
+          </div>
+          <!-- start POST PUT DELETE -->
+          <div class="modification-methods">
+            <span>POST</span>
+            <button id="createUsers">create user</button>
+            <span><input type="text" id="createUserPid" placeholder="pid" /></span>
+            <span><input type="text" id="createUserName" placeholder="name" /></span>
+            <span><input type="text" id="createUserEmail" placeholder="email" /></span>
+            <span><input type="text" id="createUserPassword" placeholder="password" /></span>
+          </div>
+          <div class="modification-methods">
+            <span>PUT</span>
+            <span>
+              <button id="updateUserWithRoles">add Role to User</button><input type="text" id="updateRoleName" placeholder="role name" />
+              <input type="text" id="updatePid" placeholder="pid" />
+            </span>
+          </div>
+          <div>
+            <span>DELETE</span>
+            <span>
+              <button id="removeRole">remove Role</button><input type="text" id="deleteRoleName" placeholder="role name" /><input
+                type="text"
+                id="deleteRolePid"
+                placeholder="pid"
+              />
+            </span>
+            <span><button id="removeUser">remove User</button><input type="text" id="inputRemoveUser" placeholder="user name" /></span>
+          </div>
+          <!-- end POST PUT DELETE -->
+        </div>
+      </article>
+      <article class="roles">
+        <p>Roles Controller API</p>
+        <div class="methods-container">
+          <div>
+            <span>GET Methods</span>
+            <span><button id="getRoleById">get Role By Id</button><input type="text" id="roleId" /></span>
+            <span><button id="getUsersWithRolename">get Users with role</button><input type="text" id="roleRolename" /></span>
+            <span><button id="getRoleByPid">get Roles By pid</button><input type="text" id="rolePid" /></span>
+            <span><button id="getAllRoles">get All roles</button><input type="text" id="allRoles" disabled /></span>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="./js/users.js" type="module"></script>
+    <script src="./js/roles.js" type="module"></script>
+  </body>
+</html>
