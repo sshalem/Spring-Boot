@@ -1,50 +1,50 @@
-###### _
+###### \_
 
 <img src="https://img.shields.io/badge/-2. One2Many Bi directional Lazy Loading %20-blue" height=50px>
 
-|     |  Subject           |
-|:---:|:------------------------------| 
-|     |[links](#links)  | 
-|  1  |[One2Many-Bi-Lazy Loading](#1_Bi_directional_Lazy_Loading)  | 
-|  2  |[OSIV Open Session In View](#2_OSIV_Open_Session_In_View)  | 
-|  3  |[Code](#3_code) |   
-|     |3.1  [dependencies](#3_1_dependencies) | 
-|     |3.2  [Entities](#3_2_Entitiy) | 
-|     |3.3  [Repository](#3_3_Repository) | 
-|     |3.4  [Dao](#3_4_Dao) | 
-|     |3.5  [DaoImpl](#3_5_Dao_Impl) | 
-|     |3.6  [Dto](#3_6_Dto) | 
-|     |3.7  [FrontEnd](#3_7_FrontEnd) | 
-|  4  |[Test App](#4_test_app) | 
-|     |4.1  [User API - GET, POST, PUT, DELETE](#4_1_GET_POST_PUT_DELETE) | 
-|     |4.5  [Role API](#4_2_Role_API) | 
+|     | Subject                                                           |
+| :-: | :---------------------------------------------------------------- |
+|     | [links](#links)                                                   |
+|  1  | [One2Many-Bi-Lazy Loading](#1_Bi_directional_Lazy_Loading)        |
+|  2  | [OSIV Open Session In View](#2_OSIV_Open_Session_In_View)         |
+|  3  | [Code](#3_code)                                                   |
+|     | 3.1 [dependencies](#3_1_dependencies)                             |
+|     | 3.2 [Entities](#3_2_Entitiy)                                      |
+|     | 3.3 [Repository](#3_3_Repository)                                 |
+|     | 3.4 [Dao](#3_4_Dao)                                               |
+|     | 3.5 [DaoImpl](#3_5_Dao_Impl)                                      |
+|     | 3.6 [Dto](#3_6_Dto)                                               |
+|     | 3.7 [FrontEnd](#3_7_FrontEnd)                                     |
+|  4  | [Test App](#4_test_app)                                           |
+|     | 4.1 [User API - GET, POST, PUT, DELETE](#4_1_GET_POST_PUT_DELETE) |
+|     | 4.5 [Role API](#4_2_Role_API)                                     |
 
-
---------------------------------------------------------------------------------------------------
+---
 
 ###### links
 
 <img src="https://img.shields.io/badge/- links %20-blue" height=40px>
 
 ### OneToMany:
+
 1. [The best way to map a @OneToMany relationship with JPA and Hibernate](https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/)
 
-
 ### DELETE with JPA:
+
 1. [Deleting Data in Spring Boot with JPA and Hibernate](https://hellokoding.com/deleting-data-with-jpa-hibernate/)
 2. [different ways to delete a child entity in JPA/hibernate](https://fullstackdeveloper.guru/2020/08/17/what-are-the-different-ways-to-delete-a-child-entity-in-jpa-hibernate-through-spring-data/)
 3. [How does orphanRemoval work with JPA and Hibernate](https://vladmihalcea.com/orphanremoval-jpa-hibernate/)
 4. [JPA how to remove parent without delete children](https://itecnote.com/tecnote/jpa-how-to-remove-parent-without-delete-children/)
 
 ### Lazy Loading :
+
 1. [Lazy Loading options](https://www.youtube.com/watch?v=XbT5oRJFp2E&ab_channel=TechnoTownTechie)
 2. [Lazy Loading another good explained](https://www.linkedin.com/pulse/spring-boot-lazy-initialized-entities-ashley-shookhye?trk=articles_directory)
 3. [Lazy JOIN FETCH - Baeldung](https://www.baeldung.com/java-jpa-lazy-collections)
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 1_Bi_directional_Lazy_Loading
 
@@ -53,25 +53,26 @@
 ## [General Note](#-)
 
 In the following examples I define my entities as follows:
-* [```UserEntity```](#-) - Is parent Entity
-* [```RoleEntity```](#-) - Is Child Entity
+
+- [`UserEntity`](#-) - Is parent Entity
+- [`RoleEntity`](#-) - Is Child Entity
 
 How to define the Entity's
 
-### [UserEntity ](#-)  
+### [UserEntity ](#-)
 
 In the Parent Entity I add the :
+
 1. `mappedBy` - need to add the filed name of the cahild entity
-2. `cascade` 
-3. `fetch` - By default in One2Many the Fetch is Lazy
+2. `cascade`
+3. `fetch` - `FetchType.LAZY` By default in One2Many the Fetch is Lazy
 4. `orphanRemoval` - need to set to `true` so we can remove child Entity from Parent Entity
 5. `@JsonIgnore` - With Lazy Laoding approach , need add it to Parent entity, because we Might Get LazyLoading Exception , because it accnot hnalde Entity when session is closed
-6. Add 2 methods 
-	* `addRole`
-	* `removeRole`
+6. Add 2 methods
+   - `addRole`
+   - `removeRole`
 
-
-```java
+````java
 @Entity
 @Table(name = "USERS_TB")
 public class UserEntity {
@@ -86,14 +87,14 @@ public class UserEntity {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<RoleEntity> roles;
-	
+
 	// Default Constructor , Getters / Setters
-	// toString: don't add the associated entity in the toString method 
+	// toString: don't add the associated entity in the toString method
 	// This will cause ```ERROR```
 	.
 	.
 	.
-	
+
 	public void addRole(RoleEntity role) {
 		if (this.roles == null) {
 			this.roles = new HashSet<>();
@@ -106,17 +107,18 @@ public class UserEntity {
 		this.roles.remove(role);
 		// role.setUser(null);
 	}
-```
+````
 
 ### [RoleEntity ](#-)
 
 In the Child Entity I add the :
-1. `@ManyToOne` 
-2. `@JoinColumn(name = "user_id")` - thats the foreign key from UserEntity 
+
+1. `@ManyToOne`
+2. `@JoinColumn(name = "user_id")` - thats the foreign key from UserEntity
 3. `fetch` - set Fetch.LAZY (By default in Many2One the Fetch is Eager)
 4. `@JsonIgnore` - must add it to child entity, otherwise we will have a `stack overflow` error.
 
-```java
+````java
 @Entity
 @Table(name = "ROLES_TB")
 public class RoleEntity {
@@ -131,18 +133,18 @@ public class RoleEntity {
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private UserEntity user;
-	
+
 	// Default Constructor , Getters / Setters
-	// toString: don't add the associated entity in the toString method 
+	// toString: don't add the associated entity in the toString method
 	// This will cause ```ERROR```
 	.
 	.
-	.	
-```
+	.
+````
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 2_OSIV_Open_Session_In_View
 
@@ -151,43 +153,46 @@ public class RoleEntity {
 In application.properties file I define the property of: [`spring.jpa.open-in-view=false`](#-) </br>
 Becuase of following error:
 
-	  WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default.
+      WARN 13496 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default.
           Therefore, database queries may be performed during view rendering.
           Explicitly configure spring.jpa.open-in-view to disable this warning
- 
- BUT,
- when using this parameter as set to `false`, and we are using `FetchType.LAZY`, it will throw Lazy fetch error.</br>
- So , 2 options are :
- 1. No to add it at all (this way we still see the warning but it won't affect the lazy loading)
- 2. add this : [`spring.jpa.open-in-view=true`](#-) and set it to true, this will make  the warining disappear and lazy loading still works as expected.
- 
- Note: </br>
- accordint the following link: [spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot) , Unfortunately, OSIV (Open Session in View) is `enabled by default in Spring Boot`, and OSIV is really a bad idea from a performance and scalability perspective.
+
+BUT,
+when using this parameter as set to `false`, and we are using `FetchType.LAZY`, it will throw Lazy fetch error.</br>
+So , 2 options are :
+
+1.  Not to add it at all (this way we still see the warning but it won't affect the lazy loading)
+2.  add this : [`spring.jpa.open-in-view=true`](#-) and set it to true, this will make the warining disappear and lazy loading still works as expected.
+
+Note: </br>
+accordint the following link: [spring.jpa.open-in-view=true](https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot) , Unfortunately, OSIV (Open Session in View) is `enabled by default in Spring Boot`, and OSIV is really a bad idea from a performance and scalability perspective.
 
 So, make sure that in the application.properties configuration file, you have the following entry set as false: </br>
-* [`spring.jpa.open-in-view=false`](#-) </br>
+
+- [`spring.jpa.open-in-view=false`](#-) </br>
 
 This will disable OSIV so that you can handle the `LazyInitializationException` the right way. </br>
 Anyway, DO NOT use the following Anti-Patterns as suggested by some of the answers: </br>
+
 1. `Open Session in View (OSIV)` or `hibernate.enable_lazy_load_no_trans`. </br>
 2. Sometimes, a DTO projection is a better choice than fetching entities, and this way, you won't get any `LazyInitializationException`.
 
-* Question: </br>
-How to handle the LazyInitializationException the right way?
-* Answer:</br>
-see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
+- Question: </br>
+  How to handle the LazyInitializationException the right way?
+- Answer:</br>
+  see in the link [handle LazyInitializationException](https://www.youtube.com/watch?v=6p-fuwVxryg&ab_channel=ThorbenJanssen)
 
- Since I'm using JPQL, 
- better use JOIN FETCH is the easiest way in the CustomerRepository 
+Since I'm using JPQL,
+better use JOIN FETCH is the easiest way in the CustomerRepository
 
- ```java
+```java
 @Query("SELECT c FROM Customer c JOIN FETCH c.phoneNumbers")
 Customer findWithJoinFetchFirstName(String firstname);
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_code
 
@@ -225,14 +230,15 @@ POM file:
 </dependencies>
 ```
 
-Code  :
+Code :
+
 1. [`dependencies`](#-)
 2. [`Entity`](#-)
 3. [`Repository`](#-)
 4. [`Dao`](#-)
 5. [`DaoImpl`](#-)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_1_dependencies
 
@@ -246,10 +252,9 @@ Package Layout:
 
 ![image](https://user-images.githubusercontent.com/36256986/197415424-d2565f01-f099-4022-9c17-d09832ebc4d0.png)
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_2_Entitiy
 
@@ -394,9 +399,9 @@ public class RoleEntity implements Serializable {
 	private String role;
 	private long pid;
 
-	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
+	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just
 	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
-	@ManyToOne(fetch = FetchType.LAZY)	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
 	@JsonIgnore
 	private UserEntity user;
@@ -451,7 +456,7 @@ public class RoleEntity implements Serializable {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_3_Repository
 
@@ -474,21 +479,21 @@ import com.jpa.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-	
+
 	/**
 	 * I Must remove from the toString() methods in the Entities the association Entity
 	 * Otherwise the queries won't work
 	 * Meaning If I have UserEntity with Set<RoleEntity> son't add the RoleEntity to the to String method
-	 * We will get Stuck Overflow 
+	 * We will get Stuck Overflow
 	 */
-	
-	
+
+
 	// One Hiberante Query which uses LEFT OUTER JOIN
 	UserEntity findById(long id);
 
 	@Query("SELECT user from UserEntity user WHERE user.id=:id")
 	UserEntity jpqlFindById(@Param("id") long id);
-	
+
 	/**
 	 * @Query("SELECT user from UserEntity user WHERE user.id = ?1")
 	 * UserEntity jpqlFindById(long id);
@@ -496,87 +501,87 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	@Query(value = "SELECT * FROM USERS_TB WHERE id=:id", nativeQuery = true)
 	UserEntity nativeFindById(@Param("id") long id);
-	
+
 	/**
-	 *  
+	 *
 	 */
 
 	UserEntity findByPid(long pid);
 
 	@Query("SELECT user from UserEntity user WHERE user.pid=:pid")
 	UserEntity jpqlFindByPid(@Param("pid") long pid);
-	
+
 	/**
 	 * @Query("SELECT user from UserEntity user WHERE user.pid = ?1")
 	 * UserEntity jpqlFindByPid(long pid);
 	 */
-	
+
 	// the * means return all fields
 	@Query(value = "SELECT * FROM USERS_TB WHERE pid=:pid", nativeQuery = true)
 	UserEntity nativeFindByPid(@Param("pid") long pid);
-	
+
 	/**
-	 *  
+	 *
 	 */
 
 	UserEntity findByName(String name);
 
 	@Query("SELECT user from UserEntity user WHERE user.name=:name")
 	UserEntity jpqlFindByName(@Param("name") String name);
-	
+
 	/**
 	 * @Query("SELECT user from UserEntity user WHERE user.name = ?1")
 	 * UserEntity jpqlFindByName(String name);
 	 */
-	
+
 	// the * means return all fields
 	@Query(value = "SELECT * FROM USERS_TB WHERE name=:name", nativeQuery = true)
 	UserEntity nativeFindByName(@Param("name") String name);
-	
+
 	/**
-	 *  
+	 *
 	 */
 
 	UserEntity findByEmail(String email);
 
 	@Query("SELECT user from UserEntity user WHERE user.email=:email")
 	UserEntity jpqlFindByEmail(@Param("email") String email);
-	
+
 	/**
 	 * @Query("SELECT user from UserEntity user WHERE user.email = ?1")
 	 * UserEntity jpqlFindByEmail(String email);
 	 */
-	
+
 	// the * means return all fields
 	@Query(value = "SELECT * FROM USERS_TB WHERE email=:email", nativeQuery = true)
 	UserEntity nativeFindByEmail(@Param("email") String email);
-	
+
 	/**
-	 *  
+	 *
 	 */
 
 	@Query(value = "SELECT * "
-			+ "FROM USERS_TB utb " 
-			+ "LEFT JOIN ROLES_TB rtb " 
+			+ "FROM USERS_TB utb "
+			+ "LEFT JOIN ROLES_TB rtb "
 			+ "ON rtb.user_id=utb.id "
 			+ "WHERE rtb.role=:role" ,nativeQuery = true)
 	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
-	
+
 	/**
-	 * 
+	 *
 	 */
-	
+
 	@Query("SELECT re from RoleEntity re where re.user.id = ?1 AND re.role like ?2")
 	RoleEntity getRoleByIdAndRole(long id, String role);
-	
+
 	@Query("SELECT re from RoleEntity re WHERE re.user.id=:id AND re.role=:role")
 	RoleEntity getRoleByIdAndRoleParamQuery(@Param("id")long id, @Param("role") String role);
-		
+
 	@Query("SELECT re from RoleEntity re WHERE re.user.id = ?1 AND re.role like ?2")
 	RoleEntity getRoleByIdAndRoleLikeOperator(long id, String role);
 
 	@Query("SELECT re from RoleEntity re WHERE re.user.id=:id AND re.role LIKE :role")
-	RoleEntity getRoleByIdAndRoleLikeOperatorParamQuery(@Param("id")long id, @Param("role") String role);	
+	RoleEntity getRoleByIdAndRoleLikeOperatorParamQuery(@Param("id")long id, @Param("role") String role);
 }
 ```
 
@@ -604,14 +609,14 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	 * I Must remove from the toString() methods in the Entities the associationEntity
 	 * Otherwise the queries won't work
 	 * Meaning If I have UserEntity with Set<RoleEntity> son't add the RoleEntity to the to String method
-	 * We will get Stuck Overflow 
-	 */ 
+	 * We will get Stuck Overflow
+	 */
 
 	List<RoleEntity> findById(long id);
 
 	@Query("SELECT role FROM RoleEntity role WHERE role.id=:id")
 	List<RoleEntity> jpqlFindById(@Param("id") long id);
-		
+
 	/**
 	 * @Query("SELECT role FROM RoleEntity role WHERE role.id = ?1")
 	 * List<RoleEntity> jpqlFindById(long id);
@@ -621,14 +626,14 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	List<RoleEntity> nativeFindById(@Param("id") long id);
 
 	/**
-	 * 
+	 *
 	 */
-	
+
 	List<RoleEntity> findByRole(String role);
 
 	@Query("SELECT r FROM RoleEntity r WHERE r.role=:role")
 	List<RoleEntity> jpqlFindByRole(@Param("role") String role);
-		
+
 	/**
 	 * @Query("SELECT r FROM RoleEntity r WHERE r.role = ?1")
 	 * List<RoleEntity> jpqlFindByRole(String role);
@@ -638,14 +643,14 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	List<RoleEntity> nativeFindByRole(@Param("role") String role);
 
 	/**
-	 * 
+	 *
 	 */
-	
+
 	List<RoleEntity> findByPid(long pid);
 
 	@Query("SELECT role FROM RoleEntity role WHERE role.pid=:pid")
 	List<RoleEntity> jpqlFindByPid(@Param("pid") long pid);
-		
+
 	/**
 	 * @Query("SELECT role from RoleEntity role WHERE role.pid = ?1")
 	 * List<RoleEntity> jpqlFindByPid(long pid);
@@ -655,51 +660,51 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	List<RoleEntity> nativeFindByPid(@Param("pid") long pid);
 
 	/**
-	 * 
-	 */	
-	
-	// This JPQL Query works as Expected	
+	 *
+	 */
+
+	// This JPQL Query works as Expected
 	@Query("SELECT u FROM UserEntity u JOIN u.roles AS r WHERE r.role=:role")
 	List<UserEntity> jpqlFindUsersWithRoleName(@Param("role") String role);
 
 	/**
-	 * we cannot set SELECT *	 * 
+	 * we cannot set SELECT *	 *
 	 * NonUniqueDiscoveredSqlAliasException: Encountered a duplicated sql alias [id] during auto-discovery of a native-sql query
 	 * The NATIVE Query below does't work here in RoleRepo,
 	 * This Native Query as is , works great in UserRepo
 	 */
 
-	//	@Query(value = "SELECT * "			
+	//	@Query(value = "SELECT * "
 	//			+ "FROM USERS_TB utb "
 	//			+ "JOIN ROLES_TB rtb "
 	//			+ "ON rtb.user_id=utb.id "
 	//			+ "WHERE rtb.role=:role" ,nativeQuery = true)
 	//	List<UserEntity> nativeFindUsersWithRoleName(@Param("role") String role);
-	
+
 	// *****************************************************************************
 	// *****************************************************************************
-	// *****************************************************************************	
-	
+	// *****************************************************************************
+
 	RoleEntity findByPidAndRole(long pid, String role);
-	
+
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity jpqlFindRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
 
 	@Modifying
 	@Query("DELETE FROM RoleEntity re WHERE re.pid=:pid AND re.role=:role")
 	void jpqlDeleteUserRoleByPidAndRoleName(@Param("pid") long pid, @Param("role") String role);
-	
+
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid AND r.role=:role")
 	RoleEntity jpqlFindRole(@Param("pid") long pid, @Param("role") String role);
-	
+
 	@Query("SELECT r FROM RoleEntity r WHERE r.pid=:pid")
-	Set<RoleEntity> jpqlFindAllRoles(@Param("pid") long pid);	
+	Set<RoleEntity> jpqlFindAllRoles(@Param("pid") long pid);
 }
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_4_Dao
 
@@ -717,11 +722,11 @@ import com.jpa.entity.RoleEntity;
 import com.jpa.entity.UserEntity;
 
 public interface UserDao {
-	
-	UserDto createUser(UserEntity userEntity);		
-	UserDto getUserById(long id);	
-	UserDto getUserByPid(long id);	
-	UserDto getUserByName(String name);	
+
+	UserDto createUser(UserEntity userEntity);
+	UserDto getUserById(long id);
+	UserDto getUserByPid(long id);
+	UserDto getUserByName(String name);
 	UserDto getUserByEmail(String email);
 	List<UserDto> getAllUsers();
 	void removeUserByPid(long pid);
@@ -750,7 +755,7 @@ public interface RoleDao {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_5_Dao_Impl
 
@@ -782,7 +787,7 @@ import com.jpa.repository.UserRepository;
 public class UserDaoImpl implements UserDao {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -790,82 +795,82 @@ public class UserDaoImpl implements UserDao {
 	private RoleRepository roleRepository;
 
 	@Override
-	public UserDto createUser(UserEntity userEntity) {		
-		UserDto userDto = new UserDto();		
+	public UserDto createUser(UserEntity userEntity) {
+		UserDto userDto = new UserDto();
 		LOGGER.info("method : createUser(UserEntity userEntity)");
-		UserEntity userEntityFromDB = userRepository.save(userEntity);		
-		BeanUtils.copyProperties(userEntityFromDB, userDto);		
+		UserEntity userEntityFromDB = userRepository.save(userEntity);
+		BeanUtils.copyProperties(userEntityFromDB, userDto);
 		return userDto;
-	}	
-	
+	}
+
 	@Override
 	public UserDto getUserById(long id) {
 		UserDto userDto = new UserDto();
-		LOGGER.info("method : getUserById(long id)");		
+		LOGGER.info("method : getUserById(long id)");
 //		UserEntity userEntity =  userRepository.findById(id);
 		UserEntity userEntity =  userRepository.jpqlFindById(id);
 //		UserEntity userEntity =  userRepository.nativeFindById(id);
-		BeanUtils.copyProperties(userEntity, userDto);		
-		return userDto;		
+		BeanUtils.copyProperties(userEntity, userDto);
+		return userDto;
 	}
 
 	@Override
 	public UserDto getUserByPid(long pid) {
-		UserDto userDto = new UserDto();	
-		LOGGER.info("method : getUserByPid(long pid)");		
-		UserEntity userEntity = userRepository.findByPid(pid);		
-		BeanUtils.copyProperties(userEntity, userDto);		
+		UserDto userDto = new UserDto();
+		LOGGER.info("method : getUserByPid(long pid)");
+		UserEntity userEntity = userRepository.findByPid(pid);
+		BeanUtils.copyProperties(userEntity, userDto);
 		return userDto;
 	}
-	
+
 	/**
 	 * Since I use LazyLoading , I must return a DTO and not a UserEntity , otherwise I get the following warn which :
-	  
+
 		.w.s.m.s.DefaultHandlerExceptionResolver :
-		Resolved [org.springframework.http.converter.HttpMessageNotWritableException: 
-			Could not write JSON: 
-				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
-				could not initialize proxy - no Session; 
-				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
+		Resolved [org.springframework.http.converter.HttpMessageNotWritableException:
+			Could not write JSON:
+				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles,
+				could not initialize proxy - no Session;
+				nested exception is com.fasterxml.jackson.databind.JsonMappingException:
 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, could not initialize proxy - no Session]
-		
-		This is thrown by the RestController , and Not by the service layer 
+
+		This is thrown by the RestController , and Not by the service layer
 		Thus I define here to return a:
 		DTO object
 	*/
-	@Override	
-	public UserDto getUserByName(String name) {				
-		UserDto userDto = new UserDto();	
+	@Override
+	public UserDto getUserByName(String name) {
+		UserDto userDto = new UserDto();
 		LOGGER.info("method : getUserByName(String name)");
-		UserEntity userEntity = userRepository.findByName(name);		
-		BeanUtils.copyProperties(userEntity, userDto);		
+		UserEntity userEntity = userRepository.findByName(name);
+		BeanUtils.copyProperties(userEntity, userDto);
 		return userDto;
 	}
-	
+
 	@Override
 	public UserDto getUserByEmail(String email) {
-		UserDto userDto = new UserDto();		
-		LOGGER.info("method : getUserByEmail(String email)");		
-		UserEntity userEntity = userRepository.findByEmail(email);		
-		BeanUtils.copyProperties(userEntity, userDto);		
+		UserDto userDto = new UserDto();
+		LOGGER.info("method : getUserByEmail(String email)");
+		UserEntity userEntity = userRepository.findByEmail(email);
+		BeanUtils.copyProperties(userEntity, userDto);
 		return userDto;
-	}	
+	}
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		LOGGER.info("method : getAllUsers()");	
+		LOGGER.info("method : getAllUsers()");
 		// This Line invokes 1 query line
-		List<UserEntity> userEntities = userRepository.findAll();		
+		List<UserEntity> userEntities = userRepository.findAll();
 		List<UserDto> returnedValue = new ArrayList<>();
 		UserDto userDto = new UserDto();
-		
+
 		for (UserEntity userEntity : userEntities) {
 			BeanUtils.copyProperties(userEntity, userDto);
 			returnedValue.add(userDto);
 		}
 		return returnedValue;
 	}
-	
+
 	@Override
 	public void removeUserByPid(long pid) {
 		LOGGER.info("method : removeUserByPid(long pid)");
@@ -873,65 +878,65 @@ public class UserDaoImpl implements UserDao {
 		UserEntity userEntity = userRepository.findByPid(pid);
 		userRepository.delete(userEntity);
 	}
-	
-	
+
+
 	/**
-	 * I got this error when tried to add role to user 
-	 * 	org.hibernate.LazyInitializationException: 
-	 * 		failed to lazily initialize a collection of role: 
-	 * 			com.jpa.entity.UserEntity.roles, 
+	 * I got this error when tried to add role to user
+	 * 	org.hibernate.LazyInitializationException:
+	 * 		failed to lazily initialize a collection of role:
+	 * 			com.jpa.entity.UserEntity.roles,
 	 * 				could not initialize proxy - no Session
-	 * 
+	 *
 	 * Thus , I need to add annotation of @Transactional
 	 * From BAELDUNG:
-	 * 
+	 *
 	 * The @Transactional annotation configures a transactional proxy around the instance of the related test class.
-	 * Moreover, the transaction is associated with the thread executing it. 
+	 * Moreover, the transaction is associated with the thread executing it.
 	 * Considering the default transaction propagation setting, every Persistence Context created from this method joins to this same transaction.
 	 * Consequently, the transaction persistence context is bound to the transaction scope of the test method.
 	 */
-	
+
 	@Override
 	@Transactional
 	public UserDto addRoleToUser(long userPid, RoleEntity roleEntity) {
-		
-		// Best Practice to return UserDto and not UserEntity , 
+
+		// Best Practice to return UserDto and not UserEntity ,
 		// But since I know that we have few rows of RoleEntity thus I return UserEntity
 		LOGGER.info("method : addRoleToUser(long userPid, RoleEntity roleEntity)");
 		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
 		roleEntity.setPid(userPid);
 		/**
-		 * This line : userEntity.addRole(roleEntity) 
+		 * This line : userEntity.addRole(roleEntity)
 		 * invokes 2 Queries lines:
 		 * (1) select query
 		 * (2) insert into roles_tb (pid, role, user_id) values (?, ?, ?)
-		 */		
-		userEntity.addRole(roleEntity); 
-		
-		UserEntity savedUserEntity = userRepository.save(userEntity);		
-		UserDto userDto = new UserDto();			
-		BeanUtils.copyProperties(savedUserEntity, userDto);		
-		return userDto;		
+		 */
+		userEntity.addRole(roleEntity);
+
+		UserEntity savedUserEntity = userRepository.save(userEntity);
+		UserDto userDto = new UserDto();
+		BeanUtils.copyProperties(savedUserEntity, userDto);
+		return userDto;
 	}
-	
+
 	/**
-	 * @Transactional Annotation - 
-	 * 			Should be only on 
+	 * @Transactional Annotation -
+	 * 			Should be only on
 	 * 			'PUBLIC' methods that returns value to higher level layer
 	 */
 	/**
-	 * I got this error when tried to add role to user 
-	 * 	org.hibernate.LazyInitializationException: 
-	 * 		failed to lazily initialize a collection of role: 
-	 * 			com.jpa.entity.UserEntity.roles, 
+	 * I got this error when tried to add role to user
+	 * 	org.hibernate.LazyInitializationException:
+	 * 		failed to lazily initialize a collection of role:
+	 * 			com.jpa.entity.UserEntity.roles,
 	 * 				could not initialize proxy - no Session
-	 * 
+	 *
 	 * Thus , I need to add annotation of @Transactional
 	 * From BAELDUNG:
-	 * 
+	 *
 	 * The @Transactional annotation configures a transactional proxy around the instance of the related test class.
-	 * Moreover, the transaction is associated with the thread executing it. 
+	 * Moreover, the transaction is associated with the thread executing it.
 	 * Considering the default transaction propagation setting, every Persistence Context created from this method joins to this same transaction.
 	 * Consequently, the transaction persistence context is bound to the transaction scope of the test method.
 	 */
@@ -939,29 +944,29 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, String role) {
 
-		// Best Practice to return UserDto and not UserEntity , 
+		// Best Practice to return UserDto and not UserEntity ,
 		// But since I know that we have few rows of RoleEntity thus I return UserEntity
 		/**
 		 * In this Implementation
-		 * 1. I add the orphanRemoval to UserEntity One2Many 
-		 * 2. I Query For RoleEntity (I try with 2 different implementations) 
-		 * 3. remove the Entity from the SET<RoleEntity> collection 
+		 * 1. I add the orphanRemoval to UserEntity One2Many
+		 * 2. I Query For RoleEntity (I try with 2 different implementations)
+		 * 3. remove the Entity from the SET<RoleEntity> collection
 		 * 4. Save the the info to UserEntity
-		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()` 
+		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()`
 		 */
-		
+
 		/**
 		 * there are 2 different ways to retrieve roleEntity from DB:
 		 * (1) search for roelEntity from getRoles()
-		 * (2) Query from UserRepo or RoleRepo 
+		 * (2) Query from UserRepo or RoleRepo
 		 */
 
 		LOGGER.info("method : removeRoleFromUser(long userPid, String role)");
-		
+
 		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
-		
-		// (1) search for roelEntity from getRoles()	
+
+		// (1) search for roelEntity from getRoles()
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
@@ -984,12 +989,12 @@ public class UserDaoImpl implements UserDao {
 		 * If we want to return userEntity , we must keep @Transactional at method level, to keep session open
 		 */
 //		roleRepository.delete(roleEntity);
-		
+
 		// This Line invokes 1 query line : userEntity.removeRole(roleEntity)
-		userEntity.removeRole(roleEntity);		
-		UserEntity returnedValue = userRepository.save(userEntity);			
+		userEntity.removeRole(roleEntity);
+		UserEntity returnedValue = userRepository.save(userEntity);
 		return returnedValue;
-	}			
+	}
 }
 ```
 
@@ -1022,37 +1027,37 @@ public class RoleDaoImpl implements RoleDao {
 	private UserRepository userRepository;
 
 	/**
-	 * Since I have @JsonIgnore on my RoleEntity association 
-	 * Thus I don'g have to return a List<RoleDto> 
+	 * Since I have @JsonIgnore on my RoleEntity association
+	 * Thus I don'g have to return a List<RoleDto>
 	 * I could return List<RoleEntity>
 	 * But best practice is to return a DTO object
 	 */
 	@Override
 	public List<RoleDto> getRoleById(long id) {
-		List<RoleEntity> roles = roleRepository.findById(id);		
+		List<RoleEntity> roles = roleRepository.findById(id);
 		return roleDtoConverter(roles);
 	}
 
 	/**
 	 * I must return a List<UserDto> with FETCH.LAZY other wise I will get error
-	 * 		.w.s.m.s.DefaultHandlerExceptionResolver : 
-	 * 		Resolved [org.springframework.http.converter.HttpMessageNotWritableException: 
-	 * 			Could not write JSON: 
-	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
-	 * 				could not initialize proxy - no Session; 
-	 * 				nested exception is com.fasterxml.jackson.databind.JsonMappingException: 
-	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles, 
-	 * 				could not initialize proxy - no Session 
+	 * 		.w.s.m.s.DefaultHandlerExceptionResolver :
+	 * 		Resolved [org.springframework.http.converter.HttpMessageNotWritableException:
+	 * 			Could not write JSON:
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles,
+	 * 				could not initialize proxy - no Session;
+	 * 				nested exception is com.fasterxml.jackson.databind.JsonMappingException:
+	 * 				failed to lazily initialize a collection of role: com.jpa.entity.UserEntity.roles,
+	 * 				could not initialize proxy - no Session
 	 * 				(through reference chain: java.util.ArrayList[0]->com.jpa.entity.UserEntity["roles"])]
-	 * 
+	 *
 	 * 1. Best Practice : must return List<UserDto>
-	 * 2. this will work as well : add @JsonIgnore annotation at UserEntity to the Association 
+	 * 2. this will work as well : add @JsonIgnore annotation at UserEntity to the Association
 	 */
 	@Override
 	public List<UserDto> getUsersWithRoleName(String role) {
 //		return roleRepository.jpqlFindUsersWithRoleName(role);
 		List<UserEntity> users = userRepository.nativeFindUsersWithRoleName(role);
-		return userDtoConverter(users);		
+		return userDtoConverter(users);
 	}
 
 	@Override
@@ -1066,23 +1071,23 @@ public class RoleDaoImpl implements RoleDao {
 		List<RoleEntity> roles = roleRepository.findAll();
 		return roleDtoConverter(roles);
 	}
-	
+
 	private List<UserDto> userDtoConverter(List<UserEntity> users) {
 		List<UserDto> returnedValue = new ArrayList<>();
 		UserDto userDto = new UserDto();
 		for(UserEntity user: users) {
 			BeanUtils.copyProperties(user, userDto);
-			returnedValue.add(userDto);	
+			returnedValue.add(userDto);
 		}
 		return returnedValue;
 	}
-	
+
 	private List<RoleDto> roleDtoConverter(List<RoleEntity> roles) {
 		List<RoleDto> returnedValue = new ArrayList<>();
 		RoleDto roleDto = new RoleDto();
 		for(RoleEntity role: roles) {
 			BeanUtils.copyProperties(role, roleDto);
-			returnedValue.add(roleDto);	
+			returnedValue.add(roleDto);
 		}
 		return returnedValue;
 	}
@@ -1091,16 +1096,15 @@ public class RoleDaoImpl implements RoleDao {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_6_Dto
 
 <img src="https://img.shields.io/badge/-3.6. Dto  %20-yellow" height=40px>
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 3_7_FrontEnd
 
@@ -1108,7 +1112,7 @@ public class RoleDaoImpl implements RoleDao {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 4_test_app
 
@@ -1116,15 +1120,15 @@ public class RoleDaoImpl implements RoleDao {
 
 Let's Run the App, adn test our API.
 I have 2 Controllers, whith these Controllers I test the API's :
+
 1. UserController API
 2. RoleController API
 
 ![image](https://user-images.githubusercontent.com/36256986/197419012-317b3223-2db9-48ac-9f66-dc6b7465d760.png)
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### 4_1_GET_POST_PUT_DELETE
 
@@ -1135,7 +1139,6 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 ### [`Following Get Methods are tested`](#-)
 
 In this Table I compare between Lazy and Eager.
-	
 ![image](https://user-images.githubusercontent.com/36256986/197978707-717b7166-d019-4c29-b3a7-271d6a4a856c.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -1146,13 +1149,12 @@ In this Table I compare between Lazy and Eager.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
 
 ###### x
 
 <img src="https://img.shields.io/badge/-x. xxx %20-blue" height=40px>
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
---------------------------------------------------------------------------------------------------
+---
