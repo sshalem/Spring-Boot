@@ -7,7 +7,7 @@
 |  3  |[One2Many-UniDirec-Eager](#)  | 
 |  4  |[One2Many-UniDirec-Lazy](#)  | 
 |  5  |[Many2Many-BiDirec](#)  |   
-|  6  |[One2One)](#) |   
+|  6  |[One2One](#) |   
 |  7  |[Paging and Sorting)](#) |
 |  8  |[Transaction Management)](#) |
 
