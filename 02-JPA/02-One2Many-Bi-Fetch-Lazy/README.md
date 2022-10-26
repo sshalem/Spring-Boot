@@ -1136,10 +1136,9 @@ Let's test each method in our UserDaoImpl and see how many queries are executed 
 
 In this Table I compare between Lazy and Eager.
 	
-![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
+![image](https://user-images.githubusercontent.com/36256986/197978707-717b7166-d019-4c29-b3a7-271d6a4a856c.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 
 ###### 4_5_Role_API
 
