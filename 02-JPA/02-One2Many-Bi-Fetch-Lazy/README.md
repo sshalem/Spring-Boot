@@ -1132,7 +1132,9 @@ I have 2 Controllers, whith these Controllers I test the API's :
 
 Let's test each method in our UserDaoImpl and see how many queries are executed during each request, and see if [`FETCH LAZY`](#-) is created.
 
-#### [`Following Methods are tested from UserRepository`](#-)
+### [`Following Get Methods are tested`](#-)
+
+In this Table I compare between Lazy and Eager.
 	
 ![image](https://user-images.githubusercontent.com/36256986/197884392-6a597a73-23d3-49ab-b58d-cc6cecbf0d64.png)
 
