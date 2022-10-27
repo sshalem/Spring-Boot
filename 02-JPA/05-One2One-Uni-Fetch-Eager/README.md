@@ -16,7 +16,7 @@
 ### OneToOne:
 
 1. [`VLAD map a @OneToOne relationship with JPA`](https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/)
-2. ['Bezkoder @OneToOne'](https://www.bezkoder.com/jpa-one-to-one/)
+2. [`Bezkoder @OneToOne`](https://www.bezkoder.com/jpa-one-to-one/)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
