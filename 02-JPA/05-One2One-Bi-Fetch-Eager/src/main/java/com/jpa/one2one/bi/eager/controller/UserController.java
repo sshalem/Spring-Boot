@@ -22,7 +22,6 @@ import com.jpa.one2one.bi.eager.entity.AddressEntity;
 import com.jpa.one2one.bi.eager.entity.UserEntity;
 import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
 
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin("*")
