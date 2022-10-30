@@ -79,9 +79,16 @@ public class UserEntity implements Serializable {
 	}
 
 	/**
-	 * public void setDetails(PostDetails details) { if (details == null) { if
-	 * (this.details != null) { this.details.setPost(null); } } else {
-	 * details.setPost(this); } this.details = details; }
+	 * public void setDetails(PostDetails details) { 
+	 * 	if (details == null) { 
+	 * 		if(this.details != null) {
+	 * 			this.details.setPost(null);
+	 * 		} 
+	 * 	} else {
+	 * 		details.setPost(this); 
+	 * 	} 
+	 * 	this.details = details; 
+	 * }
 	 */
 
 }

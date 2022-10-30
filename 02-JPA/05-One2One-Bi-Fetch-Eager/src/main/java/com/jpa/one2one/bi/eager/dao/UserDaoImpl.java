@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.jpa.one2one.bi.eager.entity.AddressEntity;
 import com.jpa.one2one.bi.eager.entity.UserEntity;
+import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
 import com.jpa.one2one.bi.eager.repository.UserRepository;
 
 @Service
@@ -47,7 +48,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserEntity updateUser(long id, UserEntity user) {
-		return null;
+		
+		UserEntity userEntity = userRepository.findUserById(id);
+		
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with id = " + id);
+		
+		userEntity.setName(user.getName());
+		userEntity.setEmail(user.getEmail());
+		userEntity.setPublished(user.isPublished());
+		
+		UserEntity returnedValue = userRepository.save(userEntity);
+		
+		return returnedValue;
 	}
 
 	@Override

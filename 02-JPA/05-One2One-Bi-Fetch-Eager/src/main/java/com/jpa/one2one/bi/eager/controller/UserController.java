@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +35,7 @@ public class UserController {
 	// **************************************
 	// ***** Post Methods ***
 	// **************************************
-	@PostMapping(value = "/create")
+	@PostMapping(value = "/users")
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
 		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), HttpStatus.CREATED);
 	}
@@ -91,8 +93,39 @@ public class UserController {
 	// ***** Put Methods ***
 	// **************************************
 
+	@PutMapping("/users/{id}")
+	public ResponseEntity<UserEntity> updateUser(@PathVariable("id") long id, @RequestBody UserEntity user) {
+		
+		UserEntity userEntity = userDaoImpl.updateUser(id, user);
+				
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with id = " + id);	
+
+		return new ResponseEntity<>(userEntity, HttpStatus.OK);
+	}
 	// **************************************
 	// ***** Delete Methods ***
 	// **************************************
+	
+	@DeleteMapping("/users/{id}")
+	public ResponseEntity<HttpStatus> deleteUserById(@PathVariable("id") long id) {
+		
+		/**
+		 * NO Need to remove Address , before removing user.
+		 * We can Immediately remove a User 
+		 */
+//		if (addressRepository.existsById(id)) {
+//			addressRepository.deleteById(id);
+//		}
+		userDaoImpl.deleteUser(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@DeleteMapping("/users/delete/all")
+	public ResponseEntity<HttpStatus> deleteAllUsers() {
+		
+		userDaoImpl.deleteAllUsers();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 }
