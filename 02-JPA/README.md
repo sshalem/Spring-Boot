@@ -423,6 +423,13 @@ public class UserEntity {
 
 ### [AddressEntity ](#-)
 
+AddressEntity Has the following Annotations:
+
+1. `@OneToOne(fetch = FetchType.EAGER)`
+2. `@MapsId` -
+3. `@JoinColumn(name = "user_id")`
+4. No Cascading
+
 ```java
 @Entity
 @Table(name = "ADDRESS_TB")
@@ -438,6 +445,10 @@ public class AddressEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
 ```
+
+### [Tables in DB ](#-)
+
+This is how the Tables in DB looks:
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
