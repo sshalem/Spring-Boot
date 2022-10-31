@@ -1,14 +1,14 @@
-package com.jpa.one2one.bi.eager.dao;
+package com.jpa.one2one.bi.lazy.dao;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.one2one.bi.eager.entity.AddressEntity;
-import com.jpa.one2one.bi.eager.entity.UserEntity;
-import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
-import com.jpa.one2one.bi.eager.repository.UserRepository;
+import com.jpa.one2one.bi.lazy.entity.AddressEntity;
+import com.jpa.one2one.bi.lazy.entity.UserEntity;
+import com.jpa.one2one.bi.lazy.exception.ResourceNotFoundException;
+import com.jpa.one2one.bi.lazy.repository.UserRepository;
 
 @Service
 public class UserDaoImpl implements UserDao {
@@ -77,8 +77,9 @@ public class UserDaoImpl implements UserDao {
 		UserEntity userEntity = userRepository.findUserById(id);
 		AddressEntity addressEntity = userEntity.getAddress();
 		
-		if(addressEntity != null)
+		if(addressEntity != null) {
 			addressEntity.setUser(null);
+		}		
 		
 		userRepository.delete(userEntity);
 	}

@@ -376,9 +376,9 @@ public void deleteUser(long id) {
 
 ---
 
-######
+###### 6_One2One_Bi_Lazy
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 6. One2One_Bi_Lazy %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
