@@ -68,7 +68,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deleteUser(long id) {
-		userRepository.deleteById(id);
+
+		/**
+		 *  remove the associated object reference
+		 *  break bi-directional link
+		 */
+		UserEntity userEntity = userRepository.findUserById(id);
+		userEntity.getAddress().setUser(null);
+		userRepository.delete(userEntity);
 	}
 
 	@Override

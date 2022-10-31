@@ -24,7 +24,20 @@ public class UserEntity implements Serializable {
 	private String email;
 	private boolean published;
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	/**
+	 * I set Cascade only for MERGE REFRESH DETACH PERSIST 
+	 * W/O remove , because I want to be able to   :
+	 * 1. Remove Only child Entity w/o removing parent
+	 * 2. Remove Only Parent Entity w/o removing child
+	 * 
+	 * Don't add any kind of CASCADE type to the child Entity
+	 */
+	@OneToOne(mappedBy = "user", cascade = { 
+			CascadeType.MERGE, 
+			CascadeType.REFRESH, 
+			CascadeType.DETACH,
+			CascadeType.PERSIST }, 
+				fetch = FetchType.EAGER)
 	private AddressEntity address;
 
 	public UserEntity() {

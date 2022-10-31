@@ -2,7 +2,6 @@ package com.jpa.one2one.bi.eager.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,10 @@ public class AddressEntity implements Serializable {
 	private String street;
 	private String city;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	/**
+	 * Don't add any kind of CASCADE type in the CHild Entity
+	 */
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private UserEntity user;

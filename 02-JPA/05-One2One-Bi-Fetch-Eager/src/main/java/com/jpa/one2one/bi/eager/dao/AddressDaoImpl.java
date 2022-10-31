@@ -76,13 +76,24 @@ public class AddressDaoImpl implements AddressDao {
 	}
 	
 	@Override
-	public void deleteAddress(long id) {
-		addressRepository.deleteById(id);
+	public void deleteAddress(long id) {		
+		/**
+		 *  remove the associated object reference
+		 *  break bi-directional link
+		 */
+		AddressEntity addressEntity = addressRepository.findAddressById(id);		
+		addressEntity.setUser(null);
+		// Unlike in deleting deleteUsewr, 
+		// After I break the link , I also must save before Deleting the user
+		// Otherwise : we still have a row of address in DB (Even if the link is broken)
+		// Thus must add here this line of : addressRepository.save(addressEntity);
+		addressRepository.save(addressEntity);
+		addressRepository.delete(addressEntity);
 	}
 
 	@Override
 	public void deleteAddressOfUser(long userId) {
-		addressRepository.deleteById(userId);
+		addressRepository.deleteByUserId(userId);
 	}
 
 	@Override
