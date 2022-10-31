@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.one2one.bi.eager.dao.UserDaoImpl;
-import com.jpa.one2one.bi.eager.entity.AddressEntity;
 import com.jpa.one2one.bi.eager.entity.UserEntity;
-import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api")
@@ -39,23 +37,13 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), HttpStatus.CREATED);
 	}
 
-	@PostMapping(value = "/addAddress/{name}")
-	public ResponseEntity<?> addAddressToUser(@RequestBody AddressEntity addressEntity,	@PathVariable("name") String name) {
-		return new ResponseEntity<Object>(userDaoImpl.addAddressToUser(addressEntity, name), HttpStatus.CREATED);
-	}
-
 	
 	// *********************
 	// ***** Get Methods ***
 	// *********************
 	@GetMapping("/users/{id}")
 	public ResponseEntity<UserEntity> getUserById(@PathVariable("id") long id) {
-		
-		UserEntity userEntity = userDaoImpl.getUserById(id);
-		if(userEntity == null)
-			throw new ResourceNotFoundException("Not found User with id = " + id);				
-
-		return new ResponseEntity<>(userEntity, HttpStatus.OK);
+		return new ResponseEntity<>(userDaoImpl.getUserById(id), HttpStatus.OK);
 	}
 
 	@GetMapping("/users")
@@ -94,14 +82,9 @@ public class UserController {
 
 	@PutMapping("/users/{id}")
 	public ResponseEntity<UserEntity> updateUser(@PathVariable("id") long id, @RequestBody UserEntity user) {
-		
-		UserEntity userEntity = userDaoImpl.updateUser(id, user);
-				
-		if(userEntity == null)
-			throw new ResourceNotFoundException("Not found User with id = " + id);	
-
-		return new ResponseEntity<>(userEntity, HttpStatus.OK);
+		return new ResponseEntity<>(userDaoImpl.updateUser(id, user), HttpStatus.OK);
 	}
+	
 	// **************************************
 	// ***** Delete Methods ***
 	// **************************************

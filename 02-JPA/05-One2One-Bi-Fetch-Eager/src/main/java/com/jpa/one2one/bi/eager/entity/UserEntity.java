@@ -60,13 +60,6 @@ public class UserEntity implements Serializable {
 	}
 
 	public void setAddress(AddressEntity addressEntity) {
-		if (addressEntity == null) {
-			if (this.address != null) {
-				this.address.setUser(null);
-			}
-		} else {
-			this.address.setUser(this);
-		}
 		this.address = addressEntity;
 	}
 
@@ -77,18 +70,4 @@ public class UserEntity implements Serializable {
 	public void setPublished(boolean published) {
 		this.published = published;
 	}
-
-	/**
-	 * public void setDetails(PostDetails details) { 
-	 * 	if (details == null) { 
-	 * 		if(this.details != null) {
-	 * 			this.details.setPost(null);
-	 * 		} 
-	 * 	} else {
-	 * 		details.setPost(this); 
-	 * 	} 
-	 * 	this.details = details; 
-	 * }
-	 */
-
 }

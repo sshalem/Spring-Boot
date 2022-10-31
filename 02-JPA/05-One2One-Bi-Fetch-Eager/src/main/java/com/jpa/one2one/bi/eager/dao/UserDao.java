@@ -2,7 +2,6 @@ package com.jpa.one2one.bi.eager.dao;
 
 import java.util.List;
 
-import com.jpa.one2one.bi.eager.entity.AddressEntity;
 import com.jpa.one2one.bi.eager.entity.UserEntity;
 
 public interface UserDao {
@@ -24,8 +23,7 @@ public interface UserDao {
 	// PUT
 	UserEntity updateUser(long id, UserEntity user);
 
-	UserEntity addAddressToUser(AddressEntity addressEntity, String name);
-
+	
 	// DELETE
 	void deleteUser(long id);
 

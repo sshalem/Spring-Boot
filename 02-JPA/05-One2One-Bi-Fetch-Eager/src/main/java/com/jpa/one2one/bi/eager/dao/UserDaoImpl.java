@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.one2one.bi.eager.entity.AddressEntity;
 import com.jpa.one2one.bi.eager.entity.UserEntity;
 import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
 import com.jpa.one2one.bi.eager.repository.UserRepository;
@@ -15,15 +14,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@Override
 	public UserEntity createUser(UserEntity userEntity) {
 		return userRepository.save(userEntity);
 	}
 
 	@Override
-	public UserEntity getUserById(long id) {
-		return userRepository.findUserById(id);
+	public UserEntity getUserById(long id) {		
+		UserEntity userEntity = userRepository.findUserById(id);
+		
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with id = " + id);		
+		return userEntity;
 	}
 
 	@Override
@@ -61,20 +64,7 @@ public class UserDaoImpl implements UserDao {
 		UserEntity returnedValue = userRepository.save(userEntity);
 		
 		return returnedValue;
-	}
-
-	@Override
-	public UserEntity addAddressToUser(AddressEntity addressEntity, String name) {
-
-		UserEntity userEntity = userRepository.findUserByName(name);
-		addressEntity.setUser(userEntity);
-
-		// See setAddress() implementation in the UserEntity Class
-		userEntity.setAddress(addressEntity);
-		UserEntity returnedValue = userRepository.save(userEntity);
-
-		return returnedValue;
-	}
+	}	
 
 	@Override
 	public void deleteUser(long id) {

@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jpa.one2one.bi.eager.dao.AddressDaoImpl;
 import com.jpa.one2one.bi.eager.entity.AddressEntity;
-import com.jpa.one2one.bi.eager.exception.ResourceNotFoundException;
-import com.jpa.one2one.bi.eager.repository.AddressRepository;
-import com.jpa.one2one.bi.eager.repository.UserRepository;
+import com.jpa.one2one.bi.eager.entity.UserEntity;
 
 @RestController
 @RequestMapping("/api")
@@ -25,10 +25,17 @@ import com.jpa.one2one.bi.eager.repository.UserRepository;
 public class AddressController {
 
 	@Autowired
-	private AddressRepository addressRepository;
+	private AddressDaoImpl addressDaoImpl;
 
-	@Autowired
-	private UserRepository userRepository;
+	
+	// *******************************
+	//       POST (create) methods
+	//********************************
+	
+	@PostMapping("/address/{userId}")
+	public ResponseEntity<UserEntity> addAddressToUserByUserId(@PathVariable(value = "userId") long userId, @RequestBody AddressEntity address) {		
+		return new ResponseEntity<>(addressDaoImpl.addAddressToUser(address, userId), HttpStatus.CREATED);
+	}
 
 
 	// *******************************
@@ -37,18 +44,13 @@ public class AddressController {
 	
 	@GetMapping( { "/address/{id}", "/address/{id}/address" } )
 	public ResponseEntity<AddressEntity> getAddressById(@PathVariable(value = "id") long id) {
-		
-		AddressEntity addressEntity = addressRepository
-				.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Not found Address Details with id = " + id));
-
-		return new ResponseEntity<>(addressEntity, HttpStatus.OK);
+		return new ResponseEntity<>(addressDaoImpl.getAddressById(id), HttpStatus.OK);
 	}
 
 	@GetMapping("/address/all")
 	public ResponseEntity<List<AddressEntity>> getAllAddresses() {
 		
-		List<AddressEntity> addresses = addressRepository.findAll();				
+		List<AddressEntity> addresses = addressDaoImpl.getAllAddresses();		
 		
 		if (addresses.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -63,16 +65,7 @@ public class AddressController {
 	
 	@PutMapping("/address/{id}")
 	public ResponseEntity<AddressEntity> updateAddressById(@PathVariable("id") long id, @RequestBody AddressEntity address) {
-		
-		AddressEntity addressEntity = addressRepository
-				.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Id " + id + " not found"));
-
-		addressEntity.setCity(address.getCity());
-		addressEntity.setStreet(address.getStreet());
-		
-
-		return new ResponseEntity<>(addressRepository.save(addressEntity), HttpStatus.OK);
+		return new ResponseEntity<>(addressDaoImpl.updateAddress(id, address), HttpStatus.OK);
 	}
 
 	// *******************************
@@ -80,26 +73,25 @@ public class AddressController {
 	//********************************
 	
 	@DeleteMapping("/address/{id}")
-	public ResponseEntity<HttpStatus> deleteAddressById(@PathVariable("id") long id) {
-		
-		addressRepository.deleteById(id);
+	public ResponseEntity<HttpStatus> deleteAddressById(@PathVariable("id") long id) {		
+		addressDaoImpl.deleteAddress(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@DeleteMapping("/address/{userId}/users")
-	public ResponseEntity<AddressEntity> deleteAddressOfUser(@PathVariable(value = "userId") Long userId) {
+	public ResponseEntity<AddressEntity> deleteAddressOfUser(@PathVariable(value = "userId") long userId) {
 		
-		if (!userRepository.existsById(userId)) {
-			throw new ResourceNotFoundException("Not found User with id = " + userId);
-		}
-		addressRepository.deleteByUserId(userId);
+//		if (!userRepository.existsById(userId)) {
+//			throw new ResourceNotFoundException("Not found User with id = " + userId);
+//		}
+		addressDaoImpl.deleteAddressOfUser(userId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 	@DeleteMapping("/address/delete/all")
 	public ResponseEntity<AddressEntity> deleteAllAddresses() {
 				
-		addressRepository.deleteAll();
+		addressDaoImpl.deleteAllAddresses();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
