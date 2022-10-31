@@ -1,6 +1,6 @@
 <img src="https://img.shields.io/badge/-JPA Mapping%20-blue" height=70px>
 
-###### _
+###### \_
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
@@ -242,7 +242,7 @@ public void removeRole(RoleEntity role) {
 
 <img src="https://img.shields.io/badge/- 5. One2One_Bi_Eager %20-blue" height=40px>
 
-In the OneToOne examples I define my entities as follows:
+In the OneToOne BI Direc examples I define my entities as follows:
 
 - [`UserEntity`](#-) - Is parent Entity
 - [`AddressEntity`](#-) - Is Child Entity
@@ -398,6 +398,46 @@ Implementation exact the same as in previous section, Only difference is that no
 
 This implementation of One2One Uni Eager is unique. </br>
 In this impl, we set the Primary Key of Parent Entity to be same as Primary key of Child Entity.
+
+In the One2One Uni Direc , Where Both Entities share the same Primary Key , this is how we define our Entity classes.
+
+### [UserEntity ](#-)
+
+UserEntity DOESN'T have a reference to AddressEntity.
+
+```java
+@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@Entity
+@Table(name = "USERS_TB")
+public class UserEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String name;
+	private String email;
+	private boolean published;
+	.
+	.
+```
+
+### [AddressEntity ](#-)
+
+```java
+@Entity
+@Table(name = "ADDRESS_TB")
+public class AddressEntity {
+
+	@Id
+	private Long id;
+	private String street;
+	private String city;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
+	@JoinColumn(name = "user_id")
+	private UserEntity user;
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
