@@ -77,7 +77,7 @@ public class AddressDaoImpl implements AddressDao {
 	
 	@Override
 	public void deleteAddress(long id) {		
-		/**
+		/** 
 		 *  remove the associated object reference
 		 *  break bi-directional link
 		 */
@@ -96,7 +96,7 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public void deleteAddressOfUser(long userId) {
 		addressRepository.deleteByUserId(userId);
-	}
+	} 
 
 	@Override
 	public void deleteAllAddresses() {

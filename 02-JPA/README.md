@@ -339,7 +339,9 @@ public void deleteAddress(long id) {
 	 *  break bi-directional link
 	 */
 	AddressEntity addressEntity = addressRepository.findAddressById(id);
-	addressEntity.setUser(null);
+	if(addressEntity.getUser() != null) {
+		addressEntity.setUser(null);
+	}
 	// Unlike in deleting deleteUsewr,
 	// After I break the link , I also must save before Deleting the user
 	// Otherwise : we still have a row of address in DB (Even if the link is broken)
@@ -367,7 +369,11 @@ public void deleteUser(long id) {
 	 *  break bi-directional link
 	 */
 	UserEntity userEntity = userRepository.findUserById(id);
-	userEntity.getAddress().setUser(null);
+	AddressEntity addressEntity = userEntity.getAddress();
+
+	if(addressEntity != null) {
+		addressEntity.setUser(null);
+	}
 	userRepository.delete(userEntity);
 }
 ```
@@ -380,13 +386,18 @@ public void deleteUser(long id) {
 
 <img src="https://img.shields.io/badge/- 6. One2One_Bi_Lazy %20-blue" height=40px>
 
+Implementation exact the same as in previous section, Only difference is that now we set FETCH type as [`LAZY`](#-).
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
 
-######
+###### 7_One2One_Uni_Eager
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 7. One2One_Uni_Eager %20-blue" height=40px>
+
+This implementation of One2One Uni Eager is unique. </br>
+In this impl, we set the Primary Key of Parent Entity to be same as Primary key of Child Entity.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
