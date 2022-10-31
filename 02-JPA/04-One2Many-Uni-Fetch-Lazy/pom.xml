@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jpa</groupId>
-	<artifactId>02-One2Many-Bi-Fetch-Lazy</artifactId>
+	<artifactId>04-One2Many-Uni-Fetch-Lazy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>02-One2Many-Bi-Fetch-Lazy</name>
-	<description>One2Many Bi Fetch Lazy</description>
+	<name>04-One2Many-Uni-Fetch-Lazy</name>
+	<description>One2Many Uni Fetch Lazy</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
