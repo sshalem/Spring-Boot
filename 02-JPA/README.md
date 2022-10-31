@@ -238,9 +238,139 @@ public void removeRole(RoleEntity role) {
 
 ---
 
-######
+###### 5_One2One_Bi_Eager
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5. One2One_Bi_Eager %20-blue" height=40px>
+
+In the OneToOne examples I define my entities as follows:
+
+- [`UserEntity`](#-) - Is parent Entity
+- [`AddressEntity`](#-) - Is Child Entity
+
+### [UserEntity ](#-)
+
+In the Parent Entity I add the :
+
+1. `mappedBy` - need to add the filed name of the cahild entity
+2. `cascade` - W/O `CASCADE.REMOVE` , because I want to be able to remove any side (Parent or child) w/o removeing the corresponding side. (Meaning If I delete Address, I want to keep the User). we use following cascades :
+
+   - `CascadeType.PERSIST`
+   - `CascadeType.MERGE`
+   - `CascadeType.DETACH`
+   - `CascadeType.REFRESH`
+
+3. `fetch` - `FetchType.EAGER` , By default in One2One the Fetch is EAGER
+4. `orphanRemoval` - DON'T use this in OneToOne mapping
+
+```java
+/**
+ * I set Cascade only for MERGE REFRESH DETACH PERSIST
+ * W/O REMOVE , because I want to be able to   :
+ * 1. Remove Only child Entity w/o removing parent
+ * 2. Remove Only Parent Entity w/o removing child
+ *
+ * Don't add any kind of CASCADE type to the child Entity
+ */
+@OneToOne(mappedBy = "user", cascade = {
+		CascadeType.MERGE,
+		CascadeType.REFRESH,
+		CascadeType.DETACH,
+		CascadeType.PERSIST },
+			fetch = FetchType.EAGER)
+private AddressEntity address;
+```
+
+### [AddressEntity ](#-)
+
+In the Child Entity I add the :
+
+1. `@OneToOne(fetch = FetchType.EAGER)` - need to add the field name of the child entity
+2. `cascade` - Don't add any kind of CASCADE type in the CHild Entity
+3. `fetch` - `FetchType.EAGER` , By default in One2One the Fetch is EAGER
+4. `@JsonIgnore` - must add it to child entity, otherwise we will have a `stack overflow` error. (prevent circular serialization issue)
+
+```java
+/**
+ * Don't add any kind of CASCADE type in the CHild Entity
+ */
+@OneToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "user_id")
+@JsonIgnore
+private UserEntity user;
+```
+
+### [Add Address to user](#-)
+
+In this example we define :
+
+- UserEntity is parent
+- AddressEntity is child
+
+this is how we add an address to user:
+
+```java
+@Override
+public UserEntity addAddressToUser(AddressEntity addressEntity, long userId) {
+
+	UserEntity userEntity = userRepository.findUserById(userId);
+
+	if(userEntity == null)
+		throw new ResourceNotFoundException("Not found User with id = " + userId);
+
+    // (1)
+	userEntity.setAddress(addressEntity);
+
+    // (2)
+	addressEntity.setUser(userEntity);
+
+    // (3) save the userEntity via UserRepository
+	UserEntity returnedValue = userRepository.save(userEntity);
+	return returnedValue;
+}
+```
+
+### [Remove Address from User](#-)
+
+```java
+@Override
+public void deleteAddress(long id) {
+	/**
+	 *  remove the associated object reference
+	 *  break bi-directional link
+	 */
+	AddressEntity addressEntity = addressRepository.findAddressById(id);
+	addressEntity.setUser(null);
+	// Unlike in deleting deleteUsewr,
+	// After I break the link , I also must save before Deleting the user
+	// Otherwise : we still have a row of address in DB (Even if the link is broken)
+	// Thus must add here this line of : addressRepository.save(addressEntity);
+	addressRepository.save(addressEntity);
+	addressRepository.delete(addressEntity);
+}
+```
+
+### [Remove User and Keep Address](#-)
+
+Since It is a Bi-Directional One2One, we can remove the User w/o removing the Address.
+As I stated before:
+
+1. We don't use `orphanRemoval`
+2. we don't use `CASCADE.REMOVE`
+
+this way we will control the remove of the entities.
+
+```java
+@Override
+public void deleteUser(long id) {
+	/**
+	 *  remove the associated object reference
+	 *  break bi-directional link
+	 */
+	UserEntity userEntity = userRepository.findUserById(id);
+	userEntity.getAddress().setUser(null);
+	userRepository.delete(userEntity);
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
