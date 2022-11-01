@@ -382,7 +382,7 @@ public void deleteUser(long id) {
 
 This is how the Tables in DB looks:
 
-We define the PK in Address Table to be same PK as in User Table.
+We define the PK in User Table , which is a FK in Address Table.
 
 - User_TB is parent
 - Address_TB is child
@@ -464,8 +464,29 @@ This is how the Tables in DB looks:
 
 We define the PK in Address Table to be same PK as in User Table.
 
-- User_TB is parent
+- User_TB is parent (JSON response show that Address is Parent and User is Child)
 - Address_TB is child
+
+Accoring MySql , this is how tables are created:
+
+
+```sql
+CREATE TABLE `users_tb` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `published` bit(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8
+
+CREATE TABLE `address_tb` (
+  `user_id` bigint(20) NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  CONSTRAINT `FK7wjfdv2b0wj25g84w0h2og54` FOREIGN KEY (`user_id`) REFERENCES `users_tb` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+```
 
 ![image](https://user-images.githubusercontent.com/36256986/199121744-b6c7cf1b-d931-491b-a6bc-ab3f6292044a.png) ----- ![image](https://user-images.githubusercontent.com/36256986/199121805-17c7e651-b31c-49a9-be6c-67a55bc8d81b.png)
 
