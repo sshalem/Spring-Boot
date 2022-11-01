@@ -1,6 +1,7 @@
 package com.jpa.one2many.bi.eager.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,13 @@ public class RoleEntity {
 	private String role;
 	private long pid;
 
-	@ManyToOne
+//	@ManyToOne(cascade = {
+//					CascadeType.PERSIST,
+//					CascadeType.MERGE,
+//					CascadeType.REFRESH,
+//					CascadeType.DETACH}, 
+//			fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private UserEntity user;
