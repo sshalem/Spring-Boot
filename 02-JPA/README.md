@@ -438,7 +438,7 @@ public class UserEntity {
 AddressEntity Has the following Annotations:
 
 1. `@OneToOne(fetch = FetchType.EAGER)`
-2. `@MapsId` -
+2. `@MapsId` - Means that the `private Long id` will be set as FK from Users_TB , thus both will have the same ID (`user_id`)
 3. `@JoinColumn(name = "user_id")`
 4. No Cascading
 
