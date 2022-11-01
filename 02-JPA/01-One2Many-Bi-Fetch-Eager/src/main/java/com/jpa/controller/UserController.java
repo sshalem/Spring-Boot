@@ -25,6 +25,16 @@ public class UserController {
 	@Autowired
 	private UserDaoImpl userDaoImpl;
 
+	
+	// **************************************
+	// ***** Post Methods ***
+	// **************************************
+	
+	@PostMapping("/create")
+	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
+		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
+	}
+	
 	// *********************
 	// ***** Get Methods ***
 	// *********************
@@ -43,26 +53,17 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
 	}
 
-	@GetMapping("/getUserEmail/{email}")
+	@GetMapping("/getUserByEmail/{email}")
 	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/allUsers")
-	public ResponseEntity<?> geAlltUser() {
+	public ResponseEntity<?> getAlltUser() {
 		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
 	}
 	
-	// **************************************
-	// ***** Post Methods ***
-	// **************************************
 	
-	@PostMapping("/create")
-	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
-		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
-	}
-
-
 	// **************************************
 	// ***** Put Methods ***
 	// **************************************

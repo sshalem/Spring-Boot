@@ -23,6 +23,11 @@ public class RoleController {
 	// ***** Get Methods ***
 	// *********************
 
+	@GetMapping("/allRoles")
+	public ResponseEntity<?> getAlltRoles() {
+		return new ResponseEntity<Object>(roleDaoImpl.getAllRoles(), null, HttpStatus.FOUND);
+	}
+	
 	@GetMapping("/getRolesById/{id}")
 	public ResponseEntity<?> getRolesById(@PathVariable("id") long id) {
 		return new ResponseEntity<Object>(roleDaoImpl.getRoleById(id), null, HttpStatus.FOUND);
@@ -36,10 +41,5 @@ public class RoleController {
 	@GetMapping("/getRolesByPid/{pid}")
 	public ResponseEntity<?> getRolesByPid(@PathVariable("pid") long pid) {
 		return new ResponseEntity<Object>(roleDaoImpl.getRoleByPid(pid), null, HttpStatus.FOUND);
-	}
-
-	@GetMapping("/allRoles")
-	public ResponseEntity<?> geAlltRoles() {
-		return new ResponseEntity<Object>(roleDaoImpl.getAllRoles(), null, HttpStatus.FOUND);
 	}
 }

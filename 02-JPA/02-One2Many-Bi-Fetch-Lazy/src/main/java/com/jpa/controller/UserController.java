@@ -33,6 +33,15 @@ public class UserController {
 	 * Thus , In service layer I return a DTO
 	 */
 	
+	// **************************************
+	// ***** Post Methods ***
+	// **************************************
+	
+	@PostMapping("/create")
+	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
+		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
+	}
+	
 	// *********************
 	// ***** Get Methods ***
 	// *********************
@@ -57,18 +66,10 @@ public class UserController {
 	}
 		
 	@GetMapping("/allUsers")
-	public ResponseEntity<?> geAlltUser() {
+	public ResponseEntity<?> getAlltUser() {
 		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
 	}
-	
-	// **************************************
-	// ***** Post Methods ***
-	// **************************************
-	
-	@PostMapping("/create")
-	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
-		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
-	}
+
 	
 	// **************************************
 	// ***** Put Methods ***
