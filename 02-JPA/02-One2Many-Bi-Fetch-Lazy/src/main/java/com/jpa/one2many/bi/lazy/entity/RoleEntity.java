@@ -1,10 +1,9 @@
-package com.jpa.entity;
+package com.jpa.one2many.bi.lazy.entity;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +27,9 @@ public class RoleEntity implements Serializable {
 
 	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
 	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
+	//	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
 	@ManyToOne(fetch = FetchType.LAZY)	
-	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
+	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private UserEntity user;
 

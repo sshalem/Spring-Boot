@@ -53,7 +53,7 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
 	}
 
-	@GetMapping("/getUserEmail/{email}")
+	@GetMapping("/getUserByEmail/{email}")
 	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
 	}

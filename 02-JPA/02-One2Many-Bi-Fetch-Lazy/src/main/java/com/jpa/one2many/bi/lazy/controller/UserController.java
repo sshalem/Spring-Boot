@@ -1,4 +1,4 @@
-package com.jpa.controller;
+package com.jpa.one2many.bi.lazy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.dao.UserDaoImpl;
-import com.jpa.dto.UserDto;
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
+import com.jpa.one2many.bi.lazy.dao.UserDaoImpl;
+import com.jpa.one2many.bi.lazy.dto.UserDto;
+import com.jpa.one2many.bi.lazy.entity.RoleEntity;
+import com.jpa.one2many.bi.lazy.entity.UserEntity;
 
 @RestController
 @RequestMapping("/users")
@@ -60,7 +60,7 @@ public class UserController {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
 	}
 
-	@GetMapping("/getUserEmail/{email}")
+	@GetMapping("/getUserByEmail/{email}")
 	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
 		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
 	}

@@ -70,9 +70,11 @@ public class RoleDaoImpl implements RoleDao {
 	}
 	
 	private List<UserDto> userDtoConverter(List<UserEntity> users) {
+		
 		List<UserDto> returnedValue = new ArrayList<>();
-		UserDto userDto = new UserDto();
+		
 		for(UserEntity user: users) {
+			UserDto userDto = new UserDto();
 			BeanUtils.copyProperties(user, userDto);
 			returnedValue.add(userDto);	
 		}
@@ -80,9 +82,11 @@ public class RoleDaoImpl implements RoleDao {
 	}
 	
 	private List<RoleDto> roleDtoConverter(List<RoleEntity> roles) {
+		
 		List<RoleDto> returnedValue = new ArrayList<>();
-		RoleDto roleDto = new RoleDto();
+		
 		for(RoleEntity role: roles) {
+			RoleDto roleDto = new RoleDto();
 			BeanUtils.copyProperties(role, roleDto);
 			returnedValue.add(roleDto);	
 		}

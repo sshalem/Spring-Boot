@@ -1,4 +1,4 @@
-package com.jpa.dao;
+package com.jpa.one2many.bi.lazy.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jpa.dto.UserDto;
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
-import com.jpa.repository.RoleRepository;
-import com.jpa.repository.UserRepository;
+import com.jpa.one2many.bi.lazy.dto.UserDto;
+import com.jpa.one2many.bi.lazy.entity.RoleEntity;
+import com.jpa.one2many.bi.lazy.entity.UserEntity;
+import com.jpa.one2many.bi.lazy.repository.RoleRepository;
+import com.jpa.one2many.bi.lazy.repository.UserRepository;
 
 @Service
 public class UserDaoImpl implements UserDao {
@@ -96,9 +96,10 @@ public class UserDaoImpl implements UserDao {
 		// This Line invokes 1 query line
 		List<UserEntity> userEntities = userRepository.findAll();		
 		List<UserDto> returnedValue = new ArrayList<>();
-		UserDto userDto = new UserDto();
+		
 		
 		for (UserEntity userEntity : userEntities) {
+			UserDto userDto = new UserDto();
 			BeanUtils.copyProperties(userEntity, userDto);
 			returnedValue.add(userDto);
 		}

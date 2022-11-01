@@ -1,9 +1,9 @@
-package com.jpa.dao;
+package com.jpa.one2many.bi.lazy.dao;
 
 import java.util.List;
 
-import com.jpa.dto.RoleDto;
-import com.jpa.dto.UserDto;
+import com.jpa.one2many.bi.lazy.dto.RoleDto;
+import com.jpa.one2many.bi.lazy.dto.UserDto;
 
 public interface RoleDao {
 

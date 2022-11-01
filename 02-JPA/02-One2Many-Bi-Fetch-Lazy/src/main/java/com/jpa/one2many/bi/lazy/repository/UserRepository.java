@@ -1,4 +1,4 @@
-package com.jpa.repository;
+package com.jpa.one2many.bi.lazy.repository;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
+import com.jpa.one2many.bi.lazy.entity.RoleEntity;
+import com.jpa.one2many.bi.lazy.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {

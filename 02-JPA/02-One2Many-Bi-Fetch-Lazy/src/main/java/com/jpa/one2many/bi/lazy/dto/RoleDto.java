@@ -1,4 +1,4 @@
-package com.jpa.dto;
+package com.jpa.one2many.bi.lazy.dto;
 
 public class RoleDto {
 

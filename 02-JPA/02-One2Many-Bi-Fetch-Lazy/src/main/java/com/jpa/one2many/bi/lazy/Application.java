@@ -1,4 +1,4 @@
-package com.jpa;
+package com.jpa.one2many.bi.lazy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

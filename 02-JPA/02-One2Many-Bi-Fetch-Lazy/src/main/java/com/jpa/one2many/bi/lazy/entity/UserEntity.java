@@ -1,4 +1,4 @@
-package com.jpa.entity;
+package com.jpa.one2many.bi.lazy.entity;
 
 import java.io.Serializable;
 import java.util.HashSet;

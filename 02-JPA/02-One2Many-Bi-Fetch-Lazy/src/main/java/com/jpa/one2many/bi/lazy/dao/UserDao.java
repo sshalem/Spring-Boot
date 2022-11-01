@@ -1,10 +1,10 @@
-package com.jpa.dao;
+package com.jpa.one2many.bi.lazy.dao;
 
 import java.util.List;
 
-import com.jpa.dto.UserDto;
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
+import com.jpa.one2many.bi.lazy.dto.UserDto;
+import com.jpa.one2many.bi.lazy.entity.RoleEntity;
+import com.jpa.one2many.bi.lazy.entity.UserEntity;
 
 public interface UserDao {
 	

@@ -1,4 +1,4 @@
-package com.jpa.controller;
+package com.jpa.one2many.bi.lazy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.dao.RoleDaoImpl;
+import com.jpa.one2many.bi.lazy.dao.RoleDaoImpl;
 
 @RestController
 @RequestMapping("/roles")

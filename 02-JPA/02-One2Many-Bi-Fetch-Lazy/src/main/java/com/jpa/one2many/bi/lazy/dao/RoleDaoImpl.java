@@ -1,4 +1,4 @@
-package com.jpa.dao;
+package com.jpa.one2many.bi.lazy.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.dto.RoleDto;
-import com.jpa.dto.UserDto;
-import com.jpa.entity.RoleEntity;
-import com.jpa.entity.UserEntity;
-import com.jpa.repository.RoleRepository;
-import com.jpa.repository.UserRepository;
+import com.jpa.one2many.bi.lazy.dto.RoleDto;
+import com.jpa.one2many.bi.lazy.dto.UserDto;
+import com.jpa.one2many.bi.lazy.entity.RoleEntity;
+import com.jpa.one2many.bi.lazy.entity.UserEntity;
+import com.jpa.one2many.bi.lazy.repository.RoleRepository;
+import com.jpa.one2many.bi.lazy.repository.UserRepository;
 
 @Service
 public class RoleDaoImpl implements RoleDao {
@@ -70,9 +70,11 @@ public class RoleDaoImpl implements RoleDao {
 	}
 	
 	private List<UserDto> userDtoConverter(List<UserEntity> users) {
+		
 		List<UserDto> returnedValue = new ArrayList<>();
-		UserDto userDto = new UserDto();
+		
 		for(UserEntity user: users) {
+			UserDto userDto = new UserDto();
 			BeanUtils.copyProperties(user, userDto);
 			returnedValue.add(userDto);	
 		}
@@ -80,9 +82,11 @@ public class RoleDaoImpl implements RoleDao {
 	}
 	
 	private List<RoleDto> roleDtoConverter(List<RoleEntity> roles) {
+		
 		List<RoleDto> returnedValue = new ArrayList<>();
-		RoleDto roleDto = new RoleDto();
+		
 		for(RoleEntity role: roles) {
+			RoleDto roleDto = new RoleDto();
 			BeanUtils.copyProperties(role, roleDto);
 			returnedValue.add(roleDto);	
 		}
