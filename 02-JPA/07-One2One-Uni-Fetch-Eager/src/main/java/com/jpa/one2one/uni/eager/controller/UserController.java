@@ -121,11 +121,7 @@ public class UserController {
 	
 	@DeleteMapping("/users/{id}")
 	public ResponseEntity<HttpStatus> deleteUserById(@PathVariable("id") long id) {
-		
-		/**
-		 * No Need to remove Address , before removing user.
-		 * We can Immediately remove a User 
-		 */
+
 		if (addressRepository.existsById(id)) {
 			addressRepository.deleteById(id);
 		}

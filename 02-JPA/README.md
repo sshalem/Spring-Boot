@@ -450,11 +450,33 @@ public class AddressEntity {
 
 This is how the Tables in DB looks:
 
-![image](https://user-images.githubusercontent.com/36256986/199121744-b6c7cf1b-d931-491b-a6bc-ab3f6292044a.png)  ![image](https://user-images.githubusercontent.com/36256986/199121805-17c7e651-b31c-49a9-be6c-67a55bc8d81b.png)
+We define the PK in Address Table to be same PK as in User Table.
 
+- User_TB is parent
+- Address_TB is child
 
+![image](https://user-images.githubusercontent.com/36256986/199121744-b6c7cf1b-d931-491b-a6bc-ab3f6292044a.png) ----- ![image](https://user-images.githubusercontent.com/36256986/199121805-17c7e651-b31c-49a9-be6c-67a55bc8d81b.png)
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)  
+The JSON we get once we want to get an address is as follows:
+
+```java
+{
+  "id": 2,
+  "street": "AAAA 15/15",
+  "city": "HOLON",
+  "user": {
+    "id": 2,
+    "name": "karin shalem",
+    "email": "karin.shalem@gmail.com",
+    "published": false
+  }
+}
+```
+
+With this implementation ,we can remove an Address w/o removing a User.
+If we remove a User , it will also remove an Address (see code Implementaion).
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
 
