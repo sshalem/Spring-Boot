@@ -378,6 +378,18 @@ public void deleteUser(long id) {
 }
 ```
 
+### [Tables in DB ](#-)
+
+This is how the Tables in DB looks:
+
+We define the PK in Address Table to be same PK as in User Table.
+
+- User_TB is parent
+- Address_TB is child
+
+![image](https://user-images.githubusercontent.com/36256986/199134637-464ae213-61ae-42fa-a06d-bd192f545784.png) ----- ![image](https://user-images.githubusercontent.com/36256986/199134669-56461c1c-e6f7-4c4f-9144-892bcd63c026.png)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
