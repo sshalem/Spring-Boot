@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jpa.one2many.bi.lazy.dto.UserDto;
 import com.jpa.one2many.bi.lazy.entity.RoleEntity;
 import com.jpa.one2many.bi.lazy.entity.UserEntity;
-import com.jpa.one2many.bi.lazy.repository.RoleRepository;
+import com.jpa.one2many.bi.lazy.exception.ResourceNotFoundException;
 import com.jpa.one2many.bi.lazy.repository.UserRepository;
 
 @Service
@@ -24,9 +24,6 @@ public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private RoleRepository roleRepository;
 
 	@Override
 	public UserDto createUser(UserEntity userEntity) {		
@@ -42,8 +39,10 @@ public class UserDaoImpl implements UserDao {
 		UserDto userDto = new UserDto();
 		LOGGER.info("method : getUserById(long id)");		
 //		UserEntity userEntity =  userRepository.findById(id);
-		UserEntity userEntity =  userRepository.jpqlFindById(id);
 //		UserEntity userEntity =  userRepository.nativeFindById(id);
+		UserEntity userEntity =  userRepository.jpqlFindById(id);
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with id = " + id);	
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;		
 	}
@@ -53,6 +52,8 @@ public class UserDaoImpl implements UserDao {
 		UserDto userDto = new UserDto();	
 		LOGGER.info("method : getUserByPid(long pid)");		
 		UserEntity userEntity = userRepository.findByPid(pid);		
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with pid = " + pid);	
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
 	}
@@ -76,7 +77,9 @@ public class UserDaoImpl implements UserDao {
 	public UserDto getUserByName(String name) {				
 		UserDto userDto = new UserDto();	
 		LOGGER.info("method : getUserByName(String name)");
-		UserEntity userEntity = userRepository.findByName(name);		
+		UserEntity userEntity = userRepository.findByName(name);	
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with name = " + name);
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
 	}
@@ -86,6 +89,8 @@ public class UserDaoImpl implements UserDao {
 		UserDto userDto = new UserDto();		
 		LOGGER.info("method : getUserByEmail(String email)");		
 		UserEntity userEntity = userRepository.findByEmail(email);		
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with email = " + email);
 		BeanUtils.copyProperties(userEntity, userDto);		
 		return userDto;
 	}	
@@ -111,6 +116,8 @@ public class UserDaoImpl implements UserDao {
 		LOGGER.info("method : removeUserByPid(long pid)");
 		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(pid);
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with pid = " + pid);
 		userRepository.delete(userEntity);
 	}
 	
@@ -140,6 +147,8 @@ public class UserDaoImpl implements UserDao {
 		LOGGER.info("method : addRoleToUser(long userPid, RoleEntity roleEntity)");
 		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with userPid = " + userPid);
 		roleEntity.setPid(userPid);
 		/**
 		 * This line : userEntity.addRole(roleEntity) 
@@ -200,6 +209,9 @@ public class UserDaoImpl implements UserDao {
 		
 		// This Line invokes 1 query line
 		UserEntity userEntity = userRepository.findByPid(userPid);
+		
+		if(userEntity == null)
+			throw new ResourceNotFoundException("Not found User with userPid = " + userPid);		
 		
 		// (1) search for roelEntity from getRoles()	
 		Set<RoleEntity> roles = userEntity.getRoles();

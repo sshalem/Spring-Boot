@@ -1,5 +1,7 @@
 package com.jpa.one2many.bi.eager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,8 +61,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/allUsers")
-	public ResponseEntity<?> getAlltUser() {
-		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
+	public ResponseEntity<?> getAlltUser() {		
+		List<UserEntity> users = userDaoImpl.getAllUsers();		
+		if (users.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 	
 	
