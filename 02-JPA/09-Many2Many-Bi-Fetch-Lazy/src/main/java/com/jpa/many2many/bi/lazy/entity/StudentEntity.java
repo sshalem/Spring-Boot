@@ -3,8 +3,10 @@ package com.jpa.many2many.bi.lazy.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ public class StudentEntity {
 	@Id
 	@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
-	@Column(name = "student_id")
+	@Column(name = "fk_student_id")
 	private long id;
 	private String firstName;
 	private String lastName;
@@ -29,7 +31,12 @@ public class StudentEntity {
 	private String encryptedPassword;
 	private String email;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "students", 
+				fetch = FetchType.LAZY,
+				cascade = { CascadeType.PERSIST, 
+							CascadeType.DETACH,
+							CascadeType.MERGE, 
+							CascadeType.REFRESH })
 	@JsonIgnore
 	private Set<CourseEntity> courses;
 

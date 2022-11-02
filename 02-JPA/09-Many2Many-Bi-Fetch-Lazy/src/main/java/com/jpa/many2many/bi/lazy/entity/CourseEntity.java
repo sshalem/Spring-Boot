@@ -2,7 +2,6 @@ package com.jpa.many2many.bi.lazy.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,20 +21,15 @@ public class CourseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "course_id")
+	@Column(name = "fk_course_id")
 	private long id;
 	private String courseNumber;
 	private int year;
 
-	@ManyToMany(mappedBy = "students",
-			fetch = FetchType.LAZY, 
-			cascade = { CascadeType.PERSIST, 
-						CascadeType.DETACH,
-						CascadeType.MERGE, 
-						CascadeType.REFRESH })
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "course_student", 
-				joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")}, 
-				inverseJoinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")})
+				joinColumns = {@JoinColumn(name = "fk_course_id", referencedColumnName = "id")}, 
+				inverseJoinColumns = {@JoinColumn(name = "fk_student_id", referencedColumnName = "id")})
 	@JsonIgnore
 	private Set<StudentEntity> students;
 
