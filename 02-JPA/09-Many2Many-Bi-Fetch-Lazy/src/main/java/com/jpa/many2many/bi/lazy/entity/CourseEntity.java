@@ -2,7 +2,6 @@ package com.jpa.many2many.bi.lazy.entity;
 
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,16 +19,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CourseEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "fk_course_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private long id;
 	private String courseNumber;
 	private int year;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "course_student", 
-				joinColumns = {@JoinColumn(name = "fk_course_id", referencedColumnName = "id")}, 
-				inverseJoinColumns = {@JoinColumn(name = "fk_student_id", referencedColumnName = "id")})
+				joinColumns = {@JoinColumn(name = "fk_course_id")}, 
+				inverseJoinColumns = {@JoinColumn(name = "fk_student_id")})
 	@JsonIgnore
 	private Set<StudentEntity> students;
 

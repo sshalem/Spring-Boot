@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,6 @@ public class StudentEntity {
 	@Id
 	@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
-	@Column(name = "fk_student_id")
 	private long id;
 	private String firstName;
 	private String lastName;
