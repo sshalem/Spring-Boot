@@ -18,7 +18,17 @@ public class Tag {
 	@Column(name = "name")
 	private String name;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
+	@ManyToMany(fetch = FetchType.EAGER
+//				cascade = { 
+//							CascadeType.PERSIST, 
+//							CascadeType.MERGE,
+//							CascadeType.DETACH,
+//							CascadeType.REFRESH
+//							}
+			)
+	@JoinTable(name = "tags_tutorial", 
+			joinColumns = { @JoinColumn(name = "tag_id") }, 
+			inverseJoinColumns = { @JoinColumn(name = "tutorial_id") })
 	@JsonIgnore
 	private Set<Tutorial> tutorials = new HashSet<>();
 
