@@ -12,78 +12,97 @@ import com.bezkoder.spring.hibernate.manytomany.exception.ResourceNotFoundExcept
 import com.bezkoder.spring.hibernate.manytomany.model.Tutorial;
 import com.bezkoder.spring.hibernate.manytomany.repository.TutorialRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class TutorialController {
 
-  @Autowired
-  TutorialRepository tutorialRepository;
+	@Autowired
+	TutorialRepository tutorialRepository;
 
-  @GetMapping("/tutorials")
-  public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
-    List<Tutorial> tutorials = new ArrayList<Tutorial>();
+	// *******************************
+	// POST (Create) methods
+	// ********************************
 
-    if (title == null)
-      tutorialRepository.findAll().forEach(tutorials::add);
-    else
-      tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+	@PostMapping("/tutorials")
+	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
+		Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), true));
+		return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+	}
 
-    if (tutorials.isEmpty()) {
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+	// *******************************
+	// GET methods
+	// ********************************
 
-    return new ResponseEntity<>(tutorials, HttpStatus.OK);
-  }
+	@GetMapping("/tutorials")
+	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
+		List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
-  @GetMapping("/tutorials/{id}")
-  public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
-    Tutorial tutorial = tutorialRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+		if (title == null)
+			tutorialRepository.findAll().forEach(tutorials::add);
+		else
+			tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
 
-    return new ResponseEntity<>(tutorial, HttpStatus.OK);
-  }
+		if (tutorials.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
 
-  @PostMapping("/tutorials")
-  public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
-    Tutorial _tutorial = tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), true));
-    return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
-  }
+		return new ResponseEntity<>(tutorials, HttpStatus.OK);
+	}
 
-  @PutMapping("/tutorials/{id}")
-  public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
-    Tutorial _tutorial = tutorialRepository.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+	@GetMapping("/tutorials/{id}")
+	public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
+		Tutorial tutorial = tutorialRepository
+				.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
 
-    _tutorial.setTitle(tutorial.getTitle());
-    _tutorial.setDescription(tutorial.getDescription());
-    _tutorial.setPublished(tutorial.isPublished());
-    
-    return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
-  }
+		return new ResponseEntity<>(tutorial, HttpStatus.OK);
+	}
 
-  @DeleteMapping("/tutorials/{id}")
-  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
-    tutorialRepository.deleteById(id);
-    
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-  }
+	@GetMapping("/tutorials/published")
+	public ResponseEntity<List<Tutorial>> findByPublished() {
+		List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
 
-  @DeleteMapping("/tutorials")
-  public ResponseEntity<HttpStatus> deleteAllTutorials() {
-    tutorialRepository.deleteAll();
-    
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-  }
+		if (tutorials.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
 
-  @GetMapping("/tutorials/published")
-  public ResponseEntity<List<Tutorial>> findByPublished() {
-    List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
+		return new ResponseEntity<>(tutorials, HttpStatus.OK);
+	}
 
-    if (tutorials.isEmpty()) {
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-    
-    return new ResponseEntity<>(tutorials, HttpStatus.OK);
-  }
+
+	// *******************************
+	//       UPDATE methods
+	//********************************
+	
+	@PutMapping("/tutorials/{id}")
+	public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
+		Tutorial _tutorial = tutorialRepository
+				.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+
+		_tutorial.setTitle(tutorial.getTitle());
+		_tutorial.setDescription(tutorial.getDescription());
+		_tutorial.setPublished(tutorial.isPublished());
+
+		return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+	}
+	
+
+	// *******************************
+	//       DELETE methods
+	//********************************
+
+	@DeleteMapping("/tutorials/{id}")
+	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+		tutorialRepository.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@DeleteMapping("/tutorials")
+	public ResponseEntity<HttpStatus> deleteAllTutorials() {
+		tutorialRepository.deleteAll();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
 }
