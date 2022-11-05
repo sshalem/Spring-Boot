@@ -1,5 +1,10 @@
 <img src="https://img.shields.io/badge/-Spring Boot Course%20-blue" height=70px>
 
+For Spring boot Reference Guid version 2.6.13:
+
+* https://docs.spring.io/spring-boot/docs/2.6.x/reference/htmlsingle/
+* https://docs.spring.io/spring-boot/docs/2.6.13/reference/html/application-properties.html#appendix.application-properties
+
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[Application Properties](https://github.com/sshalem/Spring-Boot/tree/main/1_application_properties)   | 
