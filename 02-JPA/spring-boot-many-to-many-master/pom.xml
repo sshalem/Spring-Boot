@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-many-to-many</artifactId>
+	<artifactId>spring-boot-many-to-many-JPA</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-many-to-many</name>
-	<description>Spring Boot Many to Many example using Hibernate / JPA @ManyToMany</description>
+	<name>spring-boot-many-to-many-JPA</name>
+	<description>Spring Boot Many to Many example using Hibernate / JPA @ManyToMany_</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
