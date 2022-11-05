@@ -5,6 +5,12 @@ For Spring boot Reference Guid version 2.6.13:
 * https://docs.spring.io/spring-boot/docs/2.6.x/reference/htmlsingle/
 * https://docs.spring.io/spring-boot/docs/2.6.13/reference/html/application-properties.html#appendix.application-properties
 
+For comparing with Spring boot 2.0.9
+* https://docs.spring.io/spring-boot/docs/2.0.9.RELEASE/reference/htmlsingle/#common-application-properties
+
+![image](https://user-images.githubusercontent.com/36256986/200140510-7a252694-ba9b-43e8-8c3e-ccc4149facaf.png)
+
+
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[Application Properties](https://github.com/sshalem/Spring-Boot/tree/main/1_application_properties)   | 
