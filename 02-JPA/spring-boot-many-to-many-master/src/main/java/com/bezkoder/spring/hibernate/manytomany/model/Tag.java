@@ -13,6 +13,7 @@ public class Tag {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "tag_id")
 	private long id;
 
 	@Column(name = "name")
@@ -27,8 +28,8 @@ public class Tag {
 //							}
 			)
 	@JoinTable(name = "tags_tutorial", 
-			joinColumns = { @JoinColumn(name = "tag_id") }, 
-			inverseJoinColumns = { @JoinColumn(name = "tutorial_id") })
+			joinColumns = { @JoinColumn(name = "tag_id" , referencedColumnName = "tag_id") } , 
+			inverseJoinColumns = { @JoinColumn(name = "tutorial_id" , referencedColumnName = "tutorial_id") })
 	@JsonIgnore
 	private Set<Tutorial> tutorials = new HashSet<>();
 

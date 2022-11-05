@@ -2,10 +2,10 @@
 --Insert into USERS_TB --
 -------------------------
 
-INSERT INTO tutorials(id , title ,description, published) VALUES (1, 'JAVA tutorial' , 'learn JAVA SPRING' ,1);
-INSERT INTO tutorials(id , title ,description, published) VALUES (2, 'C Sharp tutorial' , 'learn C Sharp' ,0);
-INSERT INTO tutorials(id , title ,description, published) VALUES (3, 'Python tutorial' , 'learn Python' ,1);
-INSERT INTO tutorials(id , title ,description, published) VALUES (4, 'React tutorial' , 'learn React' ,0);
+INSERT INTO tutorials(tutorial_id , title ,description, published) VALUES (1, 'JAVA tutorial' , 'learn JAVA SPRING' ,1);
+INSERT INTO tutorials(tutorial_id , title ,description, published) VALUES (2, 'C Sharp tutorial' , 'learn C Sharp' ,0);
+INSERT INTO tutorials(tutorial_id , title ,description, published) VALUES (3, 'Python tutorial' , 'learn Python' ,1);
+INSERT INTO tutorials(tutorial_id , title ,description, published) VALUES (4, 'React tutorial' , 'learn React' ,0);
 
 -------------------------
 -- Insert into ADDRESS_TB

@@ -19,6 +19,7 @@ public class Tutorial {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "tutorial_id")
 	private long id;
 
 	@Column(name = "title")
