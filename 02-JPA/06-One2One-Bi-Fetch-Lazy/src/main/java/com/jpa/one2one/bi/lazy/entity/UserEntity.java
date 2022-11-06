@@ -31,8 +31,13 @@ public class UserEntity implements Serializable {
 	 * 
 	 * Don't add any kind of CASCADE type to the child Entity
 	 */
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH,
-			CascadeType.PERSIST }, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "user", 
+				cascade = { 
+						CascadeType.MERGE, 
+						CascadeType.REFRESH, 
+						CascadeType.DETACH,
+						CascadeType.PERSIST }, 
+				fetch = FetchType.LAZY)
 	private AddressEntity address;
 
 	public UserEntity() {

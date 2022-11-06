@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import com.bezkoder.spring.hibernate.manytomany.exception.ResourceNotFoundException;
@@ -131,7 +132,16 @@ public class TagController {
 	}
 
 	@DeleteMapping("/tags/{id}")
+	@Transactional
 	public ResponseEntity<HttpStatus> deleteTag(@PathVariable("id") long id) {
+		
+		Tag tag = tagRepository
+				.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Tag with id = " + id));
+		
+		tag.setTutorials(null);
+		tagRepository.save(tag);
+		
 		tagRepository.deleteById(id);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

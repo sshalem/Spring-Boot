@@ -11,50 +11,48 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "tags")
 public class Tag {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tag_id")
-	private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-	@Column(name = "name")
-	private String name;
+  @Column(name = "name")
+  private String name;
 
-	@ManyToMany(fetch = FetchType.EAGER
-//				cascade = { 
-//							CascadeType.PERSIST, 
-//							CascadeType.MERGE,
-//							CascadeType.DETACH,
-//							CascadeType.REFRESH
-//							}
-			)
-	@JoinTable(name = "tags_tutorial", 
-			joinColumns = { @JoinColumn(name = "tag_id" , referencedColumnName = "tag_id") } , 
-			inverseJoinColumns = { @JoinColumn(name = "tutorial_id" , referencedColumnName = "tutorial_id") })
-	@JsonIgnore
-	private Set<Tutorial> tutorials = new HashSet<>();
+  @ManyToMany(fetch = FetchType.LAZY,
+	      cascade = {
+	              CascadeType.PERSIST,
+	              CascadeType.MERGE,
+	              CascadeType.REFRESH,
+	              CascadeType.DETACH, }
+	          )
+	      @JoinTable(name = "tutorial_tags",
+	            joinColumns = { @JoinColumn(name = "tag_id") },
+	            inverseJoinColumns = { @JoinColumn(name = "tutorial_id") })
+  @JsonIgnore
+  private Set<Tutorial> tutorials = new HashSet<>();
 
-	public Tag() {
+  public Tag() {
 
-	}
+  }
+  
+  public long getId() {
+    return id;
+  }
 
-	public long getId() {
-		return id;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public Set<Tutorial> getTutorials() {
+    return tutorials;
+  }
 
-	public Set<Tutorial> getTutorials() {
-		return tutorials;
-	}
-
-	public void setTutorials(Set<Tutorial> tutorials) {
-		this.tutorials = tutorials;
-	}
-
+  public void setTutorials(Set<Tutorial> tutorials) {
+    this.tutorials = tutorials;
+  }  
+  
 }
