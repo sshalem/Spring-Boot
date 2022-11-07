@@ -202,11 +202,12 @@ public enum ErrorMessages {
 ### Entity ExceptionErrorMessage
 
 ```java
-private Date timestamp;
-	private int status;
+	private Date timestamp;
+	private int statusCode;
 	private String error;
 	private String exception;
 	private String message;
+	private String uriDescription;
 
 	public ExceptionErrorMessage() {
 		super();
@@ -223,7 +224,7 @@ private Date timestamp;
  * 
  */
 @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
+public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity, WebRequest request) {
 	try {
 		return new ResponseEntity<Object>(customerService.createUser(userEntity), new HttpHeaders(), HttpStatus.OK);
 	} catch (Exception em) {
@@ -235,6 +236,7 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
 		errorMessage.setException(NameAlreadyExistException.class.getName());
 		errorMessage.setMessage(em.getMessage());
+		errorMessage.setUriDescription(request.getDescription(false));
 		
 		return new ResponseEntity<Object>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
