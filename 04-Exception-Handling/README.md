@@ -250,7 +250,7 @@ We still using try/catch clause in the controller. </br>
 In next project (E) we will see how to centrolize all exceptions in one class.
 
 
-![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681227-846db85b-4429-43d4-87e5-c1a79b567ff2.PNG)
+![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/200419668-d3d1b405-7089-4765-b236-84e82751d238.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
