@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
 		message.setTimestamp(new Date());
 		message.setStatusCode(HttpStatus.NOT_FOUND.value());
 		message.setError(HttpStatus.valueOf(HttpStatus.NOT_FOUND.value()).getReasonPhrase());
-		message.setException(Exception.class.getName());
+		message.setException(ex.getClass().getCanonicalName());
 		message.setMessage(ex.getMessage());
 		message.setUriDescription(request.getDescription(false));
 
@@ -36,7 +36,7 @@ public class ControllerExceptionHandler {
 		message.setTimestamp(new Date());
 		message.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		message.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
-		message.setException(Exception.class.getName());
+		message.setException(ex.getClass().getCanonicalName());
 		message.setMessage(ex.getMessage());
 		message.setUriDescription(request.getDescription(false));
 
