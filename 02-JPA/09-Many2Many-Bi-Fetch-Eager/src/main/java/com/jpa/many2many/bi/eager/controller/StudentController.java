@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,7 +58,7 @@ public class StudentController {
 	}
 
 	@GetMapping(path = "/getStudentByIdentityNumber/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getStudentByIdentityNumber(@PathVariable("identityNumber") long identityNumber) {
+	public ResponseEntity<?> getStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
 		return new ResponseEntity<>(studentDaoImpl.getStudentByIdentityNumber(identityNumber), HttpStatus.OK);
 	}
 
@@ -66,9 +67,38 @@ public class StudentController {
 		return new ResponseEntity<>(studentDaoImpl.getStudentByEmail(email), HttpStatus.OK);
 	}
 
+	@GetMapping(path = "/getStudentsThatLearnedCoursesInLearningYear/{learningYear}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getStudentsWhoLearnInLearningYear(@PathVariable("learningYear") int learningYear) {
+
+		List<StudentEntity> _students = studentDaoImpl.getStudentsThatLearnedCoursesInLearningYear(learningYear);
+		if (_students.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_students, HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/getStudentsWhoLearedCourseName/{courseName}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getStudentsWhoLearedCourseName(@PathVariable("courseName") String courseName) {
+
+		List<StudentEntity> _students = studentDaoImpl.getStudentsWhoLearedCourseName(courseName);
+		if (_students.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_students, HttpStatus.OK);
+	}
+	 
+	 
 	// *******************************
 	// UPDATE methods
 	// ********************************
+	@PutMapping(path = "/updateStudentDetails/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> updateStudentDetails(@PathVariable("identityNumber") int identityNumber,@RequestBody StudentEntity studentEntity) {
+
+		StudentEntity _student = studentDaoImpl.updateStudentDetails(identityNumber,studentEntity);
+				
+		return new ResponseEntity<>(_student, HttpStatus.OK);
+	}
+	
 
 	// *******************************
 	// DELETE methods

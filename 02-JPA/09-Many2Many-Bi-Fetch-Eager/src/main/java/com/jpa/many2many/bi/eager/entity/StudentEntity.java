@@ -27,11 +27,17 @@ public class StudentEntity {
 	private long id;
 	private String firstName;
 	private String lastName;
-	private long identityNumber;
+	private int identityNumber;
 	private String email;
 
-	@ManyToMany(mappedBy = "students", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH,
-			CascadeType.MERGE, CascadeType.REFRESH })
+	@ManyToMany(mappedBy = "students",
+			fetch = FetchType.EAGER, 
+			cascade = { CascadeType.PERSIST, 
+						CascadeType.DETACH,
+						CascadeType.MERGE, 
+						CascadeType.REFRESH 
+						}
+				)
 	@JsonIgnore
 	private Set<CourseEntity> courses;
 
@@ -39,7 +45,7 @@ public class StudentEntity {
 		super();
 	}
 
-	public StudentEntity(String firstName, String lastName, long identityNumber, String email) {
+	public StudentEntity(String firstName, String lastName, int identityNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -71,11 +77,11 @@ public class StudentEntity {
 		this.lastName = lastName;
 	}
 
-	public long getIdentityNumber() {
+	public int getIdentityNumber() {
 		return identityNumber;
 	}
 
-	public void setIdentityNumber(long identityNumber) {
+	public void setIdentityNumber(int identityNumber) {
 		this.identityNumber = identityNumber;
 	}
 

@@ -63,7 +63,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public StudentEntity getStudentByIdentityNumber(long identityNumber) {
+	public StudentEntity getStudentByIdentityNumber(int identityNumber) {
 
 		LOGGER.info("invoke getStudentByIdentityNumber");
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
@@ -86,23 +86,36 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public List<StudentEntity> getStudentsWhoLearnInLearningYear(long learningYear) {
-		LOGGER.info("invoke gettAllStudents");
-		return studentRepository.jpqlFindStudentsWhoLearedInLearningYear(learningYear);
+	public List<StudentEntity> getStudentsThatLearnedCoursesInLearningYear(int learningYear) {
+		LOGGER.info("invoke getStudentsWhoLearnInLearningYear");
+		return studentRepository.jpqlFindStudentsThatLearnedCoursesInLearningYear(learningYear);
 	}
 
+	@Override
+	public List<StudentEntity> getStudentsWhoLearedCourseName(String courseName){
+		LOGGER.info("invoke getStudentsWhoLearedCourseName");
+		return studentRepository.jpqlFindStudentsWhoLearedCourseName(courseName);
+	}
+	
 	/***********************
 	 * UPDATE
 	 ***********************/
 
 	@Override
-	public StudentEntity updateStudentDetails(StudentEntity studentEntity) {
+	public StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity) {
 		LOGGER.info("invoke updateStudentDetails");
-		return null;
+		
+		StudentEntity _studentEntity = getStudentByIdentityNumber(identityNumber);
+		
+		_studentEntity.setFirstName(studentEntity.getFirstName());
+		_studentEntity.setLastName(studentEntity.getLastName());
+		_studentEntity.setEmail(studentEntity.getEmail());
+						
+		return studentRepository.save(_studentEntity);
 	}
 
 	@Override
-	public StudentEntity addCourseToStudent(long identityNumber, CourseEntity courseEntity) {
+	public StudentEntity addCourseToStudent(int identityNumber, CourseEntity courseEntity) {
 		LOGGER.info("invoke addCourseToStudent");
 		return null;
 	}
@@ -118,13 +131,13 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public void removeCourseFromStudentByCourseNumber(long identityNumber, String courseNumber) {
+	public void removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
 		LOGGER.info("invoke removeCourseFromStudentByCourseNumber");
 
 	}
 
 	@Override
-	public void removeAllCoursesFromStudent(long identityNumber) {
+	public void removeAllCoursesFromStudent(int identityNumber) {
 		LOGGER.info("invoke removeAllCoursesFromStudent");
 
 	}
