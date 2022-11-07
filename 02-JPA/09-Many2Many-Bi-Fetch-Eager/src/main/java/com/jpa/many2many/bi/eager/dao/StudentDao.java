@@ -23,7 +23,7 @@ public interface StudentDao {
 
 	StudentEntity getStudentByEmail(String email);
 
-	List<StudentEntity> gettAllStudents();
+	List<StudentEntity> getStudentsWhoLearnInLearningYear(long learningYear);
 
 	/**
 	 * Update

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
@@ -30,6 +31,9 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 				   "WHERE ctb.learningYear = ?1 AND stb.identityNumber = ?2", nativeQuery = true)
 	List<CourseEntity> nativeFindStudentCoursesByLearningYear(long learningYear, long identityNumber);
 
+	@Query("SELECT se FROM StudentEntity se JOIN se.courses AS cours WHERE cours.learningYear=:learningYear")
+	List<StudentEntity> jpqlFindStudentsWhoLearedInLearningYear(@Param("learningYear") long learningYear);
+	
 	/**
 	 * 	@Query("SELECT cp FROM CUSTOMER cust JOIN cust.coupons AS cp WHERE cust.id=:id AND cp.type=:couponType")
 		List<Coupon> findAllPurchasedCouponsType(@Param("id") long custId, @Param("couponType") CouponType type);

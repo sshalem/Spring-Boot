@@ -32,7 +32,7 @@ public class StudentDaoImpl implements StudentDao {
 
 		if (_studentEntity != null)
 			throw new DuplicateKeyException(
-					"Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " already Exist");
+					"Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " , already Exist");
 		return studentRepository.save(studentEntity);
 	}
 
@@ -47,7 +47,7 @@ public class StudentDaoImpl implements StudentDao {
 		List<StudentEntity> _students = studentRepository.findStudentsByFirstName(firstName);
 //
 //		if (_students != null)
-//			throw new ResourceNotFoundException("Students with first name : " + firstName + " Not Exist");
+//			throw new ResourceNotFoundException("Students with first name : " + firstName + " , Not Exist");
 		return _students;
 	}
 
@@ -58,7 +58,7 @@ public class StudentDaoImpl implements StudentDao {
 		List<StudentEntity> _students = studentRepository.findStudentsByLastName(lastName);
 
 		if (_students != null)
-			throw new ResourceNotFoundException("Students with last name : " + lastName + " Not Exist");
+			throw new ResourceNotFoundException("Students with last name : " + lastName + " , Not Exist");
 		return _students;
 	}
 
@@ -69,7 +69,7 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
 
 		if (_studentEntity == null)
-			throw new NullPointerException("Student with Identity Number : " + identityNumber + " Not Exist");
+			throw new NullPointerException("Student with Identity Number : " + identityNumber + " , Not Exist");
 		return _studentEntity;
 	}
 
@@ -81,14 +81,14 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = studentRepository.findStudentByEmail(email);
 
 		if (_studentEntity == null)
-			throw new ResourceNotFoundException("Student with Email : " + email + " Not Exist");
+			throw new ResourceNotFoundException("Student with Email : " + email + " , Not Exist");
 		return _studentEntity;
 	}
 
 	@Override
-	public List<StudentEntity> gettAllStudents() {
+	public List<StudentEntity> getStudentsWhoLearnInLearningYear(long learningYear) {
 		LOGGER.info("invoke gettAllStudents");
-		return null;
+		return studentRepository.jpqlFindStudentsWhoLearedInLearningYear(learningYear);
 	}
 
 	/***********************
