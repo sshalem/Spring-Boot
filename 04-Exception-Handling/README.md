@@ -261,7 +261,7 @@ In next project (E) we will see how to centrolize all exceptions in one class.
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
 In this project (E) we will see how to centrolize all exceptions in one class.</br>
-1. For that I created an ew Class named it **_AppExceptionsHandler_** (see the annotations I added to the class </br>
+1. For that I created a new Class named it **_AppExceptionsHandler_** (see the annotations I added to the class </br>
 2. I remove the try/catch clause in my controller , because it will be handled by the **_AppExceptionsHandler_**
 
 ### _AppExceptionsHandler_
@@ -280,11 +280,13 @@ public class AppExceptionsHandler {
 	public ResponseEntity<Object> handleUserServiceException(NameAlreadyExistException ex) {
 
 		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
+		
 		errorMessage.setTimestamp(new Date());
 		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
 		errorMessage.setException(NameAlreadyExistException.class.getName());
 		errorMessage.setMessage(ex.getMessage());
+		errorMessage.setUriDescription(request.getDescription(false));
 
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -297,9 +299,10 @@ public class AppExceptionsHandler {
 		errorMessage.setTimestamp(new Date());
 		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
-		errorMessage.setException(Exception.class.getName());
-		errorMessage.setMessage(ex.getMessage());
-
+		errorMessage.setException(ex.getClass().getCanonicalName());
+		errorMessage.setMessage(ex.getMessage());		
+		errorMessage.setUriDescription(request.getDescription(false));
+		
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
