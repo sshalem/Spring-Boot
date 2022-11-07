@@ -330,6 +330,8 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 
 ![E_ExceptionMessage](https://user-images.githubusercontent.com/36256986/150681554-3855c259-f85e-4683-9d74-ea8ed7643df0.PNG)
 
+![D_ExceptionMessage](https://user-images.githubusercontent.com/36256986/200419668-d3d1b405-7089-4765-b236-84e82751d238.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
 
