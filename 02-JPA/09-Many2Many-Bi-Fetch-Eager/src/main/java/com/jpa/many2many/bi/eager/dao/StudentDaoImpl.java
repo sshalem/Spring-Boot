@@ -57,7 +57,7 @@ public class StudentDaoImpl implements StudentDao {
 		LOGGER.info("invoke getStudentsByLastName");
 		List<StudentEntity> _students = studentRepository.findStudentsByLastName(lastName);
 
-		if (_students != null)
+		if (_students == null)
 			throw new ResourceNotFoundException("Students with last name : " + lastName + " , Not Exist");
 		return _students;
 	}
@@ -105,7 +105,7 @@ public class StudentDaoImpl implements StudentDao {
 	public StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity) {
 		LOGGER.info("invoke updateStudentDetails");
 		
-		StudentEntity _studentEntity = getStudentByIdentityNumber(identityNumber);
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
 		_studentEntity.setFirstName(studentEntity.getFirstName());
 		_studentEntity.setLastName(studentEntity.getLastName());
@@ -117,7 +117,12 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public StudentEntity addCourseToStudent(int identityNumber, CourseEntity courseEntity) {
 		LOGGER.info("invoke addCourseToStudent");
-		return null;
+		
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		
+		_studentEntity.addCourse(courseEntity);
+				
+		return studentRepository.save(_studentEntity);
 	}
 
 	/***********************

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.many2many.bi.eager.dao.StudentDaoImpl;
+import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 @RestController
@@ -99,7 +100,15 @@ public class StudentController {
 		return new ResponseEntity<>(_student, HttpStatus.OK);
 	}
 	
+	@PutMapping(path = "/addCourseToStudent/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> addCourseToStudent(@PathVariable("identityNumber") int identityNumber,@RequestBody CourseEntity courseEntity) {
 
+		StudentEntity _student = studentDaoImpl.addCourseToStudent(identityNumber,courseEntity);
+				
+		return new ResponseEntity<>(_student, HttpStatus.OK);
+	}
+	
+	
 	// *******************************
 	// DELETE methods
 	// ********************************
