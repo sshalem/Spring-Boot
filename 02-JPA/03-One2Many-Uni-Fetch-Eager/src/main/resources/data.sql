@@ -16,17 +16,14 @@
 -----------------------------------
 -- DROP TABLEs if exist
 ----------------------------------
-
-DROP TABLE IF EXISTS roles_tb;
-DROP TABLE IF EXISTS users_tb;
-
-DROP TABLE IF EXISTS tutorial_tags;
-DROP TABLE IF EXISTS tutorials;
-DROP TABLE IF EXISTS tags;
-
-DROP TABLE IF EXISTS course_student;
-DROP TABLE IF EXISTS student_tb;
-DROP TABLE IF EXISTS course_tb;
+-- DROP TABLE IF EXISTS roles_tb;
+-- DROP TABLE IF EXISTS users_tb;
+-- DROP TABLE IF EXISTS tutorial_tags;
+-- DROP TABLE IF EXISTS tutorials;
+-- DROP TABLE IF EXISTS tags;
+-- DROP TABLE IF EXISTS course_student;
+-- DROP TABLE IF EXISTS student_tb;
+-- DROP TABLE IF EXISTS course_tb;
 
 -------------------------
 --Insert into USERS_TB --
