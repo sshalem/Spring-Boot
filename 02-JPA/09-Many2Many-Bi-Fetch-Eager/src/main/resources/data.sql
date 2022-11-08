@@ -2,16 +2,16 @@
 -- Set FOREIGN KEY CHECK to 0 
 -- TRUNCATE the data from tables
 ----------------------------------
--- SET FOREIGN_KEY_CHECKS=0; 
+SET FOREIGN_KEY_CHECKS=0; 
 -- TRUNCATE TABLE roles_tb;
 -- TRUNCATE TABLE users_tb;
 -- TRUNCATE TABLE tutorial_tags;
 -- TRUNCATE TABLE tutorials;
 -- TRUNCATE TABLE tags;
--- TRUNCATE TABLE course_student;
--- TRUNCATE TABLE student_tb;
--- TRUNCATE TABLE course_tb;
--- SET FOREIGN_KEY_CHECKS=1;
+TRUNCATE TABLE course_student;
+TRUNCATE TABLE student_tb;
+TRUNCATE TABLE course_tb;
+SET FOREIGN_KEY_CHECKS=1;
 
 -----------------------------------
 -- DROP TABLEs if exist
@@ -27,21 +27,25 @@
 
 
 -------------------------
---Insert into USERS_TB --
+--Insert into student_tb 
 -------------------------
 
--- INSERT INTO users_tb(id , name ,email, published) VALUES (1, 'shabtay shalem' , 'shabtay.shalem@gmail.com' ,1);
--- INSERT INTO users_tb(id , name ,email, published) VALUES (2, 'karin shalem' , 'karin.shalem@gmail.com' ,0);
--- INSERT INTO users_tb(id , name ,email, published) VALUES (3, 'avigail shalem' , 'avigail.shalem@gmail.com' ,1);
--- INSERT INTO users_tb(id , name ,email, published) VALUES (4, 'odel shalem' , 'odel.shalem@gmail.com' ,0);
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (1, 'shabtay', 'shalem', 33457763, 'shabtay.shalem@gmail.com');
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (2, 'karin', 'shalem', 37475845, 'karin.shalem@gmail.com');
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (3, 'avigail', 'shalem', 221218928, 'avigail.shalem@gmail.com');
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (4, 'odel', 'shalem', 223675497, 'odel.shalem@gmail.com');
 
 -------------------------
--- Insert into ADDRESS_TB
+-- Insert into course_tb
 -------------------------
--- INSERT INTO address_tb(street, city ,user_id) VALUES ('Menachem Begin 15/15' , 'Holon', 1);
--- INSERT INTO address_tb(street, city ,user_id) VALUES ('Dvora Bartonov Begin 2/15' , 'Holon', 2);
--- INSERT INTO address_tb(street, city ,user_id) VALUES ('Menachem Begin 15/15' , 'Holon', 3);
--- INSERT INTO address_tb(street, city ,user_id) VALUES ('Dvora Bartonov Begin 2/15' , 'Holon', 4);
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (1, 'JAVA', 'JV-2001', '2018-04-09', '2019-02-12');
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (2, 'C-Sharp', 'C#-2001', 2020, "2018-04-09", "2019-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (3, 'PYTHON', 'PYTHON-2001', 2018, "20122-04-09", "2022-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (4, 'ReactJS', 'ReactJS-77', 2018, "2018-04-09", "2019-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (5, 'Angular', 'Angular-2018', 2018, "2018-04-09", "2019-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (6, 'ETL', 'ETL-1999', 2021, "2021-04-09", "2021-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (7, 'JAVASCRIPT', 'JS-15', 2021, "2021-04-09", "2021-02-12");
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (8, 'NODEJS', 'NODEJS-57', 2021, "2021-04-09", "2021-02-12");
 
 
 -- DROP TABLE IF EXISTS roles_tb;

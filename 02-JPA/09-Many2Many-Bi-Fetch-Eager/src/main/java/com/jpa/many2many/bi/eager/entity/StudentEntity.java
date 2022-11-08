@@ -110,7 +110,8 @@ public class StudentEntity {
 			this.courses = new HashSet<>();
 		}
 		this.courses.add(courseEntity);
-		courseEntity.getStudents().add(this);
+		Set<StudentEntity> students = courseEntity.getStudents();
+		students.add(this);
 	}
 
 	public void removeCourse(CourseEntity courseEntity) {
