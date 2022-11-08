@@ -28,13 +28,14 @@ DROP TABLE IF EXISTS course_student;
 DROP TABLE IF EXISTS student_tb;
 DROP TABLE IF EXISTS course_tb;
 
+
 -------------------------
 --Insert into USERS_TB --
 -------------------------
 
-INSERT INTO users_tb(id , name ,email, published) VALUES (1, 'shabtay shalem' , 'shabtay.shalem@gmail.com' ,1);
-INSERT INTO users_tb(id , name ,email, published) VALUES (2, 'karin shalem' , 'karin.shalem@gmail.com' ,0);
-INSERT INTO users_tb(id , name ,email, published) VALUES (3, 'avigail shalem' , 'avigail.shalem@gmail.com' ,1);
+-- INSERT INTO users_tb(id , name ,email, published) VALUES (1, 'shabtay shalem' , 'shabtay.shalem@gmail.com' ,1);
+-- INSERT INTO users_tb(id , name ,email, published) VALUES (2, 'karin shalem' , 'karin.shalem@gmail.com' ,0);
+-- INSERT INTO users_tb(id , name ,email, published) VALUES (3, 'avigail shalem' , 'avigail.shalem@gmail.com' ,1);
 -- INSERT INTO users_tb(id , name ,email, published) VALUES (4, 'odel shalem' , 'odel.shalem@gmail.com' ,0);
 
 -------------------------
