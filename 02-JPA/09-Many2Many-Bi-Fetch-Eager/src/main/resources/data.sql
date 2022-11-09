@@ -30,25 +30,45 @@ SET FOREIGN_KEY_CHECKS=1;
 --Insert into student_tb 
 -------------------------
 
-INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (1, 'shabtay', 'shalem', 33457763, 'shabtay.shalem@gmail.com');
-INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (2, 'karin', 'shalem', 37475845, 'karin.shalem@gmail.com');
-INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (3, 'avigail', 'shalem', 221218928, 'avigail.shalem@gmail.com');
-INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) VALUES (4, 'odel', 'shalem', 223675497, 'odel.shalem@gmail.com');
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) 
+	VALUES (1, 'shabtay', 'shalem', 33457763, 'shabtay.shalem@gmail.com');
+	
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) 
+	VALUES (2, 'karin', 'shalem', 37475845, 'karin.shalem@gmail.com');
+	
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) 
+	VALUES (3, 'avigail', 'shalem', 221218928, 'avigail.shalem@gmail.com');
+	
+INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email) 
+	VALUES (4, 'odel', 'shalem', 223675497, 'odel.shalem@gmail.com');
 
 -------------------------
 -- Insert into course_tb
 -------------------------
-INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (1, 'JAVA', 'JV-2001', 2020, str_to_date('30-04-2018','%d-%m-%y'), str_to_date('12-02-2019','%d-%m-%y'));
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (1, 'JAVA', 'JV-2001', 2020, '2018-04-30', '2019-02-12');
 
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (1, 'JAVA', 'JV-2001', 2020, '2018-04-30', '2019-02-12');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (2, 'C-Sharp', 'C#-2001', 2020, '2018-04-22', '2019-02-15');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (3, 'PYTHON', 'PYTHON-2001', 2018, '2012-04-09', '2022-04-26');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (4, 'ReactJS', 'ReactJS-77', 2018, '2018-04-09', '2019-03-29');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (5, 'Angular', 'Angular-2018', 2018, '2018-04-09', '2019-02-12');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (6, 'ETL', 'ETL-1999', 2021, '2021-04-09', '2021-02-12');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (7, 'JAVASCRIPT', 'JS-15', 2021, '2021-04-09', '2021-02-12');
--- INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) VALUES (8, 'NODEJS', 'NODEJS-57', 2021, '2021-04-09', '2021-02-12');
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (2, 'C-Sharp', 'C#-2001', 2020, '2018-04-22', '2019-02-15');
 
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (3, 'PYTHON', 'PYTHON-2001', 2018, '2012-04-09', '2022-04-26');
+
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (4, 'ReactJS', 'ReactJS-77', 2018, '2018-04-09', '2019-03-29');
+
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (5, 'Angular', 'Angular-2018', 2018, '2018-04-09', '2019-02-12');
+
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (6, 'ETL', 'ETL-1999', 2021, '2021-04-09', '2021-02-12');
+
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (7, 'JAVASCRIPT', 'JS-15', 2021, '2021-04-09', '2021-02-12');
+
+INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
+	VALUES (8, 'NODEJS', 'NODEJS-57', 2021, '2021-04-09', '2021-02-12');
+	
 -- DROP TABLE IF EXISTS roles_tb;
 
 -- CREATE TABLE IF NOT EXISTS roles_tb (

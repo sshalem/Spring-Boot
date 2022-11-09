@@ -110,4 +110,9 @@ public class CourseEntity {
 		this.students = students;
 	}
 
+	@Override
+	public String toString() {
+		return "CourseEntity [id=" + id + ", courseNumber=" + courseNumber + ", courseName=" + courseName
+				+ ", learningYear=" + learningYear + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
 }

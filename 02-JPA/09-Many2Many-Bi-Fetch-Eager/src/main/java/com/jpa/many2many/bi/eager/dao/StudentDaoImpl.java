@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
+import com.jpa.many2many.bi.eager.repository.CourseRepository;
 import com.jpa.many2many.bi.eager.repository.StudentRepository;
 
 @Service
@@ -21,6 +22,9 @@ public class StudentDaoImpl implements StudentDao {
 	@Autowired
 	private StudentRepository studentRepository;
 
+	@Autowired
+	private CourseRepository courseRepository;
+	
 	/***********************
 	 * CREATE
 	 ***********************/
@@ -115,10 +119,14 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public StudentEntity addCourseToStudent(int identityNumber, CourseEntity courseEntity) {
+	public StudentEntity addCourseToStudent(int identityNumber, String courseNumber) {
 		LOGGER.info("invoke addCourseToStudent");
 		
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		
+		CourseEntity courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+		
+		System.out.println(courseEntity);
 		
 		_studentEntity.addCourse(courseEntity);
 				

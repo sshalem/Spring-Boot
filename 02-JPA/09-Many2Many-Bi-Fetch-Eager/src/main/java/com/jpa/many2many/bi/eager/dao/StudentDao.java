@@ -2,7 +2,6 @@ package com.jpa.many2many.bi.eager.dao;
 
 import java.util.List;
 
-import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 public interface StudentDao {
@@ -32,7 +31,7 @@ public interface StudentDao {
 	 */
 	StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity);
 
-	StudentEntity addCourseToStudent(int identityNumber, CourseEntity courseEntity);
+	StudentEntity addCourseToStudent(int identityNumber, String courseNumber);
 
 	/**
 	 * Delete
