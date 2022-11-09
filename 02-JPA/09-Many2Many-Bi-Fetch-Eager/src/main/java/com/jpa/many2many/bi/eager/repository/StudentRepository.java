@@ -37,6 +37,9 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 	@Query("SELECT se FROM StudentEntity se JOIN se.courses AS cours WHERE cours.courseName=:courseName")
 	List<StudentEntity> jpqlFindStudentsWhoLearedCourseName(@Param("courseName") String courseName);
 	
+	@Query("SELECT cors FROM StudentEntity student JOIN student.courses AS cors WHERE student.identityNumber =? 1")
+	List<CourseEntity> jpqlFindAllCoursesOfStudentByIdentityNumber(int identityNumber);
+	
 	/**
 	 * 	@Query("SELECT cp FROM CUSTOMER cust JOIN cust.coupons AS cp WHERE cust.id=:id AND cp.type=:couponType")
 		List<Coupon> findAllPurchasedCouponsType(@Param("id") long custId, @Param("couponType") CouponType type);

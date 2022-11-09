@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "STUDENT_TB")
 public class StudentEntity {
@@ -37,8 +35,7 @@ public class StudentEntity {
 						CascadeType.MERGE, 
 						CascadeType.REFRESH 
 						}
-				)
-	@JsonIgnore
+				)	
 	private Set<CourseEntity> courses;
 
 	public StudentEntity() {

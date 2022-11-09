@@ -49,7 +49,7 @@ INSERT INTO course_tb(course_id, course_name, course_number, learning_year, star
 	VALUES (1, 'JAVA', 'JV-2001', 2020, '2018-04-30', '2019-02-12');
 
 INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
-	VALUES (2, 'C-Sharp', 'C#-2001', 2020, '2018-04-22', '2019-02-15');
+	VALUES (2, 'C-Sharp', 'C-sharp-2001', 2020, '2018-04-22', '2019-02-15');
 
 INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
 	VALUES (3, 'PYTHON', 'PYTHON-2001', 2018, '2012-04-09', '2022-04-26');

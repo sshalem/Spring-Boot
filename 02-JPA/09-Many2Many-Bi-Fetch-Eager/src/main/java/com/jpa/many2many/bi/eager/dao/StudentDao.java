@@ -2,6 +2,7 @@ package com.jpa.many2many.bi.eager.dao;
 
 import java.util.List;
 
+import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 public interface StudentDao {
@@ -25,6 +26,8 @@ public interface StudentDao {
 	List<StudentEntity> getStudentsThatLearnedCoursesInLearningYear(int learningYear);
 
 	List<StudentEntity> getStudentsWhoLearedCourseName(String courseName);
+	
+	List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber);
 
 	/**
 	 * Update

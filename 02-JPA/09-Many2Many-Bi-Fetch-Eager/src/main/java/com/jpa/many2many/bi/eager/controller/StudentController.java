@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.many2many.bi.eager.dao.StudentDaoImpl;
+import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 @RestController
@@ -87,12 +88,23 @@ public class StudentController {
 		return new ResponseEntity<>(_students, HttpStatus.OK);
 	}
 	 
+	@GetMapping(path = "/getAllCoursesOfStudentByIdentityNumber/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getAllCoursesOfStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
+
+		List<CourseEntity> _courses = studentDaoImpl.getAllCoursesOfStudentByIdentityNumber(identityNumber);
+		if (_courses.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_courses, HttpStatus.OK);
+	}
+	
+	
 	 
 	// *******************************
 	// UPDATE methods
 	// ********************************
 	@PutMapping(path = "/updateStudentDetails/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateStudentDetails(@PathVariable("identityNumber") int identityNumber,@RequestBody StudentEntity studentEntity) {
+	public ResponseEntity<?> updateStudentDetails(@PathVariable("identityNumber") int identityNumber, @RequestBody StudentEntity studentEntity) {
 
 		StudentEntity _student = studentDaoImpl.updateStudentDetails(identityNumber,studentEntity);
 				
@@ -100,7 +112,7 @@ public class StudentController {
 	}
 	
 	@PutMapping(path = "/addCourseToStudent/{identityNumber}/{courseNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> addCourseToStudent(@PathVariable("identityNumber") int identityNumber,@PathVariable("courseNumber") String courseNumber) {
+	public ResponseEntity<?> addCourseToStudent(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
 
 		StudentEntity _student = studentDaoImpl.addCourseToStudent(identityNumber, courseNumber);
 				

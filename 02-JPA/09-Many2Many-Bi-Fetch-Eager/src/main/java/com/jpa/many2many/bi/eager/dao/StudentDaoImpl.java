@@ -96,9 +96,15 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public List<StudentEntity> getStudentsWhoLearedCourseName(String courseName){
+	public List<StudentEntity> getStudentsWhoLearedCourseName(String courseName) {
 		LOGGER.info("invoke getStudentsWhoLearedCourseName");
 		return studentRepository.jpqlFindStudentsWhoLearedCourseName(courseName);
+	}
+	
+	@Override
+	public List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber) {
+		LOGGER.info("invoke getAllCoursesOfStudentByIdentityNumber");
+		return studentRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);		
 	}
 	
 	/***********************
@@ -125,8 +131,6 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
 		CourseEntity courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
-		
-		System.out.println(courseEntity);
 		
 		_studentEntity.addCourse(courseEntity);
 				
