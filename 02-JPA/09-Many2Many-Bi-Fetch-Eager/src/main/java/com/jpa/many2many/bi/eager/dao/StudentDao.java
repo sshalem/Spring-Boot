@@ -28,6 +28,8 @@ public interface StudentDao {
 	List<StudentEntity> getStudentsWhoLearedCourseName(String courseName);
 	
 	List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber);
+	
+	List<StudentEntity> getStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
 
 	/**
 	 * Update

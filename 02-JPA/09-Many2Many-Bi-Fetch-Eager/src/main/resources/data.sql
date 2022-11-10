@@ -69,7 +69,32 @@ INSERT INTO course_tb(course_id, course_name, course_number, learning_year, star
 INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
 	VALUES (8, 'NODEJS', 'NODEJS-57', 2021, '2021-04-09', '2022-02-15');
 
-	
+
+-------------------------
+-- Insert into course_tb
+-------------------------
+INSERT INTO course_student(course_id, student_id) VALUES(1,1);
+INSERT INTO course_student(course_id, student_id) VALUES(1,2);
+INSERT INTO course_student(course_id, student_id) VALUES(1,3);
+INSERT INTO course_student(course_id, student_id) VALUES(1,4);
+INSERT INTO course_student(course_id, student_id) VALUES(2,1);
+INSERT INTO course_student(course_id, student_id) VALUES(2,2);
+INSERT INTO course_student(course_id, student_id) VALUES(2,3);
+INSERT INTO course_student(course_id, student_id) VALUES(2,4);
+INSERT INTO course_student(course_id, student_id) VALUES(3,1);
+INSERT INTO course_student(course_id, student_id) VALUES(3,2);
+INSERT INTO course_student(course_id, student_id) VALUES(3,3);
+INSERT INTO course_student(course_id, student_id) VALUES(3,4);
+INSERT INTO course_student(course_id, student_id) VALUES(4,1);
+INSERT INTO course_student(course_id, student_id) VALUES(4,2);
+INSERT INTO course_student(course_id, student_id) VALUES(5,1);
+INSERT INTO course_student(course_id, student_id) VALUES(5,2);
+INSERT INTO course_student(course_id, student_id) VALUES(7,1);
+INSERT INTO course_student(course_id, student_id) VALUES(6,2);
+INSERT INTO course_student(course_id, student_id) VALUES(6,3);
+INSERT INTO course_student(course_id, student_id) VALUES(7,4);
+
+
 -- DROP TABLE IF EXISTS roles_tb;
 
 -- CREATE TABLE IF NOT EXISTS roles_tb (

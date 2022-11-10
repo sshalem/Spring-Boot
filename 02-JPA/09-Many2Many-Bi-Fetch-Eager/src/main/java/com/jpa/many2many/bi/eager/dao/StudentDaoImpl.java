@@ -107,6 +107,12 @@ public class StudentDaoImpl implements StudentDao {
 		return studentRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);		
 	}
 	
+	@Override
+	public List<StudentEntity> getStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber) {
+		LOGGER.info("invoke getStudentsWhoTookCourseInLearningYear() ");
+		return studentRepository.jpqlFindStudentsWhoTookCourseInLearningYear(learningYear, courseNumber);
+	}
+	
 	/***********************
 	 * UPDATE
 	 ***********************/

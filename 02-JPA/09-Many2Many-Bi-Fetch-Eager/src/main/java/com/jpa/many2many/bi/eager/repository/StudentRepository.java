@@ -40,6 +40,10 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 	@Query("SELECT cors FROM StudentEntity student JOIN student.courses AS cors WHERE student.identityNumber =? 1")
 	List<CourseEntity> jpqlFindAllCoursesOfStudentByIdentityNumber(int identityNumber);
 	
+	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE  ce.learningYear = ?1 AND ce.courseNumber = ?2")
+	List<StudentEntity> jpqlFindStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
+	
+	
 	/**
 	 * 	@Query("SELECT cp FROM CUSTOMER cust JOIN cust.coupons AS cp WHERE cust.id=:id AND cp.type=:couponType")
 		List<Coupon> findAllPurchasedCouponsType(@Param("id") long custId, @Param("couponType") CouponType type);

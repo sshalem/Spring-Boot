@@ -98,6 +98,16 @@ public class StudentController {
 		return new ResponseEntity<>(_courses, HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "/getStudentsWhoTookCourseInLearningYear/{learningYear}/{courseNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getStudentsWhoTookCourseInLearningYear(@PathVariable("learningYear") int learningYear, @PathVariable("courseNumber") String courseNumber) {
+
+		List<StudentEntity> _students = studentDaoImpl.getStudentsWhoTookCourseInLearningYear(learningYear, courseNumber);
+		
+		if (_students.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_students, HttpStatus.OK);
+	}
 	
 	 
 	// *******************************

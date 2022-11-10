@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.jpa.many2many.bi.eager.dto.CourseDto;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
@@ -28,4 +29,7 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
 	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE  ce.learningYear = ?1 AND ce.courseNumber = ?2")
 	List<StudentEntity> jpqlFindStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
+	
+	@Query("SELECT new com.jpa.many2many.bi.eager.dto.CourseDto(ce.courseName, ce.courseNumber) FROM CourseEntity ce")
+    List<CourseDto> jpqlGetCoursesWithFieldsCourseNameAndCourseNumber();
 }

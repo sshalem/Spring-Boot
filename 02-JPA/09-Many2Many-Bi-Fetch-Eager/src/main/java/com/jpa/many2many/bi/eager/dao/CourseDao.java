@@ -3,6 +3,7 @@ package com.jpa.many2many.bi.eager.dao;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.jpa.many2many.bi.eager.dto.CourseDto;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
@@ -29,6 +30,8 @@ public interface CourseDao {
 	List<CourseEntity> getCoursesBetweenStartDateAndEndDate(LocalDate startDate, LocalDate endDate);
 
 	List<CourseEntity> gettAllCourses();
+	
+	List<CourseDto> getAllCoursesOnlyFieldsOfCourseNumberAndCourseName();
 
 	List<StudentEntity> getStudentsWhoTookCourse(int learningYear, String courseNumber);
 
@@ -37,7 +40,7 @@ public interface CourseDao {
 	 */
 	CourseEntity updateCourseDetails(CourseEntity courseEntity);
 
-	CourseEntity addStudentToCourse(long identityNumber, String courseName, long learningYear);
+	CourseEntity addStudentToCourse(long identityNumber, String courseName);
 
 	/**
 	 * Delete
