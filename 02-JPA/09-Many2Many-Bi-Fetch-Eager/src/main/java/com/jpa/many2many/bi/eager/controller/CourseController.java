@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,7 +65,9 @@ public class CourseController {
 	}
 
 	@GetMapping(path = "/getCoursesByStartDateBetween/{fromStartDate}/{toStartDate}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getCoursesByStartDateBetween(@PathVariable("fromStartDate") LocalDate fromStartDate,@PathVariable("toStartDate") LocalDate toStartDate) {
+	public ResponseEntity<?> getCoursesByStartDateBetween(
+			@PathVariable("fromStartDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromStartDate,
+			@PathVariable("toStartDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toStartDate) {
 		
 		List<CourseEntity> _courses = courseDaoImpl.getCoursesByStartDateBetween(fromStartDate, toStartDate);
 		if(_courses.isEmpty())
@@ -71,7 +76,9 @@ public class CourseController {
 	}
 	
 	@GetMapping(path = "/getCoursesByEndDateBetween/{fromEndDate}/{toEndDate}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getCoursesByEndDateBetween(@PathVariable("fromEndDate") LocalDate fromEndDate,@PathVariable("toEndDate") LocalDate toEndDate) {
+	public ResponseEntity<?> getCoursesByEndDateBetween(
+			@PathVariable("fromEndDate") @DateTimeFormat(iso = ISO.DATE) LocalDate fromEndDate,
+			@PathVariable("toEndDate") @DateTimeFormat(iso = ISO.DATE) LocalDate toEndDate) {
 		
 		List<CourseEntity> _courses = courseDaoImpl.getCoursesByEndDateBetween(fromEndDate, toEndDate);
 		if(_courses.isEmpty())
@@ -80,11 +87,32 @@ public class CourseController {
 	}
 	
 	@GetMapping(path = "/getCoursesBetweenStartDateAndEndDate/{startDate}/{endDate}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getCoursesBetweenStartDateAndEndDate(@PathVariable("startDate") LocalDate startDate, @PathVariable("endDate") LocalDate endDate) {
+	public ResponseEntity<?> getCoursesBetweenStartDateAndEndDate(
+			@PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, 
+			@PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
 		
 		List<CourseEntity> _courses = courseDaoImpl.getCoursesBetweenStartDateAndEndDate(startDate, endDate);
 		if(_courses.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		return new ResponseEntity<>(_courses, HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/gettAllCourses", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> gettAllCourses() {
+		
+		List<CourseEntity> _courses = courseDaoImpl.gettAllCourses();
+		if(_courses.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(_courses, HttpStatus.OK);
+	}
+	
+	// *******************************
+	//  PUT methods
+	// ********************************
+	
+	@PutMapping(path = "/update")
+	public ResponseEntity<?> updateCourseDetails(@RequestBody CourseEntity courseEntity) {
+		CourseEntity _courseEntity = courseDaoImpl.updateCourseDetails(courseEntity);
+		return new ResponseEntity<>(_courseEntity, HttpStatus.OK);
 	}
 }

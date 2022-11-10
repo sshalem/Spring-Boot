@@ -29,14 +29,13 @@ public class CourseDaoImpl implements CourseDao {
 
 		LOGGER.info("invoke createCourse() ");
 
-		String _courseName = courseRepository.findCourseByCourseName(courseEntity.getCourseName()).getCourseName();
-		String _courseNumber = courseRepository.findCourseByCourseNumber(courseEntity.getCourseNumber()).getCourseNumber();
+		CourseEntity _courseEntityByName = courseRepository.findCourseByCourseName(courseEntity.getCourseName());
+		CourseEntity _courseEntityByNumber = courseRepository.findCourseByCourseNumber(courseEntity.getCourseNumber());
 
-		if (_courseName != null)
+		if (_courseEntityByName != null)
 			throw new DuplicateKeyException("Course with name : " + courseEntity.getCourseName() + " , already Exist");
-		if (_courseNumber != null)
-			throw new DuplicateKeyException(
-					"Course with number : " + courseEntity.getCourseNumber() + " , already Exist");
+		if (_courseEntityByNumber != null)
+			throw new DuplicateKeyException("Course with number : " + courseEntity.getCourseNumber() + " , already Exist");
 		return courseRepository.save(courseEntity);
 	}
 
@@ -100,8 +99,8 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	public List<CourseEntity> gettAllCourses() {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("invoke gettAllCourses() ");
+		return courseRepository.findAll();
 	}
 
 	/***********************
@@ -110,7 +109,7 @@ public class CourseDaoImpl implements CourseDao {
 	
 	@Override
 	public CourseEntity updateCourseDetails(CourseEntity courseEntity) {
-		// TODO Auto-generated method stub
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseEntity.getCourseNumber());
 		return null;
 	}
 
