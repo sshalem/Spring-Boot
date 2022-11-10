@@ -10,6 +10,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
+import com.jpa.many2many.bi.eager.entity.StudentEntity;
 import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
 import com.jpa.many2many.bi.eager.repository.CourseRepository;
 
@@ -102,6 +103,14 @@ public class CourseDaoImpl implements CourseDao {
 		LOGGER.info("invoke gettAllCourses() ");
 		return courseRepository.findAll();
 	}
+	
+	@Override
+	public List<StudentEntity> getStudentsWhoTookCourse(int learningYear, String courseNumber) {
+		LOGGER.info("invoke getStudentsWhoTookCourse() ");
+		
+		List<StudentEntity> _students = courseRepository.jpqlFindStudentsWhoTookCourseInLearningYear(learningYear, courseNumber);	
+		return _students;
+	}
 
 	/***********************
 	 * UPDATE
@@ -110,12 +119,21 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public CourseEntity updateCourseDetails(CourseEntity courseEntity) {
 		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseEntity.getCourseNumber());
-		return null;
+		
+		if(_courseEntity == null)
+			throw new ResourceNotFoundException(" Course Number " + courseEntity.getCourseNumber() + " Not Found");
+		
+		_courseEntity.setCourseNumber(courseEntity.getCourseNumber());
+		_courseEntity.setCourseName(courseEntity.getCourseName());		
+		_courseEntity.setLearningYear(courseEntity.getLearningYear());
+		_courseEntity.setStartDate(courseEntity.getStartDate());
+		_courseEntity.setEndDate(courseEntity.getEndDate());
+				
+		return courseRepository.save(_courseEntity);
 	}
 
 	@Override
 	public CourseEntity addStudentToCourse(long identityNumber, String courseName, long learningYear) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

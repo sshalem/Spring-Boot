@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.many2many.bi.eager.dao.CourseDaoImpl;
+import com.jpa.many2many.bi.eager.dao.StudentDaoImpl;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
+import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 @RestController
 @RequestMapping("/course")
@@ -104,6 +106,15 @@ public class CourseController {
 		if(_courses.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		return new ResponseEntity<>(_courses, HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/getStudentsWhoTookCourse/{learningYear}/{courseNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getStudentsWhoTookCourse(@PathVariable("learningYear") int learningYear, @PathVariable("courseNumber") String courseNumber) {
+		
+		List<StudentEntity> _students = courseDaoImpl.getStudentsWhoTookCourse(learningYear, courseNumber);
+		if(_students.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(_students, HttpStatus.OK);
 	}
 	
 	// *******************************

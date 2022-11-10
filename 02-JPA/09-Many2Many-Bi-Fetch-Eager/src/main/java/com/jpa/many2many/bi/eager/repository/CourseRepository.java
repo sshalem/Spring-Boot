@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
+import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
@@ -22,7 +23,9 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
 	List<CourseEntity> findCoursesByEndDateBetween(LocalDate fromEndDate, LocalDate toEndDate);
 
-	@Query("SELECT ce FROM CourseEntity ce WHERE  ce.startDate >= ?1 and ce.endDate <= ?2")
+	@Query("SELECT ce FROM CourseEntity ce WHERE  ce.startDate >= ?1 AND ce.endDate <= ?2")
 	List<CourseEntity> jpqlFindCoursesBetweenDates(LocalDate startDate, LocalDate endDate);
 
+	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE  ce.learningYear = ?1 AND ce.courseNumber = ?2")
+	List<StudentEntity> jpqlFindStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
 }

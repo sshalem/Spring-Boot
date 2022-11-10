@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
+import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
 public interface CourseDao {
 
@@ -22,12 +23,14 @@ public interface CourseDao {
 	List<CourseEntity> getCoursesByLearningYear(int learningYear);
 
 	List<CourseEntity> getCoursesByStartDateBetween(LocalDate fromStartDate, LocalDate toStartDate);
-	
+
 	List<CourseEntity> getCoursesByEndDateBetween(LocalDate fromEndDate, LocalDate toEndDate);
 
 	List<CourseEntity> getCoursesBetweenStartDateAndEndDate(LocalDate startDate, LocalDate endDate);
 
 	List<CourseEntity> gettAllCourses();
+
+	List<StudentEntity> getStudentsWhoTookCourse(int learningYear, String courseNumber);
 
 	/**
 	 * Update
