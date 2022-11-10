@@ -1,11 +1,35 @@
 package com.jpa.many2many.bi.lazy.repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.jpa.many2many.bi.lazy.dto.DtoCourseNameAndCourseNumber;
 import com.jpa.many2many.bi.lazy.entity.CourseEntity;
+import com.jpa.many2many.bi.lazy.entity.StudentEntity;
 
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
+	CourseEntity findCourseByCourseName(String courseName);
+
+	CourseEntity findCourseByCourseNumber(String courseNumber);
+
+	List<CourseEntity> findCoursesByLearningYear(int learningYear);
+
+	List<CourseEntity> findCoursesByStartDateBetween(LocalDate fromStartDate, LocalDate toStartDate);
+
+	List<CourseEntity> findCoursesByEndDateBetween(LocalDate fromEndDate, LocalDate toEndDate);
+
+	@Query("SELECT ce FROM CourseEntity ce WHERE  ce.startDate >= ?1 AND ce.endDate <= ?2")
+	List<CourseEntity> jpqlFindCoursesBetweenDates(LocalDate startDate, LocalDate endDate);
+
+	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE  ce.learningYear = ?1 AND ce.courseNumber = ?2")
+	List<StudentEntity> jpqlFindStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
+	
+	@Query("SELECT new com.jpa.many2many.bi.lazy.dto.DtoCourseNameAndCourseNumber(ce.courseName, ce.courseNumber) FROM CourseEntity ce")
+    List<DtoCourseNameAndCourseNumber> jpqlGetCoursesWithFieldsCourseNameAndCourseNumber();
 }

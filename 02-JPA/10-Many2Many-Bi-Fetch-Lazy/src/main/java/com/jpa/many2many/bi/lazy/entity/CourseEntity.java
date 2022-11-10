@@ -1,7 +1,9 @@
 package com.jpa.many2many.bi.lazy.entity;
 
+import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,15 +21,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CourseEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "course_id")
 	private long id;
 	private String courseNumber;
-	private int year;
+	private String courseName;
+	private int learningYear;
+	private LocalDate startDate;
+	private LocalDate endDate;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY
+//			cascade = { CascadeType.PERSIST, 
+//						CascadeType.DETACH,
+//						CascadeType.MERGE, 
+//						CascadeType.REFRESH 
+//					}
+			)
 	@JoinTable(name = "course_student", 
-				joinColumns = {@JoinColumn(name = "fk_course_id")}, 
-				inverseJoinColumns = {@JoinColumn(name = "fk_student_id")})
+			joinColumns = { @JoinColumn(name = "course_id") }, 
+			inverseJoinColumns = { @JoinColumn(name = "student_id") })
 	@JsonIgnore
 	private Set<StudentEntity> students;
 
@@ -35,10 +47,11 @@ public class CourseEntity {
 		super();
 	}
 
-	public CourseEntity(String courseNumber, int year) {
+	public CourseEntity(String courseNumber, String courseName, int learningYear) {
 		super();
 		this.courseNumber = courseNumber;
-		this.year = year;
+		this.courseName = courseName;
+		this.learningYear = learningYear;
 	}
 
 	public long getId() {
@@ -57,12 +70,36 @@ public class CourseEntity {
 		this.courseNumber = courseNumber;
 	}
 
-	public int getYear() {
-		return year;
+	public String getCourseName() {
+		return courseName;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	public int getLearningYear() {
+		return learningYear;
+	}
+
+	public void setLearningYear(int learningYear) {
+		this.learningYear = learningYear;
+	}
+	
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDate getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
 	}
 
 	public Set<StudentEntity> getStudents() {
@@ -73,4 +110,9 @@ public class CourseEntity {
 		this.students = students;
 	}
 
+	@Override
+	public String toString() {
+		return "CourseEntity [id=" + id + ", courseNumber=" + courseNumber + ", courseName=" + courseName
+				+ ", learningYear=" + learningYear + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
 }

@@ -4,52 +4,49 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "STUDENT_TB")
 public class StudentEntity {
 
 	@Id
-	@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
+//	@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "student_id")
 	private long id;
 	private String firstName;
 	private String lastName;
-	private String studentIdentity;
-	private String encryptedPassword;
+	private int identityNumber;
 	private String email;
 
-	@ManyToMany(mappedBy = "students", 
-				fetch = FetchType.LAZY,
-				cascade = { CascadeType.PERSIST, 
-							CascadeType.DETACH,
-							CascadeType.MERGE, 
-							CascadeType.REFRESH }
-				)
-	@JsonIgnore
+	@ManyToMany(mappedBy = "students",
+			fetch = FetchType.LAZY, 
+			cascade = { CascadeType.PERSIST, 
+						CascadeType.DETACH,
+						CascadeType.MERGE, 
+						CascadeType.REFRESH 
+						}
+				)	
 	private Set<CourseEntity> courses;
 
 	public StudentEntity() {
 		super();
 	}
 
-	public StudentEntity(String firstName, String lastName, String studentIdentity, String encryptedPassword,
-			String email) {
+	public StudentEntity(String firstName, String lastName, int identityNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.studentIdentity = studentIdentity;
-		this.encryptedPassword = encryptedPassword;
+		this.identityNumber = identityNumber;
 		this.email = email;
 	}
 
@@ -77,20 +74,12 @@ public class StudentEntity {
 		this.lastName = lastName;
 	}
 
-	public String getStudentIdentity() {
-		return studentIdentity;
+	public int getIdentityNumber() {
+		return identityNumber;
 	}
 
-	public void setStudentIdentity(String studentIdentity) {
-		this.studentIdentity = studentIdentity;
-	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
+	public void setIdentityNumber(int identityNumber) {
+		this.identityNumber = identityNumber;
 	}
 
 	public String getEmail() {
@@ -118,11 +107,19 @@ public class StudentEntity {
 			this.courses = new HashSet<>();
 		}
 		this.courses.add(courseEntity);
-		courseEntity.getStudents().add(this);
+		Set<StudentEntity> students = courseEntity.getStudents();
+		students.add(this);
 	}
 
 	public void removeCourse(CourseEntity courseEntity) {
 		this.courses.remove(courseEntity);
 		courseEntity.getStudents().remove(this);
 	}
+
+	@Override
+	public String toString() {
+		return "StudentEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", identityNumber="
+				+ identityNumber + ", email=" + email + "]";
+	}
+
 }

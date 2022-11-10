@@ -20,14 +20,14 @@ public class ControllerExceptionHandler {
 		message.setTimestamp(new Date());
 		message.setStatusCode(HttpStatus.NOT_FOUND.value());
 		message.setError(HttpStatus.valueOf(HttpStatus.NOT_FOUND.value()).getReasonPhrase());
-		message.setException(ex.getClass().getCanonicalName());
+		message.setException(ResourceNotFoundException.class.getName());
 		message.setMessage(ex.getMessage());
 		message.setUriDescription(request.getDescription(false));
 
 		return message;
 	}
 
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler({ Exception.class })
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public ErrorMessage globalExceptionHandler(Exception ex, WebRequest request) {
 
