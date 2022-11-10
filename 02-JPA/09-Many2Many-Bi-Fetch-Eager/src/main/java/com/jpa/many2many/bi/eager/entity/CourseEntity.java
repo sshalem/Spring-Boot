@@ -38,8 +38,8 @@ public class CourseEntity {
 //					}
 			)
 	@JoinTable(name = "course_student", 
-			joinColumns = { @JoinColumn(name = "fk_course_id") }, 
-			inverseJoinColumns = { @JoinColumn(name = "fk_student_id") })
+			joinColumns = { @JoinColumn(name = "course_id") }, 
+			inverseJoinColumns = { @JoinColumn(name = "student_id") })
 	@JsonIgnore
 	private Set<StudentEntity> students;
 

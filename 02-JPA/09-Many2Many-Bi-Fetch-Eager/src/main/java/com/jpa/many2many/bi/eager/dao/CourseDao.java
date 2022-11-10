@@ -19,9 +19,11 @@ public interface CourseDao {
 
 	CourseEntity getCourseByCourseName(String courseName);
 
-	List<CourseEntity> getCoursesByLearningYear(long learningYear);
+	List<CourseEntity> getCoursesByLearningYear(int learningYear);
 
-	List<CourseEntity> getCoursesByStartDate(LocalDate startDate);
+	List<CourseEntity> getCoursesByStartDateBetween(LocalDate fromStartDate, LocalDate toStartDate);
+	
+	List<CourseEntity> getCoursesByEndDateBetween(LocalDate fromEndDate, LocalDate toEndDate);
 
 	List<CourseEntity> getCoursesBetweenStartDateAndEndDate(LocalDate startDate, LocalDate endDate);
 

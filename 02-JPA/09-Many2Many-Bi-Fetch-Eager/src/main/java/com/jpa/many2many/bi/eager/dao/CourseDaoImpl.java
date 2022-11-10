@@ -10,6 +10,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
+import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
 import com.jpa.many2many.bi.eager.repository.CourseRepository;
 
 @Service
@@ -26,43 +27,75 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public CourseEntity createCourse(CourseEntity courseEntity) {
 
-		LOGGER.info("invoke createCourse");
-		CourseEntity _courseEntity = courseRepository.findCourseByCourseName(courseEntity.getCourseName());
+		LOGGER.info("invoke createCourse() ");
 
-		if (_courseEntity != null)
+		String _courseName = courseRepository.findCourseByCourseName(courseEntity.getCourseName()).getCourseName();
+		String _courseNumber = courseRepository.findCourseByCourseNumber(courseEntity.getCourseNumber()).getCourseNumber();
+
+		if (_courseName != null)
+			throw new DuplicateKeyException("Course with name : " + courseEntity.getCourseName() + " , already Exist");
+		if (_courseNumber != null)
 			throw new DuplicateKeyException(
-					"Course with name : " + _courseEntity.getCourseName() + " , already Exist");
+					"Course with number : " + courseEntity.getCourseNumber() + " , already Exist");
 		return courseRepository.save(courseEntity);
 	}
 
+	/***********************
+	 * GET
+	 ***********************/
+	
 	@Override
 	public CourseEntity getCourseByCourseNumber(String courseNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("invoke getCourseByCourseNumber() ");
+
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+
+		if (_courseEntity == null)
+			throw new ResourceNotFoundException("Course with Number : " + courseNumber + " , NOT Exist");
+		return _courseEntity;
 	}
 
 	@Override
 	public CourseEntity getCourseByCourseName(String courseName) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("invoke getCourseByCourseName() ");
+
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseName(courseName);
+
+		if (_courseEntity == null)
+			throw new ResourceNotFoundException("Course with NAme : " + courseName + " , NOT Exist");
+		return _courseEntity;
 	}
 
 	@Override
-	public List<CourseEntity> getCoursesByLearningYear(long learningYear) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CourseEntity> getCoursesByLearningYear(int learningYear) {
+		LOGGER.info("invoke getCoursesByLearningYear() ");
+
+		List<CourseEntity> _courses = courseRepository.findCoursesByLearningYear(learningYear);
+		return _courses;
 	}
 
 	@Override
-	public List<CourseEntity> getCoursesByStartDate(LocalDate startDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CourseEntity> getCoursesByStartDateBetween(LocalDate fromStartDate, LocalDate toStartDate) {
+		LOGGER.info("invoke getCoursesByStartDateBetween() ");
+		
+		List<CourseEntity> _courses = courseRepository.findCoursesByStartDateBetween(fromStartDate, toStartDate);
+		return _courses;
 	}
 
+	@Override
+	public List<CourseEntity> getCoursesByEndDateBetween(LocalDate fromEndDate, LocalDate toEndDate) {
+		LOGGER.info("invoke getCoursesByEndDateBetween() ");
+		
+		List<CourseEntity> _courses = courseRepository.findCoursesByEndDateBetween(fromEndDate, toEndDate);
+		return _courses;
+	}
+	
 	@Override
 	public List<CourseEntity> getCoursesBetweenStartDateAndEndDate(LocalDate startDate, LocalDate endDate) {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("invoke getCoursesBetweenStartDateAndEndDate() ");
+		
+		List<CourseEntity> _courses = courseRepository.jpqlFindCoursesBetweenDates(startDate, endDate);
+		return _courses;
 	}
 
 	@Override
@@ -71,6 +104,10 @@ public class CourseDaoImpl implements CourseDao {
 		return null;
 	}
 
+	/***********************
+	 * UPDATE
+	 ***********************/
+	
 	@Override
 	public CourseEntity updateCourseDetails(CourseEntity courseEntity) {
 		// TODO Auto-generated method stub
@@ -83,6 +120,10 @@ public class CourseDaoImpl implements CourseDao {
 		return null;
 	}
 
+	/***********************
+	 * DELETE
+	 ***********************/
+	
 	@Override
 	public void removeCourseByCourseNumber(String courseNumber) {
 		// TODO Auto-generated method stub
