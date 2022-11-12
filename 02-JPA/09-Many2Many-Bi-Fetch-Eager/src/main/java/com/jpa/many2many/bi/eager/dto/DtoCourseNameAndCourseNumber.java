@@ -1,15 +1,15 @@
 package com.jpa.many2many.bi.eager.dto;
 
-public class CourseDto {
+public class DtoCourseNameAndCourseNumber {
 
 	private String courseNumber;
 	private String courseName;
 
-	public CourseDto() {
+	public DtoCourseNameAndCourseNumber() {
 		super();
 	}
 
-	public CourseDto(String courseNumber, String courseName) {
+	public DtoCourseNameAndCourseNumber(String courseNumber, String courseName) {
 		super();
 		this.courseNumber = courseNumber;
 		this.courseName = courseName;

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.many2many.bi.eager.dao.CourseDaoImpl;
-import com.jpa.many2many.bi.eager.dto.CourseDto;
+import com.jpa.many2many.bi.eager.dto.DtoCourseNameAndCourseNumber;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 
@@ -111,7 +111,7 @@ public class CourseController {
 	@GetMapping(path = "/getAllCoursesOnlyFieldsOfCourseNumberAndCourseName", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getAllCoursesOnlyFieldsOfCourseNumberAndCourseName() {
 		
-		List<CourseDto> _courses = courseDaoImpl.getAllCoursesOnlyFieldsOfCourseNumberAndCourseName();
+		List<DtoCourseNameAndCourseNumber> _courses = courseDaoImpl.getAllCoursesOnlyFieldsOfCourseNumberAndCourseName();
 		if(_courses.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		return new ResponseEntity<>(_courses, HttpStatus.OK);

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import com.jpa.many2many.bi.eager.dto.CourseDto;
+import com.jpa.many2many.bi.eager.dto.DtoCourseNameAndCourseNumber;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
@@ -106,7 +106,7 @@ public class CourseDaoImpl implements CourseDao {
 	}
 	
 	@Override
-	public List<CourseDto> getAllCoursesOnlyFieldsOfCourseNumberAndCourseName(){
+	public List<DtoCourseNameAndCourseNumber> getAllCoursesOnlyFieldsOfCourseNumberAndCourseName(){
 		LOGGER.info("invoke getAllCoursesOnlyFieldsOfCourseNumberAndCourseName() ");
 		return courseRepository.jpqlGetCoursesWithFieldsCourseNameAndCourseNumber();
 	}
