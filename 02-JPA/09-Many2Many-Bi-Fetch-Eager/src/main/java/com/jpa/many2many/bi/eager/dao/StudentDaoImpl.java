@@ -35,8 +35,7 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(studentEntity.getIdentityNumber());
 
 		if (_studentEntity != null)
-			throw new DuplicateKeyException(
-					"Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " , already Exist");
+			throw new DuplicateKeyException("Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " , already Exist");
 		return studentRepository.save(studentEntity);
 	}
 
@@ -137,6 +136,12 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
 		CourseEntity courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+		
+		// contains() method compares the hash code of the entities
+		boolean contains = _studentEntity.getCourses().contains(courseEntity);
+		
+		if(contains)
+			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);		
 		
 		_studentEntity.addCourse(courseEntity);
 				
