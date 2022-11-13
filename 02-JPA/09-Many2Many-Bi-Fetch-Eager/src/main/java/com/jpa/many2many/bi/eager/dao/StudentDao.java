@@ -30,6 +30,8 @@ public interface StudentDao {
 	List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber);
 	
 	List<StudentEntity> getStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
+	
+	List<StudentEntity> getAllStudents();
 
 	/**
 	 * Update
@@ -41,7 +43,7 @@ public interface StudentDao {
 	/**
 	 * Delete
 	 */
-	void removeStudentByFirstName(String firstName);
+	void removeStudentByIdentityNumber(int identityNumber);
 
 	void removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber);
 

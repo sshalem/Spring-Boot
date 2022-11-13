@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -109,6 +110,10 @@ public class StudentController {
 		return new ResponseEntity<>(_students, HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "getAllStudents", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getAllStudents() {
+		return new ResponseEntity<>(studentDaoImpl.getAllStudents(), HttpStatus.OK);
+	}
 	 
 	// *******************************
 	// UPDATE methods
@@ -133,5 +138,12 @@ public class StudentController {
 	// *******************************
 	// DELETE methods
 	// ********************************
-
+	@DeleteMapping(path = "/removeStudentByIdentityNumber/{identityNumber}")
+	public void removeStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
+		
+		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);
+		
+		
+	}
+	
 }

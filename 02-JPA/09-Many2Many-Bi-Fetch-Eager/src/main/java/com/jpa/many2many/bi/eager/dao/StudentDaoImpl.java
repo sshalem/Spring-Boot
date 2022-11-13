@@ -31,7 +31,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public StudentEntity createStudent(StudentEntity studentEntity) {
 
-		LOGGER.info("invoke createStudent");
+		LOGGER.info("invoke createStudent()");
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(studentEntity.getIdentityNumber());
 
 		if (_studentEntity != null)
@@ -46,7 +46,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public List<StudentEntity> getStudentsByFirstName(String firstName) {
 
-		LOGGER.info("invoke getStudentsByFirstName");
+		LOGGER.info("invoke getStudentsByFirstName()");
 		List<StudentEntity> _students = studentRepository.findStudentsByFirstName(firstName);
 //
 //		if (_students != null)
@@ -57,7 +57,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public List<StudentEntity> getStudentsByLastName(String lastName) {
 
-		LOGGER.info("invoke getStudentsByLastName");
+		LOGGER.info("invoke getStudentsByLastName()");
 		List<StudentEntity> _students = studentRepository.findStudentsByLastName(lastName);
 
 		if (_students == null)
@@ -68,7 +68,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public StudentEntity getStudentByIdentityNumber(int identityNumber) {
 
-		LOGGER.info("invoke getStudentByIdentityNumber");
+		LOGGER.info("invoke getStudentByIdentityNumber()");
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
 
 		if (_studentEntity == null)
@@ -79,7 +79,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public StudentEntity getStudentByEmail(String email) {
 
-		LOGGER.info("invoke getStudentByEmail");
+		LOGGER.info("invoke getStudentByEmail()");
 
 		StudentEntity _studentEntity = studentRepository.findStudentByEmail(email);
 
@@ -90,19 +90,19 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public List<StudentEntity> getStudentsThatLearnedCoursesInLearningYear(int learningYear) {
-		LOGGER.info("invoke getStudentsWhoLearnInLearningYear");
+		LOGGER.info("invoke getStudentsWhoLearnInLearningYear()");
 		return studentRepository.jpqlFindStudentsThatLearnedCoursesInLearningYear(learningYear);
 	}
 
 	@Override
 	public List<StudentEntity> getStudentsWhoLearedCourseName(String courseName) {
-		LOGGER.info("invoke getStudentsWhoLearedCourseName");
+		LOGGER.info("invoke getStudentsWhoLearedCourseName()");
 		return studentRepository.jpqlFindStudentsWhoLearedCourseName(courseName);
 	}
 	
 	@Override
 	public List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber) {
-		LOGGER.info("invoke getAllCoursesOfStudentByIdentityNumber");
+		LOGGER.info("invoke getAllCoursesOfStudentByIdentityNumber()");
 		return studentRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);		
 	}
 	
@@ -112,13 +112,18 @@ public class StudentDaoImpl implements StudentDao {
 		return studentRepository.jpqlFindStudentsWhoTookCourseInLearningYear(learningYear, courseNumber);
 	}
 	
+	@Override
+	public List<StudentEntity> getAllStudents() {
+		return studentRepository.findAll();
+	}
+	
 	/***********************
 	 * UPDATE
 	 ***********************/
 
 	@Override
 	public StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity) {
-		LOGGER.info("invoke updateStudentDetails");
+		LOGGER.info("invoke updateStudentDetails()");
 		
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
@@ -131,7 +136,7 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public StudentEntity addCourseToStudent(int identityNumber, String courseNumber) {
-		LOGGER.info("invoke addCourseToStudent");
+		LOGGER.info("invoke addCourseToStudent()");
 		
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
@@ -153,26 +158,33 @@ public class StudentDaoImpl implements StudentDao {
 	 ***********************/
 
 	@Override
-	public void removeStudentByFirstName(String firstName) {
-		LOGGER.info("invoke removeStudentByFirstName");
-
+	public void removeStudentByIdentityNumber(int identityNumber) {
+		LOGGER.info("invoke removeStudentByFirstName()");
+		
+		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+		
+//		_studentEntity.setId(0);
+//		
+//		StudentEntity detachEntity = studentRepository.save(_studentEntity);
+		
+		studentRepository.delete(_studentEntity);
 	}
 
 	@Override
 	public void removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
-		LOGGER.info("invoke removeCourseFromStudentByCourseNumber");
+		LOGGER.info("invoke removeCourseFromStudentByCourseNumber()");
 
 	}
 
 	@Override
 	public void removeAllCoursesFromStudent(int identityNumber) {
-		LOGGER.info("invoke removeAllCoursesFromStudent");
+		LOGGER.info("invoke removeAllCoursesFromStudent()");
 
 	}
 
 	@Override
 	public void removeAllStudents() {
-		LOGGER.info("invoke removeAllStudents");
+		LOGGER.info("invoke removeAllStudents()");
 
 	}
 

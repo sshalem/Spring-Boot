@@ -30,10 +30,11 @@ public class StudentEntity {
 
 	@ManyToMany(mappedBy = "students",
 			fetch = FetchType.EAGER, 
-			cascade = { CascadeType.PERSIST, 
+			cascade = { 
+//						CascadeType.PERSIST,
+						CascadeType.MERGE,	
 						CascadeType.DETACH,
-						CascadeType.MERGE, 
-						CascadeType.REFRESH 
+						CascadeType.REFRESH
 						}
 				)	
 	private Set<CourseEntity> courses;

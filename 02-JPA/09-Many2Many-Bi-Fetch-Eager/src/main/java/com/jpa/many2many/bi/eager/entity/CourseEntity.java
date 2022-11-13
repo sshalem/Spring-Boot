@@ -3,6 +3,7 @@ package com.jpa.many2many.bi.eager.entity;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,12 +31,13 @@ public class CourseEntity {
 	private LocalDate startDate;
 	private LocalDate endDate;
 
-	@ManyToMany(fetch = FetchType.EAGER
-//			cascade = { CascadeType.PERSIST, 
-//						CascadeType.DETACH,
-//						CascadeType.MERGE, 
-//						CascadeType.REFRESH 
-//					}
+	@ManyToMany(fetch = FetchType.EAGER,
+			cascade = { 
+//					CascadeType.PERSIST,
+//					CascadeType.MERGE,	
+					CascadeType.DETACH,
+					CascadeType.REFRESH
+					}
 			)
 	@JoinTable(name = "course_student", 
 			joinColumns = { @JoinColumn(name = "course_id") }, 
