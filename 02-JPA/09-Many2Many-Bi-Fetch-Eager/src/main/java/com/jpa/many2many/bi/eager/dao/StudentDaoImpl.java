@@ -1,6 +1,7 @@
 package com.jpa.many2many.bi.eager.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -157,23 +158,52 @@ public class StudentDaoImpl implements StudentDao {
 	 * DELETE
 	 ***********************/
 
-	@Override
+	@Override	
 	public void removeStudentByIdentityNumber(int identityNumber) {
-		LOGGER.info("invoke removeStudentByFirstName()");
 		
-		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+		LOGGER.info("invoke removeStudentByIdentityNumber()");
 		
-//		_studentEntity.setId(0);
-//		
-//		StudentEntity detachEntity = studentRepository.save(_studentEntity);
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		
+		Set<CourseEntity> courses = _studentEntity.getCourses();
+			
+		/**
+		 * I get "java.util.ConcurrentModificationException exception" 
+		 * If I use this for loop to remove course from Student 
+		 * See explantion why in link : from https://rollbar.com/blog/java-concurrentmodificationexception/
+		 * for (CourseEntity courseEntity : courses) {
+		 * 		_studentEntity.removeCourse(courseEntity);
+		 * 	}
+		 * 
+		 * https://stackoverflow.com/questions/4627221/jpa-manytomany-concurrentmodificationexception-issues
+		*/
+
+		// This is the how it worked  , Ineed to save the courseEntity via "CourseRepository"
+		// This way it will Detach the courseEntity from StudentEntity 
+		// (meaning: in the TB of "course_student" they won't refer to each other with foreign keys  
+		for (CourseEntity courseEntity : courses) {
+			_studentEntity.clearCourse(courseEntity);	
+			courseRepository.save(courseEntity);
+		}			
+		
+		// This will delete the  operation : Hibernate: delete from student_tb where student_id=?
 		studentRepository.delete(_studentEntity);
 	}
 
 	@Override
-	public void removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
+	public StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
+		
 		LOGGER.info("invoke removeCourseFromStudentByCourseNumber()");
-
+				
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+				
+		_studentEntity.removeCourse(_courseEntity);
+				
+		courseRepository.save(_courseEntity);
+		
+		return _studentEntity;
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package com.jpa.many2many.bi.eager.entity;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,8 +34,8 @@ public class CourseEntity {
 			cascade = { 
 //					CascadeType.PERSIST,
 //					CascadeType.MERGE,	
-					CascadeType.DETACH,
-					CascadeType.REFRESH
+//					CascadeType.DETACH,
+//					CascadeType.REFRESH
 					}
 			)
 	@JoinTable(name = "course_student", 

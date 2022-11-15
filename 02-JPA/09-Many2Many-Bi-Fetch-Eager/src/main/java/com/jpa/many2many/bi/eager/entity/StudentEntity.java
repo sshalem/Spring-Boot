@@ -3,7 +3,6 @@ package com.jpa.many2many.bi.eager.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,9 +31,9 @@ public class StudentEntity {
 			fetch = FetchType.EAGER, 
 			cascade = { 
 //						CascadeType.PERSIST,
-						CascadeType.MERGE,	
-						CascadeType.DETACH,
-						CascadeType.REFRESH
+//						CascadeType.MERGE,	
+//						CascadeType.DETACH,
+//						CascadeType.REFRESH
 						}
 				)	
 	private Set<CourseEntity> courses;
@@ -96,7 +95,7 @@ public class StudentEntity {
 	}
 
 	public void setCourses(Set<CourseEntity> courses) {
-		this.courses = courses;
+		this.courses = courses;		
 	}
 
 	/**
@@ -112,11 +111,19 @@ public class StudentEntity {
 		students.add(this);
 	}
 
-	public void removeCourse(CourseEntity courseEntity) {
-		this.courses.remove(courseEntity);
+	public void removeCourse(CourseEntity courseEntity) {		
 		courseEntity.getStudents().remove(this);
+		this.courses.remove(courseEntity);
 	}
 
+	public void clearCourse(CourseEntity courseEntity) {
+		courseEntity.getStudents().remove(this);		
+		/**
+		 * I cannot use this line since it will create a "java.util.ConcurrentModificationException exception"
+		 * this.courses.remove(courseEntity);
+		 */
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -141,9 +141,15 @@ public class StudentController {
 	@DeleteMapping(path = "/removeStudentByIdentityNumber/{identityNumber}")
 	public void removeStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
 		
-		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);
+		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);		
+	}
+	
+	@DeleteMapping(path = "/removeCourseFromStudentByCourseNumber/{identityNumber}/{courseNumber}")
+	public ResponseEntity<StudentEntity> removeCourseFromStudentByCourseNumber(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
 		
+		StudentEntity _studentEntity = studentDaoImpl.removeCourseFromStudentByCourseNumber(identityNumber, courseNumber);
 		
+		return new ResponseEntity<>(_studentEntity, HttpStatus.OK);
 	}
 	
 }
