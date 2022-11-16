@@ -1,12 +1,20 @@
 package com.bezkoder.spring.hibernate.manytomany.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.bezkoder.spring.hibernate.manytomany.exception.ResourceNotFoundException;
 import com.bezkoder.spring.hibernate.manytomany.model.Tutorial;
@@ -26,8 +34,8 @@ public class TutorialController {
 
 	@PostMapping("/tutorials")
 	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
-		Tutorial _tutorial = tutorialRepository
-				.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), true));
+
+		Tutorial _tutorial = tutorialRepository.save(tutorial);
 		return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
 	}
 
@@ -37,12 +45,8 @@ public class TutorialController {
 
 	@GetMapping("/tutorials")
 	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
-		List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
-		if (title == null)
-			tutorialRepository.findAll().forEach(tutorials::add);
-		else
-			tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+		List<Tutorial> tutorials = tutorialRepository.findAll();
 
 		if (tutorials.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -53,6 +57,7 @@ public class TutorialController {
 
 	@GetMapping("/tutorials/{id}")
 	public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
+
 		Tutorial tutorial = tutorialRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
 
@@ -61,12 +66,12 @@ public class TutorialController {
 
 	@GetMapping("/tutorials/published")
 	public ResponseEntity<List<Tutorial>> findByPublished() {
+
 		List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
 
 		if (tutorials.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-
 		return new ResponseEntity<>(tutorials, HttpStatus.OK);
 	}
 
@@ -76,6 +81,7 @@ public class TutorialController {
 
 	@PutMapping("/tutorials/{id}")
 	public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id, @RequestBody Tutorial tutorial) {
+
 		Tutorial _tutorial = tutorialRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
 
@@ -91,15 +97,15 @@ public class TutorialController {
 	// ********************************
 	@DeleteMapping("/tutorials/{id}")
 	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
-		tutorialRepository.deleteById(id);
 
+		tutorialRepository.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@DeleteMapping("/tutorials")
 	public ResponseEntity<HttpStatus> deleteAllTutorials() {
-		tutorialRepository.deleteAll();
 
+		tutorialRepository.deleteAll();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
