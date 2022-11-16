@@ -115,8 +115,8 @@ public class StudentController {
 		return new ResponseEntity<>(studentDaoImpl.getAllStudents(), HttpStatus.OK);
 	}
 	 
-	// *******************************
-	// UPDATE methods
+	// ********************************
+	// 		UPDATE methods
 	// ********************************
 	@PutMapping(path = "/updateStudentDetails/{identityNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateStudentDetails(@PathVariable("identityNumber") int identityNumber, @RequestBody StudentEntity studentEntity) {
@@ -135,8 +135,8 @@ public class StudentController {
 	}
 	
 	
-	// *******************************
-	// DELETE methods
+	// ********************************
+	// 		DELETE methods
 	// ********************************
 	@DeleteMapping(path = "/removeStudentByIdentityNumber/{identityNumber}")
 	public void removeStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
