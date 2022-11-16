@@ -128,7 +128,9 @@ public class TagController {
 		Tutorial tutorial = tutorialRepository.findById(tutorialId)
 				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + tutorialId));
 
-		tutorial.removeTag(tagId);
+		Tag _tag = tagRepository.findById(tagId).get();
+		
+		tutorial.removeTag(_tag);
 		tutorialRepository.save(tutorial);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -147,10 +149,12 @@ public class TagController {
 			boolean contains = tutorial.getTags().contains(_tag);
 			
 			if(contains) {
-				tutorial.clearTag(tagId);
-				tagRepository.deleteById(tagId);	
+				tutorial.removeTag(_tag);
+				tutorialRepository.save(tutorial);				
 			}			
 		}		
+		
+		tagRepository.deleteById(tagId);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

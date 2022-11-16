@@ -81,18 +81,10 @@ public class Tutorial {
 		tag.getTutorials().add(this);
 	}
 
-	public void removeTag(long tagId) {
-		Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
+	public void removeTag(Tag tag) {
+//		Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
 		if (tag != null) {
 			this.tags.remove(tag);
-			tag.getTutorials().remove(this);
-		}
-	}
-	
-	public void clearTag(long tagId) {
-		Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
-		if (tag != null) {
-//			this.tags.remove(tag);
 			tag.getTutorials().remove(this);
 		}
 	}
