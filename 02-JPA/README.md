@@ -531,6 +531,8 @@ With `One2Many Bi-Direc` , we had the :
 * parent entity [User](#-) , since it has the `mappedBy` value , it is also called the `Not Owning side`.
 * child entity [Role](#-) , also called the Owning side.
 
+See link from [Bezkoder](https://www.bezkoder.com/jpa-many-to-many/) .
+
 With [Many2Many Bi-Direc](#-) this is how I prefer to do it:
 * [`Student entity`](#-) - 
 	* Owning side has the `JoingTable` annotations
