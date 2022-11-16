@@ -513,6 +513,30 @@ If we remove a User , it will also remove an Address (see code Implementaion).
 
 ---
 
+###### 8_One2One_Uni_Lazy
+
+<img src="https://img.shields.io/badge/- 8. One2One Uni Lazy %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
