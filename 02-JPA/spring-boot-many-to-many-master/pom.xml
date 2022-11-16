@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-many-to-many-JPA</artifactId>
+	<artifactId>spring-boot-many-to-many</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-many-to-many-JPA</name>
-	<description>Spring Boot Many to Many example using Hibernate / JPA @ManyToMany_</description>
+	<name>spring-boot-many-to-many</name>
+	<description>Spring Boot Many to Many example using Hibernate / JPA @ManyToMany</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -37,10 +37,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
 

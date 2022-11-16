@@ -207,15 +207,31 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public void removeAllCoursesFromStudent(int identityNumber) {
+	public List<CourseEntity> removeAllCoursesFromStudent(int identityNumber) {
 		LOGGER.info("invoke removeAllCoursesFromStudent()");
 
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		
+		for(CourseEntity courseEntity: _studentEntity.getCourses()) {
+			_studentEntity.clearCourse(courseEntity);
+			courseRepository.save(courseEntity);
+		}		
+		return this.getAllCoursesOfStudentByIdentityNumber(identityNumber);
 	}
 
 	@Override
 	public void removeAllStudents() {
 		LOGGER.info("invoke removeAllStudents()");
-
+		
+		List<StudentEntity> _students = this.getAllStudents();
+		
+		for (StudentEntity studentEntity : _students) {
+			for (CourseEntity courseEntity: studentEntity.getCourses()) {
+				studentEntity.clearCourse(courseEntity);
+				courseRepository.save(courseEntity);
+			} 
+		}		
+		studentRepository.deleteAll();		
 	}
 
 }

@@ -47,7 +47,7 @@ public interface StudentDao {
 
 	StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber);
 
-	void removeAllCoursesFromStudent(int identityNumber);
+	List<CourseEntity> removeAllCoursesFromStudent(int identityNumber);
 
 	void removeAllStudents();
 

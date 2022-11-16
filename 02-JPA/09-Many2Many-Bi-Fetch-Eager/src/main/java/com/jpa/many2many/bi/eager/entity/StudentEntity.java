@@ -3,6 +3,7 @@ package com.jpa.many2many.bi.eager.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "STUDENT_TB")
@@ -30,12 +33,13 @@ public class StudentEntity {
 	@ManyToMany(mappedBy = "students",
 			fetch = FetchType.EAGER, 
 			cascade = { 
-//						CascadeType.PERSIST,
-//						CascadeType.MERGE,	
-//						CascadeType.DETACH,
-//						CascadeType.REFRESH
+						CascadeType.PERSIST,
+						CascadeType.MERGE,	
+						CascadeType.DETACH,
+						CascadeType.REFRESH
 						}
 				)	
+	@JsonIgnore
 	private Set<CourseEntity> courses;
 
 	public StudentEntity() {

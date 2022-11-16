@@ -19,15 +19,11 @@ public class Tag {
   private String name;
 
   @ManyToMany(fetch = FetchType.LAZY,
-	      cascade = {
-	              CascadeType.PERSIST,
-	              CascadeType.MERGE,
-	              CascadeType.REFRESH,
-	              CascadeType.DETACH, }
-	          )
-	      @JoinTable(name = "tutorial_tags",
-	            joinColumns = { @JoinColumn(name = "tag_id") },
-	            inverseJoinColumns = { @JoinColumn(name = "tutorial_id") })
+      cascade = {
+          CascadeType.PERSIST,
+          CascadeType.MERGE
+      },
+      mappedBy = "tags")
   @JsonIgnore
   private Set<Tutorial> tutorials = new HashSet<>();
 

@@ -147,9 +147,26 @@ public class StudentController {
 	@DeleteMapping(path = "/removeCourseFromStudentByCourseNumber/{identityNumber}/{courseNumber}")
 	public ResponseEntity<StudentEntity> removeCourseFromStudentByCourseNumber(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
 		
-		StudentEntity _studentEntity = studentDaoImpl.removeCourseFromStudentByCourseNumber(identityNumber, courseNumber);
-		
+		StudentEntity _studentEntity = studentDaoImpl.removeCourseFromStudentByCourseNumber(identityNumber, courseNumber);		
 		return new ResponseEntity<>(_studentEntity, HttpStatus.OK);
+	}
+	
+	
+	@DeleteMapping(path = "/removeAllCoursesFromStudent/{identityNumber}")
+	public ResponseEntity<List<CourseEntity>> removeAllCoursesFromStudent(@PathVariable("identityNumber") int identityNumber) {
+		
+		List<CourseEntity> _courses = studentDaoImpl.removeAllCoursesFromStudent(identityNumber);	
+		if (_courses.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_courses, HttpStatus.NOT_ACCEPTABLE);
+	}
+	
+	@DeleteMapping(path = "/removeAllStudents")
+	public ResponseEntity<Void> removeAllStudents() {
+		
+		studentDaoImpl.removeAllStudents();		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 }

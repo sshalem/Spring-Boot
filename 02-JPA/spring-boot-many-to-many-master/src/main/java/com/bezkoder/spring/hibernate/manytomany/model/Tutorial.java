@@ -25,10 +25,8 @@ public class Tutorial {
   @ManyToMany(fetch = FetchType.LAZY,
       cascade = {
           CascadeType.PERSIST,
-          CascadeType.MERGE,
-          CascadeType.REFRESH,
-          CascadeType.DETACH, }
-      )
+          CascadeType.MERGE
+      })
   @JoinTable(name = "tutorial_tags",
         joinColumns = { @JoinColumn(name = "tutorial_id") },
         inverseJoinColumns = { @JoinColumn(name = "tag_id") })
