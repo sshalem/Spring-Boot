@@ -20,7 +20,7 @@ import com.bezkoder.spring.hibernate.manytomany.exception.ResourceNotFoundExcept
 import com.bezkoder.spring.hibernate.manytomany.model.Tutorial;
 import com.bezkoder.spring.hibernate.manytomany.repository.TutorialRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class TutorialController {
@@ -51,7 +51,6 @@ public class TutorialController {
 		if (tutorials.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-
 		return new ResponseEntity<>(tutorials, HttpStatus.OK);
 	}
 
@@ -60,7 +59,6 @@ public class TutorialController {
 
 		Tutorial tutorial = tutorialRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
-
 		return new ResponseEntity<>(tutorial, HttpStatus.OK);
 	}
 
@@ -68,7 +66,7 @@ public class TutorialController {
 	public ResponseEntity<List<Tutorial>> findByPublished() {
 
 		List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
-
+		
 		if (tutorials.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

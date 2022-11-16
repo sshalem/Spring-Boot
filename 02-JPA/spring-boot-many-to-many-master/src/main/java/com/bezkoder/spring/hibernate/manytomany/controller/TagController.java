@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ import com.bezkoder.spring.hibernate.manytomany.model.Tutorial;
 import com.bezkoder.spring.hibernate.manytomany.repository.TagRepository;
 import com.bezkoder.spring.hibernate.manytomany.repository.TutorialRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class TagController {
@@ -35,30 +36,27 @@ public class TagController {
 	// ********************************
 	// POST (Create) methods
 	// ********************************
-	@PostMapping("/tutorials/{tutorialId}/tags")
-	public ResponseEntity<Tag> addTag(@PathVariable(value = "tutorialId") Long tutorialId, @RequestBody Tag tagRequest) {
+	@PostMapping("/tags/create")
+	@Transactional
+	public ResponseEntity<Tag> createTag(@RequestBody Tag tagRequest) {
 		
-		Tag tag = tutorialRepository
-				.findById(tutorialId)
-				.map(tutorial -> {
-					
-					// tag is existed
-					if (tagRequest.getId() != 0L) {
-						Tag _tag = tagRepository.findById(tagRequest.getId())
-								.orElseThrow(() -> new ResourceNotFoundException("Not found Tag with id = " + tagRequest.getId()));
-						
-						tutorial.addTag(_tag);
-						tutorialRepository.save(tutorial);
-						return _tag;
-					}
-					
-					// add and create new Tag
-					tutorial.addTag(tagRequest);
-					return tagRepository.save(tagRequest);
-				})
-				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + tutorialId));
-
+		Tag tag = tagRepository.save(tagRequest);
 		return new ResponseEntity<>(tag, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/tags/{tutorialId}/{tagId}")
+	@Transactional
+	public ResponseEntity<?> addTag(@PathVariable("tutorialId") Long tutorialId, @PathVariable("tagId") Long tagId) {
+		
+		Tutorial tutorial= tutorialRepository.findById(tutorialId).get();
+		Tag _tag = tagRepository.findById(tagId).get();
+		tutorial.addTag(_tag);
+		
+//		tagRepository.save(_tag);
+		
+		tutorialRepository.save(tutorial);
+
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
 	}
 
 	// ********************************
