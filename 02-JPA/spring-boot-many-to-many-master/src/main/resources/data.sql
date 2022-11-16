@@ -22,9 +22,32 @@ SET FOREIGN_KEY_CHECKS=1;
 
 
 -------------------------
---Insert into student_tb 
+--Insert into tags 
 -------------------------
+insert into tags (id, name) values(1, 'good tag');
+insert into tags (id, name) values(2, 'Excelent tag');
+insert into tags (id, name) values(3, 'marvales tag');
 
+-------------------------
+--Insert into tutorials 
+-------------------------
+insert into tutorials (id, description, published, title) values(1, 'many to many', 1, 'JAVA Title');
+insert into tutorials (id, description, published, title) values(2, 'many to one', 0, 'C sharp Title');
+insert into tutorials (id, description, published, title) values(3, 'one 2 many ', 0, 'Node Title');
+insert into tutorials (id, description, published, title) values(4, 'one 2 one ', 1, 'Python Title');
+insert into tutorials (id, description, published, title) values(5, 'annonymos', 1, 'PHP Title');
+
+-------------------------
+--Insert into tutorial_tags 
+-------------------------
+insert into tutorial_tags(tutorial_id, tag_id) values(1,1);
+insert into tutorial_tags(tutorial_id, tag_id) values(1,2);
+insert into tutorial_tags(tutorial_id, tag_id) values(1,3);
+insert into tutorial_tags(tutorial_id, tag_id) values(2,1);
+insert into tutorial_tags(tutorial_id, tag_id) values(2,2);
+insert into tutorial_tags(tutorial_id, tag_id) values(2,3);
+insert into tutorial_tags(tutorial_id, tag_id) values(4,1);
+insert into tutorial_tags(tutorial_id, tag_id) values(4,2);
 
 
 -- DROP TABLE IF EXISTS roles_tb;

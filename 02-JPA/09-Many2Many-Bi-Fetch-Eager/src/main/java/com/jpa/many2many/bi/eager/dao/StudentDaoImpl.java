@@ -184,7 +184,7 @@ public class StudentDaoImpl implements StudentDao {
 		for (CourseEntity courseEntity : courses) {
 			_studentEntity.clearCourse(courseEntity);	
 			courseRepository.save(courseEntity);
-		}			
+		}
 		
 		// This will delete the  operation : Hibernate: delete from student_tb where student_id=?
 		studentRepository.delete(_studentEntity);

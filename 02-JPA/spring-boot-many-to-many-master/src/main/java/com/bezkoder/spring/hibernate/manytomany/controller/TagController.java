@@ -122,6 +122,7 @@ public class TagController {
 	// DELETE methods
 	// ********************************
 	@DeleteMapping("/tutorials/{tutorialId}/tags/{tagId}")
+	@Transactional
 	public ResponseEntity<HttpStatus> deleteTagFromTutorial(@PathVariable(value = "tutorialId") Long tutorialId, @PathVariable(value = "tagId") Long tagId) {
 		
 		Tutorial tutorial = tutorialRepository.findById(tutorialId)
@@ -134,9 +135,23 @@ public class TagController {
 	}
 
 	@DeleteMapping("/tags/{id}")
-	public ResponseEntity<HttpStatus> deleteTag(@PathVariable("id") long id) {
+	@Transactional
+	public ResponseEntity<HttpStatus> deleteTag(@PathVariable("id") long tagId) {
 
-		tagRepository.deleteById(id);
+		List<Tutorial> _tutorials = tutorialRepository.findAll();
+		
+		Tag _tag = tagRepository.findById(tagId).get();
+		
+		for (Tutorial tutorial : _tutorials) {
+			
+			boolean contains = tutorial.getTags().contains(_tag);
+			
+			if(contains) {
+				tutorial.clearTag(tagId);
+				tagRepository.deleteById(tagId);	
+			}			
+		}		
+		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

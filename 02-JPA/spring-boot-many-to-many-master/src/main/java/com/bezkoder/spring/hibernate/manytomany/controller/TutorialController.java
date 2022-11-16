@@ -43,7 +43,7 @@ public class TutorialController {
 	// GET methods
 	// ********************************
 
-	@GetMapping("/tutorials")
+	@GetMapping("/tutorials")	
 	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
 
 		List<Tutorial> tutorials = tutorialRepository.findAll();
