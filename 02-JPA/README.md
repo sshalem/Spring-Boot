@@ -531,11 +531,11 @@ With `One2Many Bi-Direc` , we had the :
 * parent entity [User](#-) , since it has the `mappedBy` value , it is also called the `Not Owning side`.
 * child entity [Role](#-) , also called the Owning side.
 
-With `Many2Many Bi-Direc` this is how I prefer to do it:
-* Student entity - 
+With [Many2Many Bi-Direc](#-) this is how I prefer to do it:
+* [`Student entity`](#-) - 
 	* Owning side has the `JoingTable` annotations
 	* has the Helper methods of `addCourse` and `removeCourse`
-* Course Entity - Not owning side , has the `mappedBy` 
+* [`Course Entity`](#-) - Not owning side , has the `mappedBy` 
 
 
 
