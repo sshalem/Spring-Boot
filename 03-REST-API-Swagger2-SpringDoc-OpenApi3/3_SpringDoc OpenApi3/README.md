@@ -143,9 +143,12 @@ public class RoleController {
 
 --------------------------------------------------------------------------------------------------
 
-###### 
+###### 2_1_Run_App_Test_API_with_OpenApi
 
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-2.1. Run_App_Test_API_with_OpenApi.  %20-blue" height=40px>
+
+Lets run the app , and browse to the following url:
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
