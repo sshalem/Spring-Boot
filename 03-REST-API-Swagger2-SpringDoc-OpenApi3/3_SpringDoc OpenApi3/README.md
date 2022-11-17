@@ -8,9 +8,7 @@
 |     |[SpringDoc or Swagger or OpenAPI](#SpringDoc_or_Swagger_or_OpenAPI)   | 
 |  1  |[Spring Boot project](#1_Spring_Boot_project)  |   
 |  2  |[Add SpringDoc (OpenAPi) ](#2_Add_springdoc) | 
-|     |2.1. [Add Swagger2 dependency](#add_Swagger2_dependency) |   
-|     |2.2. [Config Swagger2](#config_swagger2) |   
-|     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
+|     |2.1. [Run App Test API with Open APi](#2_1_Run_App_Test_API_with_OpenApi) |  
 |  3  |[Customize Swagger2 configuration](#Customize_Swagger2_configuration)    | 
 |     |3.1. [Run App Test API with Swagger UI reconfig](#Run_App_Test_API_with_Swagger_UI_reconfig) |  
 |  4  |[Add details to API](#Add_details_to_API)    | 
@@ -61,10 +59,6 @@ Create a new Spring-Boot Project and add the follwoing dependencies:
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
@@ -74,11 +68,7 @@ Create a new Spring-Boot Project and add the follwoing dependencies:
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -105,6 +95,48 @@ Now let's also add the dependdency of OpenAPi
 	<artifactId>springdoc-openapi-ui</artifactId>
 	<version>1.6.12</version>
 </dependency>
+```
+
+I created the following controllers with endpoints:
+
+### UserController
+
+```java
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+	@GetMapping(path = "/get")
+	public ResponseEntity<?> getUser() {
+		return new ResponseEntity<>(new UserEntity("shabtay", "shalem"), HttpStatus.OK);
+	}
+
+	@PostMapping(path = "/create")
+	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
+		System.out.println(userEntity);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+}
+```
+
+### RoleController
+
+```java
+@RestController
+@RequestMapping("/role")
+public class RoleController {
+
+	@GetMapping(path = "/get")
+	public ResponseEntity<?> getRole() {
+		return new ResponseEntity<>(new RoleEntity("1234", "ADMIN"), HttpStatus.OK);
+	}
+
+	@PostMapping(path = "/create")
+	public ResponseEntity<?> createRole(@RequestBody RoleEntity roleEntity) {
+		System.out.println(roleEntity);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+}
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
