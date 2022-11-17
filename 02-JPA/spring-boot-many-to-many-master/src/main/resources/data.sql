@@ -27,6 +27,10 @@ SET FOREIGN_KEY_CHECKS=1;
 insert into tags (id, name) values(1, 'good tag');
 insert into tags (id, name) values(2, 'Excelent tag');
 insert into tags (id, name) values(3, 'marvales tag');
+insert into tags (id, name) values(4, 'great tag');
+insert into tags (id, name) values(5, 'CYCLE tag');
+insert into tags (id, name) values(6, 'DISCONNECT tag');
+insert into tags (id, name) values(7, 'ROW_NUMBER tag');
 
 -------------------------
 --Insert into tutorials 

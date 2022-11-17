@@ -110,13 +110,14 @@ public class TagController {
 		
 		Tutorial tutorial= tutorialRepository.findById(tutorialId).get();
 		Tag _tag = tagRepository.findById(tagId).get();
+		
 		tutorial.addTag(_tag);
 		
 //		tagRepository.save(_tag);
 		
-		tutorialRepository.save(tutorial);
+		Tutorial returnedValue = tutorialRepository.save(tutorial);
 
-		return new ResponseEntity<>(null, HttpStatus.CREATED);
+		return new ResponseEntity<>(returnedValue, HttpStatus.CREATED);
 	}
 	
 	// ********************************
