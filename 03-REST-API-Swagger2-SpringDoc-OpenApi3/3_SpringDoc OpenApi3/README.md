@@ -57,7 +57,7 @@ Answer:
 
 Create a new Spring-Boot Project and add the follwoing dependencies:
 
-```java
+```sql
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -89,7 +89,7 @@ Create a new Spring-Boot Project and add the follwoing dependencies:
 
 Now let's also add the dependdency of OpenAPi 
 
-```java
+```sql
 <dependency>
   <groupId>org.springdoc</groupId>
 	<artifactId>springdoc-openapi-ui</artifactId>
