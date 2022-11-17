@@ -149,6 +149,9 @@ public class RoleController {
 
 Lets run the app , and browse to the following url:
 
+- http://localhost:8080/v3/api-docs
+
+this will bring us to  a page where we see all the defaults values.
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
