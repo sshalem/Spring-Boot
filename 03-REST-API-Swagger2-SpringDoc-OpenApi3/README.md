@@ -3,5 +3,5 @@
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[REST API](#)   | 
-|  2  |[SWAGGER2](#)  |   
-|  3  |[SpringDoc OpenApi3](#) |   
+|  2  |[SWAGGER2](https://github.com/sshalem/Spring-Boot/tree/main/03-REST-API-Swagger2-SpringDoc-OpenApi3/2_Swagger2)  |   
+|  3  |[SpringDoc OpenApi3](https://github.com/sshalem/Spring-Boot/tree/main/03-REST-API-Swagger2-SpringDoc-OpenApi3/3_SpringDoc%20OpenApi3) |   
