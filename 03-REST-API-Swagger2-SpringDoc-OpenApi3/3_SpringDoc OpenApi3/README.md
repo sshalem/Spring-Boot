@@ -17,9 +17,7 @@
 
 
 
-https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
 
-https://www.blazemeter.com/blog/openapi-vs-swagger
 
 
 --------------------------------------------------------------------------------------------------
@@ -27,6 +25,19 @@ https://www.blazemeter.com/blog/openapi-vs-swagger
 ###### Difference_Between_Swagger_and_OpenAPI
 
 <img src="https://img.shields.io/badge/- Difference_Between_Swagger_and_OpenAPI  %20-blue" height=40px>
+
+links: 
+- https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
+- https://www.blazemeter.com/blog/openapi-vs-swagger
+
+Question:
+* What's the Difference Between OpenAPI and Swagger?
+
+Answer:
+* OpenAPI and Swagger used to refer to the same thing. While there are differences today (OpenAPI refers to RESTful API design and Swagger refers to a set of SmartBear tools), this blog will use the terms interchangeably. 
+
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
