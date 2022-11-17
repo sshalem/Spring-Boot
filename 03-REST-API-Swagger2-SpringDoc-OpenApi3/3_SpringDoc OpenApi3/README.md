@@ -150,6 +150,7 @@ public class RoleController {
 Lets run the app , and browse to the following url:
 
 - http://localhost:8080/v3/api-docs
+- http://localhost:8080/swagger-ui.html
 
 this will bring us to  a page where we see all the defaults values. </br>
 We can modify these default values , I will show it later on.
