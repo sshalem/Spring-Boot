@@ -6,8 +6,8 @@
 |:---:|:------------------------------| 
 |     |[Difference Between Swagger and OpenAPI](#Difference_Between_Swagger_and_OpenAPI)   | 
 |     |[SpringDoc or Swagger or OpenAPI](#SpringDoc_or_Swagger_or_OpenAPI)   | 
-|  1  |[Spring Boot project](#Spring_Boot_project)  |   
-|  2  |[Add Swagger2 to Spring Boot Project](#Add_Swagger2_to_Spring_Boot_Project) | 
+|  1  |[Spring Boot project](#1_Spring_Boot_project)  |   
+|  2  |[Add SpringDoc (OpenAPi) ](#2_Add_springdoc) | 
 |     |2.1. [Add Swagger2 dependency](#add_Swagger2_dependency) |   
 |     |2.2. [Config Swagger2](#config_swagger2) |   
 |     |2.3. [Run App Test API with Swagger UI](#Run_App_Test_API_with_Swagger_UI) |  
@@ -51,9 +51,9 @@ Answer:
 
 --------------------------------------------------------------------------------------------------
 
-###### Spring_Boot_project
+###### 1_Spring_Boot_project
 
-<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-1. Spring_Boot_project  %20-blue" height=40px>
 
 Create a new Spring-Boot Project and add the follwoing dependencies:
 
@@ -87,6 +87,16 @@ Create a new Spring-Boot Project and add the follwoing dependencies:
 	</dependencies>
 ```
 
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 2_Add_springdoc
+
+<img src="https://img.shields.io/badge/- 2. Add_springdoc  %20-blue" height=40px>
+
 Now let's also add the dependdency of OpenAPi 
 
 ```sql
@@ -101,4 +111,29 @@ Now let's also add the dependdency of OpenAPi
 
 --------------------------------------------------------------------------------------------------
 
+###### 
 
+<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+--------------------------------------------------------------------------------------------------
