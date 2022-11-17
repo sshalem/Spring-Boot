@@ -24,9 +24,13 @@ public class Tutorial {
 	@Column(name = "published")
 	private boolean published;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "tutorial_tags", joinColumns = { @JoinColumn(name = "tutorial_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "tag_id") })
+	@ManyToMany(fetch = FetchType.LAZY, 
+			cascade = { 
+					CascadeType.PERSIST, 
+					CascadeType.MERGE })
+	@JoinTable(name = "tutorial_tags", 
+				joinColumns = { @JoinColumn(name = "tutorial_id") }, 
+				inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	@JsonIgnore
 	private Set<Tag> tags = new HashSet<>();
 

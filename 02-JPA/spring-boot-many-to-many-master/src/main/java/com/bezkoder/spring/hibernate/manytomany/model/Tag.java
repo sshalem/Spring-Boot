@@ -18,7 +18,11 @@ public class Tag {
 	@Column(name = "name")
 	private String name;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
+	@ManyToMany(fetch = FetchType.LAZY, 
+			cascade = { 
+					CascadeType.PERSIST, 
+					CascadeType.MERGE }, 
+			mappedBy = "tags")
 	@JsonIgnore
 	private Set<Tutorial> tutorials = new HashSet<>();
 
