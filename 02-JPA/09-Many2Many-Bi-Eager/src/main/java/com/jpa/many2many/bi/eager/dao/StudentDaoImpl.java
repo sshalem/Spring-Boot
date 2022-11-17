@@ -143,13 +143,12 @@ public class StudentDaoImpl implements StudentDao {
 		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
 
 		boolean contains = _studentEntity.getCourses().contains(_courseEntity);
-
 		if (contains)
 			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);
 
 		_studentEntity.addCourse(_courseEntity);
-
-		return studentRepository.save(_studentEntity);
+		StudentEntity returnedValue = studentRepository.save(_studentEntity);
+		return returnedValue;
 	}
 
 	/***********************

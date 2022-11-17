@@ -33,8 +33,7 @@ public class StudentEntity {
 	@ManyToMany(fetch = FetchType.EAGER,
 			cascade = { 
 					CascadeType.PERSIST,
-					CascadeType.MERGE
-					})	
+					CascadeType.MERGE})	
 	@JoinTable(name = "student_course", 
 				joinColumns = { @JoinColumn(name = "student_id") }, 
 				inverseJoinColumns = { @JoinColumn(name = "course_id") })
