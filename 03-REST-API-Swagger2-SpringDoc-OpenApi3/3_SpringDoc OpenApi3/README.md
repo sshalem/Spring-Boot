@@ -51,10 +51,51 @@ Answer:
 
 --------------------------------------------------------------------------------------------------
 
-###### 
+###### Spring_Boot_project
 
 <img src="https://img.shields.io/badge/-X.  %20-blue" height=40px>
 
+Create a new Spring-Boot Project and add the follwoing dependencies:
+
+```
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+```
+
+Now let's also add the dependdency of OpenAPi 
+
+```
+<dependency>
+  <groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-ui</artifactId>
+	<version>1.6.12</version>
+</dependency>
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
