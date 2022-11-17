@@ -29,6 +29,11 @@
 links: 
 - https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
 - https://www.blazemeter.com/blog/openapi-vs-swagger
+- https://nordicapis.com/whats-the-difference-between-swagger-and-openapi/
+- https://www.youtube.com/watch?v=2pyUYJ4NiMI&ab_channel=CodeWithPraveen
+- 
+
+
 
 Question:
 * What's the Difference Between OpenAPI and Swagger?
