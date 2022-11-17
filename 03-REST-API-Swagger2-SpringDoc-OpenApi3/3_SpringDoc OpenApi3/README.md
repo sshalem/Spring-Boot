@@ -149,11 +149,12 @@ public class RoleController {
 
 Lets run the app , and browse to the following url:
 
-- http://localhost:8080/v3/api-docs
+- http://localhost:8080/v3/api-docs  - this will bring us to  a page where we see all the defaults values. We can modify these default values , I will show it later on.
 - http://localhost:8080/swagger-ui.html
 
-this will bring us to  a page where we see all the defaults values. </br>
-We can modify these default values , I will show it later on.
+
+
+![image](https://user-images.githubusercontent.com/36256986/202572042-2c7da135-76e5-40bc-9e32-a6dde9254c6d.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
