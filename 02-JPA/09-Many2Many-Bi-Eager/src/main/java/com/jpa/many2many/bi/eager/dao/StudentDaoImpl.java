@@ -24,7 +24,7 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Autowired
 	private CourseRepository courseRepository;
-	
+
 	/***********************
 	 * CREATE
 	 ***********************/
@@ -35,7 +35,8 @@ public class StudentDaoImpl implements StudentDao {
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(studentEntity.getIdentityNumber());
 
 		if (_studentEntity != null)
-			throw new DuplicateKeyException("Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " , already Exist");
+			throw new DuplicateKeyException(
+					"Student with IdentityNumber : " + studentEntity.getIdentityNumber() + " , already Exist");
 		return studentRepository.save(studentEntity);
 	}
 
@@ -99,25 +100,24 @@ public class StudentDaoImpl implements StudentDao {
 		LOGGER.info("invoke getStudentsWhoLearedCourseName()");
 		return studentRepository.jpqlFindStudentsWhoLearedCourseName(courseName);
 	}
-	
+
 	@Override
 	public List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber) {
 		LOGGER.info("invoke getAllCoursesOfStudentByIdentityNumber()");
-		return courseRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);
-//		return studentRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);		
+		return studentRepository.jpqlFindAllCoursesOfStudentByIdentityNumber(identityNumber);
 	}
-	
+
 	@Override
 	public List<StudentEntity> getStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber) {
 		LOGGER.info("invoke getStudentsWhoTookCourseInLearningYear() ");
 		return studentRepository.jpqlFindStudentsWhoTookCourseInLearningYear(learningYear, courseNumber);
 	}
-	
+
 	@Override
 	public List<StudentEntity> getAllStudents() {
 		return studentRepository.findAll();
 	}
-	
+
 	/***********************
 	 * UPDATE
 	 ***********************/
@@ -125,30 +125,30 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity) {
 		LOGGER.info("invoke updateStudentDetails()");
-		
+
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
-		
+
 		_studentEntity.setFirstName(studentEntity.getFirstName());
 		_studentEntity.setLastName(studentEntity.getLastName());
 		_studentEntity.setEmail(studentEntity.getEmail());
-						
+
 		return studentRepository.save(_studentEntity);
 	}
 
 	@Override
 	public StudentEntity addCourseToStudent(int identityNumber, String courseNumber) {
 		LOGGER.info("invoke addCourseToStudent()");
-		
-		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);		
-		CourseEntity courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
-		
-		boolean contains = _studentEntity.getCourses().contains(courseEntity);
-		
-		if(contains)
-			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);		
-		
-		_studentEntity.addCourse(courseEntity);
-		
+
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+
+		boolean contains = _studentEntity.getCourses().contains(_courseEntity);
+
+		if (contains)
+			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);
+
+		_studentEntity.addCourse(_courseEntity);
+
 		return studentRepository.save(_studentEntity);
 	}
 
@@ -156,23 +156,23 @@ public class StudentDaoImpl implements StudentDao {
 	 * DELETE
 	 ***********************/
 
-	@Override	
+	@Override
 	public void removeStudentByIdentityNumber(int identityNumber) {
-		
+
 		LOGGER.info("invoke removeStudentByIdentityNumber()");
-		
+
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		studentRepository.delete(_studentEntity);
 	}
 
 	@Override
 	public StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
-		
+
 		LOGGER.info("invoke removeCourseFromStudentByCourseNumber()");
-				
-		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);		
-		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);				
-		_studentEntity.removeCourse(_courseEntity);		
+
+		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+		_studentEntity.removeCourse(_courseEntity);
 		return studentRepository.save(_studentEntity);
 	}
 
@@ -181,18 +181,18 @@ public class StudentDaoImpl implements StudentDao {
 		LOGGER.info("invoke removeAllCoursesFromStudent()");
 
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
-		
-		for(CourseEntity courseEntity: _studentEntity.getCourses()) {
+
+		for (CourseEntity courseEntity : _studentEntity.getCourses()) {
 			_studentEntity.removeCourse(courseEntity);
 			studentRepository.save(_studentEntity);
-		}		
+		}
 		return this.getAllCoursesOfStudentByIdentityNumber(identityNumber);
 	}
 
 	@Override
 	public void removeAllStudents() {
 		LOGGER.info("invoke removeAllStudents()");
-		studentRepository.deleteAll();		
+		studentRepository.deleteAll();
 	}
 
 }

@@ -44,21 +44,7 @@ public class TagController {
 		return new ResponseEntity<>(tag, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/tags/{tutorialId}/{tagId}")
-	@Transactional
-	public ResponseEntity<?> addTag(@PathVariable("tutorialId") Long tutorialId, @PathVariable("tagId") Long tagId) {
-		
-		Tutorial tutorial= tutorialRepository.findById(tutorialId).get();
-		Tag _tag = tagRepository.findById(tagId).get();
-		tutorial.addTag(_tag);
-		
-//		tagRepository.save(_tag);
-		
-		tutorialRepository.save(tutorial);
-
-		return new ResponseEntity<>(null, HttpStatus.CREATED);
-	}
-
+	
 	// ********************************
 	// GET methods
 	// ********************************
@@ -118,6 +104,21 @@ public class TagController {
 		return new ResponseEntity<>(tagRepository.save(tag), HttpStatus.OK);
 	}
 
+	@PutMapping("/tags/{tutorialId}/{tagId}")
+	@Transactional
+	public ResponseEntity<?> addTag(@PathVariable("tutorialId") Long tutorialId, @PathVariable("tagId") Long tagId) {
+		
+		Tutorial tutorial= tutorialRepository.findById(tutorialId).get();
+		Tag _tag = tagRepository.findById(tagId).get();
+		tutorial.addTag(_tag);
+		
+//		tagRepository.save(_tag);
+		
+		tutorialRepository.save(tutorial);
+
+		return new ResponseEntity<>(null, HttpStatus.CREATED);
+	}
+	
 	// ********************************
 	// DELETE methods
 	// ********************************
