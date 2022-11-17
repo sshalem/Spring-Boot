@@ -513,6 +513,49 @@ If we remove a User , it will also remove an Address (see code Implementaion).
 
 ---
 
+###### 8_One2One_Uni_Lazy
+
+<img src="https://img.shields.io/badge/- 8. One2One Uni Lazy %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+###### 9_Many2Many_Bi_Eager
+
+<img src="https://img.shields.io/badge/- 9. Many2Many Bi Eager %20-blue" height=40px>
+
+There are several possible ways to do the association mapping with Many2Many.
+
+With `One2Many Bi-Direc` , we had the :
+* parent entity [User](#-) , since it has the `mappedBy` value , it is also called the `Not Owning side`.
+* child entity [Role](#-) , also called the Owning side.
+
+### See link from [Bezkoder](https://www.bezkoder.com/jpa-many-to-many/)  https://www.bezkoder.com/jpa-many-to-many/ 
+
+With [Many2Many Bi-Direc](#-) this is how I prefer to do it:
+* [`Student entity`](#-) - 
+	* Owning side has the `JoingTable` annotations
+	* has the Helper methods of `addCourse` and `removeCourse`
+* [`Course Entity`](#-) - Not owning side , has the `mappedBy` 
+
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
