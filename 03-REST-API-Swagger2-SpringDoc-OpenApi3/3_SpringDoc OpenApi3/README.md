@@ -29,15 +29,13 @@
 
 Documentation:
 - https://springdoc.org/
+- https://www.youtube.com/watch?v=1Vmi_5ZsyqE&ab_channel=Saggu
 
 links: 
 - https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
 - https://www.blazemeter.com/blog/openapi-vs-swagger
 - https://nordicapis.com/whats-the-difference-between-swagger-and-openapi/
 - https://www.youtube.com/watch?v=2pyUYJ4NiMI&ab_channel=CodeWithPraveen
-- https://www.youtube.com/watch?v=1Vmi_5ZsyqE&ab_channel=Saggu
-
-
 
 Question:
 * What's the Difference Between OpenAPI and Swagger?
