@@ -37,17 +37,12 @@ public interface StudentDao {
 	 * Update
 	 */
 	StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity);
-
-	StudentEntity addCourseToStudent(int identityNumber, String courseNumber);
+	
 
 	/**
 	 * Delete
 	 */
 	void removeStudentByIdentityNumber(int identityNumber);
-
-	StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber);
-
-	List<CourseEntity> removeAllCoursesFromStudent(int identityNumber);
 
 	void removeAllStudents();
 

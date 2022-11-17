@@ -2,6 +2,7 @@ package com.jpa.many2many.bi.eager.dao;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -144,7 +145,28 @@ public class CourseDaoImpl implements CourseDao {
 	}
 
 	@Override
-	public CourseEntity addStudentToCourse(long identityNumber, String courseName) {
+	public StudentEntity addCourseToStudent(int identityNumber, String courseNumber) {
+		LOGGER.info("invoke addCourseToStudent()");
+
+		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+
+		if (_studentEntity == null)
+			throw new NullPointerException("Student with Identity Number : " + identityNumber + " , Not Exist");
+		
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+
+		boolean contains = _studentEntity.getCourses().contains(_courseEntity);
+		
+		if (contains)
+			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);
+
+		_studentEntity.addCourse(_courseEntity);
+		StudentEntity returnedValue = studentRepository.save(_studentEntity);
+		return returnedValue;
+	}
+	
+	@Override
+	public CourseEntity addStudentToCourse(int identityNumber, String courseName) {
 		return null;
 	}
 
@@ -169,32 +191,40 @@ public class CourseDaoImpl implements CourseDao {
 	}
 
 	@Override
-	public void deleteCourseByCourseNumberAndLearningYear(String courseNumber, int learningYear) {
+	public StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
 		
-		List<StudentEntity> _students = studentRepository.findAll();		
-		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumberAndLearningYear(courseNumber, learningYear);
+		LOGGER.info("invoke removeCourseFromStudentByCourseNumber()");
 		
-		for (StudentEntity studentEntity: _students) {			
-			boolean contains = studentEntity.getCourses().contains(_courseEntity);			
-			if(contains) {
-				studentEntity.removeCourse(_courseEntity);
-				studentRepository.save(studentEntity);				
-			}			
-		}				
-		courseRepository.delete(_courseEntity);
+		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+
+		if (_studentEntity == null)
+			throw new NullPointerException("Student with Identity Number : " + identityNumber + " , Not Exist");
 		
+		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+		_studentEntity.removeCourse(_courseEntity);
+		return studentRepository.save(_studentEntity);		
 	}
 
 	@Override
-	public void removeCourseFromStudentByCourseNumber(long identityNumber, String courseNumber) {
-		// TODO Auto-generated method stub
+	public Set<CourseEntity> removeAllCoursesFromStudent(int identityNumber) {
+		LOGGER.info("invoke removeAllCoursesFromStudent()");
 
+		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+
+		if (_studentEntity == null)
+			throw new NullPointerException("Student with Identity Number : " + identityNumber + " , Not Exist");
+
+		for (CourseEntity courseEntity : _studentEntity.getCourses()) {
+			_studentEntity.removeCourse(courseEntity);
+			studentRepository.save(_studentEntity);
+		}
+		
+		return _studentEntity.getCourses();
 	}
-
+	
 	@Override
 	public void removeAllStudentsFromCourse(String courseNumber, int learningYear) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

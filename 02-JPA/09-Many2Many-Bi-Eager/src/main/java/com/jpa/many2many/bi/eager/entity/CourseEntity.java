@@ -3,7 +3,6 @@ package com.jpa.many2many.bi.eager.entity;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,8 +31,8 @@ public class CourseEntity {
 	@ManyToMany(mappedBy = "courses",
 			fetch = FetchType.EAGER,
 			cascade = { 
-					CascadeType.PERSIST,
-					CascadeType.MERGE
+//					CascadeType.PERSIST,
+//					CascadeType.MERGE
 					})
 	@JsonIgnore
 	private Set<StudentEntity> students;

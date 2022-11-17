@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
-import com.jpa.many2many.bi.eager.repository.CourseRepository;
 import com.jpa.many2many.bi.eager.repository.StudentRepository;
 
 @Service
@@ -22,8 +21,6 @@ public class StudentDaoImpl implements StudentDao {
 	@Autowired
 	private StudentRepository studentRepository;
 
-	@Autowired
-	private CourseRepository courseRepository;
 
 	/***********************
 	 * CREATE
@@ -135,21 +132,6 @@ public class StudentDaoImpl implements StudentDao {
 		return studentRepository.save(_studentEntity);
 	}
 
-	@Override
-	public StudentEntity addCourseToStudent(int identityNumber, String courseNumber) {
-		LOGGER.info("invoke addCourseToStudent()");
-
-		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
-		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
-
-		boolean contains = _studentEntity.getCourses().contains(_courseEntity);
-		if (contains)
-			throw new DuplicateKeyException("Student already has courseNumber: " + courseNumber);
-
-		_studentEntity.addCourse(_courseEntity);
-		StudentEntity returnedValue = studentRepository.save(_studentEntity);
-		return returnedValue;
-	}
 
 	/***********************
 	 * DELETE
@@ -162,30 +144,6 @@ public class StudentDaoImpl implements StudentDao {
 
 		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
 		studentRepository.delete(_studentEntity);
-	}
-
-	@Override
-	public StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber) {
-
-		LOGGER.info("invoke removeCourseFromStudentByCourseNumber()");
-
-		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
-		CourseEntity _courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
-		_studentEntity.removeCourse(_courseEntity);
-		return studentRepository.save(_studentEntity);
-	}
-
-	@Override
-	public List<CourseEntity> removeAllCoursesFromStudent(int identityNumber) {
-		LOGGER.info("invoke removeAllCoursesFromStudent()");
-
-		StudentEntity _studentEntity = this.getStudentByIdentityNumber(identityNumber);
-
-		for (CourseEntity courseEntity : _studentEntity.getCourses()) {
-			_studentEntity.removeCourse(courseEntity);
-			studentRepository.save(_studentEntity);
-		}
-		return this.getAllCoursesOfStudentByIdentityNumber(identityNumber);
 	}
 
 	@Override

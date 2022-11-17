@@ -124,16 +124,7 @@ public class StudentController {
 		StudentEntity _student = studentDaoImpl.updateStudentDetails(identityNumber,studentEntity);
 				
 		return new ResponseEntity<>(_student, HttpStatus.OK);
-	}
-	
-	@PutMapping(path = "/addCourseToStudent/{identityNumber}/{courseNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> addCourseToStudent(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
-
-		StudentEntity _student = studentDaoImpl.addCourseToStudent(identityNumber, courseNumber);
-				
-		return new ResponseEntity<>(_student, HttpStatus.OK);
-	}
-	
+	}	
 	
 	// ********************************
 	// 		DELETE methods
@@ -142,24 +133,6 @@ public class StudentController {
 	public void removeStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
 		
 		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);		
-	}
-	
-	@DeleteMapping(path = "/removeCourseFromStudentByCourseNumber/{identityNumber}/{courseNumber}")
-	public ResponseEntity<StudentEntity> removeCourseFromStudentByCourseNumber(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
-		
-		StudentEntity _studentEntity = studentDaoImpl.removeCourseFromStudentByCourseNumber(identityNumber, courseNumber);		
-		return new ResponseEntity<>(_studentEntity, HttpStatus.OK);
-	}
-	
-	
-	@DeleteMapping(path = "/removeAllCoursesFromStudent/{identityNumber}")
-	public ResponseEntity<List<CourseEntity>> removeAllCoursesFromStudent(@PathVariable("identityNumber") int identityNumber) {
-		
-		List<CourseEntity> _courses = studentDaoImpl.removeAllCoursesFromStudent(identityNumber);	
-		if (_courses.isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<>(_courses, HttpStatus.NOT_ACCEPTABLE);
 	}
 	
 	@DeleteMapping(path = "/removeAllStudents")

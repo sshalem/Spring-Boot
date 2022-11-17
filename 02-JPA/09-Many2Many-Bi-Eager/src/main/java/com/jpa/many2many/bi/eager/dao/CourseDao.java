@@ -2,6 +2,7 @@ package com.jpa.many2many.bi.eager.dao;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import com.jpa.many2many.bi.eager.dto.DtoCourseNameAndCourseNumber;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
@@ -40,17 +41,21 @@ public interface CourseDao {
 	 */
 	CourseEntity updateCourseDetails(CourseEntity courseEntity);
 
-	CourseEntity addStudentToCourse(long identityNumber, String courseName);
+	StudentEntity addCourseToStudent(int identityNumber, String courseNumber);
+	
+	CourseEntity addStudentToCourse(int identityNumber, String courseName);
+	
+
 
 	/**
 	 * Delete
 	 */
 	void deleteCourseByCourseNumber(String courseNumber);
 
-	void deleteCourseByCourseNumberAndLearningYear(String courseNumber, int learningYear);
+	StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber);
 
-	void removeCourseFromStudentByCourseNumber(long identityNumber, String courseNumber);
-
+	Set<CourseEntity> removeAllCoursesFromStudent(int identityNumber);
+	
 	void removeAllStudentsFromCourse(String courseNumber, int learningYear);
 
 }

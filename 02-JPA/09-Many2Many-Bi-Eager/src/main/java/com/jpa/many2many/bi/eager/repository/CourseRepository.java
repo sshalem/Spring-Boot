@@ -20,7 +20,7 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
 	CourseEntity findCourseByCourseNumberAndLearningYear(String courseNumber, int learningYear);
 
-	List<CourseEntity> findCoursesByLearningYear(int learningYear);
+	List<CourseEntity> findCoursesByLearningYear(int learningYear); 
 
 	List<CourseEntity> findCoursesByStartDateBetween(LocalDate fromStartDate, LocalDate toStartDate);
 

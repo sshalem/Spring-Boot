@@ -2,6 +2,7 @@ package com.jpa.many2many.bi.eager.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,7 +32,7 @@ public class CourseController {
 
 	@Autowired
 	private CourseDaoImpl courseDaoImpl;
-
+	
 	// ********************************
 	// POST (Create) methods
 	// ********************************
@@ -137,12 +138,40 @@ public class CourseController {
 		return new ResponseEntity<>(_courseEntity, HttpStatus.OK);
 	}
 	
+	@PutMapping(path = "/addCourseToStudent/{identityNumber}/{courseNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> addCourseToStudent(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
+
+		StudentEntity _student = courseDaoImpl.addCourseToStudent(identityNumber, courseNumber);
+				
+		return new ResponseEntity<>(_student, HttpStatus.OK);
+	}
+	
 	// ********************************
 	//  DELETE methods
 	// ********************************
 	
-	@DeleteMapping
-	public void deleteCourseByCourseNumber(String courseNumber) {
-		
+	@DeleteMapping(path = "/deleteCourseByCourseNumber/{courseNumber}")
+	public void deleteCourseByCourseNumber(@PathVariable("courseNumber") String courseNumber) {
+		courseDaoImpl.deleteCourseByCourseNumber(courseNumber);
 	}
+	
+	@DeleteMapping(path = "/removeCourseFromStudentByCourseNumber/{identityNumber}/{courseNumber}")
+	public ResponseEntity<StudentEntity> removeCourseFromStudentByCourseNumber(@PathVariable("identityNumber") int identityNumber, @PathVariable("courseNumber") String courseNumber) {
+		
+		StudentEntity _studentEntity = courseDaoImpl.removeCourseFromStudentByCourseNumber(identityNumber, courseNumber);		
+		return new ResponseEntity<>(_studentEntity, HttpStatus.OK);
+	}
+	
+	
+	@DeleteMapping(path = "/removeAllCoursesFromStudent/{identityNumber}")
+	public ResponseEntity<Set<CourseEntity>> removeAllCoursesFromStudent(@PathVariable("identityNumber") int identityNumber) {
+		
+		Set<CourseEntity> _courses = courseDaoImpl.removeAllCoursesFromStudent(identityNumber);	
+		if (_courses.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(_courses, HttpStatus.NOT_ACCEPTABLE);
+	}
+	
+
 }
