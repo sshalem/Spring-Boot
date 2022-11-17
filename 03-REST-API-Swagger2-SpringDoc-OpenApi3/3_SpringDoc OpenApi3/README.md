@@ -43,7 +43,9 @@ Question:
 Answer:
 * OpenAPI and Swagger used to refer to the same thing. While there are differences today (OpenAPI refers to RESTful API design and Swagger refers to a set of SmartBear tools), this blog will use the terms interchangeably. 
 
-![image](https://user-images.githubusercontent.com/36256986/202562285-ee151125-d9ad-456b-be11-11a8edf43486.png)
+![image](https://user-images.githubusercontent.com/36256986/202562368-421c8ee4-3292-495d-be4b-81e60df97ffa.png)
+![image](https://user-images.githubusercontent.com/36256986/202562410-77a656d0-140d-4a5f-8ea9-6569624b223a.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
