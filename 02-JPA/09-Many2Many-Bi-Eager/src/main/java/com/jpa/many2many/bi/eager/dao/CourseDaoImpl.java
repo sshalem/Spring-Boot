@@ -209,16 +209,19 @@ public class CourseDaoImpl implements CourseDao {
 	public Set<CourseEntity> removeAllCoursesFromStudent(int identityNumber) {
 		LOGGER.info("invoke removeAllCoursesFromStudent()");
 
+		List<CourseEntity> _courses = courseRepository.jpqlFindCoursesOfStudentByIdentityNumber(identityNumber);
+
 		StudentEntity _studentEntity = studentRepository.findStudentByIdentityNumber(identityNumber);
+		
+		if (_courses == null)
+			throw new NullPointerException("Courses for Student with Identity Number : " + identityNumber + " , Not Exist");
 
-		if (_studentEntity == null)
-			throw new NullPointerException("Student with Identity Number : " + identityNumber + " , Not Exist");
-
-		for (CourseEntity courseEntity : _studentEntity.getCourses()) {
+		for (CourseEntity courseEntity : _courses) {
 			_studentEntity.removeCourse(courseEntity);
 			studentRepository.save(_studentEntity);
+			courseRepository.save(courseEntity);
 		}
-		
+				
 		return _studentEntity.getCourses();
 	}
 	

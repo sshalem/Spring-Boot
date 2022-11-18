@@ -114,6 +114,10 @@ public class StudentEntity {
 		courseEntity.getStudents().remove(this);		
 	}
 
+	public void clearDetachCourse(CourseEntity courseEntity) {		
+		this.courses.remove(courseEntity);
+		courseEntity.getStudents().remove(this);		
+	}
 	
 	@Override
 	public int hashCode() {

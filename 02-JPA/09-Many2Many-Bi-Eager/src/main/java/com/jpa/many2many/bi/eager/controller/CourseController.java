@@ -166,7 +166,7 @@ public class CourseController {
 	@DeleteMapping(path = "/removeAllCoursesFromStudent/{identityNumber}")
 	public ResponseEntity<Set<CourseEntity>> removeAllCoursesFromStudent(@PathVariable("identityNumber") int identityNumber) {
 		
-		Set<CourseEntity> _courses = courseDaoImpl.removeAllCoursesFromStudent(identityNumber);	
+		Set<CourseEntity> _courses = courseDaoImpl.removeAllCoursesFromStudent(identityNumber);
 		if (_courses.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

@@ -35,4 +35,6 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 	@Query("SELECT new com.jpa.many2many.bi.eager.dto.DtoCourseNameAndCourseNumber(ce.courseName, ce.courseNumber) FROM CourseEntity ce")
 	List<DtoCourseNameAndCourseNumber> jpqlGetCoursesWithFieldsCourseNameAndCourseNumber();
 
+	@Query("SELECT ce FROM CourseEntity ce JOIN ce.students AS st WHERE st.identityNumber = ?1")
+	List<CourseEntity> jpqlFindCoursesOfStudentByIdentityNumber(int identityNumber);
 }
