@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.jpa.many2many.bi.eager.entity.CourseEntity;
 import com.jpa.many2many.bi.eager.entity.StudentEntity;
 import com.jpa.many2many.bi.eager.exception.ResourceNotFoundException;
+import com.jpa.many2many.bi.eager.repository.CourseRepository;
 import com.jpa.many2many.bi.eager.repository.StudentRepository;
 
 @Service
@@ -21,7 +22,9 @@ public class StudentDaoImpl implements StudentDao {
 	@Autowired
 	private StudentRepository studentRepository;
 
-
+	@Autowired
+	private CourseRepository courseRepository;
+	
 	/***********************
 	 * CREATE
 	 ***********************/
@@ -146,6 +149,27 @@ public class StudentDaoImpl implements StudentDao {
 		studentRepository.delete(_studentEntity);
 	}
 
+	/**
+	 * Need to check this API why its not working
+	 *  Need to check this API why its not working
+	 *   Need to check this API why its not working
+	 *    Need to check this API why its not working
+	 *     Need to check this API why its not working
+	 *      Need to check this API why its not working
+	 */
+	
+	@Override
+	public void removeAllStudentsFromCourse(String courseNumber) {
+		List<StudentEntity> _students = studentRepository.jpqlFindStudentsWhoTookCourseNumber(courseNumber);
+		
+		CourseEntity courseEntity = courseRepository.findCourseByCourseNumber(courseNumber);
+		
+		for (StudentEntity _studentEntity : _students) {
+			_studentEntity.removeCourse(courseEntity);
+			studentRepository.delete(_studentEntity);
+		}		
+	}
+	
 	@Override
 	public void removeAllStudents() {
 		LOGGER.info("invoke removeAllStudents()");

@@ -55,7 +55,5 @@ public interface CourseDao {
 	StudentEntity removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber);
 
 	Set<CourseEntity> removeAllCoursesFromStudent(int identityNumber);
-	
-	void removeAllStudentsFromCourse(String courseNumber, int learningYear);
 
 }

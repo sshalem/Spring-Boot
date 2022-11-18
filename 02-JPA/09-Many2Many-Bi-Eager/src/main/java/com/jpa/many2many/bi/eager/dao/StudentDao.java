@@ -26,23 +26,24 @@ public interface StudentDao {
 	List<StudentEntity> getStudentsThatLearnedCoursesInLearningYear(int learningYear);
 
 	List<StudentEntity> getStudentsWhoLearedCourseName(String courseName);
-	
+
 	List<CourseEntity> getAllCoursesOfStudentByIdentityNumber(int identityNumber);
-	
+
 	List<StudentEntity> getStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
-	
+
 	List<StudentEntity> getAllStudents();
 
 	/**
 	 * Update
 	 */
 	StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity);
-	
 
 	/**
 	 * Delete
 	 */
 	void removeStudentByIdentityNumber(int identityNumber);
+
+	void removeAllStudentsFromCourse(String courseNumber);
 
 	void removeAllStudents();
 

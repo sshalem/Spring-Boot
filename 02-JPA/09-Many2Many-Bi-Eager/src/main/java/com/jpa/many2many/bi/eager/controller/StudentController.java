@@ -135,6 +135,16 @@ public class StudentController {
 		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);		
 	}
 	
+	/**
+	 * Need to check this API why its not working
+	 */
+	@DeleteMapping(path = "/removeAllStudentsFromCourse/{courseNumber}")
+	public ResponseEntity<Void> removeAllStudentsFromCourse(@PathVariable("courseNumber") String courseNumber){
+		
+		studentDaoImpl.removeAllStudentsFromCourse(courseNumber);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
 	@DeleteMapping(path = "/removeAllStudents")
 	public ResponseEntity<Void> removeAllStudents() {
 		

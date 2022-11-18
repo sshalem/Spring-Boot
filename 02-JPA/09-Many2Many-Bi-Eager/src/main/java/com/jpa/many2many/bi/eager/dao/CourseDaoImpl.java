@@ -220,9 +220,6 @@ public class CourseDaoImpl implements CourseDao {
 		return _studentEntity.getCourses();
 	}
 	
-	@Override
-	public void removeAllStudentsFromCourse(String courseNumber, int learningYear) {
-		
-	}
+
 
 }

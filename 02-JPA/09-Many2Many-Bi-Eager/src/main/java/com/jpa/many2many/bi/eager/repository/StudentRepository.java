@@ -43,6 +43,8 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE  ce.learningYear = ?1 AND ce.courseNumber = ?2")
 	List<StudentEntity> jpqlFindStudentsWhoTookCourseInLearningYear(int learningYear, String courseNumber);
 	
+	@Query("SELECT st FROM CourseEntity ce JOIN ce.students AS st WHERE ce.courseNumber = ?1")
+	List<StudentEntity> jpqlFindStudentsWhoTookCourseNumber(String courseNumber);
 	
 	/**
 	 * 	@Query("SELECT cp FROM CUSTOMER cust JOIN cust.coupons AS cp WHERE cust.id=:id AND cp.type=:couponType")
