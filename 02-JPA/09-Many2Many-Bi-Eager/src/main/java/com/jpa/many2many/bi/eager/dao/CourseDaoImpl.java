@@ -219,9 +219,8 @@ public class CourseDaoImpl implements CourseDao {
 		for (CourseEntity courseEntity : _courses) {
 			_studentEntity.removeCourse(courseEntity);
 			studentRepository.save(_studentEntity);
-			courseRepository.save(courseEntity);
 		}
-				
+		
 		return _studentEntity.getCourses();
 	}
 	
