@@ -626,7 +626,9 @@ The code from previous section is the same with few adjustments to do:
 
 1. set the `fetch = FetchType.LAZY` on both entities
 2. Add `@Transactionl` annotation on the methods that are doing `add/delete/remove` operations (Otherwise I get a "Session Proxy bla bla error" )
-3. I have `@JsonIgnore` on both entities. Instead of having a DTO layer of objects (since I don't want to serialize any of them)
+3. Note : best approch is to have a DTO layer for my entities CourseDto and StudentDto. But since I have `@JsonIgnore` on both entities I wont get the error below. (this is not best practice , but it save me some time) as said before best Practice is to have `@JsonIgnore` on the owning side , and have a DTO layer.
+
+'"Could not write JSON: failed to lazily initialize a collection of role: com.jpa.many2many.bi.lazy.entity.CourseEntity.students, could not initialize proxy - no Session; nested exception is com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.jpa.many2many.bi.lazy.entity.CourseEntity.students, could not initialize proxy - no Session (through reference chain: java.util.ArrayList[0]->com.jpa.many2many.bi.lazy.entity.CourseEntity[\"students\"])"`
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
