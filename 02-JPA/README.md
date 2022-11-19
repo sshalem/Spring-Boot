@@ -15,7 +15,7 @@
 |  9  | [Many2Many_Bi_Eager](#9_Many2Many_Bi_Eager)          |
 | 10  | [Many2Many_Bi_Lazy](#10_Many2Many_Bi_Lazy)           |
 | 11  | [Paging_and_Sorting](#11_Paging_and_Sorting)         |
-| 11  | [Transaction_Management](#12_Transaction_Management) |
+| 12  | [Transaction_Management](#12_Transaction_Management) |
 
 ###### 1_One2Many_Bi_Eager
 
@@ -534,23 +534,101 @@ With `One2Many Bi-Direc` , we had the :
 ### See link from [Bezkoder](https://www.bezkoder.com/jpa-many-to-many/)  https://www.bezkoder.com/jpa-many-to-many/ 
 
 With [Many2Many Bi-Direc](#-) this is how I prefer to do it:
-* [`Student entity`](#-) - 
-	* Owning side has the `JoingTable` annotations
-	* has the Helper methods of `addCourse` and `removeCourse`
-* [`Course Entity`](#-) - Not owning side , has the `mappedBy` 
+* [`Student entity`](#-) 
+	1. Owning side has the `JoingTable` annotations
+	2. has the Helper methods of `addCourse` and `removeCourse`
+* [`Course Entity`](#-)
+	1. Not owning side 
+	2. has the `mappedBy` 
 
 
+In this Implementation, Student entity is the owner of the relationship and Course entity is the inverse side. </br>
+The join table is specified on the owning side (Student) using @JoinTable annotation. </br>
+This relationship is bidirectional, the inverse side (Course) must use the mappedBy element to specify the relationship field or property of the owning side.</br>
+
+The owner side is the side which Hibernate looks at to know which association exists. </br>
+For example, if you add a Course in the set of courses of a Student, a new row will be inserted by Hibernate in the join table (student_course). </br>
+On the contrary, if you add a Student to the set of students of a Course, nothing will be modified in the database. </br>
+
+@JsonIgnore is used to ignore the logical property used in serialization and deserialization.
+
+### [StudentEntity ](#-)
+
+```java
+@ManyToMany(fetch = FetchType.EAGER,
+		cascade = { 
+			CascadeType.PERSIST,
+			CascadeType.MERGE})	
+@JoinTable(name = "student_course", 
+		joinColumns = { @JoinColumn(name = "student_id") }, 
+		inverseJoinColumns = { @JoinColumn(name = "course_id") })
+@JsonIgnore
+private Set<CourseEntity> courses = new HashSet<>();
 
 
+/**
+ * Helper Methods for Adding/Removing Course
+ */
 
+public void addCourse(CourseEntity courseEntity) {
+	this.courses.add(courseEntity);
+	courseEntity.getStudents().add(this);		
+}
+
+public void removeCourse(CourseEntity courseEntity) {		
+	this.courses.remove(courseEntity);
+	courseEntity.getStudents().remove(this);		
+}
+	
+```
+
+### [CourseEntity ](#-)
+
+I don't use CASCADE at the NOT-Owning side.
+
+```java
+@ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER,
+@JsonIgnore
+private Set<StudentEntity> students;
+```
+
+
+The most complicated things are doing the operations of:
+* add 
+* remove/delete on both Entities. </br>
+
+[Adding](#-):
+1. addCourseToStudent - implemented
+2. addStudentToCourse - is same as adding Course To Student, thus No need to implement this
+
+[Removing/Deleting from StudentDaoImpl](#-) :
+1. deleteStudentByIdentityNumber(int identityNumber)
+2. removeAllStudentsFromCourse(String courseNumber) 
+3. deleteAllStudents()
+
+[Removing/Deleting from CourseDaoImpl](#-) :
+1. deleteCourseByCourseNumber(String courseNumber)
+2. removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber)
+3. removeAllCoursesFromStudent(int identityNumber)
+4. deleteAllCourses()
+
+See Code implementation inside the project
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
 
-######
+###### 10_Many2Many_Bi_Lazy
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 10. Many2Many_Bi_Lazy %20-blue" height=40px>
+
+The code from previous section is the same with few adjustments to do:
+
+1. set the `fetch = FetchType.LAZY` on both entities
+2. Add `@Transactionl` annotation on the methods that are doing `add/delete/remove` operations (Otherwise I get a "Session Proxy bla bla error" )
+3. Note : best approch is to have a DTO layer for my entities CourseDto and StudentDto. But since I have `@JsonIgnore` on both entities I wont get the error below. (this is not best practice , but it save me some time) as said before best Practice is to have `@JsonIgnore` on the owning side , and have a DTO layer.
+
+`"Could not write JSON: failed to lazily initialize a collection of role: com.jpa.many2many.bi.lazy.entity.CourseEntity.students, could not initialize proxy - no Session; nested exception is com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.jpa.many2many.bi.lazy.entity.CourseEntity.students, could not initialize proxy - no Session (through reference chain: java.util.ArrayList[0]->com.jpa.many2many.bi.lazy.entity.CourseEntity[\"students\"])"`
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
