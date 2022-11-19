@@ -220,6 +220,23 @@ public class CourseDaoImpl implements CourseDao {
 		return _studentEntity.getCourses();
 	}
 	
-
+	/**
+	 * need to Check
+	 * 	need to Check
+	 * 		need to Check
+	 * 			need to Check
+	 * 				need to Check 
+	 */
+	@Override
+	public void deleteAllCourses() {	
+		LOGGER.info("invoke deleteAllCourses()");
+		
+		List<CourseEntity> _courses = courseRepository.findAll();
+		
+//		for (CourseEntity courseEntity : _courses) {
+//			courseRepository.deleteAll();
+//		}
+		
+	}
 
 }

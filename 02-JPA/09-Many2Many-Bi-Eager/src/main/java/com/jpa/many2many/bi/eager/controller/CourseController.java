@@ -173,5 +173,11 @@ public class CourseController {
 		return new ResponseEntity<>(_courses, HttpStatus.NOT_ACCEPTABLE);
 	}
 	
+	@DeleteMapping(path = "/deleteAllCourses")
+	public ResponseEntity<Void> deleteAllCourses() {
+		
+		courseDaoImpl.deleteAllCourses();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 }

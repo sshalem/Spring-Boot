@@ -56,4 +56,6 @@ public interface CourseDao {
 
 	Set<CourseEntity> removeAllCoursesFromStudent(int identityNumber);
 
+	void deleteAllCourses();
+
 }

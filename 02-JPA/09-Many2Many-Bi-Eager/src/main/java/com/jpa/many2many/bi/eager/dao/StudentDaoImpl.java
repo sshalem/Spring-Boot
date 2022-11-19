@@ -159,11 +159,11 @@ public class StudentDaoImpl implements StudentDao {
 		for (StudentEntity _studentEntity : _students) {
 			_studentEntity.removeCourse(courseEntity);
 			studentRepository.save(_studentEntity);
-		}		
+		}
 	}
 	
 	@Override
-	public void removeAllStudents() {
+	public void deleteAllStudents() {
 		LOGGER.info("invoke removeAllStudents()");
 		studentRepository.deleteAll();
 	}

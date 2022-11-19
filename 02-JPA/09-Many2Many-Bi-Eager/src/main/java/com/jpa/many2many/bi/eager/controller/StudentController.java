@@ -145,10 +145,10 @@ public class StudentController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
-	@DeleteMapping(path = "/removeAllStudents")
-	public ResponseEntity<Void> removeAllStudents() {
+	@DeleteMapping(path = "/deleteAllStudents")
+	public ResponseEntity<Void> deleteAllStudents() {
 		
-		studentDaoImpl.removeAllStudents();		
+		studentDaoImpl.deleteAllStudents();		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
