@@ -37,7 +37,7 @@ public interface StudentDao {
 	 * Update
 	 */
 	StudentEntity updateStudentDetails(int identityNumber, StudentEntity studentEntity);
-
+	
 	/**
 	 * Delete
 	 */
