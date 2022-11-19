@@ -593,7 +593,9 @@ private Set<StudentEntity> students;
 ```
 
 
-The most complicated things are doing the add and remove/delete operations on both Entities. </br>
+The most complicated things are doing the operations of:
+* add 
+* remove/delete on both Entities. </br>
 
 [Adding](#-):
 1. addCourseToStudent - implemented
