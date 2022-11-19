@@ -45,6 +45,7 @@ INSERT INTO student_tb(student_id, first_name, last_name, identity_number, email
 -------------------------
 -- Insert into course_tb
 -------------------------
+
 INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
 	VALUES (1, 'JAVA', 'JV-2001', 2020, '2018-04-30', '2019-02-12');
 
@@ -69,10 +70,10 @@ INSERT INTO course_tb(course_id, course_name, course_number, learning_year, star
 INSERT INTO course_tb(course_id, course_name, course_number, learning_year, start_date, end_date) 
 	VALUES (8, 'NODEJS', 'NODEJS-57', 2021, '2021-04-09', '2022-02-15');
 
-
 -------------------------
 -- Insert into course_tb
 -------------------------
+
 INSERT INTO student_course(course_id, student_id) VALUES(1,1);
 INSERT INTO student_course(course_id, student_id) VALUES(1,2);
 INSERT INTO student_course(course_id, student_id) VALUES(1,3);
@@ -93,7 +94,6 @@ INSERT INTO student_course(course_id, student_id) VALUES(7,1);
 INSERT INTO student_course(course_id, student_id) VALUES(6,2);
 INSERT INTO student_course(course_id, student_id) VALUES(6,3);
 INSERT INTO student_course(course_id, student_id) VALUES(7,4);
-
 
 -- DROP TABLE IF EXISTS roles_tb;
 

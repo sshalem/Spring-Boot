@@ -149,14 +149,6 @@ public class StudentDaoImpl implements StudentDao {
 		studentRepository.delete(_studentEntity);
 	}
 
-	/**
-	 * Need to check this API why its not working
-	 *  Need to check this API why its not working
-	 *   Need to check this API why its not working
-	 *    Need to check this API why its not working
-	 *     Need to check this API why its not working
-	 *      Need to check this API why its not working
-	 */
 	
 	@Override
 	public void removeAllStudentsFromCourse(String courseNumber) {
@@ -166,7 +158,7 @@ public class StudentDaoImpl implements StudentDao {
 		
 		for (StudentEntity _studentEntity : _students) {
 			_studentEntity.removeCourse(courseEntity);
-			studentRepository.delete(_studentEntity);
+			studentRepository.save(_studentEntity);
 		}		
 	}
 	
