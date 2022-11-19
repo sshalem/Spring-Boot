@@ -129,10 +129,10 @@ public class StudentController {
 	// ********************************
 	// 		DELETE methods
 	// ********************************
-	@DeleteMapping(path = "/removeStudentByIdentityNumber/{identityNumber}")
-	public void removeStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
+	@DeleteMapping(path = "/deleteStudentByIdentityNumber/{identityNumber}")
+	public void deleteStudentByIdentityNumber(@PathVariable("identityNumber") int identityNumber) {
 		
-		studentDaoImpl.removeStudentByIdentityNumber(identityNumber);		
+		studentDaoImpl.deleteStudentByIdentityNumber(identityNumber);		
 	}
 	
 	/**

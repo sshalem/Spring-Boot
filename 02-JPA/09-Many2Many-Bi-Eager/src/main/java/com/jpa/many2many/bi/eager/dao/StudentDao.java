@@ -41,7 +41,7 @@ public interface StudentDao {
 	/**
 	 * Delete
 	 */
-	void removeStudentByIdentityNumber(int identityNumber);
+	void deleteStudentByIdentityNumber(int identityNumber);
 
 	void removeAllStudentsFromCourse(String courseNumber);
 

@@ -142,7 +142,7 @@ public class StudentDaoImpl implements StudentDao {
 	
 	@Transactional
 	@Override
-	public void removeStudentByIdentityNumber(int identityNumber) {
+	public void deleteStudentByIdentityNumber(int identityNumber) {
 
 		LOGGER.info("invoke removeStudentByIdentityNumber()");
 
