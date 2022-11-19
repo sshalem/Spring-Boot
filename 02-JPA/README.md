@@ -618,9 +618,15 @@ See Code implementation inside the project
 
 ---
 
-######
+###### 10_Many2Many_Bi_Lazy
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 10. Many2Many_Bi_Lazy %20-blue" height=40px>
+
+The code from previous section is the same with few adjustments to do:
+
+1. set the `fetch = FetchType.LAZY` on both entities
+2. Add `@Transactionl` annotation on the methods that are doing `add/delete/remove` operations (Otherwise I get a "Session Proxy bla bla error" )
+3. I have `@JsonIgnore` on both entities. Instead of having a DTO layer of objects (since I don't want to serialize any of them)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
