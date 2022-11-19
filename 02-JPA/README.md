@@ -595,16 +595,16 @@ private Set<StudentEntity> students;
 
 The most complicated things are doing the add and remove/delete operations on both Entities. </br>
 
-Adding:
+[Adding](#-):
 1. addCourseToStudent - implemented
 2. addStudentToCourse - is same as adding Course To Student, thus No need to implement this
 
-Removing/Deleting from StudentDaoImpl :
+[Removing/Deleting from StudentDaoImpl](#-) :
 1. deleteStudentByIdentityNumber(int identityNumber)
 2. removeAllStudentsFromCourse(String courseNumber) 
 3. deleteAllStudents()
 
-Removing/Deleting from CourseDaoImpl :
+[Removing/Deleting from CourseDaoImpl](#-) :
 1. deleteCourseByCourseNumber(String courseNumber)
 2. removeCourseFromStudentByCourseNumber(int identityNumber, String courseNumber)
 3. removeAllCoursesFromStudent(int identityNumber)
