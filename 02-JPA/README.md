@@ -15,7 +15,7 @@
 |  9  | [Many2Many_Bi_Eager](#9_Many2Many_Bi_Eager)          |
 | 10  | [Many2Many_Bi_Lazy](#10_Many2Many_Bi_Lazy)           |
 | 11  | [Paging_and_Sorting](#11_Paging_and_Sorting)         |
-| 11  | [Transaction_Management](#12_Transaction_Management) |
+| 12  | [Transaction_Management](#12_Transaction_Management) |
 
 ###### 1_One2Many_Bi_Eager
 
