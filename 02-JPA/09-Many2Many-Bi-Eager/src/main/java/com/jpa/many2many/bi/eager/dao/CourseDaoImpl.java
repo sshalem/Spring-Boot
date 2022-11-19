@@ -233,10 +233,15 @@ public class CourseDaoImpl implements CourseDao {
 		
 		List<CourseEntity> _courses = courseRepository.findAll();
 		
-//		for (CourseEntity courseEntity : _courses) {
-//			courseRepository.deleteAll();
-//		}
+		List<StudentEntity> _students = studentRepository.findAll();
 		
+		for (CourseEntity courseEntity : _courses) {			
+			for (StudentEntity studentEntity : _students) {
+				studentEntity.removeCourse(courseEntity);
+				studentRepository.save(studentEntity);
+			}		
+		}
+		courseRepository.deleteAll();
 	}
 
 }
