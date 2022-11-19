@@ -534,10 +534,12 @@ With `One2Many Bi-Direc` , we had the :
 ### See link from [Bezkoder](https://www.bezkoder.com/jpa-many-to-many/)  https://www.bezkoder.com/jpa-many-to-many/ 
 
 With [Many2Many Bi-Direc](#-) this is how I prefer to do it:
-* [`Student entity`](#-) - 
-	* Owning side has the `JoingTable` annotations
-	* has the Helper methods of `addCourse` and `removeCourse`
-* [`Course Entity`](#-) - Not owning side , has the `mappedBy` 
+* [`Student entity`](#-) 
+	1. Owning side has the `JoingTable` annotations
+	2. has the Helper methods of `addCourse` and `removeCourse`
+* [`Course Entity`](#-)
+	1. Not owning side 
+	2. has the `mappedBy` 
 
 
 
