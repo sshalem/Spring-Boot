@@ -9,6 +9,8 @@ public interface ProductDao {
 	List<ProductEntity> getAllProducts();
 
 	List<ProductEntity> findProductWithSorting(String field);
-	
+
 	List<ProductEntity> getProductsByPageAndSize(int page, int size);
+
+	List<ProductEntity> getProductsWithPriceLessThan(long price, int page, int size, String field);
 }
