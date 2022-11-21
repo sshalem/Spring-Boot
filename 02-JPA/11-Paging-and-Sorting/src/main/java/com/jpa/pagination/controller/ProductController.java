@@ -68,6 +68,5 @@ public class ProductController {
 		
 		List<ProductEntity> _products = productDaoImpl.getProductsWithPriceLessThan(price, page, size ,field);
 		return new ApiResponse<List<ProductEntity>>(_products.size(), _products);
-	}
-	
+	}	
 }

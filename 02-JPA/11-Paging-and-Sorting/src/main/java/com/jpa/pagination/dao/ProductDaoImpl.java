@@ -43,10 +43,7 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<ProductEntity> findProductWithSorting(String field) {
 
-		/**
-		 * the 'field' can be any of the entity variables: id, name , quantity, price
-		 */
-
+		// the 'field' can be any of the entity variables: id, name , quantity, price		 
 		List<ProductEntity> _listProductEntities = productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
 		return _listProductEntities;
 	}
