@@ -43,11 +43,12 @@ The application is generally developed with multiple layers. A typical Java appl
 * [Web Layer:](#-) It exposes the services using the REST or web application.
 * [Business Layer:](#-) It implements the business logic of an application.
 * [Data Layer:](#-) It implements the persistence logic of the application.
-* 
-The responsibility of each layer is different, but there are a few common aspects that apply to all layers are **Logging, Security, validation, caching, etc.** These common aspects are called **cross-cutting concerns.**
 
-If we implement these concerns in each layer separately, the code becomes more **difficult to maintain**. To overcome this problem, 
-**Aspect-Oriented Programming (AOP)** provides a solution to implement cross-cutting concerns.
+The responsibility of each layer is different, but there are a few common aspects that apply to all layers are **Logging, Security, validation, caching, etc.** </br>
+These common aspects are called **cross-cutting concerns.**  </br>
+
+If we implement these concerns in each layer separately, the code becomes more **difficult to maintain**. </br>
+To overcome this problem, **Aspect-Oriented Programming (AOP)** provides a solution to implement cross-cutting concerns.
 
 1. Implement the cross-cutting concern as an aspect.
 2. Define pointcuts to indicate where the aspect has to be applied.
