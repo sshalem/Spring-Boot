@@ -640,7 +640,7 @@ The code from previous section is the same with few adjustments to do:
 
 https://www.youtube.com/watch?v=Wa0GQwWwzJE&ab_channel=JavaTechie
 
-In nthis project I show how to use Pagination.
+In this project I show how to use Pagination that comes from Server Side.
 
 ### [ProductEntity](#-)
 
@@ -715,6 +715,81 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 		return _products;
 	}	
 ```
+
+### [ApiResponse](#-)
+
+I made this Generic class , in order to be able to return the number (recordCount) of objects per page.
+
+```java
+public class ApiResponse<T> {
+
+	private int recordCount;
+	private T response;
+
+	// Get/Set
+}
+```
+
+### [ProductController](#-) 
+
+```java
+@RestController
+@CrossOrigin("*")
+@RequestMapping("/product")
+public class ProductController {
+
+	@Autowired
+	private ProductDaoImpl productDaoImpl;
+
+	@GetMapping(path = "/getAllProducts", produces = { 
+			MediaType.APPLICATION_JSON_VALUE, 
+			MediaType.APPLICATION_XML_VALUE })
+	public ApiResponse<List<ProductEntity>> getCourses() {
+		
+		List<ProductEntity> _products = productDaoImpl.getAllProducts();
+		
+		return new ApiResponse<List<ProductEntity>>(_products.size(), _products);
+	}
+	
+	/**
+	 * the 'field' can be any of the entity variables:
+	 * id, name , quantity, price
+	 */
+	@GetMapping(path = "/getProductsWithSorting/{field}", produces =  MediaType.APPLICATION_JSON_VALUE)
+	public ApiResponse<List<ProductEntity>> findProductWithSorting(@PathVariable("field") String field) {
+		
+		List<ProductEntity> _productWithSorting = productDaoImpl.findProductWithSorting(field);		
+		return new ApiResponse<List<ProductEntity>>(_productWithSorting.size(), _productWithSorting);
+	}
+	
+	
+	@GetMapping(path = "/getProductsByPagination", produces = { 
+			MediaType.APPLICATION_JSON_VALUE, 
+			MediaType.APPLICATION_XML_VALUE })
+	public ApiResponse<List<ProductEntity>> getProductsByPageAndSize(
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "size", defaultValue = "25") int size) {
+		
+		List<ProductEntity> _products = productDaoImpl.getProductsByPageAndSize(page, size);		
+		return new ApiResponse<List<ProductEntity>>(_products.size(), _products);
+	}
+		  
+	
+	@GetMapping(path = "/getProductsWithPriceLessThan/{price}/{field}", produces = { 
+			MediaType.APPLICATION_JSON_VALUE, 
+			MediaType.APPLICATION_XML_VALUE })
+	public ApiResponse<List<ProductEntity>> getProductsWithPriceLessThan(
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "size", defaultValue = "25") int size,
+			@PathVariable("price") long price,
+			@PathVariable("field") String field) {
+		
+		List<ProductEntity> _products = productDaoImpl.getProductsWithPriceLessThan(price, page, size ,field);
+		return new ApiResponse<List<ProductEntity>>(_products.size(), _products);
+	}	
+}
+```
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
