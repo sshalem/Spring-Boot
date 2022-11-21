@@ -640,6 +640,81 @@ The code from previous section is the same with few adjustments to do:
 
 https://www.youtube.com/watch?v=Wa0GQwWwzJE&ab_channel=JavaTechie
 
+In nthis project I show how to use Pagination.
+
+### [ProductEntity](#-)
+
+```java
+@Entity
+@Table(name = "PRODUCT_TB")
+public class ProductEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
+	private long id;
+	private String name;
+	private int quantity;
+	private long price;
+```
+
+### [ProductRepository](#-)
+
+```java
+@Repository
+public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+
+	@Query(value = "SELECT * FROM product_tb p WHERE p.price <= :price", 
+			countQuery = "SELECT COUNT(*) FROM product_tb",
+			nativeQuery = true)
+	Page<ProductEntity> findProductsWithPriceLessThan(@Param("price") long price, Pageable pageable);
+}
+```
+
+### [ProductDaiImpl](#-)
+
+```java
+	@Override
+	public List<ProductEntity> getAllProducts() {
+		return productRepository.findAll();
+	}
+
+	@Override
+	public List<ProductEntity> findProductWithSorting(String field) {
+
+		// the 'field' can be any of the entity variables: id, name , quantity, price		 
+		List<ProductEntity> _listProductEntities = productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+		return _listProductEntities;
+	}
+
+	@Override
+	public List<ProductEntity> getProductsByPageAndSize(int page, int size) {
+		/**
+		 * Here I implement pagination , and get a: Limited Number of Courses per PAGE
+		 * page: zero-based page index, must NOT be negative. size: number of items in a
+		 * page to be returned, must be greater than 0. sort: the Sort object.
+		 */
+		if (page > 0) {
+			page = page - 1;
+		}	
+		Pageable pageable = PageRequest.of(page, size);
+		Page<ProductEntity> _pageOfProducts = productRepository.findAll(pageable);
+		List<ProductEntity> _products = _pageOfProducts.getContent();
+		return _products;
+	}
+	
+	
+	@Override
+	public List<ProductEntity> getProductsWithPriceLessThan(long price, int page, int size, String field) {		
+		if (page > 0) {
+			page = page - 1;
+		}			
+		Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, field));		
+		Page<ProductEntity> _pageOfProducts = productRepository.findProductsWithPriceLessThan(price, pageable);		
+		List<ProductEntity> _products = _pageOfProducts.getContent();		
+		return _products;
+	}	
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
