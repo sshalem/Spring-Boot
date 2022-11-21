@@ -21,6 +21,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 	 * Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, field));		
 	 * Page<ProductEntity> _pageOfProducts = productRepository.findProductsWithPriceLessThan(price, pageable);
 	 * 	 
+	 * Notice : 
+	 * 		I return Page<ProductEntity> and Not a List<ProductEntity> 
 	 */
 	@Query(value = "SELECT * FROM product_tb p WHERE p.price <= :price", 
 			countQuery = "SELECT COUNT(*) FROM product_tb",

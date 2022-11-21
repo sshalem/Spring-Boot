@@ -40,21 +40,27 @@ public class ProductDaoImpl implements ProductDao {
 		return productRepository.findAll();
 	}
 
+	/**
+	 * Here I return a Sorted List by the field name
+	 * the 'field' can be any of the entity variables: 
+	 * 		id, name , quantity, price	
+	 */
 	@Override
 	public List<ProductEntity> findProductWithSorting(String field) {
 
-		// the 'field' can be any of the entity variables: id, name , quantity, price		 
 		List<ProductEntity> _listProductEntities = productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
 		return _listProductEntities;
 	}
-
+	
+	
+	/**
+	 * Here I implement pagination , and get a: Limited Number of Courses per PAGE
+	 * page: zero-based page index, must NOT be negative. 
+	 * size: number of items in a page to be returned, must be greater than 0. 
+	 * sort: the Sort object.
+	 */
 	@Override
 	public List<ProductEntity> getProductsByPageAndSize(int page, int size) {
-		/**
-		 * Here I implement pagination , and get a: Limited Number of Courses per PAGE
-		 * page: zero-based page index, must NOT be negative. size: number of items in a
-		 * page to be returned, must be greater than 0. sort: the Sort object.
-		 */
 		if (page > 0) {
 			page = page - 1;
 		}	
@@ -64,7 +70,13 @@ public class ProductDaoImpl implements ProductDao {
 		return _products;
 	}
 	
-	
+	/**
+	 * Here I implement pagination And Sorting
+	 * price: Query according Price  
+	 * page: page number 
+	 * size: number of items  
+	 * field : sort by field
+	 */
 	@Override
 	public List<ProductEntity> getProductsWithPriceLessThan(long price, int page, int size, String field) {		
 		if (page > 0) {
