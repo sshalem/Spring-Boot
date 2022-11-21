@@ -79,7 +79,7 @@ Using **AOP**, we define common functionality in one place. </br>
 We are free to define how and where this functionality is applied without modifying the class to which we are applying the new feature. </br>
 The **cross-cutting concern** can now be modularized into special classes, called **aspect**.</br>
 
-There are two benefits of aspects:
+[There are two benefits of aspects:](#-)
 1. First, the logic for each concern is now in one place instead of scattered all over the codebase.
 2. Second, the business modules only contain code for their primary concern. The secondary concern has been moved to the aspect.
 The aspects have the responsibility that is to be implemented, called advice. We can implement an aspect's functionality into a program at one or more join points.
