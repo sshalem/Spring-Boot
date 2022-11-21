@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-AOP %20-blue" height=70px>
+<img src="https://img.shields.io/badge/-AOP - Aspect Oriented Programminf %20-blue" height=70px>
 
 ###### _
 
@@ -35,15 +35,22 @@ this creates 2 main problems:
 1. code Tangling
 2. code Scattering - change and update all classes
 
-This is where [`AOP - Aspect Object Programming`](#-) comes into place 
+This is where [`AOP - Aspect Oriented Programming`](#-) comes into place 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
 
-######
+###### AOP_Introduction
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- AOP_Introduction %20-blue" height=40px>
+
+#### [`AOP - Aspect Oriented Programming`](#-)
+1. programming technique based on concept of an Aspect
+2. Aspect encapsulates `cross-cutting logic` (sometimes Cross-cutting concerns). "Concern" means logic/functionality
+3. Aspect can be reused at multiple locations
+4. Same aspect/class ... applied based on configuration
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
