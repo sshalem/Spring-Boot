@@ -61,12 +61,35 @@ To overcome this problem, **Aspect-Oriented Programming (AOP)** provides a solut
 
 <img src="https://img.shields.io/badge/- AOP_Introduction %20-blue" height=40px>
 
-#### [`AOP - Aspect Oriented Programming`](#-)
-1. programming technique based on concept of an Aspect
-2. Aspect encapsulates `cross-cutting logic` (sometimes Cross-cutting concerns). "Concern" means logic/functionality
-3. Aspect can be reused at multiple locations
-4. Same aspect/class ... applied based on configuration
+- programming technique based on concept of an Aspect
+- Aspect encapsulates `cross-cutting logic` (sometimes Cross-cutting concerns). "Concern" means logic/functionality
+- Aspect can be reused at multiple locations
+- Same aspect/class ... applied based on configuration
 
+## great explanation from [javatpoint](https://www.javatpoint.com/spring-boot-aop)  https://www.javatpoint.com/spring-boot-aop
+
+[`AOP - Aspect Oriented Programming`](#-) </br>
+is a programming pattern that increases modularity by allowing the separation of the **cross-cutting concern**. </br>
+These **cross-cutting concerns** are different from the main business logic. </br>
+We can add additional behavior to existing code without modification of the code itself. </br>
+
+Spring's **AOP** framework helps us to implement these cross-cutting concerns.
+
+Using **AOP**, we define common functionality in one place. </br>
+We are free to define how and where this functionality is applied without modifying the class to which we are applying the new feature. </br>
+The **cross-cutting concern** can now be modularized into special classes, called **aspect**.</br>
+
+There are two benefits of aspects:
+1. First, the logic for each concern is now in one place instead of scattered all over the codebase.
+2. Second, the business modules only contain code for their primary concern. The secondary concern has been moved to the aspect.
+The aspects have the responsibility that is to be implemented, called advice. We can implement an aspect's functionality into a program at one or more join points.
+
+[Benefits of AOP](#-) </br>
+* It is implemented in pure Java.
+* There is no requirement for a special compilation process.
+* It supports only method execution Join points.
+* Only run time weaving is available.
+* Two types of [AOP proxy](#-) is available: [JDK dynamic proxy](#-) and [CGLIB proxy](#-).
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
