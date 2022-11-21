@@ -37,6 +37,21 @@ this creates 2 main problems:
 
 This is where [`AOP - Aspect Oriented Programming`](#-) comes into place 
 
+from [javatpoint](https://www.javatpoint.com/spring-boot-aop)
+
+The application is generally developed with multiple layers. A typical Java application has the following layers:
+* [Web Layer:](#-) It exposes the services using the REST or web application.
+* [Business Layer:](#-) It implements the business logic of an application.
+* [Data Layer:](#-) It implements the persistence logic of the application.
+* 
+The responsibility of each layer is different, but there are a few common aspects that apply to all layers are **Logging, Security, validation, caching, etc.** These common aspects are called **cross-cutting concerns.**
+
+If we implement these concerns in each layer separately, the code becomes more **difficult to maintain**. To overcome this problem, 
+**Aspect-Oriented Programming (AOP)** provides a solution to implement cross-cutting concerns.
+
+1. Implement the cross-cutting concern as an aspect.
+2. Define pointcuts to indicate where the aspect has to be applied.
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
