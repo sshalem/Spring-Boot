@@ -826,7 +826,7 @@ public class ProductController {
 
 <img src="https://img.shields.io/badge/- 12. AOP (Aspect Oriented Programming) %20-blue" height=40px>
 
-See AOP READ.MD file [AOP]()
+See AOP READ.MD file [AOP](https://github.com/sshalem/Spring-Boot/tree/main/02-JPA/12-AOP)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
