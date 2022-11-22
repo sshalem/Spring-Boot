@@ -128,7 +128,7 @@ A pointcut is an  [predicate expression for where that selects one or more join 
 [When to apply code during program execution.](#-) A join point is a point in the application where we apply an **_AOP aspect_** . Or it is a specific execution instance of an advice. In AOP, join point can be a **_method execution, exception handling, changing object variable value,_**  etc.
 
 [Advice](#-) </br>
-[What action is taken and when it should be applied](#-)advice is an action that we take either **_before or after_** the method execution. The action is a piece of code that invokes during the program execution. There are five types of advices in the Spring AOP framework: **_before, after, after-returning, after-throwing, and around advice_**. Advices are taken for a particular **_join point_**. We will discuss these advices further in this section.
+[What action is taken and when it should be applied](#-). advice is an action that we take either **_before or after_** the method execution. The action is a piece of code that invokes during the program execution. There are five types of advices in the Spring AOP framework: **_before, after, after-returning, after-throwing, and around advice_**. Advices are taken for a particular **_join point_**. We will discuss these advices further in this section.
 
 [Target object](#-) </br>
 An object on which advices are applied, is called the **_target object_**. Target objects are always a [**_proxied_**](#-) It means a subclass is created at run time in which the target method is overridden, and advices are included based on their configuration.
