@@ -9,7 +9,7 @@
 |     | [AOP Terminology](#AOP_Terminology)                 |
 |     | [AOP Advices Types](#AOP_Advices_Types)             |
 |     | [Spring AOP vs AspectJ (AOP Frameworks)](#Spring_AOP_vs_AspectJ)     |
-|  1  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
+|  1  | [Before Advice](#1_Before_Advice)              |
 
 
 ###### Problem_Statement
@@ -220,9 +220,9 @@ Disadvanteges
 
 ---
 
-######
+###### 1_Before_Advice
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1. Before_Advice %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
