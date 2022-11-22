@@ -119,10 +119,10 @@ The aspects have the responsibility that is to be implemented, called advice. We
 <img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=40px>
 
 [Aspect](#-) </br>
-An aspect is a module that encapsulates advice and pointcuts and provides cross-cutting An application can have any number of aspects. We can implement an aspect using regular class annotated with @Aspect annotation. </br>
+An aspect is a module that encapsulates **_advice_** and **_pointcuts_** and provides **_cross-cutting_** An application can have any number of aspects. We can implement an aspect using regular class annotated with **_@Aspect annotation._** </br>
 
 [Pointcut](#-) </br>
-A pointcut is an expression that selects one or more join points where advice is executed. We can define pointcuts using expressions or patterns. It uses different kinds of expressions that matched with the join points. In Spring Framework, AspectJ pointcut expression language is used.
+A pointcut is an expression that selects one or more join points where advice is executed. We can define pointcuts using **_expressions_** or **_patterns_**. It uses different kinds of expressions that matched with the join points. In Spring Framework, **_AspectJ_** pointcut expression language is used.
 
 [Join point](#-) </br>
 A join point is a point in the application where we apply an AOP aspect. Or it is a specific execution instance of an advice. In AOP, join point can be a method execution, exception handling, changing object variable value, etc.
