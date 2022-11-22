@@ -99,6 +99,16 @@ The aspects have the responsibility that is to be implemented, called advice. We
 6. Apply Aspects selectively do different parts of app
 7. No need to make changes to main application code 
 
+[Additional AOP use cases](#-)
+* **Most Common** : Logging,  Security, Transactions
+* **Audit logging** : who, what, when , where
+* **Exception Handling** : log exception and notify **DevOps** team via SMS / email
+* **API management** : 
+	* how many times has a method been called user
+	* analytics : what are peak times ? what is average load? who is top user?
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
