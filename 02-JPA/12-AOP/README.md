@@ -114,9 +114,9 @@ The aspects have the responsibility that is to be implemented, called advice. We
 
 ---
 
-######
+###### AOP_Terminology
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
