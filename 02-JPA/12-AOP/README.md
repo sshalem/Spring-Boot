@@ -174,7 +174,7 @@ Two leading AOP frameworks for JAVA
 	* This is kind of built-in in Spring Framework automatically.
 * Spring uses of run-time weaving of aspects, meaning Spring uses a [PROXY pattern](#-) to advice an object. 
 
-![image](https://user-images.githubusercontent.com/36256986/203416577-bb41782b-191a-43b2-a5d7-0b15463a3335.png)
+![image](https://user-images.githubusercontent.com/36256986/203423020-0a9199e0-50a1-4bfb-a461-4ca8ce73d03b.png)
 
 ### [AspectJ](#-)
 
