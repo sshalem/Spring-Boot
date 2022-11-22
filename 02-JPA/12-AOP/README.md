@@ -210,6 +210,12 @@ Disadvanteges
 * Complie time weaving requires extra compilation step
 * AspectJ pointcut syntax can become copmplex
 
+### [AspectJ comparing Spring AOP and AspectJ](#-)
+
+* Spring AOP is a light implementation of AOP
+* Spring AOP solves most common problems in enterprise apps
+* If we have very complex requirments then move to AspectJ
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
