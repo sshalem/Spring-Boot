@@ -197,6 +197,22 @@ Disadvanteges
 * Can only apply aspects to beans created by Spring app context
 * Minor performance cost for aspect execution (run time weaving)
 
+
+### [AspectJ comparison Advantages/Diasadvanteges](#-)
+
+Advanteges:
+* Support all join points
+* works with any POJO, not just beans from app context
+* Faster performance compared to Spring AOP
+* Copmplte AOP support
+
+Disadvanteges
+* Only supports method-levele join 
+* Can only apply aspects to beans created by Spring app context
+* Minor performance cost for aspect execution (run time weaving)
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
