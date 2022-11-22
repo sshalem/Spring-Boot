@@ -8,7 +8,7 @@
 |     | [AOP Introduction](#AOP_Introduction)               |
 |     | [AOP Terminology](#AOP_Terminology)                 |
 |     | [AOP Advices Types](#AOP_Advices_Types)             |
-|     | [Spring AOP vs AspectJ](#Spring_AOP_vs_AspectJ)     |
+|     | [Spring AOP vs AspectJ (AOP Frameworks)](#Spring_AOP_vs_AspectJ)     |
 |  1  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 
 
@@ -162,6 +162,22 @@ There are five types of AOP advices are as follows:
 ###### Spring_AOP_vs_AspectJ
 
 <img src="https://img.shields.io/badge/- Spring_AOP_vs_AspectJ %20-blue" height=40px>
+
+Two leading AOP frameworks for JAVA
+1. Spring AOP
+2. AspectJ
+
+### [Spring AOP Support](#-)
+
+* Spring provides AOP support out of the box
+* Spring Actually uses AOP in the background fro : Security , Transactiopns, Caching etc...
+	* This is kind of built-in in Spring Framework automatically.
+* Spring uses of run-time weaving of aspects, meaning Spring uses a [PROXY pattern](#-) to advice an object. 
+
+![image](https://user-images.githubusercontent.com/36256986/203416577-bb41782b-191a-43b2-a5d7-0b15463a3335.png)
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
