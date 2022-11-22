@@ -185,14 +185,17 @@ Two leading AOP frameworks for JAVA
 	* code weaving : compile-time, post compile time and load-time
 
 
-### [Spring AOP comparison](#-)
+### [Spring AOP comparison Advantages/Diasadvanteges](#-)
 
+Advanteges:
 * Simpler to use the AspectJ
 * Uses Proxy pattern
 * Can migrate to AspectJ when using @Aspect annotation
 
-
-
+Disadvanteges
+* Only supports method-levele join 
+* Can only apply aspects to beans created by Spring app context
+* Minor performance cost for aspect execution (run time weaving)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
