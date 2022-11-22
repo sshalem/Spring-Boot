@@ -5,7 +5,8 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |     | [Problem Statement](#Problem_Statement)             |
-|     | [AOP Introduction](#AOP_Introduction)            |
+|     | [AOP Introduction](#AOP_Introduction)               |
+|     | [AOP Terminology](#AOP_Terminology)                 |
 |  1  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 
 
