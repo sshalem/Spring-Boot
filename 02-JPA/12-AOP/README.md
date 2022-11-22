@@ -118,6 +118,24 @@ The aspects have the responsibility that is to be implemented, called advice. We
 
 <img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=40px>
 
+[Aspect](#-) </br>
+An aspect is a module that encapsulates advice and pointcuts and provides cross-cutting An application can have any number of aspects. We can implement an aspect using regular class annotated with @Aspect annotation. </br>
+
+[Pointcut](#-) </br>
+A pointcut is an expression that selects one or more join points where advice is executed. We can define pointcuts using expressions or patterns. It uses different kinds of expressions that matched with the join points. In Spring Framework, AspectJ pointcut expression language is used.
+
+[Join point](#-) </br>
+A join point is a point in the application where we apply an AOP aspect. Or it is a specific execution instance of an advice. In AOP, join point can be a method execution, exception handling, changing object variable value, etc.
+
+[Advice](#-) </br>
+The advice is an action that we take either before or after the method execution. The action is a piece of code that invokes during the program execution. There are five types of advices in the Spring AOP framework: **_before, after, after-returning, after-throwing, and around advice_**. Advices are taken for a particular join point. We will discuss these advices further in this section.
+
+[Target object](#-) </br>
+An object on which advices are applied, is called the target object. Target objects are always a proxied It means a subclass is created at run time in which the target method is overridden, and advices are included based on their configuration.
+
+[Weaving](#-) </br>
+It is a process of linking aspects with other application types. We can perform weaving at run time, load time, and compile time.
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
