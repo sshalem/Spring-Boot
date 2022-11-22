@@ -176,7 +176,14 @@ Two leading AOP frameworks for JAVA
 
 ![image](https://user-images.githubusercontent.com/36256986/203416577-bb41782b-191a-43b2-a5d7-0b15463a3335.png)
 
+### [AspectJ](#-)
 
+* Original AOP framework released in 2001
+* Provides complete support for AOP
+* Rich support for :
+	* join points: method-level, constructor, field
+	* code weaving : compile-time, post compile time and load-time
+	* 
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
