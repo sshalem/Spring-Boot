@@ -7,6 +7,7 @@
 |     | [Problem Statement](#Problem_Statement)             |
 |     | [AOP Introduction](#AOP_Introduction)               |
 |     | [AOP Terminology](#AOP_Terminology)                 |
+|     | [AOP Advices Types](#AOP_Advices_Types)                 |
 |  1  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 
 
@@ -140,9 +141,17 @@ It is a process of **_linking aspects_** with other application types. We can pe
 
 ---
 
-######
+###### AOP_Advices_Types
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- AOP_Advices_Types %20-blue" height=40px>
+
+There are five types of AOP advices are as follows:
+1. [Before Advice](#-) An advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
+2. [After Advice](#-) An advice that executes after a join point, is called after advice. We use @After annotation to mark an advice as After advice.
+3. [Around Advice](#-) An advice that executes before and after of a join point, is called around advice.
+4. [After Throwing Advice](#-) An advice that executes when a join point throws an exception.
+5. [After Returning Advice](#-) An advice that executes when a method executes successfully.
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
