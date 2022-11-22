@@ -104,7 +104,7 @@ The aspects have the responsibility that is to be implemented, called advice. We
 * **Audit logging** : who, what, when , where
 * **Exception Handling** : log exception and notify **DevOps** team via SMS / email
 * **API management** : 
-	* how many times has a method been called user
+	* how many times has a method been called a user
 	* analytics : what are peak times ? what is average load? who is top user?
 
 
