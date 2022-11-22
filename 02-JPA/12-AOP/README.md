@@ -124,17 +124,17 @@ An aspect is a module that encapsulates **_advice_** and **_pointcuts_** and pro
 [Pointcut](#-) </br>
 A pointcut is an expression that selects one or more join points where advice is executed. We can define pointcuts using **_expressions_** or **_patterns_**. It uses different kinds of expressions that matched with the join points. In Spring Framework, **_AspectJ_** pointcut expression language is used.
 
-[Join point](#-) </br>
-A join point is a point in the application where we apply an AOP aspect. Or it is a specific execution instance of an advice. In AOP, join point can be a method execution, exception handling, changing object variable value, etc.
+[Join point](#-) </br> 
+A join point is a point in the application where we apply an **_AOP aspect_** . Or it is a specific execution instance of an advice. In AOP, join point can be a **_method execution, exception handling, changing object variable value,_**  etc.
 
 [Advice](#-) </br>
-The advice is an action that we take either before or after the method execution. The action is a piece of code that invokes during the program execution. There are five types of advices in the Spring AOP framework: **_before, after, after-returning, after-throwing, and around advice_**. Advices are taken for a particular join point. We will discuss these advices further in this section.
+The advice is an action that we take either **_before or after_** the method execution. The action is a piece of code that invokes during the program execution. There are five types of advices in the Spring AOP framework: **_before, after, after-returning, after-throwing, and around advice_**. Advices are taken for a particular **_join point_**. We will discuss these advices further in this section.
 
 [Target object](#-) </br>
-An object on which advices are applied, is called the target object. Target objects are always a proxied It means a subclass is created at run time in which the target method is overridden, and advices are included based on their configuration.
+An object on which advices are applied, is called the **_target object_**. Target objects are always a [**_proxied_**](#-) It means a subclass is created at run time in which the target method is overridden, and advices are included based on their configuration.
 
 [Weaving](#-) </br>
-It is a process of linking aspects with other application types. We can perform weaving at run time, load time, and compile time.
+It is a process of **_linking aspects_** with other application types. We can perform weaving at **_run time, load time, and compile time_**.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
