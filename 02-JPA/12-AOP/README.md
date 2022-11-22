@@ -207,11 +207,8 @@ Advanteges:
 * Copmplte AOP support
 
 Disadvanteges
-* Only supports method-levele join 
-* Can only apply aspects to beans created by Spring app context
-* Minor performance cost for aspect execution (run time weaving)
-
-
+* Complie time weaving requires extra compilation step
+* AspectJ pointcut syntax can become copmplex
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
