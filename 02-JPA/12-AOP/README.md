@@ -135,7 +135,8 @@ A pointcut is an  [predicate expression for where that selects one or more join 
 An object on which advices are applied, is called the **_target object_**. Target objects are always a [**_proxied_**](#-) It means a subclass is created at run time in which the target method is overridden, and advices are included based on their configuration.
 
 [Weaving](#-) </br>
-It is a process of **_linking aspects_** with other application types. We can perform weaving at **_run time, load time, and compile time_**.
+Connecting aspects to target objects to create an advised object. It is a process of **_linking aspects_** with other application types. We can perform weaving at **_run time, load time, and compile time_**.
+Regarding performance : run-time Weaving is the slowest
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -146,8 +147,8 @@ It is a process of **_linking aspects_** with other application types. We can pe
 <img src="https://img.shields.io/badge/- AOP_Advices_Types %20-blue" height=40px>
 
 There are five types of AOP advices are as follows:
-1. [Before Advice](#-) An advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
-2. [After Advice](#-) An advice that executes after a join point, is called after advice. We use @After annotation to mark an advice as After advice.
+1. [Before Advice](#-) - run before the methodAn advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
+2. [After Advice](#-) / [After finally Advice](#-)  - run after the method (Finally). An advice that executes after a join point, is called after advice. We use @After annotation to mark an advice as After advice.
 3. [Around Advice](#-) An advice that executes before and after of a join point, is called around advice.
 4. [After Throwing Advice](#-) An advice that executes when a join point throws an exception.
 5. [After Returning Advice](#-) An advice that executes when a method executes successfully.
