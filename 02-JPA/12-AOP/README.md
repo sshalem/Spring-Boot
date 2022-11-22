@@ -183,7 +183,15 @@ Two leading AOP frameworks for JAVA
 * Rich support for :
 	* join points: method-level, constructor, field
 	* code weaving : compile-time, post compile time and load-time
-	* 
+
+
+### [Spring AOP comparison](#-)
+
+* Simpler to use the AspectJ
+* Uses Proxy pattern
+* Can migrate to AspectJ when using @Aspect annotation
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
