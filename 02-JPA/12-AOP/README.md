@@ -91,6 +91,14 @@ The aspects have the responsibility that is to be implemented, called advice. We
 * Only run time weaving is available.
 * Two types of [AOP proxy](#-) is available: [JDK dynamic proxy](#-) and [CGLIB proxy](#-).
 
+1. Code for Aspect is defined in a singlae class
+2. Promotes code reuse and easier change
+3. Business code in app is cleaner (Apply to business funcionality like addAccount)
+4. Reduce code complexity
+5. Based on configuration 
+6. Apply Aspects selectively do different parts of app
+7. No need to make changes to main application code 
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
