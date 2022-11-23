@@ -82,11 +82,6 @@ Using **AOP**, we define common functionality in one place. </br>
 We are free to define how and where this functionality is applied without modifying the class to which we are applying the new feature. </br>
 The **cross-cutting concern** can now be modularized into special classes, called **aspect**.</br>
 
-[There are two benefits of aspects:](#-)
-1. First, the logic for each concern is now in one place instead of scattered all over the codebase.
-2. Second, the business modules only contain code for their primary concern. The secondary concern has been moved to the aspect.
-The aspects have the responsibility that is to be implemented, called advice. We can implement an aspect's functionality into a program at one or more join points.
-
 [Benefits of AOP](#-) </br>
 * It is implemented in pure Java.
 * There is no requirement for a special compilation process.
@@ -94,13 +89,6 @@ The aspects have the responsibility that is to be implemented, called advice. We
 * Only run time weaving is available.
 * Two types of [AOP proxy](#-) is available: [JDK dynamic proxy](#-) and [CGLIB proxy](#-).
 
-1. Code for Aspect is defined in a singlae class
-2. Promotes code reuse and easier change
-3. Business code in app is cleaner (Apply to business funcionality like addAccount)
-4. Reduce code complexity
-5. Based on configuration 
-6. Apply Aspects selectively do different parts of app
-7. No need to make changes to main application code 
 
 [Additional AOP use cases](#-)
 * **Most Common** : Logging,  Security, Transactions
