@@ -228,7 +228,7 @@ Disadvanteges
 
 https://reflectoring.io/aop-spring/
 
-I create a SPring boot app with following dependencies:
+1. I create a Spring boot app with following dependencies:
 
 ```sql
 	<dependency>
@@ -236,6 +236,25 @@ I create a SPring boot app with following dependencies:
 		<artifactId>spring-boot-starter-aop</artifactId>
 	</dependency>
 ```
+
+2. At the main app ad the annotation of `@EnableAspectJAutoProxy`
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+@SpringBootApplication
+@EnableAspectJAutoProxy
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
+3. Create package of aspect , and add 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
