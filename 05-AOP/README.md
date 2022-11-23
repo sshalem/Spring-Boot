@@ -237,6 +237,11 @@ https://reflectoring.io/aop-spring/
 	</dependency>
 ```
 
+### package layout
+
+![image](https://user-images.githubusercontent.com/36256986/203661711-826c4737-9558-4a12-b727-ccd704b1b72a.png)
+
+
 2. At the main app ad the annotation of `@EnableAspectJAutoProxy`
 
 ```java
@@ -254,7 +259,11 @@ public class Application {
 }
 ```
 
-3. Create package of aspect , and add 
+3. Create package of aspect , and add the follolwing code:
+
+```java
+
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
