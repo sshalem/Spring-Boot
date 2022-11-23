@@ -228,7 +228,9 @@ Disadvanteges
 
 https://reflectoring.io/aop-spring/
 
-1. I create a Spring boot app with following dependencies:
+[step 1](#-)
+
+I create a Spring boot app with following dependencies:
 
 ```sql
 	<dependency>
@@ -242,7 +244,9 @@ https://reflectoring.io/aop-spring/
 ![image](https://user-images.githubusercontent.com/36256986/203661711-826c4737-9558-4a12-b727-ccd704b1b72a.png)
 
 
-2. At the main app ad the annotation of `@EnableAspectJAutoProxy`
+[step 2](#-)
+
+At the main app ad the annotation of `@EnableAspectJAutoProxy`
 
 ```java
 import org.springframework.boot.SpringApplication;
@@ -259,11 +263,71 @@ public class Application {
 }
 ```
 
-3. Create package of aspect , and add the follolwing code:
+[step 3](#-)
+
+Create package of aspect , and add the follolwing code:
 
 ```java
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+@Component
+@Aspect
+public class LoggingAspect {
+
+	@Before(value = "execution(* com.aop.dao.CourseDao.getCourseName())")
+//	@Before(value = "execution(public void getCourseName())")
+	public void logAllMethodCallsAdvice() {
+		System.out.println("In Aspect");
+	}
+}
+```
+
+
+[step 4](#-)
+
+Create package of dao , and add the follolwing code:
+
+```java
+@Service
+public class CourseDao {
+
+	public String getCourseName() {
+		System.out.println("In service");
+		return "JAVA course";
+	}
+}
+```
+
+[step 5](#-)
+
+Create package of controller , and add the follolwing code:
+
+```java
+@RestController
+@RequestMapping("/aop")
+public class CourseController {
+
+	@Autowired
+	private CourseDao courseDao;
+	
+	@GetMapping
+	public String getCourseName() {
+		return courseDao.getCourseName(); 
+	}
+}
 
 ```
+
+[step 6](#-)
+
+Let's test the app . Sent a Http Request to the url of localhost:8080/aop
+
+Spring console shows as expected:
+
+![image](https://user-images.githubusercontent.com/36256986/203662157-8a22575b-2aca-413c-90de-5093e3ac87b1.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
