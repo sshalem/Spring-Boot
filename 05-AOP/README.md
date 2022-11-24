@@ -354,7 +354,7 @@ The line below is same as above (W/o Declaring type & throws-pattern).
 But this Aspect code will be executed on any class that has the `getCourseName()` method
 
 ```
-@Before(value = "execution(public void addCourseName())")
+@Before(value = "execution(public void addAccount())")
 ```
 
 ### [Match on Method names using wildcards](#-)
@@ -374,6 +374,27 @@ But this Aspect code will be executed on any class that has the `getCourseName()
 	@Before(value = "execution(public * add*())")
 	@Before(value = "execution(* add*())")
 ```
+
+### [Match on Method return Type using wildcards](#-)
+
+```java
+	@Before(value = "execution(public * add*())")
+	@Before(value = "execution(* add*())")
+```
+
+### [Match Method Parameter Types wildcards](#-)
+
+For Param-Patterns:
+1. ()   - matches a methods w/n args
+2. (* ) - matches a method with one arg of any type
+3. (..) - matches a method with 0 ore more args of any type
+
+```java
+	@Before(value = "execution(public * add*())")
+	@Before(value = "execution(* add*())")
+```
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
