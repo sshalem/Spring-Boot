@@ -324,7 +324,7 @@ the AOP Proxy (CGlib) is executed on the **Target Object**.
 
 ### [Match on Method names](#-)
 
-execution(ModifiersPattern **returnTypePattern** DeclaringTypePattern MethodNamePattern(param-pattern) ThrowsPattern)
+_execution(ModifiersPattern **returnTypePattern** DeclaringTypePattern **MethodNamePattern(param-pattern)** ThrowsPattern)_
 
 
 **Modifiers-pattern** : (Optional) Spring AOP only supports public </br>
