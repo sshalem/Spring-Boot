@@ -365,8 +365,6 @@ But this Aspect code will be executed on any class that has the `getCourseName()
 @Before(value = "execution(public void add*())")
 ```
 
-Exapmle of using wildcards on return type:
-
 ```java
 	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
 	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
