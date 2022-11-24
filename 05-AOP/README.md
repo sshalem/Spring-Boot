@@ -259,6 +259,10 @@ public class LoggingAspect {
 	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
 //	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
 //	@Before(value = "execution(public void addAccount())")
+//	@Before(value = "execution(void addAccount())")
+//	@Before(value = "execution(public void add*())")
+//	@Before(value = "execution(public * add*())")
+//	@Before(value = "execution(* add*())")
 	public void logAllMethodCallsAdvice() {
 		System.out.println("In Aspect");
 	}
@@ -355,7 +359,7 @@ But this Aspect code will be executed on any class that has the `getCourseName()
 
 ### [Match on Method names using wildcards](#-)
 
-* Match methods **starting** with **get** in any class
+* Match methods **starting** with **add** in any class
 
 ```
 @Before(value = "execution(public void add*())")
@@ -363,12 +367,14 @@ But this Aspect code will be executed on any class that has the `getCourseName()
 
 Exapmle of using wildcards on return type:
 
-```
-@Before(value = "execution(public * get*())")
-
-or
-
-@Before(value = "execution(* get*())")
+```java
+	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
+	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
+	@Before(value = "execution(public void addAccount())")
+	@Before(value = "execution(void addAccount())")
+	@Before(value = "execution(public void add*())")
+	@Before(value = "execution(public * add*())")
+	@Before(value = "execution(* add*())")
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
