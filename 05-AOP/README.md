@@ -240,9 +240,11 @@ public class Application {
 
 Create Aspect Class in a package of aspect , and add the follolwing code below. </br>
 
-the line below is a [`pointcut expression`](#-).
+the line below is a [`pointcut expression`](#-). In section 2 I explain on pointcuts.
 ```java
-@Before(value = "execution(* com.aop.dao.CourseDao.getCourseName())")
+	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(public void addAccount())")
 ```
 
 ```java
@@ -254,7 +256,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
+	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
 //	@Before(value = "execution(public void addAccount())")
 	public void logAllMethodCallsAdvice() {
 		System.out.println("In Aspect");
