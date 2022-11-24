@@ -318,6 +318,10 @@ the AOP Proxy (CGlib) is executed on the **Target Object**.
 
 <img src="https://img.shields.io/badge/- 2.Pointcut_Expressions %20-blue" height=40px>
 
+[Pointcut](#-) : A predicate expression for for where advice should be applied.
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
