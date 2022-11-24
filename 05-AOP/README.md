@@ -401,6 +401,16 @@ For Param-Patterns:
 	@Before(value = "execution(* addBook(..))")
 ```
 
+### [Match with wildcards returntype, Package, Params, Class, Method Types wildcards](#-)
+
+The picture below shows how we can match with wildcards any of the following:
+1. returntype
+2. Package
+3. Params
+4. Class
+5. Method 
+
+![image](https://user-images.githubusercontent.com/36256986/203861380-099fb4ef-429d-4e38-a9cd-e30ddd3297dd.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
