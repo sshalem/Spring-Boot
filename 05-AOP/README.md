@@ -323,10 +323,10 @@ the AOP Proxy (CGlib) is executed on the **Target Object**.
 * There are a lot of different pointcuts.
 * In previous section I use the `execution` pointcut.
 
-### Match on MEthod name
+### Match on Method name
 
 ```java
-execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern)
+execution(<modifiers-pattern> <return-type-pattern> <declaring-type-pattern> <method-name-pattern(param-pattern)> <throws-pattern>)
 ```
 
 **Modifiers-pattern** : (Optional) Spring AOP only supports public </br>
@@ -335,7 +335,23 @@ execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-
 **method-name-pattern(param-pattern)** : Method name to match, also parameter types to match </br>
 **throws-pattern** : (Optional) Exception types to match </br>
 
+Let's look in the pointcut below, and break it down to pieces:
 
+_public_ 		: Modifier
+_void_   		: return type
+_com.aop.dao.CourseDao_ : Declaring type
+_getCourseName()_ 	: Method
+
+```
+@Before(value = "execution(public void com.aop.dao.CourseDao.getCourseName())")
+```
+
+The line below is same as above (W/o Declaring type & throws-pattern).
+But this Aspect code will be executed on any class that has the `getCourseName()` method
+
+```
+@Before(value = "execution(public void getCourseName())")
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
