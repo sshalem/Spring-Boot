@@ -471,10 +471,32 @@ Solution:
 2. When we combine it works like an "if" statement
 
 ```java
-	@Before(value = "expressionOne() && expressionTwo()");
-	@Before(value = "expressionOne() || expressionTwo()");
-	@Before(value = "expressionOne() && !expressionTwo()");
+	/**
+	 * Example for Combining Pointcuts
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.get*(..))")
+	private void getter() {
+
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.set*(..))")
+	private void setter() {
+
+	}
+
+	// Combine the pointcuts
+	@Pointcut(value = "forDaoPackage() && !(getter() && setter())")
+	private void forDaoPackageNoGetterSetter() {
+
+	}
 ```
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
