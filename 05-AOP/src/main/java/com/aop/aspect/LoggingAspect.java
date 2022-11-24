@@ -11,6 +11,10 @@ public class LoggingAspect {
 	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
 //	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
 //	@Before(value = "execution(public void addAccount())")
+//	@Before(value = "execution(void addAccount())")
+//	@Before(value = "execution(public void add*())")
+//	@Before(value = "execution(public * add*())")
+//	@Before(value = "execution(* add*())")
 	public void logAllMethodCallsAdvice() {
 		System.out.println("Exceuting Aspect");
 	}
