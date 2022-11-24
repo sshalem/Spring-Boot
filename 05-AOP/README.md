@@ -389,7 +389,7 @@ For Param-Patterns:
 2. (* ) - matches a method with one arg of any type
 3. (..) - matches a method with 0 ore more args of any type
 
-I add the full path of the Parameter `com.aop.entity.BookEntity`
+### I add the full qualified name of the Parameter `com.aop.entity.BookEntity` .
 
 ```java
 	@Before(value = "execution(public void com.aop.dao.AccountDao.addBook(com.aop.entity.BookEntity))")
