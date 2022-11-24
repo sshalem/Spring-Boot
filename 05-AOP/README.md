@@ -470,32 +470,106 @@ Solution:
 1. Combining Pointcut expressions using logic operators : AND (&&) , OR(||) , NOT(!)
 2. When we combine it works like an "if" statement
 
+Let's look in the example :
+
+Modified the AccountDao class by adding getter and setter methods:
+
+```java
+@Service
+public class AccountDao {
+
+	private String name;
+	private String serviceCode;
+
+	public void addAccount() {
+		System.out.println(getClass() + " add account");
+	}
+
+	public void addBook(BookEntity bookEntity) {
+		System.out.println(getClass() + " add Book");
+	}
+
+	public String getName() {
+		System.out.println(getClass() + " getName()");
+		return name;
+	}
+
+	public void setName(String name) {
+		System.out.println(getClass() + " setName()");
+		this.name = name;
+	}
+
+	public String getServiceCode() {
+		System.out.println(getClass() + " getServiceCode()");
+		return serviceCode;
+	}
+
+	public void setServiceCode(String serviceCode) {
+		System.out.println(getClass() + " setServiceCode()");
+		this.serviceCode = serviceCode;
+	}
+}
+```
+
+### [Aspect class](#-)
+
 ```java
 	/**
 	 * Example for Combining Pointcuts
 	 */
 	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
 	private void forDaoPackage() {
-
 	}
 
 	@Pointcut(value = "execution(* com.aop.dao.*.get*(..))")
 	private void getter() {
-
 	}
 
 	@Pointcut(value = "execution(* com.aop.dao.*.set*(..))")
 	private void setter() {
-
 	}
 
-	// Combine the pointcuts
-	@Pointcut(value = "forDaoPackage() && !(getter() && setter())")
+	// Combine the pointcuts : include package ... exclude getter/setter
+	@Pointcut(value = "forDaoPackage() && !(getter() || setter())")
 	private void forDaoPackageNoGetterSetter() {
+	}
 
+	@Before(value = "forDaoPackageNoGetterSetter()")
+	public void beforeAdd() {
+		System.out.println("Exceuting the @Before Advice - beforeAdd");
+	}
+
+	@Before(value = "forDaoPackageNoGetterSetter()")
+	public void beforePerformApiAnalytics() {
+		System.out.println("Exceuting the @Before Advice - beforePerformApiAnalytics");
 	}
 ```
 
+### [Test code](#-)
+
+Let run the following code for testing:
+
+```java
+accountDao.setName("test");
+accountDao.setServiceCode("123");		
+accountDao.getName();
+accountDao.getServiceCode();	
+
+accountDao.addAccount();
+```
+
+
+Console shows the following result , the Advice run only for the methods of the class and not for the gettres and setters.
+
+```java
+class com.aop.dao.AccountDao setName()
+class com.aop.dao.AccountDao setServiceCode()
+class com.aop.dao.AccountDao getName()
+class com.aop.dao.AccountDao getServiceCode()
+Exceuting the @Before Advice - beforeAdd
+Exceuting the @Before Advice - beforePerformApiAnalytics
+class com.aop.dao.AccountDao add account
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
