@@ -316,7 +316,7 @@ Spring console shows as expected:
 
 ![image](https://user-images.githubusercontent.com/36256986/203662157-8a22575b-2aca-413c-90de-5093e3ac87b1.png)
 
-WHen Sending Http Request , before our Trget Object (courseDao.getCourseName())  is invoked , the AOP Proxy (CGlib) is executed 
+When Sending Http Request , before our Target Object (**courseDao.getCourseName()**)  is invoked , the AOP Proxy (CGlib) is executed on the **Target Object**.
 
 ![image](https://user-images.githubusercontent.com/36256986/203424003-e3d3cac0-45e5-4b69-8f5c-e29b2e1aa8a3.png)
 
