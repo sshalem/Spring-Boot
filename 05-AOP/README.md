@@ -212,8 +212,6 @@ Disadvanteges
 
 <img src="https://img.shields.io/badge/- 1. Before_Advice %20-blue" height=40px>
 
-![image](https://user-images.githubusercontent.com/36256986/203424003-e3d3cac0-45e5-4b69-8f5c-e29b2e1aa8a3.png)
-
 Lets see how AOP works, by creating a simple app with a service and controller layers. </br>
 1. Add the relevent Dependency
 2. Add the annotation needed in the Main App 
@@ -317,6 +315,11 @@ Let's test the app . Sent a Http Request to the url of localhost:8080/aop
 Spring console shows as expected:
 
 ![image](https://user-images.githubusercontent.com/36256986/203662157-8a22575b-2aca-413c-90de-5093e3ac87b1.png)
+
+WHen Sending Http Request , before our Trget Object (courseDao.getCourseName())  is invoked , the AOP Proxy (CGlib) is executed 
+
+![image](https://user-images.githubusercontent.com/36256986/203424003-e3d3cac0-45e5-4b69-8f5c-e29b2e1aa8a3.png)
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
