@@ -423,6 +423,8 @@ The picture below shows how we can match with wildcards any of the following:
 
 <img src="https://img.shields.io/badge/- 3.Pointcut_Declarations %20-blue" height=40px>
 
+<img src="https://img.shields.io/badge/- 3.1. Pointcut to Multiple Advices %20-yellow" height=30px>
+
 Problem:
 * How can we reuse a pointcut expression?
 * Want to apply to multiple Advices
@@ -455,6 +457,24 @@ then both @Before advices will run since they have the same @Pointcut declaratio
 	}
 ```
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+<img src="https://img.shields.io/badge/- 3.1. Multiple Pointcuts to Single Advice %20-yellow" height=30px>
+
+Problem:
+* How to apply multiple pointcut expressions to single advice?
+* Execute an advice only if vertain conditions are met
+* FOr example : apply an advice to all methods in a package EXCEPT getter/setter methods
+
+Solution:
+1. Combining Pointcut expressions using logic operators : AND (&&) , OR(||) , NOT(!)
+2. When we combine it works like an "if" statement
+
+```java
+	@Before(value = "expressionOne() && expressionTwo()");
+	@Before(value = "expressionOne() || expressionTwo()");
+	@Before(value = "expressionOne() && !expressionTwo()");
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
