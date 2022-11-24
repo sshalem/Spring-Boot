@@ -270,9 +270,8 @@ Create package of dao , and add the follolwing code:
 @Service
 public class CourseDao {
 
-	public String getCourseName() {
-		System.out.println("In service");
-		return "JAVA course";
+	public void addCourseName() {
+		System.out.println("In service");		
 	}
 }
 ```
@@ -289,9 +288,9 @@ public class CourseController {
 	@Autowired
 	private CourseDao courseDao;
 	
-	@GetMapping
-	public String getCourseName() {
-		return courseDao.getCourseName(); 
+	@PostMapping
+	public void addCourseName() {
+		courseDao.addCourseName(); 		
 	}
 }
 
@@ -323,7 +322,7 @@ the AOP Proxy (CGlib) is executed on the **Target Object**.
 * There are a lot of different pointcuts.
 * In previous section I use the `execution` pointcut.
 
-### Match on Method name
+### [Match on Method names](#-)
 
 ```java
 execution(<modifiers-pattern> <return-type-pattern> <declaring-type-pattern> <method-name-pattern(param-pattern)> <throws-pattern>)
@@ -343,14 +342,32 @@ _com.aop.dao.CourseDao_ : Declaring type
 _getCourseName()_ 	: Method
 
 ```
-@Before(value = "execution(public void com.aop.dao.CourseDao.getCourseName())")
+@Before(value = "execution(public void com.aop.dao.CourseDao.addCourseName())")
 ```
 
 The line below is same as above (W/o Declaring type & throws-pattern).
 But this Aspect code will be executed on any class that has the `getCourseName()` method
 
 ```
-@Before(value = "execution(public void getCourseName())")
+@Before(value = "execution(public void addCourseName())")
+```
+
+### [Match on Method names using wildcards](#-)
+
+* Match methods **starting** with **get** in any class
+
+```
+@Before(value = "execution(public void add*())")
+```
+
+Exapmle of using wildcards on return type:
+
+```
+@Before(value = "execution(public * get*())")
+
+or
+
+@Before(value = "execution(* get*())")
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
