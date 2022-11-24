@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-	@Before(value = "execution(* com.aop.dao.CourseDao.getCourseName())")
-//	@Before(value = "execution(public void getCourseName())")
+	@Before(value = "execution(public void com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(public void addAccount())")
 	public void logAllMethodCallsAdvice() {
-		System.out.println("In Aspect");
+		System.out.println("Exceuting Aspect");
 	}
 }
+
