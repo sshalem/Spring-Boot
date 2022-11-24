@@ -329,11 +329,11 @@ the AOP Proxy (CGlib) is executed on the **Target Object**.
 execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern)
 ```
 
-**Modifiers-pattern** : Spring AOP only supports public </br>
+**Modifiers-pattern** : (Optional) Spring AOP only supports public </br>
 **return-type-pattern** : void, boolean ,String,List<Customer>, ... </br>
-**declaring-type-pattern** : the class name </br>
+**declaring-type-pattern** : (Optional) the class name </br>
 **method-name-pattern(param-pattern)** : Method name to match, also parameter types to match </br>
-**throws-pattern** : Exception types to match </br>
+**throws-pattern** : (Optional) Exception types to match </br>
 
 
 
