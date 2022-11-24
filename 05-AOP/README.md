@@ -547,7 +547,7 @@ public class AccountDao {
 
 ### [Test code](#-)
 
-Let run the following code for testing:
+Let run the following code for testing which invoke the getter / setter and the addAccount methods:
 
 ```java
 accountDao.setName("test");
@@ -559,7 +559,9 @@ accountDao.addAccount();
 ```
 
 
-Console shows the following result , the Advice run only for the methods of the class and not for the gettres and setters.
+Console shows the following result : </br>
+* the Advice run only for the addAccount() method
+* Advice didn't run for the gettres/setters
 
 ```
 class com.aop.dao.AccountDao setName()
