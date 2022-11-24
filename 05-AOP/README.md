@@ -9,6 +9,7 @@
 |  1  | [Before Advice](#1_Before_Advice)              |
 |  2  | [Pointcut Expressions](#2_Pointcut_Expressions)              |
 |  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
+|  4  | [Ordering Aspects](#4_Ordering_Aspects)              |
 
 
 ###### Problem_Statement
@@ -578,9 +579,19 @@ class com.aop.dao.AccountDao add account
 
 ---
 
-######
+###### 4_Ordering_Aspects
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4. Ordering_Aspects %20-blue" height=40px>
+
+Problem:
+* How to control the order of advices being applied?
+* The order is undefined, so Spring will take any Advice thtey have and run it
+
+To Control the Order:
+* Refactor : place advices in seperate Aspects class
+* add `@Order` annotationto Aspects
+* 
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
