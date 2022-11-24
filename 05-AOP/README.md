@@ -389,9 +389,11 @@ For Param-Patterns:
 2. (* ) - matches a method with one arg of any type
 3. (..) - matches a method with 0 ore more args of any type
 
+I add the full path of the Parameter `com.aop.entity.BookEntity`
+
 ```java
-	@Before(value = "execution(public * add*())")
-	@Before(value = "execution(* add*())")
+	@Before(value = "execution(public void addBook(com.aop.entity.BookEntity))")
+	@Before(value = "execution(* addBook(com.aop.entity.BookEntity))")	
 ```
 
 
