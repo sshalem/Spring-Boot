@@ -8,6 +8,7 @@
 |     | [AOP Introduction](#AOP_Introduction)               |
 |  1  | [Before Advice](#1_Before_Advice)              |
 |  2  | [Pointcut Expressions](#2_Pointcut_Expressions)              |
+|  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
 
 
 ###### Problem_Statement
@@ -418,6 +419,16 @@ The picture below shows how we can match with wildcards any of the following:
 ---
 
 
+###### 3_Pointcut_Declarations
+
+<img src="https://img.shields.io/badge/- 3.Pointcut_Declarations %20-blue" height=40px>
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
@@ -434,3 +445,18 @@ The picture below shows how we can match with wildcards any of the following:
 
 ---
 
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
