@@ -237,7 +237,12 @@ public class Application {
 
 ### [step 3](#-)
 
-Create package of aspect , and add the follolwing code:
+Create Aspect Class in a package of aspect , and add the follolwing code below. </br>
+
+the line below is a [`pointcut expression`](#-).
+```java
+@Before(value = "execution(* com.aop.dao.CourseDao.getCourseName())")
+```
 
 ```java
 import org.aspectj.lang.annotation.Aspect;
