@@ -254,8 +254,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-	@Before(value = "execution(* com.aop.dao.CourseDao.getCourseName())")
-//	@Before(value = "execution(public void getCourseName())")
+	@Before(value = "execution(* com.aop.dao.AccountDao.addAccount())")
+//	@Before(value = "execution(public void addAccount())")
 	public void logAllMethodCallsAdvice() {
 		System.out.println("In Aspect");
 	}
@@ -268,10 +268,10 @@ Create package of dao , and add the follolwing code:
 
 ```java
 @Service
-public class CourseDao {
+public class AccountDao {
 
-	public void addCourseName() {
-		System.out.println("In service");		
+	public void addAccount() {
+		System.out.println("In AccountDao");
 	}
 }
 ```
@@ -283,17 +283,16 @@ Create package of controller , and add the follolwing code:
 ```java
 @RestController
 @RequestMapping("/aop")
-public class CourseController {
+public class AccountController {
 
 	@Autowired
-	private CourseDao courseDao;
-	
+	private AccountDao accountDao;
+
 	@PostMapping
-	public void addCourseName() {
-		courseDao.addCourseName(); 		
+	public void addAccount() {
+		accountDao.addAccount();
 	}
 }
-
 ```
 
 ### [step 6](#-)
