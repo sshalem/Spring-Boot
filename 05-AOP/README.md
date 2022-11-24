@@ -394,6 +394,8 @@ I add the full path of the Parameter `com.aop.entity.BookEntity`
 ```java
 	@Before(value = "execution(public void addBook(com.aop.entity.BookEntity))")
 	@Before(value = "execution(* addBook(com.aop.entity.BookEntity))")	
+	@Before(value = "execution(* addBook(*))")
+	@Before(value = "execution(* addBook(..))")
 ```
 
 
