@@ -6,9 +6,6 @@
 | :-: | :--------------------------------------------------- |
 |     | [Problem Statement](#Problem_Statement)             |
 |     | [AOP Introduction](#AOP_Introduction)               |
-|     | [AOP Terminology](#AOP_Terminology)                 |
-|     | [AOP Advices Types](#AOP_Advices_Types)             |
-|     | [Spring AOP vs AspectJ (AOP Frameworks)](#Spring_AOP_vs_AspectJ)     |
 |  1  | [Before Advice](#1_Before_Advice)              |
 
 
@@ -102,11 +99,8 @@ The **cross-cutting concern** can now be modularized into special classes, calle
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----
 
-###### AOP_Terminology
-
-<img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=30px>
 
 [Aspect](#-) </br>
 An aspect is a [module that encapsulates **_advice_** and **_pointcuts_** and provides **_cross-cutting_** ](#-) An application can have any number of aspects. We can implement an aspect using regular class annotated with **_@Aspect annotation._** </br>
@@ -129,11 +123,7 @@ Regarding performance : run-time Weaving is the slowest
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----
-
-###### AOP_Advices_Types
-
-<img src="https://img.shields.io/badge/- AOP_Advices_Types %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- AOP_Advices_Types %20-blue" height=30px>
 
 There are five types of AOP advices are as follows:
 1. [Before Advice](#-) - run before the methodAn advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
@@ -142,14 +132,7 @@ There are five types of AOP advices are as follows:
 4. [After Throwing Advice](#-) An advice that executes when a join point throws an exception.
 5. [After Returning Advice](#-) An advice that executes when a method executes successfully.
 
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-###### Spring_AOP_vs_AspectJ
-
-<img src="https://img.shields.io/badge/- Spring_AOP_vs_AspectJ %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- Spring_AOP_vs_AspectJ %20-blue" height=30px>
 
 Two leading AOP frameworks for JAVA
 1. Spring AOP
