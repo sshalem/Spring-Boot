@@ -263,7 +263,7 @@ public class LoggingAspect {
 //	@Before(value = "execution(public void add*())")
 //	@Before(value = "execution(public * add*())")
 //	@Before(value = "execution(* add*())")
-	public void logAllMethodCallsAdvice() {
+	public void beforeAddAccountAdvice() {
 		System.out.println("In Aspect");
 	}
 }
