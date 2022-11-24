@@ -423,6 +423,15 @@ The picture below shows how we can match with wildcards any of the following:
 
 <img src="https://img.shields.io/badge/- 3.Pointcut_Declarations %20-blue" height=40px>
 
+Problem:
+* How can we reuse a pointcut expression?
+* Want to apply to multiple Advices
+
+Ideal Solution:
+1. create a pointcut declaration once
+2. Apply it to multiple advices
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
