@@ -431,7 +431,29 @@ Ideal Solution:
 1. create a pointcut declaration once
 2. Apply it to multiple advices
 
+In the code below , when we run the app, when we sent a Http Request that uses a method from the class ,
+then both @Before advices will run since they have the same @Pointcut declaration
 
+```java
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it 
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in the Advice  
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+		
+	}
+	
+	@Before(value = "forDaoPackage()")
+	public void beforeAdd() {
+		System.out.println("Exceuting the @Before Advice - beforeAdd");
+	}
+	
+	@Before(value = "forDaoPackage()")
+	public void beforePerformApiAnalytics() {
+		System.out.println("Exceuting the @Before Advice - beforePerformApiAnalytics");
+	}
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
