@@ -15,8 +15,18 @@ public class LoggingAspect {
 //	@Before(value = "execution(public void add*())")
 //	@Before(value = "execution(public * add*())")
 //	@Before(value = "execution(* add*())")
-	public void logAllMethodCallsAdvice() {
-		System.out.println("Exceuting Aspect");
+	public void beforeAddAccountAdvice() {
+		System.out.println("Exceuting Aspect : beforeAddAccountAdvice");
+	}
+
+	@Before(value = "execution(public void com.aop.dao.AccountDao.addBook(com.aop.entity.BookEntity))")
+//	@Before(value = "execution(public void com.aop.dao.*.*(*))")
+//	@Before(value = "execution(public void com.aop.dao.*.*(..))")
+//	@Before(value = "execution(public void addBook(com.aop.entity.BookEntity))")
+//	@Before(value = "execution(* addBook(com.aop.entity.BookEntity))")	
+//	@Before(value = "execution(* addBook(*))")
+//	@Before(value = "execution(* addBook(..))")
+	public void beforeAddBookAdvice() {
+		System.out.println("Exceuting Aspect : beforeAddBookAdvice");
 	}
 }
-
