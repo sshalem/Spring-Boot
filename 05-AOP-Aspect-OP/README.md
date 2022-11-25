@@ -458,6 +458,17 @@ then both @Before advices will run since they have the same @Pointcut declaratio
 	}
 ```
 
+### [Test App](#-)
+
+Run project `02-pointcut-to-multiple-advices` , sent Http Request for addAccount </br>
+Console shows both Advices run for before method addAccount()
+
+```
+Exceuting the @Before Advice - beforeAdd
+Exceuting the @Before Advice - beforePerformApiAnalytics
+class com.aop.dao.AccountDao add account
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 <img src="https://img.shields.io/badge/- 3.1. Multiple Pointcuts to Single Advice %20-yellow" height=30px>
@@ -548,6 +559,7 @@ public class AccountDao {
 
 ### [Test code](#-)
 
+run project `03-multiple-pointcuts-to-single-advice` </br>
 Let run the following code for testing which invoke the getter / setter and the addAccount methods:
 
 ```java
