@@ -604,6 +604,55 @@ To Control the Order:
 * add `@Order` annotationto Aspects
 * 
 
+<img src="https://img.shields.io/badge/- 4.1. Code before Refactoring %20-yellow" height=30px>
+
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * Example for Combining Pointcuts
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.get*(..))")
+	private void getter() {
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.set*(..))")
+	private void setter() {
+	}
+
+	/**
+	 * Combine the pointcuts : include package ... exclude getter/setter
+	 */
+	@Pointcut(value = "forDaoPackage() && !(getter() || setter())")
+	private void forDaoPackageNoGetterSetter() {
+	}
+
+	@Before(value = "forDaoPackageNoGetterSetter()")
+	public void beforeAdd() {
+		System.out.println("Exceuting the @Before Advice - beforeAdd");
+	}
+
+	@Before(value = "forDaoPackageNoGetterSetter()")
+	public void beforeApiAnalytics() {
+		System.out.println("Exceuting the @Before Advice - beforeApiAnalytics");
+	}
+
+	@Before(value = "forDaoPackageNoGetterSetter()")
+	public void beforeLogToCloudAsync() {
+		System.out.println("Exceuting the @Before Advice - beforeLogToCloudAsync");
+	}
+}
+```
+
+### [Test App before refactor](#-)
+
+Console shows that
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
