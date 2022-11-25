@@ -652,10 +652,108 @@ public class LoggingAspect {
 
 ### [Test App before refactor](#-)
 
-Console shows that
+Console shows that the order that the advices run is not consequative. (Its random)
+
+```
+class com.aop.dao.AccountDao setName()
+class com.aop.dao.AccountDao setServiceCode()
+class com.aop.dao.AccountDao getName()
+class com.aop.dao.AccountDao getServiceCode()
+Exceuting the @Before Advice - beforeAdd
+Exceuting the @Before Advice - LogToCloudAsync
+Exceuting the @Before Advice - ApiAnalytics
+class com.aop.dao.AccountDao add account
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+<img src="https://img.shields.io/badge/- 4.1. Code After Refactoring %20-yellow" height=30px>
+
+In order to overcome this, what we do is create a seperate Aspect class for each Advice, </br>
+and add the `@Order` annotation to each class.
+
+In addition I created a new class for `PointcutDeclarations`
+
+```java
+@Aspect
+@Component
+@Order(1)
+public class CloudLogAspect {
+
+	@Before(value = "com.aop.aspect.PointcutDeclarations.forDaoPackageNoGetterSetter()")
+	public void beforeLogToCloudAsync() {
+		System.out.println("Exceuting the @Before Advice - LogToCloudAsync");
+	}
+}
+
+@Aspect
+@Component
+@Order(2)
+public class LoggingAspect {
+
+	@Before(value = "com.aop.aspect.PointcutDeclarations.forDaoPackageNoGetterSetter()")
+	public void beforeAdd() {
+		System.out.println("Exceuting the @Before Advice - beforeAdd");
+	}
+}
+
+@Aspect
+@Component
+@Order(3)
+public class ApiAnalyticsAspect {
+
+	@Before(value = "com.aop.aspect.PointcutDeclarations.forDaoPackageNoGetterSetter()")
+	public void beforeApiAnalytics() {
+		System.out.println("Exceuting the @Before Advice - ApiAnalytics");
+	}
+}
+```
+
+```java
+@Aspect
+public class PointcutDeclarations {
+
+	/**
+	 * Example for Combining Pointcuts
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	public void forDaoPackage() {
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.get*(..))")
+	public void getter() {
+	}
+
+	@Pointcut(value = "execution(* com.aop.dao.*.set*(..))")
+	public void setter() {
+	}
+
+	/**
+	 * Combine the pointcuts : include package ... exclude getter/setter
+	 */
+	@Pointcut(value = "forDaoPackage() && !(getter() || setter())")
+	public void forDaoPackageNoGetterSetter() {
+	}
+}
+```
+
+### [Test App After code refactor](#-)
+
+Console shows that the order of the advices is the way we define it.
+
+```
+class com.aop.dao.AccountDao setName()
+class com.aop.dao.AccountDao setServiceCode()
+class com.aop.dao.AccountDao getName()
+class com.aop.dao.AccountDao getServiceCode()
+Exceuting the @Before Advice - LogToCloudAsync
+Exceuting the @Before Advice - beforeAdd
+Exceuting the @Before Advice - ApiAnalytics
+class com.aop.dao.AccountDao add account
+```
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---
 
 ######
