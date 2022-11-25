@@ -458,9 +458,9 @@ then both @Before advices will run since they have the same @Pointcut declaratio
 	}
 ```
 
-### [Test App]
+### [Test App](#-)
 
-Run project 02 , sent Http Request for addAccount </br>
+Run project `02-pointcut-to-multiple-advices` , sent Http Request for addAccount </br>
 Console shows both Advices run for before method addAccount()
 
 ```
@@ -559,6 +559,7 @@ public class AccountDao {
 
 ### [Test code](#-)
 
+run project `03-multiple-pointcuts-to-single-advice` </br>
 Let run the following code for testing which invoke the getter / setter and the addAccount methods:
 
 ```java
