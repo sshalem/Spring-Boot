@@ -778,7 +778,7 @@ Let's look in the following code example:
 
 ### [Aspect](#-)
 
-```
+```java
 @Aspect
 @Component
 public class LoggingAspect {
@@ -824,6 +824,22 @@ public class LoggingAspect {
 				System.out.println(bookEntity.getAuthor());
 			}
 		}
+	}
+}
+```
+
+### [AccountDao class](#-)
+
+```java
+@Service
+public class AccountDao {
+
+	public void addAccount() {
+		System.out.println(getClass() + " add account");
+	}
+
+	public void addBook(BookEntity bookEntity) {
+		System.out.println(getClass() + " add Book");
 	}
 }
 ```
