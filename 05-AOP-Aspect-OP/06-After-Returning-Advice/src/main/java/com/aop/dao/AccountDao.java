@@ -20,7 +20,6 @@ public class AccountDao {
 				new AccountEntity("Home", "secret"),
 				new AccountEntity("School", "Top"), 
 				new AccountEntity("Office", "classified"));		
-		
 		return accounts;
 	}
 }
