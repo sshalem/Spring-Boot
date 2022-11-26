@@ -10,6 +10,7 @@
 |  2  | [Pointcut Expressions](#2_Pointcut_Expressions)              |
 |  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
 |  4  | [Ordering Aspects](#4_Ordering_Aspects)              |
+|  5  | [Join Points](#5_JoinPoints)              |
 
 
 ###### Problem_Statement
@@ -756,9 +757,136 @@ class com.aop.dao.AccountDao add account
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---
 
-######
+###### 5_JoinPoints 
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5. Join Points %20-blue" height=40px>
+
+### Problem:
+* We we are in an Aspect (for example Loggin Aspect) , how can we access method parameters?
+
+![image](https://user-images.githubusercontent.com/36256986/204105149-8f8e380c-9358-4d4c-9208-7706ea9bc309.png)
+
+
+### Answer:
+* With `JoinPoints` we can read method arguments. </br>
+* Access and display Method Signature
+* Access and display Method Arguments.
+
+`JoinPoint` has the metadata about method call
+
+Let's look in the following code example:
+
+### [Aspect](#-)
+
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@Before(value = "forDaoPackage()")
+	public void beforeAddBook(JoinPoint joinPoint) {
+		System.out.println("Exceuting the @Before Advice - beforeAddBook");
+
+		/**
+		 * Access and Display the method signature
+		 */
+		System.out.println(" \n Access and Display the method signature ");
+		MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+
+		System.out.println("Method modifiers: " + methodSignature.getModifiers());
+		System.out.println("Method name: " + methodSignature.getName());
+		System.out.println("Method declaringType: " + methodSignature.getDeclaringType());
+		System.out.println("Method method: " + methodSignature.getMethod());
+		System.out.println("Method returnType: " + methodSignature.getReturnType());
+
+		/**
+		 * Access and Display the method Arguments
+		 */
+		
+		System.out.println(" \n Access and Display the method Arguments ");
+		Object[] args = joinPoint.getArgs();
+		for (Object obj : args) {
+			System.out.println(obj);
+
+			if (obj instanceof BookEntity) {
+				BookEntity bookEntity = (BookEntity) obj;
+				System.out.println(bookEntity.getName());
+				System.out.println(bookEntity.getAuthor());
+			}
+		}
+	}
+}
+```
+
+### [AccountDao class](#-)
+
+```java
+@Service
+public class AccountDao {
+
+	public void addAccount() {
+		System.out.println(getClass() + " add account");
+	}
+
+	public void addBook(BookEntity bookEntity) {
+		System.out.println(getClass() + " add Book");
+	}
+}
+```
+
+### [BookEntity class](#-)
+
+```java
+public class BookEntity {
+
+	private String name;
+	private String author;
+
+	public BookEntity() {
+		super();
+	}
+
+	public BookEntity(String name, String author) {
+		super();
+		this.name = name;
+		this.author = author;
+	}
+	
+	G/S/ToString
+}
+```
+
+### [Test the app](#-)
+
+Run project 05-join-points and sent a POST request via POstman to url of `localhost:8080/aop/book` </br>
+console shows the following :
+
+```
+Exceuting the @Before Advice - beforeAddBook
+ 
+ Access and Display the method signature 
+Method modifiers: 1
+Method name: addBook
+Method declaringType: class com.aop.dao.AccountDao
+Method method: public void com.aop.dao.AccountDao.addBook(com.aop.entity.BookEntity)
+Method returnType: void
+ 
+ Access and Display the method Arguments 
+BookEntity [name=harrie potter, author=J.K.Roling]
+harrie potter
+J.K.Roling
+class com.aop.dao.AccountDao add Book
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
