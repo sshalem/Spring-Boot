@@ -769,8 +769,15 @@ class com.aop.dao.AccountDao add account
 
 ### Answer:
 * With `JoinPoints` we can read method arguments. </br>
+* Access and display Method Signature
+* Access and display Method Arguments.
 
+`JoinPoint` has the metadata about method call
 
+```java
+@Before("...")
+public void beforeAddAccount
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
