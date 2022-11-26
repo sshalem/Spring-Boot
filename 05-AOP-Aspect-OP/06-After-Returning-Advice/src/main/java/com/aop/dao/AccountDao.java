@@ -19,7 +19,7 @@ public class AccountDao {
 		List<AccountEntity> accounts = Arrays.asList(
 				new AccountEntity("Home", "secret"),
 				new AccountEntity("School", "Top"), 
-				new AccountEntity("Office", "classified"));		
+				new AccountEntity("Office", "classified"));
 		return accounts;
 	}
 }

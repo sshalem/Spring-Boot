@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aop.dao.AccountDao;
+import com.aop.entity.AccountEntity;
 
 @RestController
 @RequestMapping("/aop")
@@ -18,7 +19,9 @@ public class AccountController {
 
 	@GetMapping(path = "/findAccounts")
 	public List<?> findAccounts() {
-		return accountDao.findAccounts();
+		List<AccountEntity> accounts = accountDao.findAccounts();
+		System.out.println(accounts);
+		return accounts;
 	}
 
 }

@@ -44,7 +44,6 @@ public class LoggingAspect {
 		 */
 
 		result.forEach(res -> res.setLevel("UnKnown"));
-
 	}
 
 }
