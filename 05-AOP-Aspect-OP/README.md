@@ -761,6 +761,15 @@ class com.aop.dao.AccountDao add account
 
 <img src="https://img.shields.io/badge/- 5. Join Points %20-blue" height=40px>
 
+### Problem:
+* We we are in an Aspect (for example Loggin Aspect) , how can we access method parameters?
+
+![image](https://user-images.githubusercontent.com/36256986/204105149-8f8e380c-9358-4d4c-9208-7706ea9bc309.png)
+
+
+### Answer:
+* With `JoinPoints` we can read method arguments. </br>
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
