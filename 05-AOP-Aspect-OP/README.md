@@ -11,6 +11,7 @@
 |  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
 |  4  | [Ordering Aspects](#4_Ordering_Aspects)              |
 |  5  | [Join Points](#5_JoinPoints)              |
+|  6  | [AfterReturning Advice](#6_After_Returning_Advice)              |
 
 
 ###### Problem_Statement
@@ -887,6 +888,30 @@ harrie potter
 J.K.Roling
 class com.aop.dao.AccountDao add Book
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+###### 6_After_Returning_Advice
+
+<img src="https://img.shields.io/badge/- 6. After_Returning_Advice %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
