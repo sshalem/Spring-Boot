@@ -10,6 +10,7 @@
 |  2  | [Pointcut Expressions](#2_Pointcut_Expressions)              |
 |  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
 |  4  | [Ordering Aspects](#4_Ordering_Aspects)              |
+|  5  | [Join Points](#5_JoinPoints)              |
 
 
 ###### Problem_Statement
@@ -756,9 +757,11 @@ class com.aop.dao.AccountDao add account
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---
 
-######
+###### 5_JoinPoints 
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5. Join Points %20-blue" height=40px>
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
