@@ -868,6 +868,7 @@ public class BookEntity {
 
 ### [Test the app](#-)
 
+Run project 05-join-points and sent a POST request via POstman to url of `localhost:8080/aop/book` </br>
 console shows the following :
 
 ```
