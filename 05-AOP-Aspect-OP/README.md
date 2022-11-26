@@ -897,6 +897,82 @@ class com.aop.dao.AccountDao add Book
 
 <img src="https://img.shields.io/badge/- 6. After_Returning_Advice %20-blue" height=40px>
 
+`@AfterReturning` is an advice type, which ensures that an advice runs after the method executes successfully. </br>
+We can also do Post Processing data after the execution of the method. 
+
+Let's look in the following code example , where I return a List<AccountEntity>:
+
+### [Aspect](#-)
+
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@Before(value = "forDaoPackage()")
+	public void beforeAddBook(JoinPoint joinPoint) {
+		System.out.println("Exceuting the @Before Advice - beforeAddAccount");
+	}
+
+	@AfterReturning(pointcut = "forDaoPackage()", returning = "result")
+	public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<AccountEntity> result) {
+
+		System.out.println(" \nafterReturningFindAccountsAdvice ");
+
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println(method);
+
+		/**
+		 * Post Processing data
+		 * We cannot Add or remove form the List , but we can modify the data in it
+		 */
+
+		result.forEach(res -> res.setLevel("UnKnown"));
+
+	}
+}
+```
+
+### [AccountDao class](#-)
+
+```java
+@Service
+public class AccountDao {
+
+	public void addAccount(AccountEntity accountEntity) {
+		System.out.println(getClass() + " add Account");
+	}
+
+	public List<AccountEntity> findAccounts() {
+
+		List<AccountEntity> accounts = Arrays.asList(
+				new AccountEntity("Home", "secret"),
+				new AccountEntity("School", "Top"), 
+				new AccountEntity("Office", "classified"));		
+		return accounts;
+	}
+}
+```
+
+### [Test the app](#-)
+
+Run project `06-After-Returning-Advice` and sent a GET request via POstman to url of `localhost:8080/aop/findAccounts` </br>
+console shows the following , the data returned is after it is modified in the `@AfterReturning` Advice method:
+
+```
+[AccountEntity [name=Home, level=UnKnown], AccountEntity [name=School, level=UnKnown], AccountEntity [name=Office, level=UnKnown]]
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
