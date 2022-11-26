@@ -774,7 +774,7 @@ class com.aop.dao.AccountDao add account
 
 `JoinPoint` has the metadata about method call
 
-Let's llok in the following code example:
+Let's look in the following code example:
 
 ### [Aspect](#-)
 
