@@ -774,9 +774,101 @@ class com.aop.dao.AccountDao add account
 
 `JoinPoint` has the metadata about method call
 
+Let's llok in the following code example:
+
+### [Aspect](#-)
+
+```
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@Before(value = "forDaoPackage()")
+	public void beforeAddBook(JoinPoint joinPoint) {
+		System.out.println("Exceuting the @Before Advice - beforeAddBook");
+
+		/**
+		 * Access and Display the method signature
+		 */
+		System.out.println(" \n Access and Display the method signature ");
+		MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+
+		System.out.println("Method modifiers: " + methodSignature.getModifiers());
+		System.out.println("Method name: " + methodSignature.getName());
+		System.out.println("Method declaringType: " + methodSignature.getDeclaringType());
+		System.out.println("Method method: " + methodSignature.getMethod());
+		System.out.println("Method returnType: " + methodSignature.getReturnType());
+
+		/**
+		 * Access and Display the method Arguments
+		 */
+		
+		System.out.println(" \n Access and Display the method Arguments ");
+		Object[] args = joinPoint.getArgs();
+		for (Object obj : args) {
+			System.out.println(obj);
+
+			if (obj instanceof BookEntity) {
+				BookEntity bookEntity = (BookEntity) obj;
+				System.out.println(bookEntity.getName());
+				System.out.println(bookEntity.getAuthor());
+			}
+		}
+	}
+}
+```
+
+### [BookEntity class](#-)
+
 ```java
-@Before("...")
-public void beforeAddAccount
+public class BookEntity {
+
+	private String name;
+	private String author;
+
+	public BookEntity() {
+		super();
+	}
+
+	public BookEntity(String name, String author) {
+		super();
+		this.name = name;
+		this.author = author;
+	}
+	
+	G/S/ToString
+}
+```
+
+### [Test the app](#-)
+
+console shows the following :
+
+```
+Exceuting the @Before Advice - beforeAddBook
+ 
+ Access and Display the method signature 
+Method modifiers: 1
+Method name: addBook
+Method declaringType: class com.aop.dao.AccountDao
+Method method: public void com.aop.dao.AccountDao.addBook(com.aop.entity.BookEntity)
+Method returnType: void
+ 
+ Access and Display the method Arguments 
+BookEntity [name=harrie potter, author=J.K.Roling]
+harrie potter
+J.K.Roling
+class com.aop.dao.AccountDao add Book
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
