@@ -42,7 +42,10 @@ this creates 2 main problems:
 
 This is where [`AOP - Aspect Oriented Programming`](#-) comes into place 
 
-## great explanation from [javatpoint](https://www.javatpoint.com/spring-boot-aop)  https://www.javatpoint.com/spring-boot-aop
+## great explanation from 
+1. [javatpoint](https://www.javatpoint.com/spring-boot-aop)  https://www.javatpoint.com/spring-boot-aop
+2. https://reflectoring.io/aop-spring/
+
 
 The application is generally developed with multiple layers. A typical Java application has the following layers:
 * [Web Layer:](#-) It exposes the services using the REST or web application.
@@ -108,10 +111,11 @@ The **cross-cutting concern** can now be modularized into special classes, calle
 <img src="https://img.shields.io/badge/- AOP Terminology %20-blue" height=30px>
 
 [Aspect](#-) </br>
-An aspect is a [module that encapsulates **_advice_** and **_pointcuts_** and provides **_cross-cutting_** ](#-) An application can have any number of aspects. We can implement an aspect using regular class annotated with **_@Aspect annotation._** </br>
+Aspect is a class in which we define Pointcuts and Advices.
 
 [Pointcut](#-) </br>
-A pointcut is an  [predicate expression for where that selects one or more join points where **_advice_** is executed (should be applied)](#-). We can define pointcuts using **_expressions_** or **_patterns_**. It uses different kinds of expressions that matched with the join points. In Spring Framework, **_AspectJ_** pointcut expression language is used.
+A Pointcut is an expression that defines at what JoinPoints a given Advice should be applied. </br>
+In Spring Framework, **_AspectJ_** pointcut expression language is used.
 
 [Join point](#-) </br> 
 [When to apply code during program execution.](#-) A join point is a point in the application where we apply an **_AOP aspect_** . Or it is a specific execution instance of an advice. In AOP, join point can be a **_method execution, exception handling, changing object variable value,_**  etc.
@@ -131,11 +135,12 @@ Regarding performance : run-time Weaving is the slowest
 <img src="https://img.shields.io/badge/- AOP_Advices_Types %20-blue" height=30px>
 
 There are five types of AOP advices are as follows:
-1. [Before Advice](#-) - run before the methodAn advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
-2. [After Advice](#-) / [After finally Advice](#-)  - run after the method (Finally). An advice that executes after a join point, is called after advice. We use @After annotation to mark an advice as After advice.
-3. [Around Advice](#-) An advice that executes before and after of a join point, is called around advice.
+1. [Before Advice](#-) - run before the method . An advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice. 
+2. [After Advice](#-) / [After finally Advice](#-)  - An advice that executes after a join point, is called after advice. This advice is run after the method finishes running, this could be by normally returning or by throwing an exception.
+3. [After Returning Advice](#-) An advice that executes when a method executes successfully.
 4. [After Throwing Advice](#-) An advice that executes when a join point throws an exception.
-5. [After Returning Advice](#-) An advice that executes when a method executes successfully.
+5. [Around Advice](#-) An advice that executes before and after of a join point, is called around advice.
+
 
 <img src="https://img.shields.io/badge/- Spring_AOP_vs_AspectJ %20-blue" height=30px>
 
@@ -201,6 +206,7 @@ Disadvanteges
 <img src="https://img.shields.io/badge/- 1. Before_Advice %20-blue" height=40px>
 
 Lets see how AOP works, by creating a simple app with a service and controller layers. </br>
+
 1. Add the relevent Dependency
 2. Add the annotation needed in the Main App 
 3. Create the Aspect class with the relevent advices.
