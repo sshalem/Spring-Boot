@@ -11,7 +11,8 @@
 |  3  | [Pointcut Declarations](#3_Pointcut_Declarations)              |
 |  4  | [Ordering Aspects](#4_Ordering_Aspects)              |
 |  5  | [Join Points](#5_JoinPoints)              |
-|  6  | [AfterReturning Advice](#6_After_Returning_Advice)              |
+|  6  | [After Returning Advice](#6_After_Returning_Advice)              |
+|  7  | [After Throwing Advice](#7_After_Throwing_Advice)              |
 
 
 ###### Problem_Statement
@@ -984,10 +985,11 @@ console shows the following , the data returned is after it is modified in the `
 
 ---
 
-######
+###### 7_After_Throwing_Advice
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 7. After_Throwing_Advice %20-blue" height=40px>
 
+	
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
