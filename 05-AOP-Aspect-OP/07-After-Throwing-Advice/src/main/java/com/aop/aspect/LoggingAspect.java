@@ -3,7 +3,6 @@ package com.aop.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +20,6 @@ public class LoggingAspect {
 
 	}
 
-	@Before(value = "forDaoPackage()")
-	public void beforeAddBook(JoinPoint joinPoint) {
-		System.out.println("Exceuting the @Before Advice - beforeAddAccount");
-	}
-
 	@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")
 	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex) {
 
@@ -34,7 +28,6 @@ public class LoggingAspect {
 		String method = joinPoint.getSignature().toShortString();
 		System.out.println("execution method @After Throwing : " + method);
 		System.out.println("the exception is " + ex);
-		
-	}
 
+	}
 }

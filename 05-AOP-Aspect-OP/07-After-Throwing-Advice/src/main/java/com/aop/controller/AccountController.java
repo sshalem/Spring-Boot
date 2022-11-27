@@ -28,7 +28,7 @@ public class AccountController {
 			accounts = accountDao.findAccounts(trigger);
 			return accounts;
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			System.out.println(ex.getMessage());
 			return null;
 		}
 	}
