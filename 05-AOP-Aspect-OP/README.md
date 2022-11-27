@@ -908,7 +908,7 @@ class com.aop.dao.AccountDao add Book
 We can also do Post Processing data after the execution of the method, meaning we can modify the data, But not to add someting new.
 Pay attention , with `@AfterReturning` method , we must retun void.
 
-Let's look in the following code example , where I return a List<AccountEntity>:
+Let's look in the following code example , where I return a List[AccountEntity]:
 
 ### [Aspect](#-)
 
@@ -988,8 +988,16 @@ console shows the following , the data returned is after it is modified in the `
 ###### 7_After_Throwing_Advice
 
 <img src="https://img.shields.io/badge/- 7. After_Throwing_Advice %20-blue" height=40px>
-
 	
+This advice wiil runs after the method, IF an exception is thrown. </br>
+Use cases:
+* Log the exception
+* Perfrom auditing on the exception
+* Notify DevOps team via email or SMS
+* Encapsulates this funtionality in AOP aspect for easy reuse.
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
