@@ -1088,6 +1088,11 @@ the exception is java.lang.RuntimeException: I am triggered ....
 This advice is run after the method finishes running , after success or a failure. </br>
 `@After` advice runs regardless success or failure (finally).
 
+`@After` advice use cases:
+* Log the exception and/or perform auditing
+* Code to run regardless of method outcome
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
