@@ -13,6 +13,7 @@
 |  5  | [Join Points](#5_JoinPoints)              |
 |  6  | [After Returning Advice](#6_After_Returning_Advice)              |
 |  7  | [After Throwing Advice](#7_After_Throwing_Advice)              |
+|  8  | [After Advice](#8_After_Advice)              |
 
 
 ###### Problem_Statement
@@ -1080,9 +1081,11 @@ the exception is java.lang.RuntimeException: I am triggered ....
 
 ---
 
-######
+###### 8_After_Advice
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 8. After_Advice %20-blue" height=40px>
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
