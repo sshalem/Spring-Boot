@@ -998,6 +998,11 @@ Use cases:
 
 ### [Aspect](#-)
 
+In the Aspect class we need to add `@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")` </br>
+In the method argumetns we need to add `Throwable ex` </br>
+
+
+
 ```java
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
