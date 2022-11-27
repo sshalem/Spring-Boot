@@ -897,8 +897,9 @@ class com.aop.dao.AccountDao add Book
 
 <img src="https://img.shields.io/badge/- 6. After_Returning_Advice %20-blue" height=40px>
 
-`@AfterReturning` is an advice type, which ensures that an advice runs after the method executes successfully. </br>
-We can also do Post Processing data after the execution of the method. 
+`@AfterReturning` is an advice type, which ensures that an advice runs after the method executes [successfully](#-). </br>
+We can also do Post Processing data after the execution of the method, meaning we can modify the data, But not to add someting new.
+Pay attention , with `@AfterReturning` method , we must retun void.
 
 Let's look in the following code example , where I return a List<AccountEntity>:
 
