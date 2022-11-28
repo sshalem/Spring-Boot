@@ -1092,6 +1092,12 @@ This advice is run after the method finishes running , after success or a failur
 * Log the exception and/or perform auditing
 * Code to run regardless of method outcome
 
+In the diagram below , the @After advice describes that we will always run.
+Result will be :
+1. success
+2. Failure By throwing exception
+
+![image](https://user-images.githubusercontent.com/36256986/204294672-008efb18-5d9f-4052-98f4-7876d0e6b6f1.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
