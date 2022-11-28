@@ -31,7 +31,7 @@ Get the Spring Socumentation the following way:
 1. got to Spring.io 
 2. in the tab of Projects -> Spring Boot
 
-<img src="https://user-images.githubusercontent.com/36256986/204348613-ef12a22d-b77a-4330-8a07-3a159df4a94c.png" alt="alt text" width="500px" height="300px">
+<img src="https://user-images.githubusercontent.com/36256986/204348613-ef12a22d-b77a-4330-8a07-3a159df4a94c.png" alt="alt text" width="600px" height="300px">
 
 ![image](https://user-images.githubusercontent.com/36256986/204348613-ef12a22d-b77a-4330-8a07-3a159df4a94c.png)
 
