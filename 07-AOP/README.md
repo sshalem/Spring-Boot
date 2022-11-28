@@ -1099,8 +1099,9 @@ Result will be :
 
 ![image](https://user-images.githubusercontent.com/36256986/204294672-008efb18-5d9f-4052-98f4-7876d0e6b6f1.png)
 
-Starting with Spring 5.2.7:
-* if advice methods defined in the same @Aspect class that need to run at the same join point, </br> The @After advice method is invoked [**_AFTER_**](#-) any **@AfterReturning** or **@AfterThrowing** advice methods in the [**_same_**](#-) aspect class
+### Starting with Spring 5.2.7:
+
+* if advice methods defined in the same [@Aspect](#-) class that need to run at the same join point, </br> The [@After](#-) advice method is invoked [**_AFTER_**](#-) any **@AfterReturning** or **@AfterThrowing** advice methods in the [**_same_**](#-) aspect class
 
 - Let's take a look in the example we have. 
 - So in our case, the @After and @AfterThrowing are in the same aspect class: LoggingAspect.java, hence in latest Spring 5.2.7, the @After will run AFTER the @AfterThrowing.
