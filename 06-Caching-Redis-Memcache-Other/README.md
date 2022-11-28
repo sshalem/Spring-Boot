@@ -14,6 +14,18 @@
 
 Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=Saggu
 
+Supporting caching providers:
+
+* Generic
+* JCache (JSR-107) (EhCache 3, Hazelcast, Infinispan, and others)
+* EhCache 2.x
+* Hazelcast
+* Infinispan
+* Couchbase
+* Redis
+* Caffeine
+* Simple
+* None
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
