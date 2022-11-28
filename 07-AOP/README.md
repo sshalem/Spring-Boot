@@ -1107,6 +1107,24 @@ Result will be :
 - So in our case, the @After and @AfterThrowing are in the same aspect class: LoggingAspect.java, hence in latest Spring 5.2.7, the @After will run AFTER the @AfterThrowing.
 
 
+### [Test the app](#-)
+
+Run project `08-After-Advice` and sent a GET request via Postman to url of `localhost:8080/aop/findAccounts` </br>
+
+Console shows the sequence of methods invoke:
+1. first the @AfterThrowing Advice 
+2. second invoked is @After advice
+
+```
+ afterThrowingFindAccountsAdvice 
+execution method @AfterThrowing Advice: AccountDao.findAccounts(..)
+the exception is java.lang.RuntimeException: I am triggered ....
+ 
+ afterFinallyFindAccountsAdvice
+execution method @After (finally) advice : AccountDao.findAccounts(..)
+I am triggered ....
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
