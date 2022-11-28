@@ -33,7 +33,7 @@ Get the Spring Socumentation the following way:
 
 <img src="https://user-images.githubusercontent.com/36256986/204348613-ef12a22d-b77a-4330-8a07-3a159df4a94c.png" alt="alt text" width="600px" height="300px">
 
-3. Click on the link of DOC as shown in the picture
+3. For version 2.7.6 click on the DOC as shown in the picture
 
 <img src="https://user-images.githubusercontent.com/36256986/204348821-3c70c8fb-2431-408b-bdbb-7f0e0a54eabd.png" alt="alt text" width="500px" height="400px">
 
@@ -42,10 +42,7 @@ For Spring boot Reference Guid version 2.6.13:
 * https://docs.spring.io/spring-boot/docs/2.6.x/reference/htmlsingle/
 * https://docs.spring.io/spring-boot/docs/2.6.13/reference/html/application-properties.html#appendix.application-properties
 
-For comparing with Spring boot 2.0.9
-* https://docs.spring.io/spring-boot/docs/2.0.9.RELEASE/reference/htmlsingle/#common-application-properties
 
-![image](https://user-images.githubusercontent.com/36256986/200140510-7a252694-ba9b-43e8-8c3e-ccc4149facaf.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
