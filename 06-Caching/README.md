@@ -37,7 +37,8 @@ Supporting caching providers:
 
 <img src="https://img.shields.io/badge/- 2_Redis_Cache %20-blue" height=40px>
 
-https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99
+https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99  </br>
+https://www.youtube.com/watch?v=6mtu_dFxm28&ab_channel=TechNuggets
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
