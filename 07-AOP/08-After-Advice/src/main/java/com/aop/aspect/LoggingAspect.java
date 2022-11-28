@@ -1,6 +1,7 @@
 package com.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -20,13 +21,21 @@ public class LoggingAspect {
 
 	}
 
+	@After(value = "execution(* com.aop.dao.*.*(..))")
+	public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
+		System.out.println(" \n afterFinallyFindAccountsAdvice");
+
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println("execution method @After (finally) advice : " + method);
+	}
+	
 	@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")
 	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex) {
 
 		System.out.println(" \nafterThrowingFindAccountsAdvice ");
 
 		String method = joinPoint.getSignature().toShortString();
-		System.out.println("execution method @After Throwing : " + method);
+		System.out.println("execution method @AfterThrowing Advice: " + method);
 		System.out.println("the exception is " + ex);
 
 	}

@@ -20,7 +20,7 @@ public class AccountController {
 	@GetMapping(path = "/findAccounts")
 	public List<?> findAccounts() {
 
-		boolean trigger = true;
+		boolean trigger = false;
 
 		List<AccountEntity> accounts = null;
 
