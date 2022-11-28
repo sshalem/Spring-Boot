@@ -1092,19 +1092,17 @@ This advice is run after the method finishes running , after success or a failur
 * Log the exception and/or perform auditing
 * Code to run regardless of method outcome
 
-* In the Sequence diagram below , the @After advice describes that we will always run.
-Result will be :
-1. success
-2. Failure By throwing exception
-
-![image](https://user-images.githubusercontent.com/36256986/204294672-008efb18-5d9f-4052-98f4-7876d0e6b6f1.png)
-
 ### Starting with Spring 5.2.7:
 
 * if advice methods defined in the same [@Aspect](#-) class that need to run at the same join point, </br> The [@After](#-) advice method is invoked [**_AFTER_**](#-) any **@AfterReturning** or **@AfterThrowing** advice methods in the [**_same_**](#-) aspect class
 
 - Let's take a look in the example we have. 
 - So in our case, the @After and @AfterThrowing are in the same aspect class: LoggingAspect.java, hence in latest Spring 5.2.7, the @After will run AFTER the @AfterThrowing.
+
+* See the Sequence diagram below
+
+![image](https://user-images.githubusercontent.com/36256986/204376639-6bd0ec75-7567-47df-a756-32fc157c208f.png)
+
 
 ### [Aspect](#-)
 
