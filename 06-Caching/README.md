@@ -39,9 +39,11 @@ Supporting caching providers:
 
 ### [What is REDIS data?](#-)
 
+Spring Data REDIS - https://www.youtube.com/watch?v=oRGqCz8OLcM&ab_channel=JavaTechie
+
 ### [What is REDIS cachce?](#-)
 
-
+Spring Redis Cache - https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=JavaTechie
 
 several ways How to Install Redis on windows 10 
 
@@ -51,8 +53,8 @@ several ways How to Install Redis on windows 10
 
 ### How to use REDIS as Cache
 
-1. Spring Data REDIS - https://www.youtube.com/watch?v=oRGqCz8OLcM&ab_channel=JavaTechie
-2. Spring Redis Cache - https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=JavaTechie
+
+
 
 
 
