@@ -1106,10 +1106,9 @@ This advice is run after the method finishes running , after success or a failur
 
 ### [Aspect](#-)
 
-In the Aspect class we need to add `@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")` </br>
-In the method argumetns we need to add `Throwable ex` </br>
-
-
+In the Aspect class I add  `@After` advice method </br>
+Notice, I cannot add a Pointcut decalration </br>
+I can add Only a Pointcut expression.
 
 ```java
 import org.aspectj.lang.JoinPoint;
