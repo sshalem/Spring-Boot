@@ -5,6 +5,7 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
+|  2  | [Redis Cache](#2_Redis_Cache)             |
 
 
 
@@ -32,10 +33,11 @@ Supporting caching providers:
 
 ---
 
+###### 2_Redis_Cache
 
-######
+<img src="https://img.shields.io/badge/- 2_Redis_Cache %20-blue" height=40px>
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
