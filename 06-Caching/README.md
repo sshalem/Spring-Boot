@@ -5,7 +5,7 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
-|  2  | [Redis Cache](#2_Redis_Cache)             |
+|  2  | [Redis Cache vs Redis DATA](#2_Redis_Cache_vs_Redis_DATA)             |
 
 
 
@@ -33,7 +33,7 @@ Supporting caching providers:
 
 ---
 
-###### 2_Redis_Cache
+###### 2_Redis_Cache_vs_Redis_DATA
 
 <img src="https://img.shields.io/badge/- 2_Redis_Cache %20-blue" height=40px>
 
