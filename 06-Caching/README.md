@@ -43,6 +43,12 @@ several ways How to Install Redis on windows 10
 2. https://www.youtube.com/watch?v=6mtu_dFxm28&ab_channel=TechNuggets
 3. https://redis.io/docs/getting-started/installation/install-redis-on-windows/   - Since Redis only works on Linux , Redis offical doc says to install WSL
 
+### How to use REDIS as Cache
+
+https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=JavaTechie
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
