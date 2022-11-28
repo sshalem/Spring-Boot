@@ -37,6 +37,12 @@ Supporting caching providers:
 
 <img src="https://img.shields.io/badge/- 2_Redis_Cache %20-blue" height=40px>
 
+### [What is REDIS data?](#-)
+
+### [What is REDIS cachce?](#-)
+
+
+
 several ways How to Install Redis on windows 10 
 
 1. https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99  </br>
