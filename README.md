@@ -33,9 +33,13 @@ Get the Spring Socumentation the following way:
 
 <img src="https://user-images.githubusercontent.com/36256986/204348613-ef12a22d-b77a-4330-8a07-3a159df4a94c.png" alt="alt text" width="600px" height="300px">
 
-3. For version 2.7.6 click on the DOC as shown in the picture
+3. For version 2.7.6 click on the Reference DOC as shown in the picture
 
 <img src="https://user-images.githubusercontent.com/36256986/204348821-3c70c8fb-2431-408b-bdbb-7f0e0a54eabd.png" alt="alt text" width="500px" height="400px">
+
+4. Click on link of "a Single HTML page" or "a PDF"
+
+![image](https://user-images.githubusercontent.com/36256986/204350299-d117c978-3dac-458f-b477-ce81c7af08d1.png)
 
 For Spring boot Reference Guid version 2.6.13:
 
