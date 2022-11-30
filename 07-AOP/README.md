@@ -1221,7 +1221,7 @@ execution method @After (finally) advice : AccountDao.findAccounts(..)
 
 <img src="https://img.shields.io/badge/- 9. Around_Advice %20-blue" height=40px>
 
-Use cases:
+### [Use cases](#-)
 * Most common: Loggin , Auditing, Security
 * Pre-Processing and Post-Processing Data
 * Instrumentation / Profiling code:
