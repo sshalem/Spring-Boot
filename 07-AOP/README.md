@@ -1229,6 +1229,90 @@ execution method @After (finally) advice : AccountDao.findAccounts(..)
 * Managing exceptions
 	* swallow / Handle /stop exceptions
 
+
+Let's look in the following example:
+
+### [Aspect](#-)
+
+In the Aspect class I add  `@After` advice method </br>
+Notice, I cannot add a Pointcut decalration </br>
+I can add Only a Pointcut expression.
+
+```java
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@After(value = "execution(* com.aop.dao.*.*(..))")
+	public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
+		System.out.println(" \n afterFinallyFindAccountsAdvice");
+
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println("execution method @After (finally) advice : " + method);
+	}
+	
+	@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")
+	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex) {
+
+		System.out.println(" \nafterThrowingFindAccountsAdvice ");
+
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println("execution method @AfterThrowing Advice: " + method);
+		System.out.println("the exception is " + ex);
+	}
+}
+```
+
+### [AccountDao class](#-)
+
+In this class I am invoking the Exeption in purpose , in order to see the behaviour of the `@AfterThrowing` advice.
+
+```java
+@Service
+public class AccountDao {
+
+	public void addAccount(AccountEntity accountEntity) {
+		System.out.println(getClass() + " add Account");
+	}
+
+	public List<AccountEntity> findAccounts(boolean trigger) throws RuntimeException{
+
+		if(trigger)
+			throw new RuntimeException("I am triggered ....");
+		List<AccountEntity> accounts = Arrays.asList(
+				new AccountEntity("Home", "secret"),
+				new AccountEntity("School", "Top"), 
+				new AccountEntity("Office", "classified"));
+		return accounts;
+	}
+}
+```
+
+
+### [Test the app](#-)
+
+Run project `09-Around-Advice` and sent a GET request via Postman to url of `localhost:8080/aop/findAccounts` </br>
+
+```
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
