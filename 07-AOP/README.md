@@ -14,6 +14,7 @@
 |  6  | [After Returning Advice](#6_After_Returning_Advice)              |
 |  7  | [After Throwing Advice](#7_After_Throwing_Advice)              |
 |  8  | [After Advice](#8_After_Advice)              |
+|  9  | [Around Advice](#9_Around_Advice)              |
 
 
 ###### Problem_Statement
@@ -1211,6 +1212,46 @@ Console shows the sequence of methods invoke:
  afterFinallyFindAccountsAdvice
 execution method @After (finally) advice : AccountDao.findAccounts(..)
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+###### 9_Around_Advice
+
+<img src="https://img.shields.io/badge/- 9. Around_Advice %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
