@@ -1235,33 +1235,69 @@ Let's look in the following example:
 ### [Aspect](#-)
 
 In the Aspect class I add  `@Around` advice method </br>
-Notice, I cannot add a Pointcut decalration </br>
-I can add Only a Pointcut expression.
+Im using the object of `ProceedingJoinPoint`. </br>
 
 ```java
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
+	private void forDaoPackage() {
+
+	}
+
+	@Around(value = "forDaoPackage()")
+	public Object aroundAddAccount(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+		String method = proceedingJoinPoint.getSignature().toShortString();
+		System.out.println(method);
+
+		System.out.println("executing Around Method");
+		long begin = System.currentTimeMillis();
+		
+		// Execute the method we want from (com.aop.dao.*.*(..))
+		Object proceed = proceedingJoinPoint.proceed();
+		
+		long end = System.currentTimeMillis();
+		long duration = (end - begin) / 1000; // duration in seconds
+		System.out.println("Duration " + duration + "seconds");
+
+		return proceed;
+	}
+}
 ```
 
 ### [AccountDao class](#-)
 
-In this class I am invoking the Exeption in purpose , in order to see the behaviour of the `@AfterThrowing` advice.
+In this class I am adding a deley of 3 secs , only for the example so my Aspect will measure the DUration of execution (of the method).
+
 
 ```java
 @Service
 public class AccountDao {
 
-	public void addAccount(AccountEntity accountEntity) {
+	public String addAccount(AccountEntity accountEntity) {
+
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println(getClass() + " add Account");
-	}
 
-	public List<AccountEntity> findAccounts(boolean trigger) throws RuntimeException{
-
-		if(trigger)
-			throw new RuntimeException("I am triggered ....");
-		List<AccountEntity> accounts = Arrays.asList(
-				new AccountEntity("Home", "secret"),
-				new AccountEntity("School", "Top"), 
-				new AccountEntity("Office", "classified"));
-		return accounts;
+		return "Delay defined";
 	}
 }
 ```
@@ -1269,7 +1305,7 @@ public class AccountDao {
 
 ### [Test the app](#-)
 
-Run project `09-Around-Advice` and sent a GET request via Postman to url of `localhost:8080/aop/findAccounts` </br>
+Run project `09-Around-Advice` and sent a GET request via Postman to url of `localhost:8080/aop` </br>
 
 ```
 ```
