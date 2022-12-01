@@ -20,5 +20,4 @@ public class AccountDao {
 
 		return "Delay defined";
 	}
-
 }

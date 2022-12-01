@@ -26,18 +26,18 @@ public class LoggingAspect {
 		String method = proceedingJoinPoint.getSignature().toShortString();
 		System.out.println(method);
 
-		System.out.println("executing Around Method");
+		System.out.println("executing Around Advice method -- Before Proceed to the related method");
 		long begin = System.currentTimeMillis();
 		
 		// Execute the method we want from (com.aop.dao.*.*(..))
 		Object proceed = proceedingJoinPoint.proceed();
+		
+		System.out.println("return to Aspect of Around advice -- After returning from the executed method");
 		
 		long end = System.currentTimeMillis();
 		long duration = (end - begin) / 1000; // duration in seconds
 		System.out.println("Duration " + duration + "seconds");
 
 		return proceed;
-
 	}
-
 }
