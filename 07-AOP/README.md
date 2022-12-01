@@ -1321,11 +1321,27 @@ Duration 3seconds
 
 ---
 
-######
+###### 9_1_Around_Advice_Handling_Exceptions
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 9.1. Around_Advice_Handling_Exceptions %20-yellow" height=30px>
+
+In this exapmle I will show how we can handle/stop the exception . Or we can simply rethrow the exception.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 9_2_Around_Advice
+
+<img src="https://img.shields.io/badge/- 9.2. Around_Advice  %20-yellow" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 9_x_Around_Advice
+
+<img src="https://img.shields.io/badge/- 9.x. Around_Advice  %20-yellow" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 ---
 
