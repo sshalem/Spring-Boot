@@ -1308,6 +1308,11 @@ public class AccountDao {
 Run project `09-Around-Advice` and sent a GET request via Postman to url of `localhost:8080/aop` </br>
 
 ```
+AccountDao.addAccount(..)
+executing Around Advice method -- Before Proceed to the related method
+class com.aop.dao.AccountDao add Account
+return to Aspect of Around advice -- After returning from the executed method
+Duration 3seconds
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
