@@ -1234,50 +1234,11 @@ Let's look in the following example:
 
 ### [Aspect](#-)
 
-In the Aspect class I add  `@After` advice method </br>
+In the Aspect class I add  `@Around` advice method </br>
 Notice, I cannot add a Pointcut decalration </br>
 I can add Only a Pointcut expression.
 
 ```java
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
-
-@Aspect
-@Component
-public class LoggingAspect {
-
-	/**
-	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
-	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
-	 *         the Advice
-	 */
-	@Pointcut(value = "execution(* com.aop.dao.*.*(..))")
-	private void forDaoPackage() {
-
-	}
-
-	@After(value = "execution(* com.aop.dao.*.*(..))")
-	public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
-		System.out.println(" \n afterFinallyFindAccountsAdvice");
-
-		String method = joinPoint.getSignature().toShortString();
-		System.out.println("execution method @After (finally) advice : " + method);
-	}
-	
-	@AfterThrowing(pointcut = "forDaoPackage()", throwing = "ex")
-	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable ex) {
-
-		System.out.println(" \nafterThrowingFindAccountsAdvice ");
-
-		String method = joinPoint.getSignature().toShortString();
-		System.out.println("execution method @AfterThrowing Advice: " + method);
-		System.out.println("the exception is " + ex);
-	}
-}
 ```
 
 ### [AccountDao class](#-)
@@ -1330,37 +1291,3 @@ Run project `09-Around-Advice` and sent a GET request via Postman to url of `loc
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
