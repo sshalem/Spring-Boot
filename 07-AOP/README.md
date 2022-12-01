@@ -15,6 +15,8 @@
 |  7  | [After Throwing Advice](#7_After_Throwing_Advice)              |
 |  8  | [After Advice](#8_After_Advice)              |
 |  9  | [Around Advice](#9_Around_Advice)              |
+|     |9.1  [Around Advice Handling Exceptions](#9_1_Around_Advice_Handling_Exceptions) | 
+|     |9.2  [Around Advice ](#9_2_Around_Advice) | 
 
 
 ###### Problem_Statement
