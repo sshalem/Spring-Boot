@@ -24,6 +24,7 @@ public class LoggingAspect {
 	public Object aroundAddAccount(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
 		String method = proceedingJoinPoint.getSignature().toShortString();
+		System.out.println(method);
 
 		System.out.println("executing Around Method");
 		long begin = System.currentTimeMillis();
