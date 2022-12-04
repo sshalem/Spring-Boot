@@ -278,33 +278,33 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AppExceptionsHandler {
 
-	@ExceptionHandler(value = { NameAlreadyExistException.class })
-	public ResponseEntity<Object> handleUserServiceException(NameAlreadyExistException ex) {
+	@ExceptionHandler(value = { ResourceNotFoundException.class })
+	public ResponseEntity<Object> handleUserServiceException(ResourceNotFoundException ex, WebRequest request) {
 
 		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
-		
+
 		errorMessage.setTimestamp(new Date());
-		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
-		errorMessage.setException(NameAlreadyExistException.class.getName());
+		errorMessage.setStatusCode(HttpStatus.NOT_FOUND.value());
+		errorMessage.setError(HttpStatus.valueOf(HttpStatus.NOT_FOUND.value()).getReasonPhrase());
+		errorMessage.setException(ResourceNotFoundException.class.getName());
 		errorMessage.setMessage(ex.getMessage());
 		errorMessage.setUriDescription(request.getDescription(false));
 
-		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(value = { Exception.class })
-	public ResponseEntity<Object> handleOtherExceptions(Exception ex) {
+	public ResponseEntity<Object> handleOtherExceptions(Exception ex, WebRequest request) {
 
 		ExceptionErrorMessage errorMessage = new ExceptionErrorMessage();
 
 		errorMessage.setTimestamp(new Date());
-		errorMessage.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errorMessage.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		errorMessage.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
 		errorMessage.setException(ex.getClass().getCanonicalName());
-		errorMessage.setMessage(ex.getMessage());		
+		errorMessage.setMessage(ex.getMessage());
 		errorMessage.setUriDescription(request.getDescription(false));
-		
+
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
@@ -323,12 +323,18 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 }
 ```
 
-### Sending POST or GET Request via Postman gives back following result:
+### [Test the app](#-)
 
-* this is because both methods throw at service layer an exception (Same exception)
-* Thus same Exception will be throw same exception if the logic demands that
+Sending POST or GET Request via Postman gives back following result:
 
-![E_ExceptionMessage](https://user-images.githubusercontent.com/36256986/200419668-d3d1b405-7089-4765-b236-84e82751d238.png)
+Sending GET request:
+
+![image](https://user-images.githubusercontent.com/36256986/205485006-d706f519-f343-4f36-ac78-d9b6ca26b390.png)
+
+
+Sending POST request:
+
+![image](https://user-images.githubusercontent.com/36256986/205485034-21f188d4-2ff3-47ad-8b16-b9408ee30b28.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-blue" height=20px>](#_)
