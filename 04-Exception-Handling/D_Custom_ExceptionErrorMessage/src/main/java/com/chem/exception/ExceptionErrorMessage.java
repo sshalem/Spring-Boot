@@ -5,10 +5,11 @@ import java.util.Date;
 public class ExceptionErrorMessage {
 
 	private Date timestamp;
-	private int status;
+	private int statusCode;
 	private String error;
 	private String exception;
 	private String message;
+	private String uriDescription;
 
 	public ExceptionErrorMessage() {
 		super();
@@ -22,12 +23,12 @@ public class ExceptionErrorMessage {
 		this.timestamp = timestamp;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getStatusCode() {
+		return statusCode;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
 	}
 
 	public String getError() {
@@ -52,6 +53,14 @@ public class ExceptionErrorMessage {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getUriDescription() {
+		return uriDescription;
+	}
+
+	public void setUriDescription(String uriDescription) {
+		this.uriDescription = uriDescription;
 	}
 
 }
