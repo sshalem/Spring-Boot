@@ -16,7 +16,7 @@
 |  8  | [After Advice](#8_After_Advice)              |
 |  9  | [Around Advice](#9_Around_Advice)              |
 |     |9.1  [Around Advice Handling Exceptions](#9_1_Around_Advice_Handling_Exceptions) | 
-|  10 | [A](#10)              |
+|  10 | [Annotation](#10_annotation)              |
 
 
 ###### Problem_Statement
@@ -1345,8 +1345,114 @@ In this exapmle I will show how we can handle/stop the exception . Or we can sim
 
 ---
 
+###### 10_annotation
+
+<img src="https://img.shields.io/badge/- 10. Annotation %20-blue" height=40px>
+
+In previous examples we used the `execution` for the pointcut expression. </br>
+Let's see how we can use `@annotaion` in the expression.
+
+### @annotaion
+
+This is used to match method annotated with a given annotation. </br>
+Meaning , the Aspect will run according the annotation we want. </br>
+Let's look in the example below.
+
+### @Log annotation
+
+let's create a Log annotation 
+
+```java
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+@Retention(RUNTIME)
+@Target(METHOD)
+public @interface Log {
+}
+```
+
+### [Aspect](#-)
+
+In the Aspect class I add a pointcut declaration with annotation :  `@Pointcut("@annotation(com.aop.annotation.Log)")`  </br>
+Im using the Before advice . </br>
+
+```java
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+	/**
+	 * @Pointcut - Pointcut declarations , adding the pointcut expression in it
+	 * @Before - add the Pointcut declaration , as an expression 'forDaoPackage' in
+	 *         the Advice
+	 */
+	@Pointcut("@annotation(com.aop.annotation.Log)")
+	public void logPointcut() {
+	}
+
+	@Before("logPointcut()")
+	public void logAllMethodCallsAdvice() {
+		System.out.println("@Log annotation In Aspect");
+	}
+}
+```
+
+### [AccountDao class](#-)
+
+In here, I add the `@Log` annotation to the method.
+
+```java
+@Service
+public class AccountDao {
+
+	@Log
+	public String addAccount() {
+		System.out.println("execute add account");
+		return "exeuted";
+	}
+}
+```
+
+
+### [Test the app](#-)
+
+Run project `10-annotation-within` and sent a Post request via Postman to url of `localhost:8080/aop` </br>
+
+We can see that the method with the annotaion `@Log` is incoked in the Aspect
+
+```
+@Log annotation In Aspect
+execute add account
+```
+
+### 
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---
+
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+---
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
