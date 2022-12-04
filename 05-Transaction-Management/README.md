@@ -49,11 +49,28 @@ The concept of transactions can be described with the following four key propert
 
 ### [Types of read](#-)
 
+https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
+
 1. Dirty Reads
 2. non-repeatable reads
 3. phantom reads
 
+![image](https://user-images.githubusercontent.com/36256986/205519631-5720174e-5b07-4aa6-95d7-e978bb3dbffd.png)
 
+### [Transaction Isolation Levels](#-)
+
+https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
+
+1. ISOLATION_DEFAULT
+2. ISOLATION_READ_COMMITTED
+3. ISOLATION_READ_UNCOMMITTED
+4. ISOLATION_REPEATABLE_READ
+5. ISOLATION_SERIALIZABLE
+
+![image](https://user-images.githubusercontent.com/36256986/205519380-d43007d2-79ed-4006-9c31-07c118a87dda.png)
+
+
+### [Transaction Propagation Levels](#-)
 
 
 
