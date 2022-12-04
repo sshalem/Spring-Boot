@@ -19,7 +19,7 @@ public class CustomerService {
 
 	public UserEntity createUser(UserEntity userEntity) {
 		if (userEntity.getFirstName().equals("karin")) {
-			throw new ResourceNotFoundException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+			throw new NullPointerException(ErrorMessages.INTERNAL_SERVER_ERROR.getErrorMessage());
 		}
 		return userEntity;
 	}
