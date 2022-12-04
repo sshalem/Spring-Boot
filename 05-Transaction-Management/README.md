@@ -61,11 +61,11 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
 
-1. ISOLATION_DEFAULT
-2. ISOLATION_READ_COMMITTED
-3. ISOLATION_READ_UNCOMMITTED
-4. ISOLATION_REPEATABLE_READ
-5. ISOLATION_SERIALIZABLE
+1. ISOLATION_DEFAULT 
+2. ISOLATION_READ_COMMITTED - Indicates that dirty reads are prevented; non-repeatable reads and phantom reads can occur.
+3. ISOLATION_READ_UNCOMMITTED - Indicates that dirty reads, non-repeatable reads, and phantom reads can occur.
+4. ISOLATION_REPEATABLE_READ - Indicates that dirty reads and non-repeatable reads are prevented; phantom reads can occur.
+5. ISOLATION_SERIALIZABLE - Indicates that dirty reads, non-repeatable reads, and phantom reads are prevented.
 
 ![image](https://user-images.githubusercontent.com/36256986/205519380-d43007d2-79ed-4006-9c31-07c118a87dda.png)
 
