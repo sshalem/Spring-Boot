@@ -1,10 +1,10 @@
 package com.cachem.exception;
 
-public class NameAlreadyExistException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = -6209521422884301225L;
 
-	public NameAlreadyExistException(String msg) {
+	public ResourceNotFoundException(String msg) {
 		super(msg);
 	}
 }
