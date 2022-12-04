@@ -16,8 +16,8 @@
 
 <img src="https://img.shields.io/badge/- 1. Transaction_Management_in_Depth %20-blue" height=40px>
 
-1. https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth </br>
-2. (Great Linke well explained) https://www.tutorialspoint.com/spring/spring_transaction_management.htm </br> 
+1. [spring-transaction-management-transactional-in-depth](https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth)
+2. [Great Link well explained from Tutorial Point](https://www.tutorialspoint.com/spring/spring_transaction_management.htm)
 3. [Great video](https://www.youtube.com/watch?v=1fQtFALX80w&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&ab_channel=KKJavaTutorials)
 
 
