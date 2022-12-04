@@ -18,7 +18,7 @@
 
 1. https://www.marcobehler.com/guides/spring-transaction-management-transactional-in-depth </br>
 2. (Great Linke well explained) https://www.tutorialspoint.com/spring/spring_transaction_management.htm </br> 
-3. Great video https://www.youtube.com/watch?v=1fQtFALX80w&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&ab_channel=KKJavaTutorials
+3. [Great video](https://www.youtube.com/watch?v=1fQtFALX80w&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&ab_channel=KKJavaTutorials)
 
 
 A database transaction is a sequence of actions that are treated as a single unit of work.</br>
