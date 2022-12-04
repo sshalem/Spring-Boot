@@ -266,6 +266,41 @@ In this project (E) we will see how to centrolize all exceptions in one class.</
 1. For that I created a new Class named it **_AppExceptionsHandler_** (see the annotations I added to the class </br>
 2. I remove the try/catch clause in my controller , because it will be handled by the **_AppExceptionsHandler_**
 
+
+### _Service layer_
+
+* If getName() failes it will throw ResourceNotFoundException 
+* If createUser() fails it will throw NullPointerException
+* Check the Excpetion Handler how I take care of these exceptions, see the differences in the 
+
+```java
+// for ResourceNotFoundException
+errorMessage.setException(ResourceNotFoundException.class.getName());
+// for all other Exception i use getCanonicalName()
+errorMessage.setException(ex.getClass().getCanonicalName());
+```
+
+```java
+@Component
+public class CustomerService {
+
+	private final String NAME = "unknown";
+
+	public String getName(String name) {
+		if (!name.equals(this.NAME))
+			throw new ResourceNotFoundException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+		return name;
+	}
+
+	public UserEntity createUser(UserEntity userEntity) {
+		if (userEntity.getFirstName().equals("karin")) {
+			throw new NullPointerException(ErrorMessages.INTERNAL_SERVER_ERROR.getErrorMessage());
+		}
+		return userEntity;
+	}
+}
+```
+
 ### _AppExceptionsHandler_
 
 ```java
@@ -312,6 +347,8 @@ public class AppExceptionsHandler {
 
 ### _Controller w/o try/catch clause_
 
+we can see that our controoler is w/o any try/catch clause
+
 ```java
 /**
  * Since I have AppExceptionsHandler who handles all Exceptions for my Rest API
@@ -327,12 +364,16 @@ public ResponseEntity<Object> createUser(@RequestBody UserEntity userEntity) {
 
 Sending POST or GET Request via Postman gives back following result:
 
-Sending GET request:
+### Sending GET request:
+
+we can see that we got 404 from server with the description of the error. </br>
 
 ![image](https://user-images.githubusercontent.com/36256986/205485006-d706f519-f343-4f36-ac78-d9b6ca26b390.png)
 
 
 Sending POST request:
+
+we can see that we got 500 from server with the description of the error. </br>
 
 ![image](https://user-images.githubusercontent.com/36256986/205485034-21f188d4-2ff3-47ad-8b16-b9408ee30b28.png)
 
