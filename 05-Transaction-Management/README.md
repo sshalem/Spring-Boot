@@ -93,20 +93,22 @@ https://www.youtube.com/watch?v=oy4VFlbH1cU&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 6. PROPAGATION_NOT_SUPPORTED
 7. PROPAGATION_SUPPORTS
 
-#### [1. PROPAGATION_REQUIRED](#-) 
+### [1. PROPAGATION_REQUIRED](#-) 
 
 Spring **REQUIRED** behavior means that the same transaction will be used if there is an already opened transaction in the current bean method execution context. </br> 
 If there is NO existing transaction the Spring container will create a new one. </br>
 If multiple methods configured as **REQUIRED** behavior are called in a nested way they will be assigned **distinct logical transactions** but they will all share the **same physical transaction**. </br>
 In short this means that if an inner method causes a transaction to rollback, the outer method will fail to commit and also rollback the transaction.
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 Let's look in the example:
 
-#### [Main Class](#-)
+#### Main Class
 
 Here we have a method with `@Transactional(propagation=Propagation.REQUIRED)` .</br>
+So :
+* Main Class has a method (Outer Method) with `@Transactional(propagation=Propagation.REQUIRED)`
+* InnerBean class has Method (Inner Method since it's called from Main Class method) with also Propagation.REQUIRED -> `@Transactional(propagation=Propagation.REQUIRED)`
+
 Inside it's method , there is a call to an inner method `innerBean.testRequired()` , which is also has `@Transactional(propagation=Propagation.REQUIRED)` </br>.
 In the InnerBean it throws an Exception , thus it will RollBack to the Outer Transaction. </br>
 Since Outer Trnsaction is Also `Propagation.REQUIRED` , thus Outer Transaction will also RollBack.
@@ -136,7 +138,7 @@ private InnerBean innerBean;
 }
 ```
 
-#### [InnerBean class](#-)
+#### InnerBean class
 
 ```java
  @Override
@@ -146,12 +148,20 @@ private InnerBean innerBean;
  }
 ```
 
-#### [2. PROPAGATION_REQUIRES_NEW](#-) 
+### [2. PROPAGATION_REQUIRES_NEW](#-) 
 
 REQUIRES_NEW behavior means that a new physical transaction will **always** be created by the container. </br>
 In other words the inner transaction may commit or rollback independently of the outer transaction, i.e. the outer transaction will not be affected by the inner transaction result: they will run in `distinct physical transactions`.
 
-#### [Main Class](#-)
+In the example below the :
+* Main Class has a method (Outer Method) with `@Transactional(propagation=Propagation.REQUIRED)`
+* InnerBean class has Method (Inner Method since it's called from Main Class method) with Propagation.REQUIRES_NEW
+
+The Inner Method is annotated with REQUIRES_NEW and throws a **RuntimeException** so it will set its transaction to rollback but will NOT affect the outer transaction. </br>
+The Outer transaction is paused when the inner transaction starts and then resumes after the inner transaction is concluded. </br>
+They run independently of each other so the outer transaction may commit successfully.
+
+#### Main Class
 
 ```java
 @Autowired
@@ -173,7 +183,7 @@ private InnerBean innerBean;
 }
 ```
 
-#### [InnerBean class](#-)
+#### InnerBean class
 
 ```java
  @Override
@@ -183,6 +193,9 @@ private InnerBean innerBean;
  }
 ```
 
+### [3. NESTED](#-) 
+
+The **NESTED** behavior makes 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
