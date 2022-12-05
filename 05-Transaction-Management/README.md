@@ -74,7 +74,22 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 https://www.youtube.com/watch?v=oy4VFlbH1cU&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=3&ab_channel=KKJavaTutorials
 
-1. 
+1. PROPAGATION_REQUIRED
+2. PROPAGATION_REQUIRES_NEW
+3. PROPAGATION_NESTED
+4. PROPAGATION_MANDATORY
+5. PROPAGATION_NEVER
+6. PROPAGATION_NOT_SUPPORTED
+7. PROPAGATION_SUPPORTS
+
+### [PROPAGATION_REQUIRED](#-) 
+
+Spring **REQUIRED** behavior means that the same transaction will be used if there is an already opened transaction in the current bean method execution context. </br> 
+If there is NO existing transaction the Spring container will create a new one. </br>
+If multiple methods configured as **REQUIRED** behavior are called in a nested way they will be assigned **distinct logical transactions** but they will all share the **same physical transaction**. </br>
+In short this means that if an inner method causes a transaction to rollback, the outer method will fail to commit and also rollback the transaction.
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
