@@ -51,7 +51,7 @@ The concept of transactions can be described with the following four key propert
 
 ###### Types_of_read
 
-<img src="https://img.shields.io/badge/- 1.1. Types_of_read %20-green" height=30px>
+<img src="https://img.shields.io/badge/- 1.1. Types_of_read %20-greenyellow" height=30px>
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
 
@@ -65,7 +65,7 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 ###### Transaction_Isolation_Levels
 
-<img src="https://img.shields.io/badge/- 1.2. Transaction_Isolation_Levels %20-yellow" height=30px>
+<img src="https://img.shields.io/badge/- 1.2. Transaction_Isolation_Levels %20-greenyellow" height=30px>
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
 
