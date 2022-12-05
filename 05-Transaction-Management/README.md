@@ -47,6 +47,8 @@ The concept of transactions can be described with the following four key propert
 * Another caveat of using proxies is that only public methods should be annotated with @Transactional.
 * Methods of any other visibilities will simply ignore the annotation silently as these are not proxied.
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 ### [Types of read](#-)
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
