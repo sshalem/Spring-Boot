@@ -195,7 +195,29 @@ private InnerBean innerBean;
 
 ### [3. NESTED](#-) 
 
-The **NESTED** behavior makes nested spring transactions to use the same physical transaction but sets savepoints between nested invocations so inner transactions may also rollback
+The **NESTED** behavior makes nested spring transactions to use the same physical transaction but sets savepoints between nested invocations so inner transactions may also rollback independently of outer transactions. </br>
+This may be familiar to JDBC aware developers as the savepoints are achieved with JDBC savepoints, so this behavior should only be used with Spring JDBC managed transactions.
+
+### [4. MANDATORY](#-) 
+
+The MANDATORY behavior states that an existing opened transaction must already exist. </br>
+If not,  an exception will be thrown by the container.
+
+### [5. NEVER](#-) 
+
+The NEVER behavior states that an existing opened transaction must NOT already exist. </br>
+If a transaction exists,  an exception will be thrown by the container.
+
+### [6. NOT_SUPPORTED](#-) 
+
+The NOT_SUPPORTED behavior will execute outside of the scope of any transaction. </br>
+If an opened transaction already exists it will be paused.
+
+### [7. SUPPORTS](#-) 
+
+The SUPPORTS behavior will execute in the scope  of a transaction if an opened transaction already exists. </br>
+If there isn't already opened transaction the method will exeute anyway but in a non-transactinoal way.
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
