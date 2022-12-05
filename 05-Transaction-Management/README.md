@@ -5,9 +5,9 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |  1  | [Transaction Management in Depth](#1_Transaction_Management_in_Depth)             |
-|  1  | [](#)             |
-|  1  | [](#)             |
-|  1  | [](#)             |
+|     | 1.1. [Types of read](#Types_of_read)             |
+|     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
+|     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
 
 
 
@@ -49,7 +49,9 @@ The concept of transactions can be described with the following four key propert
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-### [Types of read](#-)
+###### Types_of_read
+
+<img src="https://img.shields.io/badge/- 1.1. Types_of_readh %20-yellow" height=30px>
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
 
@@ -61,7 +63,9 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-### [Transaction Isolation Levels](#-)
+###### Transaction_Isolation_Levels
+
+<img src="https://img.shields.io/badge/- 1.2. Transaction_Isolation_Levels %20-yellow" height=30px>
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
 
@@ -75,7 +79,9 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-### [Transaction Propagation Levels](#-)
+###### Transaction_Propagation_Levels
+
+<img src="https://img.shields.io/badge/- 1.2. Transaction_Isolation_Levels %20-yellow" height=30px>
 
 https://www.youtube.com/watch?v=oy4VFlbH1cU&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=3&ab_channel=KKJavaTutorials
 
