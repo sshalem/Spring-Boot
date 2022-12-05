@@ -104,23 +104,23 @@ Since Outer Trnsaction is Also `Propagation.REQUIRED` , thus Outer Transaction w
 
 
 ```java
-	@Autowired
-	private TestDao testDao;
+@Autowired
+private TestDao testDao;
 	
-	@Autowired
-	private InnerBean innerBean;
+@Autowired
+private InnerBean innerBean;
 	
- @Override
- @Transactional(propagation=Propagation.REQUIRED)
-	public void testRequired(User user) {
-		testDao.insertUser(user);
+@Override
+@Transactional(propagation=Propagation.REQUIRED)
+    public void testRequired(User user) {
+	testDao.insertUser(user);
 		
-		try {
-			innerBean.testRequired();
-		} catch (RunTimeException ex) {
+	try {
+		innerBean.testRequired();
+	} catch (RunTimeException ex) {
 			// handle excpetion
-		}
- }
+	}
+}
 ```
 
 #### [InnerBean class](#-)
