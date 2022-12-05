@@ -125,7 +125,7 @@ Since Outer Trnsaction is Also `Propagation.REQUIRED` , thus Outer Transaction w
 
 #### [InnerBean class](#-)
 
-``java
+```java
  @Override
  @Transactional(propagation=Propagation.REQUIRED)
 	public void testRequired() {
