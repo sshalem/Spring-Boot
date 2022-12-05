@@ -82,15 +82,56 @@ https://www.youtube.com/watch?v=oy4VFlbH1cU&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 6. PROPAGATION_NOT_SUPPORTED
 7. PROPAGATION_SUPPORTS
 
-### [PROPAGATION_REQUIRED](#-) 
+### [1. PROPAGATION_REQUIRED](#-) 
 
 Spring **REQUIRED** behavior means that the same transaction will be used if there is an already opened transaction in the current bean method execution context. </br> 
 If there is NO existing transaction the Spring container will create a new one. </br>
 If multiple methods configured as **REQUIRED** behavior are called in a nested way they will be assigned **distinct logical transactions** but they will all share the **same physical transaction**. </br>
 In short this means that if an inner method causes a transaction to rollback, the outer method will fail to commit and also rollback the transaction.
 
+Let's look in the example:
+
+### [Main Class](#-)
+
+Here we have a method with `@Transactional(propagation=Propagation.REQUIRED)` .</br>
+Inside it's method , there is a call to an inner method `innerBean.testRequired()` , which is also has `@Transactional(propagation=Propagation.REQUIRED)` </br>.
+In the InnerBean it throws an Exception , thus it will RollBack to the Outer Transaction. </br>
+Since Outer Trnsaction is Also `Propagation.REQUIRED` , thus Outer Transaction will also RollBack.
+
+### Note </br>
+ * Inner Method throws **RuntimeException** and is annotated with REQUIRED behavior. This means that it will use the same transaction as the outer bean, so outer bean transaction will fail to commit and will also roll back.
+ * The only exceptions that set a transaction to rollback state by default are unchecked exceptions (like RuntimeException). If we want checked exceptions to also set transactions to rollback we must configure them to do so (this is how to do that `@Transactional(rollbackFor = Exception.class)`.
 
 
+```java
+	@Autowired
+	private TestDao testDao;
+	
+	@Autowired
+	private InnerBean innerBean;
+	
+ @Override
+ @Transactional(propagation=Propagation.REQUIRED)
+	public void testRequired(User user) {
+		testDao.insertUser(user);
+		
+		try {
+			innerBean.testRequired();
+		} catch (RunTimeException ex) {
+			// handle excpetion
+		}
+ }
+```
+
+#### [InnerBean class](#-)
+
+``java
+ @Override
+ @Transactional(propagation=Propagation.REQUIRED)
+	public void testRequired() {
+   throw new RuntimeException("Rollback this transaction");
+ }
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
