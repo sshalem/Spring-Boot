@@ -57,6 +57,8 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 ![image](https://user-images.githubusercontent.com/36256986/205519631-5720174e-5b07-4aa6-95d7-e978bb3dbffd.png)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 ### [Transaction Isolation Levels](#-)
 
 https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
@@ -69,6 +71,7 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 ![image](https://user-images.githubusercontent.com/36256986/205519380-d43007d2-79ed-4006-9c31-07c118a87dda.png)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ### [Transaction Propagation Levels](#-)
 
@@ -88,6 +91,8 @@ Spring **REQUIRED** behavior means that the same transaction will be used if the
 If there is NO existing transaction the Spring container will create a new one. </br>
 If multiple methods configured as **REQUIRED** behavior are called in a nested way they will be assigned **distinct logical transactions** but they will all share the **same physical transaction**. </br>
 In short this means that if an inner method causes a transaction to rollback, the outer method will fail to commit and also rollback the transaction.
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 Let's look in the example:
 
