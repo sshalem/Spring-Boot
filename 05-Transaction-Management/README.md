@@ -81,7 +81,7 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 ###### Transaction_Propagation_Levels
 
-<img src="https://img.shields.io/badge/- 1.2. Transaction_Isolation_Levels %20-yellow" height=30px>
+<img src="https://img.shields.io/badge/- 1.3. Transaction_Propagation_Levels %20-yellow" height=30px>
 
 https://www.youtube.com/watch?v=oy4VFlbH1cU&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=3&ab_channel=KKJavaTutorials
 
