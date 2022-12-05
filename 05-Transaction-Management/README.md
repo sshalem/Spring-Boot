@@ -195,7 +195,7 @@ private InnerBean innerBean;
 
 ### [3. NESTED](#-) 
 
-The **NESTED** behavior makes 
+The **NESTED** behavior makes nested spring transactions to use the same physical transaction but sets savepoints between nested invocations so inner transactions may also rollback
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
