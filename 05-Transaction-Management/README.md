@@ -25,9 +25,11 @@ A database transaction is a sequence of actions that are treated as a single uni
 These actions should either:
 * [complete entirely](#-)
 * or [take no effect at all](#-)
- 
-Transaction management is an important part of RDBMS-oriented enterprise application to ensure data integrity and consistency (Transaction is applicable for any RDBMS MySql PostgreSql Oracle etc...) .</br>
 
+![image](https://user-images.githubusercontent.com/36256986/205753733-338cec83-6175-45fe-b94a-cffd2cdb3ae5.png)
+ 
+Transaction management is an important part of RDBMS-oriented enterprise application , </br>
+to ensure data integrity and consistency (Transaction is applicable for any RDBMS MySql PostgreSql Oracle etc...) .</br>
 The concept of transactions can be described with the following four key properties described as ACID.
 
 ### [ACID ](#-)
