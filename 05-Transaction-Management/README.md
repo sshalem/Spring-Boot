@@ -84,16 +84,6 @@ The concept of transactions can be described with the following four key propert
 * [Isolation](#-) − There may be many transaction processing with the same data set at the same time. Each transaction should be isolated from others to prevent data corruption.
 * [Durability](#-) − Once a transaction has completed, the results of this transaction have to be made permanent and cannot be erased from the database due to system failure.
 
-
-[At a high level,](#-)
-* Spring creates proxies for all the classes annotated with @Transactional, either on the class or on any of the methods. 
-* The proxy allows the framework to inject transactional logic before and after the running method, mainly for starting and committing the transaction.
-* What's important to keep in mind is that, if the transactional bean is implementing an interface, by default the proxy will be a Java Dynamic Proxy. </br>
-  This means that only external method calls that come in through the proxy will be intercepted. 
-  Any self-invocation calls will not start any transaction, even if the method has the @Transactional annotation.
-* Another caveat of using proxies is that only public methods should be annotated with @Transactional.
-* Methods of any other visibilities will simply ignore the annotation silently as these are not proxied.
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### Types_of_read
