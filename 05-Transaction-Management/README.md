@@ -50,7 +50,7 @@ and on this point the transaction is created and the Traget method is invoked.
 
 ### Difference between javax Transaction to Springframwork Transaction.
 
-<img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=300px> 
+<img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px> 
 
 
 
