@@ -65,7 +65,9 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 ### Default JAVA based configuration
 
-* `proxyTargetClass` - can be false/true. the default value is false, in which JDK (interface based) proxies are created. if true then `CGLIB` proxies (class based) will be used.
+* `proxyTargetClass` - can be false/true. 
+	* the default value is false, in which JDK (interface based) proxies are created. 
+	* if true then `CGLIB` proxies (class based) will be used. (with Spring boot it is set as true, `spring.aop.proxy-target-class=true` , enabling CGLIB proxy)
 * `mode` -  can be proxy/aspectJ . 
 	* The dafault mode value is Proxy, which processes the annotated bean to be proxied using the Spring AOP framework , that uses Proxy Interfaces annotated with @Transactional.
 	* when mode is aspectJ (AspectJ Framework), the interfaces that marked with @Transactional will be ignored, because the Aspect that interprets @Transactional is the annotations is the AnnotationTransactionAspect. WHen using this aspect , we must annotate the implementation class (and/or methods within the class), not the interface(if any) that the class implements. AspectJ follows JAVA's rule thaty annotaions on interfaces are not inherited.
