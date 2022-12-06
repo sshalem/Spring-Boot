@@ -54,6 +54,10 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 <img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px> 
 
+### Under the hood with @Transactional
+
+When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target. </br>
+Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target. </br>
 
 
 Transaction management is an important part of RDBMS-oriented enterprise application , </br>
