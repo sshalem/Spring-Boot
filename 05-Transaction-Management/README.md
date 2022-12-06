@@ -48,9 +48,19 @@ and on this point the transaction is created and the Traget method is invoked.
 * Because we have Spring data library in the class path, Transaction Management is enabled by the Framework , So no need to do anything to enable it.
 * In order to apply transaction management , we just need to add annotation of `@Transactional`.
 
+Difference between javax Transaction to Springframwork Transaction.
+
+<img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png"> 
+
+
+
 Transaction management is an important part of RDBMS-oriented enterprise application , </br>
 to ensure data integrity and consistency (Transaction is applicable for any RDBMS MySql PostgreSql Oracle etc...) .</br>
 The concept of transactions can be described with the following four key properties described as ACID.
+
+
+
+
 
 ### [ACID ](#-)
 
