@@ -21,6 +21,7 @@
 3. [Explain Isolation and Propagation](https://www.youtube.com/watch?v=1fQtFALX80w&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&ab_channel=KKJavaTutorials)
 4. [Video Explanation](https://www.youtube.com/watch?v=XL0EROsn5Yc&list=PL12XW6i6zqKv4YBdBPMkUYTjL-ARQ8sd9&ab_channel=JavaCodeHouse)
 5. [Video ThorbenJanssen](https://www.youtube.com/watch?v=SUQxXg229Xg&ab_channel=ThorbenJanssen)
+6. [Spring DOC](https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/transaction.html)
 
 
 A database transaction is a sequence of actions that are treated as a single unit of work.</br>
@@ -56,19 +57,25 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 ### Under the hood with @Transactional
 
-When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target. </br>
-Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target. </br>
+* When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target.
+* Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target.
+* Once method invocation is finished on the target, the Transaction will be commited or rolled back
 
+![image](https://user-images.githubusercontent.com/36256986/205876696-0801ca77-fa1c-43cb-8895-73afe24a0a62.png)
 
-Transaction management is an important part of RDBMS-oriented enterprise application , </br>
+### Default JAVA based configuration
+
+* `proxyTargetClass` - can be false/true. the default value is false, in which JDK (interface based) proxies are created. if true then `CGLIB` proxies (class based) will be used.
+* `mode` -  can be proxy/aspectJ . 
+	* The dafault mode value is Proxy, which processes the annotated bean to be proxied using the Spring AOP framework , that uses Proxy Interfaces annotated with @Transactional.
+	* when mode is aspectJ (AspectJ Framework), the interfaces that marked with @Transactional will be ignored, because the Aspect that interprets @Transactional is the annotations is the AnnotationTransactionAspect. WHen using this aspect , we must annotate the implementation class (and/or methods within the class), not the interface(if any) that the class implements. AspectJ follows JAVA's rule thaty annotaions on interfaces are not inherited.
+
+### Note : </br>
+* Transaction management is an important part of RDBMS-oriented enterprise application , </br>
 to ensure data integrity and consistency (Transaction is applicable for any RDBMS MySql PostgreSql Oracle etc...) .</br>
 The concept of transactions can be described with the following four key properties described as ACID.
 
-
-
-
-
-### [ACID ](#-)
+### ACID
 
 * [Atomicity](#-) − A transaction should be treated as a single unit of operation, which means either the entire sequence of operations is successful or unsuccessful.
 * [Consistency](#-) − This represents the consistency of the referential integrity of the database, unique primary keys in tables, etc.
