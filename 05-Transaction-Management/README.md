@@ -28,6 +28,8 @@ These actions should either:
 * [complete entirely](#-)
 * or [take no effect at all](#-)
 
+This diagram shows what happens when a method is transactinoal.
+
 ![image](https://user-images.githubusercontent.com/36256986/205753733-338cec83-6175-45fe-b94a-cffd2cdb3ae5.png)
  
 Transaction management is an important part of RDBMS-oriented enterprise application , </br>
