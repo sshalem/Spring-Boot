@@ -35,7 +35,8 @@ This diagram shows what happens when a method is transactinoal. </br>
 Spring supports a comprehansive Transaction Management supprt. </br>
 Below is a simplified overview to show how it works. </br>
 Spring transaction support is enabled via AOP Proxy. </br>
-The caller of the method invokes the proxy (and NOT the Target) , and on this point the transaction is created and the Traget method is invoked. </br>
+	The caller of the method invokes the proxy (and NOT the Target) , 
+and on this point the transaction is created and the Traget method is invoked. </br>
 On the way back, either the transaction is Commited or rolled back on the way out. </br>
 
 ![image](https://user-images.githubusercontent.com/36256986/205865904-50a8e439-4b6d-4fc0-8f45-f68eb1a7e1a3.png)
