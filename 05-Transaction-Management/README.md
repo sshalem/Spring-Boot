@@ -25,19 +25,19 @@
 
 A database transaction is a sequence of actions that are treated as a single unit of work.</br>
 These actions should either:
-* [complete entirely](#-)
-* or [take no effect at all](#-)
+* [Successful - complete entirely](#-)
+* [Failure - take no effect at all](#-)
 
 This diagram shows what happens when a method is transactinoal. </br>
 
 ![image](https://user-images.githubusercontent.com/36256986/205864267-19cd0e02-ae7d-4088-99e2-67253b5f5c0b.png)
 
-Spring supports a comprehansive Transaction Management supprt. </br>
-Below is a simplified overview to show how it works. </br>
-Spring transaction support is enabled via AOP Proxy. </br>
-	The caller of the method invokes the proxy (and NOT the Target) , 
-and on this point the transaction is created and the Traget method is invoked. </br>
-On the way back, either the transaction is Commited or rolled back on the way out. </br>
+* Spring supports a comprehansive Transaction Management supprt
+* Below is a simplified overview to show how it works. 
+* Spring transaction support is enabled via AOP Proxy. 
+* The caller of the method invokes the proxy (and NOT the Target) , </br>
+and on this point the transaction is created and the Traget method is invoked. 
+* On the way back, either the transaction is Commited or rolled back on the way out.
 
 ![image](https://user-images.githubusercontent.com/36256986/205865904-50a8e439-4b6d-4fc0-8f45-f68eb1a7e1a3.png)
 
