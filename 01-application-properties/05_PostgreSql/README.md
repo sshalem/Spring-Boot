@@ -23,7 +23,9 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\postgresql-15.1-1\
   
 ![image](https://user-images.githubusercontent.com/36256986/206190542-9a2ac955-272c-4aaa-9cdd-277d83107cdb.png)
 
-7.	Paste the command below in the folder of 
+# [start PostgreSql server](#-)
+
+1.	Paste the command below in the folder of 
 
 ```
 C:\Localdata\postgresql-15.1-1\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\postgresql^-15^.1^-1^\pgsql^_data^" -l logfile start
@@ -31,19 +33,20 @@ C:\Localdata\postgresql-15.1-1\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\postgresql^
 
 ![image](https://user-images.githubusercontent.com/36256986/206190645-ad900729-ec3f-44b3-ad14-522d329c4e7b.png)
 
-8.	Go to folder of `C:\Localdata\postgresql-15.1-1\pgsql\pgAdmin 4\bin` , click of the `pgAdmin4.exe` file
+# [start pgAdmin4](#-)
+
+1.	Go to folder of `C:\Localdata\postgresql-15.1-1\pgsql\pgAdmin 4\bin` , click of the `pgAdmin4.exe` file
   a.	Type a password as root
-9.	Once the pgAdmin tool opens , create new server
+2.	Once the pgAdmin tool opens , create new server
   a.	Right click on the servers -> Register -> Server
 
 ![image](https://user-images.githubusercontent.com/36256986/206190837-7bd471b4-dd71-42b6-9f1d-ebb06ef2bbac.png)
 
-
-10.	Type a name like myServer
+3.	Type a name like myServer
 
 ![image](https://user-images.githubusercontent.com/36256986/206190963-bceaa588-e35b-4f2e-99b7-7b442264ac6e.png)
 
-11.	In the tab of Connection type the following:
+4.	In the tab of Connection type the following:
 
   Hostname   :  localhost </br>
   Port   :   5432 </br>
