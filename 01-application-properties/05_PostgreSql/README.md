@@ -45,10 +45,10 @@ C:\Localdata\postgresql-15.1-1\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\postgresql^
 
 11.	In the tab of Connection type the following:
 
-  Hostname   :  localhost
-  Port   :   5432
-  Username  :   postgres  (This is the user we created in section 6 )
-  Password   :   root  (This is the password we created in section 6)
+  Hostname   :  localhost </br>
+  Port   :   5432 </br>
+  Username  :   postgres  (This is the user we created in section 6 ) </br>
+  Password   :   root  (This is the password we created in section 6) </br>
   
 ![image](https://user-images.githubusercontent.com/36256986/206191074-fced43c1-858a-44ba-9dcf-68f96fe444f7.png)
 
