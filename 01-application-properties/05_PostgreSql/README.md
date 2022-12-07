@@ -1,4 +1,4 @@
-# [Install PostgreSql satndalone on windows](#-)
+# [Install PostgreSql standalone on windows](#-)
 
 Links :
 * https://www.youtube.com/watch?v=btxwPwnU-oI
