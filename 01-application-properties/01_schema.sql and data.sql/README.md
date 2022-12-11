@@ -2,9 +2,9 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[H2](#-)   | 
-|  2  |[MySql](#-)  |   
-|  3  |[PostgreSql](#-)  |  
+|  1  |[H2](#H2_database)   | 
+|  2  |[MySql](#MySql_database)  |   
+|  3  |[PostgreSql](#PostgreSql_database)  |  
 
 
 see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
@@ -25,7 +25,9 @@ set [```spring.jpa.defer-datasource-initialization=true```](#-).
 * If you want to use it for other databases as well, you need to change the initialization mode property. If Using MySql, PostgreSql we must add [```spring.sql.init.mode=always```](#-) , otherwise we won't be able to Init DB with [```data.sql```](#-)
 
 
-# [h2 database ](#-)
+###### H2_database
+
+<img src="https://img.shields.io/badge/- H2_database %20-blue" height=40px>
 
 If using during dev [only h2 DB](#-) , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
 
@@ -89,9 +91,14 @@ spring.h2.console.path=/h2
 2. Tables cretaed
 3. Data inserted to tables
 
----------------------------------------------------------------------------------------------------
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-# [mysql database ](#-)
+------------------------------------------------------------------------------------
+
+
+###### MySql_database
+
+<img src="https://img.shields.io/badge/- MySql_database %20-blue" height=40px>
 
 If using during dev [mysql DB](#-) , and we want to use [```schema.sql```](#-) and [```data.sql```](#-) , do the following:
 
@@ -160,3 +167,22 @@ spring.jpa.defer-datasource-initialization=true
 1. DB created 
 2. Tables cretaed
 3. Data inserted to tables
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+------------------------------------------------------------------------------------
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------------------------------------------------
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
