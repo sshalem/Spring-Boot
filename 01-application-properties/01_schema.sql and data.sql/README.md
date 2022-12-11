@@ -204,6 +204,8 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 
 ###  [SERIAL or BIGSERIAL](#-)
 
+https://vladmihalcea.com/postgresql-serial-column-hibernate-identity/
+
 If you’ve been using MySQL, you know that AUTO_INCREMENT is a very popular choice. </br>
 When migrating to PostgreSQL, you will notice that SERIAL or BIGSERIAL column types can be used just like AUTO_INCREMENT in MySQL.
 SERIAL is an `auto-incremented integer` column that takes 4 bytes while `BIGSERIAL is an auto-incremented bigint` column taking 8 bytes. </br>
