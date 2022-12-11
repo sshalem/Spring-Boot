@@ -110,7 +110,7 @@ If using during dev [mysql DB](#-) , and we want to use [```schema.sql```](#-) a
 
 ### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
 
-I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in H2 DB w/o any java code.
+I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in MySql DB w/o any java code.
 
 ![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
 
@@ -212,7 +212,7 @@ Behind the scenes, PostgreSQL will use a sequence generator to generate the SERI
 
 ### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
 
-I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in H2 DB w/o any java code.
+I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in Postgresql DB w/o any java code.
 
 ![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
 
