@@ -4,6 +4,7 @@
 |:---:|:------------------------------| 
 |  1  |[H2](#-)   | 
 |  2  |[MySql](#-)  |   
+|  3  |[PostgreSql](#-)  |  
 
 
 see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
