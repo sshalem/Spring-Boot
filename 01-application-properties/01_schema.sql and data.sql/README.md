@@ -195,6 +195,7 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 1. https://stackoverflow.com/questions/4448340/postgresql-duplicate-key-violates-unique-constraint
 2. https://stackoverflow.com/questions/244243/how-to-reset-postgres-primary-key-sequence-when-it-falls-out-of-sync
 3. https://www.youtube.com/watch?v=2gZLq_QmWk0&ab_channel=KnowledgeBase
+4. https://stackoverflow.com/questions/787722/whats-the-postgresql-datatype-equivalent-to-mysql-auto-increment
 
 
 ![image](https://user-images.githubusercontent.com/36256986/206897660-0d237e3e-d71b-4dbc-bfa8-7d0e26d387be.png)
