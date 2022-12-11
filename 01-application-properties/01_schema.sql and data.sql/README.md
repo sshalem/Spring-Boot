@@ -177,7 +177,7 @@ spring.jpa.defer-datasource-initialization=true
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 ```
 
-### 4. run the app and check musql database :
+### 4. run the app and check mysql database :
 
 1. DB created 
 2. Tables cretaed
@@ -208,6 +208,42 @@ If you’ve been using MySQL, you know that AUTO_INCREMENT is a very popular cho
 When migrating to PostgreSQL, you will notice that SERIAL or BIGSERIAL column types can be used just like AUTO_INCREMENT in MySQL.
 SERIAL is an `auto-incremented integer` column that takes 4 bytes while `BIGSERIAL is an auto-incremented bigint` column taking 8 bytes. </br>
 Behind the scenes, PostgreSQL will use a sequence generator to generate the SERIAL column values upon inserting a new ROW.
+
+
+### 2. create [```schema.sql```](#-) and [```data.sql```](#-) files and place them in the folder of resources :
+
+I didn't write java code, it's all made by [```schema.sql```](#-) and [```data.sql```](#-), all data will be present in H2 DB w/o any java code.
+
+![image](https://user-images.githubusercontent.com/36256986/191861895-e8a213c6-20ca-4623-9654-8a8459bd62f7.png)
+
+##### [```schema.sql```](#-)
+
+```sql
+DROP TABLE IF EXISTS user_entity;
+DROP TABLE IF EXISTS role_entity;
+
+CREATE TABLE IF NOT EXISTS user_entity(
+id BIGSERIAL PRIMARY KEY,
+name VARCHAR (20),
+email VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS role_entity(
+id BIGSERIAL PRIMARY KEY,
+name VARCHAR (20)
+);
+```
+
+##### [```data.sql```](#-)
+
+With Postgresql , don't add the id , other wise we will have a sync issue , and get duplications, thus put insret as follows:
+
+```sql
+INSERT INTO user_entity(name ,email) VALUES ('shabtay' , 'shabtay.shalem@gmail.com');
+INSERT INTO user_entity(name ,email) VALUES ('karin' , 'karin.shalem@gmail.com');
+INSERT INTO user_entity(name ,email) VALUES ('odel' , 'odel.shalem@gmail.com');
+```
+
 
 ### 3. config [```application.properties```](#-) as follows :
 
@@ -245,6 +281,14 @@ spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.h
 # Allows Hibernate to generate SQL optimized for a particular DBMS
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
+
+### 4. run the app and check postgresql database :
+
+1. DB created 
+2. Tables cretaed
+3. Data inserted to tables
+
+![image](https://user-images.githubusercontent.com/36256986/206899321-4edc5faa-1af1-4034-af7c-64ff3199874d.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
