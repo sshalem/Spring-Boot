@@ -177,7 +177,12 @@ spring.jpa.defer-datasource-initialization=true
 
 <img src="https://img.shields.io/badge/- PostgreSql_database %20-blue" height=40px>
 
+1. https://stackoverflow.com/questions/4448340/postgresql-duplicate-key-violates-unique-constraint
+2. https://stackoverflow.com/questions/244243/how-to-reset-postgres-primary-key-sequence-when-it-falls-out-of-sync
+3. https://www.youtube.com/watch?v=2gZLq_QmWk0&ab_channel=KnowledgeBase
 
+
+![image](https://user-images.githubusercontent.com/36256986/206897660-0d237e3e-d71b-4dbc-bfa8-7d0e26d387be.png)
 
 ![image](https://user-images.githubusercontent.com/36256986/206897538-00518c8a-dfdf-48f5-a42b-fc87d671c86f.png)
 
