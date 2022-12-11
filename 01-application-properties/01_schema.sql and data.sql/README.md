@@ -200,6 +200,44 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 ![image](https://user-images.githubusercontent.com/36256986/206897538-00518c8a-dfdf-48f5-a42b-fc87d671c86f.png)
 
 
+### 3. config [```application.properties```](#-) as follows :
+
+##### [```application.properties```](#-)
+
+```
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+#spring.datasource.url=jdbc:postgresql://localhost:5342/jpa
+spring.datasource.url=jdbc:postgresql://localhost/jpa
+spring.datasource.username=postgres
+spring.datasource.password=root
+
+# this ensures script-based initialization is performed using schema.sql and data.sql directly.
+spring.jpa.hibernate.ddl-auto=none
+
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.format_sql=true 
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+#spring.data.jpa.repositories.bootstrap-mode=default
+
+# Naming strategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ------------------------------------------------------------------------------------
