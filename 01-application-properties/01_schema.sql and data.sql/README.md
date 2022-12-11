@@ -155,11 +155,16 @@ spring.jpa.show-sql=true
 spring.jpa.open-in-view=false
 spring.jpa.properties.hibernate.format_sql=true 
 
-
-# we must add this config as well for schema.sql and data.sql could work
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
 spring.sql.init.mode=always
 spring.jpa.defer-datasource-initialization=true
 #spring.data.jpa.repositories.bootstrap-mode=default
+
+# When using java version JDK11 use with mysql dialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 ```
 
 ### 4. run the app and check musql database :
