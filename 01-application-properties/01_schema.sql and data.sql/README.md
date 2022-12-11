@@ -138,7 +138,7 @@ INSERT INTO user_entity(id ,name ,email) VALUES (2, 'karin' , 'karin.shalem@gmai
 INSERT INTO user_entity(id ,name ,email) VALUES (3, 'odel' , 'odel.shalem@gmail.com');
 ```
 
-or we can define it w/o the id, and let MySql to to it for us:
+or we can define it w/o the `id`, and let `MySql` to to it for us:
 
 ```sql
 INSERT INTO user_entity(name ,email) VALUES ('shabtay' , 'shabtay.shalem@gmail.com');
