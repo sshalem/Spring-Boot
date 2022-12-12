@@ -7,7 +7,13 @@
 |  1  |[H2](#H2_database)   | 
 |  2  |[MySql](#MySql_database)  |   
 |  3  |[PostgreSql](#PostgreSql_database)  |  
+|  4  |[Multiple data.sql files](#Multiple_data_sql)  |  
 
+In this tutorial we will see how we can create :
+1. our own schema , w/o giving spring to create it for us by using a `schema.sql` file
+2. how to initialize the tables with data , using `data.sql` file
+3. how to create multiple `schema-${platform}.sql` during development 
+4. how to create multiple `data-${platform}.sql` during development
 
 see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
 
@@ -297,7 +303,151 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ------------------------------------------------------------------------------------
 
-######
+###### Multiple_data_sql
+
+<img src="https://img.shields.io/badge/- 4. Multiple_data_sql %20-blue" height=40px>
+
+Spring Boot can automatically create the schema (DDL scripts) of your JDBC DataSource or R2DBC ConnectionFactory and initialize it (DML scripts). </br>
+It loads SQL from the standard root classpath locations: `schema.sql` and `data.sql` , respectively. </br>
+In addition, Spring Boot processes the files below (if present), where platform is the value of `spring.sql.init.platform`:
+* `schema-${platform}.sql`
+* and `data-${platform}.sql`
+
+Example:
+
+If we define a sepecific platform :
+
+```sql
+spring.sql.init.platform=devMysql
+```
+
+Then the data.sql file will be wrriten the following way:
+```sql
+data-devMysql.sql
+```
+
+ </br>
+This allows you to switch to database-specific scripts if necessary.</br>
+For example, you might choose to set it to the vendor name of the database (hsqldb, h2, oracle, mysql, postgresql, and so on). </br>
+By default, SQL database initialization is only performed when using an embedded in-memory database. </br>
+To always initialize an SQL database, irrespective of its type, set :
+* `spring.sql.init.mode to always` 
+
+Similarly, to disable initialization, set `spring.sql.init.mode to never`. </br>
+By default, Spring Boot enables the fail-fast feature of its script-based database initializer. </br>
+This means that, if the scripts cause exceptions, the application fails to start. </br>
+You can tune that behavior by setting `spring.sql.init.continue-on-error`. 
+
+Let's look a a real example , where I want to perfrom development with MySql and PostgreSql. </br>
+I want initialize them using `data.sql` during development </br>
+
+* Question :
+why I need to do 2 different data.sql ?
+
+* Answer :
+both DB have some differences with thier sql syntax , thus , the syntax for MySql might not work as expected with PostgreSql (and visa versa).
+
+SO:
+1. I define 2 profiles (one for  MySql and the other for PostgreSql) , by creating 2 more files of application properties (on for each)
+2. create 2 different data.sql files
+
+### [Example](#-)
+
+See project from 
+
+#### [Main application.properties](#-)
+
+```sql
+#Spring will create a schema
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.generate-ddl=true
+
+# This is OSIV , define it as false for better performance
+spring.jpa.open-in-view=false
+
+# show SQL logging
+spring.jpa.show-sql=true
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+#spring.jpa.properties.hibernate.format_sql=true
+
+#spring.jpa.properties.hibernate.generate_statistics=true
+
+# Dev-Tools
+spring.devtools.restart.enabled=true
+```
+
+#### [application-mysql.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+spring.datasource.url=jdbc:mysql://localhost:3306/jpa?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for mysql connection 
+# by setting the platform as shMysql
+# then modifying `data.sql` to `data-shMysql.sql`  
+spring.sql.init.platform=shMysql
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# When using java version JDK11 use with mysql dialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+```
+
+#### [application-postgres.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+#spring.datasource.url=jdbc:postgresql://localhost:5342/jpa
+spring.datasource.url=jdbc:postgresql://localhost/jpa
+spring.datasource.username=postgres
+spring.datasource.password=root
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for postgresql connection 
+# by setting the platform as shPostgres
+# then modifying `data.sql` to `data-shPostgres.sql`  
+spring.sql.init.platform=shPostgres
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# Naming strategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------------------------------------------------
+
+###### Multiple_data_sql
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------------------------------------------------
+
+###### Multiple_data_sql
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
