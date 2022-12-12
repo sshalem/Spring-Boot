@@ -25,6 +25,22 @@ Links with examples of how to config:
 1. [DZone](https://dzone.com/articles/configuring-logback-with-spring-boot)
 2. [Baeldung](https://www.baeldung.com/logback)
 3. [Configuring Logback with Spring Boot](https://www.codingame.com/playgrounds/4497/configuring-logback-with-spring-boot)
+4. [Logback](https://logback.qos.ch/)  and  [logback manual](https://logback.qos.ch/manual/layouts.html#conversionWord)
+
+#### [POM dependency](#-)
+
+Logback is part of spring boot so , </br>
+There is no need to add any Dependency , as long as we have at least one dependency that it is part of spring boot ,
+
+For example :
+
+```sql
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
 
 
 
@@ -32,7 +48,7 @@ Links with examples of how to config:
 
 ------------------------------------------------------------------------------------
 
-###### Multiple_data_sql
+###### 
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
