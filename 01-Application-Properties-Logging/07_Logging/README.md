@@ -24,8 +24,9 @@ Links with examples of how to config:
 
 1. [DZone](https://dzone.com/articles/configuring-logback-with-spring-boot)
 2. [Baeldung](https://www.baeldung.com/logback)
-3. [Configuring Logback with Spring Boot](https://www.codingame.com/playgrounds/4497/configuring-logback-with-spring-boot)
-4. [Logback](https://logback.qos.ch/)  and  [logback manual](https://logback.qos.ch/manual/layouts.html#conversionWord)
+3. [MyKong](https://mkyong.com/spring-boot/spring-boot-slf4j-logging-example/)
+4. [Configuring Logback with Spring Boot](https://www.codingame.com/playgrounds/4497/configuring-logback-with-spring-boot)
+5. [Logback](https://logback.qos.ch/)  and  [logback manual](https://logback.qos.ch/manual/layouts.html#conversionWord)
 
 #### [POM dependency](#-)
 
