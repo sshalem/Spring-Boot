@@ -7,7 +7,13 @@
 |  1  |[H2](#H2_database)   | 
 |  2  |[MySql](#MySql_database)  |   
 |  3  |[PostgreSql](#PostgreSql_database)  |  
+|  4  |[Multiple data.sql files](#Multiple_data_sql)  |  
 
+In this tutorial we will see how we can create :
+1. our own schema , w/o giving spring to create it for us by using a `schema.sql` file
+2. how to initialize the tables with data , using `data.sql` file
+3. how to create multiple `schema-${platform}.sql` during development 
+4. how to create multiple `data-${platform}.sql` during development
 
 see the answer from stack overflow https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data:
 
@@ -297,7 +303,43 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ------------------------------------------------------------------------------------
 
-######
+###### Multiple_data_sql
+
+<img src="https://img.shields.io/badge/- 4. Multiple_data_sql %20-blue" height=40px>
+
+Spring Boot can automatically create the schema (DDL scripts) of your JDBC DataSource or R2DBC ConnectionFactory and initialize it (DML scripts). </br>
+It loads SQL from the standard root classpath locations: `schema.sql` and `data.sql` , respectively. </br>
+In addition, Spring Boot processes the :
+* `schema-${platform}.sql`
+* and `data-${platform}.sql`
+
+files (if present), where platform is the value of `spring.sql.init.platform`. </br>
+This allows you to switch to database-specific scripts if necessary.</br>
+For example, you might choose to set it to the vendor name of the database (hsqldb, h2, oracle, mysql, postgresql, and so on). </br>
+By default, SQL database initialization is only performed when using an embedded in-memory database. </br>
+To always initialize an SQL database, irrespective of its type, set :
+* `spring.sql.init.mode to always` 
+
+Similarly, to disable initialization, set `spring.sql.init.mode to never`. </br>
+By default, Spring Boot enables the fail-fast feature of its script-based database initializer. </br>
+This means that, if the scripts cause exceptions, the application fails to start. </br>
+You can tune that behavior by setting `spring.sql.init.continue-on-error`. 
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------------------------------------------------
+
+###### Multiple_data_sql
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------------------------------------------------
+
+###### Multiple_data_sql
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
