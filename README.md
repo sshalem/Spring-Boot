@@ -11,7 +11,7 @@
 |  4   |[Exception Handling](https://github.com/sshalem/Spring-Boot/tree/main/04-Exception-Handling) |   
 |  5   |[Transaction Management](https://github.com/sshalem/Spring-Boot/tree/main/05-Transaction-Management) |  
 |  6   |[Caching](#) |  
-|  7   |[AOP](#) |  
+|  7   |[AOP](https://github.com/sshalem/Spring-Boot/tree/main/07-AOP) |  
 |  8   |[Spring-Security](#) |  
 |  9   |[Docker K8N](#) |  
 |  10  |[Reactive WebFlux RxJava](#) |  
