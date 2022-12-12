@@ -104,7 +104,7 @@ The concept of transactions can be described with the following four key propert
 
 <img src="https://img.shields.io/badge/- 1.1. Types_of_read %20-greenyellow" height=30px>
 
-https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&index=2&ab_channel=KKJavaTutorials
+link to : [transaction-isolation-levels](https://learn.microsoft.com/en-us/sql/odbc/reference/develop-app/transaction-isolation-levels?view=sql-server-ver16)
 
 1. Dirty Reads
 2. non-repeatable reads
