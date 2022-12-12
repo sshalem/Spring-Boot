@@ -110,6 +110,20 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 
 See link --> [introduction-to-transaction-isolation-levels](https://fauna.com/blog/introduction-to-transaction-isolation-levels)
 
+### [What is an “Isolation Level”?](#-)
+
+**Database isolation** refers to the ability of a database to allow a transaction to execute as if there are no other concurrently running transactions (even though in reality there can be a large number of concurrently running transactions). The overarching goal is to prevent reads and writes of temporary, aborted, or otherwise incorrect data written by concurrent transactions.
+
+There is such a thing as perfect isolation (we will define this below). </br>
+Unfortunately, perfection usually comes at a performance cost—in terms of :
+* transaction latency (how long before a transaction completes) 
+* or throughput (how many transactions per second can the system complete). 
+Depending on how a particular system is architected, perfect isolation becomes easier or harder to achieve. </br>
+In poorly designed systems, achieving perfection comes with a prohibitive performance cost, and users of such systems will be pushed to accept guarantees significantly short of perfection. </br>
+However, even in well-designed systems, there is often a non-trivial performance benefit achieved by accepting guarantees short of perfection. </br>
+Therefore, isolation levels came into existence: 
+* they provide the user of a system the ability to trade off isolation guarantees for improved performance.
+
 1. ISOLATION_DEFAULT 
 2. ISOLATION_READ_UNCOMMITTED - Indicates that `dirty reads, non-repeatable reads, and phantom reads can occur`.
 3. ISOLATION_READ_COMMITTED -   Indicates that [`dirty reads are prevented`](#-); `non-repeatable reads` and `phantom reads` can occur.
