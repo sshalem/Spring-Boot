@@ -23,6 +23,8 @@
 5. [Video ThorbenJanssen](https://www.youtube.com/watch?v=SUQxXg229Xg&ab_channel=ThorbenJanssen)
 6. [Spring DOC](https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/transaction.html)
 
+* https://medium.com/javarevisited/spring-transactional-mistakes-everyone-did-31418e5a6d6b
+* https://www.concretepage.com/spring/spring-transactional
 
 A database transaction is a sequence of actions that are treated as a single unit of work.</br>
 These actions should either:
