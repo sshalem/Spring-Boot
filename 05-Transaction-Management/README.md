@@ -122,7 +122,7 @@ suppose transaction 1 reads a row. </br>
 Transaction 2 updates or deletes that row and commits the update or delete. </br>
 If transaction 1 rereads the row, it retrieves different row values or discovers that the row has been deleted.
 
-* [`Phantoms`](#-) - A phantom is a row that matches the search criteria but is not initially seen. 
+* [`Phantoms`](#-) - A phantom is a row that matches the search criteria but is not initially seen. </br>
 **For example:** </br>
 suppose transaction 1 reads a set of rows that satisfy some search criteria. </br>
 Transaction 2 generates a new row (through either an update or an insert) that matches the search criteria for transaction 1. </br>
