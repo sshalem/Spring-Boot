@@ -1,10 +1,10 @@
-package com.transaction.manage;
+package com.transaction.management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TransactionManagementApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

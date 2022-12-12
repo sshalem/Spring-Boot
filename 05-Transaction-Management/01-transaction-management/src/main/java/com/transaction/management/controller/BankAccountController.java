@@ -1,4 +1,4 @@
-package com.transaction.manage.controller;
+package com.transaction.management.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.transaction.manage.dao.BankAccountDaoImpl;
+import com.transaction.management.dao.BankAccountDaoImpl;
 
 @RestController
 @RequestMapping("/accounts")

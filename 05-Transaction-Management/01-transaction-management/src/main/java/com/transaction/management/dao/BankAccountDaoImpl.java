@@ -1,12 +1,12 @@
-package com.transaction.manage.dao;
+package com.transaction.management.dao;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.transaction.manage.entity.BankAccount;
-import com.transaction.manage.repository.BankAccountRepository;
+import com.transaction.management.entity.BankAccount;
+import com.transaction.management.repository.BankAccountRepository;
 
 @Service
 public class BankAccountDaoImpl implements BankAccountDao {

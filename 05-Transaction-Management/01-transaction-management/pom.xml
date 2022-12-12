@@ -8,11 +8,11 @@
 		<version>2.7.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.transaction.manage</groupId>
-	<artifactId>transaction-management</artifactId>
+	<groupId>com.transaction.management</groupId>
+	<artifactId>01-transaction-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transaction-management</name>
-	<description>transaction-management</description>
+	<name>01-transaction-management</name>
+	<description>01-transaction-management</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

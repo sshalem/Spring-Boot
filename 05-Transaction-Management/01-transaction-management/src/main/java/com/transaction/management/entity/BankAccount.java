@@ -1,4 +1,4 @@
-package com.transaction.manage.entity;
+package com.transaction.management.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,20 +14,11 @@ public class BankAccount {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private int accountNumber;
-	private String firstname;
-	private String lastname;
+	private String name;
 	private int balance;
 
 	public BankAccount() {
 		super();
-	}
-
-	public BankAccount(int accountNumber, String firstname, String lastname, int balance) {
-		super();
-		this.accountNumber = accountNumber;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.balance = balance;
 	}
 
 	public long getId() {
@@ -46,20 +37,12 @@ public class BankAccount {
 		this.accountNumber = accountNumber;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getBalance() {
