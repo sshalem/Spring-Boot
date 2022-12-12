@@ -151,7 +151,7 @@ spring.h2.console.path=/h2
 
 ###### Add_Swagger2_to_Spring_Boot_Project
 
-<img src="https://img.shields.io/badge/-2. Add Swagger2 to Spring Boot Project %20- blue" height=40px>
+<img src="https://img.shields.io/badge/-2. Add Swagger2 to Spring Boot Project %20-blue" height=40px>
 
 ###### add_Swagger2_dependency
 
