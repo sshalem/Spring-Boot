@@ -36,6 +36,8 @@ Links with examples of how to config:
 
 ![image](https://user-images.githubusercontent.com/36256986/207047414-faa73920-55ca-4541-8c53-5265c76a3c9d.png)
 
+![image](https://user-images.githubusercontent.com/36256986/207050632-7a7afe33-bd72-44a4-9cf5-f05b64d3b9b5.png)
+
 
 
 #### [POM dependency](#-)
