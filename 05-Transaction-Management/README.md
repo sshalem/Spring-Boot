@@ -33,6 +33,10 @@ These actions should either:
 
 This diagram shows what happens when a method is transactinoal. </br>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/205864267-19cd0e02-ae7d-4088-99e2-67253b5f5c0b.png">
+</p>
+
 ![image](https://user-images.githubusercontent.com/36256986/205864267-19cd0e02-ae7d-4088-99e2-67253b5f5c0b.png)
 
 * Spring supports a comprehansive Transaction Management supprt
