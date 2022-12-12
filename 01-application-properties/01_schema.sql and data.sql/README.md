@@ -338,7 +338,98 @@ By default, Spring Boot enables the fail-fast feature of its script-based databa
 This means that, if the scripts cause exceptions, the application fails to start. </br>
 You can tune that behavior by setting `spring.sql.init.continue-on-error`. 
 
+Let's look a a real example , where I want to perfrom development with MySql and PostgreSql. </br>
+I want initialize them using `data.sql` during development </br>
 
+* Question :
+why I need to do 2 different data.sql ?
+
+* Answer :
+both DB have some differences with thier sql syntax , thus , the syntax for MySql might not work as expected with PostgreSql (and visa versa).
+
+SO:
+1. I define 2 profiles (one for  MySql and the other for PostgreSql) , by creating 2 more files of application properties (on for each)
+2. create 2 different data.sql files
+
+### [Main application.properties](#-)
+
+```sql
+#Spring will create a schema
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.generate-ddl=true
+
+# This is OSIV , define it as false for better performance
+spring.jpa.open-in-view=false
+
+# show SQL logging
+spring.jpa.show-sql=true
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+#spring.jpa.properties.hibernate.format_sql=true
+
+#spring.jpa.properties.hibernate.generate_statistics=true
+
+# Dev-Tools
+spring.devtools.restart.enabled=true
+```
+
+### [application-mysql.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+spring.datasource.url=jdbc:mysql://localhost:3306/jpa?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for mysql connection 
+# by setting the platform as shMysql
+# then modifying `data.sql` to `data-shMysql.sql`  
+spring.sql.init.platform=shMysql
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# When using java version JDK11 use with mysql dialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+```
+
+### [application-postgres.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+#spring.datasource.url=jdbc:postgresql://localhost:5342/jpa
+spring.datasource.url=jdbc:postgresql://localhost/jpa
+spring.datasource.username=postgres
+spring.datasource.password=root
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for postgresql connection 
+# by setting the platform as shPostgres
+# then modifying `data.sql` to `data-shPostgres.sql`  
+spring.sql.init.platform=shPostgres
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# Naming strategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
