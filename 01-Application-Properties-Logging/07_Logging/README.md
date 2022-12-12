@@ -27,8 +27,9 @@ Links with examples of how to config:
 3. [MyKong](https://mkyong.com/spring-boot/spring-boot-slf4j-logging-example/)
 4. [Configuring Logback with Spring Boot](https://www.codingame.com/playgrounds/4497/configuring-logback-with-spring-boot)
 5. [Logback](https://logback.qos.ch/)  and  [logback manual](https://logback.qos.ch/manual/layouts.html#conversionWord)
-6. [Logback HTML layout](https://howtodoinjava.com/logback/logback-html-layout/)
-7. [Logback Video](https://www.youtube.com/watch?v=ZmTNAKuTyVg&ab_channel=CodeJava)
+6. [Spring Doc 2.7.6 - Logging](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#features.logging)
+7. [Logback HTML layout](https://howtodoinjava.com/logback/logback-html-layout/)
+8. [Logback Video](https://www.youtube.com/watch?v=ZmTNAKuTyVg&ab_channel=CodeJava)
 
 ![image](https://user-images.githubusercontent.com/36256986/207047146-1ce874a2-efa1-4722-8f45-8d7c11ecaa24.png)
 
