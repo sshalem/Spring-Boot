@@ -125,7 +125,7 @@ However, even in well-designed systems, there is often a non-trivial performance
 Therefore, isolation levels came into existence: 
 * they provide the user of a system the ability to trade off isolation guarantees for improved performance.
 
-ISOLATION Types:
+[ISOLATION Types:](#-)
 1. ISOLATION_DEFAULT 
 2. ISOLATION_READ_UNCOMMITTED - Indicates that `dirty reads, non-repeatable reads, and phantom reads can occur`.
 3. ISOLATION_READ_COMMITTED -   Indicates that [`dirty reads are prevented`](#-); `non-repeatable reads` and `phantom reads` can occur.
