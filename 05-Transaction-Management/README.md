@@ -37,7 +37,6 @@ This diagram shows what happens when a method is transactinoal. </br>
   <img src="https://user-images.githubusercontent.com/36256986/205864267-19cd0e02-ae7d-4088-99e2-67253b5f5c0b.png">
 </p>
 
-![image](https://user-images.githubusercontent.com/36256986/205864267-19cd0e02-ae7d-4088-99e2-67253b5f5c0b.png)
 
 * Spring supports a comprehansive Transaction Management supprt
 * Below is a simplified overview to show how it works. 
@@ -46,7 +45,11 @@ This diagram shows what happens when a method is transactinoal. </br>
 and on this point the transaction is created and the Traget method is invoked. 
 * On the way back, either the transaction is Commited or rolled back on the way out.
 
-![image](https://user-images.githubusercontent.com/36256986/205865904-50a8e439-4b6d-4fc0-8f45-f68eb1a7e1a3.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/205865904-50a8e439-4b6d-4fc0-8f45-f68eb1a7e1a3.png">
+</p>
+
+
 
 ### [Enable Spring Transaction Management](#-)
 
