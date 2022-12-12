@@ -51,13 +51,13 @@ and on this point the transaction is created and the Traget method is invoked.
 * Because we have Spring data library in the class path, Transaction Management is enabled by the Framework , So no need to do anything to enable it.
 * In order to apply transaction management , we just need to add annotation of `@Transactional`.
 
-### Difference between javax Transaction to Springframwork Transaction.
+### [Difference between javax Transaction to Springframwork Transaction](#-)
 
 The prefered way is to use the `Transactionl` from SPring framwork (and not from JAVAX)
 
 <img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px> 
 
-### Under the hood with @Transactional
+### [Under the hood with `@Transactional`](#-)
 
 * When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target.
 * Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target.
@@ -65,7 +65,7 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 ![image](https://user-images.githubusercontent.com/36256986/205876696-0801ca77-fa1c-43cb-8895-73afe24a0a62.png)
 
-### Default JAVA based configuration
+### [Default JAVA based configuration](#-)
 
 * `proxyTargetClass` - can be false/true. 
 	* the default value is false, in which JDK (interface based) proxies are created. 
@@ -79,7 +79,7 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 to ensure data integrity and consistency (Transaction is applicable for any RDBMS MySql PostgreSql Oracle etc...) .</br>
 The concept of transactions can be described with the following four key properties described as ACID.
 
-### ACID
+### [ACID](#-)
 
 * [Atomicity](#-) − A transaction should be treated as a single unit of operation, which means either the entire sequence of operations is successful or unsuccessful.
 * [Consistency](#-) − This represents the consistency of the referential integrity of the database, unique primary keys in tables, etc.
