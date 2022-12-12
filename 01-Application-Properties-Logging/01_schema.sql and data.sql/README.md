@@ -91,6 +91,9 @@ spring.h2.console.enabled=true
 
 # Custom H2 Console URL from /h2-console to /h2
 spring.h2.console.path=/h2
+
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
 ```
 
 ### 4. run the app and check h2 console that :
