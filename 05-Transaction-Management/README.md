@@ -118,6 +118,7 @@ There is such a thing as perfect isolation (we will define this below). </br>
 Unfortunately, perfection usually comes at a performance cost—in terms of :
 * transaction latency (how long before a transaction completes) 
 * or throughput (how many transactions per second can the system complete). 
+
 Depending on how a particular system is architected, perfect isolation becomes easier or harder to achieve. </br>
 In poorly designed systems, achieving perfection comes with a prohibitive performance cost, and users of such systems will be pushed to accept guarantees significantly short of perfection. </br>
 However, even in well-designed systems, there is often a non-trivial performance benefit achieved by accepting guarantees short of perfection. </br>
