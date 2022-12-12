@@ -822,35 +822,6 @@ public class ProductController {
 
 ---
 
-###### 12_AOP
-
-<img src="https://img.shields.io/badge/- 12. AOP (Aspect Oriented Programming) %20-blue" height=40px>
-
-See AOP READ.MD file [AOP](https://github.com/sshalem/Spring-Boot/tree/main/02-JPA/12-AOP)
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-###### 13_Caching
-
-<img src="https://img.shields.io/badge/- 13. Caching %20-blue" height=40px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
-###### 14_Transaction_Management
-
-<img src="https://img.shields.io/badge/- 14. Transaction_Management %20-blue" height=40px>
-
-* https://medium.com/javarevisited/spring-transactional-mistakes-everyone-did-31418e5a6d6b
-* https://www.concretepage.com/spring/spring-transactional
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----
-
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
