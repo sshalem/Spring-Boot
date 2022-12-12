@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-Swagger2 (springfox) %20-blue" height=50px>
+<img src="https://img.shields.io/badge/-Swagger2 (springfox) %20- blue" height=50px>
 
 ###### _
 
