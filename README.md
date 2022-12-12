@@ -8,7 +8,7 @@
 |  1   |[Application Properties](#)   | 
 |  2   |[JPA](https://github.com/sshalem/Spring-Boot/tree/main/02-JPA)  |   
 |  3   |[REST-API , Swagger2 , SpringDoc OpenApi3](https://github.com/sshalem/Spring-Boot/tree/main/03-REST-Swagger-SpringDoc-OpenApi3) |   
-|  4   |[Exception Handling](#) |   
+|  4   |[Exception Handling](https://github.com/sshalem/Spring-Boot/tree/main/04-Exception-Handling) |   
 |  5   |[Transaction Management](https://github.com/sshalem/Spring-Boot/tree/main/05-Transaction-Management) |  
 |  6   |[Caching](#) |  
 |  7   |[AOP](#) |  
