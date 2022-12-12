@@ -351,7 +351,11 @@ SO:
 1. I define 2 profiles (one for  MySql and the other for PostgreSql) , by creating 2 more files of application properties (on for each)
 2. create 2 different data.sql files
 
-### [Main application.properties](#-)
+### [Example](#-)
+
+See project from 
+
+#### [Main application.properties](#-)
 
 ```sql
 #Spring will create a schema
@@ -373,7 +377,7 @@ spring.jpa.show-sql=true
 spring.devtools.restart.enabled=true
 ```
 
-### [application-mysql.properties](#-)
+#### [application-mysql.properties](#-)
 
 ```sql
 # ===============================
@@ -400,7 +404,7 @@ spring.jpa.defer-datasource-initialization=true
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
 ```
 
-### [application-postgres.properties](#-)
+#### [application-postgres.properties](#-)
 
 ```sql
 # ===============================
