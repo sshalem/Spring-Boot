@@ -62,7 +62,10 @@ and on this point the transaction is created and the Traget method is invoked.
 
 The prefered way is to use the `Transactionl` from SPring framwork (and not from JAVAX)
 
-<img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px> 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px>	
+</p>
+
 
 ### [Under the hood with `@Transactional`](#-)
 
@@ -70,7 +73,9 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 * Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target.
 * Once method invocation is finished on the target, the Transaction will be commited or rolled back
 
-![image](https://user-images.githubusercontent.com/36256986/205876696-0801ca77-fa1c-43cb-8895-73afe24a0a62.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/205876696-0801ca77-fa1c-43cb-8895-73afe24a0a62.png">	
+</p>
 
 ### [Default JAVA based configuration](#-)
 
@@ -105,7 +110,10 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 2. non-repeatable reads
 3. phantom reads
 
-![image](https://user-images.githubusercontent.com/36256986/205519631-5720174e-5b07-4aa6-95d7-e978bb3dbffd.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/205519631-5720174e-5b07-4aa6-95d7-e978bb3dbffd.png">	
+</p>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -139,7 +147,9 @@ Therefore, isolation levels came into existence:
 4. ISOLATION_REPEATABLE_READ -  Indicates that [`dirty reads and non-repeatable reads are prevented`](#-); `phantom reads can occur`.
 5. ISOLATION_SERIALIZABLE -     Indicates that [`dirty reads, non-repeatable reads, and phantom reads are prevented`](#-).
 
-![image](https://user-images.githubusercontent.com/36256986/207162962-4479739a-1b39-42b1-b67b-b49322a74471.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/207162962-4479739a-1b39-42b1-b67b-b49322a74471.png">	
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
