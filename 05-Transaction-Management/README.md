@@ -114,7 +114,7 @@ https://www.youtube.com/watch?v=UgTZ1Tun-wg&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrP
 4. ISOLATION_REPEATABLE_READ -  Indicates that [`dirty reads and non-repeatable reads are prevented`](#-); `phantom reads can occur`.
 5. ISOLATION_SERIALIZABLE -     Indicates that [`dirty reads, non-repeatable reads, and phantom reads are prevented`](#-).
 
-![image](https://user-images.githubusercontent.com/36256986/205519380-d43007d2-79ed-4006-9c31-07c118a87dda.png)
+![image](https://user-images.githubusercontent.com/36256986/207162962-4479739a-1b39-42b1-b67b-b49322a74471.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
