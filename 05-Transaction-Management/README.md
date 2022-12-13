@@ -47,6 +47,9 @@ This diagram shows what happens when a method is transactinoal. </br>
 * Below is a simplified overview to show how it works. 
 * Spring transaction support is enabled via `AOP Proxy`. 
 * The caller of the method invokes the proxy (and NOT the Target) ,and on this point the transaction is created and the Traget method is invoked. 
+* Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
+	* A transaction at the beggining of the method call
+	* commiting the trnsaction after the method executes.
 * On the way back, either the transaction is Commited or rolled back on the way out.
 
 <p align="center">
@@ -61,6 +64,9 @@ This diagram shows what happens when a method is transactinoal. </br>
 * But in Spring Boot , Most of the configuration is done for us, 
 * Because we have Spring data library in the class path, Transaction Management is enabled by the Framework , So no need to do anything to enable it.
 * In order to apply transaction management , we just need to add annotation of `@Transactional`.
+* Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
+	* A transaction at the beggining of the method call
+	* commiting the trnsaction after the method executes.
 
 ### [Difference between javax Transaction to Springframwork Transaction](#-)
 
