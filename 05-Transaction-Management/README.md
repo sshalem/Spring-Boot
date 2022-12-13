@@ -41,6 +41,14 @@ These actions should either [Successful - complete entirely](#-) or [Failure - t
   <img src="https://user-images.githubusercontent.com/36256986/207462692-f41337cf-1b28-4802-bcb3-1bdf7e02dbd1.png">
 </p>
 
+### [explain with MySql DB](#-)
+
+By default the transactions are [`autocommit`](#-) for mysql database. </br>
+I will disable [`autocommit`](#-) using following command- [`SET autocommit = 0`](#-) </br>
+
+See the explanation in [javaInUse - transaction management](https://www.javainuse.com/spring/boot-transaction)
+
+
 This diagram shows what happens when a method is transactinoal. </br>
 
 <p align="center">
