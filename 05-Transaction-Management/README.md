@@ -73,11 +73,8 @@ This diagram shows what happens when a method is transactinoal. </br>
 
 ### [Difference between javax Transaction to Springframwork Transaction](#-)
 
-The prefered way is to use the `Transactionl` from SPring framwork (and not from JAVAX)
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/36256986/205872651-f41c00e2-8031-4106-a118-73c8e4cf16f0.png" height=300px width=500px>	
-</p>
+The prefered way is to use the `Transactionl` from Spring framwork (and not from JAVAX) </br>
+following video explains difference between both [Video Explanation](https://www.youtube.com/watch?v=XL0EROsn5Yc&list=PL12XW6i6zqKv4YBdBPMkUYTjL-ARQ8sd9&ab_channel=JavaCodeHouse)
 
 
 ### [Under the hood with `@Transactional`](#-)
