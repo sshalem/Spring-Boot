@@ -22,8 +22,11 @@
 3. [Explain Isolation and Propagation](https://www.youtube.com/watch?v=1fQtFALX80w&list=PLzS3AYzXBoj-H1SJxp2RuMMS4xUWrPV_3&ab_channel=KKJavaTutorials)
 4. [Video Explanation](https://www.youtube.com/watch?v=XL0EROsn5Yc&list=PL12XW6i6zqKv4YBdBPMkUYTjL-ARQ8sd9&ab_channel=JavaCodeHouse)
 5. [Video ThorbenJanssen](https://www.youtube.com/watch?v=SUQxXg229Xg&ab_channel=ThorbenJanssen)
-6. [javainuse](https://www.javainuse.com/spring/boot-transaction)
-7. [Spring DOC](https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/transaction.html)
+6. [javaInUse - transaction management](https://www.javainuse.com/spring/boot-transaction)
+7. [javaInUse - transaction-propagation](https://www.javainuse.com/spring/boot-transaction-propagation)
+8. [javaInUse - transaction-rollback](https://www.javainuse.com/spring/boot-rollback)
+9. [javaInUse - transaction-isolation](https://www.javainuse.com/spring/boot-transaction-isolation)
+10. [Spring DOC](https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/transaction.html)
 
 * https://medium.com/javarevisited/spring-transactional-mistakes-everyone-did-31418e5a6d6b
 * https://www.concretepage.com/spring/spring-transactional
