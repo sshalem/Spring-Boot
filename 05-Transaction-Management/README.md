@@ -28,7 +28,10 @@
 * https://medium.com/javarevisited/spring-transactional-mistakes-everyone-did-31418e5a6d6b
 * https://www.concretepage.com/spring/spring-transactional
 
-A database transaction is a sequence of actions that are treated as a single unit of work.</br>
+### [What are Database Transactions?](#-)
+
+A database transaction is a sequence of actions that are treated as a single unit of work , which accesses and possibly modifies the contents of a database.</br>
+
 These actions should either:
 * [Successful - complete entirely](#-)
 * [Failure - take no effect at all](#-)
@@ -42,9 +45,8 @@ This diagram shows what happens when a method is transactinoal. </br>
 
 * Spring supports a comprehansive Transaction Management supprt
 * Below is a simplified overview to show how it works. 
-* Spring transaction support is enabled via AOP Proxy. 
-* The caller of the method invokes the proxy (and NOT the Target) , </br>
-and on this point the transaction is created and the Traget method is invoked. 
+* Spring transaction support is enabled via `AOP Proxy`. 
+* The caller of the method invokes the proxy (and NOT the Target) ,and on this point the transaction is created and the Traget method is invoked. 
 * On the way back, either the transaction is Commited or rolled back on the way out.
 
 <p align="center">
