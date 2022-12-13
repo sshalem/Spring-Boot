@@ -35,10 +35,11 @@
 ### [What are Database Transactions?](#-)
 
 A database transaction is a sequence of actions that are treated as a single unit of work , which accesses and possibly modifies the contents of a database.</br>
+These actions should either [Successful - complete entirely](#-) or [Failure - take no effect at all](#-)
 
-These actions should either:
-* [Successful - complete entirely](#-)
-* [Failure - take no effect at all](#-)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/207462692-f41337cf-1b28-4802-bcb3-1bdf7e02dbd1.png">
+</p>
 
 This diagram shows what happens when a method is transactinoal. </br>
 
