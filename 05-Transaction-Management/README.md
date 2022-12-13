@@ -316,7 +316,7 @@ If there isn't already opened transaction the method will exeute anyway but in a
 
 ###### Proxy_with_Transaction
 
-<img src="https://img.shields.io/badge/- 1.4. Proxy_with_Transaction %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1.4. Proxy_with_Transaction %20-greenyellow" height=30px>
 
 Spring boot implicitly creates **Proxy for the transaction annotated methods.** </br>
 So, for such methods the proxy acts like a wrapper which takes care of creating :
