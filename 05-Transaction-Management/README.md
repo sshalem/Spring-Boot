@@ -52,7 +52,7 @@ This diagram shows what happens when a method is transactinoal. </br>
 * The caller of the method invokes the proxy (and NOT the Target) ,and on this point the transaction is created and the Traget method is invoked. 
 * Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
 	* A transaction at the beggining of the method call
-	* commiting the trnsaction after the method executes.
+	* After method got executed , the Proxy either `commits` the transaction or `rolls it back` as a Runtime Exception
 * On the way back, either the transaction is Commited or rolled back on the way out.
 
 <p align="center">
@@ -69,7 +69,7 @@ This diagram shows what happens when a method is transactinoal. </br>
 * In order to apply transaction management , we just need to add annotation of `@Transactional`.
 * Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
 	* A transaction at the beggining of the method call
-	* commiting the trnsaction after the method executes.
+	* After method got executed , the Proxy either `commits` the transaction or `rolls it back` as a Runtime Exception
 
 ### [Difference between javax Transaction to Springframwork Transaction](#-)
 
@@ -84,7 +84,7 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 * Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
 	* A transaction at the beggining of the method call
-	* commiting the trnsaction after the method executes.
+	* After method got executed , the Proxy either `commits` the transaction or `rolls it back` as a Runtime Exception
 * When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target.
 * Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target.
 * Once method invocation is finished on the target, the Transaction will be commited or rolled back
