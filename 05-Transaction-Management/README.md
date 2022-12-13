@@ -73,6 +73,9 @@ The prefered way is to use the `Transactionl` from SPring framwork (and not from
 
 ### [Under the hood with `@Transactional`](#-)
 
+* Spring boot implicitly creates Proxy for the transaction annotated methods. So, for such methods the proxy acts like a wrapper which takes care of creating :
+	* A transaction at the beggining of the method call
+	* commiting the trnsaction after the method executes.
 * When `@Transactional` is present , Spring creates a Proxy which will stand between the caller and the target.
 * Thus, external invocation will always call the method in Proxy , then the Proxy will invoke the actual method in the Target.
 * Once method invocation is finished on the target, the Transaction will be commited or rolled back
