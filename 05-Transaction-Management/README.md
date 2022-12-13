@@ -164,7 +164,7 @@ Therefore, isolation levels came into existence:
 4. ISOLATION_SERIALIZABLE -     Indicates that [`dirty reads, non-repeatable reads, and phantom reads are prevented`](#-).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/36256986/207171659-1de40e01-61e6-40f1-98bc-2004428bdbbe.png">	
+  <img src="https://user-images.githubusercontent.com/36256986/207327567-0d5d804c-1e70-4863-ae3e-86dbcfb92e4a.png">	
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
