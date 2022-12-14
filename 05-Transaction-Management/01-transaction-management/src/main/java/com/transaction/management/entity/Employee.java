@@ -1,12 +1,14 @@
 package com.transaction.management.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
+	@Id
 	private long empId;
 	private String empName;
 

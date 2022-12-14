@@ -1,12 +1,14 @@
 package com.transaction.management.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EmployeeHealthInsurance")
+@Table(name = "employeeHealthInsurance")
 public class EmployeeHealthInsurance {
 
+	@Id
 	private long empId;
 	private String healthInsuranceSchemeName;
 	private int coverageAmount;
