@@ -388,11 +388,8 @@ Meaning , If a `addEmployee(employee)` is exeuted </br>
 @Table(name = "employee")
 public class Employee {
 
-	/**
-	 * I DON'T add the GeneratedValue 
-	 * Because i want to be able to setEmpId() by myself
-	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long empId;
 	private String empName;
 	
