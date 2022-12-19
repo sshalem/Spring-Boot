@@ -2,7 +2,6 @@ package com.transaction.management.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.transaction.management.entity.Employee;
 import com.transaction.management.entity.EmployeeHealthInsurance;
@@ -19,8 +18,7 @@ public class OrganzationServiceImpl implements OrganizationService {
 	@Autowired
 	private HealthInsuranceService healthInsuranceService;
 
-	@Transactional
-	@Override	
+	@Override
 	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
 		employeeService.addEmployee(employee);
 		if (employee.getEmpId() == 10) {
