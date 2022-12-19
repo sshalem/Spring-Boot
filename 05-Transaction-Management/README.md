@@ -354,11 +354,30 @@ So, for such methods the proxy acts like a wrapper which takes care of creating 
 
 ###### 2_Code_without_Transaction_Management
 
-<img src="https://img.shields.io/badge/- 2. Code_Example %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. Code w/o Transaction Management %20-blue" height=40px>
+
+This diagram describes the flow of the request. </br>
+Once we get a Http Request to `joinOrganization` , it will be implemented in the `OrganzationServiceImpl`. </br>
+`joinOrganization()` method then will invoke 2 different methods , from difereent services:
+1. `employeeService.addEmployee(employee)` from `EmployeeServiceImpl`
+2. `healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance)` from `HealthInsuranceServiceImpl`
+
+In this example we don't have Transaction Management Implemented </br>
+Meaning , If a `addEmployee(employee)` is exeuted </br>
+**BUT** , `registerEmployeeHealthInsurance(employeeHealthInsurance)` is not executed due to an error or exception.
+
+### [Flow Diagram](#-)
 
 ![image](https://user-images.githubusercontent.com/36256986/208326914-7ae59887-e9b6-46f1-ada8-213f4df05bd5.png)
 
+### [Maven Project Layout](#-)
 
+<p>
+  <img src="https://user-images.githubusercontent.com/36256986/208327645-6a6f6d9e-931e-499a-b905-4c8bef65500d.png">	  
+</p>
+<p align="center">  
+  <img src="https://user-images.githubusercontent.com/36256986/208327591-e1557508-2aa8-44d0-bb9f-b902ca971b8e.png">	
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
