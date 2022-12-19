@@ -20,10 +20,15 @@ public class OrganzationServiceImpl implements OrganizationService {
 
 	@Override
 	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
-		employeeService.addEmployee(employee);
-		if (employee.getEmpId() == 10) {
-			throw new RuntimeException("throwing exception to test transaction rollback");
-		}
+		
+		Employee _employee = employeeService.addEmployee(employee);
+		
+//		if (employeeHealthInsurance.getCoverageAmount() < 10000) {
+//			throw new RuntimeException("throwing exception to test transaction rollback");
+//		}
+		
+		long empId = _employee.getEmpId();
+		employeeHealthInsurance.setEmpId(empId);
 		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
 	}
 
@@ -32,5 +37,4 @@ public class OrganzationServiceImpl implements OrganizationService {
 		employeeService.deleteEmpolyee(employee.getEmpId());
 		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
 	}
-
 }

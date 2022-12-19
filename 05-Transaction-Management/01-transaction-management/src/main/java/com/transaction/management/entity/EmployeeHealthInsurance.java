@@ -8,6 +8,10 @@ import javax.persistence.Table;
 @Table(name = "employeeHealthInsurance")
 public class EmployeeHealthInsurance {
 
+	/**
+	 * I DON'T add the GeneratedValue 
+	 * Because i want to be able to setEmpId() by myself
+	 */
 	@Id
 	private long empId;
 	private String healthInsuranceSchemeName;
