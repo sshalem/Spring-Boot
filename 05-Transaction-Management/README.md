@@ -9,7 +9,7 @@
 |     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
 |     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
-|  2  | [Code Example](#2_Code_Example)             |
+|  2  | [Code w/o Transaction Management](#2_Code_without_Transaction_Management)             |
 
 
 
@@ -352,7 +352,7 @@ So, for such methods the proxy acts like a wrapper which takes care of creating 
 
 ---
 
-###### 2_Code_Example
+###### 2_Code_without_Transaction_Management
 
 <img src="https://img.shields.io/badge/- 2. Code_Example %20-blue" height=40px>
 
