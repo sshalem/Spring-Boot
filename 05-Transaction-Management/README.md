@@ -536,7 +536,7 @@ public class TransactionManagementController {
 Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
 DB shows all executed w/n issue
 
-![image](https://user-images.githubusercontent.com/36256986/208329524-2a9e4837-fe4c-4a30-9cac-d17aca46115c.png)
+![image](https://user-images.githubusercontent.com/36256986/208527502-7f209dd4-76ef-4134-b73c-416f2f81c537.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
