@@ -363,7 +363,10 @@ Once we get a Http Request to `joinOrganization` , it will be implemented in the
 2. `healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance)` from `HealthInsuranceServiceImpl`
 
 In this example we don't have Transaction Management Implemented </br>
-Meaning , If a `addEmployee(employee)` is exeuted **`BUT`** `registerEmployeeHealthInsurance(employeeHealthInsurance)` is not executed due to an error or exception.
+Meaning , If a `addEmployee(employee)` is exeuted </br>
+**BUT** , `registerEmployeeHealthInsurance(employeeHealthInsurance)` is not executed due to an error or exception.
+
+### [Flow Diagram](#-)
 
 ![image](https://user-images.githubusercontent.com/36256986/208326914-7ae59887-e9b6-46f1-ada8-213f4df05bd5.png)
 
