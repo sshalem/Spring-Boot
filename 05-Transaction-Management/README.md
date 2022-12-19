@@ -11,6 +11,8 @@
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
 |  2  | [Code w/o Transaction Management](#2_Code_without_Transaction_Management)             |
 |     | 2.1. [Test app w/o Trasnaction Management](#Test_app_without_Trasnaction_Management)             |
+|     | 2.2. [Test app w/o Trasnaction Management and throws exception](#Test_app_without_Trasnaction_Management_and_throws_exception)             |
+|     | 2.3. [Test app with Trasnactional](#Test_app_with_Trasnactional)             |
 |  3  | [Code w/o Transaction Management](#2_Code_without_Transaction_Management)             |
 
 
@@ -531,6 +533,102 @@ Let's run the app, and send via postmand a request to url of `localhost:8080/tra
 DB shows all executed w/n issue
 
 ![image](https://user-images.githubusercontent.com/36256986/208527502-7f209dd4-76ef-4134-b73c-416f2f81c537.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### Test_app_without_Trasnaction_Management_and_throws_exception
+
+<img src="https://img.shields.io/badge/- 2.2. Test_app_without_Trasnaction_Management_and_throws_exception %20- green" height=30px>
+
+In this example I modifyed the code in  `OrganizationServiceImpl` as follows:
+
+```java
+@Service
+public class OrganzationServiceImpl implements OrganizationService {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private HealthInsuranceService healthInsuranceService;
+
+	@Override
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		
+		Employee _employee = employeeService.addEmployee(employee);
+		
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+				
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+	}
+
+	@Override
+	public void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.deleteEmpolyee(employee.getEmpId());
+		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
+	}
+}
+```
+
+Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
+DB shows :
+* In EMPLOYEE TB - employeewas inserted even though Exception is throw.
+* IN EMPLOYEE_HEALTH_INSURANCE - no records
+
+![image](https://user-images.githubusercontent.com/36256986/208528976-21448c6c-9f3e-469e-92d4-c591bdfd3955.png)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### Test_app_with_Trasnactional
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+Continue from previous section 2.2 where we DIDN'T had `Transactionl` annotation. </br>
+Let's add `Transactionl` annotation ad method level code in  `OrganizationServiceImpl` as follows:
+
+```java
+@Service
+public class OrganzationServiceImpl implements OrganizationService {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private HealthInsuranceService healthInsuranceService;
+
+	@Override
+	@Transactional
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		
+		Employee _employee = employeeService.addEmployee(employee);
+		
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+				
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+	}
+
+	@Override
+	public void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.deleteEmpolyee(employee.getEmpId());
+		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
+	}
+}
+```
+
+Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
+DB shows :
+* In EMPLOYEE TB - no records.
+* IN EMPLOYEE_HEALTH_INSURANCE  - no records
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
