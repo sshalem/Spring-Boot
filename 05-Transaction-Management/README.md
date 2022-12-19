@@ -367,7 +367,12 @@ Meaning , If a `addEmployee(employee)` is exeuted **`BUT`** `registerEmployeeHea
 
 ![image](https://user-images.githubusercontent.com/36256986/208326914-7ae59887-e9b6-46f1-ada8-213f4df05bd5.png)
 
+### [Maven Project Layout](#-)
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36256986/208327645-6a6f6d9e-931e-499a-b905-4c8bef65500d.png">	
+  <img src="https://user-images.githubusercontent.com/36256986/208327591-e1557508-2aa8-44d0-bb9f-b902ca971b8e.png">	
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
