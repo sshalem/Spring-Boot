@@ -356,6 +356,9 @@ So, for such methods the proxy acts like a wrapper which takes care of creating 
 
 <img src="https://img.shields.io/badge/- 2. Code_Example %20-blue" height=40px>
 
+![image](https://user-images.githubusercontent.com/36256986/208326771-9c8b05de-a4ae-4133-a7ff-f36c4f38c678.png)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---
