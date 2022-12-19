@@ -519,6 +519,8 @@ public class TransactionManagementController {
 
 <img src="https://img.shields.io/badge/- 2.1. Test_app_without_Trasnaction_Management %20- green" height=30px>
 
+Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization`
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
