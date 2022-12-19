@@ -651,6 +651,38 @@ So for such methods the proxy acts like a wrapper which takes care of creating a
 
 <img src="https://img.shields.io/badge/- 3. Code_with_Transaction_Propagation %20-blue" height=40px>
 
+What is Transaction Propagation? </br>
+Any application involves a number of services or components making a call to other services or components. </br>
+Transaction Propagation indicates if any component or service will or will not participate in transaction and how will it behave if the calling calling component/service already has or does not have a transaction created already.
+
+(I will using the same code from section 2, each step I will modify the code and explain it with example)
+
+Suppose the user wants to call the Employee Service in both ways i.e. :
+1. Call using Organization service
+2. Call the the Employee Service directly.
+
+![image](https://user-images.githubusercontent.com/36256986/208536445-6af41dae-b764-427a-9ec6-19f492325c11.png)
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------------
