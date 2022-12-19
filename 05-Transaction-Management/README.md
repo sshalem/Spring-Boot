@@ -663,6 +663,20 @@ Suppose the user wants to call the Employee Service in both ways i.e. :
 
 ![image](https://user-images.githubusercontent.com/36256986/208536445-6af41dae-b764-427a-9ec6-19f492325c11.png)
 
+As the Employee Service may also be called directly we will need to use Transaction annotation with Employee Service also.</br>
+So both the services - Organization Service and the Employee Service will be using Transaction annotation. </br>
+We will be looking at the various propagation scenarios by observing the behaviour of the Organization and Employee service.  </br>
+There are six types of Transaction Propagations-
+
+* REQUIRED
+* SUPPORTS
+* NOT_SUPPORTED
+* REQUIRES_NEW
+* NEVER
+* MANDATORY
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 ###### 3_
 
 <img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
