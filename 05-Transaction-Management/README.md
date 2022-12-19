@@ -376,12 +376,121 @@ Meaning , If a `addEmployee(employee)` is exeuted </br>
   <img src="https://user-images.githubusercontent.com/36256986/208327645-6a6f6d9e-931e-499a-b905-4c8bef65500d.png">	  
 </p>
 <p align="center">  
-  <img src="https://user-images.githubusercontent.com/36256986/208327591-e1557508-2aa8-44d0-bb9f-b902ca971b8e.png">	
+  <img src="https://user-images.githubusercontent.com/36256986/208327923-5ff5cd7e-2a0c-4451-919d-5d28ddc31d9f.png">	
 </p>
+
+### [Entity](#-)
+
+```java
+@Entity
+@Table(name = "employee")
+public class Employee {
+
+	@Id
+	private long empId;
+	private String empName;
+	
+	C/G/T
+}
+```
+
+```java
+@Entity
+@Table(name = "employeeHealthInsurance")
+public class EmployeeHealthInsurance {
+
+	@Id
+	private long empId;
+	private String healthInsuranceSchemeName;
+	private int coverageAmount;
+		
+	C/G/T
+}
+```
+
+### [Repository & Service](#-)
+
+```java
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+}
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Override
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+
+	@Override
+	public void deleteEmpolyee(long empid) {
+		employeeRepository.deleteById(empid);
+	}
+}
+```
+
+```java
+@Repository
+public interface HealthInsuraceRepository extends JpaRepository<EmployeeHealthInsurance, Long> {
+}
+
+@Service
+public class HealthInsuranceServiceImpl implements HealthInsuranceService {
+
+	@Autowired
+	private HealthInsuraceRepository healthInsuraceRepository;
+
+	@Override
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+
+	@Override
+	public void deleteEmployeeHealthInsuranceById(long empid) {
+		healthInsuraceRepository.deleteById(empid);
+	}
+}
+```
+
+```java
+@Service
+public class OrganzationServiceImpl implements OrganizationService {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private HealthInsuranceService healthInsuranceService;
+
+	@Override
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.addEmployee(employee);
+		if (employee.getEmpId() == 10) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+	}
+
+	@Override
+	public void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.deleteEmpolyee(employee.getEmpId());
+		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
+	}
+}
+```
+
+### [Controller](#-)
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----
+---------------------------------------------------------------------------------------------------
 
 ######
 
