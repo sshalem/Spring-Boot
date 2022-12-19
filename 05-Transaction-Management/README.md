@@ -516,18 +516,11 @@ public class TransactionManagementController {
 	@Autowired
 	private OrganzationServiceImpl organzationServiceImpl;
 
-	@GetMapping(path = "/joinOrganization")
-	public String joinOrganization() {
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
 
-		Employee emp = new Employee();
-		emp.setEmpId(10);
-		emp.setEmpName("shabtay");
-
-		EmployeeHealthInsurance employeeHealthInsurance = new EmployeeHealthInsurance();
-		employeeHealthInsurance.setEmpId(10);
-		employeeHealthInsurance.setHealthInsuranceSchemeName("Yashir");
-		employeeHealthInsurance.setCoverageAmount(20000);
-
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
 		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
 		return "Testing Transaction Management";
 	}
