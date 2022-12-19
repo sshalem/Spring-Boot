@@ -1,5 +1,7 @@
 package com.transaction.management.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +20,14 @@ public class OrganzationServiceImpl implements OrganizationService {
 	@Autowired
 	private HealthInsuranceService healthInsuranceService;
 
+	
 	@Override
+	@Transactional
 	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
 		
 		Employee _employee = employeeService.addEmployee(employee);
 		
-		if (employeeHealthInsurance.getCoverageAmount() < 10000) {
+		if (_employee.getEmpName().equals("shabtay")) {
 			throw new RuntimeException("throwing exception to test transaction rollback");
 		}
 				
