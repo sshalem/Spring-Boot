@@ -389,6 +389,7 @@ Meaning , If a `addEmployee(employee)` is exeuted </br>
 public class Employee {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long empId;
 	private String empName;
 	
@@ -402,6 +403,7 @@ public class Employee {
 public class EmployeeHealthInsurance {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long empId;
 	private String healthInsuranceSchemeName;
 	private int coverageAmount;
