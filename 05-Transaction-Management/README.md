@@ -474,15 +474,9 @@ public class OrganzationServiceImpl implements OrganizationService {
 	private HealthInsuranceService healthInsuranceService;
 
 	@Override
-	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
-		
-		Employee _employee = employeeService.addEmployee(employee);
-		
-		if (employeeHealthInsurance.getCoverageAmount() < 10000) {
-			throw new RuntimeException("throwing exception to test transaction rollback");
-		}
-				
-		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {		
+		Employee _employee = employeeService.addEmployee(employee);		
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());		
 		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
 	}
 
