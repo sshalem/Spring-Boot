@@ -485,7 +485,31 @@ public class OrganzationServiceImpl implements OrganizationService {
 
 ### [Controller](#-)
 
+```java
+@RestController
+@RequestMapping("/transaction-management")
+public class TransactionManagementController {
 
+	@Autowired
+	private OrganzationServiceImpl organzationServiceImpl;
+
+	@GetMapping(path = "/joinOrganization")
+	public String joinOrganization() {
+
+		Employee emp = new Employee();
+		emp.setEmpId(10);
+		emp.setEmpName("shabtay");
+
+		EmployeeHealthInsurance employeeHealthInsurance = new EmployeeHealthInsurance();
+		employeeHealthInsurance.setEmpId(10);
+		employeeHealthInsurance.setHealthInsuranceSchemeName("Yashir");
+		employeeHealthInsurance.setCoverageAmount(20000);
+
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "Testing Transaction Management";
+	}
+}
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
