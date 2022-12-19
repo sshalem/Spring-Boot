@@ -629,6 +629,13 @@ DB shows :
 * In EMPLOYEE TB - no records.
 * IN EMPLOYEE_HEALTH_INSURANCE  - no records
 
+This is how trnsactionl annotation works:  </br>
+If error occurs or Exception is thrown, any updates occured in current Transaction Session that is open , will be rolled back. </br>
+Thats why we don't see the update on adding the Employee `Employee _employee = employeeService.addEmployee(employee);`
+
+
+![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
