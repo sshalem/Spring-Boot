@@ -9,11 +9,11 @@
 |     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
 |     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
-|  2  | [Code w/o Transaction Management](#2_Code_without_Transaction_Management)             |
-|     | 2.1. [Test app w/o Trasnaction Management](#Test_app_without_Trasnaction_Management)             |
-|     | 2.2. [Test app w/o Trasnaction Management and throws exception](#Test_app_without_Trasnaction_Management_and_throws_exception)             |
-|     | 2.3. [Test app with Trasnactional](#Test_app_with_Trasnactional)             |
-|  3  | [Code w/o Transaction Management](#2_Code_without_Transaction_Management)             |
+|  2  | [Code with Transaction Management](#2_Code_with_Transaction_Management)             |
+|     | 2.1. [Test app w/o Trasnaction Management](#2_1_Test_app_without_Trasnaction_Management)             |
+|     | 2.2. [Test app w/o Trasnaction Management and throws exception](#2_2_Test_app_without_Trasnaction_Management_and_throws_exception)             |
+|     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
+|  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 
 
 
@@ -356,9 +356,9 @@ So, for such methods the proxy acts like a wrapper which takes care of creating 
 
 ---
 
-###### 2_Code_without_Transaction_Management
+###### 2_Code_with_Transaction_Management
 
-<img src="https://img.shields.io/badge/- 2. Code w/o Transaction Management %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. Code with Transaction Management %20-blue" height=40px>
 
 This diagram describes the flow of the request. </br>
 Once we get a Http Request to `joinOrganization` , it will be implemented in the `OrganzationServiceImpl`. </br>
@@ -366,9 +366,10 @@ Once we get a Http Request to `joinOrganization` , it will be implemented in the
 1. `employeeService.addEmployee(employee)` from `EmployeeServiceImpl`
 2. `healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance)` from `HealthInsuranceServiceImpl`
 
-In this example we don't have Transaction Management Implemented </br>
-Meaning , If a `addEmployee(employee)` is exeuted </br>
+In this example I will show how Transaction Management works , step by step (3  sub sections that describs this 2.1. till 2.3) </br>
+If a `addEmployee(employee)` is exeuted </br>
 **BUT** , `registerEmployeeHealthInsurance(employeeHealthInsurance)` is not executed due to an error or exception.
+**AND** , the `addEmployee(employee)` will be rolled back , and won't be commited to DB.
 
 ### [Flow Diagram](#-)
 
@@ -525,7 +526,7 @@ public class TransactionManagementController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### Test_app_without_Trasnaction_Management
+###### 2_1_Test_app_without_Trasnaction_Management
 
 <img src="https://img.shields.io/badge/- 2.1. Test_app_without_Trasnaction_Management %20- green" height=30px>
 
@@ -537,7 +538,7 @@ DB shows all executed w/n issue
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### Test_app_without_Trasnaction_Management_and_throws_exception
+###### 2_2_Test_app_without_Trasnaction_Management_and_throws_exception
 
 <img src="https://img.shields.io/badge/- 2.2. Test_app_without_Trasnaction_Management_and_throws_exception %20- green" height=30px>
 
@@ -585,7 +586,7 @@ DB shows :
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### Test_app_with_Trasnactional
+###### 2_3_Test_app_with_Trasnactional
 
 <img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
 
@@ -646,9 +647,9 @@ So for such methods the proxy acts like a wrapper which takes care of creating a
 
 ---------------------------------------------------------------------------------------------------
 
-######
+###### 3_Code_with_Transaction_Propagation
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. Code_with_Transaction_Propagation %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
