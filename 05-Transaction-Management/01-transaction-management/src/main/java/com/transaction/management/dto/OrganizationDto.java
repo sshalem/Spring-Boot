@@ -28,4 +28,9 @@ public class OrganizationDto {
 		this.employeeHealthInsurance = employeeHealthInsurance;
 	}
 
+	@Override
+	public String toString() {
+		return "OrganizationDto [employee=" + employee + ", employeeHealthInsurance=" + employeeHealthInsurance + "]";
+	}
+
 }

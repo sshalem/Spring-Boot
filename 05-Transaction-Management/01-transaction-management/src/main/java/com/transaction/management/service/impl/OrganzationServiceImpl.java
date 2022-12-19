@@ -23,12 +23,11 @@ public class OrganzationServiceImpl implements OrganizationService {
 		
 		Employee _employee = employeeService.addEmployee(employee);
 		
-//		if (employeeHealthInsurance.getCoverageAmount() < 10000) {
-//			throw new RuntimeException("throwing exception to test transaction rollback");
-//		}
-		
-		long empId = _employee.getEmpId();
-		employeeHealthInsurance.setEmpId(empId);
+		if (employeeHealthInsurance.getCoverageAmount() < 10000) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+				
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
 		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
 	}
 

@@ -9,8 +9,8 @@ import javax.persistence.Table;
 public class EmployeeHealthInsurance {
 
 	/**
-	 * I DON'T add the GeneratedValue 
-	 * Because i want to be able to setEmpId() by myself
+	 * I DON'T add the GeneratedValue Because 
+	 * i want to be able to setEmpId() by myself
 	 */
 	@Id
 	private long empId;
@@ -43,6 +43,12 @@ public class EmployeeHealthInsurance {
 
 	public void setCoverageAmount(int coverageAmount) {
 		this.coverageAmount = coverageAmount;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeHealthInsurance [empId=" + empId + ", healthInsuranceSchemeName=" + healthInsuranceSchemeName
+				+ ", coverageAmount=" + coverageAmount + "]";
 	}
 
 }

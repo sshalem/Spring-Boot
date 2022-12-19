@@ -1,6 +1,8 @@
 package com.transaction.management.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,11 +10,8 @@ import javax.persistence.Table;
 @Table(name = "employee")
 public class Employee {
 
-	/**
-	 * I DON'T add the GeneratedValue 
-	 * Because i want to be able to setEmpId() by myself
-	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long empId;
 	private String empName;
 
@@ -34,6 +33,11 @@ public class Employee {
 
 	public void setEmpName(String empName) {
 		this.empName = empName;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + "]";
 	}
 
 }
