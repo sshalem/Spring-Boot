@@ -372,7 +372,7 @@ Meaning , If a `addEmployee(employee)` is exeuted </br>
 
 ### [Maven Project Layout](#-)
 
-<p align="center">
+<p>
   <img src="https://user-images.githubusercontent.com/36256986/208327645-6a6f6d9e-931e-499a-b905-4c8bef65500d.png">	  
 </p>
 <p align="center">  
