@@ -28,13 +28,13 @@ public class TransactionManagementController {
 		Employee emp = organizationDto.getEmployee();
 		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
 		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
-		return "Testing Transaction Management";
+		return "joinOrganization successful";
 	}
 
 	@PostMapping(path = "/addEmployee")
 	public String addEmployee(@RequestBody Employee employee) {
 
 		employeeServiceImpl.addEmployee(employee);
-		return "Testing Transaction Management";
+		return "add Employee successful";
 	}
 }
