@@ -392,6 +392,18 @@ If a `addEmployee(employee)` is exeuted </br>
   <img src="https://user-images.githubusercontent.com/36256986/208526272-34b08ad1-7da3-4699-a0af-23c5f6cfcf8a.png">	
 </p>
 
+### [Logging Level in application.properties](#-)
+
+I set the logging level as follows, so I could monitor the Transaction with Spring framwork
+
+```sql
+#######################
+# 	Logging level
+#######################
+logging.level.ROOT=info
+logging.level.org.springframework.orm.jpa=debug
+```
+
 ### [Entity](#-)
 
 ```java
