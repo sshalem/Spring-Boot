@@ -711,7 +711,7 @@ if the `addEmployee()`  method is called directly , it creates it's own new Tran
 
 ### [Calling addEmployee() from another service](#-)
 
-if the `addEmployee()`  method is called **from another service (OrganizationServiceImpl) **
+if the `addEmployee()`  method is called **from another service (OrganizationServiceImpl)**
 1. If the calling service has a @Transaction then **method uses the existing transaction** .
 2. If the calling service DOES NOT have a @Transaction then the **method creates new transaction** 
 
