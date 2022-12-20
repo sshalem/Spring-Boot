@@ -2,6 +2,8 @@ package com.trans.mngnt.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.trans.mngnt.entity.EmployeeHealthInsurance;
 import com.trans.mngnt.repository.HealthInsuraceRepository;
@@ -14,6 +16,7 @@ public class HealthInsuranceServiceImpl implements HealthInsuranceService {
 	private HealthInsuraceRepository healthInsuraceRepository;
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
 		healthInsuraceRepository.save(employeeHealthInsurance);
 	}
