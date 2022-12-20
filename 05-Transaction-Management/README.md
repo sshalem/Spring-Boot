@@ -667,16 +667,17 @@ As the Employee Service may also be called directly we will need to use `Transac
 So both the services :
 * Organization Service 
 * and the Employee Service
+
 will be using `Transaction annotation`. </br>
 We will be looking at the various `propagation scenarios` by observing the behaviour of the **Organization and Employee service**.  </br>
-There are six types of Transaction Propagations-
 
-* REQUIRED
-* SUPPORTS
-* NOT_SUPPORTED
-* REQUIRES_NEW
-* NEVER
-* MANDATORY
+There are six types of Transaction Propagations:
+1. REQUIRED
+2. SUPPORTS
+3. NOT_SUPPORTED
+4. REQUIRES_NEW
+5. NEVER
+6. MANDATORY
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
