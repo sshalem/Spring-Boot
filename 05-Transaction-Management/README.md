@@ -720,6 +720,70 @@ Else, creates its own
 
 ![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
 
+### Code 
+
+#### from class OrganzationServiceImpl
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+
+		// commit Transaction
+	}
+```
+
+#### from class EmployeeServiceImpl
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+```
+
+#### from class TransactionManagementController
+
+I have 2 methods in the controller:
+1. **joinOrganization** - which then Invokes the addEmployee() method from OragnizationService.
+2. Invoke directly the addEmployee() method
+
+```java
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
+
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "Testing Transaction Management";
+	}
+
+	@PostMapping(path = "/addEmployee")
+	public String addEmployee(@RequestBody Employee employee) {
+
+		employeeServiceImpl.addEmployee(employee);
+		return "Testing Transaction Management";
+	}
+```
+
+### [Test the App](#-)
+
+Lets run the app `02-transaction-management-propagation` , and sent vis postman the requests to URL of :
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 3_
