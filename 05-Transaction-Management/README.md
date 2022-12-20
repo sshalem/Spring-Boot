@@ -490,6 +490,8 @@ public class HealthInsuranceServiceImpl implements HealthInsuranceService {
 @Service
 public class OrganzationServiceImpl implements OrganizationService {
 
+	private static Logger LOGGER = LoggerFactory.getLogger(OrganzationServiceImpl.class); 
+
 	@Autowired
 	private EmployeeService employeeService;
 
@@ -497,9 +499,14 @@ public class OrganzationServiceImpl implements OrganizationService {
 	private HealthInsuranceService healthInsuranceService;
 
 	@Override
-	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {		
-		Employee _employee = employeeService.addEmployee(employee);		
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {	
+	
+		LOGGER.info("---> employeeService.addEmployee(employee)");
+		Employee _employee = employeeService.addEmployee(employee);				
+		
 		employeeHealthInsurance.setEmpId(_employee.getEmpId());		
+		
+		LOGGER.info("---> healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance)");
 		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
 	}
 
@@ -530,12 +537,16 @@ public class OrganizationDto {
 @RequestMapping("/transaction-management")
 public class TransactionManagementController {
 
+	private static Logger LOGGER = LoggerFactory.getLogger(TransactionManagementController.class); 
+	
 	@Autowired
 	private OrganzationServiceImpl organzationServiceImpl;
 
 	@PostMapping(path = "/joinOrganization")
 	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
 
+		LOGGER.info("joinOrganization");
+		
 		Employee emp = organizationDto.getEmployee();
 		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
 		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
