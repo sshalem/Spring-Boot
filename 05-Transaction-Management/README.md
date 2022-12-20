@@ -568,11 +568,9 @@ DB shows all executed w/n issue
 
 Console shows following:
 
-
-
+![image](https://user-images.githubusercontent.com/36256986/208783671-dc13809d-a2ed-4ce1-b779-190decc3da3c.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 
 ###### 2_2_Test_app_without_Trasnaction_Management_and_throws_exception
 
