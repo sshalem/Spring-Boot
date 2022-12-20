@@ -14,6 +14,14 @@
 |     | 2.2. [Test app w/o Trasnaction Management and throws exception](#2_2_Test_app_without_Trasnaction_Management_and_throws_exception)             |
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
+|     | 3.1. [Test app with Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
+|     | 3.2. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.3. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.4. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.5. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.6. [Test app with Propagation.REQUIRED](#)             |
+
+
 
 
 
@@ -681,21 +689,33 @@ There are six types of Transaction Propagations:
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_
+###### 3_1_Test_app_with_Propagation_REQUIRED
 
-<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.1. Test_app_with_Propagation_REQUIRED %20- green" height=30px>
 
-###### 3_
+If only annotate the method with `@Transactional` w/o specifing propagation type, by default it is **Propagation.REQUIRED** </br>
 
-<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
 
-###### 3_
 
-<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 3_
 
 <img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 3_
+
+<img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 3_
 
