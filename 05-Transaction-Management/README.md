@@ -659,13 +659,16 @@ Transaction Propagation indicates if any component or service will or will not p
 
 Suppose the user wants to call the Employee Service in both ways i.e. :
 1. Call using Organization service
-2. Call the the Employee Service directly.
+2. Call the the Employee Service `directly`.
 
 ![image](https://user-images.githubusercontent.com/36256986/208536445-6af41dae-b764-427a-9ec6-19f492325c11.png)
 
-As the Employee Service may also be called directly we will need to use Transaction annotation with Employee Service also.</br>
-So both the services - Organization Service and the Employee Service will be using Transaction annotation. </br>
-We will be looking at the various propagation scenarios by observing the behaviour of the Organization and Employee service.  </br>
+As the Employee Service may also be called directly we will need to use `Transaction annotation` with Employee Service as well.</br>
+So both the services :
+* Organization Service 
+* and the Employee Service
+will be using `Transaction annotation`. </br>
+We will be looking at the various `propagation scenarios` by observing the behaviour of the **Organization and Employee service**.  </br>
 There are six types of Transaction Propagations-
 
 * REQUIRED
