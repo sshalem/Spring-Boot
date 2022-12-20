@@ -705,13 +705,11 @@ If only annotate the method with `@Transactional` w/o specifing propagation type
 
 ### [Calling addEmployee() Directly](#-)
 
-![image](https://user-images.githubusercontent.com/36256986/208774985-56e6fefe-421e-4264-95a1-5bd1e3ecf54f.png)
-
 if the `addEmployee()`  method is called directly , it creates it's own new Transaction.
 
-### [Calling addEmployee() from another service](#-)
+![image](https://user-images.githubusercontent.com/36256986/208774985-56e6fefe-421e-4264-95a1-5bd1e3ecf54f.png)
 
-![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
+### [Calling addEmployee() from another service](#-)
 
 if the `addEmployee()`  method is called **from another service (OrganizationServiceImpl) **
 1. If the calling service has a @Transaction then **method uses the existing transaction** .
@@ -719,6 +717,8 @@ if the `addEmployee()`  method is called **from another service (OrganizationSer
 
 So, in case of `REQUIRED` the **addEmployee()** method makes use of the calling service transaction if it **exists**, </br>
 Else, creates its own
+
+![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
