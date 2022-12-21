@@ -627,13 +627,17 @@ Let's run the app, and send via postmand a request to url of `localhost:8080/tra
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
 
 DB shows :
-* In EMPLOYEE TB - employeewas inserted even though Exception is throw.
+* In EMPLOYEE TB - employeewas inserted even though Exception is throw, so rollback is not performed
 * IN EMPLOYEE_HEALTH_INSURANCE - no records
 
 ![image](https://user-images.githubusercontent.com/36256986/208528976-21448c6c-9f3e-469e-92d4-c591bdfd3955.png)
 
 Console shows following:
 
+1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(1838434804)]**  , -> trnsaction commited --> transaction closed
+2.Exception is thrown , BUT no rollback is exeuted
+
+![image](https://user-images.githubusercontent.com/36256986/208861968-c39331e1-f502-454a-b2fc-280270657166.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
