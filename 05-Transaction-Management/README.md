@@ -13,6 +13,7 @@
 |     | 2.1. [Test app w/o Trasnactional](#2_1_Test_app_without_Trasnactional)             |
 |     | 2.2. [Test app w/o Trasnactional but throws exception](#2_2_Test_app_without_Trasnactional_but_throws_exception)             |
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
+|     | 2.4. [Test app with Trasnactional but throws exception](#2_4_Test_app_with_Trasnactional_but_throws_exception)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 |     | 3.1. [Test app with Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
 |     | 3.2. [Test app with Propagation.REQUIRED](#)             |
@@ -704,6 +705,67 @@ So for such methods the proxy acts like a wrapper which takes care of creating a
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 2_4_Test_app_with_Trasnactional_but_throws_exception
+
+<img src="https://img.shields.io/badge/- 2.4. Test_app_with_Trasnactional_but_throws_exception %20- green" height=30px>
+
+Continue from previous section 2.2 where we DIDN'T had `Transactionl` annotation. </br>
+Let's add `Transactionl` annotation ad method level code in  `OrganizationServiceImpl` as follows:
+
+```java
+@Service
+public class OrganzationServiceImpl implements OrganizationService {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private HealthInsuranceService healthInsuranceService;
+
+	@Override
+	@Transactional
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+
+		// commit Transaction
+	}
+
+	@Override
+	public void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.deleteEmpolyee(employee.getEmpId());
+		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
+	}
+}
+```
+
+Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
+DB shows :
+
+* In EMPLOYEE TB - no records.
+* IN EMPLOYEE_HEALTH_INSURANCE  - no records
+
+If we now check the EMPLOYEE and the EMPLOYEE_HEALTH_INSURANCE table there are no records in both so our records are getting roll backed correctly. </br>
+This is how trnsactionl annotation works:  </br>
+If error occurs or Exception is thrown, any updates occured in current Transaction Session that is open , will be rolled back. </br>
+Thats why we don't see the update on adding the Employee `Employee _employee = employeeService.addEmployee(employee);`
+
+![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
+
+Spring Boot implicitly creates a proxy for the transaction annotated methods. </br>
+So for such methods the proxy acts like a wrapper which takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---------------------------------------------------------------------------------------------------
 
 ###### 3_Code_with_Transaction_Propagation
