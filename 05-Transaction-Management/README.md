@@ -11,7 +11,7 @@
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
 |  2  | [Code with Transaction Management](#2_Code_with_Transaction_Management)             |
 |     | 2.1. [Test app w/o Trasnactional](#2_1_Test_app_without_Trasnactional)             |
-|     | 2.2. [Test app w/o Trasnaction Management and throws exception](#2_2_Test_app_without_Trasnaction_Management_and_throws_exception)             |
+|     | 2.2. [Test app w/o Trasnactional but throws exception](#2_2_Test_app_without_Trasnactional_but_throws_exception)             |
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 |     | 3.1. [Test app with Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
@@ -577,9 +577,9 @@ We can see that 2 different Transactions created.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_2_Test_app_without_Trasnaction_Management_and_throws_exception
+###### 2_2_Test_app_without_Trasnactional_but_throws_exception
 
-<img src="https://img.shields.io/badge/- 2.2. Test_app_without_Trasnaction_Management_and_throws_exception %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.2. Test_app_without_Trasnactional_but_throws_exception %20- green" height=30px>
 
 In this example I modifyed the code in  `OrganizationServiceImpl` as follows:
 
