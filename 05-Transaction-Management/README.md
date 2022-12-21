@@ -568,6 +568,11 @@ DB shows all executed w/n issue
 
 Console shows following:
 
+1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(1838434804)]**  , -> trnsaction commited --> transaction closed
+2. New Transaction is created for healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance) **[SessionImpl(904883090)]** --> trnsaction commited --> transaction closed
+
+We can see that 2 different Transactions created.
+
 ![image](https://user-images.githubusercontent.com/36256986/208854823-1a447afc-52f5-4fb7-b72f-57cdf9ec9686.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
