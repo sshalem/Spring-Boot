@@ -688,9 +688,17 @@ public class OrganzationServiceImpl implements OrganizationService {
 ```
 
 Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
 DB shows :
 * In EMPLOYEE TB - no records.
 * IN EMPLOYEE_HEALTH_INSURANCE  - no records
+
+Console shows the following:
+
+![image](https://user-images.githubusercontent.com/36256986/208865508-14438fa9-ac00-4a8a-b2ac-8b45902d0ef1.png)
+
 
 If we now check the EMPLOYEE and the EMPLOYEE_HEALTH_INSURANCE table there are no records in both so our records are getting roll backed correctly. </br>
 This is how trnsactionl annotation works:  </br>
@@ -699,8 +707,6 @@ Thats why we don't see the update on adding the Employee `Employee _employee = e
 
 ![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
 
-Spring Boot implicitly creates a proxy for the transaction annotated methods. </br>
-So for such methods the proxy acts like a wrapper which takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
 
 ![image](https://user-images.githubusercontent.com/36256986/208530535-88450b9f-d449-4fc3-954b-d8607f1792f9.png)
 
