@@ -634,11 +634,10 @@ DB shows :
 
 Console shows following:
 
-1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(1838434804)]**  , -> trnsaction commited --> transaction closed
-2.Exception is thrown , BUT no rollback is exeuted
+1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(858609885)]**  , -> trnsaction commited --> transaction closed
+2. Exception is thrown , BUT no rollback is exeuted
 
 ![image](https://user-images.githubusercontent.com/36256986/208861968-c39331e1-f502-454a-b2fc-280270657166.png)
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
