@@ -695,13 +695,14 @@ DB shows :
 * In EMPLOYEE TB - records inserted.
 * IN EMPLOYEE_HEALTH_INSURANCE  - records inserted.
 
-![image](https://user-images.githubusercontent.com/36256986/208865922-44370dc6-43fe-4926-8291-3bb737ffd8aa.png)
-
 ![image](https://user-images.githubusercontent.com/36256986/208867015-8e1f780e-3dec-4bf6-a70f-beeded62666e.png)
 
-![image](https://user-images.githubusercontent.com/36256986/208867272-e64fdbd5-b01b-4446-8fba-ad37ff651cce.png)
-
 Console shows the following:
+
+1. Transaction I opened immidiatelly once method joinOrganization is invoked
+`Creating new transaction with name [com.trans.mngnt.service.impl.OrganzationServiceImpl.joinOrganization]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT`
+2. Only 1 Transaction is opened for both method calls (addEmpolyye() and registerEmployeeHealthInsurance())
+3. log shows the message `Participating in existing transaction` fro both methods
 
 ![image](https://user-images.githubusercontent.com/36256986/208865508-14438fa9-ac00-4a8a-b2ac-8b45902d0ef1.png)
 
