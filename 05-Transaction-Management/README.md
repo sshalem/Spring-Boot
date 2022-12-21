@@ -648,7 +648,9 @@ Console shows following:
 <img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
 
 Continue from previous section 2.2 where we DIDN'T had `Transactionl` annotation. </br>
-Let's add `Transactionl` annotation ad method level code in  `OrganizationServiceImpl` as follows:
+Let's do 2 things:
+1. add `Transactionl` annotation at method level code in  `OrganizationServiceImpl` 
+2. Modify the `if (_employee.getEmpName().equals("unknown"))` so no exception will be thrown
 
 ```java
 @Service
