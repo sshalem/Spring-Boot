@@ -10,7 +10,7 @@
 |     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
 |  2  | [Code with Transaction Management](#2_Code_with_Transaction_Management)             |
-|     | 2.1. [Test app w/o Trasnaction Management](#2_1_Test_app_without_Trasnaction_Management)             |
+|     | 2.1. [Test app w/o Trasnactional](#2_1_Test_app_without_Trasnactional)             |
 |     | 2.2. [Test app w/o Trasnaction Management and throws exception](#2_2_Test_app_without_Trasnaction_Management_and_throws_exception)             |
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
@@ -557,9 +557,9 @@ public class TransactionManagementController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_1_Test_app_without_Trasnaction_Management
+###### 2_1_Test_app_without_Trasnactional
 
-<img src="https://img.shields.io/badge/- 2.1. Test_app_without_Trasnaction_Management %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.1. Test_app_without_Trasnactional %20- green" height=30px>
 
 Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
 DB shows all executed w/n issue
