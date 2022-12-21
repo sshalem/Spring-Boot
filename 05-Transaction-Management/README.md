@@ -692,18 +692,14 @@ Let's run the app, and send via postmand a request to url of `localhost:8080/tra
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
 
 DB shows :
-* In EMPLOYEE TB - no records.
-* IN EMPLOYEE_HEALTH_INSURANCE  - no records
+* In EMPLOYEE TB - records inserted.
+* IN EMPLOYEE_HEALTH_INSURANCE  - records inserted.
+
+![image](https://user-images.githubusercontent.com/36256986/208865922-44370dc6-43fe-4926-8291-3bb737ffd8aa.png)
 
 Console shows the following:
 
 ![image](https://user-images.githubusercontent.com/36256986/208865508-14438fa9-ac00-4a8a-b2ac-8b45902d0ef1.png)
-
-
-If we now check the EMPLOYEE and the EMPLOYEE_HEALTH_INSURANCE table there are no records in both so our records are getting roll backed correctly. </br>
-This is how trnsactionl annotation works:  </br>
-If error occurs or Exception is thrown, any updates occured in current Transaction Session that is open , will be rolled back. </br>
-Thats why we don't see the update on adding the Employee `Employee _employee = employeeService.addEmployee(employee);`
 
 ![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
 
