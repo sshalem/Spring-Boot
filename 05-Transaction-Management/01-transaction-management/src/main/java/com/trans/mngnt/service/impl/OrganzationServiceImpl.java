@@ -25,7 +25,7 @@ public class OrganzationServiceImpl implements OrganizationService {
 	private HealthInsuranceService healthInsuranceService;
 
 	@Override
-//	@Transactional
+	@Transactional
 	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
 
 		LOGGER.info("---> employeeService.addEmployee(employee)");
