@@ -697,15 +697,11 @@ DB shows :
 
 ![image](https://user-images.githubusercontent.com/36256986/208865922-44370dc6-43fe-4926-8291-3bb737ffd8aa.png)
 
+![image](https://user-images.githubusercontent.com/36256986/208867015-8e1f780e-3dec-4bf6-a70f-beeded62666e.png)
+
 Console shows the following:
 
 ![image](https://user-images.githubusercontent.com/36256986/208865508-14438fa9-ac00-4a8a-b2ac-8b45902d0ef1.png)
-
-![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
-
-
-![image](https://user-images.githubusercontent.com/36256986/208530535-88450b9f-d449-4fc3-954b-d8607f1792f9.png)
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
