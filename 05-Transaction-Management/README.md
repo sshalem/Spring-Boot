@@ -931,7 +931,7 @@ console shows the following:
 
 With `Propagation.SUPPORTS` , if the `addEmployee()`  method is called directly , it DOES NOT create it's own new Transaction.
 
-![image](https://user-images.githubusercontent.com/36256986/209195015-b78e0b45-2a9f-4a20-963d-661e27f3c051.png)
+![image](https://user-images.githubusercontent.com/36256986/209199874-3d5f8d8f-b81c-4c32-8775-06739d4cda31.png)
 
 ### [Calling addEmployee() from another service](#-)
 
