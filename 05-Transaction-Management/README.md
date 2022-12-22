@@ -896,7 +896,7 @@ I have 2 methods in the controller:
 
 ### [Test the App](#-)
 
-Lets run the app `02-transaction-management-propagation` , and sent vis postman the requests to URL of :
+Lets run the app [`02-transaction-management-propagation`](#-) , and sent vis postman the requests to URL of :
 
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
 
