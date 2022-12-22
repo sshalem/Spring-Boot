@@ -670,7 +670,7 @@ public class OrganzationServiceImpl implements OrganizationService {
 		// Proxy begin Transaction Statement
 		Employee _employee = employeeService.addEmployee(employee);
 
-		if (_employee.getEmpName().equals("shabtay")) {
+		if (_employee.getEmpName().equals("unknown")) {
 			throw new RuntimeException("throwing exception to test transaction rollback");
 		}
 
