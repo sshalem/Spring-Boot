@@ -575,7 +575,8 @@ Console shows following:
 1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(1838434804)]**  , -> trnsaction commited --> transaction closed
 2. New Transaction is created for healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance) **[SessionImpl(904883090)]** --> trnsaction commited --> transaction closed
 
-We can see that 2 different Transactions created.
+We can see that 2 different Transactions created. </br>
+They are created in `SimpleJpaRepository` class in mehtod `save`.
 
 ![image](https://user-images.githubusercontent.com/36256986/209138740-450f2b43-eb0d-4569-a231-6ad76248fac3.png)
 
