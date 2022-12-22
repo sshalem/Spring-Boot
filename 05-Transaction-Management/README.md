@@ -870,6 +870,16 @@ Else, creates its own
 	}
 ```
 
+### [class HealthInsuranceServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+```
+
 ### [class TransactionManagementController](#-)
 
 I have 2 methods in the controller:
