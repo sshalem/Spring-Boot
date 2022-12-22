@@ -16,7 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public Employee addEmployee(Employee employee) {
 		return employeeRepository.save(employee);
 	}
