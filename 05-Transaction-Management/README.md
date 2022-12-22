@@ -973,7 +973,7 @@ So,
 
 ```java
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public Employee addEmployee(Employee employee) {
 		return employeeRepository.save(employee);
 	}
@@ -983,7 +983,7 @@ So,
 
 ```java
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
 		healthInsuraceRepository.save(employeeHealthInsurance);
 	}
