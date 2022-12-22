@@ -16,7 +16,7 @@
 |     | 2.4. [Test app with Trasnactional but throws exception](#2_4_Test_app_with_Trasnactional_but_throws_exception)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 |     | 3.1. [Test app with Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
-|     | 3.2. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.2. [Test app with Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
 |     | 3.3. [Test app with Propagation.REQUIRED](#)             |
 |     | 3.4. [Test app with Propagation.REQUIRED](#)             |
 |     | 3.5. [Test app with Propagation.REQUIRED](#)             |
@@ -921,12 +921,22 @@ console shows the following:
 
 ![image](https://user-images.githubusercontent.com/36256986/209190488-4c0a05ea-bde8-4c0b-b55e-aa99b760ecd8.png)
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### X_
+###### 3_2_Test_app_with_Propagation_SUPPORTS
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.2. Test_app_with_Propagation_SUPPORTS %20- green" height=30px>
+
+DB shows :
+
+* In EMPLOYEE TB - 2 records , as expected because the method of addEmployee was invoked twice.
+* IN EMPLOYEE_HEALTH_INSURANCE  - 1 record as expected
+
+console shows the following:
+
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
