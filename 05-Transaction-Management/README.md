@@ -714,8 +714,11 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 2.4. Test_app_with_Trasnactional_but_throws_exception %20- green" height=30px>
 
-Continue from previous section 2.2 where we DIDN'T had `Transactionl` annotation. </br>
-Let's add `Transactionl` annotation ad method level code in  `OrganizationServiceImpl` as follows:
+Continue from previous section 2.3 . </br>
+Let's do 2 things:
+1. add `Transactionl` annotation at method level code in  `OrganizationServiceImpl`  (and Not at addEmployee() / registerEmployeeHealthInsurance() )
+2. Modify the `if (_employee.getEmpName().equals("shabtay"))` , so now exception will be thrown (To see if we will RollBack)
+
 
 ```java
 @Service
