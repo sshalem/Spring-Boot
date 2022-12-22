@@ -939,10 +939,12 @@ if the `addEmployee()`  method is called **from another service (OrganizationSer
 1. If the calling service has a @Transaction then **method uses the existing transaction**.
 2. If the calling service DOES NOT have a @Transaction then the **method will NOT create new transaction** 
 
-So, in case of `REQUIRED` the **addEmployee()** method makes use of the calling service transaction if it **exists**, </br>
-Else, creates its own
+So, 
+* `joinOrganization()` method is defined with `@Transactional Propagation.REQUIRED` </br>
+* `addEmployee()` method is defined `@Transactional Propagation.SUPPORTS`
 
-![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
+
+![image](https://user-images.githubusercontent.com/36256986/209195568-d00aa8ed-0ef8-4955-8598-8d6a4da5467c.png)
 
 ## [Code ](#-)
 
