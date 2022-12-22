@@ -906,9 +906,20 @@ I have 2 methods in the controller:
 
 ### [Test the App](#-)
 
-Lets run the app [`02-transaction-management-propagation`](#-) , and sent vis postman the requests to URL of :
+Lets run the app [`02-transaction-management-propagation`](#-) , and sent via postman 2 requests:
 
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
+DB shows :
+
+* In EMPLOYEE TB - 2 records , as expected because the method of addEmployee was invoked twice.
+* IN EMPLOYEE_HEALTH_INSURANCE  - 1 record as expected
+
+![image](https://user-images.githubusercontent.com/36256986/209191249-3b4b7103-f3db-4bf1-b3de-7ec63646986e.png)
+
+console shows the following:
+
+![image](https://user-images.githubusercontent.com/36256986/209190488-4c0a05ea-bde8-4c0b-b55e-aa99b760ecd8.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
