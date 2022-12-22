@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trans.mngnt.controller.TransactionManagementController;
 import com.trans.mngnt.entity.Employee;
 import com.trans.mngnt.entity.EmployeeHealthInsurance;
 import com.trans.mngnt.service.EmployeeService;
@@ -25,14 +24,14 @@ public class OrganzationServiceImpl implements OrganizationService {
 	private HealthInsuranceService healthInsuranceService;
 
 	@Override
-//	@Transactional
+	@Transactional
 	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
 
 		LOGGER.info("---> employeeService.addEmployee(employee)");
 		// Proxy begin Transaction Statement
 		Employee _employee = employeeService.addEmployee(employee);
 
-		if (_employee.getEmpName().equals("shabay")) {
+		if (_employee.getEmpName().equals("shabtay")) {
 			throw new RuntimeException("throwing exception to test transaction rollback");
 		}
 
@@ -49,4 +48,5 @@ public class OrganzationServiceImpl implements OrganizationService {
 		employeeService.deleteEmpolyee(employee.getEmpId());
 		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
 	}
+	
 }
