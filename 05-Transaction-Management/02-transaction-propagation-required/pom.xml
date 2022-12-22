@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.transaction.management</groupId>
-	<artifactId>02-transaction-management-propagation</artifactId>
+	<artifactId>02-transaction-propagation-required</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>02-transaction-management-propagation</name>
 	<description>01-transaction-management</description>
