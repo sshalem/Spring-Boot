@@ -648,9 +648,9 @@ Console shows following:
 
 <img src="https://img.shields.io/badge/- 2.3. Test_app_with_Trasnactional %20- green" height=30px>
 
-Continue from previous section 2.2 where we DIDN'T had `Transactionl` annotation. </br>
+Continue from previous section 2.2 (where we DIDN'T had `Transactionl` annotation). </br>
 Let's do 2 things:
-1. add `Transactionl` annotation at method level code in  `OrganizationServiceImpl` 
+1. add `Transactionl` annotation at method level code in  `OrganizationServiceImpl`  (and Not at addEmployee() / registerEmployeeHealthInsurance() )
 2. Modify the `if (_employee.getEmpName().equals("unknown"))` so no exception will be thrown
 
 ```java
@@ -705,7 +705,8 @@ Console shows the following:
 2. Only 1 Transaction is opened for both method calls (addEmpolyye() and registerEmployeeHealthInsurance())
 3. log shows the message `Participating in existing transaction` fro both methods
 
-![image](https://user-images.githubusercontent.com/36256986/208865508-14438fa9-ac00-4a8a-b2ac-8b45902d0ef1.png)
+![image](https://user-images.githubusercontent.com/36256986/209142195-d7ed2367-e509-4c67-ab0a-5fc1ef197de4.png)
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
