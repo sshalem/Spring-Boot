@@ -764,6 +764,8 @@ DB shows :
 * In EMPLOYEE TB - no records.
 * IN EMPLOYEE_HEALTH_INSURANCE  - no records
 
+![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
+
 Console shows the following:
 
 ![image](https://user-images.githubusercontent.com/36256986/209144258-ea37dc86-a5f1-4842-91bd-50984663f77f.png)
@@ -772,13 +774,8 @@ This is how trnsactionl annotation works:  </br>
 If error occurs or Exception is thrown, any updates occured in current Transaction Session that is open , will be rolled back. </br>
 Thats why we don't see the update on adding the Employee `Employee _employee = employeeService.addEmployee(employee);`
 
-![image](https://user-images.githubusercontent.com/36256986/208529854-b1bfc582-9a5a-4483-a78d-751cf80e8121.png)
-
-Spring Boot implicitly creates a proxy for the transaction annotated methods. </br>
+Spring Boot [`implicitly`](#-) creates a **proxy** for the **Transaction annotated methods**. </br>
 So for such methods the proxy acts like a wrapper which takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
-
-
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---------------------------------------------------------------------------------------------------
