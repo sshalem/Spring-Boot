@@ -574,9 +574,9 @@ Console shows following:
 
 1. New Transaction is created for employeeService.addEmployee(employee) **[SessionImpl(1838434804)]**  , -> trnsaction commited --> transaction closed
 2. New Transaction is created for healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance) **[SessionImpl(904883090)]** --> trnsaction commited --> transaction closed
-
-We can see that 2 different Transactions created. </br>
-They are created in `SimpleJpaRepository` class in mehtod `save` , which has @Transactional annotation.
+3. PROPAGATION_REQUIRED and ISOLATION_DEFAULT
+4. We can see that 2 different Transactions created. 
+5. They are created in `SimpleJpaRepository` class in mehtod `save` , which has @Transactional annotation.
 
 ![image](https://user-images.githubusercontent.com/36256986/209138740-450f2b43-eb0d-4569-a231-6ad76248fac3.png)
 
@@ -700,13 +700,13 @@ DB shows :
 
 Console shows the following:
 
-1. Transaction I opened immidiatelly once method joinOrganization is invoked
+1. Transaction opened immidiatelly once method **joinOrganization** is invoked </br>
 `Creating new transaction with name [com.trans.mngnt.service.impl.OrganzationServiceImpl.joinOrganization]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT`
-2. Only 1 Transaction is opened for both method calls (addEmpolyye() and registerEmployeeHealthInsurance())
-3. log shows the message `Participating in existing transaction` fro both methods
+2. Only 1 Transaction is opened for both method calls (**addEmpolyye()** and **registerEmployeeHealthInsurance()**)
+3. log shows the message `Participating in existing transaction` for both methods
+4. PROPAGATION_REQUIRED and ISOLATION_DEFAULT
 
 ![image](https://user-images.githubusercontent.com/36256986/209142195-d7ed2367-e509-4c67-ab0a-5fc1ef197de4.png)
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
