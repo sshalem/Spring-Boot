@@ -1,5 +1,7 @@
 package com.trans.mngnt.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,8 @@ import com.trans.mngnt.service.impl.OrganzationServiceImpl;
 @RequestMapping("/transaction-management")
 public class TransactionManagementController {
 
+	private static Logger LOGGER = LoggerFactory.getLogger(OrganzationServiceImpl.class);
+
 	@Autowired
 	private OrganzationServiceImpl organzationServiceImpl;
 
@@ -27,13 +31,14 @@ public class TransactionManagementController {
 
 		Employee emp = organizationDto.getEmployee();
 		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		LOGGER.info(" --> invoke organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance)");
 		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
 		return "joinOrganization successful";
 	}
 
 	@PostMapping(path = "/addEmployee")
 	public String addEmployee(@RequestBody Employee employee) {
-
+		LOGGER.info(" --> invoke employeeServiceImpl.addEmployee(employee)");
 		employeeServiceImpl.addEmployee(employee);
 		return "add Employee successful";
 	}
