@@ -818,7 +818,7 @@ There are six types of Transaction Propagations:
 
 <img src="https://img.shields.io/badge/- 3.1. Test_app_with_Propagation_REQUIRED %20- green" height=30px>
 
-If only annotate the method with `@Transactional` w/o specifing propagation type, by default it is **Propagation.REQUIRED** </br>
+If we only annotate the method with `@Transactional` w/o specifing propagation type, by default it is **Propagation.REQUIRED** </br>
 
 ### [Calling addEmployee() Directly](#-)
 
@@ -837,9 +837,9 @@ Else, creates its own
 
 ![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
 
-### Code 
+## [Code ](#-)
 
-#### from class OrganzationServiceImpl
+### [class OrganzationServiceImpl](#-)
 
 ```java
 	@Override
@@ -860,7 +860,7 @@ Else, creates its own
 	}
 ```
 
-#### from class EmployeeServiceImpl
+### [class EmployeeServiceImpl](#-)
 
 ```java
 	@Override
@@ -870,7 +870,7 @@ Else, creates its own
 	}
 ```
 
-#### from class TransactionManagementController
+### [class TransactionManagementController](#-)
 
 I have 2 methods in the controller:
 1. **joinOrganization** - which then Invokes the addEmployee() method from OragnizationService.
