@@ -1023,11 +1023,11 @@ DB shows :
 * In EMPLOYEE TB - 2 records , as expected because the method of addEmployee was invoked twice.
 * IN EMPLOYEE_HEALTH_INSURANCE  - 1 record as expected
 
+![image](https://user-images.githubusercontent.com/36256986/209201796-7a2d5918-2b49-4689-a0fa-4c5f56e2eaa1.png)
+
 console shows the following:
 
-
-
-
+![image](https://user-images.githubusercontent.com/36256986/209201288-a71ed32c-303b-4c65-9d20-b48b88b85a39.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
