@@ -927,8 +927,97 @@ console shows the following:
 
 <img src="https://img.shields.io/badge/- 3.2. Test_app_with_Propagation_SUPPORTS %20- green" height=30px>
 
-DB shows :
+### [Calling addEmployee() Directly](#-)
 
+With `Propagation.SUPPORTS` , if the `addEmployee()`  method is called directly , it DOES NOT create it's own new Transaction.
+
+![image](https://user-images.githubusercontent.com/36256986/209195015-b78e0b45-2a9f-4a20-963d-661e27f3c051.png)
+
+### [Calling addEmployee() from another service](#-)
+
+if the `addEmployee()`  method is called **from another service (OrganizationServiceImpl)**
+1. If the calling service has a @Transaction then **method uses the existing transaction**.
+2. If the calling service DOES NOT have a @Transaction then the **method will NOT create new transaction** 
+
+So, in case of `REQUIRED` the **addEmployee()** method makes use of the calling service transaction if it **exists**, </br>
+Else, creates its own
+
+![image](https://user-images.githubusercontent.com/36256986/208775458-4318b2aa-c611-4a99-aa74-3d987c669616.png)
+
+## [Code ](#-)
+
+### [class OrganzationServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+
+		// commit Transaction
+	}
+```
+
+### [class EmployeeServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+```
+
+### [class HealthInsuranceServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+```
+
+### [class TransactionManagementController](#-)
+
+I have 2 methods in the controller:
+1. **joinOrganization** - which then Invokes the addEmployee() method from OragnizationService.
+2. Invoke directly the addEmployee() method
+
+```java
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
+
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "Testing Transaction Management";
+	}
+
+	@PostMapping(path = "/addEmployee")
+	public String addEmployee(@RequestBody Employee employee) {
+
+		employeeServiceImpl.addEmployee(employee);
+		return "Testing Transaction Management";
+	}
+```
+
+### [Test the App](#-)
+
+Lets run the app [`02-transaction-management-propagation`](#-) , and sent via postman 2 requests:
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
+DB shows :
 * In EMPLOYEE TB - 2 records , as expected because the method of addEmployee was invoked twice.
 * IN EMPLOYEE_HEALTH_INSURANCE  - 1 record as expected
 
