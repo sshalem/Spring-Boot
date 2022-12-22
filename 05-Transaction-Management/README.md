@@ -756,12 +756,18 @@ public class OrganzationServiceImpl implements OrganizationService {
 ```
 
 Let's run the app, and send via postmand a request to url of `localhost:8080/transaction-management/joinOrganization` . </br>
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
 DB shows :
 
 * In EMPLOYEE TB - no records.
 * IN EMPLOYEE_HEALTH_INSURANCE  - no records
 
-If we now check the EMPLOYEE and the EMPLOYEE_HEALTH_INSURANCE table there are no records in both so our records are getting roll backed correctly. </br>
+Console shows the following:
+
+![image](https://user-images.githubusercontent.com/36256986/209144258-ea37dc86-a5f1-4842-91bd-50984663f77f.png)
+
 This is how trnsactionl annotation works:  </br>
 If error occurs or Exception is thrown, any updates occured in current Transaction Session that is open , will be rolled back. </br>
 Thats why we don't see the update on adding the Employee `Employee _employee = employeeService.addEmployee(employee);`
@@ -770,6 +776,7 @@ Thats why we don't see the update on adding the Employee `Employee _employee = e
 
 Spring Boot implicitly creates a proxy for the transaction annotated methods. </br>
 So for such methods the proxy acts like a wrapper which takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
+
 
 
 
