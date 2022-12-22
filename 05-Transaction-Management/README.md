@@ -818,7 +818,7 @@ There are six types of Transaction Propagations:
 
 <img src="https://img.shields.io/badge/- 3.1. Test_app_with_Propagation_REQUIRED %20- green" height=30px>
 
-If we only annotate the method with `@Transactional` w/o specifing propagation type, by default it is **Propagation.REQUIRED** </br>
+If we don't specify propagation type it will be by default  **Propagation.REQUIRED** </br>
 
 ### [Calling addEmployee() Directly](#-)
 
