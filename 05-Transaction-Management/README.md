@@ -15,12 +15,12 @@
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
 |     | 2.4. [Test app with Trasnactional but throws exception](#2_4_Test_app_with_Trasnactional_but_throws_exception)             |
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
-|     | 3.1. [Test app with Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
-|     | 3.2. [Test app with Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
-|     | 3.3. [Test app with Propagation.REQUIRED](#)             |
-|     | 3.4. [Test app with Propagation.REQUIRED](#)             |
-|     | 3.5. [Test app with Propagation.REQUIRED](#)             |
-|     | 3.6. [Test app with Propagation.REQUIRED](#)             |
+|     | 3.1. [Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
+|     | 3.2. [Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
+|     | 3.3. [Propagation.REQUIRED](#)             |
+|     | 3.4. [Propagation.REQUIRED](#)             |
+|     | 3.5. [Propagation.REQUIRED](#)             |
+|     | 3.6. [Propagation.REQUIRED](#)             |
 
 
 
