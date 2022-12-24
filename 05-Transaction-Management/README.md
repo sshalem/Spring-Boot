@@ -1133,6 +1133,10 @@ DB shows :
 
 console shows the following:
 
+Once we are inside joinOrganization method we are i a transaction. </br>
+But, once we call the addEmloyee method, we can see the Suspending current transaction </br>
+The transaction made eventually is by the method `SimpleJpaRepository.save`
+
 ![image](https://user-images.githubusercontent.com/36256986/209450442-8717963a-aa3b-4a72-8d04-8d4f7d1f8bd9.png)
 
 
