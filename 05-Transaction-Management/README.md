@@ -1460,7 +1460,8 @@ Modify the code in the folloiwng classes
 ```java
 public interface HealthInsuranceService {
 
-	void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException;
+	void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) 
+			throws InvalidInsuranceAmountException;
 
 	void deleteEmployeeHealthInsuranceById(long empid);
 }
@@ -1477,7 +1478,8 @@ public class HealthInsuranceServiceImpl implements HealthInsuranceService {
 
 	@Override
 	@Transactional
-	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException {
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) 
+			throws InvalidInsuranceAmountException {
 		
 		if (employeeHealthInsurance.getCoverageAmount() < 0) {
 			throw new InvalidInsuranceAmountException("Coverage Amount Should not be negative");
@@ -1497,7 +1499,8 @@ public class HealthInsuranceServiceImpl implements HealthInsuranceService {
 ```java
 public interface OrganizationService {
 
-	void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException;
+	void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) 
+			throws InvalidInsuranceAmountException;
 
 	void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance);
 }
@@ -1517,7 +1520,8 @@ public class OrganzationServiceImpl implements OrganizationService {
 
 	@Override
 	@Transactional
-	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException {
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance)
+			throws InvalidInsuranceAmountException {
 
 		// Proxy begin Transaction Statement
 		Employee _employee = employeeService.addEmployee(employee);
