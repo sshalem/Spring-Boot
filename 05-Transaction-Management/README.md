@@ -1558,7 +1558,7 @@ public class OrganzationServiceImpl implements OrganizationService {
 ```
 
 
-### Test App w/o rollBackFor
+### [Test App w/o rollBackFor](#-)
 
 Let's sent the following request via postman:
 
@@ -1576,10 +1576,49 @@ Let's sent the following request via postman:
 }
 ```
 
+Console shows that Exception is thrown but , there is no record for rollback
+
+![image](https://user-images.githubusercontent.com/36256986/209452364-7b6d293c-7645-42c9-bbaf-f5e7cebce0c1.png)
+
 DB shows:
 
-Console shows:
+* recored insert into Employee DB which means it didn't roll back even Excpetion thrown (unklike with RuntimeException)
 
+![image](https://user-images.githubusercontent.com/36256986/209452377-fab42d94-4415-4de3-9a0e-bed3b0a931ac.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+### [Test App with rollBackFor](#-)
+
+Let's add the property of `rollBackFor` to the joinOrganization method
+
+```java
+	@Override
+	@Transactional(rollbackFor = InvalidInsuranceAmountException.class)
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance)
+			throws InvalidInsuranceAmountException {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("unknown")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+		// commit Transaction
+	}
+```
+
+Let's tun the app and analyse the DB and console. </br>
+Console shows that Exception is thrown and there is a record for rollback.
+
+![image](https://user-images.githubusercontent.com/36256986/209452517-8e04409d-e159-41b6-8614-9a906f1ae33c.png)
+
+DB shows:
+
+* no records at all
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
