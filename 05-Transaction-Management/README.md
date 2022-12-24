@@ -1426,10 +1426,10 @@ Lets run the app [`02-transaction-propagation`](#-) , and sent via postman 2 req
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
 
 DB shows :
-* In EMPLOYEE TB - only 1 row (since we hade a rollBack)
-* IN EMPLOYEE_HEALTH_INSURANCE  - (No records , since we had a rolback 
+* In EMPLOYEE TB - only 1 row (because when invokeing addEmloyee directly it throws exception)
+* IN EMPLOYEE_HEALTH_INSURANCE  - 1 recored as expected
 
-![image](https://user-images.githubusercontent.com/36256986/209451355-a1a4d879-efc7-456a-8e34-33fb4d3647a9.png)
+![image](https://user-images.githubusercontent.com/36256986/209451508-291db83d-f26d-4e77-8cda-eeaa543a7827.png)
 
 run code and check console (see the difference between MANDATORY to NEVER) :
 
