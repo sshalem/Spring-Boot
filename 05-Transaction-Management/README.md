@@ -1133,18 +1133,7 @@ DB shows :
 
 console shows the following:
 
-
-
-
-
-
-
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/36256986/209450442-8717963a-aa3b-4a72-8d04-8d4f7d1f8bd9.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
