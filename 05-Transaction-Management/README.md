@@ -1431,11 +1431,9 @@ DB shows :
 
 ![image](https://user-images.githubusercontent.com/36256986/209451355-a1a4d879-efc7-456a-8e34-33fb4d3647a9.png)
 
-run code and check console :
+run code and check console (see the difference between MANDATORY to NEVER) :
 
-
-
-
+![image](https://user-images.githubusercontent.com/36256986/209451476-520e52bd-1506-4d5a-8927-249029f69f25.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---------------------------------------------------------------------------------------------------
