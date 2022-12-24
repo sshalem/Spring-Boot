@@ -21,7 +21,7 @@
 |     | 3.4. [Propagation.REQUIRES_NEW](#3_4_Test_app_with_Propagation_REQUIRES_NEW)             |
 |     | 3.5. [Propagation.NEVER](#3_5_Test_app_with_Propagation_NEVER)             |
 |     | 3.6. [Propagation.MANDATORY](#3_6_Test_app_with_Propagation_MANDATORY)             |
-
+|  4  | [Code with Transaction rollback for checked Exceptions](#4_Code_with_Transaction_rollback_checked_exceptions)             |
 
 
 
@@ -1436,9 +1436,22 @@ run code and check console (see the difference between MANDATORY to NEVER) :
 ![image](https://user-images.githubusercontent.com/36256986/209451476-520e52bd-1506-4d5a-8927-249029f69f25.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 ---------------------------------------------------------------------------------------------------
 
-######
+
+###### 4_Code_with_Transaction_rollback_checked_exceptions
+
+<img src="https://img.shields.io/badge/- 4. Code_with_Transaction_rollback_checked_exceptions %20-blue" height=40px>
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+###### 
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
