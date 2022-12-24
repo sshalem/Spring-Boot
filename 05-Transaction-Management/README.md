@@ -1444,6 +1444,137 @@ run code and check console (see the difference between MANDATORY to NEVER) :
 
 <img src="https://img.shields.io/badge/- 4. Code_with_Transaction_rollback_checked_exceptions %20-blue" height=40px>
 
+The only exceptions that set a transaction to rollback state by default are `unchecked exceptions` (like RuntimeException). </br>
+how will our transactions behave in case of Checked Exceptions? </br>
+In case of checked exceptions the previously executed transactions do not get rolled back automatically even if we have used transaction annotation. </br>
+We need to inform the application how to handle roll back in event of checked exception. </br>
+This is achieved using the `rollbackFor` annotation. </br>
+
+I created a custom checked exception called `InvalidInsuranceAmountException`. </br>
+According to our business logic if the insurance coverage amount is less than zero then this exception should get thrown </br>
+
+Modify the code in the folloiwng classes
+
+### [HealthInsuranceService](#-)
+
+```java
+public interface HealthInsuranceService {
+
+	void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException;
+
+	void deleteEmployeeHealthInsuranceById(long empid);
+}
+```
+
+### [HealthInsuranceServiceImpl](#-)
+
+```java
+@Service
+public class HealthInsuranceServiceImpl implements HealthInsuranceService {
+
+	@Autowired
+	private HealthInsuraceRepository healthInsuraceRepository;
+
+	@Override
+	@Transactional
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException {
+		
+		if (employeeHealthInsurance.getCoverageAmount() < 0) {
+			throw new InvalidInsuranceAmountException("Coverage Amount Should not be negative");
+		}		
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+
+	@Override
+	public void deleteEmployeeHealthInsuranceById(long empid) {
+		healthInsuraceRepository.deleteById(empid);
+	}
+}
+```
+
+### [OrganizationService](#-)
+
+```java
+public interface OrganizationService {
+
+	void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException;
+
+	void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance);
+}
+```
+
+### [OrganzationServiceImpl](#-)
+     
+```java
+@Service
+public class OrganzationServiceImpl implements OrganizationService {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private HealthInsuranceService healthInsuranceService;
+
+	@Override
+	@Transactional
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) throws InvalidInsuranceAmountException {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("unknown")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+		// commit Transaction
+	}
+
+	@Override
+	public void leaveOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+		employeeService.deleteEmpolyee(employee.getEmpId());
+		healthInsuranceService.deleteEmployeeHealthInsuranceById(employeeHealthInsurance.getEmpId());
+	}
+}
+```
+
+### [TransactionManagementController](#-)
+
+```java
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) throws InvalidInsuranceAmountException {
+
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		LOGGER.info(" --> invoke organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance)");
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "joinOrganization successful";
+	}
+```
+
+
+### Test App w/o rollBackFor
+
+Let's sent the following request via postman:
+
+![image](https://user-images.githubusercontent.com/36256986/209452251-d32e54dc-d478-4eed-bfa9-ffe797724164.png)
+
+```json
+{
+    "employee": {
+            "empName":"shabtay"
+    },
+    "employeeHealthInsurance": {
+            "healthInsuranceSchemeName":"Yashir",
+            "coverageAmount": -1
+    }
+}
+```
+
+DB shows:
+
+Console shows:
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
