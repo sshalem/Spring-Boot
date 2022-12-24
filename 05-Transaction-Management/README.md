@@ -20,7 +20,7 @@
 |     | 3.3. [Propagation.NOT_SUPPORTED](#3_3_Test_app_with_Propagation_NOT_SUPPORTED)             |
 |     | 3.4. [Propagation.REQUIRES_NEW](#3_4_Test_app_with_Propagation_REQUIRES_NEW)             |
 |     | 3.5. [Propagation.NEVER](#3_5_Test_app_with_Propagation_NEVER)             |
-|     | 3.6. [Propagation.REQUIRED](#)             |
+|     | 3.6. [Propagation.MANDATORY](#3_6_Test_app_with_Propagation_MANDATORY)             |
 
 
 
@@ -1342,10 +1342,99 @@ run code and check console :
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 3_6_Test_app_with_Propagation_MANDATORY
 
-###### x_
+<img src="https://img.shields.io/badge/- 3.6. Test_app_with_Propagation_MANDATORY %20- green" height=30px>
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+![image](https://user-images.githubusercontent.com/36256986/209451391-e73b6a60-f159-483a-850d-5787f75d915f.png)
+
+So, 
+* calling service * `joinOrganization()` method is defined with `@Transactional Propagation.REQUIRED` </br>
+* `addEmployee()` method is defined `@Transactional Propagation.MANDATORY`
+
+## [Code ](#-)
+
+### [class OrganzationServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
+
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
+
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
+
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
+
+		// commit Transaction
+	}
+```
+
+### [class EmployeeServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+```
+
+### [class HealthInsuranceServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+```
+
+### [class TransactionManagementController](#-)
+
+I have 2 methods in the controller:
+1. **joinOrganization** - which then Invokes the addEmployee() method from OragnizationService.
+2. Invoke directly the addEmployee() method
+
+```java
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
+
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "Testing Transaction Management";
+	}
+
+	@PostMapping(path = "/addEmployee")
+	public String addEmployee(@RequestBody Employee employee) {
+
+		employeeServiceImpl.addEmployee(employee);
+		return "Testing Transaction Management";
+	}
+```
+
+### [Test the App](#-)
+
+Lets run the app [`02-transaction-propagation`](#-) , and sent via postman 2 requests:
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
+DB shows :
+* In EMPLOYEE TB - only 1 row (since we hade a rollBack)
+* IN EMPLOYEE_HEALTH_INSURANCE  - (No records , since we had a rolback 
+
+![image](https://user-images.githubusercontent.com/36256986/209451355-a1a4d879-efc7-456a-8e34-33fb4d3647a9.png)
+
+run code and check console :
+
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
