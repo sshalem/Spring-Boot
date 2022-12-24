@@ -17,7 +17,7 @@
 |  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 |     | 3.1. [Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
 |     | 3.2. [Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
-|     | 3.3. [Propagation.REQUIRED](#)             |
+|     | 3.3. [Propagation.NOT_SUPPORTED](#3_3_Test_app_with_Propagation_NOT_SUPPORTED)             |
 |     | 3.4. [Propagation.REQUIRED](#)             |
 |     | 3.5. [Propagation.REQUIRED](#)             |
 |     | 3.6. [Propagation.REQUIRED](#)             |
@@ -1031,9 +1031,9 @@ console shows the following:
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### X_
+###### 3_3_Test_app_with_Propagation_NOT_SUPPORTED
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.3. Test_app_with_Propagation_NOT_SUPPORTED %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
