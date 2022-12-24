@@ -1330,12 +1330,14 @@ Lets run the app [`02-transaction-propagation`](#-) , and sent via postman 2 req
 ![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
 
 DB shows :
-* In EMPLOYEE TB - 
-* IN EMPLOYEE_HEALTH_INSURANCE  - 
+* In EMPLOYEE TB - only 1 row (since we hade a rollBack)
+* IN EMPLOYEE_HEALTH_INSURANCE  - (No records , siince we had a rolback 
 
-![image](https://user-images.githubusercontent.com/36256986/209450584-0eded9c3-2c25-42d8-ba14-7b23cf560bf7.png)
+![image](https://user-images.githubusercontent.com/36256986/209451355-a1a4d879-efc7-456a-8e34-33fb4d3647a9.png)
 
 run code and check console :
+
+![image](https://user-images.githubusercontent.com/36256986/209451335-6c01bb4f-6582-480a-8f97-a72b1ccf78ce.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
