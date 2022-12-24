@@ -19,7 +19,7 @@
 |     | 3.2. [Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
 |     | 3.3. [Propagation.NOT_SUPPORTED](#3_3_Test_app_with_Propagation_NOT_SUPPORTED)             |
 |     | 3.4. [Propagation.REQUIRES_NEW](#3_4_Test_app_with_Propagation_REQUIRES_NEW)             |
-|     | 3.5. [Propagation.REQUIRED](#)             |
+|     | 3.5. [Propagation.NEVER](#3_5_Test_app_with_Propagation_NEVER)             |
 |     | 3.6. [Propagation.REQUIRED](#)             |
 
 
@@ -1146,10 +1146,6 @@ The transaction made eventually is by the method `SimpleJpaRepository.save`
 
 <img src="https://img.shields.io/badge/- 3.4. Test_app_with_Propagation_REQUIRES_NEW %20- green" height=30px>
 
-
-
-
-
 ### [Calling addEmployee() Directly](#-)
 
 With `Propagation.REQUIRES_NEW` , if the `addEmployee()`  method is called directly , it DOES NOT create it's own new Transaction.
@@ -1246,31 +1242,111 @@ DB shows :
 
 ![image](https://user-images.githubusercontent.com/36256986/209450584-0eded9c3-2c25-42d8-ba14-7b23cf560bf7.png)
 
-console shows the following:
+run code and check console :
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 3_5_Test_app_with_Propagation_NEVER
 
+<img src="https://img.shields.io/badge/- 3.5. Test_app_with_Propagation_NEVER %20- green" height=30px>
 
+![image](https://user-images.githubusercontent.com/36256986/209451151-820c194c-fff6-4324-9991-ffad3a66a97f.png)
 
+So, 
+* calling service * `joinOrganization()` method is defined with `@Transactional Propagation.REQUIRED` </br>
+* `addEmployee()` method is defined `@Transactional Propagation.NEVER`
 
+## [Code ](#-)
 
+### [class OrganzationServiceImpl](#-)
 
+```java
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void joinOrganization(Employee employee, EmployeeHealthInsurance employeeHealthInsurance) {
 
+		// Proxy begin Transaction Statement
+		Employee _employee = employeeService.addEmployee(employee);
 
+		if (_employee.getEmpName().equals("shabtay")) {
+			throw new RuntimeException("throwing exception to test transaction rollback");
+		}
 
+		employeeHealthInsurance.setEmpId(_employee.getEmpId());
+		healthInsuranceService.registerEmployeeHealthInsurance(employeeHealthInsurance);
 
+		// commit Transaction
+	}
+```
 
+### [class EmployeeServiceImpl](#-)
 
+```java
+	@Override
+	@Transactional(propagation = Propagation.NEVER)
+	public Employee addEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+```
+
+### [class HealthInsuranceServiceImpl](#-)
+
+```java
+	@Override
+	@Transactional(propagation = Propagation.NEVER)
+	public void registerEmployeeHealthInsurance(EmployeeHealthInsurance employeeHealthInsurance) {
+		healthInsuraceRepository.save(employeeHealthInsurance);
+	}
+```
+
+### [class TransactionManagementController](#-)
+
+I have 2 methods in the controller:
+1. **joinOrganization** - which then Invokes the addEmployee() method from OragnizationService.
+2. Invoke directly the addEmployee() method
+
+```java
+	@PostMapping(path = "/joinOrganization")
+	public String joinOrganization(@RequestBody OrganizationDto organizationDto) {
+
+		Employee emp = organizationDto.getEmployee();
+		EmployeeHealthInsurance employeeHealthInsurance = organizationDto.getEmployeeHealthInsurance();
+		organzationServiceImpl.joinOrganization(emp, employeeHealthInsurance);
+		return "Testing Transaction Management";
+	}
+
+	@PostMapping(path = "/addEmployee")
+	public String addEmployee(@RequestBody Employee employee) {
+
+		employeeServiceImpl.addEmployee(employee);
+		return "Testing Transaction Management";
+	}
+```
+
+### [Test the App](#-)
+
+Lets run the app [`02-transaction-propagation`](#-) , and sent via postman 2 requests:
+
+![image](https://user-images.githubusercontent.com/36256986/208779306-53ca5f57-47a4-417d-83eb-1b459562b9a1.png)
+
+DB shows :
+* In EMPLOYEE TB - 
+* IN EMPLOYEE_HEALTH_INSURANCE  - 
+
+![image](https://user-images.githubusercontent.com/36256986/209450584-0eded9c3-2c25-42d8-ba14-7b23cf560bf7.png)
+
+run code and check console :
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 ###### x_
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 ---------------------------------------------------------------------------------------------------
 
 ######
