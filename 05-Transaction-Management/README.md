@@ -1129,7 +1129,7 @@ DB shows :
 * In EMPLOYEE TB - 2 records , as expected because the method of addEmployee was invoked twice.
 * IN EMPLOYEE_HEALTH_INSURANCE  - 1 record as expected
 
-
+![image](https://user-images.githubusercontent.com/36256986/209450584-0eded9c3-2c25-42d8-ba14-7b23cf560bf7.png)
 
 console shows the following:
 
