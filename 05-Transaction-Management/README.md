@@ -14,14 +14,15 @@
 |     | 2.2. [Test app w/o Trasnactional but throws exception](#2_2_Test_app_without_Trasnactional_but_throws_exception)             |
 |     | 2.3. [Test app with Trasnactional](#2_3_Test_app_with_Trasnactional)             |
 |     | 2.4. [Test app with Trasnactional but throws exception](#2_4_Test_app_with_Trasnactional_but_throws_exception)             |
-|  3  | [Code with Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
+|  3  | [Transaction Propagation](#3_Code_with_Transaction_Propagation)             |
 |     | 3.1. [Propagation.REQUIRED](#3_1_Test_app_with_Propagation_REQUIRED)             |
 |     | 3.2. [Propagation.SUPPORTS](#3_2_Test_app_with_Propagation_SUPPORTS)             |
 |     | 3.3. [Propagation.NOT_SUPPORTED](#3_3_Test_app_with_Propagation_NOT_SUPPORTED)             |
 |     | 3.4. [Propagation.REQUIRES_NEW](#3_4_Test_app_with_Propagation_REQUIRES_NEW)             |
 |     | 3.5. [Propagation.NEVER](#3_5_Test_app_with_Propagation_NEVER)             |
 |     | 3.6. [Propagation.MANDATORY](#3_6_Test_app_with_Propagation_MANDATORY)             |
-|  4  | [Code with Transaction rollback for checked Exceptions](#4_Code_with_Transaction_rollback_checked_exceptions)             |
+|  4  | [Transaction rollback for checked Exceptions](#4_Code_with_Transaction_rollback_checked_exceptions)             |
+|  5  | [Transaction Isolation](#5_Transaction_Isolation)             |
 
 
 
@@ -1624,6 +1625,16 @@ DB shows:
 
 ---------------------------------------------------------------------------------------------------
 
+###### 5_Transaction_Isolation
+
+<img src="https://img.shields.io/badge/- 5. Transaction_Isolation %20-blue" height=40px>
+
+[javaInUse - transaction-isolation](https://www.javainuse.com/spring/boot-transaction-isolation)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
 
 ###### 
 
@@ -1635,14 +1646,6 @@ DB shows:
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----------------------------------------------------------------------------------------------------
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
