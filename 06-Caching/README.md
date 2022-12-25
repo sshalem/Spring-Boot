@@ -5,6 +5,10 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
+|     | 1.1. [Types of read](#Types_of_read)             |
+|     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
+|     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
+|     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
 |  2  | [Redis Cache vs Redis DATA](#2_Redis_Cache_vs_Redis_DATA)             |
 
 
