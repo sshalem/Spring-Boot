@@ -87,7 +87,7 @@ The CDN reduces the load on an application origin and improves the user experien
 It delivers a local copy of the content from a nearby cache edge (a cache server that is closer to the end-user), or a Point of Presence (PoP).
 
 
-### [Database Internally caching with hibernate](#-)
+### [Hibernate Caching (Database Caching)](#-)
 
 Hibernate supports caching in 2 levels:
 1. level 1 - hibernate session level (Enabled by Default) 
@@ -130,12 +130,9 @@ Hibernate `DOES NOT` have in built support for it We use caching providers such 
 * Swaram cache 
 * Jboss tree cache
 * OS cache 
-* Tangosol cache etc. 
  
-but ehCache is the :
-* most popular 
-* very easy to configure 
-* very powerful 
+but ehCache is the , most popular , very easy to configure , very powerful.
+
 
 which it will be configuring as Level 2 cache for hibernate.
 
