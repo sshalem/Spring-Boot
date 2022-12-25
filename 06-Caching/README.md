@@ -91,7 +91,8 @@ It delivers a local copy of the content from a nearby cache edge (a cache server
 
 Hibernate supports caching in 2 levels:
 1. level 1 - hibernate session level (Enabled by Default) 
-2. level 2 - Session Factory cache, we need to configure it, in order to be able to use multiple session for the same cache.
+2. level 2 - Session Factory cache, we need to configure it, in order to be able to use multiple session for the same cache. </br>
+   https://www.youtube.com/watch?v=79s1d16ZltU&ab_channel=DevTalkers
 
 So , `sessionfactory` and `session` are the low level hibernate objects which are internally used by hibernate. </br>
 (If we don't use JPA, We didn't have spring data , we used to directly use these in our applicaitons now we no longer use them). </br>
@@ -110,6 +111,8 @@ If another client accesses the application and if a different hibernates session
 It will have its own cache and the next time the client accesses it ,this session will check against that particular cache and not the earlier cache. </br>
 
 ### [Level 2 caching](#-) </br>
+
+https://www.youtube.com/watch?v=79s1d16ZltU&ab_channel=DevTalkers  </br>
 so if we use Level 2 caching, objects will be cached at the session factory level. </br>
 They are shared across hibernate sessions. </br>
 So, if multiple users are accessing our application and we are using multiple hibernate sessions , the cached objects will be shared across those user sessions as well. </br>
