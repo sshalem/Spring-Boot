@@ -14,9 +14,54 @@
 <img src="https://img.shields.io/badge/- 1. Caching Introduction %20-blue" height=40px>
 
 The main Purpose of caching is to improve performance. </br>
+
+
 Hibernate supports caching in 2 levels:
-1. level 1 - Session
-2. level 2 - Session Factory
+1. level 1 - hibernate session level (Enabled by Default) 
+2. level 2 - Session Factory cache, we need to configure it, in order to be able to use multiple session for the same cache.
+
+So , `sessionfactory` and `session` are the low level hibernate objects which are internally used by hibernate. </br>
+(If we don't use JPA, We didn't have spring data , we used to directly use these in our applicaitons now we no longer use them). </br>
+
+But internally if we use Level 1 cache (which is free ,always there ,by default enabled) it happens at the session level , </br>
+But , if we configure level 2 caching (**which needs additional steps**) need to do at the session factory level . </br>
+A `Sessionfactory` is used to create multiple hibernate sessions.
+
+### [Level 1 caching](#-) </br>
+
+Level one cache comes for free. 
+For example when client one accesses our application internally the hibernate session is used by JPA (by spring data). 
+The very first time the data is loaded from the database , its put into the cache. </br>
+The next time the client accesses the same data the session will fetch it from the cache instead of going against the database. </br>
+If another client accesses the application and if a different hibernates session is used , this cache will not be referred to. </br>
+It will have its own cache and the next time the client accesses it ,this session will check against that particular cache and not the earlier cache. </br>
+
+### [Level 2 caching](#-) </br>
+so if we use Level 2 caching, objects will be cached at the session factory level. </br>
+They are shared across hibernate sessions. </br>
+So, if multiple users are accessing our application and we are using multiple hibernate sessions , the cached objects will be shared across those user sessions as well. </br>
+
+SessionFactory is responsible for creating different hibernates sessions and it will have a common cache. </br>
+So all the sessions will share this cache when this client access our application. </br>
+The session loads, executes a select query,loads the object and it will store it in the cache and then it will send it back to the client. </br>
+WHen another client access our application , a different session is used but that session will first check to see if the data is there in the Level 2 cache (Because That is how we configure it) </br>
+And if that data is there then there will be no database queries , that data will be sent back to the client. </br>
+
+So, Level 2 cache is very powerful because data here is cached across sessions.
+But level two cache needs some additional work.
+Hibernate `DOES NOT` have in built support for it We use caching providers such as :
+* ehCache which is very popular
+* Swaram cache 
+* Jboss tree cache
+* OS cache 
+* Tangosol cache etc. 
+ 
+but ehCache is the :
+* most popular 
+* very easy to configure 
+* very powerful 
+
+which it will be configuring as Level 2 cache for hibernate.
 
 
 Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=Saggu
@@ -32,9 +77,6 @@ Supporting caching providers:
 * Redis
 * Caffeine
 * Simple
-* None
-
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
