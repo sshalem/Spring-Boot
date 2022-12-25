@@ -13,6 +13,12 @@
 
 <img src="https://img.shields.io/badge/- 1. Caching Introduction %20-blue" height=40px>
 
+The main Purpose of caching is to improve performance. </br>
+Hibernate supports caching in 2 levels:
+1. level 1 - Session
+2. level 2 - Session Factory
+
+
 Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=Saggu
 
 Supporting caching providers:
@@ -28,7 +34,7 @@ Supporting caching providers:
 * Simple
 * None
 
-The maiin Purpose of caching is to improve performance.
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
