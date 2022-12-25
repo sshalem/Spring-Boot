@@ -6,9 +6,7 @@
 | :-: | :--------------------------------------------------- |
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
 |     | 1.1. [Types of Caching](#1_1_Types_of_Caching)             |
-|     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
-|     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
-|     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
+|     | 1.2. [First-Level Vs. Second-Level Cache](#1_2_First_Level_Vs_Second_Level_Cache)             |
 |  2  | [Redis Cache vs Redis DATA](#2_Redis_Cache_vs_Redis_DATA)             |
 
 
@@ -97,7 +95,9 @@ It delivers a local copy of the content from a nearby cache edge (a cache server
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-### [Hibernate Caching (Database Caching) : First-Level Vs. Second-Level Caches](#-)
+###### 1_2_First_Level_Vs_Second_Level_Cache
+
+<img src="https://img.shields.io/badge/- 1.2. Hibernate Caching (Database Caching) : First-Level Vs. Second-Level Cache %20- green" height=30px>
 
 ### [L1 caching](#-) </br>
 
@@ -148,7 +148,6 @@ Every cache provider is not compatible with every concurrency strategy. </br>
 The following compatibility matrix will help you choose an appropriate combination.
 
 ![image](https://user-images.githubusercontent.com/36256986/209463807-d7af6e4d-d4e6-49d9-b14f-7c9df792594a.png)
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
