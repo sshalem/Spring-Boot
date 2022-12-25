@@ -87,41 +87,28 @@ The CDN reduces the load on an application origin and improves the user experien
 It delivers a local copy of the content from a nearby cache edge (a cache server that is closer to the end-user), or a Point of Presence (PoP).
 
 
-### [Hibernate Caching (Database Caching)](#-)
+### [Hibernate Caching (Database Caching) : First-Level Vs. Second-Level Caches](#-)
 
-Hibernate supports caching in 2 levels:
-1. level 1 - hibernate session level (Enabled by Default) 
-2. level 2 - Session Factory cache, we need to configure it, in order to be able to use multiple session for the same cache. </br>
-   https://www.youtube.com/watch?v=79s1d16ZltU&ab_channel=DevTalkers
+### [L1 caching](#-) </br>
 
-So , `sessionfactory` and `session` are the low level hibernate objects which are internally used by hibernate. </br>
-(If we don't use JPA, We didn't have spring data , we used to directly use these in our applicaitons now we no longer use them). </br>
+https://dzone.com/articles/caching-in-hibernate-with-redis </br>
 
-But internally if we use Level 1 cache (which is free ,always there ,by default enabled) it happens at the session level , </br>
-But , if we configure level 2 caching (**which needs additional steps**) need to do at the session factory level . </br>
-A `Sessionfactory` is used to create multiple hibernate sessions.
+The first-level cache (also known as the L1 cache) is associated with Hibernate's `Session` object, which represents a connection between a Java application and a SQL database.  (Level 1 cache ,by default enabled)</br> 
+This means that the first-level cache is only available for as long as the Session exists. </br>
+Each first-level cache is only accessible by the Session object with which it is associated.
+When an entity is queried from the database for the first time, it is stored in the first-level cache associated with that Session. </br>
+Any later queries to this same entity during the same Session will retrieve the entity from the cache, instead of from the database.
 
-### [Level 1 caching](#-) </br>
-
-Level one cache comes for free. 
-For example when client one accesses our application internally the hibernate session is used by JPA (by spring data). 
-The very first time the data is loaded from the database , its put into the cache. </br>
-The next time the client accesses the same data the session will fetch it from the cache instead of going against the database. </br>
-If another client accesses the application and if a different hibernates session is used , this cache will not be referred to. </br>
-It will have its own cache and the next time the client accesses it ,this session will check against that particular cache and not the earlier cache. </br>
-
-### [Level 2 caching](#-) </br>
+### [L2 caching](#-) </br>
 
 https://www.youtube.com/watch?v=79s1d16ZltU&ab_channel=DevTalkers  </br>
-so if we use Level 2 caching, objects will be cached at the session factory level. </br>
-They are shared across hibernate sessions. </br>
-So, if multiple users are accessing our application and we are using multiple hibernate sessions , the cached objects will be shared across those user sessions as well. </br>
+https://dzone.com/articles/caching-in-hibernate-with-redis </br>
 
-SessionFactory is responsible for creating different hibernates sessions and it will have a common cache. </br>
-So all the sessions will share this cache when this client access our application. </br>
-The session loads, executes a select query,loads the object and it will store it in the cache and then it will send it back to the client. </br>
-WHen another client access our application , a different session is used but that session will first check to see if the data is there in the Level 2 cache (Because That is how we configure it) </br>
-And if that data is there then there will be no database queries , that data will be sent back to the client. </br>
+The second-level cache (also known as the L2 cache) is disabled by default but can be enabled by modifying Hibernate's configuration settings. </br>
+This cache is associated with Hibernate's `SessionFactory` object and is mainly used to store data that should persist across Sessions. </br>
+Before looking in the second-level cache:
+* applications will always search the first-level cache for the presence of a given entity.
+
 
 So, Level 2 cache is very powerful because data here is cached across sessions.
 But level two cache needs some additional work.
@@ -130,26 +117,22 @@ Hibernate `DOES NOT` have in built support for it We use caching providers such 
 * Swaram cache 
 * Jboss tree cache
 * OS cache 
+* REDIS cache
  
 but ehCache is the , most popular , very easy to configure , very powerful.
 
+### [Concurrency Strategies](#-)
 
-which it will be configuring as Level 2 cache for hibernate.
+A concurrency strategy is a mediator, which is responsible for storing items of data in the cache and retrieving them from the cache. </br>
+If you are going to enable a second-level cache, you will have to decide, for each persistent class and collection, which cache concurrency strategy to use.
+
+1. [Transactional](#-) − Use this strategy for read-mostly data where it is critical to prevent stale data in concurrent transactions, in the rare case of an update.
+2. [Read-write](#-) − Again use this strategy for read-mostly data where it is critical to prevent stale data in concurrent transactions, in the rare case of an update.
+3. [Nonstrict-read-write](#-) − This strategy makes no guarantee of consistency between the cache and the database. Use this strategy if data hardly ever changes and a small likelihood of stale data is not of critical concern.
+4. [Read-only](#-) − A concurrency strategy suitable for data, which never changes. Use it for reference data only.
 
 
-Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=Saggu
 
-Supporting caching providers:
-
-* Generic
-* JCache (JSR-107) (EhCache 3, Hazelcast, Infinispan, and others)
-* EhCache 2.x
-* Hazelcast
-* Infinispan
-* Couchbase
-* Redis
-* Caffeine
-* Simple
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -163,6 +146,8 @@ Supporting caching providers:
 
 Spring Data REDIS - https://www.youtube.com/watch?v=oRGqCz8OLcM&ab_channel=JavaTechie
 
+Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=Saggu
+
 ### [What is REDIS cachce?](#-)
 
 Spring Redis Cache - https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=JavaTechie
@@ -175,7 +160,9 @@ several ways How to Install Redis on windows 10
 
 ### How to use REDIS as Cache
 
+https://dzone.com/articles/caching-in-hibernate-with-redis
 
+https://dzone.com/articles/hibernate-redis-and-l2-cache-performance
 
 
 
