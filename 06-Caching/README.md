@@ -86,6 +86,7 @@ It is the reason CDN becomes more popular. </br>
 The CDN reduces the load on an application origin and improves the user experience. </br>
 It delivers a local copy of the content from a nearby cache edge (a cache server that is closer to the end-user), or a Point of Presence (PoP).
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ### [Hibernate Caching (Database Caching) : First-Level Vs. Second-Level Caches](#-)
 
@@ -121,17 +122,23 @@ Hibernate `DOES NOT` have in built support for it We use caching providers such 
  
 but ehCache is the , most popular , very easy to configure , very powerful.
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 ### [Concurrency Strategies](#-)
 
 A concurrency strategy is a mediator, which is responsible for storing items of data in the cache and retrieving them from the cache. </br>
 If you are going to enable a second-level cache, you will have to decide, for each persistent class and collection, which cache concurrency strategy to use.
+Hibernate cache strategies :
 
 1. [Transactional](#-) − Use this strategy for read-mostly data where it is critical to prevent stale data in concurrent transactions, in the rare case of an update.
 2. [Read-write](#-) − Again use this strategy for read-mostly data where it is critical to prevent stale data in concurrent transactions, in the rare case of an update.
 3. [Nonstrict-read-write](#-) − This strategy makes no guarantee of consistency between the cache and the database. Use this strategy if data hardly ever changes and a small likelihood of stale data is not of critical concern.
 4. [Read-only](#-) − A concurrency strategy suitable for data, which never changes. Use it for reference data only.
 
+Every cache provider is not compatible with every concurrency strategy. </br>
+The following compatibility matrix will help you choose an appropriate combination.
 
+![image](https://user-images.githubusercontent.com/36256986/209463807-d7af6e4d-d4e6-49d9-b14f-7c9df792594a.png)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
