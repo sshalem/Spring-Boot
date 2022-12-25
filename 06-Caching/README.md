@@ -97,7 +97,7 @@ It delivers a local copy of the content from a nearby cache edge (a cache server
 
 ###### 1_2_First_Level_Vs_Second_Level_Cache
 
-<img src="https://img.shields.io/badge/- 1.2. Hibernate Caching (Database Caching) First-Level Vs Second-Level Cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1.2. Hibernate Caching (Database Caching) : First_Level Vs Second_Level Cache %20- green" height=30px>
 
 ### [L1 caching](#-) </br>
 
