@@ -26,6 +26,9 @@ Data access from memory is always faster in comparison to fetching data from the
 Caching keeps frequently accessed objects, images, and data closer to where you need them, speeding up access by not hitting the database or any third-party application multiple times for the same data and saving monetary costs. </br>
 Data that does not change frequently can be cached. </br>
 
+![image](https://user-images.githubusercontent.com/36256986/209462606-6a9cdee4-3a53-421f-baa7-5585e5ef2bb6.png)
+
+
 ### [Why should we use the cache?](#-)
 
 The primary reason for using cache is to make data access faster and less expensive. </br>
