@@ -18,18 +18,15 @@
 Caching is a part of temporary memory (RAM). </br>
 A Cache is :
 * any temporary storage location 
-* lies between the application and persistence database 
-* or a third-party application that stores the most frequently or recently accessed data </br>
+* lies between the application and persistence database (or a third-party application ) , that stores the most frequently or recently accessed data </br>
 so that future requests for that data can be served faster. 
 
-It lies between the application and persistence database. </br>
-It stores the recently used data that reduces the number of database hits as much as possible. </br>
-In other words, caching is to store data for future reference.
+It increases `data retrieval performance` , by reducing the need to access the underlying slower storage layer. </br>
+Data access from memory is always faster in comparison to fetching data from the database. </br>
+Caching keeps frequently accessed objects, images, and data closer to where you need them, speeding up access by not hitting the database or any third-party application multiple times for the same data and saving monetary costs. </br>
+Data that does not change frequently can be cached. </br>
 
-It increases data retrieval performance by reducing the need to access the underlying slower storage layer. Data access from memory is always faster in comparison to fetching data from the database. Caching keeps frequently accessed objects, images, and data closer to where you need them, speeding up access by not hitting the database or any third-party application multiple times for the same data and saving monetary costs. Data that does not change frequently can be cached.
 
-
-The main Purpose of caching is to improve performance. </br>
 
 
 Hibernate supports caching in 2 levels:
