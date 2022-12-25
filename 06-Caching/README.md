@@ -5,7 +5,7 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
-|     | 1.1. [Types of read](#Types_of_read)             |
+|     | 1.1. [Types of Caching](#1_1_Types_of_Caching)             |
 |     | 1.2. [Transaction Isolation Levels](#Transaction_Isolation_Levels)             |
 |     | 1.3. [Transaction_Propagation_Levels](#Transaction_Propagation_Levels)             |
 |     | 1.4. [Proxy_with_Transaction](#Proxy_with_Transaction)             |
@@ -45,6 +45,10 @@ It reduces both monetary cost and opportunity cost. </br>
 * The data that do not change frequently.
 * The frequently used read query in which results does not change in each call, at least for a period.
 
+
+###### 1_1_Types_of_Caching
+
+<img src="https://img.shields.io/badge/- 1.1. Types_of_Caching %20- green" height=30px>
 
 ### [Types of Caching](#-)
 
@@ -91,6 +95,7 @@ The CDN reduces the load on an application origin and improves the user experien
 It delivers a local copy of the content from a nearby cache edge (a cache server that is closer to the end-user), or a Point of Presence (PoP).
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 ### [Hibernate Caching (Database Caching) : First-Level Vs. Second-Level Caches](#-)
 
