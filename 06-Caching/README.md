@@ -28,6 +28,7 @@ Supporting caching providers:
 * Simple
 * None
 
+The maiin Purpose of caching is to improve performance.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
