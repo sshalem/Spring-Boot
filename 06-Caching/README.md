@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/-Caching  %20-blue" height=70px>
+<img src="https://img.shields.io/badge/-Caching  %20- blue" height=70px>
 
 ###### _
 
