@@ -33,6 +33,10 @@ When the highly requested resource is requested multiple times, it is often bene
 Data access from memory is always faster in comparison to fetching data from the database. </br>
 It reduces both monetary cost and opportunity cost. </br>
 
+### [What data should be cached?](#-)
+
+* The data that do not change frequently.
+* The frequently used read query in which results does not change in each call, at least for a period.
 
 
 
