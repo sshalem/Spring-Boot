@@ -42,6 +42,52 @@ It reduces both monetary cost and opportunity cost. </br>
 * The frequently used read query in which results does not change in each call, at least for a period.
 
 
+### [Types of Caching](#-)
+
+There are four types of caching are as follows:
+1. In-memory Caching
+2. Database Caching
+3. Web server Caching
+4. CDN (Content Delivery Network) Caching
+
+#### [1. In-memory Caching](#-)
+
+**In-memory caching** increases the performance of the application. </br>
+It is the area that is frequently used. </br>
+**Memcached** and **Redis** are examples of in-memory caching. </br>
+It stores key-value between application and database. </br>
+Redis is an in-memory, distributed, and advanced caching tool that allows backup and restore facility. </br>
+We can manage cache in distributed clusters, also. </br>
+
+#### [2. Database Caching](#-)
+
+Database caching is a mechanism that generates web pages on-demand (dynamically) by fetching the data from the database. </br>
+It is used in a multi-tier environment that involved clients, web-application server, and database. </br>
+It improves scalability and performance by distributing a query workload. </br>
+The most popular **database caching** is the **first level cache of Hibernate**.  </br>
+See below ,explained more detailed Level1/Level2 database caching with Hibernate.
+
+#### [3. Web server Caching](#-)
+
+Web server caching is a mechanism that stores data for reuse.  </br>
+For example, a copy of a web page served by a web server.  </br>
+It is cached for the first time when a user visits the page.  </br>
+If the user requests the same next time, the cache serves a copy of the page. </br>
+It avoids server form getting overloaded.  </br>
+Web server caching enhances the page delivery speed and reduces the work to be done by the backend server.
+
+
+#### [4. CDN (Content Delivery Network) Caching](#-)
+
+The CDN stands for **Content Delivery Network**. </br>
+It is a component used in modern web applications. </br>
+It improves the delivery of the content by replicating commonly requested files (such as HTML Pages, stylesheet, JavaScript, images, videos, etc.) across a globally distributed set of caching servers. </br>
+It is the reason CDN becomes more popular. </br>
+The CDN reduces the load on an application origin and improves the user experience. </br>
+It delivers a local copy of the content from a nearby cache edge (a cache server that is closer to the end-user), or a Point of Presence (PoP).
+
+
+### [Database Internally caching with hibernate](#-)
 
 Hibernate supports caching in 2 levels:
 1. level 1 - hibernate session level (Enabled by Default) 
