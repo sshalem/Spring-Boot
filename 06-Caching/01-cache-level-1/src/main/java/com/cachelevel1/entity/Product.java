@@ -1,7 +1,10 @@
 package com.cachelevel1.entity;
 
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
@@ -53,9 +56,7 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
-
         Product product = (Product) o;
-
         if (getId() != product.getId()) return false;
         if (getPrice() != product.getPrice()) return false;
         if (!getProductName().equals(product.getProductName())) return false;
