@@ -44,7 +44,7 @@ There are many ORM frameworks in the market and the famous ones for Java are:
 3. iBATIS
 
 
-### [What is Hibernate?](#-)
+## [What is Hibernate?](#-)
 
 ![image](https://user-images.githubusercontent.com/36256986/209817622-3cdc4b67-0d03-44f2-be56-ff163fb1f4a6.png)
 
@@ -68,7 +68,7 @@ Features of Hibernate
 9. Lazy Loading
 10. Database Independent
 
-## [few important features below](#-)
+### [few important features below](#-)
 
 #### [1. Hibernate Query Language (HQL)](#-)
 
@@ -107,6 +107,45 @@ Second-level cache is the session factory level cache and it is available across
 For a second-level cache, we have to enable the cache and provide a cache provider like Ehcache and add its dependency.
 
 
+## What is JPA?
+
+JPA stands for Java Persistence API and it is the Java specification that defines how to persist java objects. </br>
+It is considered as a link between an object-oriented model and a relational database system. </br>
+Hibernate is the standard implementation of JPA. </br>
+JPA cannot be used alone and it always needs an implementation like Hibernate, EclipseLink, iBatis, etc.
+
+For data persistence, the java. persistence package contains the JPA classes and interfaces.
+
+1. JPA provides JPQL (Java Persistence Query Language) and HQL provided by Hibernate is a superset of it. Either can be used in the application.
+2. JPA provides EntityManagerFactory interface whereas Hibernate provides SessionFactory to create the Session instances
+3. For CRUD operations on instances of mapped entity classes, JPA uses EntityManager whereas Hibernate uses the Session interface
+
+So, as seen above JPA provides its in-built stuff so that things won't break if we change to other ORM frameworks later and it will remain consistent.
+
+But Hibernate provides advanced features and if you are sure that you will not change the ORM framework, then it's better to stick to the Hibernate specs.
+
+
+## What is Spring Data JPA?
+
+There is always confusion between `JPA` and `Spring Data JPA`.
+
+As we saw above, JPA is a standard for defining the persistence layer. </br>
+`Spring Data JPA` is a sub-project under the Spring Framework umbrella which allows Spring applications to integrate with JPA.
+
+`Spring Data JPA` is an abstraction that makes it easier to work with a JPA provider like Hibernate which is used by default. Specifically, `pring Data JPA` provides a set of interfaces for easily creating data access repositories.
+
+Before `Spring Data JPA`, we used to write all the CRUD methods in every single DAO and write an implementation for those. </br>
+But then came `Spring Data JPA`, which abstracts the developer from that, and behind the scenes, it provides implementations for the basic crud methods. </br>
+This avoids a lot of boilerplate code and makes it efficient for developers. </br>
+We can still add custom methods and can use HQL or criteria etc.
+
+`Spring Data JPA` also allows developers to use `Transactional` annotation to control the transaction boundaries.
+
+`Spring Data JPA` comes with a concept called `JPA Repository` and `Query methods`. </br>
+`JPA Repository` is nothing but a set of interfaces that defines query methods like findByFirstName or findByLastName etc. </br>
+These methods are converted into `low-level SQL queries` by Spring.
+
+Because of this cleaner approach, many Spring-based applications are using `Spring Data JPA` to implement their Data Access Layer or DAO Layer.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
