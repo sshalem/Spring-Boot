@@ -97,11 +97,11 @@ Caching is the process of storing data into cache memory and improves the speed 
 
 Hibernate supports two levels of caching, first-level and second-level caching.
 
-##### First Level Cache
+##### [First Level Cache](#-)
 
 The first level cache is a session-level cache and it is always associated with session-level object </br>
 
-##### Second Level Cache
+##### [Second Level Cache](#-)
 
 Second-level cache is the session factory level cache and it is available across all sessions. </br>
 For a second-level cache, we have to enable the cache and provide a cache provider like Ehcache and add its dependency.
