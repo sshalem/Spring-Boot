@@ -73,8 +73,6 @@ There is a difference Between Hibernate and JDBC. The following table describes 
 
 ![image](https://user-images.githubusercontent.com/36256986/209822577-9620621d-4d92-4b2e-94ca-c388d1fd7cf4.png)
 
-Does https://stackoverflow.com/questions/7455717/does-hibernate-uses-jdbc-internally-or-jta-internally-or-it-is-configurable
-
 Features of Hibernate
 1. Light Weight
 2. Open Source
