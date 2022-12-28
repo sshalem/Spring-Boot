@@ -4,6 +4,7 @@
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
+|     | [Hibernate, JPA, Spring-data-jpa](#Hibernate_JPA_Spring_data_jpa)            |
 |  1  | [One2Many_Bi_Eager](#1_One2Many_Bi_Eager)            |
 |  2  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 |  3  | [One2Many_Uni_Eager](#3_One2Many_Uni_Eager)          |
@@ -18,6 +19,26 @@
 | 12  | [AOP (Aspect Oriented Programming)](#12_AOP)         |
 | 13  | [Caching](#13_Caching)         |
 | 14  | [Transaction_Management](#14_Transaction_Management) |
+
+
+###### Hibernate_JPA_Spring_data_jpa
+
+<img src="https://img.shields.io/badge/- Hibernate JPA Spring_data_jpa  %20-blue" height=40px>
+
+https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
+
+![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
+
+we will see the differences between :
+* JPA
+* Hibernate
+* Spring Data JPA.
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------
 
 ###### 1_One2Many_Bi_Eager
 
