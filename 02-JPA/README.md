@@ -34,6 +34,78 @@ we will see the differences between :
 * Hibernate
 * Spring Data JPA.
 
+### [ORM Frameworks](#-)
+
+ORM Stands for `Object-Relational Mapping` that maps the data in the database to the Java Class which is called an Entity. Not only that, but ORM also preserves the relationship between the tables at the Entity level.
+
+There are many ORM frameworks in the market and the famous ones for Java are:
+1. Hibernate
+2. EclipseLink
+3. iBATIS
+
+
+### [What is Hibernate?](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/209817622-3cdc4b67-0d03-44f2-be56-ff163fb1f4a6.png)
+
+Hibernate is an ORM framework that sits between the application and the database. </br>
+Before Hibernate, developers used to write queries using JDBC and retrieve the data and manually set it to the DTO Objects and send it to the Front End. </br>
+This was time-consuming and painful.
+
+So Hibernate is a framework in the ORM layer that maps the relational data to the Java Objects. </br>
+It also provides an abstraction to the developers so that they don't need to worry about the data source. </br>
+It also provides configuration options to configure the data store and developers can also write queries with Hibernate
+
+Features of Hibernate
+1. Light Weight
+2. Open Source
+3. ORM (Object Relation Mapping)
+4. High Performance
+5. HQL (Hibernate Query Language)
+6. Caching
+7. Auto-Generation
+8. Scalability
+9. Lazy Loading
+10. Database Independent
+
+## [few important features below](#-)
+
+#### [1. Hibernate Query Language (HQL)](#-)
+
+SQL is low-level programming where developers have to query for the database columns in a database table. </br>
+But HQL is simplified for developers in such a way that the Java class names and attributes are used in the query. </br>
+Internally, hibernate converts HQL into SQL and executes it in the database.
+
+Hibernate also supports native SQL queries along with the HQL but it is recommended to use HQL as it is independent of the underlying database. </br>
+Whereas if we write SQL, the syntax differs from database to database
+
+#### [2. Lazy Loading in Hibernate](#-)
+
+Hibernate supports the following loading patterns:
+
+Eager Loading is a design pattern in which data initialization occurs on the spot. </br>
+Lazy Loading is a design pattern that we use to defer the initialization of an object as long as it’s possible and load only on demand </br>
+Lazy Loading is the default one and it makes the application efficient by not loading all the data and exhausting the DB Connection pool. </br>
+
+Eg: If a table has 1 million records and the relationship tables have another 1 million records. In case of lazy loading, it will only load the main table and only if requested, it will load data from the child tables.
+
+#### [3. Caching in Hibernate](#-)
+
+Caching is the process of storing data into cache memory and improves the speed of data access.
+
+![image](https://user-images.githubusercontent.com/36256986/209818431-44a839e5-3a2d-444b-97b2-5350ca6d382e.png)
+
+Hibernate supports two levels of caching, first-level and second-level caching.
+
+##### First Level Cache
+
+The first level cache is a session-level cache and it is always associated with session-level object </br>
+
+##### Second Level Cache
+
+Second-level cache is the session factory level cache and it is available across all sessions. </br>
+For a second-level cache, we have to enable the cache and provide a cache provider like Ehcache and add its dependency.
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
