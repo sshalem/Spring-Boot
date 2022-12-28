@@ -7,7 +7,8 @@
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
 |     | 1.1. [Types of Caching](#1_1_Types_of_Caching)             |
 |     | 1.2. [First-Level Vs. Second-Level Cache](#1_2_First_Level_Vs_Second_Level_Cache)             |
-|  2  | [Redis Cache vs Redis DATA](#2_Redis_Cache_vs_Redis_DATA)             |
+|  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
+|  3  | [Redis Cache vs Redis DATA](#-)             |
 
 
 
@@ -151,7 +152,15 @@ The following compatibility matrix will help you choose an appropriate combinati
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----
+---------------------------------------------------------------------------------------------
+
+###### 2_First_Level_cache_exmple
+
+<img src="https://img.shields.io/badge/- 2. First_Level_cache_exmple %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------
 
 ###### 2_Redis_Cache_vs_Redis_DATA
 
@@ -186,9 +195,9 @@ https://dzone.com/articles/hibernate-redis-and-l2-cache-performance
 
 ---------------------------------------------------------------------------------------------
 
-######
+###### 
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- X  %20-blue" height=40px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
