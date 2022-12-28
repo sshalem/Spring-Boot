@@ -127,17 +127,14 @@ For a second-level cache, we have to enable the cache and provide a cache provid
 
 https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
 
-
-![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
+### [Hibernate , JPA , Spring Data JPA](#-)
 
 we will see the differences between :
-* JPA
 * Hibernate
+* JPA
 * Spring Data JPA.
 
-
-
-
+![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
 
 
 ## What is JPA?
