@@ -205,6 +205,18 @@ Therefore, isolation levels came into existence:
   <img src="https://user-images.githubusercontent.com/36256986/207327567-0d5d804c-1e70-4863-ae3e-86dbcfb92e4a.png">	
 </p>
 
+
+Different Databses react differently to Isolation level </br>
+
+Depending on the underlying relational database system, this is how the Lost Update anomaly could be prevented using a higher isolation level:
+
+| Isolation Level | Oracle    | SQL Server | PostgreSQL | MySQL     |
+|-----------------|-----------|------------|------------|-----------|
+| Read Committed  | Allowed   | Allowed    | Allowed    | Allowed   |
+| Repeatable Read | N/A       | Prevented  | Prevented  | Allowed   |
+| Serializable    | Prevented | Prevented  | Prevented  | Prevented |
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### Transaction_Propagation_Levels
