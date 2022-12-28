@@ -135,7 +135,7 @@ we will see the differences between :
 ![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
 
 
-## What is JPA?
+## [What is JPA?](#-)
 
 JPA stands for Java Persistence API and it is the Java specification that defines how to persist java objects. </br>
 It is considered as a link between an object-oriented model and a relational database system. </br>
@@ -153,7 +153,7 @@ So, as seen above JPA provides its in-built stuff so that things won't break if 
 But Hibernate provides advanced features and if you are sure that you will not change the ORM framework, then it's better to stick to the Hibernate specs.
 
 
-## What is Spring Data JPA?
+## [What is Spring Data JPA?](#-)
 
 There is always confusion between `JPA` and `Spring Data JPA`.
 
