@@ -123,11 +123,9 @@ The first level cache is a session-level cache and it is always associated with 
 Second-level cache is the session factory level cache and it is available across all sessions. </br>
 For a second-level cache, we have to enable the cache and provide a cache provider like Ehcache and add its dependency.
 
-
-
-https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
-
 ### [Hibernate , JPA , Spring Data JPA](#-)
+
+link [differences between Hibernate JPA Spring-data-jpa](https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780)
 
 we will see the differences between :
 * Hibernate
