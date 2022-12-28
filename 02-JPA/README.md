@@ -25,6 +25,8 @@
 
 <img src="https://img.shields.io/badge/- JDBC Hibernate JPA Spring_data_jpa  %20-blue" height=40px>
 
+Great link [thorben janssen - what-is-spring-data-jpa-and-why-should-you-use-it](https://thorben-janssen.com/what-is-spring-data-jpa-and-why-should-you-use-it/)
+
 ### [What is JDBC?](#-)
 
 JDBC stands for Java Database Connectivity. </br>
