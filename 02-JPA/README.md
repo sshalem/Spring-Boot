@@ -57,21 +57,7 @@ There are many ORM frameworks in the market and the famous ones for Java are:
 2. EclipseLink
 3. iBATIS
 
-
-https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
-
-
-![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
-
-we will see the differences between :
-* JPA
-* Hibernate
-* Spring Data JPA.
-
-
-
-
-## [What is Hibernate?](#-)
+### [What is Hibernate?](#-)
 
 ![image](https://user-images.githubusercontent.com/36256986/209817622-3cdc4b67-0d03-44f2-be56-ff163fb1f4a6.png)
 
@@ -101,9 +87,9 @@ Features of Hibernate
 9. Lazy Loading
 10. Database Independent
 
-### [few important features below](#-)
+#### [few important features below](#-)
 
-#### [1. Hibernate Query Language (HQL)](#-)
+##### [1. Hibernate Query Language (HQL)](#-)
 
 SQL is low-level programming where developers have to query for the database columns in a database table. </br>
 But HQL is simplified for developers in such a way that the Java class names and attributes are used in the query. </br>
@@ -112,7 +98,7 @@ Internally, hibernate converts HQL into SQL and executes it in the database.
 Hibernate also supports native SQL queries along with the HQL but it is recommended to use HQL as it is independent of the underlying database. </br>
 Whereas if we write SQL, the syntax differs from database to database
 
-#### [2. Lazy Loading in Hibernate](#-)
+##### [2. Lazy Loading in Hibernate](#-)
 
 Hibernate supports the following loading patterns:
 
@@ -122,7 +108,7 @@ Lazy Loading is the default one and it makes the application efficient by not lo
 
 Eg: If a table has 1 million records and the relationship tables have another 1 million records. In case of lazy loading, it will only load the main table and only if requested, it will load data from the child tables.
 
-#### [3. Caching in Hibernate](#-)
+##### [3. Caching in Hibernate](#-)
 
 Caching is the process of storing data into cache memory and improves the speed of data access.
 
@@ -138,6 +124,22 @@ The first level cache is a session-level cache and it is always associated with 
 
 Second-level cache is the session factory level cache and it is available across all sessions. </br>
 For a second-level cache, we have to enable the cache and provide a cache provider like Ehcache and add its dependency.
+
+
+
+https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
+
+
+![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
+
+we will see the differences between :
+* JPA
+* Hibernate
+* Spring Data JPA.
+
+
+
+
 
 
 ## What is JPA?
