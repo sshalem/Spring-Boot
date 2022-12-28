@@ -208,7 +208,10 @@ Therefore, isolation levels came into existence:
 
 Different Databses react differently to Isolation level </br>
 
-Depending on the underlying relational database system, this is how the Lost Update anomaly could be prevented using a higher isolation level:
+Depending on the underlying relational database system, </br>
+this is how the Lost Update anomaly could be prevented using a higher isolation level:
+
+link form [vlad mihalcea - spring-transaction-best-practices](https://vladmihalcea.com/spring-transaction-best-practices/)
 
 | Isolation Level | Oracle    | SQL Server | PostgreSQL | MySQL     |
 |-----------------|-----------|------------|------------|-----------|
