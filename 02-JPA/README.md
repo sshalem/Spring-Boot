@@ -48,6 +48,16 @@ An ORM system has the following advantages over plain JDBC −
 6. Transaction management and automatic key generation.
 7. Fast development of application.
 
+### [ORM Frameworks](#-)
+
+ORM Stands for `Object-Relational Mapping` that maps the data in the database to the Java Class which is called an Entity. Not only that, but ORM also preserves the relationship between the tables at the Entity level.
+
+There are many ORM frameworks in the market and the famous ones for Java are:
+1. Hibernate
+2. EclipseLink
+3. iBATIS
+
+
 https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
 
 
@@ -58,14 +68,7 @@ we will see the differences between :
 * Hibernate
 * Spring Data JPA.
 
-### [ORM Frameworks](#-)
 
-ORM Stands for `Object-Relational Mapping` that maps the data in the database to the Java Class which is called an Entity. Not only that, but ORM also preserves the relationship between the tables at the Entity level.
-
-There are many ORM frameworks in the market and the famous ones for Java are:
-1. Hibernate
-2. EclipseLink
-3. iBATIS
 
 
 ## [What is Hibernate?](#-)
