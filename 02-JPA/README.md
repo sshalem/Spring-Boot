@@ -33,7 +33,23 @@ These Java APIs enables Java programs to execute SQL statements and interact wit
 
 JDBC provides a flexible architecture to write a database independent application that can run on different platforms and interact with different DBMS without any modification.
 
+
+### [What is ORM?](#-)
+
+ORM stands for Object-Relational Mapping (ORM) is a programming technique for converting data between relational databases and object oriented programming languages such as Java, C#, etc.
+
+An ORM system has the following advantages over plain JDBC −
+
+1. Let’s business code access objects rather than DB tables.
+2. Hides details of SQL queries from OO logic.
+3. Based on [`JDBC`](#-) 'under the hood.'
+4. No need to deal with the database implementation.
+5. Entities based on business concepts rather than database structure.
+6. Transaction management and automatic key generation.
+7. Fast development of application.
+
 https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
+
 
 ![image](https://user-images.githubusercontent.com/36256986/209817359-30f8c23c-6adb-48f2-a464-c884f9afe28d.png)
 
