@@ -4,7 +4,7 @@
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
-|     | [Hibernate, JPA, Spring-data-jpa](#Hibernate_JPA_Spring_data_jpa)            |
+|     | [JDBC, Hibernate, JPA, Spring-data-jpa](#JDBC_Hibernate_JPA_Spring_data_jpa)            |
 |  1  | [One2Many_Bi_Eager](#1_One2Many_Bi_Eager)            |
 |  2  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 |  3  | [One2Many_Uni_Eager](#3_One2Many_Uni_Eager)          |
@@ -21,9 +21,17 @@
 | 14  | [Transaction_Management](#14_Transaction_Management) |
 
 
-###### Hibernate_JPA_Spring_data_jpa
+###### JDBC_Hibernate_JPA_Spring_data_jpa
 
-<img src="https://img.shields.io/badge/- Hibernate JPA Spring_data_jpa  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- JDBC Hibernate JPA Spring_data_jpa  %20-blue" height=40px>
+
+### [What is JDBC?](#-)
+
+JDBC stands for Java Database Connectivity. </br>
+It provides a set of Java API for accessing the relational databases from Java program. </br>
+These Java APIs enables Java programs to execute SQL statements and interact with any SQL compliant database.
+
+JDBC provides a flexible architecture to write a database independent application that can run on different platforms and interact with different DBMS without any modification.
 
 https://medium.com/javarevisited/hibernate-vs-jpa-vs-spring-data-jpa-ff4485aaa780
 
@@ -55,6 +63,12 @@ This was time-consuming and painful.
 So Hibernate is a framework in the ORM layer that maps the relational data to the Java Objects. </br>
 It also provides an abstraction to the developers so that they don't need to worry about the data source. </br>
 It also provides configuration options to configure the data store and developers can also write queries with Hibernate
+
+There is a difference Between Hibernate and JDBC. The following table describes the differences:
+
+![image](https://user-images.githubusercontent.com/36256986/209822577-9620621d-4d92-4b2e-94ca-c388d1fd7cf4.png)
+
+Does https://stackoverflow.com/questions/7455717/does-hibernate-uses-jdbc-internally-or-jta-internally-or-it-is-configurable
 
 Features of Hibernate
 1. Light Weight
