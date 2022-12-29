@@ -319,12 +319,22 @@ Console shows the following:
 
 ---------------------------------------------------------------------------------------------
 
-###### 3_Second_Level_cache_exmple
+###### 3_Second_Level_cache_EhCache
 
-<img src="https://img.shields.io/badge/- 3. Second_Level_cache_exmple  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. Second_Level_cache_EhCache  %20-blue" height=40px>
 
 https://www.baeldung.com/hibernate-second-level-cache
 
+[EhCache :](#-)
+1. fast and lightwight , used by most of JAVA EE apps, that use Hibernate
+2. Supports both In Memory and Disk based Caching. We can store them in the RAM, or serialize them and store them on Disk
+
+[Steps for caching](#-):
+1. add MAVEN dependency
+2. enable cache for the application
+3. create ehcache.xml 
+4. make Entities cachable
+5. Test Caching
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
