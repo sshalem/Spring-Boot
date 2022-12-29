@@ -321,9 +321,20 @@ Console shows the following:
 
 ---------------------------------------------------------------------------------------------
 
-###### 3_Second_Level_cache_EhCache
+###### 3_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3. Second_Level_cache_EhCache  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. Spring_boot_cache  %20-blue" height=40px>
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------
+
+
+###### 4_EhCache
+
+<img src="https://img.shields.io/badge/- 4. EhCache  %20-blue" height=40px>
 
 https://www.baeldung.com/hibernate-second-level-cache
 
@@ -337,6 +348,30 @@ https://www.baeldung.com/hibernate-second-level-cache
 3. create ehcache.xml 
 4. make Entities cachable
 5. Test Caching
+
+
+###### 4_1_Test_EhCache
+
+<img src="https://img.shields.io/badge/- 4.1. Test_EhCache %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------
+
+
+###### 5_Redis_Cache
+
+<img src="https://img.shields.io/badge/- 5. Redis_Cache %20-blue" height=40px>
+
+
+###### 5_1_Test_Redis_Cache
+
+<img src="https://img.shields.io/badge/- 5.1. Test_Redis_Cache %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
