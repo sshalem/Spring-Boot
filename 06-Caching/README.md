@@ -9,7 +9,10 @@
 |     | 1.2. [First-Level Vs. Second-Level Cache](#1_2_First_Level_Vs_Second_Level_Cache)             |
 |  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
 |     | 2.1. [Test level-1](#Test_level_1)             |
-|  3  | [Second Level cache exmple](#3_Second_Level_cache_exmple)             |
+|  3  | [EhCache](#3_Second_Level_cache_EhCache)             |
+|     | 3.1. [Test EhCache](#Test_EhCache)             |
+|  4  | [Redis Cache](#3_Second_Level_cache_Redis_Cache)             |
+|     | 4.1. [Test Redis Cache](#Test_Redis_Cache)             |
 |  4  | [Redis Cache vs Redis DATA](#Redis_Cache)             |
 
 
