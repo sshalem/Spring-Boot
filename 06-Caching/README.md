@@ -202,6 +202,13 @@ public interface ProductService {
 }
 ```
 
+
+In the code of `ProductServiceImpl` I have 2 2 methods:
+1. `getById(long id)` - Is a CRUD repository method
+2. `getProductByProductName(String productName)` - It's a find method which I wrote
+
+I want to show the difference behaviour between the methods. (See in the Test app section)
+
 ```java
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -214,12 +221,16 @@ public class ProductServiceImpl implements ProductService {
     public Product getById(long id) {
 	System.out.println("getById - First time - from database");
 	Optional<Product> productResponse = productRepository.findById(id);
+	
 	System.out.println("getById - Second time - from cache");
 	productResponse = productRepository.findById(id);
+	
 	System.out.println("getById - Third time - from cache");
 	productResponse = productRepository.findById(id);
+	
 	System.out.println("getById - Fourth time - from cache");
 	productResponse = productRepository.findById(id);
+	
 	Product product = productResponse.get();
 	return product;
     }
@@ -229,12 +240,16 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductByProductName(String productName) {
 	System.out.println("getProductByProductName - First time - from database");
 	Product productResponse = productRepository.findProductByProductName(productName);
+	
 	System.out.println("getProductByProductName - Second time - from cache");
 	productResponse = productRepository.findProductByProductName(productName);
+	
 	System.out.println("getProductByProductName - Third time - from cache");
 	productResponse = productRepository.findProductByProductName(productName);
+	
 	System.out.println("getProductByProductName - Fourth time - from cache");
 	productResponse = productRepository.findProductByProductName(productName);
+	
 	return productResponse;
     }
 }
@@ -275,6 +290,10 @@ Let's run the code for level-1 , and sent via postman request for each of the GE
 
 Console shows the following:
 
+1. when we sent request to invoke the `getById()` , we can see that first level cache is working as expected
+2. when we sent request to invoke the `getProductByProductName()` , It didn't work , each time a new SQL was written (Don't know why it didn't work for this method).
+
+![image](https://user-images.githubusercontent.com/36256986/209921894-7d0817dc-3998-48a1-82a7-e117e7ef18f5.png)
 
 
 
