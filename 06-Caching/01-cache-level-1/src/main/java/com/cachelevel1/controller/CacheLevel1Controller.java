@@ -18,19 +18,19 @@ public class CacheLevel1Controller {
 
     @GetMapping(path = "/getById/{id}")
     public Product getById(@PathVariable("id") long id) {
-	System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+	System.out.println("\n <<<<<<<<<<------------------->>>>>>>>>>> \n");
 	return productService.getById(id);
     }
     
     @GetMapping(path = "/getProductById/{id}")
     public Product getProductById(@PathVariable("id") long id) {
-	System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+	System.out.println("\n <<<<<<<<<<------------------->>>>>>>>>>> \n");
 	return productService.getProductById(id);
     }
     
     @GetMapping(path = "getProductByProductName/{productName}")
     public Product getProductByProductName(@PathVariable("productName") String productName) {
-	System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+	System.out.println("\n <<<<<<<<<<------------------->>>>>>>>>>> \n");
 	return productService.getProductByProductName(productName);
     }
 }
