@@ -191,7 +191,6 @@ public class Product {
 ```java
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Product findProductById(long id);
     Product findProductByProductName(String productName);
 }
 ```
@@ -199,7 +198,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 ```java
 public interface ProductService {
     Product getById(long id);
-    Product getProductById(long id);
     Product getProductByProductName(String productName);
 }
 ```
@@ -224,21 +222,6 @@ public class ProductServiceImpl implements ProductService {
 	productResponse = productRepository.findById(id);
 	Product product = productResponse.get();
 	return product;
-    }
-
-    @Override
-    @Transactional
-    public Product getProductById(long id) {
-	System.out.println("getProductById - First time - from database");
-	Product productResponse = productRepository.findProductById(id);
-	System.out.println("getProductById - Second time - from cache");
-	productResponse = productRepository.findProductById(id);
-	System.out.println("getProductById - Third time - from cache");
-	productResponse = productRepository.findProductById(id);
-	System.out.println("getProductById - Fourth time - from cache");
-	productResponse = productRepository.findProductById(id);
-
-	return productResponse;
     }
 
     @Override
@@ -271,12 +254,7 @@ public class CacheLevel1Controller {
        	return productService.getById(id);
     }
     
-    @GetMapping(path = "/getProductById/{id}")
-    public Product getProductById(@PathVariable("id") long id) {
-        System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
-	return productService.getProductById(id);
-    }
-    
+  
     @GetMapping(path = "getProductByProductName/{productName}")
     public Product getProductByProductName(@PathVariable("productName") String productName) {
 	System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
@@ -284,6 +262,20 @@ public class CacheLevel1Controller {
     }
 }
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### Test_level_1
+
+<img src="https://img.shields.io/badge/- 2.1. Test_level_1 %20- green" height=30px>
+
+Let's run the code for level-1 , and sent via postman request for each of the GET method :
+
+![image](https://user-images.githubusercontent.com/36256986/209921263-55673942-a1b7-4cc0-a966-86d904a9c226.png)
+
+Console shows the following:
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
