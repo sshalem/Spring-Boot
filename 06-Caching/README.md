@@ -7,6 +7,7 @@
 |  1  | [Caching Introduction](#1_Caching_Introduction)             |
 |     | 1.1. [Types of Caching](#1_1_Types_of_Caching)             |
 |     | 1.2. [First-Level Vs. Second-Level Cache](#1_2_First_Level_Vs_Second_Level_Cache)             |
+|     | 1.3. [Compare Redis vs EhCache](#1_3_Compare_Redis_vs_EhCache)             |
 |  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [EhCache](#3_Second_Level_cache_EhCache)             |
@@ -66,7 +67,7 @@ There are four types of caching are as follows:
 
 **In-memory caching** increases the performance of the application. </br>
 It is the area that is frequently used. </br>
-**Memcached** and **Redis** are examples of in-memory caching. </br>
+[`Memcached`](#-) and [`Redis`](#-) are examples of in-memory caching. </br>
 It stores key-value between application and database. </br>
 Redis is an in-memory, distributed, and advanced caching tool that allows backup and restore facility. </br>
 We can manage cache in distributed clusters, also. </br>
@@ -100,6 +101,7 @@ It delivers a local copy of the content from a nearby cache edge (a cache server
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+1_3_Compare_Redis_vs_EhCache
 
 ###### 1_2_First_Level_Vs_Second_Level_Cache
 
@@ -129,7 +131,7 @@ Before looking in the second-level cache:
 So, Level 2 cache is very powerful because data here is cached across sessions.
 But level two cache needs some additional work.
 Hibernate `DOES NOT` have in built support for it We use caching providers such as :
-* ehCache which is very popular
+* EhCache which is very popular
 * Swaram cache 
 * Jboss tree cache
 * OS cache 
@@ -154,6 +156,19 @@ Every cache provider is not compatible with every concurrency strategy. </br>
 The following compatibility matrix will help you choose an appropriate combination.
 
 ![image](https://user-images.githubusercontent.com/36256986/209463807-d7af6e4d-d4e6-49d9-b14f-7c9df792594a.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+
+###### 1_3_Compare_Redis_vs_EhCache
+
+<img src="https://img.shields.io/badge/- 1.3. Compare_Redis_vs_EhCache %20- green" height=30px>
+
+link [Redis vs EhCache](https://redisson.org/feature-comparison-redis-vs-ehcache.html)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
