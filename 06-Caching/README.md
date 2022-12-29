@@ -168,7 +168,7 @@ The following compatibility matrix will help you choose an appropriate combinati
 
 link [Redis vs EhCache](https://redisson.org/feature-comparison-redis-vs-ehcache.html)
 
-
+link [Redis vs hazelcast](https://redisson.org/feature-comparison-redis-vs-hazelcast.html)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
