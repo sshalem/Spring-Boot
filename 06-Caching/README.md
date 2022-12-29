@@ -163,6 +163,126 @@ https://javatute.com/hibernate/hibernate-first-level-cache-example-using-spring-
 
 Let's look in the following code and see how [session-level-1 works](#-)
 
+#### [Package layout](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/209920370-55cb0faf-0a37-4fcd-87e1-04f47548e10f.png)
+
+#### [Dependencies](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/209920427-31fb28b9-ba79-4f5f-9018-a7e6c5014121.png)
+
+#### [Code](#-)
+
+```java
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String productName;
+    private int price;
+    private String description;
+ 
+    G/S/Hash/Equals
+}
+```
+
+```java
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    Product findProductById(long id);
+    Product findProductByProductName(String productName);
+}
+```
+
+```java
+public interface ProductService {
+    Product getById(long id);
+    Product getProductById(long id);
+    Product getProductByProductName(String productName);
+}
+```
+
+```java
+@Service
+public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Override
+    @Transactional
+    public Product getById(long id) {
+	System.out.println("getById - First time - from database");
+	Optional<Product> productResponse = productRepository.findById(id);
+	System.out.println("getById - Second time - from cache");
+	productResponse = productRepository.findById(id);
+	System.out.println("getById - Third time - from cache");
+	productResponse = productRepository.findById(id);
+	System.out.println("getById - Fourth time - from cache");
+	productResponse = productRepository.findById(id);
+	Product product = productResponse.get();
+	return product;
+    }
+
+    @Override
+    @Transactional
+    public Product getProductById(long id) {
+	System.out.println("getProductById - First time - from database");
+	Product productResponse = productRepository.findProductById(id);
+	System.out.println("getProductById - Second time - from cache");
+	productResponse = productRepository.findProductById(id);
+	System.out.println("getProductById - Third time - from cache");
+	productResponse = productRepository.findProductById(id);
+	System.out.println("getProductById - Fourth time - from cache");
+	productResponse = productRepository.findProductById(id);
+
+	return productResponse;
+    }
+
+    @Override
+    @Transactional
+    public Product getProductByProductName(String productName) {
+	System.out.println("getProductByProductName - First time - from database");
+	Product productResponse = productRepository.findProductByProductName(productName);
+	System.out.println("getProductByProductName - Second time - from cache");
+	productResponse = productRepository.findProductByProductName(productName);
+	System.out.println("getProductByProductName - Third time - from cache");
+	productResponse = productRepository.findProductByProductName(productName);
+	System.out.println("getProductByProductName - Fourth time - from cache");
+	productResponse = productRepository.findProductByProductName(productName);
+	return productResponse;
+    }
+}
+```
+
+```java
+@RestController
+@RequestMapping("/level-1")
+public class CacheLevel1Controller {
+
+    @Autowired
+    private ProductServiceImpl productService;
+
+    @GetMapping(path = "/getById/{id}")
+    public Product getById(@PathVariable("id") long id) {
+	       System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+       	return productService.getById(id);
+    }
+    
+    @GetMapping(path = "/getProductById/{id}")
+    public Product getProductById(@PathVariable("id") long id) {
+        System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+	       return productService.getProductById(id);
+    }
+    
+    @GetMapping(path = "getProductByProductName/{productName}")
+    public Product getProductByProductName(@PathVariable("productName") String productName) {
+	        System.out.println("<<<<<<<<<<------------------->>>>>>>>>>> \n");
+	        return productService.getProductByProductName(productName);
+    }
+}
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
