@@ -1,0 +1,54 @@
+2022-12-29 22:42:59.755  INFO 17360 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : Starting Application using Java 17.0.4 on DESKTOP-T4E706U with PID 17360 (F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\02-JPA\09-Many2Many-Bi-Eager\target\classes started by שבתאי וקרין שלם in F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\02-JPA\09-Many2Many-Bi-Eager)
+2022-12-29 22:42:59.759  INFO 17360 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : The following 1 profile is active: "mysql"
+2022-12-29 22:42:59.813  INFO 17360 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-29 22:42:59.814  INFO 17360 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-29 22:43:00.357  INFO 17360 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-29 22:43:00.403  INFO 17360 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+2022-12-29 22:43:00.820  INFO 17360 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-29 22:43:00.828  INFO 17360 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-29 22:43:00.829  INFO 17360 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-12-29 22:43:00.924  INFO 17360 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-29 22:43:00.924  INFO 17360 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1110 ms
+2022-12-29 22:43:01.075  INFO 17360 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-29 22:43:01.115  INFO 17360 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-12-29 22:43:01.234  INFO 17360 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-29 22:43:01.319  INFO 17360 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-29 22:43:01.442  INFO 17360 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-29 22:43:01.455  INFO 17360 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-12-29 22:43:01.975  INFO 17360 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-29 22:43:01.982  INFO 17360 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-29 22:43:03.113  INFO 17360 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-29 22:43:03.147  INFO 17360 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-29 22:43:03.157  INFO 17360 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : Started Application in 3.714 seconds (JVM running for 4.448)
+2022-12-29 22:44:05.022  INFO 17360 --- [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-29 22:44:05.029  INFO 17360 --- [RMI TCP Connection(9)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-29 22:44:05.034  INFO 17360 --- [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-29 22:44:05.037  INFO 17360 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-29 22:44:05.044  INFO 17360 --- [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-29 22:44:07.321  INFO 17724 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : Starting Application using Java 17.0.4 on DESKTOP-T4E706U with PID 17724 (F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\02-JPA\09-Many2Many-Bi-Eager\target\classes started by שבתאי וקרין שלם in F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\02-JPA\09-Many2Many-Bi-Eager)
+2022-12-29 22:44:07.323  INFO 17724 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : The following 1 profile is active: "mysql"
+2022-12-29 22:44:07.373  INFO 17724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-29 22:44:07.373  INFO 17724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-29 22:44:07.872  INFO 17724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-29 22:44:07.917  INFO 17724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 2 JPA repository interfaces.
+2022-12-29 22:44:08.336  INFO 17724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-29 22:44:08.343  INFO 17724 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-29 22:44:08.344  INFO 17724 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-12-29 22:44:08.423  INFO 17724 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-29 22:44:08.424  INFO 17724 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1051 ms
+2022-12-29 22:44:08.564  INFO 17724 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-29 22:44:08.603  INFO 17724 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-12-29 22:44:08.722  INFO 17724 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-29 22:44:08.797  INFO 17724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-29 22:44:08.929  INFO 17724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-29 22:44:08.941  INFO 17724 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-12-29 22:44:09.517  INFO 17724 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-29 22:44:09.524  INFO 17724 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-29 22:44:10.658  INFO 17724 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-29 22:44:10.691  INFO 17724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-29 22:44:10.700  INFO 17724 --- [restartedMain] com.jpa.many2many.bi.eager.Application   : Started Application in 3.667 seconds (JVM running for 4.299)
+2022-12-29 22:44:35.534  INFO 17724 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-29 22:44:35.544  INFO 17724 --- [RMI TCP Connection(6)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-29 22:44:35.552  INFO 17724 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-29 22:44:35.554  INFO 17724 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-29 22:44:35.563  INFO 17724 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
