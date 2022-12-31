@@ -352,7 +352,7 @@ Besides the rgular dependecies of DB's , JPA & WEB , I also add the following de
 
 ![image](https://user-images.githubusercontent.com/36256986/210153185-ce06c21e-bb5b-4e2a-928f-e597e73dabea.png)
 
-```java
+```sql
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-cache</artifactId>
