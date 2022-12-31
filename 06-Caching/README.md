@@ -343,7 +343,21 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 3. Spring_boot_cache  %20-blue" height=40px>
 
+In this project we will see the usage of Spring-boot-cache. </br>
+See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
+### Dependencies
+
+Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
+
+![image](https://user-images.githubusercontent.com/36256986/210153185-ce06c21e-bb5b-4e2a-928f-e597e73dabea.png)
+
+```java
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
