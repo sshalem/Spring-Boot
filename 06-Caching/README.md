@@ -12,7 +12,7 @@
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
 |     | 3.1. [Test Spring-boot-cache](#3_1_Test_Spring_boot_cache)             |
-|  4  | [EhCache](#4_EhCache)             |
+|  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
 |     | 5.1. [Test Redis Cache](#5_1_Test_Redis_Cache)             |
@@ -359,6 +359,10 @@ https://www.baeldung.com/hibernate-second-level-cache
 [EhCache :](#-)
 1. fast and lightwight , used by most of JAVA EE apps, that use Hibernate
 2. Supports both In Memory and Disk based Caching. We can store them in the RAM, or serialize them and store them on Disk
+
+[EhCache TTL / TTI / Eviction](#-)
+
+https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 
 [Steps for caching](#-):
 1. add MAVEN dependency
