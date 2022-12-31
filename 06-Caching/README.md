@@ -12,6 +12,7 @@
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
 |     | 3.1. [Explain Spring-boot-cache](#3_1_Explain_Spring_boot_cache)             |
+|     | 3.2. [Simple Cache Configuration](#3_2_SimpleCacheConfiguration)             |
 |     | 3.1. [Test Spring-boot-cache](#3_1_Test_Spring_boot_cache)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
@@ -374,6 +375,13 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 
 ![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
+
+
+###### 3_2_SimpleCacheConfiguration
+
+<img src="https://img.shields.io/badge/- 3.2. SimpleCacheConfiguration %20- green" height=30px>
+
+If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` which It uses `ConcurrentMapCacheManager`. </br>
 
 
 
