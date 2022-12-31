@@ -363,7 +363,7 @@ Besides the rgular dependecies of DB's , JPA & WEB , I also add the following de
 
 ###### 3_1_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 4.1. Test_EhCache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.1. Test_Spring_boot_cache %20- green" height=30px>
 
 
 
