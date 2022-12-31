@@ -346,7 +346,7 @@ Console shows the following:
 In this project we will see the usage of Spring-boot-cache. </br>
 See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
-### Dependencies
+### [Dependencies](#-)
 
 Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
 
