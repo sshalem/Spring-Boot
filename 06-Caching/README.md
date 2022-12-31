@@ -363,7 +363,7 @@ Besides the rgular dependecies of DB's , JPA & WEB , I also add the following de
 </dependency>
 ```
 
-This dpendency is composite from several dependencies which one of the is `spring-context`.  </br>
+This dpendency is composite from several dependencies , which one of the is [`spring-context`](#-).  </br>
 This maven dependency has the caching code pcckages:
 
 ![image](https://user-images.githubusercontent.com/36256986/210153722-54eb8389-56ce-49c0-9b80-689eba841717.png)
