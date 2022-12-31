@@ -369,11 +369,10 @@ This [`spring-context`](#-) maven dependency has the caching pcckages/code:
 ![image](https://user-images.githubusercontent.com/36256986/210153722-54eb8389-56ce-49c0-9b80-689eba841717.png)
 
 
+In the following Library , we can see different cache providers .</br> 
+For instance , if we want to use EhCache , we need to add the dependency for that.
 
-
-
-
-
+![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
 
 
