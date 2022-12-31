@@ -170,6 +170,24 @@ The following compatibility matrix will help you choose an appropriate combinati
 
 link [Redis vs EhCache](https://redisson.org/feature-comparison-redis-vs-ehcache.html)
 
+### [What is Redis?](#-)
+
+Redis is an :
+* open-source, in-memory data structure project that can be used as a key-value database
+* a cache
+* and a message broker. 
+
+It includes support for many different abstract data structures, such as strings, lists, and maps. There are a number of options, such as Redisson, for developers who want to use Redis with the Java programming language.
+
+### [What is Ehcache?](#-)
+
+Ehcache is an :
+* open-source distributed cache in Java. 
+
+It includes a number of useful features such as REST and SOAP APIs, as well as memory and disk stores. Ehcache is often used to integrate with other Java frameworks such as Spring, Hibernate and MyBatis.
+
+
+
 link [Redis vs hazelcast](https://redisson.org/feature-comparison-redis-vs-hazelcast.html)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
