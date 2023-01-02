@@ -508,6 +508,7 @@ public class Book {
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
+    // This method will only Update the name
     @Transactional
     @Modifying
     @Query("update Book u set u.name=?2 where u.id=?1")
