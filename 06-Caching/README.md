@@ -11,6 +11,7 @@
 |  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
+|     |      [cache Annotations](#cache_Annotations)             |
 |     | 3.1. [Explain Spring-boot-cache](#3_1_Explain_Spring_boot_cache)             |
 |     | 3.2. [Simple Cache Configuration](#3_2_SimpleCacheConfiguration)             |
 |     | 3.3. [Test Spring-boot-cache](#3_3_Test_Spring_boot_cache)             |
@@ -349,6 +350,40 @@ In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
 For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
 
+###### cache_Annotations
+
+<img src="https://img.shields.io/badge/- cache_Annotations %20- green" height=30px>
+
+There are several cache annotation that are used :
+
+1. [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {...}
+```
+
+2. [`@Cacheable`](#-) - Used with methods that are cachable. The eacmple below shows a get method. </br> 
+First time it will be retrieved from DB, and will be stored in a cacheName `books`. </br>
+Second time it will be retrieved from cache of `books` by key `id`.
+
+```java
+@Override
+@Cacheable(cacheNames = "books", key = "#id")
+public Book getBook(long id) {
+```
+
+3. [`@EnableCaching`](#-)
+
+4. [`@EnableCaching`](#-)
+
+5. [`@EnableCaching`](#-)
+
+6. [`@EnableCaching`](#-)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 
 ###### 3_1_Explain_Spring_boot_cache
@@ -377,6 +412,7 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 
 ![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 ###### 3_2_SimpleCacheConfiguration
