@@ -451,6 +451,9 @@ public interface BookService {
 
 ### [BookServiceImpl](#-)
 
+Here I add to some methods , annotations of:
+
+
 ```java
 @Service
 public class BookServiceImpl implements BookService {
@@ -467,7 +470,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-//	@CachePut(cacheNames = "books", key = "#book.id")
+ 	@CachePut(cacheNames = "books", key = "#book.id")
 	public Book updateBook(Book book) {
 		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
@@ -475,7 +478,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-//	@Cacheable(cacheNames = "books", key = "#id")
+	@Cacheable(cacheNames = "books", key = "#id")
 	public Book getBook(long id) {
 		logger.info("fetching book from db");
 		Optional<Book> book = bookRepository.findById(id);
@@ -487,7 +490,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-//	@CacheEvict(cacheNames = "books", key = "#id")
+ 	@CacheEvict(cacheNames = "books", key = "#id")
 	public String deleteBook(long id) {
 		bookRepository.deleteById(id);
 		return "Book deleted";
