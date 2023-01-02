@@ -11,9 +11,10 @@
 |  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
+|     |      [cache Annotations](#cache_Annotations)             |
 |     | 3.1. [Explain Spring-boot-cache](#3_1_Explain_Spring_boot_cache)             |
 |     | 3.2. [Simple Cache Configuration](#3_2_SimpleCacheConfiguration)             |
-|     | 3.1. [Test Spring-boot-cache](#3_1_Test_Spring_boot_cache)             |
+|     | 3.3. [Test Spring-boot-cache](#3_3_Test_Spring_boot_cache)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
@@ -345,8 +346,85 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 3. Spring_boot_cache  %20-blue" height=40px>
 
-In this project we will see the usage of Spring-boot-cache. </br>
-See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+In this project we will see the usage of `Spring-boot-cache`. </br>
+`Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
+For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
+
+###### cache_Annotations
+
+<img src="https://img.shields.io/badge/- cache_Annotations %20- green" height=30px>
+
+There are several cache annotation that are used :
+
+1. [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {...}
+```
+
+2. [`@Cacheable`](#-) - Used with methods that are cachable. 
+First time it will be retrieved from DB, and will be stored in a cacheName `books`. </br>
+Second time it will check if the info is in the cache :
+* if in cache , it will retreived it from cache
+* If not, will retrieve it from DB
+
+Below there are examples of how to use it
+
+```java
+@Cacheable(cacheNames = "books", key = "#isbn")
+public Book getBook(ISBN isbn) {
+}
+
+// With Specific field form the object
+@Cacheable(cacheNames = "books", key = "#isbn.rowNumber")
+public Book getBook(ISBN isbn) {
+}
+
+
+// With Condition
+@Cacheable(cacheNames = "books", condition = "#name.length() < 2")
+public Book getBook(String name) {
+}
+
+```
+
+3. [`@CachePut`](#-) - Update the cache. Flow : First updates the DB , then Updates the cache as well.
+
+```java
+@CachePut(cacheNames = "books", key = "#book.id")
+public Book updateBook(Book book) {
+}
+```
+
+4. [`@CacheEvict`](#-) - TO clear cache values from cache storage. 
+
+```java
+@CacheEvict(cacheNames = "books", key = "#id")
+public String deleteBook(long id) {
+}
+```
+
+5. [`@Caching`](#-) - to specify multiple annotations of the same type (Such as @CacheEvict or @CachePut)
+
+```java
+@Caching(evict = { @CacheEvict("primary"), @CacheEvict(cacheNames = "secondary", key = "#id") })
+public Book importBook(String deposit) {
+}
+```
+
+6. [`@CacheConfig`](#-) - at Class level, for all the methods of the class
+
+```java
+@Service
+@CacheConfig(cacheNames = "books")
+public class BookServiceImpl implements BookService {
+```
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 
 ###### 3_1_Explain_Spring_boot_cache
@@ -375,26 +453,172 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 
 ![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 ###### 3_2_SimpleCacheConfiguration
 
 <img src="https://img.shields.io/badge/- 3.2. SimpleCacheConfiguration %20- green" height=30px>
 
-If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` which It uses `ConcurrentMapCacheManager`. </br>
+If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+
+### [Package](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/210206425-4c936e64-059b-4084-b29a-b41a3d1a7e0d.png)
+
+### [main](#-)
+
+In the main app I need to add the [`@EnableCaching`](#-) annotation.
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
+### [Entity](#-)
+
+```java
+@Entity
+@Table(name = "book")
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String category;
+    private String author;
+    private String publisher;
+    private String edition;
+    
+    Ctor/G/S/Hash/Equals
+```
+
+### [Repository](#-)
+
+```java
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+    @Transactional
+    @Modifying
+    @Query("update Book u set u.name=?2 where u.id=?1")
+    int updateAddress(long id, String name);
+}
+```
+
+### [BookService](#-)
+
+```java
+public interface BookService {
+
+    Book addBook(Book book);
+    Book updateBook(Book book);
+    Book getBook(long id);
+    String deleteBook(long id);
+}
+```
+
+### [BookServiceImpl](#-)
+
+Here I add to some methods , annotations of:
 
 
+```java
+@Service
+public class BookServiceImpl implements BookService {
 
+	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
 
+	@Autowired
+	private BookRepository bookRepository;
 
+	@Override
+	public Book addBook(Book book) {
+		logger.info("adding book with id - {}", book.getId());
+		return bookRepository.save(book);
+	}
 
+	@Override
+ 	@CachePut(cacheNames = "books", key = "#book.id")
+	public Book updateBook(Book book) {
+		bookRepository.updateAddress(book.getId(), book.getName());
+		logger.info("book updated with new name");
+		return book;
+	}
 
+	@Override
+	@Cacheable(cacheNames = "books", key = "#id")
+	public Book getBook(long id) {
+		logger.info("fetching book from db");
+		Optional<Book> book = bookRepository.findById(id);
+		if (book.isPresent()) {
+			return book.get();
+		} else {
+			return new Book();
+		}
+	}
+
+	@Override
+ 	@CacheEvict(cacheNames = "books", key = "#id")
+	public String deleteBook(long id) {
+		bookRepository.deleteById(id);
+		return "Book deleted";
+	}
+}
+```
+
+### [BookController](#-)
+
+```java
+@RestController
+public class BookController {
+
+    @Autowired
+    private BookServiceImpl bookService;
+
+    @PostMapping("/book")
+    public Book addBook(@RequestBody Book book) {
+        return bookService.addBook(book);
+    }
+
+    @PutMapping("/book")
+    public Book updateBook(@RequestBody Book book) {
+        return bookService.updateBook(book);
+    }
+
+    @GetMapping("/book/{id}")
+    public Book getBook(@PathVariable long id) {
+        return bookService.getBook(id);
+    }
+
+    @DeleteMapping("/book/{id}")
+    public String deleteBook(@PathVariable long id) {
+        return bookService.deleteBook(id);
+    }
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_1_Test_Spring_boot_cache
+###### 3_3_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.1. Test_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.3. Test_Spring_boot_cache %20- green" height=30px>
+
+Lets run the app , sent following request and see how Cache behaves:
+
+![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
+
+Let's analyze console :
+
+
 
 
 
