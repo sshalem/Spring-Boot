@@ -489,8 +489,9 @@ public class Application {
 @Table(name = "book")
 public class Book {
 
+    // I don't want Hibernate to generate the Id 
+    // I will do by snedit id number with the requst body when I send addBook()
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String category;
@@ -549,9 +550,9 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@CachePut(cacheNames = "books", key = "#book.id")
 	public Book updateBook(Book book) {
-		Book _book = bookRepository.updateAddress(book.getId(), book.getName());
+		int updateBook = bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
-		return _book;
+		return getBook(updateBook);
 	}
 
 	@Override
