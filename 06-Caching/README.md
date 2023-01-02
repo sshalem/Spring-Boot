@@ -13,7 +13,7 @@
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
 |     | 3.1. [Explain Spring-boot-cache](#3_1_Explain_Spring_boot_cache)             |
 |     | 3.2. [Simple Cache Configuration](#3_2_SimpleCacheConfiguration)             |
-|     | 3.1. [Test Spring-boot-cache](#3_1_Test_Spring_boot_cache)             |
+|     | 3.3. [Test Spring-boot-cache](#3_3_Test_Spring_boot_cache)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
@@ -384,17 +384,136 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 <img src="https://img.shields.io/badge/- 3.2. SimpleCacheConfiguration %20- green" height=30px>
 
 If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` which It uses `ConcurrentMapCacheManager`. </br>
+Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
-See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+### [Package](#-)
 
+![image](https://user-images.githubusercontent.com/36256986/210206425-4c936e64-059b-4084-b29a-b41a3d1a7e0d.png)
 
+### [Entity](#-)
 
+```java
+@Entity
+@Table(name = "book")
+public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String category;
+    private String author;
+    private String publisher;
+    private String edition;
+    
+    Ctor/G/S/Hash/Equals
+```
 
+### [Repository](#-)
+
+```java
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+    @Transactional
+    @Modifying
+    @Query("update Book u set u.name=?2 where u.id=?1")
+    int updateAddress(long id, String name);
+}
+```
+
+### [BookService](#-)
+
+```java
+public interface BookService {
+
+    Book addBook(Book book);
+    Book updateBook(Book book);
+    Book getBook(long id);
+    String deleteBook(long id);
+}
+```
+
+### [BookServiceImpl](#-)
+
+```java
+@Service
+public class BookServiceImpl implements BookService {
+
+	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+
+	@Autowired
+	private BookRepository bookRepository;
+
+	@Override
+	public Book addBook(Book book) {
+		logger.info("adding book with id - {}", book.getId());
+		return bookRepository.save(book);
+	}
+
+	@Override
+//	@CachePut(cacheNames = "books", key = "#book.id")
+	public Book updateBook(Book book) {
+		bookRepository.updateAddress(book.getId(), book.getName());
+		logger.info("book updated with new name");
+		return book;
+	}
+
+	@Override
+//	@Cacheable(cacheNames = "books", key = "#id")
+	public Book getBook(long id) {
+		logger.info("fetching book from db");
+		Optional<Book> book = bookRepository.findById(id);
+		if (book.isPresent()) {
+			return book.get();
+		} else {
+			return new Book();
+		}
+	}
+
+	@Override
+//	@CacheEvict(cacheNames = "books", key = "#id")
+	public String deleteBook(long id) {
+		bookRepository.deleteById(id);
+		return "Book deleted";
+	}
+}
+```
+
+### [BookController](#-)
+
+```java
+@RestController
+public class BookController {
+
+    @Autowired
+    private BookServiceImpl bookService;
+
+    @PostMapping("/book")
+    public Book addBook(@RequestBody Book book) {
+        return bookService.addBook(book);
+    }
+
+    @PutMapping("/book")
+    public Book updateBook(@RequestBody Book book) {
+        return bookService.updateBook(book);
+    }
+
+    @GetMapping("/book/{id}")
+    public Book getBook(@PathVariable long id) {
+        return bookService.getBook(id);
+    }
+
+    @DeleteMapping("/book/{id}")
+    public String deleteBook(@PathVariable long id) {
+        return bookService.deleteBook(id);
+    }
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_1_Test_Spring_boot_cache
+###### 3_3_Test_Spring_boot_cache
 
 <img src="https://img.shields.io/badge/- 3.1. Test_Spring_boot_cache %20- green" height=30px>
 
