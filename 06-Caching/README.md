@@ -510,7 +510,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Transactional
     @Modifying
     @Query("update Book u set u.name=?2 where u.id=?1")
-    int updateAddress(long id, String name);
+    Book updateAddress(long id, String name);
 }
 ```
 
@@ -547,11 +547,11 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
- 	@CachePut(cacheNames = "books", key = "#book.id")
+	@CachePut(cacheNames = "books", key = "#book.id")
 	public Book updateBook(Book book) {
-		bookRepository.updateAddress(book.getId(), book.getName());
+		Book _book = bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
-		return book;
+		return _book;
 	}
 
 	@Override
