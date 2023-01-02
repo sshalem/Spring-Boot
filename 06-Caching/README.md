@@ -610,7 +610,15 @@ public class BookController {
 
 ###### 3_3_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.1. Test_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.3. Test_Spring_boot_cache %20- green" height=30px>
+
+Lets run the app , sent following request and see how Cache behaves:
+
+![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
+
+Let's analyze console :
+
+
 
 
 
