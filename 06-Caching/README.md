@@ -364,9 +364,11 @@ There are several cache annotation that are used :
 public class Application {...}
 ```
 
-2. [`@Cacheable`](#-) - Used with methods that are cachable. The eacmple below shows a get method. </br> 
+2. [`@Cacheable`](#-) - Used with methods that are cachable. The example below shows a get method. </br> 
 First time it will be retrieved from DB, and will be stored in a cacheName `books`. </br>
-Second time it will be retrieved from cache of `books` by key `id`.
+Second time it will check if the info is in the cache :
+* if in cache , it will retreived it from cache
+* If not, will retrieve it from DB
 
 ```java
 @Override
