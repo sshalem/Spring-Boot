@@ -345,8 +345,10 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 3. Spring_boot_cache  %20-blue" height=40px>
 
-In this project we will see the usage of Spring-boot-cache. </br>
-See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+In this project we will see the usage of `Spring-boot-cache`. </br>
+`Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
+For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
+
 
 
 ###### 3_1_Explain_Spring_boot_cache
@@ -383,7 +385,7 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 
 If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` which It uses `ConcurrentMapCacheManager`. </br>
 
-
+See how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
 
 
