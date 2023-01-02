@@ -11,10 +11,10 @@
 |  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
 |     | 2.1. [Test level-1](#Test_level_1)             |
 |  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
-|     |      [cache Annotations](#cache_Annotations)             |
-|     | 3.1. [Explain Spring-boot-cache](#3_1_Explain_Spring_boot_cache)             |
-|     | 3.2. [Simple Cache Configuration](#3_2_SimpleCacheConfiguration)             |
-|     | 3.3. [Test Spring-boot-cache](#3_3_Test_Spring_boot_cache)             |
+|     | 3.1. [cache Annotations](#3_1_cache_Annotations)             |
+|     | 3.2. [Explain Spring-boot-cache](#3_2_Explain_Spring_boot_cache)             |
+|     | 3.3. [Simple Cache Configuration](#3_3_SimpleCacheConfiguration)             |
+|     | 3.4. [Test Spring-boot-cache](#3_4_Test_Spring_boot_cache)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
@@ -350,9 +350,9 @@ In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
 For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
 
-###### cache_Annotations
+###### 3_1_cache_Annotations
 
-<img src="https://img.shields.io/badge/- cache_Annotations %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.1. cache_Annotations %20- green" height=30px>
 
 There are several cache annotation that are used :
 
@@ -427,9 +427,9 @@ public class BookServiceImpl implements BookService {
 
 
 
-###### 3_1_Explain_Spring_boot_cache
+###### 3_2_Explain_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.1. Explain_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.2. Explain_Spring_boot_cache %20- green" height=30px>
 
 Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
 
@@ -456,9 +456,9 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 3_2_SimpleCacheConfiguration
+###### 3_3_SimpleCacheConfiguration
 
-<img src="https://img.shields.io/badge/- 3.2. SimpleCacheConfiguration %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.3. SimpleCacheConfiguration %20- green" height=30px>
 
 If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
@@ -608,15 +608,23 @@ public class BookController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_3_Test_Spring_boot_cache
+###### 3_4_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.3. Test_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.4. Test_Spring_boot_cache %20- green" height=30px>
 
 Lets run the app , sent following request and see how Cache behaves:
 
 ![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
 
-Let's analyze console :
+Let's analyze console after sending [`addBook`](#-)  and [`getBook`](#-)  4 times:
+
+Console shows :
+* for addBook --> there is SQL query
+* for first getBook --> data comes from DB
+* for second , third and forth time I sent getBook --> there is NO SQL , so it comes from cache.
+
+![image](https://user-images.githubusercontent.com/36256986/210235552-157d2cce-5ebe-45ae-9a27-7a9e9f431cb3.png)
+
 
 
 
