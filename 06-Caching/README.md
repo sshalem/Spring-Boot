@@ -390,6 +390,21 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 
 ![image](https://user-images.githubusercontent.com/36256986/210206425-4c936e64-059b-4084-b29a-b41a3d1a7e0d.png)
 
+### [main](#-)
+
+In the main app I need to add the [`@EnableCaching`](#-) annotation.
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
 ### [Entity](#-)
 
 ```java
