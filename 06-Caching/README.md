@@ -373,20 +373,17 @@ Second time it will check if the info is in the cache :
 Below there are examples of how to use it
 
 ```java
-@Override
 @Cacheable(cacheNames = "books", key = "#isbn")
 public Book getBook(ISBN isbn) {
 }
 
 // With Specific field form the object
-@Override
 @Cacheable(cacheNames = "books", key = "#isbn.rowNumber")
 public Book getBook(ISBN isbn) {
 }
 
 
 // With Condition
-@Override
 @Cacheable(cacheNames = "books", condition = "#name.length() < 2")
 public Book getBook(String name) {
 }
@@ -417,7 +414,14 @@ public Book importBook(String deposit) {
 }
 ```
 
-6. [`@EnableCaching`](#-)
+6. [`@CacheConfig`](#-) - at Class level, for all the methods of the class
+
+```java
+@Service
+@CacheConfig(cacheNames = "books")
+public class BookServiceImpl implements BookService {
+```
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -456,7 +460,7 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 
 <img src="https://img.shields.io/badge/- 3.2. SimpleCacheConfiguration %20- green" height=30px>
 
-If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` which It uses `ConcurrentMapCacheManager`. </br>
+If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
 ### [Package](#-)
