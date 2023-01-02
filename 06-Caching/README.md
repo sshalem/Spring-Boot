@@ -364,23 +364,58 @@ There are several cache annotation that are used :
 public class Application {...}
 ```
 
-2. [`@Cacheable`](#-) - Used with methods that are cachable. The example below shows a get method. </br> 
+2. [`@Cacheable`](#-) - Used with methods that are cachable. 
 First time it will be retrieved from DB, and will be stored in a cacheName `books`. </br>
 Second time it will check if the info is in the cache :
 * if in cache , it will retreived it from cache
 * If not, will retrieve it from DB
 
+Below there are examples of how to use it
+
 ```java
 @Override
-@Cacheable(cacheNames = "books", key = "#id")
-public Book getBook(long id) {
+@Cacheable(cacheNames = "books", key = "#isbn")
+public Book getBook(ISBN isbn) {
+}
+
+// With Specific field form the object
+@Override
+@Cacheable(cacheNames = "books", key = "#isbn.rowNumber")
+public Book getBook(ISBN isbn) {
+}
+
+
+// With Condition
+@Override
+@Cacheable(cacheNames = "books", condition = "#name.length() < 2")
+public Book getBook(String name) {
+}
+
 ```
 
-3. [`@EnableCaching`](#-)
+3. [`@CachePut`](#-) - Update the cache. Flow : First updates the DB , then Updates the cache as well.
 
-4. [`@EnableCaching`](#-)
+```java
+@CachePut(cacheNames = "books", key = "#book.id")
+public Book updateBook(Book book) {
+}
+```
 
-5. [`@EnableCaching`](#-)
+4. [`@CacheEvict`](#-) - TO clear cache values from cache storage. 
+
+```java
+@CacheEvict(cacheNames = "books", key = "#id")
+public String deleteBook(long id) {
+}
+```
+
+5. [`@Caching`](#-) - to specify multiple annotations of the same type (Such as @CacheEvict or @CachePut)
+
+```java
+@Caching(evict = { @CacheEvict("primary"), @CacheEvict(cacheNames = "secondary", key = "#id") })
+public Book importBook(String deposit) {
+}
+```
 
 6. [`@EnableCaching`](#-)
 
