@@ -32,9 +32,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@CachePut(cacheNames = "books", key = "#book.id")
 	public Book updateBook(Book book) {
-		bookRepository.updateAddress(book.getId(), book.getName());
+		int updateAddress = bookRepository.updateAddress(book.getId(), book.getName());
+		System.out.println(updateAddress);
 		logger.info("book updated with new name");
-		return book;
+		return getBook(updateAddress);
 	}
 
 	@Override
