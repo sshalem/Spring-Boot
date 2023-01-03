@@ -2,6 +2,7 @@ package com.cache.service;
 
 import java.util.Optional;
 
+import org.hibernate.ObjectDeletedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,9 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@CachePut(cacheNames = "books", key = "#book.id")
 	public Book updateBook(Book book) {
-		int updateAddress = bookRepository.updateAddress(book.getId(), book.getName());
-		System.out.println(updateAddress);
+		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
-		return getBook(updateAddress);
+		return getBook(book.getId());
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class BookServiceImpl implements BookService {
 		if (book.isPresent()) {
 			return book.get();
 		} else {
-			return new Book();
+			throw new ObjectDeletedException("Object removed", getClass(), null);
 		}
 	}
 
