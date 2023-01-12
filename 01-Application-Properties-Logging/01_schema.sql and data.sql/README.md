@@ -513,7 +513,9 @@ spring.h2.console.enabled=true
 # Custom H2 Console URL from /h2-console to /h2
 spring.h2.console.path=/h2
 
-# to initialize using `data.sql` file
+# this is in order to use `data.sql` for h2 connection 
+# by setting the platform as `H2`
+# then modifying `data.sql` to `data-H2.sql` 
 spring.sql.init.platform=H2
 spring.sql.init.mode=always
 spring.jpa.defer-datasource-initialization=true
