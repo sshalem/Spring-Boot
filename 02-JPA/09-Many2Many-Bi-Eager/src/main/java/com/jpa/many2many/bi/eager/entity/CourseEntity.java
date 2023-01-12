@@ -20,6 +20,7 @@ public class CourseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.AUTO) // with postgresql 
 	@Column(name = "course_id")
 	private long id;
 	private String courseNumber;

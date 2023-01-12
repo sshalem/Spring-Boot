@@ -23,6 +23,7 @@ public class StudentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.AUTO) // with postgresql
 	@Column(name = "student_id")
 	private long id;
 	private String firstName;
