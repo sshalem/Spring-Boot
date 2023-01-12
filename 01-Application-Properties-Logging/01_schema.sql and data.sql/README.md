@@ -449,11 +449,141 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
+Here is a layout of multile data.sql files:
+
+We can see that we have the following:
+
+1. main `application.properties` file
+2. 3 different application files config:
+   a. `application-h2.properties`
+   b. `application-mysql.properties`
+   a. `application-postgres.properties`
+   
+We also have 3 different `data-XXX.sql` files
+1. `data-H2.sql`
+2. `data-shMysql.sql`
+3. `data-shPostgres.sql`
+
+![image](https://user-images.githubusercontent.com/36256986/211960862-8ea38c5c-d147-4c9b-af78-74fffda40fa8.png)
+
+
+#### [application.properties](#-)
+
+```sql
+server.port=8080
+#spring.profiles.active=h2
+#spring.profiles.active=mysql
+spring.profiles.active=postgres
+
+# ===============================
+# 	 	JPA / HIBERNATE
+# ===============================
+ 
+#Spring will create a schema
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.generate-ddl=true
+
+# This is OSIV , define it as false for better performance
+spring.jpa.open-in-view=false
+
+# show SQL logging
+spring.jpa.show-sql=true
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+#spring.jpa.properties.hibernate.format_sql=true
+
+# ===========================================
+# 	dev-tools (Need to add dependency)
+# ===========================================
+spring.devtools.restart.enabled=true
+```
+
+#### [application-h2.properties](#-)
+
+```sql
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Enabling H2 Console
+spring.h2.console.enabled=true
+
+# Custom H2 Console URL from /h2-console to /h2
+spring.h2.console.path=/h2
+
+# to initialize using `data.sql` file
+spring.sql.init.platform=H2
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+```
+
+
+#### [application-mysql.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+spring.datasource.url=jdbc:mysql://localhost:3306/jpa?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for mysql connection 
+# by setting the platform as shMysql
+# then modifying `data.sql` to `data-shMysql.sql`  
+spring.sql.init.platform=shMysql
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# When using java version JDK11 use with mysql dialect
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+```
+
+#### [application-postgres.properties](#-)
+
+```sql
+# ===============================
+# 		DATA SOURCE
+# =============================== 
+#spring.datasource.url=jdbc:postgresql://localhost:5342/jpa
+spring.datasource.url=jdbc:postgresql://localhost/jpa
+spring.datasource.username=postgres
+spring.datasource.password=root
+
+# ==========================================
+#  we must add this config as well for 
+#  schema.sql and data.sql could work
+# ==========================================
+
+# this is in order to use data.sql for postgresql connection 
+# by setting the platform as shPostgres
+# then modifying `data.sql` to `data-shPostgres.sql`  
+spring.sql.init.platform=shPostgres
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+
+# Naming strategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ------------------------------------------------------------------------------------
 
-###### Multiple_data_sql
+###### 
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
