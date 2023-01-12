@@ -8,6 +8,7 @@
 |  2  |[MySql](#MySql_database)  |   
 |  3  |[PostgreSql](#PostgreSql_database)  |  
 |  4  |[Multiple data.sql files](#Multiple_data_sql)  |  
+|     |[4.1. Example with Multiple data.sql files](#Examlpe_Multiple_data_sql)  | 
 
 In this tutorial we will see how we can create :
 1. our own schema , w/o giving spring to create it for us by using a `schema.sql` file
@@ -444,7 +445,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ------------------------------------------------------------------------------------
 
-###### Multiple_data_sql
+###### Examlpe_Multiple_data_sql
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
