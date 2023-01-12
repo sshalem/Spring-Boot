@@ -453,13 +453,13 @@ Here is a layout of multile data.sql files:
 
 We can see that we have the following:
 
-1. main `application.properties` file
-2. 3 different application files config:
+* main `application.properties` file
+* 3 different application files config:
    a. `application-h2.properties`
    b. `application-mysql.properties`
    a. `application-postgres.properties`
    
-We also have 3 different `data-XXX.sql` files
+We also have 3 different `data-XXX.sql` files:
 1. `data-H2.sql`
 2. `data-shMysql.sql`
 3. `data-shPostgres.sql`
