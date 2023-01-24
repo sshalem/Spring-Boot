@@ -355,6 +355,14 @@ For instance , if we want to use EhCache , we need to add also the dependency of
 There are several cache annotation that are used :
 
 1. [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
+2. [`@Cacheable`](#-) 
+3. [`@CachePut`](#-)
+4. [`@CacheEvict`](#-)
+5. [`@Caching`](#-)
+6. [`@CacheConfig`](#-)
+
+
+1. [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
 
 ```java
 @SpringBootApplication
