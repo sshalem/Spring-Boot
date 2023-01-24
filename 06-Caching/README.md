@@ -4,28 +4,28 @@
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
-|  1  | [Caching Introduction](#1_Caching_Introduction)             |
-|     | 1.1. [Types of Caching](#1_1_Types_of_Caching)             |
-|     | 1.2. [First-Level Vs. Second-Level Cache](#1_2_First_Level_Vs_Second_Level_Cache)             |
-|     | 1.3. [Compare Redis vs EhCache](#1_3_Compare_Redis_vs_EhCache)             |
-|  2  | [First Level cache exmple](#2_First_Level_cache_exmple)             |
-|     | 2.1. [Test level-1](#Test_level_1)             |
-|  3  | [Spring-boot-cache](#3_Spring_boot_cache)             |
-|     | 3.1. [cache Annotations](#3_1_cache_Annotations)             |
-|     | 3.2. [Explain Spring-boot-cache](#3_2_Explain_Spring_boot_cache)             |
-|     | 3.3. [Simple Cache Configuration](#3_3_SimpleCacheConfiguration)             |
-|     | 3.4. [Test Spring-boot-cache](#3_4_Test_Spring_boot_cache)             |
-|  4  | [EhCache TTL/TTI ](#4_EhCache)             |
-|     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
-|  5  | [Redis Cache](#5_Redis_Cache)             |
-|     | 5.1. [Test Redis Cache](#5_1_Test_Redis_Cache)             |
+|  I  | [Caching Introduction](#I_Caching_Introduction)             |
+|     | I.1. [Types of Caching](#I_1_Types_of_Caching)             |
+|     | I.2. [First-Level Vs. Second-Level Cache](#I_2_First_Level_Vs_Second_Level_Cache)             |
+|     | I.3. [Compare Redis vs EhCache](#I_3_Compare_Redis_vs_EhCache)             |
+|  1  | [First Level cache exmple](#1_First_Level_cache_exmple)             |
+|     | 1.1. [Test level-1](#Test_level_1)             |
+|  2  | [Spring-boot-cache](#2_Spring_boot_cache)             |
+|     | 2.1. [cache Annotations](#2_1_cache_Annotations)             |
+|     | 2.2. [Explain Spring-boot-cache](#2_2_Explain_Spring_boot_cache)             |
+|     | 2.3. [Simple Cache Configuration](#2_3_SimpleCacheConfiguration)             |
+|     | 2.4. [Test Spring-boot-cache](#2_4_Test_Spring_boot_cache)             |
+|  3  | [EhCache TTL/TTI ](#3_EhCache)             |
+|     | 3.1. [Test EhCache](#3_1_Test_EhCache)             |
+|  4  | [Redis Cache](#4_Redis_Cache)             |
+|     | 4.1. [Test Redis Cache](#4_1_Test_Redis_Cache)             |
 |     | [Redis Cache vs Redis DATA](#Redis_Cache)             |
 
 
 
-###### 1_Caching_Introduction
+###### I_Caching_Introduction
 
-<img src="https://img.shields.io/badge/- 1. Caching Introduction %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- I. Caching Introduction %20-blue" height=40px>
 
 ### [Caching](#-)
 
@@ -56,9 +56,9 @@ It reduces both monetary cost and opportunity cost. </br>
 * The frequently used read query in which results does not change in each call, at least for a period.
 
 
-###### 1_1_Types_of_Caching
+###### I_1_Types_of_Caching
 
-<img src="https://img.shields.io/badge/- 1.1. Types_of_Caching %20- green" height=30px>
+<img src="https://img.shields.io/badge/- I.1. Types_of_Caching %20- green" height=30px>
 
 ### [Types of Caching](#-)
 
@@ -106,11 +106,9 @@ It delivers a local copy of the content from a nearby cache edge (a cache server
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-1_3_Compare_Redis_vs_EhCache
-
-###### 1_2_First_Level_Vs_Second_Level_Cache
-
-<img src="https://img.shields.io/badge/- 1.2. Hibernate Caching (Database Caching) : First_Level Vs Second_Level Cache %20- green" height=30px>
+###### I_2_First_Level_Vs_Second_Level_Cache  
+       
+<img src="https://img.shields.io/badge/- I.2. Hibernate Caching (Database Caching) : First_Level Vs Second_Level Cache %20- green" height=30px>
 
 ### [L1 caching](#-) </br>
 
@@ -167,9 +165,9 @@ The following compatibility matrix will help you choose an appropriate combinati
 
 
 
-###### 1_3_Compare_Redis_vs_EhCache
+###### I_3_Compare_Redis_vs_EhCache
 
-<img src="https://img.shields.io/badge/- 1.3. Compare_Redis_vs_EhCache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- I.3. Compare_Redis_vs_EhCache %20- green" height=30px>
 
 link [Redis vs EhCache](https://redisson.org/feature-comparison-redis-vs-ehcache.html)
 
@@ -197,9 +195,9 @@ link [Redis vs hazelcast](https://redisson.org/feature-comparison-redis-vs-hazel
 
 ---------------------------------------------------------------------------------------------
 
-###### 2_First_Level_cache_exmple
+###### 1_First_Level_cache_exmple
 
-<img src="https://img.shields.io/badge/- 2. First_Level_cache_exmple %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1. First_Level_cache_exmple %20-blue" height=40px>
 
 https://javatute.com/hibernate/hibernate-first-level-cache-example-using-spring-boot/
 
@@ -323,7 +321,7 @@ public class CacheLevel1Controller {
 
 ###### Test_level_1
 
-<img src="https://img.shields.io/badge/- 2.1. Test_level_1 %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1.1. Test_level_1 %20- green" height=30px>
 
 Let's run the code for level-1 , and sent via postman request for each of the GET method :
 
@@ -342,17 +340,17 @@ Console shows the following:
 
 ---------------------------------------------------------------------------------------------
 
-###### 3_Spring_boot_cache
+###### 2_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3. Spring_boot_cache  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
 
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
 For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
 
-###### 3_1_cache_Annotations
+###### 2_1_cache_Annotations
 
-<img src="https://img.shields.io/badge/- 3.1. cache_Annotations %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.1. cache_Annotations %20- green" height=30px>
 
 There are several cache annotation that are used :
 
@@ -427,9 +425,9 @@ public class BookServiceImpl implements BookService {
 
 
 
-###### 3_2_Explain_Spring_boot_cache
+###### 2_2_Explain_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.2. Explain_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.2. Explain_Spring_boot_cache %20- green" height=30px>
 
 Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
 
@@ -456,9 +454,9 @@ For instance , if we want to use EhCache , we need to add the dependency for tha
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 3_3_SimpleCacheConfiguration
+###### 2_3_SimpleCacheConfiguration
 
-<img src="https://img.shields.io/badge/- 3.3. SimpleCacheConfiguration %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.3. SimpleCacheConfiguration %20- green" height=30px>
 
 If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
@@ -610,9 +608,9 @@ public class BookController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_4_Test_Spring_boot_cache
+###### 2_4_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 3.4. Test_Spring_boot_cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2.4. Test_Spring_boot_cache %20- green" height=30px>
 
 Lets run the app , sent following request and see how Cache behaves:
 
@@ -637,9 +635,9 @@ Console shows :
 ---------------------------------------------------------------------------------------------
 
 
-###### 4_EhCache
+###### 3_EhCache
 
-<img src="https://img.shields.io/badge/- 4. EhCache  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. EhCache  %20-blue" height=40px>
 
 https://www.baeldung.com/hibernate-second-level-cache
 
@@ -659,9 +657,9 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 5. Test Caching
 
 
-###### 4_1_Test_EhCache
+###### 3_1_Test_EhCache
 
-<img src="https://img.shields.io/badge/- 4.1. Test_EhCache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3.1. Test_EhCache %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -671,14 +669,14 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 ---------------------------------------------------------------------------------------------
 
 
-###### 5_Redis_Cache
+###### 4_Redis_Cache
 
-<img src="https://img.shields.io/badge/- 5. Redis_Cache %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4. Redis_Cache %20-blue" height=40px>
 
 
-###### 5_1_Test_Redis_Cache
+###### 4_1_Test_Redis_Cache
 
-<img src="https://img.shields.io/badge/- 5.1. Test_Redis_Cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 4.1. Test_Redis_Cache %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
