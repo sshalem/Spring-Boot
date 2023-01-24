@@ -634,11 +634,6 @@ Console shows :
 
 ![image](https://user-images.githubusercontent.com/36256986/210235552-157d2cce-5ebe-45ae-9a27-7a9e9f431cb3.png)
 
-
-
-
-
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------
@@ -649,6 +644,10 @@ Console shows :
 <img src="https://img.shields.io/badge/- 3. EhCache  %20-blue" height=40px>
 
 https://www.baeldung.com/hibernate-second-level-cache
+
+https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
+
+
 
 [EhCache :](#-)
 1. fast and lightwight , used by most of JAVA EE apps, that use Hibernate
