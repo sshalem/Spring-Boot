@@ -345,7 +345,7 @@ Console shows the following:
 <img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
 
 In this project we will see the usage of `Spring-boot-cache`. </br>
-`Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using.
+`Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using. </br>
 For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
 
 ###### 2_1_cache_Annotations
