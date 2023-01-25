@@ -371,8 +371,8 @@ There are several cache annotation that are used :
 public class Application {...}
 ```
 
-2. [`@Cacheable`](#-) - Used with methods that are cachable. 
-First time it will be retrieved from DB, and will be stored in a cacheName `books`. </br>
+2. [`@Cacheable`](#-) - Used with methods that are cachable. </br>
+First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
 Second time it will check if the info is in the cache :
 * if in cache , it will retreived it from cache
 * If not, will retrieve it from DB
@@ -380,18 +380,18 @@ Second time it will check if the info is in the cache :
 Below there are examples of how to use it
 
 ```java
-@Cacheable(cacheNames = "books", key = "#isbn")
+@Cacheable(cacheNames = "booksStore", key = "#isbn")
 public Book getBook(ISBN isbn) {
 }
 
-// With Specific field form the object
-@Cacheable(cacheNames = "books", key = "#isbn.rowNumber")
+// With Specific field from the object
+@Cacheable(cacheNames = "booksStore", key = "#isbn.rowNumber")
 public Book getBook(ISBN isbn) {
 }
 
 
 // With Condition
-@Cacheable(cacheNames = "books", condition = "#name.length() < 2")
+@Cacheable(cacheNames = "booksStore", condition = "#name.length() < 2")
 public Book getBook(String name) {
 }
 
@@ -400,7 +400,7 @@ public Book getBook(String name) {
 3. [`@CachePut`](#-) - Update the cache. Flow : First updates the DB , then Updates the cache as well.
 
 ```java
-@CachePut(cacheNames = "books", key = "#book.id")
+@CachePut(cacheNames = "booksStore", key = "#book.id")
 public Book updateBook(Book book) {
 }
 ```
@@ -408,7 +408,7 @@ public Book updateBook(Book book) {
 4. [`@CacheEvict`](#-) - TO clear cache values from cache storage. 
 
 ```java
-@CacheEvict(cacheNames = "books", key = "#id")
+@CacheEvict(cacheNames = "booksStore", key = "#id")
 public String deleteBook(long id) {
 }
 ```
@@ -425,7 +425,7 @@ public Book importBook(String deposit) {
 
 ```java
 @Service
-@CacheConfig(cacheNames = "books")
+@CacheConfig(cacheNames = "booksStore")
 public class BookServiceImpl implements BookService {
 ```
 
@@ -556,7 +556,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@CachePut(cacheNames = "books", key = "#book.id")
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
 	public Book updateBook(Book book) {
 		int updateBook = bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
@@ -564,7 +564,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@Cacheable(cacheNames = "books", key = "#id")
+	@Cacheable(cacheNames = "booksStore", key = "#id")
 	public Book getBook(long id) {
 		logger.info("fetching book from db");
 		Optional<Book> book = bookRepository.findById(id);
@@ -576,7 +576,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
- 	@CacheEvict(cacheNames = "books", key = "#id")
+ 	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
 		bookRepository.deleteById(id);
 		return "Book deleted";
