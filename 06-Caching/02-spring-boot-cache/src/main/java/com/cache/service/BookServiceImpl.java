@@ -16,7 +16,7 @@ import com.cache.entity.Book;
 import com.cache.repository.BookRepository;
 
 @Service
-@CacheConfig(cacheNames = "books")
+@CacheConfig(cacheNames = "booksStore")
 public class BookServiceImpl implements BookService {
 
 	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@CachePut(cacheNames = "books", key = "#book.id")
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
 	public Book updateBook(Book book) {
 		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@Cacheable(cacheNames = "books", key = "#id")
+	@Cacheable(cacheNames = "booksStore", key = "#id")
 	public Book getBook(long id) {
 		logger.info("fetching book from db");
 		Optional<Book> book = bookRepository.findById(id);
@@ -51,7 +51,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@CacheEvict(cacheNames = "books", key = "#id")
+	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
 		bookRepository.deleteById(id);
 		return "Book deleted";

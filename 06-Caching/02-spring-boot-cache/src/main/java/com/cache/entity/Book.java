@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Book {
 
 	// I don't want Hibernate to generate the Id
-	// I will do by send it id number with the requst body when I send addBook()
+	// I will do by send it id number with the request body when I send addBook()
 	@Id
 	private long id;
 	private String name;
