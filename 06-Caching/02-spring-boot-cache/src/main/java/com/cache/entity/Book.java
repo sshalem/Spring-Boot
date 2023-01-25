@@ -99,4 +99,11 @@ public class Book {
 		result = 31 * result + (getEdition() != null ? getEdition().hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", category=" + category + ", author=" + author + ", publisher="
+				+ publisher + ", edition=" + edition + "]";
+	}
+	
 }

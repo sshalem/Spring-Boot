@@ -1,12 +1,12 @@
 package com.cache.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.ObjectDeletedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,7 +16,6 @@ import com.cache.entity.Book;
 import com.cache.repository.BookRepository;
 
 @Service
-@CacheConfig(cacheNames = "booksStore")
 public class BookServiceImpl implements BookService {
 
 	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
@@ -32,7 +31,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	@CachePut(cacheNames = "booksStore", key = "#book.id")
-	public Book updateBook(Book book) {
+	public Book updateBook(Book book) {		
 		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
 		return getBook(book.getId());
@@ -55,6 +54,12 @@ public class BookServiceImpl implements BookService {
 	public String deleteBook(long id) {
 		bookRepository.deleteById(id);
 		return "Book deleted";
+	}
+	
+	@Override
+	@Cacheable(cacheNames = "booksStore")
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
 	}
 
 }
