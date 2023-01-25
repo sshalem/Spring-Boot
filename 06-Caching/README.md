@@ -625,12 +625,14 @@ Lets run the app , sent following request and see how Cache behaves:
 
 ![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
 
-Let's analyze console after sending [`addBook`](#-)  and [`getBook`](#-)  4 times:
+Let's analyze console after:
+1. sending [`addBook`](#-) one time
+2. sending [`getBook`](#-)  4 times
 
 Console shows :
 * for addBook --> there is SQL query
-* for first getBook --> data comes from DB
-* for second , third and forth time I sent getBook --> there is NO SQL , so it comes from cache.
+* for first `getBook` request --> data comes from DB
+* for second , third and forth time I sent `getBook` --> there is NO SQL , so it comes from cache. The method is not executed , thus logger didn't print to console. It came from `booksStore` cache.
 
 ![image](https://user-images.githubusercontent.com/36256986/210235552-157d2cce-5ebe-45ae-9a27-7a9e9f431cb3.png)
 
