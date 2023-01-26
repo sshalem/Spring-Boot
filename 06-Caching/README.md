@@ -421,7 +421,7 @@ In the following Library `Spring-context` we see the packages:
 
 ![image](https://user-images.githubusercontent.com/36256986/214802108-fd220610-bf1a-44f0-b9a7-fa074c05eb6e.png)
 
-In the following Library `Spring-boot-autoconfigure` , we can see different cache providers .</br> 
+In the following Library `Spring-boot-autoconfigure` , we can see different cache providers `configuration` .</br> 
 
 ![image](https://user-images.githubusercontent.com/36256986/214802814-69cb8647-06d9-4c17-88f1-4081060285ce.png)
 
