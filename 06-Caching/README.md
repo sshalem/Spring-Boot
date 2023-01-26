@@ -544,6 +544,8 @@ public class BookServiceImpl implements BookService {
 
 <img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
 
+![image](https://user-images.githubusercontent.com/36256986/214816356-7c8f36a7-7248-4380-ba72-28c49fc2531d.png)
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 3_2_code
@@ -551,7 +553,11 @@ public class BookServiceImpl implements BookService {
 <img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
 
 Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
-Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+Let's see a code example of how cache works with methods of: 
+* [`create(post)`](#-) 
+* [`read (get)`](#-) 
+* [`update(put)`](#-) 
+* [`delete`](#-)
 
 ### [Package](#-)
 
