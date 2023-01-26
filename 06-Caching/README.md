@@ -417,13 +417,14 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 If none of the other providers can be found, a simple implementation using a `ConcurrentHashMap` as the cache store is configured. </br>
 This is the default if no caching library is present in your application.</br>
 
-In the following Library `Spring-context`we see the packages:
+In the following Library `Spring-context` we see the packages:
 
 ![image](https://user-images.githubusercontent.com/36256986/214802108-fd220610-bf1a-44f0-b9a7-fa074c05eb6e.png)
 
-In the following Library , we can see different cache providers .</br> 
+In the following Library `Spring-boot-autoconfigure` , we can see different cache providers .</br> 
 
-![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
+![image](https://user-images.githubusercontent.com/36256986/214802814-69cb8647-06d9-4c17-88f1-4081060285ce.png)
+
 
 ###### 2_1_cache_Annotations
 
