@@ -344,6 +344,8 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
 
+[Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
+
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using. </br>
 For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
@@ -352,18 +354,18 @@ For instance , if we want to use EhCache , we need to add also the dependency of
 
 <img src="https://img.shields.io/badge/- 2.1. cache_Annotations %20- green" height=30px>
 
-There are several cache annotation that are used :
+There are [several cache annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations) that are used :
 
-* [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
-* [`@Cacheable`](#-) 
-* [`@CachePut`](#-)
-* [`@CacheEvict`](#-)
-* [`@Caching`](#-)
-* [`@CacheConfig`](#-)
+* [`@EnableCaching` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotation-enable)
+* [`@Cacheable` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-cacheable) 
+* [`@CachePut` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-put)
+* [`@CacheEvict` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-evict)
+* [`@Caching` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-caching)
+* [`@CacheConfig` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-config)
 
 ---------------------------
 
-1. [`@EnableCaching`](#-) - we add this to the main app class, to enable cache for the app
+1.  [`@EnableCaching` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotation-enable) - we add this to the main app class, to enable cache for the app
 
 ```java
 @SpringBootApplication
@@ -477,6 +479,15 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 ### [main](#-)
 
 In the main app I need to add the [`@EnableCaching`](#-) annotation.
+The [`@EnableCaching`](#-) annotation triggers a post-processor that inspects every Spring bean for the presence of caching annotations on public methods.</br>
+If such an annotation is found, a proxy is automatically created to intercept the method call and handle the caching behavior accordingly.
+The post-processor handles the `@Cacheable`, `@CachePut` and `@CacheEvict` annotations. </br>
+You can refer to the Javadoc and [`the reference guide`](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache) for more detail. </br>
+
+Spring Boot automatically configures a suitable `CacheManager` to serve as a `provider` for the relevant cache.
+See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail.
+
+
 
 ```java
 @SpringBootApplication
