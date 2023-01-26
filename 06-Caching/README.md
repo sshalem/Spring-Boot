@@ -13,7 +13,7 @@
 |  2  | [Spring-boot-cache explanied](#2_Spring_boot_cache_explanied)             |
 |     | 2.1. [Supported Cache Providers](#2_1_Supported_Cache_Providers)             |
 |     | 2.2. [cache Annotations](#2_2_cache_Annotations)             |
-|  3  | [Project with cache W/O default configuration](#3_Project_with_cache_with_out_configuring)             |
+|  3  | [default cache - Project with cache W/O configuration](#3_Project_with_cache_with_out_configuring)             |
 |     | 3.1. [POM](#3_1_POM)              |
 |     | 3.2. [Code](#3_2_code)             |
 |     | 3.3. [Test Spring-boot-cache](#3_3_Test_project)             |
@@ -525,7 +525,12 @@ public class BookServiceImpl implements BookService {
 
 ###### 3_Project_with_cache_with_out_configuring
 
-<img src="https://img.shields.io/badge/- 3_Project_with_cache_with_out_configuring  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_default_cache_Project_without_cache_configuration  %20-blue" height=40px>
+
+In this project we just add the dependency for cache.
+We don't confidure any cache Provider , thus we will have the default one shich is `SimpleCacheProvider`. </br>
+Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+
 
 ###### 3_1_POM
 
@@ -711,7 +716,7 @@ public class BookController {
 
 <img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
 
-Lets run the app , sent following request and see how Cache behaves:
+Lets run the app `02-default-cache` , sent following request and see how Cache behaves:
 
 ![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
 
