@@ -537,7 +537,8 @@ public interface BookService {
 
 ### [BookServiceImpl](#-)
 
-Here I add to some methods , annotations of:
+Here I add to some methods , annotations related to cache. </br>
+The cache where it will be stored is `booksStore`. 
 
 
 ```java
