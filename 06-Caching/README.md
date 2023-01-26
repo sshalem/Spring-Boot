@@ -350,9 +350,8 @@ In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using. </br>
 For instance , EhCache , REDIS , Caffeine
 
-Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
-
-![image](https://user-images.githubusercontent.com/36256986/210153185-ce06c21e-bb5b-4e2a-928f-e597e73dabea.png)
+This is the dependency we need to add , it is a `spring-boot-starter`. </br>
+This dpendency is composite from several dependencies , which one of the is [`spring-context-support`](#-).  </br>
 
 ```sql
 <dependency>
@@ -360,6 +359,64 @@ Besides the rgular dependecies of DB's , JPA & WEB , I also add the following de
 	<artifactId>spring-boot-starter-cache</artifactId>
 </dependency>
 ```
+
+In the main app we need to add the [`@EnableCaching`](#-) annotation. </br>
+The [`@EnableCaching`](#-) annotation :
+* triggers a post-processor that inspects every Spring bean for the presence of `caching` annotations on `public methods`.</br>
+
+If such an annotation is found, a proxy is automatically created to intercept the method call and handle the caching behavior accordingly. </br>
+The post-processor handles the annotations:
+* `@Cacheable`
+* `@CachePut`
+* `@CacheEvict` 
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
+You can refer to the Javadoc and [`the reference guide`](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache) for more detail. </br>
+
+Spring Boot automatically configures a suitable `CacheManager` to serve as a `provider` for the relevant cache.
+See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail.
+
+The caching logic is applied `transparently`, without any interference to the invoker. </br>
+Spring Boot auto-configures the `cache infrastructure` as long as caching support is enabled by using the `@EnableCaching annotation`.
+
+If you do not add any specific cache library, Spring Boot auto-configures `a simple provider` that uses `concurrent maps in memory`. </br>
+When a cache is required , this `provider` creates it for you. </br>
+`The simple provider is not really recommended for production usage`, but it is great for getting started and making sure that you understand the features. </br>
+When you have made up your mind about the cache provider to use, please make sure to read its documentation to figure out how to configure the caches that your application uses. </br>
+Nearly all providers require you to explicitly configure every cache that you use in the application. </br>
+Some offer a way to customize the default caches defined by the `spring.cache.cache-names` property. See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail. 
+
+### [Supported Cache Providers](#-)
+
+The cache abstraction does not provide an actual store and relies on abstraction materialized by the `org.springframework.cache.Cache` and `org.springframework.cache.CacheManager` interfaces.
+
+If you have not defined a bean of type `CacheManager` or a `CacheResolver` named `cacheResolver` (see CachingConfigurer), Spring Boot tries to detect the following providers (in the indicated order):
+1. Generic
+2. JCache (JSR-107) (EhCache 3, Hazelcast, Infinispan, and others)
+3. Hazelcast
+4. Infinispan
+5. Couchbase
+6. Redis
+7. Caffeine
+8. Cache2k
+9. [`Simple`](#-)
+
+If we don't want to use any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+
+If none of the other providers can be found, a simple implementation using a `ConcurrentHashMap` as the cache store is configured. </br>
+This is the default if no caching library is present in your application.</br>
+
 
 ###### 2_1_cache_Annotations
 
@@ -490,15 +547,6 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 ### [main](#-)
 
 In the main app I need to add the [`@EnableCaching`](#-) annotation. </br>
-The [`@EnableCaching`](#-) annotation triggers a post-processor that inspects every Spring bean for the presence of caching annotations on public methods.</br>
-If such an annotation is found, a proxy is automatically created to intercept the method call and handle the caching behavior accordingly.
-The post-processor handles the `@Cacheable`, `@CachePut` and `@CacheEvict` annotations. </br>
-You can refer to the Javadoc and [`the reference guide`](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache) for more detail. </br>
-
-Spring Boot automatically configures a suitable `CacheManager` to serve as a `provider` for the relevant cache.
-See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail.
-
-
 
 ```java
 @SpringBootApplication
