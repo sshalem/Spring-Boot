@@ -519,19 +519,6 @@ public Book importBook(String deposit) {
 public class BookServiceImpl implements BookService {
 ```
 
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-###### 2_4_Test_Spring_boot_cache
-
-<img src="https://img.shields.io/badge/- 2.4. Test_Spring_boot_cache %20- green" height=30px>
-
-
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------
