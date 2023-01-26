@@ -393,7 +393,8 @@ When a cache is required , this `provider` creates it for you. </br>
 `The simple provider is not really recommended for production usage`, but it is great for getting started and making sure that you understand the features. </br>
 When you have made up your mind about the cache provider to use, please make sure to read its documentation to figure out how to configure the caches that your application uses. </br>
 Nearly all providers require you to explicitly configure every cache that you use in the application. </br>
-Some offer a way to customize the default caches defined by the `spring.cache.cache-names` property. See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail. 
+Some offer a way to customize the default caches defined by the `spring.cache.cache-names` property. </br>
+See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail. 
 
 ### [Supported Cache Providers](#-)
 
