@@ -13,15 +13,18 @@
 |  2  | [Spring-boot-cache explanied](#2_Spring_boot_cache_explanied)             |
 |     | 2.1. [Supported Cache Providers](#2_1_Supported_Cache_Providers)             |
 |     | 2.2. [cache Annotations](#2_2_cache_Annotations)             |
-|  3  | [Project with cache W/O default configuration](#_Spring_boot_cache_explanied)             |
-|     | 3.1. [POM](#3_1_POM)             |
-|     | 3.2. [cache Annotations](#2_2_cache_Annotations)             |
-|     | 3.3. [Simple Cache Configuration](#2_3_SimpleCacheConfiguration)             |
-|     | 3.4. [Test Spring-boot-cache](#2_4_Test_Spring_boot_cache)             |
-|  5  | [EhCache TTL/TTI ](#3_EhCache)             |
-|     | 3.1. [Test EhCache](#3_1_Test_EhCache)             |
-|  6  | [Redis Cache](#4_Redis_Cache)             |
-|     | 4.1. [Test Redis Cache](#4_1_Test_Redis_Cache)             |
+|  3  | [Project with cache W/O default configuration](#3_Project_with_cache_with_out_configuring)             |
+|     | 3.1. [POM](#3_1_POM)              |
+|     | 3.2. [Code](#3_2_code)             |
+|     | 3.3. [Test Spring-boot-cache](#3_3_Test_project)             |
+|  4  | [Project with configure cache SimpleCacheProvider](#4_Project_with_cache_SimpleCacheProvider)             |
+|     | 4.1. [POM](#4_1_POM)              |
+|     | 4.2. [Code](#4_2_code)             |
+|     | 4.3. [Test Spring-boot-cache](#4_3_Test_project)             |
+|  5  | [EhCache TTL/TTI ](#5_EhCache)             |
+|     | 3.1. [Test EhCache](#5_1_Test_EhCache)             |
+|  6  | [Redis Cache](#6_Redis_Cache)             |
+|     | 4.1. [Test Redis Cache](#6_1_Test_Redis_Cache)             |
 |     | [Redis Cache vs Redis DATA](#Redis_Cache)             |
 
 
@@ -697,10 +700,55 @@ Console shows :
 
 ---------------------------------------------------------------------------------------------
 
+###### 3_Project_with_cache_with_out_configuring
 
-###### 3_EhCache
+<img src="https://img.shields.io/badge/- 3_Project_with_cache_with_out_configuring  %20-blue" height=40px>
 
-<img src="https://img.shields.io/badge/- 3. EhCache  %20-blue" height=40px>
+###### 3_1_POM
+
+<img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
+
+###### 3_2_code
+
+<img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
+
+###### 3_3_Test_project
+
+<img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+---------------------------------------------------------------------------------------------
+
+###### 4_Project_with_cache_SimpleCacheProvider
+
+<img src="https://img.shields.io/badge/- 4_Project_with_cache_SimpleCacheProvider  %20-blue" height=40px>
+
+###### 4_1_POM
+
+<img src="https://img.shields.io/badge/- 4_1_POM %20- green" height=30px>
+
+###### 4_2_code
+
+<img src="https://img.shields.io/badge/- 4_2_code %20- green" height=30px>
+
+###### 4_3_Test_project
+
+<img src="https://img.shields.io/badge/- 4_3_Test_project %20- green" height=30px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+---------------------------------------------------------------------------------------------
+
+###### 5_EhCache
+
+<img src="https://img.shields.io/badge/- 5. EhCache  %20-blue" height=40px>
 
 https://www.baeldung.com/hibernate-second-level-cache
 
@@ -724,7 +772,7 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 5. Test Caching
 
 
-###### 3_1_Test_EhCache
+###### 5_1_Test_EhCache
 
 <img src="https://img.shields.io/badge/- 3.1. Test_EhCache %20- green" height=30px>
 
@@ -736,12 +784,12 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 ---------------------------------------------------------------------------------------------
 
 
-###### 4_Redis_Cache
+###### 6_Redis_Cache
 
 <img src="https://img.shields.io/badge/- 4. Redis_Cache %20-blue" height=40px>
 
 
-###### 4_1_Test_Redis_Cache
+###### 6_1_Test_Redis_Cache
 
 <img src="https://img.shields.io/badge/- 4.1. Test_Redis_Cache %20- green" height=30px>
 
