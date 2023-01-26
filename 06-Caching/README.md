@@ -13,12 +13,14 @@
 |  2  | [Spring-boot-cache explanied](#2_Spring_boot_cache_explanied)             |
 |     | 2.1. [Supported Cache Providers](#2_1_Supported_Cache_Providers)             |
 |     | 2.2. [cache Annotations](#2_2_cache_Annotations)             |
-|     | 2.2. [Explain Spring-boot-cache](#2_2_Explain_Spring_boot_cache)             |
-|     | 2.3. [Simple Cache Configuration](#2_3_SimpleCacheConfiguration)             |
-|     | 2.4. [Test Spring-boot-cache](#2_4_Test_Spring_boot_cache)             |
-|  3  | [EhCache TTL/TTI ](#3_EhCache)             |
+|  3  | [Project with cache W/O default configuration](#_Spring_boot_cache_explanied)             |
+|     | 3.1. [POM](#3_1_POM)             |
+|     | 3.2. [cache Annotations](#2_2_cache_Annotations)             |
+|     | 3.3. [Simple Cache Configuration](#2_3_SimpleCacheConfiguration)             |
+|     | 3.4. [Test Spring-boot-cache](#2_4_Test_Spring_boot_cache)             |
+|  5  | [EhCache TTL/TTI ](#3_EhCache)             |
 |     | 3.1. [Test EhCache](#3_1_Test_EhCache)             |
-|  4  | [Redis Cache](#4_Redis_Cache)             |
+|  6  | [Redis Cache](#4_Redis_Cache)             |
 |     | 4.1. [Test Redis Cache](#4_1_Test_Redis_Cache)             |
 |     | [Redis Cache vs Redis DATA](#Redis_Cache)             |
 
