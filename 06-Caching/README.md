@@ -448,7 +448,7 @@ There are [several cache annotation](https://docs.spring.io/spring-framework/doc
 * [`@Caching` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-caching)
 * [`@CacheConfig` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-config)
 
----------------------------
+
 
 1.  [`@EnableCaching` link](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotation-enable) - we add this to the main app class, to enable cache for the app
 
@@ -518,31 +518,6 @@ public class BookServiceImpl implements BookService {
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-###### 2_2_Explain_Spring_boot_cache
-
-<img src="https://img.shields.io/badge/- 2.2. Explain_Spring_boot_cache %20- green" height=30px>
-
-Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
-
-![image](https://user-images.githubusercontent.com/36256986/210153185-ce06c21e-bb5b-4e2a-928f-e597e73dabea.png)
-
-```sql
-<dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-cache</artifactId>
-</dependency>
-```
-
-This dpendency is composite from several dependencies , which one of the is [`spring-context`](#-).  </br>
-This [`spring-context`](#-) maven dependency has the caching pcckages/code:
-
-![image](https://user-images.githubusercontent.com/36256986/210153722-54eb8389-56ce-49c0-9b80-689eba841717.png)
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 
 ###### 2_3_SimpleCacheConfiguration
 
