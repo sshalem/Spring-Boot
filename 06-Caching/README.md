@@ -342,7 +342,7 @@ Console shows the following:
 
 ###### 2_Spring_boot_cache_explanied
 
-<img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. Spring_boot_cache_explanied %20-blue" height=40px>
 
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer (See [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)), </br>
