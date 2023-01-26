@@ -478,7 +478,7 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 
 ### [main](#-)
 
-In the main app I need to add the [`@EnableCaching`](#-) annotation.
+In the main app I need to add the [`@EnableCaching`](#-) annotation. </br>
 The [`@EnableCaching`](#-) annotation triggers a post-processor that inspects every Spring bean for the presence of caching annotations on public methods.</br>
 If such an annotation is found, a proxy is automatically created to intercept the method call and handle the caching behavior accordingly.
 The post-processor handles the `@Cacheable`, `@CachePut` and `@CacheEvict` annotations. </br>
