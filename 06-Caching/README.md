@@ -10,7 +10,7 @@
 |     | I.3. [Compare Redis vs EhCache](#I_3_Compare_Redis_vs_EhCache)             |
 |  1  | [First Level cache exmple](#1_First_Level_cache_exmple)             |
 |     | 1.1. [Test level-1](#Test_level_1)             |
-|  2  | [Spring-boot-cache](#2_Spring_boot_cache)             |
+|  2  | [Spring-boot-cache explanied](#2_Spring_boot_cache_explanied)             |
 |     | 2.1. [cache Annotations](#2_1_cache_Annotations)             |
 |     | 2.2. [Explain Spring-boot-cache](#2_2_Explain_Spring_boot_cache)             |
 |     | 2.3. [Simple Cache Configuration](#2_3_SimpleCacheConfiguration)             |
@@ -340,7 +340,7 @@ Console shows the following:
 
 ---------------------------------------------------------------------------------------------
 
-###### 2_Spring_boot_cache
+###### 2_Spring_boot_cache_explanied
 
 <img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
 
