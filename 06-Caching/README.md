@@ -417,6 +417,9 @@ Let's see a code example of how cache works with methods of: [`create(post)`](#-
 If none of the other providers can be found, a simple implementation using a `ConcurrentHashMap` as the cache store is configured. </br>
 This is the default if no caching library is present in your application.</br>
 
+In the following Library , we can see different cache providers .</br> 
+
+![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
 ###### 2_1_cache_Annotations
 
@@ -523,12 +526,6 @@ This dpendency is composite from several dependencies , which one of the is [`sp
 This [`spring-context`](#-) maven dependency has the caching pcckages/code:
 
 ![image](https://user-images.githubusercontent.com/36256986/210153722-54eb8389-56ce-49c0-9b80-689eba841717.png)
-
-
-In the following Library , we can see different cache providers .</br> 
-For instance , if we want to use EhCache , we need to add the dependency for that.
-
-![image](https://user-images.githubusercontent.com/36256986/210155236-9f4ea4bf-ae41-4d7b-a986-9d55e097db9c.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
