@@ -522,11 +522,35 @@ public class BookServiceImpl implements BookService {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_3_SimpleCacheConfiguration
 
-<img src="https://img.shields.io/badge/- 2.3. SimpleCacheConfiguration %20- green" height=30px>
 
-If we don't want to use ant provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 2_4_Test_Spring_boot_cache
+
+<img src="https://img.shields.io/badge/- 2.4. Test_Spring_boot_cache %20- green" height=30px>
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------
+
+###### 3_Project_with_cache_with_out_configuring
+
+<img src="https://img.shields.io/badge/- 3_Project_with_cache_with_out_configuring  %20-blue" height=40px>
+
+###### 3_1_POM
+
+<img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 3_2_code
+
+<img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
+
+Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
 
 ### [Package](#-)
@@ -677,9 +701,10 @@ public class BookController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_4_Test_Spring_boot_cache
 
-<img src="https://img.shields.io/badge/- 2.4. Test_Spring_boot_cache %20- green" height=30px>
+###### 3_3_Test_project
+
+<img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
 
 Lets run the app , sent following request and see how Cache behaves:
 
@@ -695,27 +720,6 @@ Console shows :
 * for second , third and forth time I sent `getBook` --> there is NO SQL , so it comes from cache. The method is not executed , thus logger didn't print to console. It came from `booksStore` cache.
 
 ![image](https://user-images.githubusercontent.com/36256986/210235552-157d2cce-5ebe-45ae-9a27-7a9e9f431cb3.png)
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----------------------------------------------------------------------------------------------
-
-###### 3_Project_with_cache_with_out_configuring
-
-<img src="https://img.shields.io/badge/- 3_Project_with_cache_with_out_configuring  %20-blue" height=40px>
-
-###### 3_1_POM
-
-<img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
-
-###### 3_2_code
-
-<img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
-
-###### 3_3_Test_project
-
-<img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
