@@ -608,6 +608,7 @@ public interface BookService {
     Book updateBook(Book book);
     Book getBook(long id);
     String deleteBook(long id);
+    List<Book> getAllBooks();
 }
 ```
 
@@ -634,10 +635,10 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	@CachePut(cacheNames = "booksStore", key = "#book.id")
-	public Book updateBook(Book book) {
-		int updateBook = bookRepository.updateAddress(book.getId(), book.getName());
+	public Book updateBook(Book book) {		
+		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
-		return getBook(updateBook);
+		return getBook(book.getId());
 	}
 
 	@Override
@@ -648,15 +649,21 @@ public class BookServiceImpl implements BookService {
 		if (book.isPresent()) {
 			return book.get();
 		} else {
-			return new Book();
+			throw new ObjectDeletedException("Object removed", getClass(), null);
 		}
 	}
 
 	@Override
- 	@CacheEvict(cacheNames = "booksStore", key = "#id")
+	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
 		bookRepository.deleteById(id);
 		return "Book deleted";
+	}
+	
+	@Override
+	@Cacheable(cacheNames = "booksStore")
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
 	}
 }
 ```
@@ -667,28 +674,33 @@ public class BookServiceImpl implements BookService {
 @RestController
 public class BookController {
 
-    @Autowired
-    private BookServiceImpl bookService;
+	@Autowired
+	private BookServiceImpl bookService;
 
-    @PostMapping("/book")
-    public Book addBook(@RequestBody Book book) {
-        return bookService.addBook(book);
-    }
+	@PostMapping("/book")
+	public Book addBook(@RequestBody Book book) {
+		return bookService.addBook(book);
+	}
 
-    @PutMapping("/book")
-    public Book updateBook(@RequestBody Book book) {
-        return bookService.updateBook(book);
-    }
+	@PutMapping("/book")
+	public Book updateBook(@RequestBody Book book) {
+		return bookService.updateBook(book);
+	}
 
-    @GetMapping("/book/{id}")
-    public Book getBook(@PathVariable long id) {
-        return bookService.getBook(id);
-    }
+	@GetMapping("/book/{id}")
+	public Book getBook(@PathVariable long id) {
+		return bookService.getBook(id);
+	}
 
-    @DeleteMapping("/book/{id}")
-    public String deleteBook(@PathVariable long id) {
-        return bookService.deleteBook(id);
-    }
+	@GetMapping("/book/getAllBooks")
+	public List<Book> getAllBook() {
+		return bookService.getAllBooks();
+	}
+
+	@DeleteMapping("/book/{id}")
+	public String deleteBook(@PathVariable long id) {
+		return bookService.deleteBook(id);
+	}
 }
 ```
 
