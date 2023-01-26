@@ -770,10 +770,10 @@ Console shows :
 
 <img src="https://img.shields.io/badge/- 5. EhCache  %20-blue" height=40px>
 
-https://www.baeldung.com/hibernate-second-level-cache
-
-https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
-
+* https://www.baeldung.com/hibernate-second-level-cache
+* https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
+* [Spring boot 2 and ehcache 3 example](https://howtodoinjava.com/spring-boot2/ehcache3-config-example/)
+* [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 
 
 [EhCache :](#-)
