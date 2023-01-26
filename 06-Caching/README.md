@@ -344,11 +344,9 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- 2. Spring_boot_cache  %20-blue" height=40px>
 
-[Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
-
 In this project we will see the usage of `Spring-boot-cache`. </br>
-`Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using. </br>
-For instance , EhCache , REDIS , Caffeine
+`Spring-boot-cache` is an abstract layer ([Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)), which means If I want to impllement it I need to define which provider I will be using. </br>
+For instance , EhCache , REDIS , Caffeine , SImpleCache, Etc...
 
 This is the dependency we need to add , it is a `spring-boot-starter`. </br>
 This dpendency is composite from several dependencies , which one of the is [`spring-context-support`](#-).  </br>
