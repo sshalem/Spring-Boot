@@ -382,7 +382,7 @@ The post-processor handles the annotations:
 
 You can refer to the Javadoc and [`the reference guide`](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache) for more detail. </br>
 
-Spring Boot automatically configures a suitable `CacheManager` to serve as a `provider` for the relevant cache.
+Spring Boot automatically configures a suitable `CacheManager` to serve as a `provider` for the relevant cache. </br>
 See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/current/reference/html/io.html#io.caching) for more detail.
 
 The caching logic is applied `transparently`, without any interference to the invoker. </br>
