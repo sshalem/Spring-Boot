@@ -348,7 +348,18 @@ Console shows the following:
 
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer , which means If I want to impllement it I need to define which provider I will be using. </br>
-For instance , if we want to use EhCache , we need to add also the dependency of `EhCache` for that.
+For instance , EhCache , REDIS , Caffeine
+
+Besides the rgular dependecies of DB's , JPA & WEB , I also add the following dependency:
+
+![image](https://user-images.githubusercontent.com/36256986/210153185-ce06c21e-bb5b-4e2a-928f-e597e73dabea.png)
+
+```sql
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+```
 
 ###### 2_1_cache_Annotations
 
