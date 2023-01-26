@@ -359,6 +359,17 @@ This dpendency is composite from several dependencies , which one of the is [`sp
 ```
 
 In the main app we need to add the [`@EnableCaching`](#-) annotation. </br>
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class Application {
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
 The [`@EnableCaching`](#-) annotation :
 * triggers a post-processor that inspects every Spring bean for the presence of `caching` annotations on `public methods`.</br>
 
@@ -367,17 +378,6 @@ The post-processor handles the annotations:
 * `@Cacheable`
 * `@CachePut`
 * `@CacheEvict` 
-
-```java
-@SpringBootApplication
-@EnableCaching
-public class Application {
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-}
-```
 
 You can refer to the Javadoc and [`the reference guide`](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache) for more detail. </br>
 
