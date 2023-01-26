@@ -61,5 +61,4 @@ public class BookServiceImpl implements BookService {
 	public List<Book> getAllBooks() {
 		return bookRepository.findAll();
 	}
-
 }
