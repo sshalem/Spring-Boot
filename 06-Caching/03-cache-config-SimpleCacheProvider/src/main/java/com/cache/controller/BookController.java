@@ -43,20 +43,36 @@ public class BookController {
 		return bookService.getBook(id);
 	}
 
+	/**
+	 * @SuppressWarnings instruct the compiler to ignore or suppress. specified
+	 *                   compiler warning in annotated element and all program
+	 *                   elements inside that element. Specifically, the `unchecked`
+	 *                   category allows suppression of compiler warnings generated
+	 *                   as a result of `UNCHECKED` type `CASTS`.
+	 * 
+	 *                   A warning by which the compiler indicates that it cannot
+	 *                   ensure `TYPE SAFETY`. The term "unchecked" warning is
+	 *                   misleading. The term "unchecked" refers to the fact that
+	 *                   the compiler and the runtime system do not have enough type
+	 *                   information to perform all type checks that would be
+	 *                   necessary to ensure type safety. In this sense, certain
+	 *                   operations are "unchecked".
+	 */
+	@SuppressWarnings({ "unchecked" })
 	@GetMapping("/book/getAllBooks")
 	public List<Book> getAllBook() {
-		
-		Cache cache = cacheManager.getCache("booksStore");		
+
+		Cache cache = cacheManager.getCache("booksStore");
 
 		ConcurrentHashMap<Object, Object> nativeCache = (ConcurrentHashMap<Object, Object>) cache.getNativeCache();
 		Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
-		
+
 		entrySet.forEach(e -> {
 			System.out.println(e.getKey());
 			List<Book> value = (List<Book>) e.getValue();
 			value.forEach(i -> System.out.println(i));
 		});
-		
+
 		return bookService.getAllBooks();
 	}
 
