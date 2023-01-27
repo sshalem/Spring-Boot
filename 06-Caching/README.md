@@ -725,6 +725,9 @@ Lets run the app `02-default-cache` , sent following request and see how Cache b
 
 ![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
 
+![image](https://user-images.githubusercontent.com/36256986/215032020-b3664343-5b0f-4df7-9812-9fe2749ecb6b.png)
+
+
 Let's analyze console after:
 1. sending [`addBook`](#-) one time
 2. sending [`getBook`](#-)  4 times
