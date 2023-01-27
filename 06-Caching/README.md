@@ -732,7 +732,8 @@ Let's analyze console after:
 Console shows :
 * for addBook --> there is SQL query
 * for first `getBook` request --> data comes from DB
-* for second , third and forth time I sent `getBook` --> there is NO SQL , so it comes from cache. The method is not executed , thus logger didn't print to console. It came from `booksStore` cache.
+* for second , third and forth time I sent `getBook` --> there is NO SQL , so it comes from cache. 
+* The method `getBook` is not executed , It came from `booksStore` cache ,thus logger didn't print to console.
 
 ![image](https://user-images.githubusercontent.com/36256986/210235552-157d2cce-5ebe-45ae-9a27-7a9e9f431cb3.png)
 
