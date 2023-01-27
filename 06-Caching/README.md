@@ -747,6 +747,13 @@ Console shows :
 
 <img src="https://img.shields.io/badge/- 4_config_cache_SimpleCacheProvider  %20-blue" height=40px>
 
+I already show (In section 3) how the default cache works. If no provider is specified , then it will use the Simple provider. </br>
+Here I will show how we can config the SimpleCacheProvider.
+
+In this project I will show how we can :
+1. config the cahce
+2. See the data inside the cache (In controller class)
+
 ###### 4_1_POM
 
 <img src="https://img.shields.io/badge/- 4_1_POM %20- green" height=30px>
@@ -758,6 +765,226 @@ Console shows :
 ###### 4_2_code
 
 <img src="https://img.shields.io/badge/- 4_2_code %20- green" height=30px>
+
+Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+Let's see a code example of how cache works with methods of: 
+* [`create(post)`](#-) 
+* [`read (get)`](#-) 
+* [`update(put)`](#-) 
+* [`delete`](#-)
+
+### [Package](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/215036443-2051745c-9dfe-4b60-9e58-2bc58022d3ed.png)
+
+### [main](#-)
+
+In the previous example (section 3) , I add main app , the [`@EnableCaching`](#-) annotation. </br>
+In this example , I will add this annotation [`@EnableCaching`](#-) to a new class I made `CacheConfig`. </br>
+
+```java
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+```
+
+### [CacheConfig](#-)
+
+```java
+@Configuration
+@EnableCaching
+public class CacheConfig {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+
+	@Bean
+	public CacheManager cacheManager() {
+		SimpleCacheManager cacheManager = new SimpleCacheManager();
+		cacheManager.setCaches(
+				Arrays.asList(
+						new ConcurrentMapCache("booksStore"),
+						new ConcurrentMapCache("myDemoCache")
+						));
+
+		LOGGER.info(" ---->  booksStore cache");
+
+		return cacheManager;
+	}
+}
+```
+
+### [Entity](#-)
+
+```java
+@Entity
+@Table(name = "book")
+public class Book {
+
+    // I don't want Hibernate to generate the Id 
+    // I will do by snedit id number with the requst body when I send addBook()
+    @Id
+    private long id;
+    private String name;
+    private String category;
+    private String author;
+    private String publisher;
+    private String edition;
+    
+    Ctor/G/S/Hash/Equals
+```
+
+### [Repository](#-)
+
+```java
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+    // This method will only Update the name
+    @Transactional
+    @Modifying
+    @Query("update Book u set u.name=?2 where u.id=?1")
+    Book updateAddress(long id, String name);
+}
+```
+
+### [BookService](#-)
+
+```java
+public interface BookService {
+
+    Book addBook(Book book);
+    Book updateBook(Book book);
+    Book getBook(long id);
+    String deleteBook(long id);
+    List<Book> getAllBooks();
+}
+```
+
+### [BookServiceImpl](#-)
+
+Here I add to some methods , annotations related to cache. </br>
+The cache where it will be stored is `booksStore`. 
+
+```java
+@Service
+public class BookServiceImpl implements BookService {
+
+	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+
+	@Autowired
+	private BookRepository bookRepository;
+
+	@Override
+	public Book addBook(Book book) {
+		logger.info("adding book with id - {}", book.getId());
+		return bookRepository.save(book);
+	}
+
+	@Override
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
+	public Book updateBook(Book book) {		
+		bookRepository.updateAddress(book.getId(), book.getName());
+		logger.info("book updated with new name");
+		return getBook(book.getId());
+	}
+
+	@Override
+	@Cacheable(cacheNames = "booksStore", key = "#id")
+	public Book getBook(long id) {
+		logger.info("fetching book from db");
+		Optional<Book> book = bookRepository.findById(id);
+		if (book.isPresent()) {
+			return book.get();
+		} else {
+			throw new ObjectDeletedException("Object removed", getClass(), null);
+		}
+	}
+
+	@Override
+	@CacheEvict(cacheNames = "booksStore", key = "#id")
+	public String deleteBook(long id) {
+		bookRepository.deleteById(id);
+		return "Book deleted";
+	}
+	
+	@Override
+	@Cacheable(cacheNames = "booksStore")
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
+	}
+}
+```
+
+### [BookController](#-)
+
+```java
+@RestController
+public class BookController {
+
+	@Autowired
+	private BookServiceImpl bookService;
+
+	@Autowired
+	private CacheManager cacheManager;
+
+	@PostMapping("/book")
+	public Book addBook(@RequestBody Book book) {
+		return bookService.addBook(book);
+	}
+
+	@PutMapping("/book")
+	public Book updateBook(@RequestBody Book book) {
+		return bookService.updateBook(book);
+	}
+
+	@GetMapping("/book/{id}")
+	public Book getBook(@PathVariable long id) {
+		return bookService.getBook(id);
+	}
+
+	/**
+	 * @SuppressWarnings instruct the compiler to ignore or suppress. specified
+	 *                   compiler warning in annotated element and all program
+	 *                   elements inside that element. Specifically, the `unchecked`
+	 *                   category allows suppression of compiler warnings generated
+	 *                   as a result of `UNCHECKED` type `CASTS`.
+	 * 
+	 *                   A warning by which the compiler indicates that it cannot
+	 *                   ensure `TYPE SAFETY`. The term "unchecked" warning is
+	 *                   misleading. The term "unchecked" refers to the fact that
+	 *                   the compiler and the runtime system do not have enough type
+	 *                   information to perform all type checks that would be
+	 *                   necessary to ensure type safety. In this sense, certain
+	 *                   operations are "unchecked".
+	 */
+	@SuppressWarnings({ "unchecked" })
+	@GetMapping("/book/getAllBooks")
+	public List<Book> getAllBook() {
+
+		Cache cache = cacheManager.getCache("booksStore");
+
+		ConcurrentHashMap<Object, Object> nativeCache = (ConcurrentHashMap<Object, Object>) cache.getNativeCache();
+		Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
+
+		entrySet.forEach(e -> {
+			System.out.println(e.getKey());
+			List<Book> value = (List<Book>) e.getValue();
+			value.forEach(i -> System.out.println(i));
+		});
+
+		return bookService.getAllBooks();
+	}
+
+	@DeleteMapping("/book/{id}")
+	public String deleteBook(@PathVariable long id) {
+		return bookService.deleteBook(id);
+	}
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
