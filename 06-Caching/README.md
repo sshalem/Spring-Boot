@@ -723,10 +723,7 @@ public class BookController {
 
 Lets run the app `02-default-cache` , sent following request and see how Cache behaves:
 
-![image](https://user-images.githubusercontent.com/36256986/210210692-a8227eff-0dc6-4c0f-a932-3f407d425bd8.png)
-
-![image](https://user-images.githubusercontent.com/36256986/215032020-b3664343-5b0f-4df7-9812-9fe2749ecb6b.png)
-
+![image](https://user-images.githubusercontent.com/36256986/215032093-29529931-2601-4ed5-8117-f9a621300a5f.png)
 
 Let's analyze console after:
 1. sending [`addBook`](#-) one time
