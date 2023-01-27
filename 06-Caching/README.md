@@ -422,8 +422,13 @@ If you have not defined a bean of type `CacheManager` or a `CacheResolver` named
 8. Cache2k
 9. [`Simple`](#-)
 
-If we don't want to use any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
-Let's see a code example of how cache works with methods of: [`create(post)`](#-) [`read (get)`](#-) [`update(put)`](#-) [`delete`](#-)
+If we don't want to use any provider , Spring provides `SimpleCacheConfiguration` , </br>
+from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
+Let's see a code example of how cache works with methods of: 
+* [`create(post)`](#-) 
+* [`read (get)`](#-) 
+* [`update(put)`](#-) 
+* [`delete`](#-)
 
 If none of the other providers can be found, a simple implementation using a `ConcurrentHashMap` as the cache store is configured. </br>
 This is the default if no caching library is present in your application.</br>
