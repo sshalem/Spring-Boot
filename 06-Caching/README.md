@@ -347,9 +347,9 @@ Console shows the following:
 
 ---------------------------------------------------------------------------------------------
 
-###### 2_Spring_boot_cache_explanied
+###### II_Spring_boot_cache_explanied
 
-<img src="https://img.shields.io/badge/- 2. Spring_boot_cache_explanied %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- II. Spring_boot_cache_explanied %20-blue" height=40px>
 
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer (See [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)), </br>
@@ -405,9 +405,9 @@ See the [`Spring Boot documentation`](https://docs.spring.io/spring-boot/docs/cu
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_1_Supported_Cache_Providers
+###### II_1_Supported_Cache_Providers
 
-<img src="https://img.shields.io/badge/- 2_1_Supported_Cache_Providers %20- green" height=30px>
+<img src="https://img.shields.io/badge/- II_1_Supported_Cache_Providers %20- green" height=30px>
 
 The cache abstraction does not provide an actual store and relies on abstraction materialized by the `org.springframework.cache.Cache` and `org.springframework.cache.CacheManager` interfaces.
 
@@ -443,9 +443,9 @@ In the following Library `Spring-boot-autoconfigure` , we can see different cach
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 2_2_cache_Annotations
+###### II_2_cache_Annotations
 
-<img src="https://img.shields.io/badge/- 2.2. cache_Annotations %20- green" height=30px>
+<img src="https://img.shields.io/badge/- II.2. cache_Annotations %20- green" height=30px>
 
 There are [several cache annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations) that are used :
 
@@ -528,26 +528,26 @@ public class BookServiceImpl implements BookService {
 
 ---------------------------------------------------------------------------------------------
 
-###### 3_Project_with_cache_with_out_configuring
+###### 2_Project_with_cache_with_out_configuring
 
-<img src="https://img.shields.io/badge/- 3_default_cache_Project_without_cache_configuration  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2_default_cache_Project_without_cache_configuration  %20-blue" height=40px>
 
 In this project we just add the dependency for cache.
 We don't confidure any cache Provider , thus we will have the default one shich is `SimpleCacheProvider`. </br>
 Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 
 
-###### 3_1_POM
+###### 2_1_POM
 
-<img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_1_POM %20- green" height=30px>
 
 ![image](https://user-images.githubusercontent.com/36256986/214816356-7c8f36a7-7248-4380-ba72-28c49fc2531d.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_2_code
+###### 2_2_code
 
-<img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_2_code %20- green" height=30px>
 
 Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: 
@@ -717,9 +717,9 @@ public class BookController {
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 3_3_Test_project
+###### 2_3_Test_project
 
-<img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_3_Test_project %20- green" height=30px>
 
 Lets run the app `02-default-cache` , sent following request and see how Cache behaves:
 
@@ -743,9 +743,9 @@ Console shows :
 
 ---------------------------------------------------------------------------------------------
 
-###### 4_config_cache_SimpleCacheProvider
+###### 3_config_cache_SimpleCacheProvider
 
-<img src="https://img.shields.io/badge/- 4_config_cache_SimpleCacheProvider  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_config_cache_SimpleCacheProvider  %20-blue" height=40px>
 
 I already show (In section 3) how the default cache works. If no provider is specified , then it will use the Simple provider. </br>
 Here I will show how we can config the SimpleCacheProvider.
@@ -754,17 +754,17 @@ In this project I will show how we can :
 1. config the cahce
 2. See the data inside the cache (In controller class)
 
-###### 4_1_POM
+###### 3_1_POM
 
-<img src="https://img.shields.io/badge/- 4_1_POM %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3_1_POM %20- green" height=30px>
 
 ![image](https://user-images.githubusercontent.com/36256986/214816356-7c8f36a7-7248-4380-ba72-28c49fc2531d.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 4_2_code
+###### 3_2_code
 
-<img src="https://img.shields.io/badge/- 4_2_code %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3_2_code %20- green" height=30px>
 
 Since we don't configure any provider , Spring provides `SimpleCacheConfiguration` , from JDK-ConcurrentMap-based-Cache which uses `ConcurrentMapCacheManager`. </br>
 Let's see a code example of how cache works with methods of: 
@@ -988,9 +988,9 @@ public class BookController {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 4_3_Test_project
+###### 3_3_Test_project
 
-<img src="https://img.shields.io/badge/- 4_3_Test_project %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -999,9 +999,9 @@ public class BookController {
 
 ---------------------------------------------------------------------------------------------
 
-###### 5_EhCache
+###### 4_EhCache
 
-<img src="https://img.shields.io/badge/- 5. EhCache  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4. EhCache  %20-blue" height=40px>
 
 * https://www.baeldung.com/hibernate-second-level-cache
 * https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
@@ -1025,9 +1025,9 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 5. Test Caching
 
 
-###### 5_1_Test_EhCache
+###### 4_1_Test_EhCache
 
-<img src="https://img.shields.io/badge/- 3.1. Test_EhCache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 4.1. Test_EhCache %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -1037,14 +1037,14 @@ https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 ---------------------------------------------------------------------------------------------
 
 
-###### 6_Redis_Cache
+###### 5_Redis_Cache
 
-<img src="https://img.shields.io/badge/- 4. Redis_Cache %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5. Redis_Cache %20-blue" height=40px>
 
 
-###### 6_1_Test_Redis_Cache
+###### 5_1_Test_Redis_Cache
 
-<img src="https://img.shields.io/badge/- 4.1. Test_Redis_Cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 5.1. Test_Redis_Cache %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
