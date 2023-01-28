@@ -992,7 +992,16 @@ public class BookController {
 
 <img src="https://img.shields.io/badge/- 3_3_Test_project %20- green" height=30px>
 
-Lets run the app `03-cache-config-SimpleCacheProvider` , sent following request and see how Cache behaves:
+Lets run the app `03-cache-config-SimpleCacheProvider` , we can see in console the name of the cache that we config in `CacheConfig` class.
+But , in our app we use the `booksStore` cache. 
+
+![image](https://user-images.githubusercontent.com/36256986/215286986-dc7f1ee2-1ad2-48ca-be19-ad6fe399fb41.png)
+
+Let's send following request and see how Cache behaves:
+
+![image](https://user-images.githubusercontent.com/36256986/215287112-003af505-2eb4-408a-904a-efa9be2375e0.png)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
