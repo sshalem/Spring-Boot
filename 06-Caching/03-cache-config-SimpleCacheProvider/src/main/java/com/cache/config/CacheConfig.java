@@ -28,7 +28,7 @@ public class CacheConfig {
 						new ConcurrentMapCache("myDemoCache")
 						));
 
-		LOGGER.info(" ---->  booksStore cache");
+		LOGGER.info(" ConcurrentMapCache ---->  booksStore cache, myDemoCache");
 
 		return cacheManager;
 	}

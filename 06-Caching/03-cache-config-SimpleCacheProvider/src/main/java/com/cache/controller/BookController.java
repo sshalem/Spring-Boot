@@ -66,11 +66,12 @@ public class BookController {
 
 		ConcurrentHashMap<Object, Object> nativeCache = (ConcurrentHashMap<Object, Object>) cache.getNativeCache();
 		Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
-
+		
 		entrySet.forEach(e -> {
-			System.out.println(e.getKey());
+			System.out.println("------------ cache data -----------------");
+			System.out.println("key : " + e.getKey());
 			List<Book> value = (List<Book>) e.getValue();
-			value.forEach(i -> System.out.println(i));
+			value.forEach(i -> System.out.println("value : " + i));
 		});
 
 		return bookService.getAllBooks();

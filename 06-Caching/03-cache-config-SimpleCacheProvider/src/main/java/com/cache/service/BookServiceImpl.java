@@ -59,6 +59,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@Cacheable(cacheNames = "booksStore")
 	public List<Book> getAllBooks() {
+		logger.info("fetching getAllBooks from db");
 		return bookRepository.findAll();
 	}
 
