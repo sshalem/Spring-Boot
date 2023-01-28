@@ -999,7 +999,19 @@ But , in our app we use the `booksStore` cache.
 
 Let's send following request and see how Cache behaves:
 
+1. sending [`addBook`](#-) 2 times time. change the Id so we will have 2 records in DB.
+2. sending [`getAllBook`](#-) 3 times 
+
+Let's analyze console after:
+* for addBook --> there is SQL query
+* for first `getAllBook` request --> data comes from DB
+* for second and third `getAllBook` --> there is NO SQL , so it comes from cache. 
+  As we can see in console , I also print the cache data in console
+* The method `getAllBook` is not executed , It came from `booksStore` cache ,thus logger of `getAllBooks()` didn't print to console.
+
 ![image](https://user-images.githubusercontent.com/36256986/215287112-003af505-2eb4-408a-904a-efa9be2375e0.png)
+
+![image](https://user-images.githubusercontent.com/36256986/215288363-f9494009-68c6-4e3e-b8ee-cf0ccb9a32ee.png)
 
 
 
