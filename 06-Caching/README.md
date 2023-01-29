@@ -1130,8 +1130,9 @@ public List<Book> getAllBooks() {
 
 Now lets test the App `03-cache-SimpleCacheProvider-KeyGenerator` 
 
+we can see that we have a key to our cache:
 
-
+![image](https://user-images.githubusercontent.com/36256986/215334401-fc55617f-3c14-4deb-9bbb-a37fd85dd5e9.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
