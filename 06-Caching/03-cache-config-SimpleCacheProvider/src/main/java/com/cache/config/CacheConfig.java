@@ -11,13 +11,11 @@ import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.cache.Application;
-
 @Configuration
 @EnableCaching
 public class CacheConfig {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfig.class);
 
 	@Bean
 	public CacheManager cacheManager() {
