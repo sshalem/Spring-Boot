@@ -1066,6 +1066,71 @@ Or we can implement an iterface , API also provides an option to define a custom
 public List<Product> getProducts() {...}
 ```
 
+### [Code Implementation](#-)
+
+for this we just need to perfrom the following:
+1. implement the `KeyGenerator` iterface with `CustomKeyGenerator`
+2. add a `Bean` to `CacheConfig` with the same name of 
+3. add to the method we want , a metadata of `keyGenerator`
+
+### [CustomKeyGenerator implements KeyGenerator](#-)
+
+```java
+public class CustomKeyGenerator implements KeyGenerator {
+
+	@Override
+	public Object generate(Object target, Method method, Object... params) {
+		return target.getClass().getSimpleName() + "_" + method.getName();
+	}
+}
+```
+
+### [CacheConfig](#-)
+
+```java
+@Configuration
+@EnableCaching
+public class CacheConfig {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfig.class);
+
+	@Bean
+	public CacheManager cacheManager() {
+		SimpleCacheManager cacheManager = new SimpleCacheManager();
+		cacheManager.setCaches(
+				Arrays.asList(
+						new ConcurrentMapCache("booksStore"),
+						new ConcurrentMapCache("myDemoCache")
+						));
+
+		LOGGER.info(" ConcurrentMapCache ---->  booksStore cache, myDemoCache");
+
+		return cacheManager;
+	}
+	
+	@Bean("customKeyGenerator")
+	public KeyGenerator keyGenerator() {
+		return new CustomKeyGenerator();
+	}
+}
+```
+
+### [CacheConfig](#-)
+
+Add the [`keyGenerator = "customKeyGenerator"`](#-) to the method metadata
+
+```
+@Override
+@Cacheable(cacheNames = "booksStore" ,keyGenerator = "customKeyGenerator")
+public List<Book> getAllBooks() {
+	logger.info("fetching getAllBooks from db");
+	return bookRepository.findAll();
+}
+```
+
+Now lets test the App `03-cache-SimpleCacheProvider-KeyGenerator` 
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
