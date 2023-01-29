@@ -63,17 +63,27 @@ public class BookController {
 	public List<Book> getAllBook() {
 
 		Cache cache = cacheManager.getCache("booksStore");
-
 		ConcurrentHashMap<Object, Object> nativeCache = (ConcurrentHashMap<Object, Object>) cache.getNativeCache();
-		Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
 		
-		entrySet.forEach(e -> {
-			System.out.println("------------ cache data -----------------");
-			System.out.println("key : " + e.getKey());
-			List<Book> value = (List<Book>) e.getValue();
-			value.forEach(i -> System.out.println("value : " + i));
-		});
-
+		if(nativeCache.isEmpty()) {
+			System.out.println("------------getAllBook() data from DB -----------------");
+			// print the data in 1 line
+			System.out.println("cache.getNativeCache() : " + cache.getNativeCache());
+		}
+		else {
+			System.out.println("\n------------getAllBook() data from Cache -----------------");
+			// print the data in 1 line
+			System.out.println("print to console cache.getNativeCache() in 1 line : ");
+			System.out.println(cache.getNativeCache());
+			// Print the data in every line	
+			System.out.println();
+			Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
+			entrySet.forEach(e -> {			
+				System.out.println("key : " + e.getKey());
+				List<Book> value = (List<Book>) e.getValue();
+				value.forEach(i -> System.out.println("value : " + i));
+			});				
+		}
 		return bookService.getAllBooks();
 	}
 
