@@ -1119,7 +1119,7 @@ public class CacheConfig {
 
 Add the [`keyGenerator = "customKeyGenerator"`](#-) to the method metadata
 
-```
+```java
 @Override
 @Cacheable(cacheNames = "booksStore" ,keyGenerator = "customKeyGenerator")
 public List<Book> getAllBooks() {
