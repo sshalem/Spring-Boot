@@ -1039,12 +1039,20 @@ Let's analyze console after:
 
 https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 
+Ehcache version 3 is an implementation of a JSR-107 cache manager. </br>
+We need following dependencies to add caching capability.
+* spring-boot-starter-cache
+* ehcache (org.ehcache)
+* cache-api (javax.cache)
+
+
 [Steps for caching](#-):
 1. add MAVEN dependency
 2. enable cache for the application
 3. create ehcache.xml 
 4. make Entities cachable
 5. Test Caching
+
 
 
 ###### 4_1_Test_EhCache
