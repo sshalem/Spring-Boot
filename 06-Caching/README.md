@@ -1031,9 +1031,10 @@ Let's analyze console after:
 * [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 
 
-[EhCache :](#-)
-1. fast and lightwight , used by most of JAVA EE apps, that use Hibernate
-2. Supports both In Memory and Disk based Caching. We can store them in the RAM, or serialize them and store them on Disk
+### [`EhCache`](#-)
+1. Is a Second Level Cache Provider
+2. fast and lightwight , used by most of JAVA EE apps, that use Hibernate
+3. Supports both In Memory (RAM) and Disk based (serialize them and store them on Disk) Caching.
 
 [EhCache TTL / TTI / Eviction](#-)
 
