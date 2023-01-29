@@ -1033,8 +1033,7 @@ In previous section we saw how we can see the data we have in cache. </br>
 * But, waht is the `SimpleKey` that console shows ?
 
 [Answer](#-)
-* [Caching Key Generation section 3.3](https://www.javadevjournal.com/spring/spring-caching/) 
-
+* [Caching Key Generation section 3.3](https://www.javadevjournal.com/spring/spring-caching/) </br>
 Cache is always a key-value storage and Spring caching is not different in this. </br>
 This API provides a number of options for us to customize and control key generation process. </br>
 
@@ -1048,7 +1047,8 @@ Default key generation is capable to fulfill most of the use cases provided out 
 * The parameter should have natural keys (like code, unique key etc.)
 * Have a valid implementation of hashCode() and equals() methods.
 
-
+[3.2 Custom Key Generation](#-)
+If the default key generation is not enough for your need, you can always opt for the custom key generation mechanism for the Spring cache. We can SpEL to pick the arguments of interest (or their nested properties), perform operations or even invoke arbitrary methods without having to write any code or implement any interface.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
