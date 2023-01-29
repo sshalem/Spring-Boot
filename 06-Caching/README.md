@@ -1037,7 +1037,7 @@ In previous section we saw how we can see the data we have in cache. </br>
 Cache is always a key-value storage and Spring caching is not different in this. </br>
 This API provides a number of options for us to customize and control key generation process. </br>
 
-[3.1 Default Key Generation](#-)
+[Default Key Generation](#-) </br>
 Spring API use a simple KeyGenerator based on the following steps:
 * If we do not specify any parameter, it returns `SimpleKey.EMPTY`.
 * Return the same instance if only one parameter is given.
@@ -1047,8 +1047,26 @@ Default key generation is capable to fulfill most of the use cases provided out 
 * The parameter should have natural keys (like code, unique key etc.)
 * Have a valid implementation of hashCode() and equals() methods.
 
-[3.2 Custom Key Generation](#-)
-If the default key generation is not enough for your need, you can always opt for the custom key generation mechanism for the Spring cache. We can SpEL to pick the arguments of interest (or their nested properties), perform operations or even invoke arbitrary methods without having to write any code or implement any interface.
+[Custom Key Generation](#-)</br>
+If the default key generation is not enough for your need, you can always opt for the custom key generation mechanism for the Spring cache. </br>
+We can SpEL to pick the arguments of interest (or their nested properties), perform operations or even invoke arbitrary methods without having to write any code or implement any interface.
+
+```java
+@Cacheable(cacheNames="booksStore", key="#customer")
+public Address getAddress(final Customer customer)() {...}
+
+@Cacheable(cacheNames="booksStore", key="#customer.id")
+public Address getAddress(final Customer customer)() {...}
+```
+
+Or we can implement an iterface , API also provides an option to define a custom keyGenerator on the operation.
+
+```java
+@Cacheable(value="products",keyGenerator="customKeyGenerator")
+public List<Product> getProducts() {...}
+```
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
