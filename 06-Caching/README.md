@@ -21,6 +21,7 @@
 |     | 3.1. [POM](#3_1_POM)              |
 |     | 3.2. [Code](#3_2_code)             |
 |     | 3.3. [Test Spring-boot-cache](#3_3_Test_project)             |
+|     | 3.4. [Custom Key Generator](#3_4_Custom_Key_Generator)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
 |     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
