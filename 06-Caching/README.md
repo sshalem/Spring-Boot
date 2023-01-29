@@ -352,6 +352,8 @@ Console shows the following:
 
 <img src="https://img.shields.io/badge/- II. Spring_boot_cache_explanied %20-blue" height=40px>
 
+[javadevjournal spring-caching](https://www.javadevjournal.com/spring/spring-caching/)
+
 In this project we will see the usage of `Spring-boot-cache`. </br>
 `Spring-boot-cache` is an abstract layer (See [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)), </br>
 which means If I want to impllement it I need to define which provider I will be using. </br>
@@ -1009,16 +1011,46 @@ Let's analyze console after:
 * for second and third `getAllBook` --> there is NO SQL , so it comes from cache. 
   As we can see in console , I also print the cache data in console
 * The method `getAllBook` is not executed , It came from `booksStore` cache ,thus logger of `getAllBooks()` didn't print to console.
+* The Key is `SimpleKey[]` what does it mean?  See In section 3.4
 
 ![image](https://user-images.githubusercontent.com/36256986/215287112-003af505-2eb4-408a-904a-efa9be2375e0.png)
 
-![image](https://user-images.githubusercontent.com/36256986/215288363-f9494009-68c6-4e3e-b8ee-cf0ccb9a32ee.png)
+![image](https://user-images.githubusercontent.com/36256986/215331154-9a76f88b-20c5-4da3-8dee-5099a9b6eb48.png)
 
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 3_4_Custom_Key_Generator
 
+<img src="https://img.shields.io/badge/- 3_4_Custom_Key_Generator %20- green" height=30px>
+
+[Spring Cache Custom KeyGenerator](https://www.javadevjournal.com/spring/spring-cache-custom-keygenerator/)
+
+In previous section we saw how we can see the data we have in cache. </br>
+
+[Question](#-)
+* But, waht is the `SimpleKey` that console shows ?
+
+[Answer](#-)
+* [Caching Key Generation section 3.3](https://www.javadevjournal.com/spring/spring-caching/) 
+
+Cache is always a key-value storage and Spring caching is not different in this. </br>
+This API provides a number of options for us to customize and control key generation process. </br>
+
+[3.1 Default Key Generation](#-)
+Spring API use a simple KeyGenerator based on the following steps:
+* If we do not specify any parameter, it returns `SimpleKey.EMPTY`.
+* Return the same instance if only one parameter is given.
+* Create and return SimpleKey if more than one parameter passed.
+
+Default key generation is capable to fulfill most of the use cases provided out code base meets following requirements.
+* The parameter should have natural keys (like code, unique key etc.)
+* Have a valid implementation of hashCode() and equals() methods.
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------
 
