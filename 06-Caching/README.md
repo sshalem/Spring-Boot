@@ -1150,6 +1150,10 @@ we can see that we have a key to our cache:
 * [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 * [spring-boot-cache-with-ehcache-3](https://refactorfirst.com/spring-boot-spring-cache-with-ehcache-3)
 
+From :
+* [EhCache Home Page](https://www.ehcache.org/) 
+* and [EhCache 3 documentation](https://www.ehcache.org/documentation/) 
+
 
 ### [`EhCache`](#-)
 1. Is a Second Level Cache Provider
@@ -1184,6 +1188,28 @@ We need following dependencies to add caching capability.
 ###### 4_1_POM
 
 <img src="https://img.shields.io/badge/- 4.1. POM %20- green" height=30px>
+
+From :
+* [EhCache Home Page](https://www.ehcache.org/) 
+* and [EhCache 3 documentation](https://www.ehcache.org/documentation/) 
+
+I will Implement EHCache version 3.</br>
+Follwoing dependencies need to add:
+
+```sql
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+<dependency>
+	<groupId>javax.cache</groupId>
+	<artifactId>cache-api</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.ehcache</groupId>
+	<artifactId>ehcache</artifactId>
+</dependency>
+```
 
 
 
