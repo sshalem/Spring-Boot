@@ -450,7 +450,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 Here is a layout of multile data.sql files. </br>
 We can see that we have the following:
 
-* main `application.properties` file
+* main [`application.properties`](#-) file
 * 3 different application files config:
    * [`application-h2.properties`](#-)
    * [`application-mysql.properties`](#-)
