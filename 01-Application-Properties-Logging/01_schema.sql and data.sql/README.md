@@ -337,7 +337,8 @@ This allows you to switch to database-specific scripts if necessary.</br>
 For example, you might choose to set it to the vendor name of the database (hsqldb, h2, oracle, mysql, postgresql, and so on). </br>
 By default, SQL database initialization is only performed when using an embedded in-memory database. </br>
 To always initialize an SQL database, irrespective of its type, set : 
-*  [`spring.sql.init.mode`](#-) to [`always`](#-).
+  
+[`spring.sql.init.mode`](#-) to [`always`](#-).
 
 Similarly, to disable initialization, set `spring.sql.init.mode` to `never`. </br>
 By default, Spring Boot enables the fail-fast feature of its script-based database initializer. </br>
