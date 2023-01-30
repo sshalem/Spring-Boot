@@ -101,10 +101,57 @@ It can be used to get profiles and properties of the application environment.
 
 
 ```sql
+my.greeting=Hello world
+app.name=my app
+app.description=Welcome to ${app.name}
 
+# list
+my.list.values=one,two,three
+ 
+# key/value 
+db.values={connectionString:'http://',username:'foo',password:'1234'}
 ```
 
+### [Main app Class](#-)
+
 ```java
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    private Environment env;
+
+    public static void main(String[] args) {
+	SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+	String greetingMessage = env.getProperty("my.greeting");
+	String appName = env.getProperty("app.name");
+	String appDescription = env.getProperty("app.description");
+	String myListValues = env.getProperty("my.list.values");
+
+	String[] splitedString = myListValues.split(",");
+
+	System.out.print("[");
+	for (String str : splitedString) {
+	    System.out.print(str + ", ");
+	}
+	System.out.println("]");
+
+	String dbValues = env.getProperty("db.values");
+	String[] splitDbValues = dbValues.split(",");
+
+	System.out.print("[");
+	for (String str : splitDbValues) {
+	    System.out.print(str + ", ");
+	}
+	System.out.println("]");
+
+	System.out.println(greetingMessage + ", " + appName + ", " + appDescription);
+    }
+}
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
