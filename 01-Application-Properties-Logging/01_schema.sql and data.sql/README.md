@@ -348,11 +348,8 @@ You can tune that behavior by setting `spring.sql.init.continue-on-error`.
 Let's look a a real example , where I want to perfrom development with MySql and PostgreSql. </br>
 I want initialize them using `data.sql` during development </br>
 
-* Question :
-why I need to do 2 different data.sql ?
-
-* Answer :
-both DB have some differences with thier sql syntax , thus , the syntax for MySql might not work as expected with PostgreSql (and visa versa).
+* [Question](#-) : why I need to do 2 different data.sql ?
+* [Answer](#-) : both DB have some differences with thier sql syntax , thus , the syntax for MySql might not work as expected with PostgreSql (and visa versa).
 
 SO:
 1. I define 2 profiles (one for  MySql and the other for PostgreSql) , by creating 2 more files of application properties (on for each)
