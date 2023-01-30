@@ -1194,7 +1194,9 @@ From :
 * and [EhCache 3 documentation](https://www.ehcache.org/documentation/) 
 
 I will Implement EHCache version 3.</br>
-Follwoing dependencies need to add:
+Follwoing dependencies need to add: </br>
+
+(I will not specify its version here, as the spring starter knows which dependency version is compatible): </br>
 
 ```sql
 <dependency>
