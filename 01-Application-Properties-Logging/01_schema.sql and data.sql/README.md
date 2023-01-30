@@ -452,9 +452,9 @@ We can see that we have the following:
 
 * main `application.properties` file
 * 3 different application files config:
- * `application-h2.properties`
- * `application-mysql.properties`
- * `application-postgres.properties`
+   * [`application-h2.properties`](#-)
+   * [`application-mysql.properties`](#-)
+   * [`application-postgres.properties`](#-)
    
 We also have 3 different `data-XXX.sql` files:
 1. `data-H2.sql`
