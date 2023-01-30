@@ -93,7 +93,7 @@ public class Application implements CommandLineRunner {
 
 ###### Environment_from_spring
 
-<img src="https://img.shields.io/badge/- Environment_from_spring %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. Environment_from_spring %20-blue" height=40px>
 
 Spring Boot Environment Is a bean that I can Inject and [`@Autowire`](#-) it ( From <http://zetcode.com/springboot/environment/> ) </br>
 Environment is an interface representing the environment in which the current application is running.  </br>
@@ -158,9 +158,77 @@ public class Application implements CommandLineRunner {
 
 ------------------------------------------------------------------------------------
 
-###### 
+###### ConfigurationProperties
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. ConfigurationProperties %20-blue" height=40px>
+
+[`@ConfigurationProperties`](#-) is a specific annotaion for pulling properties from configuration file. </br>
+
+Steps:
+1. Create a class with the fields of the property names .
+2. Add annotation of `@Configuration` so spring will be able to make the class as a bean
+3. Add annotation of `@ConfigurationProperties`
+4. Add `prefix` to annotation that starts with same prefix in `application.properties` file.
+5. Now I can Autowire the Bean (Since it is 
+
+```sql
+# list
+db.config.my-list-values[0]=one
+db.config.my-list-values[1]=two
+db.config.my-list-values[2]=three
+
+# key/value
+db.config.connection[connectionString]='http://'
+db.config.connection[username]='foo'
+db.config.connection[password]='1234'
+db.config.host=127.0.0.1
+db.config.port=2700
+```
+
+### [DBsettings config class](#-)
+
+```java
+@Configuration
+@ConfigurationProperties(prefix = "db.config")
+public class DBsettings {
+
+    private List<String> myListValues;
+    private Map<String, String> connection;
+    private String host;
+    private String port;
+
+    Ctor/G/S/
+}
+```
+
+### [Main app Class](#-)
+
+```java
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+
+    @Autowired
+    private DBsettings dBsettings;
+
+    public static void main(String[] args) {
+	SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+	
+	List<String> myListValues = dBsettings.getMyListValues();
+	Map<String,String> connection = dBsettings.getConnection();	
+	String host = dBsettings.getHost();
+	String port = dBsettings.getPort();
+	
+	System.out.println(myListValues);
+	System.out.println(connection);
+	System.out.println(host);
+	System.out.println(port);	
+    }
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
