@@ -8,7 +8,7 @@
 |  1  |[@Value](#value)   | 
 |  2  |[Environment (from Spring)](#Environment_from_spring)  |   
 |  3  |[@ConfigurationProperties](#ConfigurationProperties)  |  
-|  4  |[Actuator expose application properties](#Multiple_data_sql)  |  
+|  4  |[Actuator expose application properties](#Actuator_expose_application_properties)  |  
 |     |[]()  
 
 
@@ -234,9 +234,9 @@ public class Application implements CommandLineRunner {
 
 ------------------------------------------------------------------------------------
 
-###### 
+###### Actuator_expose_application_properties
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- Actuator_expose_application_properties %20-blue" height=40px>
 
 Expose all application.properties with Spring Actuator
 1. Add Actuator dependency
