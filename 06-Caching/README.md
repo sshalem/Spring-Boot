@@ -1154,7 +1154,9 @@ we can see that we have a key to our cache:
 3. Supports both In Memory (RAM) and Disk based (serialize them and store them on Disk) Caching.
 4. We can Configure TimeOut for a particular object in the cache.
 5. We can Configure the Total Life Time of object in the cache using XML.+
-6. To configure we can use  : `XML` file , or byr creating a `Bean` [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
+6. To configure we can use  
+	* `XML` file 
+	* or by creating a `Bean` [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 
 
 [EhCache TTL / TTI / Eviction](#-)
