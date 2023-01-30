@@ -1150,7 +1150,7 @@ we can see that we have a key to our cache:
 * [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 * [spring-boot-cache-with-ehcache-3](https://refactorfirst.com/spring-boot-spring-cache-with-ehcache-3)
 
-From :
+From EhCache home page , we can see which dependencies we need to add:
 * [EhCache Home Page](https://www.ehcache.org/) 
 * and [EhCache 3 documentation](https://www.ehcache.org/documentation/) 
 
@@ -1211,7 +1211,7 @@ Follwoing dependencies need to add:
 </dependency>
 ```
 
-
+![image](https://user-images.githubusercontent.com/36256986/215609802-7fd10df6-b5f6-4da1-9716-804197e0dbf0.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
