@@ -447,15 +447,14 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 <img src="https://img.shields.io/badge/- 4.1. Example with Multiple data.sql files %20-blue" height=40px>
 
-Here is a layout of multile data.sql files:
-
+Here is a layout of multile data.sql files. </br>
 We can see that we have the following:
 
 * main `application.properties` file
 * 3 different application files config:
-   a. `application-h2.properties`
-   b. `application-mysql.properties`
-   a. `application-postgres.properties`
+    a. `application-h2.properties`
+    b. `application-mysql.properties`
+    a. `application-postgres.properties`
    
 We also have 3 different `data-XXX.sql` files:
 1. `data-H2.sql`
