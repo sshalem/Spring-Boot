@@ -1148,6 +1148,7 @@ we can see that we have a key to our cache:
 * https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
 * [Spring boot 2 and ehcache 3 example](https://howtodoinjava.com/spring-boot2/ehcache3-config-example/)
 * [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
+* [spring-boot-cache-with-ehcache-3](https://refactorfirst.com/spring-boot-spring-cache-with-ehcache-3)
 
 
 ### [`EhCache`](#-)
