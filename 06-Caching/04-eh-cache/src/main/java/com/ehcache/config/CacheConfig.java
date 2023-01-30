@@ -1,13 +1,15 @@
 package com.ehcache.config;
 
-import java.util.Arrays;
+import java.time.Duration;
 
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ExpiryPolicyBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.concurrent.ConcurrentMapCache;
-import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,19 +17,17 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 public class CacheConfig {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfig.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfig.class);
 
-	@Bean
-	public CacheManager cacheManager() {
-		SimpleCacheManager cacheManager = new SimpleCacheManager();
-		cacheManager.setCaches(
-				Arrays.asList(
-						new ConcurrentMapCache("booksStore"),
-						new ConcurrentMapCache("myDemoCache")
-						));
+    @Bean
+    public CacheManager ehCacheManager() {
+//	CacheConfiguration<Long, String> cacheConfiguration = CacheConfigurationBuilder
+//		.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(10)).build();
 
-		LOGGER.info(" ConcurrentMapCache ---->  booksStore cache, myDemoCache");
-
-		return cacheManager;
-	}
+	CacheConfiguration<Long, String> cacheConfiguration = CacheConfigurationBuilder
+		.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(100))
+		.withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(20)))
+		.build();
+	return null;
+    }
 }
