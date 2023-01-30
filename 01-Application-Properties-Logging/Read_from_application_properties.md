@@ -238,4 +238,14 @@ public class Application implements CommandLineRunner {
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
+Expose all application.properties with Spring Actuator
+1. Add Actuator dependency
+2. Add the following property to application.properties file:
+
+```management.endpoints.web.exposure.include=*```
+		
+Now we can browse to url of `localhost:{port_number}/actuator/`
+
+Or go to `localhost:{port_number}/actuator/configprops`
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
