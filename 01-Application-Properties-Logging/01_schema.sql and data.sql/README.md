@@ -445,7 +445,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ###### Examlpe_Multiple_data_sql
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4.1. Example with Multiple data.sql files %20-blue" height=40px>
 
 Here is a layout of multile data.sql files:
 
