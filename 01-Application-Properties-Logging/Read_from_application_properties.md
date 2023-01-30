@@ -4,12 +4,28 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
+|     |[Introduction](#Introduction)   | 
 |  1  |[@Value](#value)   | 
 |  2  |[Environment (from Spring)](#Environment_from_spring)  |   
 |  3  |[@ConfigurationProperties](#ConfigurationProperties)  |  
 |  4  |[Actuator expose application properties](#Multiple_data_sql)  |  
 |     |[]()  
 
+
+------------------------------------------------------------------------------------
+
+###### Introduction
+
+<img src="https://img.shields.io/badge/- Introduction %20-blue" height=40px>
+
+In this topic we will see ,three different ways to read application properties in the Spring Boot application.
+1. `@Value`
+2. `Environment` Bean
+3. `@ConfigurationProperties`
+
+[reading-application-properties-spring-boot](https://www.appsdeveloperblog.com/reading-application-properties-spring-boot/)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ------------------------------------------------------------------------------------
 
