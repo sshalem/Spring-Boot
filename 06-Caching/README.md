@@ -23,7 +23,9 @@
 |     | 3.3. [Test Spring-boot-cache](#3_3_Test_project)             |
 |     | 3.4. [Custom Key Generator](#3_4_Custom_Key_Generator)             |
 |  4  | [EhCache TTL/TTI ](#4_EhCache)             |
-|     | 4.1. [Test EhCache](#4_1_Test_EhCache)             |
+|     | 4.1. [POM](#4_1_POM)              |
+|     | 4.2. [Code](#4_2_code)             |
+|     | 4.3. [Test EhCache](#4_3_Test_EhCache)             |
 |  5  | [Redis Cache](#5_Redis_Cache)             |
 |     | 5.1. [Test Redis Cache](#5_1_Test_Redis_Cache)             |
 |     | [Redis Cache vs Redis DATA](#Redis_Cache)             |
@@ -1178,12 +1180,25 @@ We need following dependencies to add caching capability.
 5. Test Caching
 
 
+###### 4_1_POM
 
-###### 4_1_Test_EhCache
+<img src="https://img.shields.io/badge/- 4.1. POM %20- green" height=30px>
 
-<img src="https://img.shields.io/badge/- 4.1. Test_EhCache %20- green" height=30px>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 4_2_code
+
+<img src="https://img.shields.io/badge/- 4.2. code %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 4_3_Test_EhCache
+
+<img src="https://img.shields.io/badge/- 4.3. Test_EhCache %20- green" height=30px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
