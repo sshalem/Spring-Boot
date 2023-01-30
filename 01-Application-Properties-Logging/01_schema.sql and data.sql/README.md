@@ -339,7 +339,7 @@ By default, SQL database initialization is only performed when using an embedded
 To always initialize an SQL database, irrespective of its type, set : </br>
 [`spring.sql.init.mode`](#-) to [`always`](#-).
 
-Similarly, to disable initialization, set `spring.sql.init.mode to never`. </br>
+Similarly, to disable initialization, set `spring.sql.init.mode` to `never`. </br>
 By default, Spring Boot enables the fail-fast feature of its script-based database initializer. </br>
 This means that, if the scripts cause exceptions, the application fails to start. </br>
 You can tune that behavior by setting `spring.sql.init.continue-on-error`. 
