@@ -17,41 +17,43 @@
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
-```sql
-application.properties 
+### [application.properties ](#-)
 
-	my.greeting=Hello world
-	app.name=my app
-	app.description=Welcome to ${app.name}
-	
-	# list
-	my.list.values=one,two,three
-	 
-	# key/value 
-	db.values={connectionString:'http://',username:'foo',password:'1234'}
+```sql
+my.greeting=Hello world
+app.name=my app
+app.description=Welcome to ${app.name}
+
+# list
+my.list.values=one,two,three
+ 
+# key/value 
+db.values={connectionString:'http://',username:'foo',password:'1234'}
 ```
 
+### [RestController](#-)
+
 ```java
-	@RestController
-	public class GreetingController {
+@RestController
+public class GreetingController {
+ 
+	@Value("${my.greeting : default value}")
+	private String greetingMessage;
+ 
+	@Value("some static message")
+	private String staticMessage;
+ 
+	@Value("${my.list.values}")
+	private List<String> listValues;
 	 
-		@Value("${my.greeting : default value}")
-		private String greetingMessage;
-	 
-		@Value("some static message")
-		private String staticMessage;
-	 
-		@Value("${my.list.values}")
-		private List<String> listValues;
-	 
-		@Value("#{${db.values}}")
-		private Map<String, String> dbValues;
-	 
-		@GetMapping("/greeting")
-		public String greeting() {
-			return greetingMessage + " " + staticMessage + " " + listValues + " \n" + dbValues;
-		}
+	@Value("#{${db.values}}")
+	private Map<String, String> dbValues;
+	
+	@GetMapping("/greeting")
+	public String greeting() {
+		return greetingMessage + " " + staticMessage + " " + listValues + " \n" + dbValues;
 	}
+}
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
