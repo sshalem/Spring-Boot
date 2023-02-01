@@ -1,13 +1,11 @@
 package com.ehcache.controller;
 
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.cache.Cache;
+import javax.cache.CacheManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,20 +56,14 @@ public class BookController {
 	 *                   necessary to ensure type safety. In this sense, certain
 	 *                   operations are "unchecked".
 	 */
-	@SuppressWarnings({ "unchecked" })
+//	@SuppressWarnings({ "unchecked" })
 	@GetMapping("/book/getAllBooks")
 	public List<Book> getAllBook() {
 
-		Cache cache = cacheManager.getCache("booksStore");
+		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
 
-		ConcurrentHashMap<Object, Object> nativeCache = (ConcurrentHashMap<Object, Object>) cache.getNativeCache();
-		Set<Entry<Object, Object>> entrySet = nativeCache.entrySet();
-		
-		entrySet.forEach(e -> {
-			System.out.println("------------ cache data -----------------");
-			System.out.println("key : " + e.getKey());
-			List<Book> value = (List<Book>) e.getValue();
-			value.forEach(i -> System.out.println("value : " + i));
+		cache.forEach(i -> {
+			System.out.println(i);
 		});
 
 		return bookService.getAllBooks();

@@ -1,13 +1,17 @@
 package com.ehcache.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book implements Serializable{
 
+	private static final long serialVersionUID = 3940908077256322631L;
+	
 	// I don't want Hibernate to generate the Id
 	// I will do by send it id number with the request body when I send addBook()
 	@Id

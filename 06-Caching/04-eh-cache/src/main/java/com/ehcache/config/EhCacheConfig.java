@@ -25,26 +25,29 @@ import com.ehcache.entity.Book;
 @EnableCaching
 public class EhCacheConfig {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EhCacheConfig.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EhCacheConfig.class);
 
-    @Bean
-    public CacheManager ehCacheManager() {
+	@Bean
+	public CacheManager ehCacheManager() {
 
-	CacheConfiguration<String, Book> cachecConfig = CacheConfigurationBuilder
-		.newCacheConfigurationBuilder(
-			String.class, 
-			Book.class,
-			ResourcePoolsBuilder
-				.newResourcePoolsBuilder()
-				.offheap(10, MemoryUnit.MB).build())
-		.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(10))).build();
+		LOGGER.info(">>>> EhCache configuration <<<<");
+		CacheConfiguration<Long, Book> cachecConfig = CacheConfigurationBuilder
+				.newCacheConfigurationBuilder(
+						Long.class, 
+						Book.class,
+						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build()
+						)
+				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(10)))
+				.build();
 
-	CachingProvider cachingProvider = Caching.getCachingProvider();
-	CacheManager cacheManager = cachingProvider.getCacheManager();
+		CachingProvider cachingProvider = Caching.getCachingProvider();
+		CacheManager cacheManager = cachingProvider.getCacheManager();
 
-	javax.cache.configuration.Configuration<String, Book> configuration = Eh107Configuration.fromEhcacheCacheConfiguration(cachecConfig);
-	cacheManager.createCache("bookStore", configuration);
-	return cacheManager;
-    }
+		javax.cache.configuration.Configuration<Long, Book> configuration = Eh107Configuration
+				.fromEhcacheCacheConfiguration(cachecConfig);
+		cacheManager.createCache("booksStore", configuration);
+
+		return cacheManager;
+	}
 
 }
