@@ -3,6 +3,8 @@ package com.ehcache.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.cache.CacheManager;
+
 import org.hibernate.ObjectDeletedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +24,12 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookRepository bookRepository;
+	
+	@Autowired
+	private CacheManager cacheManager;
 
 	@Override
+	@Cacheable(cacheNames = "booksStore" , key = "#id")
 	public Book addBook(Book book) {
 		logger.info("adding book with id - {}", book.getId());
 		return bookRepository.save(book);
@@ -57,8 +63,14 @@ public class BookServiceImpl implements BookService {
 	}
 	
 	@Override
-	@Cacheable(cacheNames = "booksStore")
 	public List<Book> getAllBooks() {
+		
+//		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
+//
+//		cache.forEach(i -> {
+//			System.out.println(i.getKey());
+//			System.out.println(i.getValue());
+//		});
 		logger.info("fetching getAllBooks from db");
 		return bookRepository.findAll();
 	}
