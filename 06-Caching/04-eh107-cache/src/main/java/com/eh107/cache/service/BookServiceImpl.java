@@ -25,12 +25,12 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookRepository bookRepository;
-	
+
 	@Autowired
 	private CacheManager cacheManager;
 
 	@Override
-	@Cacheable(cacheNames = "booksStore" , key = "#book.id")
+	@Cacheable(cacheNames = "booksStore", key = "#book.id")
 	public Book addBook(Book book) {
 		logger.info("adding book with id - {}", book.getId());
 		return bookRepository.save(book);
@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	@CachePut(cacheNames = "booksStore", key = "#book.id")
-	public Book updateBook(Book book) {		
+	public Book updateBook(Book book) {
 		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
 		return getBook(book.getId());
@@ -62,16 +62,12 @@ public class BookServiceImpl implements BookService {
 		bookRepository.deleteById(id);
 		return "Book deleted";
 	}
-	
+
 	@Override
 	public List<Book> getAllBooks() {
-		
-//		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
-//
-//		cache.forEach(i -> {
-//			System.out.println(i.getKey());
-//			System.out.println(i.getValue());
-//		});
+
+		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
+		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
 		logger.info("fetching getAllBooks from db");
 		return bookRepository.findAll();
 	}
