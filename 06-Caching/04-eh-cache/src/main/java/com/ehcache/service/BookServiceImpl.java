@@ -3,8 +3,8 @@ package com.ehcache.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.cache.CacheManager;
-
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
 import org.hibernate.ObjectDeletedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,59 +20,56 @@ import com.ehcache.repository.BookRepository;
 @Service
 public class BookServiceImpl implements BookService {
 
-	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
 
-	@Autowired
-	private BookRepository bookRepository;
-	
-	@Autowired
-	private CacheManager cacheManager;
+    @Autowired
+    private BookRepository bookRepository;
 
-	@Override
-	@Cacheable(cacheNames = "booksStore" , key = "#id")
-	public Book addBook(Book book) {
-		logger.info("adding book with id - {}", book.getId());
-		return bookRepository.save(book);
-	}
+    @Autowired
+    private CacheManager cacheManager;
 
-	@Override
-	@CachePut(cacheNames = "booksStore", key = "#book.id")
-	public Book updateBook(Book book) {		
-		bookRepository.updateAddress(book.getId(), book.getName());
-		logger.info("book updated with new name");
-		return getBook(book.getId());
-	}
+    @Override
+    @Cacheable(cacheNames = "booksStore", key = "#id")
+    public Book addBook(Book book) {
+	logger.info("adding book with id - {}", book.getId());
+	return bookRepository.save(book);
+    }
 
-	@Override
-	@Cacheable(cacheNames = "booksStore", key = "#id")
-	public Book getBook(long id) {
-		logger.info("fetching book from db");
-		Optional<Book> book = bookRepository.findById(id);
-		if (book.isPresent()) {
-			return book.get();
-		} else {
-			throw new ObjectDeletedException("Object removed", getClass(), null);
-		}
-	}
+    @Override
+    @CachePut(cacheNames = "booksStore", key = "#book.id")
+    public Book updateBook(Book book) {
+	bookRepository.updateAddress(book.getId(), book.getName());
+	logger.info("book updated with new name");
+	return getBook(book.getId());
+    }
 
-	@Override
-	@CacheEvict(cacheNames = "booksStore", key = "#id")
-	public String deleteBook(long id) {
-		bookRepository.deleteById(id);
-		return "Book deleted";
+    @Override
+    @Cacheable(cacheNames = "booksStore", key = "#id")
+    public Book getBook(long id) {
+	logger.info("fetching book from db");
+	Optional<Book> book = bookRepository.findById(id);
+	if (book.isPresent()) {
+	    return book.get();
+	} else {
+	    throw new ObjectDeletedException("Object removed", getClass(), null);
 	}
-	
-	@Override
-	public List<Book> getAllBooks() {
-		
-//		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
-//
-//		cache.forEach(i -> {
-//			System.out.println(i.getKey());
-//			System.out.println(i.getValue());
-//		});
-		logger.info("fetching getAllBooks from db");
-		return bookRepository.findAll();
-	}
+    }
+
+    @Override
+    @CacheEvict(cacheNames = "booksStore", key = "#id")
+    public String deleteBook(long id) {
+	bookRepository.deleteById(id);
+	return "Book deleted";
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+
+	Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
+	cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
+
+	logger.info("fetching getAllBooks from db");
+	return bookRepository.findAll();
+    }
 
 }
