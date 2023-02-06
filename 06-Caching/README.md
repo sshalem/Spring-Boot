@@ -1144,13 +1144,14 @@ we can see that we have a key to our cache:
 
 <img src="https://img.shields.io/badge/- 4. EhCache  %20-blue" height=40px>
 
-* https://www.baeldung.com/hibernate-second-level-cache
 * https://www.youtube.com/watch?v=uWSOe-rKTg4&ab_channel=RefactorFirst
 * [Spring boot 2 and ehcache 3 example](https://howtodoinjava.com/spring-boot2/ehcache3-config-example/)
 * [How to use spring boot 2 and ehcache 3 without xml?](https://stackoverflow.com/questions/57909228/how-to-use-spring-boot-2-and-ehcache-3-without-xml)
 * [spring-boot-cache-with-ehcache-3](https://refactorfirst.com/spring-boot-spring-cache-with-ehcache-3)
 
-From EhCache home page , we can see which dependencies we need to add:
+## From EhCache home page 
+
+we can see which dependencies we need to add:
 * [EhCache Home Page](https://www.ehcache.org/) 
 * and [EhCache 3 documentation](https://www.ehcache.org/documentation/) 
 
@@ -1191,6 +1192,8 @@ We need following dependencies to add caching capability.  (See How to implement
 
 [Answer](#-)
 * see link from [stackoverflow](https://stackoverflow.com/questions/72846543/which-cache-manager-cache-library-to-use-for-spring-and-ehcache-3/72865414)
+
+## issue with [ehcache-cannot-find-cache-name-for-builder](https://stackoverflow.com/questions/72723378/ehcache-cannot-find-cache-name-for-builder)
 
 ###### 4_1_POM
 
