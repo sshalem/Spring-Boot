@@ -1184,6 +1184,11 @@ We need following dependencies to add caching capability.  (See How to implement
 4. make methods in Service Layer cachable
 5. Test Caching
 
+[Question](#-)
+* Which CacheManager to use? 
+
+[Answer](#-)
+* see link from [stackoverflow](https://stackoverflow.com/questions/72846543/which-cache-manager-cache-library-to-use-for-spring-and-ehcache-3/72865414)
 
 ###### 4_1_POM
 
