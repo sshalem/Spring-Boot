@@ -1193,7 +1193,9 @@ We need following dependencies to add caching capability.  (See How to implement
 [Answer](#-)
 * see link from [stackoverflow](https://stackoverflow.com/questions/72846543/which-cache-manager-cache-library-to-use-for-spring-and-ehcache-3/72865414)
 
-## issue with [ehcache-cannot-find-cache-name-for-builder](https://stackoverflow.com/questions/72723378/ehcache-cannot-find-cache-name-for-builder)
+### issue with [ehcache-cannot-find-cache-name-for-builder](https://stackoverflow.com/questions/72723378/ehcache-cannot-find-cache-name-for-builder)
+
+While tring to implement the EhCache (w/o Eh107Configuration) , I had error here app could not find the `cacheName`
 
 ###### 4_1_POM
 
