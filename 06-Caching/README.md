@@ -1182,9 +1182,10 @@ We need following dependencies to add caching capability.  (See How to implement
 1. add MAVEN dependency above
 2. enable cache for the application
 3. Since we use EhCache3 , I will config it using a Configuration Class (In EhCache2 , we need to create ehcache.xml)
-	a. I will configure Ehcache programmatically,
-4. make methods in Service Layer cachable
-5. Test Caching
+	a.	 I will configure Ehcache programmatically
+4. create a custom `CacheEventListener` 
+5. make methods in Service Layer cachable
+6. Test Caching
 
 ### [Which CacheManager to use](#-)
 
