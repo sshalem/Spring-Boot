@@ -1171,17 +1171,17 @@ From EhCache home page , we can see which dependencies we need to add:
 https://www.ehcache.org/documentation/2.7/configuration/data-life.html
 
 Ehcache version 3 is an implementation of a JSR-107 cache manager. </br>
-We need following dependencies to add caching capability.
+We need following dependencies to add caching capability.  (See How to implement from  [EhCache Home Page](https://www.ehcache.org/) )
 * spring-boot-starter-cache
 * ehcache (org.ehcache)
 * cache-api (javax.cache)
 
 
 [Steps for caching](#-):
-1. add MAVEN dependency
+1. add MAVEN dependency above
 2. enable cache for the application
-3. create ehcache.xml 
-4. make Entities cachable
+3. Since we use EhCache3 , I will confi it using a Configuration Class (In EhCache2 , we need to create ehcache.xml)
+4. make methods in Service Layer cachable
 5. Test Caching
 
 
