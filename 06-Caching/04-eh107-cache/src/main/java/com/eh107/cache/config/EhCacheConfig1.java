@@ -10,8 +10,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
-//@EnableCaching
+@Configuration
+@EnableCaching
 public class EhCacheConfig1 {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EhCacheConfig1.class);
