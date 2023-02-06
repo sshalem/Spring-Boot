@@ -26,8 +26,7 @@ public class EhCacheConfig1 {
 				.withCache("booksStore", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(10)))
 				.build(true);	
 
-		return cacheManager;	
-		
+		return cacheManager;			
 	}
 
 }

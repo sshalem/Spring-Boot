@@ -45,7 +45,7 @@ public class Eh107CacheConfig1 {
 
 		javax.cache.configuration.Configuration<Long, Book> configuration = Eh107Configuration
 				.fromEhcacheCacheConfiguration(cachecConfig);
-		
+
 		cacheManager.createCache("booksStore", configuration);
 
 		return cacheManager;

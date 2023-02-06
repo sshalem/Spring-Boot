@@ -2,9 +2,6 @@ package com.eh107.cache.controller;
 
 import java.util.List;
 
-import javax.cache.Cache;
-import javax.cache.CacheManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +20,6 @@ public class BookController {
 	@Autowired
 	private BookServiceImpl bookService;
 
-	@Autowired
-	private CacheManager cacheManager;
-
 	@PostMapping("/book")
 	public Book addBook(@RequestBody Book book) {
 		return bookService.addBook(book);
@@ -43,11 +37,7 @@ public class BookController {
 
 	@GetMapping("/book/getAllBooks")
 	public List<Book> getAllBook() {
-
-		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
-		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
-		return null;
-//		return bookService.getAllBooks();
+		return bookService.getAllBooks();
 	}
 
 	@DeleteMapping("/book/{id}")
