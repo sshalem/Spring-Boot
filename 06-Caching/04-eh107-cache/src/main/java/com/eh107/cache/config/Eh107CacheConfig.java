@@ -40,7 +40,11 @@ public class Eh107CacheConfig {
 
 		// Cache Event Listener configuration
 		CacheEventListenerConfigurationBuilder cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
-			    .newEventListenerConfiguration(new CacheEventLogger(), EventType.CREATED, EventType.UPDATED, EventType.REMOVED) 
+			    .newEventListenerConfiguration(
+			    		new CacheEventLogger(), 
+			    		EventType.CREATED, 
+			    		EventType.UPDATED, 
+			    		EventType.REMOVED) 
 			    .unordered()
 			    .asynchronous();
 		

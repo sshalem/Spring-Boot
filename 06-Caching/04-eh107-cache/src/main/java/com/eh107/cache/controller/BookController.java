@@ -37,7 +37,7 @@ public class BookController {
 
 	@GetMapping("/book/author/{author}")
 	public Book getBookByAuthor(@PathVariable String author) {
-		return bookService.getBookByAuthor(author);
+		return bookService.getBookByAuthor(0, author);
 	}
 
 	@GetMapping("/book/getAllBooks")
