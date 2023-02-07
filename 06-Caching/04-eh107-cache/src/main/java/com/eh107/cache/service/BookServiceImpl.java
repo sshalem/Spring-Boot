@@ -1,12 +1,10 @@
 package com.eh107.cache.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
 
-import org.hibernate.ObjectDeletedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,50 +47,52 @@ public class BookServiceImpl implements BookService {
 		 * The `key = "#book.id"` must be same name or child of attribute
 		 * as the attribute updateBook(Book book)
 		 * Here, `book.id` is a child of `Book` Class , thus it's OK to write is this way.
-		 * First updates the DB , then Updates the cache as well
+		 *  1. First updates the DB 
+		 *  2. then Updates the cache as well
+		 *  
+		 *  with CACHE PUT: 
+		 *  1. The method gets executed 
+		 *  2. The cache gets updated with the result from the method call
+		 *  3. We must return from the method a Book so the cache could be updated
 		 */
-		bookRepository.updateAddress(book.getId(), book.getName());
+		
+		Book returnValue = bookRepository.findById(book.getId()).get();
+		returnValue.setName(book.getName());
+		
 		logger.info("book updated with new name");
-		return getBookById(book.getId());
+		return bookRepository.save(returnValue);
 	}
 
 	
 	@Override
-//	@Cacheable(cacheNames = "booksStore", key = "#id")
-	@Cacheable(cacheNames = "booksStore")
+	@Cacheable(cacheNames = "booksStore", key = "#id")
 	public Book getBookById(long id) {		
 		/**
-		 * The  `key = "#id"` must be same name
-		 * as the attribute getBookById(`long id`)	 
+		 * The `key = "#id"` must be same name as the attribute getBookById(`long id`)	 
 		 */		
 		logger.info("fetching book from db");
-		Optional<Book> book = bookRepository.findById(id);
-		if (book.isPresent()) {
-			return book.get();
-		} else {			
-			throw new ObjectDeletedException("Object removed", getClass(), null);
-		}
+		/**
+		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
+		 * Here, 
+		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
+		 * the key - is the name from the input parameter.  
+		 * If you don't provide the key, it will use the input as the key itself
+		 */
+		return bookRepository.findById(id).get();
 	}
 
 
 	@Override
-//	@Cacheable(cacheNames = "booksStore" , key = "#author")
-	@Cacheable(cacheNames = "booksStore", key = "#id")
+	@Cacheable(cacheNames = "booksStore" , key = "#author")	
 	public Book getBookByAuthor(long id, String author) {
 		/**
-		 * The  `key = "#author"` must be same name 
-		 * as the attribute getBookByAuthor(String `author`)  
+		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
+		 * Here, 
+		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
+		 * the key - is the name from the input parameter.  
+		 * If you don't provide the key, it will use the input as the key itself
 		 */
-		logger.info("getBookByAuthor from db");
-
-		Cache<Object, Book> cache = cacheManager.getCache("booksStore", Object.class, Book.class);	
-		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
-		
-		Book book = bookRepository.findBookByAuthor(author);
-		
-		System.out.println(book);
-		
-		return book;
+		return bookRepository.findBookByAuthor(author);
 	}
 	
 
