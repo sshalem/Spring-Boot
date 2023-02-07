@@ -28,7 +28,8 @@ public class BookServiceImpl implements BookService {
 	private CacheManager cacheManager;
 
 	@Override
-//	@CachePut(cacheNames = "booksStore", key ="{#book.author, #book.id}")
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
+//	@Cacheable(cacheNames = "booksStore", key = "#book.id")
 	public Book addBook(Book book) {
 		/**
 		 * The `key = "#book.id"` must be same name or child of attribute
@@ -68,16 +69,20 @@ public class BookServiceImpl implements BookService {
 	@Cacheable(cacheNames = "booksStore", key = "#id")
 	public Book getBookById(long id) {		
 		/**
-		 * The `key = "#id"` must be same name as the attribute getBookById(`long id`)	 
-		 */		
-		logger.info("fetching book from db");
-		/**
-		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
+		 * The `key = "#id"` must be same name as the attribute getBookById(`long id`)
 		 * Here, 
 		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
 		 * the key - is the name from the input parameter.  
-		 * If you don't provide the key, it will use the input as the key itself
-		 */
+		 * If you don't provide the key, it will use the input as the key itself.
+		 * 
+		 * Flow:
+		 * If the bookById is found in the cache of `booksStore`:
+		 * 			It will return the value from booksStore , and wo'nt execute the method.
+		 * 
+		 * If the bookById is not found in the cache of `booksStore`:
+		 * 			 It will execute the method and retrieved from DB	 
+		 */		
+		logger.info("fetching bookById from db");
 		return bookRepository.findById(id).get();
 	}
 
@@ -91,7 +96,15 @@ public class BookServiceImpl implements BookService {
 		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
 		 * the key - is the name from the input parameter.  
 		 * If you don't provide the key, it will use the input as the key itself
+		 * 
+		 * Flow:
+		 * If the bookById is found in the cache of `booksStore`:
+		 * 			It will return the value from booksStore , and wo'nt execute the method.
+		 * 
+		 * If the bookById is not found in the cache of `booksStore`:
+		 * 			 It will execute the method and retrieved from DB	 
 		 */
+		logger.info("fetching BookByAuthor from db");
 		return bookRepository.findBookByAuthor(author);
 	}
 	
