@@ -29,8 +29,13 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private CacheManager cacheManager;
 
+	/**
+	 * Once we addBook it will also add it to the cache `booksStore`
+	 * Why we put key = "#book.id"?
+	 */
 	@Override
-	@Cacheable(cacheNames = "booksStore", key = "#book.id")
+//	@CachePut(cacheNames = "booksStore", key = "#book.id")
+//	@CachePut(cacheNames = "booksStore", key = "#book.author")
 	public Book addBook(Book book) {
 		logger.info("adding book with id - {}", book.getId());
 		return bookRepository.save(book);
@@ -38,37 +43,47 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	@CachePut(cacheNames = "booksStore", key = "#book.id")
+//	@CachePut(cacheNames = "booksStore", key = "#book.author")
 	public Book updateBook(Book book) {
 		bookRepository.updateAddress(book.getId(), book.getName());
 		logger.info("book updated with new name");
-		return getBook(book.getId());
+		return getBookById(book.getId());
 	}
 
 	@Override
 	@Cacheable(cacheNames = "booksStore", key = "#id")
-	public Book getBook(long id) {
+	public Book getBookById(long id) {
 		logger.info("fetching book from db");
 		Optional<Book> book = bookRepository.findById(id);
 		if (book.isPresent()) {
 			return book.get();
-		} else {
+		} else {			
 			throw new ObjectDeletedException("Object removed", getClass(), null);
 		}
 	}
 
 	@Override
+	@Cacheable(cacheNames = "booksStore" , key = "#author")
+	public Book getBookByAuthor(String author) {
+		logger.info("fetching book from db");
+		return bookRepository.findBookByAuthor(author);
+	}
+	
+	@Override
+//	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
+		logger.info("delete book");
 		bookRepository.deleteById(id);
 		return "Book deleted";
 	}
 
 	@Override
 	public List<Book> getAllBooks() {
-
-		Cache<Long, Book> cache = cacheManager.getCache("booksStore", Long.class, Book.class);
-		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
 		logger.info("fetching getAllBooks from db");
+		Cache<Object, Book> cache = cacheManager.getCache("booksStore", Object.class, Book.class);
+		cache.forEach(i -> logger.info(i.getKey() + " : " + i.getValue()));
+		
 		return bookRepository.findAll();
 	}
 

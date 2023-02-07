@@ -38,26 +38,26 @@ public class Eh107CacheConfig {
 				
 		LOGGER.info(">>>> Eh107CacheConfig configuration <<<<");
 
-		// Cache Event Listener
+		// Cache Event Listener configuration
 		CacheEventListenerConfigurationBuilder cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
-			    .newEventListenerConfiguration(new CacheEventLogger(), EventType.CREATED, EventType.UPDATED) 
+			    .newEventListenerConfiguration(new CacheEventLogger(), EventType.CREATED, EventType.UPDATED, EventType.REMOVED) 
 			    .unordered()
 			    .asynchronous();
 		
-		// This CacheConfiguration is from package <groupId>org.ehcache</groupId>
-		CacheConfiguration<Long, Book> cacheConfiguration = CacheConfigurationBuilder
+		// CacheConfiguration is from package <groupId>org.ehcache</groupId>
+		CacheConfiguration<Object, Book> cacheConfiguration = CacheConfigurationBuilder
 				.newCacheConfigurationBuilder(
-						Long.class, 
+						Object.class, 
 						Book.class, 
 						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
 				.withService(cacheEventListenerConfiguration)
 //				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(10)))
 				.build();
 
-		// CachingProvider & CacheManager Implementation is from packages of groupId <groupId>javax.cache</groupId>
+		// Implementation is from packages of groupId <groupId>javax.cache</groupId>
 		CacheManager cacheManager = Caching.getCachingProvider().getCacheManager();
 		
-		javax.cache.configuration.Configuration<Long, Book> configuration = Eh107Configuration.fromEhcacheCacheConfiguration(cacheConfiguration);
+		javax.cache.configuration.Configuration<Object, Book> configuration = Eh107Configuration.fromEhcacheCacheConfiguration(cacheConfiguration);
 
 		cacheManager.createCache("booksStore", configuration);
 		cacheManager.createCache("personStore", configuration);

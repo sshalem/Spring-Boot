@@ -31,8 +31,13 @@ public class BookController {
 	}
 
 	@GetMapping("/book/{id}")
-	public Book getBook(@PathVariable long id) {
-		return bookService.getBook(id);
+	public Book getBookById(@PathVariable long id) {
+		return bookService.getBookById(id);
+	}
+
+	@GetMapping("/book/author/{author}")
+	public Book getBookByAuthor(@PathVariable String author) {
+		return bookService.getBookByAuthor(author);
 	}
 
 	@GetMapping("/book/getAllBooks")
