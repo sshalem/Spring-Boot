@@ -472,6 +472,8 @@ public class Application {...}
 ```
 
 2. [`@Cacheable`](#-) - Used with methods that are cachable. </br>
+If we have the `@Cacheable` annotation, it adds the data to the cache. </br>
+We use it in methods of GET , and CREATE. for example : `getBookById(long id)` and `addBook(Book book)` </br> 
 First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
 Second time it will check if the info is in the cache :
 * if in cache , it will retreived it from cache
@@ -480,13 +482,13 @@ Second time it will check if the info is in the cache :
 Below there are examples of how to use it
 
 ```java
-@Cacheable(cacheNames = "booksStore", key = "#isbn")
-public Book getBook(ISBN isbn) {
+@Cacheable(cacheNames = "booksStore", key = "#book")
+public Book getBook(Book book) {
 }
 
 // With Specific field from the object
-@Cacheable(cacheNames = "booksStore", key = "#isbn.rowNumber")
-public Book getBook(ISBN isbn) {
+@Cacheable(cacheNames = "booksStore", key = "#book.id")
+public Book getBook(Book book) {
 }
 
 
@@ -505,7 +507,7 @@ public Book updateBook(Book book) {
 }
 ```
 
-4. [`@CacheEvict`](#-) - TO clear cache values from cache storage. 
+4. [`@CacheEvict`](#-) - To clear cache values from cache storage. 
 
 ```java
 @CacheEvict(cacheNames = "booksStore", key = "#id")
@@ -513,7 +515,7 @@ public String deleteBook(long id) {
 }
 ```
 
-5. [`@Caching`](#-) - to specify multiple annotations of the same type (Such as @CacheEvict or @CachePut)
+5. [`@Caching`](#-) - to specify multiple `cache` annotations of the same type (Such as @CacheEvict or @CachePut)
 
 ```java
 @Caching(evict = { @CacheEvict("primary"), @CacheEvict(cacheNames = "secondary", key = "#id") })
