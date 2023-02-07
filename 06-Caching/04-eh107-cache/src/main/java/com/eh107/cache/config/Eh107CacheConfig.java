@@ -31,36 +31,31 @@ public class Eh107CacheConfig {
 	@Bean
 	public CacheManager eh107CacheManager() {
 
-
 		/**
 		 * This cache Implementation ,Is from YouTube link I saw.
-		 * It is mixing between both packages
-		 *  <groupId>javax.cache</groupId>
-		 *  <groupId>org.ehcache</groupId>
+		 * It is mixing between both packages <groupId>javax.cache</groupId> and <groupId>org.ehcache</groupId>
+		 * 
+		 * Steps to create cache, In this example I configure:
+		 *  1. class a class for Cache Event Listener 
+		 * 	2. I create 2 CacheConfiguration , For Book and for Person
+		 * 	3. I create 2 Configurations of Book and Person from Eh107Configuration
+		 * 	4. define a CacheManager
+		 * 	5. create cache using cacheManager 
 		 */
 				
 		LOGGER.info(">>>> Eh107CacheConfig configuration <<<<");
 
-		// Cache Event Listener configuration
+		// (1)
 		CacheEventListenerConfigurationBuilder cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
 			    .newEventListenerConfiguration(
-			    		new CacheEventLogger(), 
+			    		new CustomCacheEventListener(), 
 			    		EventType.CREATED, 
 			    		EventType.UPDATED, 
 			    		EventType.REMOVED) 
 			    .unordered()
-			    .asynchronous();
+			    .asynchronous();		
 		
-		
-		/**
-		 * Steps to create cache, In this example I configure:
-		 * 1. I create 2 CacheConfiguration , For Book and for Person
-		 * 2. I create 2 Configurations of Book and Person from Eh107Configuration
-		 * 3. define a CacheManager
-		 * 4. create cache using cacheManager 
-		 */
-		
-		// (1)
+		// (2)
 		CacheConfiguration<Object, Book> bookCacheConfiguration = CacheConfigurationBuilder
 				.newCacheConfigurationBuilder(
 						Object.class, 
@@ -80,14 +75,14 @@ public class Eh107CacheConfig {
 				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(120)))
 				.build();
 		
-		// (2)
+		// (3)
 		javax.cache.configuration.Configuration<Object, Book> bookConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(bookCacheConfiguration);
 		javax.cache.configuration.Configuration<Object, Person> personConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(personCacheConfiguration);
 		
-		// (3) Implementation is from packages of groupId <groupId>javax.cache</groupId>
+		// (4) Implementation is from packages of groupId <groupId>javax.cache</groupId>
 		CacheManager cacheManager = Caching.getCachingProvider().getCacheManager();
 		
-		// (4)
+		// (5)
 		cacheManager.createCache("booksStore", bookConfiguration);
 		cacheManager.createCache("personStore", personConfiguration);
 
