@@ -91,8 +91,8 @@ public class BookServiceImpl implements BookService {
 
 
 	@Override
-	@Cacheable(cacheNames = "booksStore" , key = "#author")	
-	public Book getBookByAuthor(long id, String author) {
+	@Cacheable(cacheNames = "booksStore" , condition = "#author.length() > 8")	
+	public Book getBookByAuthor(String author) {
 		/**
 		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
 		 * Here, 
@@ -101,10 +101,10 @@ public class BookServiceImpl implements BookService {
 		 * If you don't provide the key, it will use the input as the key itself
 		 * 
 		 * Flow:
-		 * If the bookById is found in the cache of `booksStore`:
+		 * If the `condition = "#author.length() > 8` is true in the cache of `booksStore`:
 		 * 			It will return the value from booksStore , and wo'nt execute the method.
 		 * 
-		 * If the bookById is not found in the cache of `booksStore`:
+		 * If the `condition = "#author.length() > 8` is not true in the cache of `booksStore`:
 		 * 			 It will :
 		 * 				1. execute the method and retrieved from DB
 		 * 				2. Store the data in the cache	
