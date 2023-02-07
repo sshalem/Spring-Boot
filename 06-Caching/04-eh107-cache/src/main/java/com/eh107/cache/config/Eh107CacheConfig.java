@@ -58,8 +58,8 @@ public class Eh107CacheConfig {
 		// (2)
 		CacheConfiguration<Object, Book> bookCacheConfiguration = CacheConfigurationBuilder
 				.newCacheConfigurationBuilder(
-						Object.class, 
-						Book.class, 
+						Object.class, // key
+						Book.class,   // value
 						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
 				.withService(cacheEventListenerConfiguration)
 				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(60))) // after 60 sec w/o use the row from cache will be deleted
@@ -68,8 +68,8 @@ public class Eh107CacheConfig {
 		
 		CacheConfiguration<Object, Person> personCacheConfiguration = CacheConfigurationBuilder
 				.newCacheConfigurationBuilder(
-						Object.class, 
-						Person.class, 
+						Object.class, // key
+						Person.class, // value
 						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
 				.withService(cacheEventListenerConfiguration)
 				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(120)))
