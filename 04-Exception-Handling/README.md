@@ -303,6 +303,14 @@ public class CustomerService {
 
 ### _AppExceptionsHandler_
 
+There qre 2 ways where we can define our AppExceptionsHandler
+1. using `@ControllerAdvice`
+1. using `@RestControllerAdvice`
+
+See below both Implementations.
+
+### [`@ControllerAdvice` Implementation](#-) 
+
 ```java
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -344,6 +352,55 @@ public class AppExceptionsHandler {
 	}
 }
 ```
+
+### [Using Annotation of  @RestControllerAdvice](#-)
+
+```java
+import java.util.Date;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+
+@RestControllerAdvice
+public class ControllerExceptionHandler {
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorMessage resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+
+		ErrorMessage message = new ErrorMessage();
+
+		message.setTimestamp(new Date());
+		message.setStatusCode(HttpStatus.BAD_REQUEST.value());
+		message.setError(HttpStatus.valueOf(HttpStatus.BAD_REQUEST.value()).getReasonPhrase());
+		message.setException(ResourceNotFoundException.class.getName());
+		message.setMessage(ex.getMessage());
+		message.setUriDescription(request.getDescription(false));
+
+		return message;
+	}
+	
+	@ExceptionHandler({ Exception.class })
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	public ErrorMessage globalExceptionHandler(Exception ex, WebRequest request) {
+
+		ErrorMessage message = new ErrorMessage();
+
+		message.setTimestamp(new Date());
+		message.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		message.setError(HttpStatus.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()).getReasonPhrase());
+		message.setException(ex.getClass().getCanonicalName());
+		message.setMessage(ex.getMessage());
+		message.setUriDescription(request.getDescription(false));
+
+		return message;
+	}
+}
+```
+
 
 ### _Controller w/o try/catch clause_
 
