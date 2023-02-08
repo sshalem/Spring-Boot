@@ -1461,6 +1461,8 @@ public class BookServiceImpl implements BookService {
 
 ### [Config](#-)
 
+In the config class , I define the key to be `Object.class` , so I can use String , Long etc as keys.
+
 ```java
 import java.time.Duration;
 
@@ -1698,12 +1700,12 @@ We can see that record cache `key=50` , is removed but we still have a `key=kari
 
 ![image](https://user-images.githubusercontent.com/36256986/217666189-91148d3d-ac6a-4bcc-b18b-3f370c2e11b5.png)
 
-** Question : </br>
+### [Question :](#-) </br>
 What will happend If I will send a get request for `getBookByAuthor()` ?
 
-** Answer : </br>
+### [Answer :](#-) </br>
 I will get a record form cache by `key=karin shalem` even though it was deleted from DB. </br>
-Thats why we should be very careful  which key to have. </br>
+Thats why we should be `very careful` with keys, and verify duplications of values in cache. </br>
 In my example I define the key to be `Object.class` , so I could store in cache , by any type of key. </br>
 In this case It must be my responsibility to know If I have in my cache :
 * different keys that have same value
