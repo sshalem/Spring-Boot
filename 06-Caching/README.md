@@ -1242,6 +1242,372 @@ Follwoing dependencies need to add: </br>
 
 <img src="https://img.shields.io/badge/- 4.2. code %20- green" height=30px>
 
+### [Entity](#-)
+
+```java
+@Entity
+@Table(name = "book")
+public class Book implements Serializable{
+
+	private static final long serialVersionUID = 3940908077256322631L;
+	
+	// I don't want Hibernate to generate the Id
+	// I will do by send it id number with the request body when I send addBook()
+	@Id
+	private long id;
+	private String name;
+	private String category;
+	private String author;
+	private String publisher;
+	private String edition;
+	
+	Ctor/G/S/Hash/Equal/TS
+```
+
+```java
+@Entity
+@Table(name = "person")
+public class Person {
+
+	@Id
+	private long id;
+	private String firstName;
+	private String lastName;
+	private String age;
+	
+	Ctor/G/S/Hash/Equal/TS
+```
+
+### [Repository](#-)
+
+```java
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+	// This method will only Update the name
+    @Transactional
+    @Modifying
+    @Query("update Book b set b.name=?2 where b.id=?1")
+    int updateAddress(long id, String name);
+    
+    Book findBookByAuthor(String author);
+}
+```
+
+```java
+@Repository
+public interface PersonRepository extends JpaRepository<Person, Long> {
+}
+```
+
+### [Service (Dao)](#-)
+
+```java
+public interface BookService {
+    Book addBook(Book book);
+    Book updateBook(Book book);
+    Book getBookById(long id);
+    Book getBookByAuthor(String author);
+    String deleteBook(long id);
+    List<Book> getAllBooks();
+}
+```
+
+```java
+import java.util.List;
+
+import javax.cache.Cache;
+import javax.cache.CacheManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import com.eh107.cache.entity.Book;
+import com.eh107.cache.repository.BookRepository;
+
+@Service
+public class BookServiceImpl implements BookService {
+
+	private static final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+
+	@Autowired
+	private BookRepository bookRepository;
+
+	@Autowired
+	private CacheManager cacheManager;
+
+	@Override	
+	@Cacheable(cacheNames = "booksStore", key = "#book.id")
+	public Book addBook(Book book) {
+		/**
+		 * The `key = "#book.id"` must be same name or child of attribute
+		 * as the attribute updateBook(Book book)
+		 * Here, `book.id` is a child of Book Class
+		 * First updates the DB , then Updates the cache as well
+		 * 
+		 * It will be saved in the cache as follows:  
+		 * [key = book.id] : [value : book object] 
+		 * 
+		 *  with @Cacheable: 
+		 *  1. first, The method gets executed 
+		 *  2. second, The cache gets updated with the return result from the method call
+		 *  3. Since we have @Cacheable annotation ,We must return from the method a Book so the cache could be updated
+		 */
+		logger.info("adding book with id - {}", book.getId());
+		return bookRepository.save(book);
+	}
+
+	@Override
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
+	public Book updateBook(Book book) {
+		/**
+		 * The `key = "#book.id"` must be same name or child of attribute
+		 * as the attribute updateBook(Book book)
+		 * Here, `book.id` is a child of `Book` Class , thus it's OK to write is this way.
+		 *  1. First updates the DB 
+		 *  2. then Updates the cache as well
+		 *  
+		 *  with @CachePut: 
+		 *  1. first, The method gets executed 
+		 *  2. second, The cache gets updated with the result from the method call
+		 *  3. We must return from the method a Book so the cache could be updated
+		 */
+		
+		Book returnValue = bookRepository.findById(book.getId()).get();
+		returnValue.setName(book.getName());
+		
+		logger.info("book updated with new name");
+		return bookRepository.save(returnValue);
+	}
+
+	
+	@Override
+	@Cacheable(cacheNames = "booksStore", key = "#id")
+	public Book getBookById(long id) {		
+		/**
+		 * The `key = "#id"` must be same name as the attribute getBookById(`long id`)
+		 * Here, 
+		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
+		 * the key - is the name from the input parameter.  
+		 * If you don't provide the key, it will use the input as the key itself.
+		 * 
+		 * Flow:
+		 * If the bookById is found in the cache `booksStore`:
+		 * 			It will return the value from `booksStore` cache , and wo'nt execute the method.
+		 * 
+		 * If the bookById is not found in the cache of `booksStore`:
+		 * 			 It will :
+		 * 				1. execute the method and retrieved from DB
+		 * 				2. Store the data in the cache
+		 * 				3. data will retrieve from DB	 
+		 */		
+		logger.info("fetching bookById from db");
+		return bookRepository.findById(id).get();
+	}
+
+
+	@Override
+	@Cacheable(cacheNames = "booksStore" , condition = "#author.length() > 8")	
+	public Book getBookByAuthor(String author) {
+		/**
+		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
+		 * Here, 
+		 * the value - is the result of the method `bookRepository.findBookByAuthor(author)`
+		 * the key - is the name from the input parameter.  
+		 * If you don't provide the key, it will use the input as the key itself
+		 * 
+		 * Flow:
+		 * If the `condition = "#author.length() > 8` is true in the cache of `booksStore`:
+		 * 			It will return the value from `booksStore` cache , and wo'nt execute the method.
+		 * 
+		 * If the `condition = "#author.length() > 8` is not true in the cache of `booksStore`:
+		 * 			 It will :
+		 * 				1. execute the method and retrieved from DB
+		 * 				2. Store the data in the cache	
+		 * 		 		3. data will retrieve from DB	
+		 */
+		logger.info("fetching BookByAuthor from db");
+		return bookRepository.findBookByAuthor(author);
+	}
+	
+
+	@Override
+	@CacheEvict(cacheNames = "booksStore", key = "#id")
+	public String deleteBook(long id) {
+		/**
+		 * The `key = "#id"` must be same name as the attribute deleteBook(`long id`)  
+		 */
+		logger.info("delete book");
+		bookRepository.deleteById(id);
+		return "Book deleted";
+	}
+
+	@Override
+	public List<Book> getAllBooks() {
+		Cache<Object, Book> cache = cacheManager.getCache("booksStore", Object.class, Book.class);	
+		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));		
+		return bookRepository.findAll();
+	}
+}
+```
+
+### [Config](#-)
+
+```java
+import java.time.Duration;
+
+import javax.cache.CacheManager;
+import javax.cache.Caching;
+
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.CacheEventListenerConfigurationBuilder;
+import org.ehcache.config.builders.ExpiryPolicyBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.config.units.MemoryUnit;
+import org.ehcache.event.EventType;
+import org.ehcache.jsr107.Eh107Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.eh107.cache.entity.Book;
+import com.eh107.cache.entity.Person;
+
+@Configuration
+@EnableCaching
+public class Eh107CacheConfig {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(Eh107CacheConfig.class);
+
+	@Bean
+	public CacheManager eh107CacheManager() {
+
+		/**
+		 * This cache Implementation ,Is from YouTube link I saw.
+		 * It is mixing between both packages <groupId>javax.cache</groupId> and <groupId>org.ehcache</groupId>
+		 * 
+		 * Steps to create cache, In this example I configure:
+		 *  1. class a class for Cache Event Listener 
+		 * 	2. I create 2 CacheConfiguration , For Book and for Person
+		 * 	3. I create 2 Configurations of Book and Person from Eh107Configuration
+		 * 	4. define a CacheManager
+		 * 	5. create cache using cacheManager 
+		 */
+				
+		LOGGER.info(">>>> Eh107CacheConfig configuration <<<<");
+
+		// (1)
+		CacheEventListenerConfigurationBuilder cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
+			    .newEventListenerConfiguration(
+			    		new CustomCacheEventListener(), 
+			    		EventType.CREATED, 
+			    		EventType.UPDATED, 
+			    		EventType.REMOVED) 
+			    .unordered()
+			    .asynchronous();		
+		
+		// (2)
+		CacheConfiguration<Object, Book> bookCacheConfiguration = CacheConfigurationBuilder
+				.newCacheConfigurationBuilder(
+						Object.class, // key
+						Book.class,   // value
+						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
+				.withService(cacheEventListenerConfiguration)
+				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(60))) // after 60 sec w/o use the row from cache will be deleted
+				.build();
+
+		
+		CacheConfiguration<Object, Person> personCacheConfiguration = CacheConfigurationBuilder
+				.newCacheConfigurationBuilder(
+						Object.class, // key
+						Person.class, // value
+						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
+				.withService(cacheEventListenerConfiguration)
+				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(120)))
+				.build();
+		
+		// (3)
+		javax.cache.configuration.Configuration<Object, Book> bookConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(bookCacheConfiguration);
+		javax.cache.configuration.Configuration<Object, Person> personConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(personCacheConfiguration);
+		
+		// (4) Implementation is from packages of groupId <groupId>javax.cache</groupId>
+		CacheManager cacheManager = Caching.getCachingProvider().getCacheManager();
+		
+		// (5)
+		cacheManager.createCache("booksStore", bookConfiguration);
+		cacheManager.createCache("personStore", personConfiguration);
+
+		return cacheManager;
+	}
+}
+```
+
+```java
+import org.ehcache.event.CacheEvent;
+import org.ehcache.event.CacheEventListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class CustomCacheEventListener implements CacheEventListener<Object, Object> {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(CustomCacheEventListener.class);
+
+	@Override
+	public void onEvent(CacheEvent<? extends Object, ? extends Object> event) {
+		LOGGER.info("{}: key={}, old={}, new={}", event.getType(), event.getKey(), event.getOldValue(),	event.getNewValue());
+	}
+}
+```
+
+### [Controller](#-)
+
+```java
+@RestController
+public class BookController {
+
+	@Autowired
+	private BookServiceImpl bookService;
+
+	@PostMapping("/book")
+	public Book addBook(@RequestBody Book book) {
+		return bookService.addBook(book);
+	}
+
+	@PutMapping("/book")
+	public Book updateBook(@RequestBody Book book) {		
+		return bookService.updateBook(book);
+	}
+
+	@GetMapping("/book/{id}")
+	public Book getBookById(@PathVariable long id) {
+		return bookService.getBookById(id);
+	}
+
+	@GetMapping("/book/author/{author}")
+	public Book getBookByAuthor(@PathVariable String author) {
+		return bookService.getBookByAuthor(author);
+	}
+
+	@GetMapping("/book/getAllBooks")
+	public List<Book> getAllBook() {
+		return bookService.getAllBooks();
+	}
+
+	@DeleteMapping("/book/{id}")
+	public String deleteBook(@PathVariable long id) {
+		return bookService.deleteBook(id);
+	}
+}
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
