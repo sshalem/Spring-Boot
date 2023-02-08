@@ -475,8 +475,9 @@ public class Application {...}
 If we have the `@Cacheable` annotation, it adds the data to the cache. </br>
 We use it in methods of GET , and CREATE. </br>
 for example : 
-* `getBookById(long id)` - First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
-* `addBook(Book book)` - FIrst it will save the data in DB , then it will </br> 
+* `getBookById(long id)` - Must return a Book Object. First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
+* `addBook(Book book)` - Must return a Book Object , so it can be also update in cache. FIrst it will save the data in DB , then it will update the cache</br> 
+
 First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
 Second time it will check if the info is in the cache :
 * if in cache , it will retreived it from cache
