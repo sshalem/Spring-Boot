@@ -1446,8 +1446,14 @@ public class BookServiceImpl implements BookService {
 		 * The `key = "#id"` must be same name as the attribute deleteBook(`long id`)  
 		 */
 		logger.info("delete book");
-		bookRepository.deleteById(id);
+		deleteBookByAuthor(getBookById(id).getAuthor());
+		bookRepository.deleteById(id);		
 		return "Book deleted";
+	}
+
+	private void deleteBookByAuthor(String author) {
+		Cache<Object, Book> cache = cacheManager.getCache("booksStore", Object.class, Book.class);
+		cache.remove(author);
 	}
 
 	@Override
