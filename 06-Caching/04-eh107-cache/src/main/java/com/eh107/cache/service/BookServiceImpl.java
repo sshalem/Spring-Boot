@@ -135,11 +135,8 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> getAllBooks() {
-		logger.info("fetching getAllBooks from db");
 		Cache<Object, Book> cache = cacheManager.getCache("booksStore", Object.class, Book.class);	
-		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));
-//		cache.forEach(i -> logger.info(i.getKey() + " : " + i.getValue()));
-		
+		cache.forEach(i -> System.out.println(i.getKey() + " : " + i.getValue()));		
 		return bookRepository.findAll();
 	}
 
