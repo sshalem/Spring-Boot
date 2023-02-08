@@ -473,7 +473,10 @@ public class Application {...}
 
 2. [`@Cacheable`](#-) - Used with methods that are cachable. </br>
 If we have the `@Cacheable` annotation, it adds the data to the cache. </br>
-We use it in methods of GET , and CREATE. for example : `getBookById(long id)` and `addBook(Book book)` </br> 
+We use it in methods of GET , and CREATE. </br>
+for example : 
+* `getBookById(long id)` - First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
+* `addBook(Book book)` - FIrst it will save the data in DB , then it will </br> 
 First time it will be retrieved from DB, and will be stored in a cacheName `booksStore`. </br>
 Second time it will check if the info is in the cache :
 * if in cache , it will retreived it from cache
