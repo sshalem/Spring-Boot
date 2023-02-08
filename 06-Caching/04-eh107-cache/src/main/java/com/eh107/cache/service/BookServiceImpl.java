@@ -36,7 +36,13 @@ public class BookServiceImpl implements BookService {
 		 * Here, `book.id` is a child of Book Class
 		 * First updates the DB , then Updates the cache as well
 		 * 
-		 * It will be saved in the cache as follows:  [key = book.id] : [value : book object] 
+		 * It will be saved in the cache as follows:  
+		 * [key = book.id] : [value : book object] 
+		 * 
+		 *  with @Cacheable: 
+		 *  1. first, The method gets executed 
+		 *  2. second, The cache gets updated with the return result from the method call
+		 *  3. Since we have @Cacheable annotation ,We must return from the method a Book so the cache could be updated
 		 */
 		logger.info("adding book with id - {}", book.getId());
 		return bookRepository.save(book);
@@ -52,7 +58,7 @@ public class BookServiceImpl implements BookService {
 		 *  1. First updates the DB 
 		 *  2. then Updates the cache as well
 		 *  
-		 *  with CACHE PUT: 
+		 *  with @CachePut: 
 		 *  1. first, The method gets executed 
 		 *  2. second, The cache gets updated with the result from the method call
 		 *  3. We must return from the method a Book so the cache could be updated
@@ -78,12 +84,13 @@ public class BookServiceImpl implements BookService {
 		 * 
 		 * Flow:
 		 * If the bookById is found in the cache `booksStore`:
-		 * 			It will return the value from booksStore , and wo'nt execute the method.
+		 * 			It will return the value from `booksStore` cache , and wo'nt execute the method.
 		 * 
 		 * If the bookById is not found in the cache of `booksStore`:
 		 * 			 It will :
 		 * 				1. execute the method and retrieved from DB
-		 * 				2. Store the data in the cache	 
+		 * 				2. Store the data in the cache
+		 * 				3. data will retrieve from DB	 
 		 */		
 		logger.info("fetching bookById from db");
 		return bookRepository.findById(id).get();
@@ -102,12 +109,13 @@ public class BookServiceImpl implements BookService {
 		 * 
 		 * Flow:
 		 * If the `condition = "#author.length() > 8` is true in the cache of `booksStore`:
-		 * 			It will return the value from booksStore , and wo'nt execute the method.
+		 * 			It will return the value from `booksStore` cache , and wo'nt execute the method.
 		 * 
 		 * If the `condition = "#author.length() > 8` is not true in the cache of `booksStore`:
 		 * 			 It will :
 		 * 				1. execute the method and retrieved from DB
 		 * 				2. Store the data in the cache	
+		 * 		 		3. data will retrieve from DB	
 		 */
 		logger.info("fetching BookByAuthor from db");
 		return bookRepository.findBookByAuthor(author);
@@ -118,8 +126,7 @@ public class BookServiceImpl implements BookService {
 	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
 		/**
-		 * The  `key = "#id"` must be same name 
-		 * as the attribute deleteBook(`long id`)  
+		 * The `key = "#id"` must be same name as the attribute deleteBook(`long id`)  
 		 */
 		logger.info("delete book");
 		bookRepository.deleteById(id);
