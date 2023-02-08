@@ -50,7 +50,8 @@ public class Eh107CacheConfig {
 			    .newEventListenerConfiguration(
 			    		new CustomCacheEventListener(), 
 			    		EventType.CREATED, 
-			    		EventType.UPDATED, 
+			    		EventType.UPDATED,
+			    		EventType.EXPIRED,
 			    		EventType.REMOVED) 
 			    .unordered()
 			    .asynchronous();		
@@ -62,7 +63,7 @@ public class Eh107CacheConfig {
 						Book.class,   // value
 						ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB).build())
 				.withService(cacheEventListenerConfiguration)
-				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(60))) // after 60 sec w/o use the row from cache will be deleted
+//				.withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(60))) // after 60 sec w/o use the row from cache will be deleted
 				.build();
 
 		
