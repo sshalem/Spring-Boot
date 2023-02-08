@@ -1702,21 +1702,16 @@ If we check Postman , we can see we got 3 records for Book Object, while cache h
 ### [8. delete Request for `deleteBook()` for id 50](#-) 
 
 Send `delete` request for book with ID 50, Then send `getAll` </br>
-We can see that record cache `key=50` , is removed but we still have a `key=karin shalem`
+We can see that record cache `key=50` , and also removed  `key=karin shalem`
 
-![image](https://user-images.githubusercontent.com/36256986/217666189-91148d3d-ac6a-4bcc-b18b-3f370c2e11b5.png)
+![image](https://user-images.githubusercontent.com/36256986/217671199-f6282a17-0fac-4e6e-a672-890796af7b64.png)
 
-### [Question :](#-) </br>
-What will happend If I will send a get request for `getBookByAuthor()` ?
-
-### [Answer :](#-) </br>
-I will get a record form cache by `key=karin shalem` even though it was deleted from DB. </br>
 Thats why we should be `very careful` with keys, and verify duplications of values in cache. </br>
 In my example I define the key to be `Object.class` , so I could store in cache , by any type of key. </br>
 In this case It must be my responsibility to know If I have in my cache :
 * different keys that have same value
 
-This is because to know , I I remove any Object by certain key , I have to remove as well the keys with same value.
+This is because to know , I remove any Object by certain key , I have to remove as well the keys with same value.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
