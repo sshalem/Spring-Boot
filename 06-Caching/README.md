@@ -1618,6 +1618,52 @@ public class BookController {
 
 <img src="https://img.shields.io/badge/- 4.3. Test_EhCache %20- green" height=30px>
 
+Let's run the app `04-eh107-cache`. </br>
+See the messages in console regarding the cache.
+
+![image](https://user-images.githubusercontent.com/36256986/217656024-ea6d7063-ce0f-46fb-826d-9b2d40595955.png)
+
+
+Let's see the behavior of cache in our project. </br>
+
+### [1. Post Request for `addBook`](#-) 
+
+Send via Postman the following POST request to `addBook` 
+
+![image](https://user-images.githubusercontent.com/36256986/217656382-0a825907-d58a-4f12-a73f-abcde4ea8136.png)
+![image](https://user-images.githubusercontent.com/36256986/217656458-b48d7f13-e5f0-4af8-8f5f-a482c5760c66.png)
+
+this is what we get in console. 
+1. It Update the DB
+2. Logged in console what `CacheEventListener` shows
+3. return the value from DB (Since there is No record in cache at the momoent , this is the firest time it is recoreded in cache)
+
+We cans see the key is the `book.id`, the old value which is null (Nothing in cache) , new value is the new BOOK object in cache.
+
+![image](https://user-images.githubusercontent.com/36256986/217660639-e5d0bea7-2785-4fb7-93a4-508daaec42ef.png)
+
+### [2. GET Request for `getBookById()`](#-) 
+
+Send `getBookById` and check the console as well.
+We can see that `NOTHING is printed in console` , this means the data we are getting comes from cache
+
+### [3. PUT Request for `updateBook()`](#-) 
+
+Send `updateBook()` and check the console as well.
+We can see that the old and new value for the key 45
+
+![image](https://user-images.githubusercontent.com/36256986/217660960-8b9d9a63-a784-4803-8964-aadf958030fe.png)
+
+### [4. Another Post Request for `addBook`](#-) 
+
+We can see a new entry in cache for Id 50
+
+![image](https://user-images.githubusercontent.com/36256986/217661210-6724c277-c336-4c82-a61f-ddf5c5e83892.png)
+
+
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
