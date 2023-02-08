@@ -1660,10 +1660,55 @@ We can see a new entry in cache for Id 50
 
 ![image](https://user-images.githubusercontent.com/36256986/217661210-6724c277-c336-4c82-a61f-ddf5c5e83892.png)
 
+### [5. GET Request for `getBookByAuthor()`](#-) 
 
+Lets send this `getBookByAuthor` and see what goes on. </br>
+I send this request 4 times , and all retrieved from DB and not from cache. </br>
+Why? </br>
+This is because we have condition on the method `condition = "#author.length() > 8" ` , and since the string `shabtay` is less than 8 chars , it always came from DB
 
+![image](https://user-images.githubusercontent.com/36256986/217662198-b693b429-aa8c-4e73-b62b-e720af5463b0.png)
 
+### [6. GET Request for `getBookByAuthor()` with string more than 8 chars](#-) 
 
+Lets send this request with the author `karin shalem` , which created in 4. </br>
+Send this request and see what goes. </br>
+It created a new entry in cache , with key of `karin shalem` </br>
+
+So now we have in our cache `booksStore` 2 different keys , but with same values. </br>
+How can we see the data in our cache `booksStore` ?
+
+See the method of `getAllBooks()`
+
+![image](https://user-images.githubusercontent.com/36256986/217663466-213f858b-e3f6-4673-a039-59e35d1c9474.png)
+
+### [7. GET Request for `getAllBooks()`](#-) 
+
+`getAllBooks() ` method DOES NOT have an annotation of `@Cacheable` , thus data will be retrieved from DB. </b>
+But I do wnat to show in console the data of `booksStore` (See code Implementation)
+
+If we check Postman , we can see we got 3 records for Book Object, while cache had three different records in it.
+
+![image](https://user-images.githubusercontent.com/36256986/217665610-4bb300de-8bb0-4d30-9685-bd76fbb05420.png)
+
+### [8. delete Request for `deleteBook()` for id 50](#-) 
+
+Send `delete` request for book with ID 50, Then send `getAll` </br>
+We can see that record cache `key=50` , is removed but we still have a `key=karin shalem`
+
+![image](https://user-images.githubusercontent.com/36256986/217666189-91148d3d-ac6a-4bcc-b18b-3f370c2e11b5.png)
+
+** Question : </br>
+What will happend If I will send a get request for `getBookByAuthor()` ?
+
+** Answer : </br>
+I will get a record form cache by `key=karin shalem` even though it was deleted from DB. </br>
+Thats why we should be very careful  which key to have. </br>
+In my example I define the key to be `Object.class` , so I could store in cache , by any type of key. </br>
+In this case It must be my responsibility to know If I have in my cache :
+* different keys that have same value
+
+This is because to know , I I remove any Object by certain key , I have to remove as well the keys with same value.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
