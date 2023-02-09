@@ -1748,7 +1748,7 @@ Good link from youtube : https://www.youtube.com/watch?v=oUDpmINwJ5g&ab_channel=
 
 Spring Redis Cache - https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=JavaTechie
 
-several ways How to Install Redis on windows 10 
+### [several ways How to Install Redis on windows 10](#-)
 
 1. https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99  </br>
 2. https://www.youtube.com/watch?v=6mtu_dFxm28&ab_channel=TechNuggets
@@ -1794,72 +1794,7 @@ https://dzone.com/articles/hibernate-redis-and-l2-cache-performance
 
 
 
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----------------------------------------------------------------------------------------------
-
-
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----------------------------------------------------------------------------------------------
-
-
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----------------------------------------------------------------------------------------------
-
-
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
----------------------------------------------------------------------------------------------
