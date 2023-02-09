@@ -1750,6 +1750,33 @@ As a cache manager, it reduces network calls and improves the performance of an 
 
 ### [3. What is Redis Cache?](#-)
 
+Redis Cache is nothing but a `Cache Management` feature offered by Redis. </br>
+Redis is normally used as a cache to store repeatedly accessed data in memory so that the user can feel the better performance of the application. </br>
+The `Redis Cache` offers various features like how long you want to keep data, and which data to remove first, and some other bright caching models.
+
+
+### [4.What is Redis Database?](#-)
+
+Redis Database is an in-memory database that persists on disk. </br>
+It means when we use Redis Database, we occupy a memory on the disk to use as a Database.</br>
+The data model is key-value, but many several kind of values are supported such :
+* as Strings, Lists, Sets, Sorted Sets, Hashes, Streams, HyperLogLogs, Bitmaps etc.
+
+
+### [5. What is Redis Server?](#-)
+
+The full form of Redis is [REmote DIctionary Server](#-). 
+When we use Redis in any form such as database, cache or Message Broker, we need to download a `Redis Server` in our system. </br>
+People in the industry just call it `Redis Server`.
+
+### [6. How to download Redis Server?](#-)
+
+1. go to link of  Click on  [Download Redis Server](https://github.com/tporadowski/redis/releases)  
+2. extract `Redis-x64-5.0.10.zip` it to a folder
+3. Under folder Redis-x64-5.0.10, you will find redis-server.exe
+4. In order to start Redis Server, double click on `redis-server.exe` to start Redis Server
+
+
 
 
 
