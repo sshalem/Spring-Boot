@@ -1722,6 +1722,30 @@ This is because to know , I remove any Object by certain key , I have to remove 
 
 <img src="https://img.shields.io/badge/- 5. Redis_Cache %20-blue" height=40px>
 
+Before we we dive with REDIS cache , let's understand what is REDIS. </br>
+from link https://javatechonline.com/how-to-implement-redis-cache-in-spring-boot-application/
+First let's cover the follwoing Question. </br>
+
+### [1. What is Redis?](#-)
+
+Redis is an open source (BSD licensed) in-memory remote data structure store (database) that offers high performance, replication, and a unique data model. </br>
+The full form of Redis is [`REmote DIrectory Server`](#-) . </br>
+Moreover, we can use it in multiple forms. </br>
+Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams.
+
+### [2.What is Redis Used for?](#-)
+
+We can use Redis in the following forms:
+1. [In-Memory Database](#-): As an In-Memory database, We will get some empty memory to perform database operations. </br>
+Moreover, it acts as No-SQL database and there are No Tables, No Sequences, No Joins concept. </br>
+We can store data in the form of String, Hash Operations***, List, Set etc. In-built services will be available.
+2. [Cache](#-): We can also use Redis as a Cache to increase our application performance.
+3. [Message Broker(MQ)](#-) : Another use of Redis is as a Message Broker.
+
+In real time application, Redis is popular for a Cache Manager as compared to database & message broker.</br>
+As a cache manager, it reduces network calls and improves the performance of an application.</br>
+
+
 
 ###### 5_1_Test_Redis_Cache
 
