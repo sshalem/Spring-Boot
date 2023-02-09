@@ -1745,6 +1745,11 @@ We can store data in the form of String, Hash Operations***, List, Set etc. In-b
 In real time application, Redis is popular for a Cache Manager as compared to database & message broker.</br>
 As a cache manager, it reduces network calls and improves the performance of an application.</br>
 
+### [3. What is Redis Cache?](#-)
+
+
+
+
 
 
 ###### 5_1_Test_Redis_Cache
