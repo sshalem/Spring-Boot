@@ -471,7 +471,10 @@ There are [several cache annotation](https://docs.spring.io/spring-framework/doc
 public class Application {...}
 ```
 
-2. [`@Cacheable`](#-) - Used with methods that are cachable. </br>
+2. [`@Cacheable`](#-) - 
+Is used to fetch (retrieve) data from the DB to the application and store in Cache. </br>
+We apply it on the methods that get (retrieve) data from DB. </br>
+`@Cacheable` requires a `return value of the method` that `adds` or `updates` data in the cache. </br>
 If we have the `@Cacheable` annotation, it adds the data to the cache. </br>
 We use it in methods of GET , and CREATE. </br>
 for example : 
