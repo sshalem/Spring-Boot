@@ -1781,15 +1781,33 @@ People in the industry just call it `Redis Server`.
 Spring Boot offers basic auto-configuration for the [Lettuce](https://github.com/lettuce-io/lettuce-core/) and [Jedis client](https://github.com/redis/jedis)  libraries and the abstractions on top of them provided by Spring Data Redis.
 see [Spring Reference for REDIS](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.nosql.redis)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 
 
-
-###### 5_1_Test_Redis_Cache
-
-<img src="https://img.shields.io/badge/- 5.1. Test_Redis_Cache %20- green" height=30px>
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+###### 5_5_Test_Redis_Cache
+
+<img src="https://img.shields.io/badge/- 5.5. Test_Redis_Cache %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -1814,13 +1832,6 @@ Spring Redis Cache - https://www.youtube.com/watch?v=vpe4aDu5ixI&ab_channel=Java
 1. https://dev.to/divshekhar/how-to-install-redis-on-windows-10-3e99  </br>
 2. https://www.youtube.com/watch?v=6mtu_dFxm28&ab_channel=TechNuggets
 3. https://redis.io/docs/getting-started/installation/install-redis-on-windows/   - Since Redis only works on Linux , Redis offical doc says to install WSL
-
-### How to use REDIS as Cache
-
-https://dzone.com/articles/caching-in-hibernate-with-redis
-
-https://dzone.com/articles/hibernate-redis-and-l2-cache-performance
-
 
 
 
