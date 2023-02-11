@@ -1776,7 +1776,9 @@ People in the industry just call it `Redis Server`.
 3. Under folder Redis-x64-5.0.10, you will find redis-server.exe
 4. In order to start Redis Server, double click on `redis-server.exe` to start Redis Server
 
+### [7. What are Redis Clients Jedis/Lettuce?](#-)
 
+Spring Boot offers basic auto-configuration for the [Lettuce](https://github.com/lettuce-io/lettuce-core/) and [Jedis client](https://github.com/redis/jedis)  libraries and the abstractions on top of them provided by Spring Data Redis.
 
 
 
