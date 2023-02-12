@@ -1790,6 +1790,9 @@ libraries and the abstractions on top of them provided by Spring Data Redis. see
 There are several ways how we can implement Redis Cache:
 1. w/o configuration class [see link1](https://javatechonline.com/how-to-implement-redis-cache-in-spring-boot-application/) , [see link2](https://fullstack-coder.com/caching-spring-boot-redis/)
 2. By configuraing our own Redis Client Jedis/Lettuce
+3. Great explained using annotation `@RedisHash` [see link](https://medium.com/javarevisited/what-is-redis-cache-and-how-to-use-it-in-spring-boot-using-spring-data-redis-d5ef9967f9e)
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
