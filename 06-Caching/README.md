@@ -1785,6 +1785,11 @@ Spring Boot offers basic auto-configuration for the :
 
 libraries and the abstractions on top of them provided by Spring Data Redis. see [Spring Reference for REDIS](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.nosql.redis) </br>
 
+### [8. Ways to implement Redis cache](#-)
+
+There are several ways how we can implement Redis Cache:
+1. w/o configuration class [see link1](https://javatechonline.com/how-to-implement-redis-cache-in-spring-boot-application/) , [see link2](https://fullstack-coder.com/caching-spring-boot-redis/)
+2. By configuraing our own Redis Client Jedis/Lettuce
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -1792,6 +1797,7 @@ libraries and the abstractions on top of them provided by Spring Data Redis. see
 ###### 
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
