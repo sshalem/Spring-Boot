@@ -27,8 +27,7 @@ public class BookServiceImpl implements BookService {
 	private CacheManager cacheManager;
 
 	@Override	
-//	@Cacheable(cacheNames = "booksStore", key = "#book.id")
-	@Cacheable(value = "booksStore", key = "#book.id")
+	@Cacheable(cacheNames = "booksStore", key = "#book.id")
 	public Book addBook(Book book) {
 		/**
 		 * The `key = "#book.id"` must be same name or child of attribute
@@ -49,8 +48,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-//	@CachePut(cacheNames = "booksStore", key = "#book.id")
-	@CachePut(value = "booksStore", key = "#book.id")
+	@CachePut(cacheNames = "booksStore", key = "#book.id")
 	public Book updateBook(Book book) {
 		/**
 		 * The `key = "#book.id"` must be same name or child of attribute
@@ -74,8 +72,7 @@ public class BookServiceImpl implements BookService {
 
 	
 	@Override
-//	@Cacheable(cacheNames = "booksStore", key = "#id")
-	@Cacheable(value = "booksStore", key = "#id")
+	@Cacheable(cacheNames = "booksStore", key = "#id")
 	public Book getBookById(long id) {		
 		/**
 		 * The `key = "#id"` must be same name as the attribute getBookById(`long id`)
@@ -100,8 +97,7 @@ public class BookServiceImpl implements BookService {
 
 
 	@Override
-//	@Cacheable(cacheNames = "booksStore" , condition = "#author.length() > 8")
-	@Cacheable(value = "booksStore" , condition = "#author.length() > 8")	
+	@Cacheable(cacheNames = "booksStore" , condition = "#author.length() > 8")	
 	public Book getBookByAuthor(String author) {
 		/**
 		 * The `key = "#author"` must be same name as the attribute getBookByAuthor(String `author`).  
@@ -126,8 +122,7 @@ public class BookServiceImpl implements BookService {
 	
 
 	@Override
-//	@CacheEvict(cacheNames = "booksStore", key = "#id")
-	@CacheEvict(value = "booksStore", key = "#id")
+	@CacheEvict(cacheNames = "booksStore", key = "#id")
 	public String deleteBook(long id) {
 		/**
 		 * The `key = "#id"` must be same name as the attribute deleteBook(`long id`)  

@@ -3,10 +3,7 @@ package com.redis.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,9 +12,9 @@ public class Book implements Serializable{
 
 	private static final long serialVersionUID = 3940908077256322631L;
 	
-    @Id
-    @SequenceGenerator(name = "SEQ_GEN", sequenceName = "SEQ_USER", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN")
+	// I don't want Hibernate to generate the Id
+	// I will do by send it id number with the request body when I send addBook()
+	@Id
 	private long id;
 	private String name;
 	private String category;
