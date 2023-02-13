@@ -766,13 +766,15 @@ java -jar jenkins.war
 
 	* Project url is not the git repo url  see in section 6
 
-![image](https://user-images.githubusercontent.com/36256986/218482992-40dd9189-95a6-430b-abd0-35b1e54b0e1c.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218482992-40dd9189-95a6-430b-abd0-35b1e54b0e1c.png" />
+</p>
 
 6. Add repository url
 	* Click on add to add password of git
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png" width=300px height=300px/>
+	<img src="https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png" />
 </p>
 
 Here I need to add Jenkins Credentials made when I installed Jenkins : 
@@ -783,10 +785,6 @@ click on add
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" />
-</p>
-
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483456-c5a067f4-76e2-4912-b15f-42f1cdd9fab2.png" />
 </p>
 
 * Now I'm able to see my user:
