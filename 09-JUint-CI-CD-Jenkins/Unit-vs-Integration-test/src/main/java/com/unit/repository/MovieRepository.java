@@ -13,6 +13,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
 	Movie findMovieByName(String name);
 
-	@Query("SELECT m FROM Movie m WHERE m.releaseDate>=:test")
-	List<Movie> findMoviesAfterReleaseDate(@Param("test") LocalDate test);
+	@Query("SELECT m FROM Movie m WHERE m.releaseDate>=:testDate")
+	List<Movie> findMoviesAfterReleaseDate(@Param("testDate") LocalDate testDate);
 }
