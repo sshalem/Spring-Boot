@@ -767,7 +767,9 @@ java -jar jenkins.war
 6. Add repository url
 	* Click on add to add password of git
 
-![image](https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png" width=300px height=300px/>
+</p>
 
 Here I need to add Jenkins Credentials made when I installed Jenkins : 
 * user (admin): sshalem
