@@ -633,7 +633,7 @@ When it comes to Testing , the tester needs to identity the root error :
 4. Open CMD and run the Jenkins Server
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218478568-763e6378-dd95-446e-a102-6c54052e3a30.png" width=500 height=100/>
+	<img src="https://user-images.githubusercontent.com/36256986/218478568-763e6378-dd95-446e-a102-6c54052e3a30.png" width=400 height=100/>
 </p>
 
 5. Once it runs we need to use password for admin which is created ,And its location is at the directory mentioned below:
