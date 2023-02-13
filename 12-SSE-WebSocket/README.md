@@ -43,13 +43,8 @@ How it works?
 `SSE` has an `EventSource` interface with a straightforward API in the client side:
 
 ```js
-const url = "http://localhost:8080/api";
-const eventSource = new EventSource(url);
-
-
-
-var source = new EventSource('sse-endpoint-address');
-source.onmessage = function (event) {
+const eventSource = new EventSource("http://localhost:8080/api");
+eventSource.onmessage = function (event) {
   console.log(event.data);
 };
 ```
