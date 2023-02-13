@@ -659,6 +659,85 @@ When it comes to Testing , the tester needs to identity the root error :
 
 <img src="https://img.shields.io/badge/- 5_4_Work_Flow_with_Jenkins %20- green" height=30px>
 
+### [Workflow with jenkins](#-)
+
+### [1. Create Spring boot app , with Junit test in it](#-)
+
+```java
+import javax.annotation.PostConstruct;
+ 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
+@SpringBootApplication
+public class JenkinsApplication {
+ 
+	private static final Logger log = LoggerFactory.getLogger(JenkinsApplication.class);
+ 
+	@PostConstruct
+	public void init() {
+		log.info("Application started...");
+	}
+ 
+	public static void main(String[] args) {
+		log.info("Application executed...");
+		SpringApplication.run(JenkinsApplication.class, args);
+ 
+	}
+ 
+}
+```
+
+#### [JUint Class](#-)
+
+```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+ 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+ 
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class JenkinsApplicationTests {
+ 
+	private static final Logger log = LoggerFactory.getLogger(JenkinsApplicationTests.class);
+ 
+	@Test
+	void contextLoads() {
+		log.info("Test case executing...");
+		assertEquals(true, true);
+	}
+ 
+}
+```
+
+
+### [2. Create a GIT repo and load upload the App to GIT repo](#-)
+
+Created GIT Repository with :
+* same name of our App 
+* and load code to GIT Repo
+
+
+![image](https://user-images.githubusercontent.com/36256986/218481716-90e464e0-9644-4b53-8829-ade7e90632d4.png)
+
+### [3. Run Jenkins War file , to make Jenkins server Run](#-)
+
+Open CMD and run the following command:
+
+```
+java -jar jenkins.war
+```
+
+![image](https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
