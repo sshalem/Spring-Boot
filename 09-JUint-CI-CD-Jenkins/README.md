@@ -646,37 +646,44 @@ When it comes to Testing , the tester needs to identity the root error :
 
 	* Need to paste the password in the field below:
 
-![image](https://user-images.githubusercontent.com/36256986/218479098-d080c9c1-15e9-44a1-80a1-d856e467ce81.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218479098-d080c9c1-15e9-44a1-80a1-d856e467ce81.png" width=700 height=300/>
+</p>
 
 7. Next page we get is following one
 
 	* Click on install Suggested Plugins 
 
-![image](https://user-images.githubusercontent.com/36256986/218479263-a44ed7fd-0e35-493f-8c7b-b38e53afe7c6.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218479263-a44ed7fd-0e35-493f-8c7b-b38e53afe7c6.png" width=700 height=300/>
+</p>
 
 8. After plugins are installed , following page pops up:
 
 	* I fill the following data , click save and continue
 	* Password : 1234 
 
-![image](https://user-images.githubusercontent.com/36256986/218479438-15c405f0-7989-4ed4-aa62-304f21a4d39d.png)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218479438-15c405f0-7989-4ed4-aa62-304f21a4d39d.png" width=700 height=300/>
+</p>
 
 9. Following page pops up
 
 	* Here I can change the port number , but I left it as is:
 
-![image](https://user-images.githubusercontent.com/36256986/218479678-92455575-6961-4dcf-b8cb-8445b22814f1.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218479719-e6307fce-d94c-4a83-a1e2-407857897965.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218479678-92455575-6961-4dcf-b8cb-8445b22814f1.png" width=700 height=300/>
+</p>
 
 
 10. Browse to [http://localhost:8080](http://localhost:8080)
 
 	* This is how the dashboard looks like:
 
-![image](https://user-images.githubusercontent.com/36256986/218480072-caa6021b-fea0-4ba6-853a-125483dc377c.png)
-
-
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218480072-caa6021b-fea0-4ba6-853a-125483dc377c.png" width=700 height=300/>
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
