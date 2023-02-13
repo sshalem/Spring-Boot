@@ -179,13 +179,27 @@ class MovieRepositoryTest {
 
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	private Movie avatarMovie;
+	private Movie titanicMovie;
+	private Movie israelMovie;
+	private Movie generalMovie;
+
+	/**
+	 * Before Running any Test case This init() method will be executed
+	 */
+	@BeforeEach
+	void init() {
+		// Arrange
+		avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
+		titanicMovie = new Movie("titanic", "action", LocalDate.of(2001, Month.APRIL, 30));
+		israelMovie = new Movie("israel", "action", LocalDate.of(2001, Month.APRIL, 15));
+		generalMovie = new Movie("israel", "action", LocalDate.of(2002, Month.APRIL, 15));
+	}
 
 	@Test
 	@DisplayName("check save movie to DB")
 	void _01_save() {
-		// Arrange
-		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
-		// Act
 		Movie savedMovie = movieRepository.save(avatarMovie);
 		// Assert
 		assertNotNull(savedMovie);
@@ -193,26 +207,7 @@ class MovieRepositoryTest {
 	}
 
 	@Test
-	void _02_getAllMovies() {
-		// Arrange
-		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
-		Movie titanicMovie = new Movie("titanic", "action", LocalDate.of(2000, Month.APRIL, 22));
-		Movie israelMovie = new Movie("israel", "action", LocalDate.of(2000, Month.APRIL, 22));
-		// Act
-		movieRepository.save(avatarMovie);
-		movieRepository.save(titanicMovie);
-		movieRepository.save(israelMovie);
-
-		List<Movie> listMovies = movieRepository.findAll();
-
-		// Assert
-		assertNotNull(listMovies);
-		assertThat(listMovies).isNotNull();
-		assertEquals(3, listMovies.size());
-	}
-
-	@Test
-	void _03_test_findMovieByName() {
+	void _02_test_findMovieByName() {
 		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
 		movieRepository.save(avatarMovie);
 		Movie movieByName = movieRepository.findMovieByName("avatar");
@@ -221,12 +216,7 @@ class MovieRepositoryTest {
 	}
 
 	@Test
-	void _04_test_findMoviesByReleaseDate() {
-		// Arrange
-		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
-		Movie titanicMovie = new Movie("titanic", "action", LocalDate.of(2001, Month.APRIL, 30));
-		Movie israelMovie = new Movie("israel", "action", LocalDate.of(2001, Month.APRIL, 15));
-		Movie generalMovie = new Movie("israel", "action", LocalDate.of(2002, Month.APRIL, 15));
+	void _03_test_findMoviesByReleaseDate() {
 		// Act
 		movieRepository.save(avatarMovie);
 		movieRepository.save(titanicMovie);
@@ -240,7 +230,6 @@ class MovieRepositoryTest {
 		assertEquals(3, listMovies.size());
 	}
 }
-
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
