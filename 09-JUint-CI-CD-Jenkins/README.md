@@ -63,8 +63,21 @@ Lets see the type of testing we have:
 1. Unit testing
 2. Integration Testing
 
-https://www.youtube.com/watch?v=pHTr3IMuRh0 
+see following link for [JUnit testing](https://www.youtube.com/watch?v=pHTr3IMuRh0)
 
+JUnit test has 3 parts:
+1. Arrange
+2. Act
+3. Assert
+
+```java
+@Test
+void test() {
+	// Arrange
+	// Act
+	// Assert	
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -103,8 +116,37 @@ public class Movie {
 ```
 
 ```java
+@Repository
+public interface MovieRepository extends JpaRepository<Movie, Long> {
 
+	Movie findMovieByName(String name);
+
+	@Query("SELECT m FROM Movie m WHERE m.releaseDate>=:test")
+	List<Movie> findMoviesNewerThanReleaseDate(@Param("test") LocalDate test);
+}
 ```
+
+### [Test Unit](#-)
+
+In order to Test Unit the Respository I will create it a short way. </br>
+Right click on the Repository package and select new `JUnit Test Case`. </br>
+
+![image](https://user-images.githubusercontent.com/36256986/218347919-1b53c8a3-cda2-4dae-b522-8268ca174572.png)
+
+It will open the following window , which will be filled automaticaly with the marked names:
+
+![image](https://user-images.githubusercontent.com/36256986/218348096-ca309d1c-e8df-4d42-afea-7ffcf6e6006f.png)
+
+click on next , it will open the following window. Here I can select which methods I want to test.
+
+![image](https://user-images.githubusercontent.com/36256986/218348194-9eac1225-0b56-48c7-bc6a-29de00891bba.png)
+
+We can see now that a new package is created under the `src/test/java` folder.
+
+![image](https://user-images.githubusercontent.com/36256986/218348325-3c9f9e3a-aebb-4986-b4fa-7aa4299d168f.png)
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
