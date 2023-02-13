@@ -17,8 +17,13 @@
 |     | [5.3. Jenkins Server Install](#5_3_Jenkins_Server_Install)             |
 |     | [5.4. Work Flow with Jenkins](#5_4_Work_Flow_with_Jenkins)             |
 |     | [5.5. Run Build Project](#5_5_Run_Build_Project)             |
-|     | [5.. ](#5_)             |
+|     | [5.6. Rerun Jenkins after GIT updated](#5_6_Rerun_Jenkins_after_GIT_updated)             |
+|     | [5.7. Intentionally add failure to Code](#5_7_Intentionally_add_failure_to_Code)             |
+|     | [5.8. configure mail for receiving messages](#5_8_configure_mail_for_receiving_messages)             |
+|     | [5.9. ](#5_9_)             |
 |  6  | [CI-CD](#3_CI_CD)             |
+
+
 
 
 - https://www.youtube.com/watch?v=2E3WqYupx7c&list=PLqq-6Pq4lTTa4ad5JISViSb2FVG8Vwa4o&ab_channel=JavaBrains
@@ -835,8 +840,99 @@ click on add
 
 <img src="https://img.shields.io/badge/- 5_5_Run_Build_Project %20- green" height=30px>
 
+1. Click on Dashboard after preparing previous section
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218570784-e35b1e16-0c73-4bbe-bbef-fe7edbe72e47.png" />
+</p>
+
+2. Click on the Jenkins app
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218570915-190c582d-1d3b-4a61-8506-f975c321d5f9.png" />
+</p>
+
+3. Click Build Now
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218571036-ad35f2a6-5410-4fe0-a580-6829dea7171e.png" />
+</p>
+
+4. Choose the Build number U ran (For example 3)
+	
+	Choose to open console
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218571126-c8bb6854-e771-4c79-ad59-ec3d9099edaa.png" />
+</p>
+
+5. We can see the console 
+
+![image](https://user-images.githubusercontent.com/36256986/218571225-f56cafc0-1079-4849-875c-cfb315d46ec7.png)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 5_6_Rerun_Jenkins_after_GIT_updated
+
+<img src="https://img.shields.io/badge/- 5_6_Rerun_Jenkins_after_GIT_updated %20- green" height=30px>
+
+- Let's make a change in the code
+- Commit changes to GIT
+- After few seconds ,  project on Jenkins CI is rebuilt 
+
+![image](https://user-images.githubusercontent.com/36256986/218571494-ecab6563-a4d1-4535-aa9e-2c9f2578f8a2.png)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 5_7_Intentionally_add_failure_to_Code
+
+<img src="https://img.shields.io/badge/- 5_7_Intentionally_add_failure_to_Code %20- green" height=30px>
+
+Intentionally add failure to Code and let's see how Jenkins will act. </br>
+Remove the void form method, this should make a compilation error 
+
+```java
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class JenkinsApplicationTests {
+ 
+	private static final Logger log = LoggerFactory.getLogger(JenkinsApplicationTests.class);
+ 
+	@Test
+	public  contextLoads() {
+		log.info("Test case executing...");
+		log.info("Test case executing second log statement...");
+		assertEquals(true, true);
+	}
+
+}
+```
+
+- Update GIT repo
+- Jenkins console shows :
+
+![image](https://user-images.githubusercontent.com/36256986/218571887-812c920b-fbfa-4caf-bd6d-0dfce2a9729c.png)
+
+- We got SMTP host on email, because we didn't configure it
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 5_8_configure_mail_for_receiving_messages
+
+<img src="https://img.shields.io/badge/- 5_8_configure_mail_for_receiving_messages %20- green" height=30px>
+
+1. Got to dashboard
+2. Go to manage jenkins
+
+![image](https://user-images.githubusercontent.com/36256986/218572312-1d0e4d62-a427-4f4f-af56-0a26bbf07ff6.png)
+
+3. Select System Configuration
+
+![image](https://user-images.githubusercontent.com/36256986/218572372-978ca87d-e06f-4684-b228-46c9633bd7ee.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 ###### 
 
@@ -845,12 +941,6 @@ click on add
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 
 
