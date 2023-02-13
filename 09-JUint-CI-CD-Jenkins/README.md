@@ -642,6 +642,13 @@ When it comes to Testing , the tester needs to identity the root error :
 ![image](https://user-images.githubusercontent.com/36256986/218479719-e6307fce-d94c-4a83-a1e2-407857897965.png)
 
 
+10. Browse to [http://localhost:8080](http://localhost:8080)
+
+	* This is how the dashboard looks like:
+
+![image](https://user-images.githubusercontent.com/36256986/218480072-caa6021b-fea0-4ba6-853a-125483dc377c.png)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
