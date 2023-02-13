@@ -761,7 +761,7 @@ java -jar jenkins.war
 4. Following Page shows up In order to sync the project with jenkins do the following:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png" width=500 height=400 />
+	<img src="https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png" width=600 height=400 />
 </p>
 
 5. Add GIT url and display name
