@@ -786,7 +786,7 @@ Here I need to add Jenkins Credentials made when I installed Jenkins :
 click on add
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" width=500 height=200 />
+	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" width=500 height=400 />
 </p>
 
 * Now I'm able to see my user:
