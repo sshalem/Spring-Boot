@@ -639,7 +639,7 @@ When it comes to Testing , the tester needs to identity the root error :
 5. Once it runs we need to use password for admin which is created ,And its location is at the directory mentioned below:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png" width=600 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png" width=600 height=200/>
 </p>
 
 6. Open the browser at localhost:8080  (this is the default port of Jenkins server)
