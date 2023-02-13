@@ -820,7 +820,7 @@ click on add
 </p>
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png" width=300 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png"/>
 </p>
 
 10. click on apply
