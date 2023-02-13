@@ -29,6 +29,17 @@ in this GIT I will show the use of ServerSentEvent & WebSocket.
 [`Server Sent Events (SSE)`](#-) is an HTTP standart that provides the capability to servers to push streaming data to client. </br>
 The flow is unidirectional from server to client and client receives updates when the server pushes some data.
 
+![image](https://user-images.githubusercontent.com/36256986/218595266-c53003dc-c890-48f2-a521-8982672dc85e.png)
+
+How it works?
+1. First connection request is send by Client
+2. First Connection response is send back
+3. Then the connection is established and is Open
+4. We can send from server as much events as we want.
+5. We can have multiple clients.
+
+![image](https://user-images.githubusercontent.com/36256986/218595226-fa4cf004-c088-4eb8-a5c8-5ca797bb8ede.png)
+
 ### [handle on client side](#-)
 
 `SSE` has an `EventSource` interface with a straightforward API in the client side:
