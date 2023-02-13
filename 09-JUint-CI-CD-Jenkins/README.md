@@ -306,7 +306,10 @@ In the Service Layer testing we will use:
 
 In the service Lyer of testing we will use annotations of ([see explanation from javatpoint](https://www.javatpoint.com/mockito-annotations)) : 
 1. `@InjectMocks`
-2. `@Mock`
+2. `@Mock` - In the Test, we annotate `@Mock` on fields that are annoteted with `@Autowired` in the service layer. </br>
+for example: 
+	* if we have annotated `MovieRepository` with `Autowired` in the service layer, we will annotate it with `@Mock` in the test.
+	
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
