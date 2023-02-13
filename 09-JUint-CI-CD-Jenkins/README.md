@@ -747,7 +747,7 @@ java -jar jenkins.war
 2. Click on create new job
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" width=300 height=200/>
+	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" width=500 height=400/>
 </p>
 
 
