@@ -971,7 +971,7 @@ class JenkinsApplicationTests {
 see link from [Java Techie explained pipline with jenkins min 42 of video](https://www.youtube.com/watch?v=jkJgS3zDv9g&ab_channel=JavaTechie) 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218575828-06c89def-7f1d-48bd-b8ec-ff870b166374.png" width=600 height=200/>
+	<img src="https://user-images.githubusercontent.com/36256986/218575828-06c89def-7f1d-48bd-b8ec-ff870b166374.png" width=600 height=300/>
 </p>
 
 
