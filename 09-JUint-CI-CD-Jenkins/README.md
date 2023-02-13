@@ -606,7 +606,9 @@ When it comes to Testing , the tester needs to identity the root error :
 
 ### [Comparison](#-)
 
-![image](https://user-images.githubusercontent.com/36256986/218477625-9dff942c-629c-480d-8a4a-88ac4ba59d19.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218477625-9dff942c-629c-480d-8a4a-88ac4ba59d19.png" width=700 height=400/>
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -617,12 +619,16 @@ When it comes to Testing , the tester needs to identity the root error :
 
 1. Go to Jenkins official site:  https://www.jenkins.io/
 
-![image](https://user-images.githubusercontent.com/36256986/218478100-2e13080d-3630-48b5-b920-d5253375ac45.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218478100-2e13080d-3630-48b5-b920-d5253375ac45.png" width=700 height=400/>
+</p>
 
 2. Click on the download button
 3. Choose LTS and download the .war file (IT's without the installer) 
 
-![image](https://user-images.githubusercontent.com/36256986/218478291-193ad3f6-ede5-48e5-99cf-c757c8d1cd31.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218478291-193ad3f6-ede5-48e5-99cf-c757c8d1cd31.png" width=700 height=400/>
+</p>
 
 4. Open CMD and run the Jenkins Server
 
