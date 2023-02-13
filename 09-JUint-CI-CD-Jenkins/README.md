@@ -171,6 +171,77 @@ public class TestAppData {
 }
 ```
 
+This is the code for testing the Repository:
+
+```java
+@DataJpaTest
+class MovieRepositoryTest {
+
+	@Autowired
+	private MovieRepository movieRepository;
+
+	@Test
+	@DisplayName("check save movie to DB")
+	void _01_save() {
+		// Arrange
+		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
+		// Act
+		Movie savedMovie = movieRepository.save(avatarMovie);
+		// Assert
+		assertNotNull(savedMovie);
+		assertThat(savedMovie.getId()).isNotEqualTo(null);
+	}
+
+	@Test
+	void _02_getAllMovies() {
+		// Arrange
+		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
+		Movie titanicMovie = new Movie("titanic", "action", LocalDate.of(2000, Month.APRIL, 22));
+		Movie israelMovie = new Movie("israel", "action", LocalDate.of(2000, Month.APRIL, 22));
+		// Act
+		movieRepository.save(avatarMovie);
+		movieRepository.save(titanicMovie);
+		movieRepository.save(israelMovie);
+
+		List<Movie> listMovies = movieRepository.findAll();
+
+		// Assert
+		assertNotNull(listMovies);
+		assertThat(listMovies).isNotNull();
+		assertEquals(3, listMovies.size());
+	}
+
+	@Test
+	void _03_test_findMovieByName() {
+		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
+		movieRepository.save(avatarMovie);
+		Movie movieByName = movieRepository.findMovieByName("avatar");
+		assertThat(movieByName).isNotNull();
+		assertEquals("avatar", movieByName.getName());
+	}
+
+	@Test
+	void _04_test_findMoviesByReleaseDate() {
+		// Arrange
+		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
+		Movie titanicMovie = new Movie("titanic", "action", LocalDate.of(2001, Month.APRIL, 30));
+		Movie israelMovie = new Movie("israel", "action", LocalDate.of(2001, Month.APRIL, 15));
+		Movie generalMovie = new Movie("israel", "action", LocalDate.of(2002, Month.APRIL, 15));
+		// Act
+		movieRepository.save(avatarMovie);
+		movieRepository.save(titanicMovie);
+		movieRepository.save(israelMovie);
+		movieRepository.save(generalMovie);
+
+		List<Movie> listMovies = movieRepository.findMoviesNewerThanReleaseDate(LocalDate.of(2000, Month.APRIL, 30));
+		System.out.println(listMovies);
+
+		assertThat(listMovies).isNotNull();
+		assertEquals(3, listMovies.size());
+	}
+}
+
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
