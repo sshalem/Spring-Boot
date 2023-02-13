@@ -747,7 +747,7 @@ java -jar jenkins.war
 2. Click on create new job
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" width=500 height=400/>
+	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" width=300 height=150/>
 </p>
 
 
@@ -755,7 +755,7 @@ java -jar jenkins.war
 3. Type the `app name` and select the `FreeStyle Project` then click OK
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" width=300 height=200 />
+	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" width=500 height=400 />
 </p>
 
 4. Following Page shows up In order to sync the project with jenkins do the following:
