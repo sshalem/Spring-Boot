@@ -15,7 +15,9 @@
 |     | [5.1. before CI](#5_1_before_CI)             |
 |     | [5.2. with CI architecture](#5_2_with_CI_architecture)             |
 |     | [5.3. Jenkins Server Install](#5_3_Jenkins_Server_Install)             |
-|     | [5.4.](#5_4_)             |
+|     | [5.4. Work Flow with Jenkins](#5_4_Work_Flow_with_Jenkins)             |
+|     | [5.. ](#5_)             |
+|     | [5.. ](#5_)             |
 |  6  | [CI-CD](#3_CI_CD)             |
 
 
@@ -653,9 +655,9 @@ When it comes to Testing , the tester needs to identity the root error :
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 
+###### 5_4_Work_Flow_with_Jenkins
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 5_4_Work_Flow_with_Jenkins %20- green" height=30px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
