@@ -99,7 +99,7 @@ I've created the following basic project to Test Unit a Repository. </br>
 
 ### [Package layout](#-)
 
-![image](https://user-images.githubusercontent.com/36256986/218346255-c43f0852-b429-4671-8f4c-1bdc92347ad5.png)
+![image](https://user-images.githubusercontent.com/36256986/218405158-1309cac9-6fe0-4ce7-89fe-67d8a724dc17.png)
 
 ### [Movie Entity](#-)
 
@@ -118,6 +118,8 @@ public class Movie {
 	Ctor/G/S  
 ```
 
+### [MovieRepository](#-)
+
 ```java
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
@@ -128,6 +130,24 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 	List<Movie> findMoviesNewerThanReleaseDate(@Param("test") LocalDate test);
 }
 ```
+
+### [MovieService](#-)
+
+```java
+public interface MovieService {
+	Movie save(Movie movie);
+	List<Movie> getAllMovies();
+	Movie getMovieById(long id);
+	Movie getMovieByName(String name);
+	List<Movie> getMoviesAfterReleaseDate(LocalDate localDate);
+}
+```
+
+### [MovieRepository](#-)
+
+```java
+```
+
 
 ### [Test Unit](#-)
 
