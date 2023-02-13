@@ -791,11 +791,15 @@ click on add
 
 * Now I'm able to see my user:
 
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218527960-65dabc09-5cd5-4810-bdaa-a21984bbea02.png" />
+</p>
+
 7. Go to Build Triggers Section 
-	a. Select Poll SCM (In Jenkins, SCM stands for "Source Code Management") 
-	b. In the test type 5 stars cron with space between them: * * * * *
-	c. This will give the a message every min if a change is done
-	d. Usually in production this is scheduled like one a day
+	* Select Poll SCM (In Jenkins, SCM stands for "Source Code Management") 
+	* In the test type 5 stars cron with space between them: * * * * *
+	* This will give the a message every min if a change is done
+	* Usually in production this is scheduled like one a day
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" />
