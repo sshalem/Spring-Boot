@@ -306,6 +306,8 @@ In the Service Layer testing we will use:
 
 See the following link for [well exaplnation of Mocking](https://blog.devgenius.io/spring-boot-deep-dive-on-unit-testing-92bbdf549594)
 
+Notes: We are testing the service layer. So we don't require a database layer actual operation. So we will make the database layer mock. </br>
+
 In the service Lyer of testing we will use annotations of ([see explanation from javatpoint](https://www.javatpoint.com/mockito-annotations)) : 
 1. `@InjectMocks`
 2. `@Mock` - In the Test, we annotate `@Mock` on fields that are annoteted with `@Autowired` in the service layer. </br>
