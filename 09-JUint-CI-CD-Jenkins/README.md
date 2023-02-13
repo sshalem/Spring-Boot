@@ -171,15 +171,21 @@ public class TestAppData {
 }
 ```
 
-This is the code for testing the Repository:
+This is the code for testing the Repository. </br>
+See the annotations of:
+* `@DataJpaTest`
+* `@BeforeEach`
+* `@TestMethodOrder(OrderAnnotation.class)` - To execute the test methods in a certain order
+* `Order(x)` - Must be applied at method level
+
 
 ```java
 @DataJpaTest
+@TestMethodOrder(OrderAnnotation.class)
 class MovieRepositoryTest {
 
 	@Autowired
 	private MovieRepository movieRepository;
-	
 	private Movie avatarMovie;
 	private Movie titanicMovie;
 	private Movie israelMovie;
@@ -198,6 +204,7 @@ class MovieRepositoryTest {
 	}
 
 	@Test
+	@Order(1)
 	@DisplayName("check save movie to DB")
 	void _01_save() {
 		Movie savedMovie = movieRepository.save(avatarMovie);
@@ -207,6 +214,7 @@ class MovieRepositoryTest {
 	}
 
 	@Test
+	@Order(2)
 	void _02_test_findMovieByName() {
 		Movie avatarMovie = new Movie("avatar", "action", LocalDate.of(2000, Month.APRIL, 22));
 		movieRepository.save(avatarMovie);
@@ -216,6 +224,7 @@ class MovieRepositoryTest {
 	}
 
 	@Test
+	@Order(3)
 	void _03_test_findMoviesByReleaseDate() {
 		// Act
 		movieRepository.save(avatarMovie);
