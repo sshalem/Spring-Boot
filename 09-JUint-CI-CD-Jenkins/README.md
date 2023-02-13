@@ -819,7 +819,9 @@ click on add
 
 9. Go to section Post-build Actions
 
-![image](https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png" />
+</p>
 
 * Select Email notification :
 
