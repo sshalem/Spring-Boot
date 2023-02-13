@@ -826,7 +826,7 @@ click on add
 * Select Email notification , then click on apply:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218512655-99151bc4-1605-4e8d-9b5f-29566ae4f289.png" width=400 height=300 />
+	<img src="https://user-images.githubusercontent.com/36256986/218512655-99151bc4-1605-4e8d-9b5f-29566ae4f289.png" width=500 height=300 />
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
