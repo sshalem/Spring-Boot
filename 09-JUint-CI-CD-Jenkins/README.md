@@ -40,7 +40,9 @@
 
 [Junit 5 Architecture](https://www.educative.io/courses/java-unit-testing-with-junit-5/xV9mMjj74gE): 
 
-![image](https://user-images.githubusercontent.com/36256986/218335246-1e8de40a-b56b-408d-96cd-88c370c60eb4.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218335246-1e8de40a-b56b-408d-96cd-88c370c60eb4.png" width=700 height=500/>
+</p>
 
 Junit 5 Architecture has three main components :
 
