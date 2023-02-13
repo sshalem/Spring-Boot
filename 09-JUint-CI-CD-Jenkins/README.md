@@ -498,6 +498,51 @@ class MovieServiceImplTest {
 
 <img src="https://img.shields.io/badge/- 4_Integration_testing %20-blue" height=40px>
 
+Integration test means, Check all applications layers [`w/o mocking`](#-): 
+- Web Layer
+- Service Layer
+
+In order to test `RestController` :
+1. I use [`RestTemplate Bean`](#-)
+2. I add [`@ExtendWith(SpringExtension.class)`](#-)
+3. I add metadata to annotation of [`@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)`](#-)
+
+```java
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class CustomerControllerTest {
+ 
+	@LocalServerPort
+	int randomServerPort;
+ 
+	@Autowired
+	private RestTemplate restTemplate;
+ 
+	@BeforeEach
+	void setUp() throws Exception {
+		restTemplate = new RestTemplate();
+ 
+	}
+ 
+	@Test
+	public void createCustomer() throws Exception {
+		CustomerEntity customerEntity = new CustomerEntity();
+		customerEntity.setFirstName("shabtay");
+		customerEntity.setLastName("shalem");
+		customerEntity.setPhone("052-8855370");
+		customerEntity.setAddress("מנחם בגין 15");
+		customerEntity.setCity("חולון");
+		customerEntity.setState("ישראל");
+ 
+		String url = "http://localhost:" + randomServerPort + "/customer/create";
+		ResponseEntity<CustomerEntity> response = restTemplate.postForEntity(url, customerEntity, CustomerEntity.class);
+ 
+		assertEquals("shabtay", response.getBody().getFirstName());
+	} 
+}
+```
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------------
