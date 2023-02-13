@@ -6,8 +6,9 @@
 | :-: | :--------------------------------------------------- |
 |  1  | [JUnit](#1_JUnit)             |
 |  2  | [Unit Test Vs Integration Test](#2_UnitTest_Vs_IntegrationTest)       |
-|  3  | [CI-CD](#3_CI_CD)             |
-|  4  | [Jenkins](#4_Jenkins)             |
+|  3  | [Respository Unit Testing](#3_Respository_Unit_Testing)             |
+|  8  | [CI-CD](#3_CI_CD)             |
+|  9  | [Jenkins](#4_Jenkins)             |
 
 - https://www.youtube.com/watch?v=2E3WqYupx7c&list=PLqq-6Pq4lTTa4ad5JISViSb2FVG8Vwa4o&ab_channel=JavaBrains
 - https://www.youtube.com/watch?v=EROuIf2Ac_I&ab_channel=JavaBrains
@@ -24,8 +25,6 @@
 [Junit 5 Architecture](https://www.educative.io/courses/java-unit-testing-with-junit-5/xV9mMjj74gE): 
 
 ![image](https://user-images.githubusercontent.com/36256986/218335246-1e8de40a-b56b-408d-96cd-88c370c60eb4.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218335469-42e31a97-4e81-49c2-bb6c-c69d0d51f1c7.png)
 
 Junit 5 Architecture has three main components :
 
@@ -71,21 +70,56 @@ https://www.youtube.com/watch?v=pHTr3IMuRh0
 
 ---------------------------------------------------------------------------------------------------
 
-######
+###### 3_Respository_Unit_Testing
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_Respository_Unit_Testing %20-blue" height=40px>
 
-###### x_
+Let's see how we can Unit Test the Repository. </br>
+I've created the following basic project to Test Unit a Repository. </br>
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+### [Dependencies](#-)
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+![image](https://user-images.githubusercontent.com/36256986/218346201-082faa63-d311-453f-b8b4-0008b494b0b3.png)
 
+### [Package layout](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/218346255-c43f0852-b429-4671-8f4c-1bdc92347ad5.png)
+
+### [Movie Entity](#-)
+
+```java
+@Entity
+@Table(name = "movie_tb")
+public class Movie {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String name;
+	private String genera;
+	private LocalDate releaseDate;
+
+	Ctor/G/S  
+```
+
+```java
+
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 ---------------------------------------------------------------------------------------------------
+
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
 
 ######
 
