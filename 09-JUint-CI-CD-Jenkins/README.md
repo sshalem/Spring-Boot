@@ -14,8 +14,8 @@
 |  5  | [Jenkins](#5_Jenkins)             |
 |     | [5.1. before CI](#5_1_before_CI)             |
 |     | [5.2. with CI architecture](#5_2_with_CI_architecture)             |
-|     | [5.1.](#5_1_)             |
-|     | [5.1.](#5_1_)             |
+|     | [5.3. Jenkins Server Install](#5_3_Jenkins_Server_Install)             |
+|     | [5.4.](#5_4_)             |
 |  6  | [CI-CD](#3_CI_CD)             |
 
 
@@ -586,6 +586,60 @@ When it comes to Testing , the tester needs to identity the root error :
 ![image](https://user-images.githubusercontent.com/36256986/218477106-cb3b77cb-836e-4288-bc1d-bd79d5441648.png)
 ![image](https://user-images.githubusercontent.com/36256986/218477150-6da6cb1b-863a-400c-b6cd-031230bfc685.png)
 
+### [Comparison](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/218477625-9dff942c-629c-480d-8a4a-88ac4ba59d19.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 5_3_Jenkins_Server_Install
+
+<img src="https://img.shields.io/badge/- 5_3_Jenkins_Server_Install %20- green" height=30px>
+
+1. Go to Jenkins official site:  https://www.jenkins.io/
+
+![image](https://user-images.githubusercontent.com/36256986/218478100-2e13080d-3630-48b5-b920-d5253375ac45.png)
+
+2. Click on the download button
+3. Choose LTS and download the .war file (IT's without the installer) 
+
+![image](https://user-images.githubusercontent.com/36256986/218478291-193ad3f6-ede5-48e5-99cf-c757c8d1cd31.png)
+
+4. Open CMD and run the Jenkins Server
+
+![image](https://user-images.githubusercontent.com/36256986/218478568-763e6378-dd95-446e-a102-6c54052e3a30.png)
+
+5. Once it runs we need to use password for admin which is created ,And its location is at the directory mentioned below:
+
+![image](https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png)
+
+6. Open the browser at localhost:8080  (this is the default port of Jenkins server)
+
+	* Need to paste the password in the field below:
+
+![image](https://user-images.githubusercontent.com/36256986/218479098-d080c9c1-15e9-44a1-80a1-d856e467ce81.png)
+
+7. Next page we get is following one
+
+	* Click on install Suggested Plugins 
+
+![image](https://user-images.githubusercontent.com/36256986/218479263-a44ed7fd-0e35-493f-8c7b-b38e53afe7c6.png)
+
+8. After plugins are installed , following page pops up:
+
+	* I fill the following data , click save and continue
+	* Password : 1234 
+
+![image](https://user-images.githubusercontent.com/36256986/218479438-15c405f0-7989-4ed4-aa62-304f21a4d39d.png)
+
+9. Following page pops up
+
+	* Here I can change the port number , but I left it as is:
+
+![image](https://user-images.githubusercontent.com/36256986/218479678-92455575-6961-4dcf-b8cb-8445b22814f1.png)
+
+![image](https://user-images.githubusercontent.com/36256986/218479719-e6307fce-d94c-4a83-a1e2-407857897965.png)
 
 
 
@@ -596,8 +650,29 @@ When it comes to Testing , the tester needs to identity the root error :
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 
 
