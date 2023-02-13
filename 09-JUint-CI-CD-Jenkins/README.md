@@ -742,11 +742,17 @@ java -jar jenkins.war
 1. Open Jenkins dashboard by browsing to http://localhost:8080
 2. Click on create new job
 
-![image](https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" />
+</p>
+
+
 
 3. Type the `app name` and select the `FreeStyle Project` then click OK
-	
-![image](https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" />
+</p>
 
 4. Following Page shows up In order to sync the project with jenkins do the following:
 	
@@ -798,9 +804,13 @@ click on add
 
 * Select Email notification :
 
-![image](https://user-images.githubusercontent.com/36256986/218484297-0c22cfe5-960e-4c76-9d68-c1ce3f6cc33d.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218484297-0c22cfe5-960e-4c76-9d68-c1ce3f6cc33d.png" />
+</p>
 
-![image](https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png" />
+</p>
 
 10. click on apply
 
