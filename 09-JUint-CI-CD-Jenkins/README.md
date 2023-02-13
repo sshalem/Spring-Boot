@@ -639,7 +639,7 @@ When it comes to Testing , the tester needs to identity the root error :
 5. Once it runs we need to use password for admin which is created ,And its location is at the directory mentioned below:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png" width=600 height=300/>
 </p>
 
 6. Open the browser at localhost:8080  (this is the default port of Jenkins server)
@@ -647,7 +647,7 @@ When it comes to Testing , the tester needs to identity the root error :
 	* Need to paste the password in the field below:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218479098-d080c9c1-15e9-44a1-80a1-d856e467ce81.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218479098-d080c9c1-15e9-44a1-80a1-d856e467ce81.png" width=600 height=300/>
 </p>
 
 7. Next page we get is following one
@@ -665,7 +665,7 @@ When it comes to Testing , the tester needs to identity the root error :
 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218479438-15c405f0-7989-4ed4-aa62-304f21a4d39d.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218479438-15c405f0-7989-4ed4-aa62-304f21a4d39d.png" width=600 height=300/>
 </p>
 
 9. Following page pops up
@@ -673,7 +673,7 @@ When it comes to Testing , the tester needs to identity the root error :
 	* Here I can change the port number , but I left it as is:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218479678-92455575-6961-4dcf-b8cb-8445b22814f1.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218479678-92455575-6961-4dcf-b8cb-8445b22814f1.png" width=600 height=300/>
 </p>
 
 
@@ -682,7 +682,7 @@ When it comes to Testing , the tester needs to identity the root error :
 	* This is how the dashboard looks like:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218480072-caa6021b-fea0-4ba6-853a-125483dc377c.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218480072-caa6021b-fea0-4ba6-853a-125483dc377c.png" width=600 height=400/>
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
