@@ -816,11 +816,7 @@ click on add
 * Select Email notification :
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484297-0c22cfe5-960e-4c76-9d68-c1ce3f6cc33d.png" />
-</p>
-
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png"/>
+	<img src="https://user-images.githubusercontent.com/36256986/218512655-99151bc4-1605-4e8d-9b5f-29566ae4f289.png" />
 </p>
 
 10. click on apply
