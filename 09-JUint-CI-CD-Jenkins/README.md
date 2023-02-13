@@ -510,11 +510,14 @@ class MovieServiceImplTest {
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
+See link with explaination from [Java Techie](https://www.youtube.com/watch?v=jkJgS3zDv9g&ab_channel=JavaTechie)
+
+
 [Question:](#-)
-* What is Jenkins?
+* What is `Jenkins`?
 
 [Answer:](#-)
-* Jenkins is a CI (Contiguous Integration)  tool used to build(Compile, test) code and deploy it to the production
+* Jenkins is a `CI (Contiguous Integration)`  tool used to build(Compile, test) code and deploy it to the production
 * Jenkins provides hundreds of plugins to support :
 	* Building
 	* Deploying
@@ -525,6 +528,13 @@ class MovieServiceImplTest {
 	* SVN 
 
 	
+[Question:](#-)
+* What is CI (Contiguous Integration)?
+
+[Answer:](#-)
+* `CI` is a process in which development work is integrated as early as possible. The resulting artifacts are automatically created and tested.	This process allows to identify errors as early as possible.
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
