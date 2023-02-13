@@ -143,9 +143,40 @@ public interface MovieService {
 }
 ```
 
-### [MovieRepository](#-)
+### [MovieServiceImpl](#-)
 
 ```java
+@Service
+public class MovieServiceImpl implements MovieService {
+
+	@Autowired
+	private MovieRepository movieRepository;
+
+	@Override
+	public Movie save(Movie movie) {
+		return movieRepository.save(movie);
+	}
+
+	@Override
+	public List<Movie> getAllMovies() {
+		return movieRepository.findAll();
+	}
+
+	@Override
+	public Movie getMovieById(long id) {
+		return movieRepository.findById(id).orElseThrow(() -> new RuntimeException("No Movie Found"));
+	}
+
+	@Override
+	public Movie getMovieByName(String name) {
+		return movieRepository.findMovieByName(name);
+	}
+
+	@Override
+	public List<Movie> getMoviesAfterReleaseDate(LocalDate localDate) {
+		return movieRepository.findMoviesAfterReleaseDate(localDate);
+	}
+}
 ```
 
 
