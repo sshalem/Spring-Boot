@@ -521,7 +521,7 @@ class MovieServiceImplTest {
 
 ###### 5_Jenkins
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5_Jenkins %20-blue" height=40px>
 
 See link with explaination from [Java Techie](https://www.youtube.com/watch?v=jkJgS3zDv9g&ab_channel=JavaTechie)
 
@@ -566,11 +566,15 @@ Let's see the problem we had before CI:
 	* If NO bugs , I can be released 
 
 
-![image](https://user-images.githubusercontent.com/36256986/218476416-d9b748fe-07c7-4af0-9c59-24c79adb11e2.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218476416-d9b748fe-07c7-4af0-9c59-24c79adb11e2.png" width=700 height=400/>
+</p>
 
 When it comes to Testing , the tester needs to identity the root error :
 
-![image](https://user-images.githubusercontent.com/36256986/218476502-e7bf1e07-841f-424d-a50a-efe35d27785e.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218476502-e7bf1e07-841f-424d-a50a-efe35d27785e.png" width=700 height=400/>
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -592,8 +596,13 @@ When it comes to Testing , the tester needs to identity the root error :
 	- If not failure it goes directly to the release.
 - If there's is a problem with the release , it will notify the developer
 
-![image](https://user-images.githubusercontent.com/36256986/218477106-cb3b77cb-836e-4288-bc1d-bd79d5441648.png)
-![image](https://user-images.githubusercontent.com/36256986/218477150-6da6cb1b-863a-400c-b6cd-031230bfc685.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218477106-cb3b77cb-836e-4288-bc1d-bd79d5441648.png" width=700 height=400/>
+</p>
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218477150-6da6cb1b-863a-400c-b6cd-031230bfc685.png" width=700 height=400/>
+</p>
 
 ### [Comparison](#-)
 
