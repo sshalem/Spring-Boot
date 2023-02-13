@@ -725,7 +725,7 @@ Created GIT Repository with :
 * and load code to GIT Repo
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218481716-90e464e0-9644-4b53-8829-ade7e90632d4.png" width=400 height=300 />
+	<img src="https://user-images.githubusercontent.com/36256986/218481716-90e464e0-9644-4b53-8829-ade7e90632d4.png" width=500 height=400 />
 </p>
 
 ### [3. Run Jenkins War file , to make Jenkins server Run](#-)
@@ -737,7 +737,7 @@ java -jar jenkins.war
 ```
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" width=300 height=200 />
+	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" width=500 height=250 />
 </p>
 
 
