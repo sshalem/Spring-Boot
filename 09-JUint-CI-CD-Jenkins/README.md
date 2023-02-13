@@ -305,7 +305,7 @@ In the Service Layer testing we will use:
 2. `JUnit`
 
 In the service Lyer of testing we will use annotations of ([see explanation from javatpoint](https://www.javatpoint.com/mockito-annotations)) : 
-1. `@@InjectMocks`
+1. `@InjectMocks`
 2. `@Mock`
 
 
