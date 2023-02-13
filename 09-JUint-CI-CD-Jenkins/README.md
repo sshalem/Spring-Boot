@@ -9,9 +9,11 @@
 |  3  | [Unit Testing](#3_Unit_Testing)             |
 |     | [3.1. Respository Layer Testing](#3_1_Respository_Layer_Testing)             |
 |     | [3.2. Service Layer Testing](#3_2_Service_Layer_Testing)             |
-|     | [3.3. ](#3_3)             |
-|  8  | [CI-CD](#3_CI_CD)             |
-|  9  | [Jenkins](#4_Jenkins)             |
+|     | [3.3. Controller Layer Testing](#3_3_Controller_Layer_Testing)             |
+|  4  | [Integration Testing](#4_Integration_testing)             |
+|  5  | [Jenkins](#5_Jenkins)             |
+|  6  | [CI-CD](#3_CI_CD)             |
+
 
 - https://www.youtube.com/watch?v=2E3WqYupx7c&list=PLqq-6Pq4lTTa4ad5JISViSb2FVG8Vwa4o&ab_channel=JavaBrains
 - https://www.youtube.com/watch?v=EROuIf2Ac_I&ab_channel=JavaBrains
@@ -479,7 +481,74 @@ class MovieServiceImplTest {
 ---------------------------------------------------------------------------------------------------
 
 
+###### 4_Integration_testing
+
+<img src="https://img.shields.io/badge/- 4_Integration_testing %20-blue" height=40px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
 ######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+###### 5_Jenkins
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+[Question:](#-)
+	What is Jenkins?
+
+[Answer:](#-)
+	• Jenkins is a CI (Contiguous Integration)  tool used to build(Compile, test)
+	code and deploy it to the production
+	• Jenkins provides hundreds of plugins to support :
+		○ Building
+		○ Deploying
+		○ And automating any project.
+	• It is a server-based system that runs in servlet containers such as Apache Tomcat.
+	• It supports version control tools like 
+		○ GIT
+		○ SVN 
+	to automate build
+	
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+###### 
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
