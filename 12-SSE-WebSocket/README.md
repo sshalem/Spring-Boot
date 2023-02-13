@@ -10,14 +10,6 @@
 |  3  | [](#3_)             |
 |     | [3.1. ](#3_1_)             |
 
-in this GIT I will show the use of ServerSentEvent & WebSocket.
-
-- For Server Sent Event :
-
-   1. SseEmitter ([```Code not working well, need to re-write it```](#-))
-   2. WebFlux
-
-- For WebSocket to show bi-directional communication from Server to Client , and Vice Versa
 
 ---------------------------------------------------------------------------------------------------
 
@@ -29,7 +21,10 @@ in this GIT I will show the use of ServerSentEvent & WebSocket.
 [`Server Sent Events (SSE)`](#-) is an HTTP standart that provides the capability to servers to push streaming data to client. </br>
 The flow is unidirectional from server to client and client receives updates when the server pushes some data.
 
-![image](https://user-images.githubusercontent.com/36256986/218595266-c53003dc-c890-48f2-a521-8982672dc85e.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218595266-c53003dc-c890-48f2-a521-8982672dc85e.png" width=600 height=400 />
+</p>
+
 
 How it works?
 1. First connection request is send by Client
@@ -38,7 +33,10 @@ How it works?
 4. We can send from server as much events as we want.
 5. We can have multiple clients.
 
-![image](https://user-images.githubusercontent.com/36256986/218595226-fa4cf004-c088-4eb8-a5c8-5ca797bb8ede.png)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218595226-fa4cf004-c088-4eb8-a5c8-5ca797bb8ede.png" width=600 height=400 />
+</p>
 
 ### [handle on client side](#-)
 
