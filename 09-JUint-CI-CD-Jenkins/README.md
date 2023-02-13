@@ -775,10 +775,13 @@ Here I need to add Jenkins Credentials made when I installed Jenkins :
 
 click on add
 
-![image](https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" />
+</p>
 
-![image](https://user-images.githubusercontent.com/36256986/218483456-c5a067f4-76e2-4912-b15f-42f1cdd9fab2.png)
-
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218483456-c5a067f4-76e2-4912-b15f-42f1cdd9fab2.png" />
+</p>
 
 * Now I'm able to see my user:
 
@@ -788,15 +791,21 @@ click on add
 	c. This will give the a message every min if a change is done
 	d. Usually in production this is scheduled like one a day
 
-![image](https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" />
+</p>
 
 8. Go to section Build and select the below option:
 
-![image](https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" />
+</p>
 
 * Type install
-	
-![image](https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png" />
+</p>
 
 9. Go to section Post-build Actions
 
