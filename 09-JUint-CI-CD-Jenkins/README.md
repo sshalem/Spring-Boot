@@ -737,7 +737,7 @@ java -jar jenkins.war
 ```
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" width=500 height=250 />
+	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" width=500 height=150 />
 </p>
 
 
