@@ -304,6 +304,9 @@ In the Service Layer testing we will use:
 1. `Mockito` - with Mockito we use to mock the dummy implementation of MovieService
 2. `JUnit`
 
+In the service Lyer of testing we will use annotations of ([see explanation from javatpoint](https://www.javatpoint.com/mockito-annotations)) : 
+1. `@@InjectMocks`
+2. `@Mock`
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
