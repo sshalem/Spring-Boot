@@ -814,13 +814,13 @@ click on add
 * Type install
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png" width=200 height=100 />
+	<img src="https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png" width=250 height=150 />
 </p>
 
 9. Go to section Post-build Actions
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png" width=300 height=200 />
+	<img src="https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png" width=200 height=100 />
 </p>
 
 * Select Email notification :
