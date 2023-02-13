@@ -12,8 +12,8 @@
 |     | [3.3. Controller Layer Testing](#3_3_Controller_Layer_Testing)             |
 |  4  | [Integration Testing](#4_Integration_testing)             |
 |  5  | [Jenkins](#5_Jenkins)             |
-|     | [5.1.](#5_1_)             |
-|     | [5.1.](#5_1_)             |
+|     | [5.1. before CI](#5_1_before_CI)             |
+|     | [5.2. with CI architecture](#5_2_with_CI_architecture)             |
 |     | [5.1.](#5_1_)             |
 |     | [5.1.](#5_1_)             |
 |  6  | [CI-CD](#3_CI_CD)             |
@@ -538,6 +538,70 @@ See link with explaination from [Java Techie](https://www.youtube.com/watch?v=jk
 [Answer:](#-)
 * `CI` is a process in which development work is integrated as early as possible. The resulting artifacts are automatically created and tested.	This process allows to identify errors as early as possible.
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 5_1_before_CI
+
+<img src="https://img.shields.io/badge/- 5_1_before_CI %20- green" height=30px>
+
+Let's see the problem we had before CI:
+
+### [Flow Diagram before CI](#-)
+
+- Developers write code and commit to Source code Repository (GIT)
+- Next step it will be built in a MAVEN or GRADLE (Difficult Integration)
+- Once Built Is successful , it will go to the Test environment
+- Here we have 2 options :
+	* If any failures/bugs , it will notify the developer
+	* If NO bugs , I can be released 
+
+
+![image](https://user-images.githubusercontent.com/36256986/218476416-d9b748fe-07c7-4af0-9c59-24c79adb11e2.png)
+
+When it comes to Testing , the tester needs to identity the root error :
+
+![image](https://user-images.githubusercontent.com/36256986/218476502-e7bf1e07-841f-424d-a50a-efe35d27785e.png)
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 5_2_with_CI_architecture
+
+<img src="https://img.shields.io/badge/- 5_2_with_CI_architecture %20- green" height=30px>
+
+### [Flow Diagram with CI architecture](#-)
+
+- Developers write code and commit to Source code Repository (GIT)
+- Source code on GIT gets pulled to CI server 
+- CI server will do the :
+	- Build 
+	- Test 
+	- Deploy
+- At the time of test , 
+	- if there is any failure on code , it immediatley notify to the developers Team 
+	- If not failure it goes directly to the release.
+- If there's is a problem with the release , it will notify the developer
+
+![image](https://user-images.githubusercontent.com/36256986/218477106-cb3b77cb-836e-4288-bc1d-bd79d5441648.png)
+![image](https://user-images.githubusercontent.com/36256986/218477150-6da6cb1b-863a-400c-b6cd-031230bfc685.png)
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -548,13 +612,6 @@ See link with explaination from [Java Techie](https://www.youtube.com/watch?v=jk
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
