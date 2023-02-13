@@ -511,20 +511,19 @@ class MovieServiceImplTest {
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 [Question:](#-)
-	What is Jenkins?
+* What is Jenkins?
 
 [Answer:](#-)
-	• Jenkins is a CI (Contiguous Integration)  tool used to build(Compile, test)
-	code and deploy it to the production
-	• Jenkins provides hundreds of plugins to support :
-		○ Building
-		○ Deploying
-		○ And automating any project.
-	• It is a server-based system that runs in servlet containers such as Apache Tomcat.
-	• It supports version control tools like 
-		○ GIT
-		○ SVN 
-	to automate build
+• Jenkins is a CI (Contiguous Integration)  tool used to build(Compile, test) code and deploy it to the production
+• Jenkins provides hundreds of plugins to support :
+	○ Building
+	○ Deploying
+	○ And automating any project.
+• It is a server-based system that runs in servlet containers such as Apache Tomcat.
+• It supports version control tools like 
+	○ GIT
+	○ SVN 
+to automate build
 	
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
