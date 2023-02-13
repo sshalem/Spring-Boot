@@ -806,7 +806,7 @@ click on add
 8. Go to section Build and select the below option:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" width=300 height=300/>
 </p>
 
 * Type install
