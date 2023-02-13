@@ -34,6 +34,21 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	public Movie updateMovie(Movie movie) {
+		Movie existingMovie = movieRepository.findById(movie.getId()).get();
+		existingMovie.setName(movie.getName());
+		existingMovie.setGenera(movie.getGenera());
+		existingMovie.setReleaseDate(movie.getReleaseDate());
+		return movieRepository.save(existingMovie);
+	}
+
+	@Override
+	public void deleteMovie(long id) {
+		Movie movie = movieRepository.findById(id).get();
+		movieRepository.delete(movie);
+	}
+
+	@Override
 	public List<Movie> getMoviesAfterReleaseDate(LocalDate localDate) {
 		return movieRepository.findMoviesAfterReleaseDate(localDate);
 	}

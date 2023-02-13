@@ -72,7 +72,6 @@ class MovieRepositoryTest {
 		movieRepository.save(generalMovie);
 
 		List<Movie> listMovies = movieRepository.findMoviesAfterReleaseDate(LocalDate.of(2000, Month.APRIL, 30));
-		System.out.println(listMovies);
 
 		assertThat(listMovies).isNotNull();
 		assertEquals(3, listMovies.size());

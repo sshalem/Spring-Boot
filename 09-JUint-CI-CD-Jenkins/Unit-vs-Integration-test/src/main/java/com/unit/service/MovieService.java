@@ -14,5 +14,9 @@ public interface MovieService {
 
 	Movie getMovieByName(String name);
 
+	Movie updateMovie(Movie movie);
+	
+	void deleteMovie(long id);
+
 	List<Movie> getMoviesAfterReleaseDate(LocalDate localDate);
 }
