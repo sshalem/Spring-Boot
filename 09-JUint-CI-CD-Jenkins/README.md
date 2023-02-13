@@ -725,7 +725,7 @@ Created GIT Repository with :
 * and load code to GIT Repo
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218481716-90e464e0-9644-4b53-8829-ade7e90632d4.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218481716-90e464e0-9644-4b53-8829-ade7e90632d4.png" width=300 height=200 />
 </p>
 
 ### [3. Run Jenkins War file , to make Jenkins server Run](#-)
@@ -737,7 +737,7 @@ java -jar jenkins.war
 ```
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png" width=300 height=200 />
 </p>
 
 
@@ -755,13 +755,13 @@ java -jar jenkins.war
 3. Type the `app name` and select the `FreeStyle Project` then click OK
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" width=300 height=200/>
+	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" width=300 height=200 />
 </p>
 
 4. Following Page shows up In order to sync the project with jenkins do the following:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png" width=300 height=200/>
+	<img src="https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png" width=300 height=200 />
 </p>
 
 5. Add GIT url and display name
@@ -769,14 +769,14 @@ java -jar jenkins.war
 	* Project url is not the git repo url  see in section 6
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482992-40dd9189-95a6-430b-abd0-35b1e54b0e1c.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218482992-40dd9189-95a6-430b-abd0-35b1e54b0e1c.png" width=300 height=200 />
 </p>
 
 6. Add repository url
 	* Click on add to add password of git
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png" width=300 height=200 />
 </p>
 
 Here I need to add Jenkins Credentials made when I installed Jenkins : 
@@ -786,13 +786,13 @@ Here I need to add Jenkins Credentials made when I installed Jenkins :
 click on add
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png" width=300 height=200 />
 </p>
 
 * Now I'm able to see my user:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218527960-65dabc09-5cd5-4810-bdaa-a21984bbea02.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218527960-65dabc09-5cd5-4810-bdaa-a21984bbea02.png" width=300 height=200 />
 </p>
 
 7. Go to Build Triggers Section 
@@ -802,31 +802,31 @@ click on add
 	* Usually in production this is scheduled like one a day
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" width=300 height=200 />
 </p>
 
 8. Go to section Build and select the below option:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" width=300 height=200/>
+	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" width=300 height=200 />
 </p>
 
 * Type install
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png" width=300 height=200 />
 </p>
 
 9. Go to section Post-build Actions
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png" width=300 height=200 />
 </p>
 
 * Select Email notification :
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218512655-99151bc4-1605-4e8d-9b5f-29566ae4f289.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218512655-99151bc4-1605-4e8d-9b5f-29566ae4f289.png" width=300 height=200 />
 </p>
 
 10. click on apply
