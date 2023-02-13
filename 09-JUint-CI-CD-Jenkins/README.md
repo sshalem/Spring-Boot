@@ -627,16 +627,20 @@ When it comes to Testing , the tester needs to identity the root error :
 3. Choose LTS and download the .war file (IT's without the installer) 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218478291-193ad3f6-ede5-48e5-99cf-c757c8d1cd31.png" width=700 height=400/>
+	<img src="https://user-images.githubusercontent.com/36256986/218478291-193ad3f6-ede5-48e5-99cf-c757c8d1cd31.png" width=700 height=300/>
 </p>
 
 4. Open CMD and run the Jenkins Server
 
-![image](https://user-images.githubusercontent.com/36256986/218478568-763e6378-dd95-446e-a102-6c54052e3a30.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218478568-763e6378-dd95-446e-a102-6c54052e3a30.png" width=700 height=300/>
+</p>
 
 5. Once it runs we need to use password for admin which is created ,And its location is at the directory mentioned below:
 
-![image](https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png)
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218478843-ef12b68d-cf28-485a-ae86-a2e4b453686e.png" width=700 height=300/>
+</p>
 
 6. Open the browser at localhost:8080  (this is the default port of Jenkins server)
 
