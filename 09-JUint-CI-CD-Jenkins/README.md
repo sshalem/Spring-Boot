@@ -979,7 +979,7 @@ see link from [Java Techie explained pipline with jenkins min 42 of video](https
 ### [Pipeline Architecture](#-)
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218575908-321fb958-10a3-47f0-bc2d-cdd063c28563.png" width=700 height=250/>
+	<img src="https://user-images.githubusercontent.com/36256986/218575908-321fb958-10a3-47f0-bc2d-cdd063c28563.png" width=700 height=350/>
 </p>
 
 ### [Types Of Pipeline](#-)
@@ -990,7 +990,7 @@ see link from [Java Techie explained pipline with jenkins min 42 of video](https
 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218575971-d610806c-87c2-4a4b-b557-db0e8039e0d5.png" width=400 height=150/>
+	<img src="https://user-images.githubusercontent.com/36256986/218575971-d610806c-87c2-4a4b-b557-db0e8039e0d5.png" width=400 height=250/>
 </p>
 
 ###### x_
