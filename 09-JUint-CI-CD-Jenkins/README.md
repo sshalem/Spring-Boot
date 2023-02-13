@@ -7,8 +7,8 @@
 |  1  | [JUnit](#1_JUnit)             |
 |  2  | [Unit Test Vs Integration Test](#2_UnitTest_Vs_IntegrationTest)       |
 |  3  | [Unit Testing](#3_Unit_Testing)             |
-|     | [3.1. Respository Layer Testing](#3_Respository_Layer_Testing)             |
-|     | [3.2. Service Layer Testing](#3_Service_Layer_Testing)             |
+|     | [3.1. Respository Layer Testing](#3_1_Respository_Layer_Testing)             |
+|     | [3.2. Service Layer Testing](#3_2_Service_Layer_Testing)             |
 |     | [3.3. ](#3_3)             |
 |  8  | [CI-CD](#3_CI_CD)             |
 |  9  | [Jenkins](#4_Jenkins)             |
@@ -86,9 +86,9 @@ void test() {
 
 ---------------------------------------------------------------------------------------------------
 
-###### 3_Respository_Unit_Testing
+###### 3_Unit_Testing
 
-<img src="https://img.shields.io/badge/- 3_Respository_Unit_Testing %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_Unit_Testing %20-blue" height=40px>
 
 Let's see how we can Unit Test the Repository. </br>
 I've created the following basic project to Test Unit a Repository. </br>
@@ -150,9 +150,9 @@ We can see now that a new package is created under the `src/test/java` folder.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 3_1_Run_Respository_Unit_Testing
+###### 3_1_Respository_Layer_Testing
 
-<img src="https://img.shields.io/badge/- 3_1_Run_Respository_Unit_Testing %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3_1_Respository_Layer_Testing %20- green" height=30px>
 
 Add the following annotaion to the [`@DataJpaTest`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html) . </br>
 
@@ -242,6 +242,14 @@ class MovieRepositoryTest {
 	}
 }
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 3_2_Service_Layer_Testing
+
+<img src="https://img.shields.io/badge/- 3_2_Service_Layer_Testing %20- green" height=30px>
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
