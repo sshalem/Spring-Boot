@@ -7,6 +7,7 @@
 |  1  | [JUnit](#1_JUnit)             |
 |  2  | [Unit Test Vs Integration Test](#2_UnitTest_Vs_IntegrationTest)       |
 |  3  | [Respository Unit Testing](#3_Respository_Unit_Testing)             |
+|     | [3.1. Run Respository Testing](#3_1_Run_Respository_Unit_Testing)             |
 |  8  | [CI-CD](#3_CI_CD)             |
 |  9  | [Jenkins](#4_Jenkins)             |
 
@@ -145,7 +146,30 @@ We can see now that a new package is created under the `src/test/java` folder.
 
 ![image](https://user-images.githubusercontent.com/36256986/218348325-3c9f9e3a-aebb-4986-b4fa-7aa4299d168f.png)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+###### 3_1_Run_Respository_Unit_Testing
+
+<img src="https://img.shields.io/badge/- 3_1_Run_Respository_Unit_Testing %20- green" height=30px>
+
+Add the following annotaion to the [`@DataJpaTest`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html) . </br>
+
+[see another link with explanation](https://howtodoinjava.com/spring-boot2/testing/datajpatest-annotation/) </br>
+In Spring boot applications, we can use `@DataJpaTest` annotation that focuses only on testing the JPA components.</br>
+`@DataJpaTest` will disable full auto-configuration of the application context and instead apply only configuration relevant to JPA components and tests.</br>
+By default, it scans for `@Entity` classes and configures Spring Data JPA repositories annotated with `@Repository` annotation.</br>
+
+If an embedded database is available on the classpath, it configures one as well. </br>
+Use @AutoConfigureTestDatabase to override this behavior. </br>
+For example, to run the tests against an application configured real database, use Replace.NONE.
+
+```
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+public class TestAppData {
+   // ..
+}
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
