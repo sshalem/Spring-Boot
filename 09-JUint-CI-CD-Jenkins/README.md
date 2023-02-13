@@ -249,6 +249,10 @@ class MovieRepositoryTest {
 
 <img src="https://img.shields.io/badge/- 3_2_Service_Layer_Testing %20- green" height=30px>
 
+In the Service Layer testing we will use:
+1. Mockito
+2. JUnit
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
