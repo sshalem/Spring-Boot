@@ -304,6 +304,8 @@ In the Service Layer testing we will use:
 1. `Mockito` - with Mockito we use to mock the dummy implementation of MovieService
 2. `JUnit`
 
+See the following link for [well exaplnation of Mocking](https://blog.devgenius.io/spring-boot-deep-dive-on-unit-testing-92bbdf549594)
+
 In the service Lyer of testing we will use annotations of ([see explanation from javatpoint](https://www.javatpoint.com/mockito-annotations)) : 
 1. `@InjectMocks`
 2. `@Mock` - In the Test, we annotate `@Mock` on fields that are annoteted with `@Autowired` in the service layer. </br>
