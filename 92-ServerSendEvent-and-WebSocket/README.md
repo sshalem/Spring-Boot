@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/- SSE WebSocket %20- blue" height=70px>
+<img src="https://img.shields.io/badge/- SSE & WebSocket %20- blue" height=70px>
 
 ###### \_
 
