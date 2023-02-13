@@ -737,7 +737,72 @@ java -jar jenkins.war
 
 ![image](https://user-images.githubusercontent.com/36256986/218482018-8084ff45-6b57-4093-b035-65f4b5f437f1.png)
 
+### [4. Create new Job](#-)
 
+1. Open Jenkins dashboard by browsing to http://localhost:8080
+2. Click on create new job
+
+![image](https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png)
+
+3. Type the `app name` and select the `FreeStyle Project` then click OK
+	
+![image](https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png)
+
+4. Following Page shows up In order to sync the project with jenkins do the following:
+	
+![image](https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png)
+
+5. Add GIT url and display name
+
+	* Project url is not the git repo url  see in section 6
+
+![image](https://user-images.githubusercontent.com/36256986/218482992-40dd9189-95a6-430b-abd0-35b1e54b0e1c.png)
+
+6. Add repository url
+	* Click on add to add password of git
+
+![image](https://user-images.githubusercontent.com/36256986/218483187-167a6c17-31a2-48cd-812e-5f5ce4391908.png)
+
+Here I need to add Jenkins Credentials made when I installed Jenkins : 
+* user (admin): sshalem
+* Password : 1234
+
+click on add
+
+![image](https://user-images.githubusercontent.com/36256986/218483402-ddc97e46-a5d1-4c5a-a450-5c60a3253e3c.png)
+
+![image](https://user-images.githubusercontent.com/36256986/218483456-c5a067f4-76e2-4912-b15f-42f1cdd9fab2.png)
+
+
+* Now I'm able to see my user:
+
+7. Go to Build Triggers Section 
+	a. Select Poll SCM (In Jenkins, SCM stands for "Source Code Management") 
+	b. In the test type 5 stars cron with space between them: * * * * *
+	c. This will give the a message every min if a change is done
+	d. Usually in production this is scheduled like one a day
+
+![image](https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png)
+
+8. Go to section Build and select the below option:
+
+![image](https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png)
+
+* Type install
+	
+![image](https://user-images.githubusercontent.com/36256986/218484033-5152bade-3ef6-449a-bb18-2f3943cbaa01.png)
+
+9. Go to section Post-build Actions
+
+![image](https://user-images.githubusercontent.com/36256986/218484184-69b0aea9-41fe-4d2f-90e6-ca2ab56e8fb8.png)
+
+* Select Email notification :
+
+![image](https://user-images.githubusercontent.com/36256986/218484297-0c22cfe5-960e-4c76-9d68-c1ce3f6cc33d.png)
+
+![image](https://user-images.githubusercontent.com/36256986/218484331-292cd1d4-cebb-43aa-926e-ebc9877ee99d.png)
+
+10. click on apply
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
