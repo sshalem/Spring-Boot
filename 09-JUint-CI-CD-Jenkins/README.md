@@ -802,7 +802,7 @@ click on add
 	* Usually in production this is scheduled like one a day
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" width=500 height=300 />
+	<img src="https://user-images.githubusercontent.com/36256986/218483745-4389b76c-9e19-498b-89ab-0f1e0e07eca9.png" width=600 height=300 />
 </p>
 
 8. Go to section Build and select the below option:
