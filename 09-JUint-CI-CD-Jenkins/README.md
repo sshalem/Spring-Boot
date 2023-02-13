@@ -11,7 +11,7 @@
 |     | [3.2. Service Layer Testing](#3_2_Service_Layer_Testing)             |
 |     | [3.3. Controller Layer Testing](#3_3_Controller_Layer_Testing)             |
 |  4  | [Integration Testing](#4_Integration_testing)             |
-|  5  | [Jenkins](#5_Jenkins)             |
+|  5  | [Jenkins CI-CD](#5_Jenkins)             |
 |     | [5.1. before CI](#5_1_before_CI)             |
 |     | [5.2. with CI architecture](#5_2_with_CI_architecture)             |
 |     | [5.3. Jenkins Server Install](#5_3_Jenkins_Server_Install)             |
@@ -21,7 +21,7 @@
 |     | [5.7. Intentionally add failure to Code](#5_7_Intentionally_add_failure_to_Code)             |
 |     | [5.8. configure mail for receiving messages](#5_8_configure_mail_for_receiving_messages)             |
 |     | [5.9. ](#5_9_)             |
-|  6  | [CI-CD](#3_CI_CD)             |
+|  6  | [Pipeline](#6_Pipeline)             |
 
 
 
@@ -961,28 +961,39 @@ class JenkinsApplicationTests {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-
-###### 
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### 
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 ---------------------------------------------------------------------------------------------------
 
 
-######
+###### 6_Pipeline
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 6_Pipeline %20-blue" height=40px>
+
+see link from [Java Techie explained pipline with jenkins min 42 of video](https://www.youtube.com/watch?v=jkJgS3zDv9g&ab_channel=JavaTechie) 
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218575828-06c89def-7f1d-48bd-b8ec-ff870b166374.png" width=700 height=300/>
+</p>
+
+
+
+### [Pipeline Architecture](#-)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218575908-321fb958-10a3-47f0-bc2d-cdd063c28563.png" width=700 height=300/>
+</p>
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218575951-75338c63-38de-4618-b74b-168bf30758ea.png" width=700 height=300/>
+</p>
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218575971-d610806c-87c2-4a4b-b557-db0e8039e0d5.png" width=700 height=300/>
+</p>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
