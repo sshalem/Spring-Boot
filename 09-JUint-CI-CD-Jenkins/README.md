@@ -979,12 +979,15 @@ see link from [Java Techie explained pipline with jenkins min 42 of video](https
 ### [Pipeline Architecture](#-)
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218575908-321fb958-10a3-47f0-bc2d-cdd063c28563.png" width=400 height=150/>
+	<img src="https://user-images.githubusercontent.com/36256986/218575908-321fb958-10a3-47f0-bc2d-cdd063c28563.png" width=700 height=250/>
 </p>
 
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218575951-75338c63-38de-4618-b74b-168bf30758ea.png" width=400 height=150/>
-</p>
+### [Types Of Pipeline](#-)
+
+* Build plugin pipline
+* Declarative pipeline
+* Scripted pipeline
+
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/36256986/218575971-d610806c-87c2-4a4b-b557-db0e8039e0d5.png" width=400 height=150/>
