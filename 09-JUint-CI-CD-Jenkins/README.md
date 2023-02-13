@@ -16,7 +16,7 @@
 |     | [5.2. with CI architecture](#5_2_with_CI_architecture)             |
 |     | [5.3. Jenkins Server Install](#5_3_Jenkins_Server_Install)             |
 |     | [5.4. Work Flow with Jenkins](#5_4_Work_Flow_with_Jenkins)             |
-|     | [5.. ](#5_)             |
+|     | [5.5. ](#5_5)             |
 |     | [5.. ](#5_)             |
 |  6  | [CI-CD](#3_CI_CD)             |
 
@@ -747,7 +747,7 @@ java -jar jenkins.war
 2. Click on create new job
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218482528-eb2ef7a2-57df-46b3-bf9d-aba361574207.png" width=300 height=200/>
 </p>
 
 
@@ -755,12 +755,14 @@ java -jar jenkins.war
 3. Type the `app name` and select the `FreeStyle Project` then click OK
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" />
+	<img src="https://user-images.githubusercontent.com/36256986/218482624-5cf6a5e8-2ad4-46ad-a305-3fd238b5ffeb.png" width=300 height=200/>
 </p>
 
 4. Following Page shows up In order to sync the project with jenkins do the following:
-	
-![image](https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png)
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/36256986/218482843-5810fdb2-5343-40ef-8908-c68928d1871f.png" width=300 height=200/>
+</p>
 
 5. Add GIT url and display name
 
@@ -806,7 +808,7 @@ click on add
 8. Go to section Build and select the below option:
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" width=300 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218483885-eb9c26a4-0f6c-4685-baf8-c486ed30bcb8.png" width=300 height=200/>
 </p>
 
 * Type install
@@ -831,9 +833,9 @@ click on add
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 
+###### 5_5
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 5_5 %20- green" height=30px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
