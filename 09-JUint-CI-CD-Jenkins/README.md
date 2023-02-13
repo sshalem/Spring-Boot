@@ -655,7 +655,7 @@ When it comes to Testing , the tester needs to identity the root error :
 	* Click on install Suggested Plugins 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/36256986/218479263-a44ed7fd-0e35-493f-8c7b-b38e53afe7c6.png" width=700 height=300/>
+	<img src="https://user-images.githubusercontent.com/36256986/218479263-a44ed7fd-0e35-493f-8c7b-b38e53afe7c6.png" width=600 height=300/>
 </p>
 
 8. After plugins are installed , following page pops up:
