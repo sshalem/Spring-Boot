@@ -178,7 +178,19 @@ public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
 
 <img src="https://img.shields.io/badge/- 2_1_Spring_WebFlux_work_flow %20-blue" height=40px>
 
-### [What is Spring WebFlux?](#-)
+see more data in link from [spring io WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
+
+### [Spring WebFlux?](#-)
+
+Spring WebFlux is a `parallel version` of Spring MVC and supports fully `non-blocking reactive streams`. </br>
+It supports the `back pressure` concept and uses : 
+* [`Netty as the inbuilt server to run reactive applications`](#-).  </br>
+
+If you are familiar with the Spring MVC programming style, you can easily work on webflux also.
+
+`Spring webflux` uses project reactor as the reactive library. </br>
+Reactor is a Reactive Streams library; therefore, all of its operators support non-blocking back pressure.</br>
+It is developed in close collaboration with Spring.
 
 With Spring boot, when we add the starter for `Spring-Reactive-Web` it adds the following dependencies:
 
@@ -196,17 +208,9 @@ With Spring boot, when we add the starter for `Spring-Reactive-Web` it adds the 
 </dependency>
 ```
 
-Spring WebFlux is a `parallel version` of Spring MVC and supports fully `non-blocking reactive streams`. </br>
-It supports the `back pressure` concept and uses [`Netty as the inbuilt server to run reactive applications`](#-).  </br>
-If you are familiar with the Spring MVC programming style, you can easily work on webflux also.
-
-`Spring webflux` uses project reactor as the reactive library. </br>
-Reactor is a Reactive Streams library; therefore, all of its operators support non-blocking back pressure.</br>
-It is developed in close collaboration with Spring.
-
 Spring WebFlux heavily uses two [`publishers`](#-) :
 
-[`1. Mono publisher` ](#-)
+#### [`Mono publisher` ](#-)
 
 Returns 0 or 1 element.
 ```java
@@ -218,7 +222,7 @@ Mono<String> monoE = Mono.empty();
 mono.subscribe();
 ```
 
-[`2. Flux publisher`](#-)
+#### [`Flux publisher`](#-)
 
 Returns 0…N elements. </br>
 A Flux can be endless, meaning that it can keep emitting elements forever. </br>
