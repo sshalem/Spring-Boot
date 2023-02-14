@@ -247,6 +247,10 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 
 `Backpressure` is when a downstream (Database) can tell an upstream (Java Application) to send him less data , in order to prevent it from being overwhelmed.
 
+* `Backpressure` - The ability of the Subscriber to let the Publisher how many requests can it handle at the time. </br>
+So it's the Subscriber that is responsible for the flow of the data, not the Publisher as it just provides the data.
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ###### 2_1_Spring_WebFlux_work_flow
@@ -255,17 +259,21 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 
 ### [Spring_WebFlux_work_flow](#-)
 
-
-
+[Links form JavTechie](#-) </br>
 [Spring_WebFlux_work_flow - JavaTechie part 1](https://www.youtube.com/watch?v=ckfqcfzCg3w&ab_channel=JavaTechie) </br>
 [Spring_WebFlux_work_flow - JavaTechie part 2](https://www.youtube.com/watch?v=9x7G4f3o90Q&ab_channel=JavaTechie) </br>
 [Spring_WebFlux_work_flow - JavaTechie part 3](https://www.youtube.com/watch?v=UZEQiaRhB9A&ab_channel=JavaTechie) </br>
-[]() </br>
-[]() </br>
-[]() </br>
-[]() </br>
 
-Let's look at the Diagram :
+
+Let's look at the flow Diagram with the code below:
+
+```java
+@Test
+public void test01() {
+	Mono<String> monoString = Mono.just("MONO test").log();
+	monoString.subscribe(System.out::println);
+}
+```
 
 ![image](https://user-images.githubusercontent.com/36256986/218866616-21fe801d-913b-4afc-8bca-2e21c6f2319b.png)
 
