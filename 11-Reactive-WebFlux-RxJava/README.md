@@ -189,7 +189,8 @@ Reactor is a Reactive Streams library; therefore, all of its operators support n
 It is developed in close collaboration with Spring.
 
 Spring WebFlux heavily uses two publishers :
-[1. `Mono`](#-)
+
+[`1. Mono`](#-)
 
 Returns 0 or 1 element.
 ```java
@@ -197,7 +198,7 @@ Mono<String> mono = Mono.just("Alex");
 Mono<String> mono = Mono.empty();
 ```
 
-[2. `Flux`](#-)
+[`2. Flux`](#-)
 
 Returns 0…N elements. A Flux can be endless, meaning that it can keep emitting elements forever. </br>
 Also it can return a sequence of elements and then send a completion notification when it has returned all of its elements.
