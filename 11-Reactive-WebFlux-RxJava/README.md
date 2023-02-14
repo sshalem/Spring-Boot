@@ -112,16 +112,20 @@ It's built on top of the Reactive Streams specification, a standard for building
 From the background of non-reactive Java development, going reactive can be quite a steep learning curve. This becomes more challenging when comparing it to the Java 8 Stream API, as they could be mistaken for being the same high-level abstractions.
 
 
-### [Reactive Streams API](#-)
+### [Project Reactor - Reactive Streams API](#-)
 
 The new Reactive Streams API was created by engineers from Netflix, Pivotal, Lightbend, RedHat, Twitter, and Oracle, among others and are now part of Java 9. </br>
 Two popular implementations of reactive streams are:
 * RxJava (https://github.com/ReactiveX/RxJava) 
-* and Project Reactor (https://projectreactor.io/).
+* [`Project Reactor`](https://projectreactor.io/).
 
-Reactive Streams API defines four interfaces:
 
-1. `Publisher`: Emits a sequence of events to subscribers according to the demand received from its subscribers. </br>
+### [Reactive Streams API defines four interfaces:](#-)
+
+
+#### [`1. Publisher`](#-)
+
+Emits a sequence of events to subscribers according to the demand received from its subscribers. </br>
 A publisher can serve multiple subscribers.
 
 ```java
@@ -130,7 +134,9 @@ Publisher.javapublic interface Publisher<T> {
 }
 ```
 
-2. `Subscriber`: Receives and processes events emitted by a Publisher. </br>
+#### [`2. Subscriber`](#-)
+
+Receives and processes events emitted by a Publisher. </br>
 Please note that no notifications will be received until Subscription#request(long) is called to signal the demand.</br>
 It has four methods to handle various kinds of responses received.
 
@@ -143,7 +149,9 @@ public interface Subscriber<T> {
 }
 ```
 
-3. `Subscription`: Defines a one-to-one relationship between a Publisher and a Subscriber. </br>
+#### [`3. Subscription`](#-)
+
+Defines a one-to-one relationship between a Publisher and a Subscriber. </br>
 It can only be used once by a single Subscriber.</br>
 It is used to both signal desire for data and cancels demand (and allow resource cleanup).
 
@@ -154,7 +162,9 @@ Subscription.javapublic interface Subscription<T> {
 }
 ```
 
-4. `Processor`: Represents a processing stage consisting of both a Subscriber and a Publisher and obeys both contracts.
+#### [`4. Processor`](#-)
+
+Represents a processing stage consisting of both a Subscriber and a Publisher and obeys both contracts.
 
 ```java
 public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
