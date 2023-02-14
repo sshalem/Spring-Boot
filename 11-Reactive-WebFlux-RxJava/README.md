@@ -205,6 +205,16 @@ In Spring WebFlux, we call reactive APIs/functions that return `Monos and Fluxes
 When you invoke an API that returns a mono or a flux, it will return immediately.</br>
 The function call results will be delivered to you through the mono or flux when they become available.
 
+### [Backpressure](#-)
+
+[Back pressure from Baeldung](https://www.baeldung.com/reactor-core) </br>.
+The next thing we should consider is backpressure. </br>
+In our example, the subscriber is telling the producer to push every single element at once.</br>
+This could end up becoming overwhelming for the subscriber, consuming all of its resources.
+
+`Backpressure` is when a downstream can tell an upstream to send it less data in order to prevent it from being overwhelmed.
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
