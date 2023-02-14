@@ -252,14 +252,6 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 
 [reactive-programming-with-spring-data-r2dbc](https://medium.com/pictet-technologies-blog/reactive-programming-with-spring-data-r2dbc-ee9f1c24848b)
 
-<p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/218747306-28214739-b5a4-4781-8b84-3d58e2054f2d.png" />  
-</p>
-
-<p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/218747671-73ceb3be-37ab-4238-8d87-ab9ccd2bd2ab.png" />  
-</p>
-
 ![image](https://user-images.githubusercontent.com/36256986/218781799-df5d2184-41b5-467e-8e5a-0f7b47982ae7.png)
 
 
