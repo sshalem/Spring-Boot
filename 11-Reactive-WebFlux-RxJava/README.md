@@ -176,7 +176,7 @@ public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
 
 ###### 2_Spring_WebFlux
 
-<img src="https://img.shields.io/badge/- 2_1_Spring_WebFlux_work_flow %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2_Spring_WebFlux %20-blue" height=40px>
 
 see more data in link from [spring io WebFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)
 
@@ -186,11 +186,10 @@ Spring WebFlux is a `parallel version` of Spring MVC and supports fully `non-blo
 It supports the `back pressure` concept and uses : 
 * [`Netty as the inbuilt server to run reactive applications`](#-).  </br>
 
-If you are familiar with the Spring MVC programming style, you can easily work on webflux also.
-
 `Spring webflux` uses project reactor as the reactive library. </br>
 Reactor is a Reactive Streams library; therefore, all of its operators support non-blocking back pressure.</br>
-It is developed in close collaboration with Spring.
+
+### [Dependencies](#-)
 
 With Spring boot, when we add the starter for `Spring-Reactive-Web` it adds the following dependencies:
 
@@ -208,11 +207,10 @@ With Spring boot, when we add the starter for `Spring-Reactive-Web` it adds the 
 </dependency>
 ```
 
-Spring WebFlux heavily uses two [`publishers`](#-) :
+### [WebFlux Publishers](#-)
 
-#### [`Mono publisher` ](#-)
+[`Mono publisher`](#-) Returns 0 or 1 element.
 
-Returns 0 or 1 element.
 ```java
 Mono<String> monoS = Mono.just("Alex");
 Mono<String> monoE = Mono.empty();
@@ -222,9 +220,7 @@ Mono<String> monoE = Mono.empty();
 mono.subscribe();
 ```
 
-#### [`Flux publisher`](#-)
-
-Returns 0…N elements. </br>
+[`Flux publisher`](#-) Returns 0…N elements. </br>
 A Flux can be endless, meaning that it can keep emitting elements forever. </br>
 Also it can return a sequence of elements and then send a completion notification when it has returned all of its elements.
 
