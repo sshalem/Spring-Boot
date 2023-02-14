@@ -156,7 +156,7 @@ It can only be used once by a single Subscriber.</br>
 It is used to both signal desire for data and cancels demand (and allow resource cleanup).
 
 ```java
-Subscription.javapublic interface Subscription<T> {
+public interface Subscription<T> {
   public void request(long n);
   public void cancel();
 }
