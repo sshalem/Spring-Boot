@@ -33,8 +33,8 @@ It delegates the request to worker threads for I/O operations such as database a
 During the time worker threads are busy, the servlet thread (request thread) remains in `waiting status`, and thus `it is blocked`. </br>
 It is also called synchronous request processing.
 
-<p>
-  <img src="https://user-images.githubusercontent.com/36256986/218669639-eeb1a063-15c2-4a41-bac3-09319f18f3d8.png" width=700 height=300/>  
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/218669639-eeb1a063-15c2-4a41-bac3-09319f18f3d8.png" width=700 height=250/>  
 </p>
 
   
