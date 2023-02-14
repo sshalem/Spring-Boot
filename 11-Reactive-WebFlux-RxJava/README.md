@@ -24,22 +24,35 @@
 Reactive programming involves modeling data and events as observable data streams and implementing data processing routines to react to the changes in those streams.
 let us understand the difference between blocking and non-blocking request processing.
 
-### [2. Blocking vs Non-blocking (Async) Request Processing?]
+### [2. Blocking vs Non-blocking (Async) Request Processing?](#-)
 
-### [2.1. Blocking]
+#### [2.1. Blocking Request Processing](#-)
 
 In traditional MVC applications, a new servlet thread is created when a request comes to the server. </br>
 It delegates the request to worker threads for I/O operations such as database access etc. </br>
 During the time worker threads are busy, the servlet thread (request thread) remains in `waiting status`, and thus `it is blocked`. </br>
-It is also called synchronous request processing.
+It is also called synchronous request processing.</br>
+As a server can have some finite number of request threads, it limits the server’s capability to process that number of requests at maximum server load.</br>
+It may hamper the performance and limit the full utilization of server capability.
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/218669639-eeb1a063-15c2-4a41-bac3-09319f18f3d8.png" width=700 height=250/>  
+  <img src="https://user-images.githubusercontent.com/36256986/218669639-eeb1a063-15c2-4a41-bac3-09319f18f3d8.png" />  
 </p>
 
-  
+#### [2.2. Non-blocking Request Processing](#-)
+
+In `non-blocking or asynchronous` request processing, no thread is in waiting state. </br>
+There is generally only one request thread receiving the request.</br>
+All incoming requests come with an event handler and callback information. </br>
+Request thread delegates the incoming requests to a thread pool (generally a small number of threads) which delegates the request to its handler function and immediately starts processing other incoming requests from the request thread. </br>
+When the handler function is complete, one thread from the pool collects the response and passes it to the call back function. </br>
+`Non-blocking` nature of threads helps in scaling the performance of the application. </br>
+A small number of threads means less memory utilization and less context switching.
 
 
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/218670632-bcbb2a1a-45db-480d-ad15-38e9f5a5f31f.png" />  
+</p>
 
 ###### 1_1_links
 
