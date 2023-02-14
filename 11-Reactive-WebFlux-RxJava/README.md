@@ -24,7 +24,7 @@
 ### [Video's](#-)
 
 1. [Spring Webflux & WebClient Tutorial 2022 with code](https://www.youtube.com/watch?v=PecY7og5KyI&ab_channel=Stack%7BDev%7D) + [github SpringWebFlux-WebClient](https://github.com/nyakaz73/SpringWebFlux-WebClient)
-2. [Reactive Tutorial well explained](https://www.youtube.com/watch?v=IK26KdGRl48&list=PLnXn1AViWyL70R5GuXt_nIDZytYBnvBdd&ab_channel=CodeWithDilip)
+2. [Excellent Video - for Reactive Tutorial](https://www.youtube.com/watch?v=IK26KdGRl48&list=PLnXn1AViWyL70R5GuXt_nIDZytYBnvBdd&ab_channel=CodeWithDilip)
 3. []()
 4. []()
 
