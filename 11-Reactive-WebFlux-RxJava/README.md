@@ -30,15 +30,16 @@
 
 ### [Articles](#-)
 
-1. [spring.io/spring-boot/docs/2.7.8 web.reactive](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.reactive)
+1. [spring io/spring-boot/docs/2.7.8 web.reactive](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.reactive)
 2. [spring io web-reactive](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web-reactive.html#webflux-fn)
 3. [spring-webflux-tutorial](https://www.devglan.com/spring-boot/spring-webflux-reactive-rest-api)
 4. [spring-webflux-reactive-rest-api](https://www.devglan.com/spring-boot/spring-webflux-reactive-rest-api)
 5. [spring-webflux-flux-how-to-publish-dynamically](https://stackoverflow.com/questions/51370463/spring-webflux-flux-how-to-publish-dynamically)
-6. []()
-7. []()
-8. []()
-9. []()
+6. [Project Reactor](https://projectreactor.io/)
+7. [spring io spring-data-r2dbc-docs](https://docs.spring.io/spring-data/r2dbc/docs/current/reference/html/)
+8. [spring.io projects spring-data-r2dbc](https://spring.io/projects/spring-data-r2dbc)
+9. [spring-boot-r2dbc okta.com](https://developer.okta.com/blog/2021/05/12/spring-boot-r2dbc)
+10. []()
 
 
 
