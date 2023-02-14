@@ -8,12 +8,11 @@
 |  1  | [Reactive WebFlux Blocking/Non-Blocking](#1_Reactive_WebFlux_Blocking_NonBlocking)             |
 |     | [1.1. Blocking vs Non-blocking](#1_1_Blocking_vs_NonBlocking)             |
 |     | [1.2. Reactive Streams API](#1_2_Reactive_Streams_API)             |
-|     | [1.3. Spring WebFlux](#1_3_Spring_WebFlux)             |
-|     | [1.4. Spring WebFlux work flow](#1_4_Spring_WebFlux_work_flow)             |
-|     | [1.5.](#1_5)             |
-|  2  | [Spring boot Starter R2DBC](#2_Spring_boot_Starter_R2DBC)       |
-|  3  | [](#3_)             |
-|     | [3.1. ](#3_1_)             |
+|  2  | [Spring_WebFlux](#2_Spring_WebFlux)       |
+|     | [2.1. Spring WebFlux work flow](#2_1_Spring_WebFlux_work_flow)             |
+|  3  | [Spring boot Starter R2DBC](#3_Spring_boot_Starter_R2DBC)       |
+|  4  | [](#4_)             |
+|     | [4.1. ](#4_1_)             |
 
 ---------------------------------------------------------------------------------------------------
 
@@ -173,14 +172,31 @@ public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+---------------------------------------------------------------------------------------------------
 
-###### 1_3_Spring_WebFlux
+###### 2_Spring_WebFlux
 
-<img src="https://img.shields.io/badge/- 1_3_Spring_WebFlux %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_1_Spring_WebFlux_work_flow %20-blue" height=40px>
 
-### [3. What is Spring WebFlux?](#-)
+### [What is Spring WebFlux?](#-)
 
-Spring WebFlux is a parallel version of Spring MVC and supports fully non-blocking reactive streams. </br>
+With Spring boot, when we add the starter for `Spring-Reactive-Web` it adds the following dependencies:
+
+```sql
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+  
+  <!-- for Testing the Reactive  -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+```
+
+Spring WebFlux is a `parallel version` of Spring MVC and supports fully `non-blocking reactive streams`. </br>
 It supports the `back pressure` concept and uses [`Netty as the inbuilt server to run reactive applications`](#-).  </br>
 If you are familiar with the Spring MVC programming style, you can easily work on webflux also.
 
@@ -188,19 +204,24 @@ If you are familiar with the Spring MVC programming style, you can easily work o
 Reactor is a Reactive Streams library; therefore, all of its operators support non-blocking back pressure.</br>
 It is developed in close collaboration with Spring.
 
-Spring WebFlux heavily uses two publishers :
+Spring WebFlux heavily uses two [`publishers`](#-) :
 
-[`1. Mono`](#-)
+[`1. Mono publisher` ](#-)
 
 Returns 0 or 1 element.
 ```java
-Mono<String> mono = Mono.just("Alex");
-Mono<String> mono = Mono.empty();
+Mono<String> monoS = Mono.just("Alex");
+Mono<String> monoE = Mono.empty();
+
+//To subscribe call method
+ 
+mono.subscribe();
 ```
 
-[`2. Flux`](#-)
+[`2. Flux publisher`](#-)
 
-Returns 0…N elements. A Flux can be endless, meaning that it can keep emitting elements forever. </br>
+Returns 0…N elements. </br>
+A Flux can be endless, meaning that it can keep emitting elements forever. </br>
 Also it can return a sequence of elements and then send a completion notification when it has returned all of its elements.
 
 ```java
@@ -224,13 +245,13 @@ The next thing we should consider is backpressure. </br>
 In our example, the subscriber is telling the producer to push every single element at once.</br>
 This could end up becoming overwhelming for the subscriber, consuming all of its resources.
 
-`Backpressure` is when a downstream can tell an upstream to send it less data in order to prevent it from being overwhelmed.
+`Backpressure` is when a downstream (Database) can tell an upstream (Java Application) to send him less data , in order to prevent it from being overwhelmed.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 1_4_Spring_WebFlux_work_flow
+###### 2_1_Spring_WebFlux_work_flow
 
-<img src="https://img.shields.io/badge/- 1_4_Spring_WebFlux_work_flow %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_1_Spring_WebFlux_work_flow %20- green" height=30px>
 
 ### [Spring_WebFlux_work_flow](#-)
 
@@ -242,13 +263,18 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 []() </br>
 []() </br>
 
+
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
 
 ---------------------------------------------------------------------------------------------------
 
-###### 2_Spring_boot_Starter_R2DBC
+###### 3_Spring_boot_Starter_R2DBC
 
-<img src="https://img.shields.io/badge/- 2_Spring_boot_Starter_R2DBC %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_Spring_boot_Starter_R2DBC %20-blue" height=40px>
 
 [reactive-programming-with-spring-data-r2dbc](https://medium.com/pictet-technologies-blog/reactive-programming-with-spring-data-r2dbc-ee9f1c24848b)
 
