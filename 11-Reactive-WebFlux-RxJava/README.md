@@ -97,12 +97,21 @@ A small number of threads means less memory utilization and less context switchi
 
 
 
-### [2. What is Reactive?](#-)
+### [What is Reactive?](#-)
 
 `Reactive Programming` is a programming paradigm that promotes an asynchronous, non-blocking, event-driven approach to data processing. </br>
 Reactive programming involves modeling data and events as observable data streams and implementing data processing routines to react to the changes in those streams.
 
-### [2. Reactive Streams API](#-)
+### [Reactor Core](#-)
+
+
+`Reactor Core` is a `Java 8 library` that implements the reactive programming model. </br>
+It's built on top of the Reactive Streams specification, a standard for building reactive applications.
+
+From the background of non-reactive Java development, going reactive can be quite a steep learning curve. This becomes more challenging when comparing it to the Java 8 Stream API, as they could be mistaken for being the same high-level abstractions.
+
+
+### [Reactive Streams API](#-)
 
 The new Reactive Streams API was created by engineers from Netflix, Pivotal, Lightbend, RedHat, Twitter, and Oracle, among others and are now part of Java 9. </br>
 Two popular implementations of reactive streams are:
