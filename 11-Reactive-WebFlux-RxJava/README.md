@@ -269,11 +269,15 @@ Let's look at the flow Diagram with the code below:
 
 ```java
 @Test
-public void test01() {
-	Mono<String> monoString = Mono.just("MONO test").log();
-	monoString.subscribe(System.out::println);
+public void test02() {
+	Flux<?> fluxString = Flux.just("Flux test", "second test", "third test").log();
+        fluxString.subscribe(System.out::println);
 }
 ```
+
+1. Subscriber send a `subscribe()`
+2. Publisher sends a `subscription()`
+3. 
 
 ![image](https://user-images.githubusercontent.com/36256986/218866616-21fe801d-913b-4afc-8bca-2e21c6f2319b.png)
 
