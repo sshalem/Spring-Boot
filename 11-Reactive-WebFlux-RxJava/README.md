@@ -4,7 +4,7 @@
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
-|  1  | [SSE Server Send Event](#1_SSE_Server_Send_Event)             |
+|  1  | [Reactive](#1_SSE_Server_Send_Event)             |
 |     | [1.1. links](#1_1_links)             |
 |  2  | [](#2_)       |
 |  3  | [](#3_)             |
@@ -31,14 +31,14 @@
 
 ### [Articles](#-)
 
-1. [demo-spring-sse](https://github.com/aliakh/demo-spring-sse)
-2. [SSE with WebFlux by mkyong](https://mkyong.com/spring-boot/spring-boot-webflux-server-sent-events-example/)
-3. [SSE-spring-push-notifications](https://roytuts.com/server-sent-events-spring-push-notifications/)
-4. [SSE with Spring from golb.hplar](https://golb.hplar.ch/2017/03/Server-Sent-Events-with-Spring.html)
-5. [SSE spring boot + ReactJs](https://turkogluc.com/server-sent-events-with-spring-boot-and-reactjs/)
-6. [SSE tutorial](https://medium.com/@mohitsinha.it/spring-boot-server-sent-events-tutorial-fb94a77db8a7)
-7. [SSE part 1](https://www.youtube.com/watch?v=T_JZzdPCkOU&ab_channel=JavaGrowth)
-8. [SSE part 2](https://www.youtube.com/watch?v=HoxPgU4lFGE&ab_channel=JavaGrowth)
+1. [spring-webflux-reactive-rest-api](https://www.devglan.com/spring-boot/spring-webflux-reactive-rest-api)
+2. []()
+3. []()
+4. []()
+5. []()
+6. []()
+7. []()
+8. []()
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
