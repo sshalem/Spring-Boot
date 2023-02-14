@@ -6,7 +6,11 @@
 | :-: | :--------------------------------------------------- |
 |     | [links](#links)             |
 |  1  | [Reactive WebFlux Blocking/Non-Blocking](#1_Reactive_WebFlux_Blocking_NonBlocking)             |
-|     | [1.1. links](#1_1_links)             |
+|     | [1.1. Blocking vs Non-blocking](#1_1_Blocking_vs_NonBlocking)             |
+|     | [1.2. Reactive Streams API](#1_2_Reactive_Streams_API)             |
+|     | [1.3. Spring WebFlux](#1_3_Spring_WebFlux)             |
+|     | [1.4. ](#1_4)             |
+|     | [1.5. ](#1_5)             |
 |  2  | [](#2_)       |
 |  3  | [](#3_)             |
 |     | [3.1. ](#3_1_)             |
@@ -51,6 +55,10 @@ let us understand the difference between blocking and non-blocking request proce
 
 see link i used for explanation [spring-webflux-tutorial](https://howtodoinjava.com/spring-webflux/spring-webflux-tutorial/)
 
+###### 1_1_Blocking_vs_NonBlocking
+
+<img src="https://img.shields.io/badge/- 1_1_Blocking_vs_NonBlocking  %20- green" height=30px>
+
 ### [1. Blocking vs Non-blocking (Async) Request Processing?](#-)
 
 #### [1.1. Blocking Request Processing](#-)
@@ -80,6 +88,15 @@ A small number of threads means less memory utilization and less context switchi
   <img src="https://user-images.githubusercontent.com/36256986/218670632-bcbb2a1a-45db-480d-ad15-38e9f5a5f31f.png" />  
 </p>
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 1_2_Reactive_Streams_API
+
+<img src="https://img.shields.io/badge/- 1_2_Reactive_Streams_API %20- green" height=30px>
+
+
+
 ### [2. What is Reactive?](#-)
 
 `Reactive Programming` is a programming paradigm that promotes an asynchronous, non-blocking, event-driven approach to data processing. </br>
@@ -88,8 +105,113 @@ Reactive programming involves modeling data and events as observable data stream
 ### [2. Reactive Streams API](#-)
 
 The new Reactive Streams API was created by engineers from Netflix, Pivotal, Lightbend, RedHat, Twitter, and Oracle, among others and are now part of Java 9. </br>
-It defines four interfaces:
+Two popular implementations of reactive streams are:
+* RxJava (https://github.com/ReactiveX/RxJava) 
+* and Project Reactor (https://projectreactor.io/).
 
+Reactive Streams API defines four interfaces:
+
+1. `Publisher`: Emits a sequence of events to subscribers according to the demand received from its subscribers. </br>
+A publisher can serve multiple subscribers.
+
+```java
+Publisher.javapublic interface Publisher<T> {
+  public void subscribe(Subscriber<? super T> s);
+}
+```
+
+2. `Subscriber`: Receives and processes events emitted by a Publisher. </br>
+Please note that no notifications will be received until Subscription#request(long) is called to signal the demand.</br>
+It has four methods to handle various kinds of responses received.
+
+```java
+public interface Subscriber<T> {
+  public void onSubscribe(Subscription s);
+  public void onNext(T t);
+  public void onError(Throwable t);
+  public void onComplete();
+}
+```
+
+3. `Subscription`: Defines a one-to-one relationship between a Publisher and a Subscriber. </br>
+It can only be used once by a single Subscriber.</br>
+It is used to both signal desire for data and cancels demand (and allow resource cleanup).
+
+```java
+Subscription.javapublic interface Subscription<T> {
+  public void request(long n);
+  public void cancel();
+}
+```
+
+4. `Processor`: Represents a processing stage consisting of both a Subscriber and a Publisher and obeys both contracts.
+
+```java
+public interface Processor<T, R> extends Subscriber<T>, Publisher<R> {
+}
+```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 1_3_Spring_WebFlux
+
+<img src="https://img.shields.io/badge/- 1_3_Spring_WebFlux %20- green" height=30px>
+
+### [3. What is Spring WebFlux?](#-)
+
+Spring WebFlux is a parallel version of Spring MVC and supports fully non-blocking reactive streams. </br>
+It supports the `back pressure` concept and uses [`Netty as the inbuilt server to run reactive applications`](#-).  </br>
+If you are familiar with the Spring MVC programming style, you can easily work on webflux also.
+
+`Spring webflux` uses project reactor as the reactive library. </br>
+Reactor is a Reactive Streams library; therefore, all of its operators support non-blocking back pressure.</br>
+It is developed in close collaboration with Spring.
+
+Spring WebFlux heavily uses two publishers :
+[1. `Mono`](#-)
+
+Returns 0 or 1 element.
+```java
+Mono<String> mono = Mono.just("Alex");
+Mono<String> mono = Mono.empty();
+```
+
+[2. `Flux`](#-)
+
+Returns 0…N elements. A Flux can be endless, meaning that it can keep emitting elements forever. </br>
+Also it can return a sequence of elements and then send a completion notification when it has returned all of its elements.
+
+```java
+Flux<String> flux = Flux.just("A", "B", "C");
+Flux<String> flux = Flux.fromArray(new String[]{"A", "B", "C"});
+Flux<String> flux = Flux.fromIterable(Arrays.asList("A", "B", "C"));
+ 
+//To subscribe call method
+ 
+flux.subscribe();
+```
+
+In Spring WebFlux, we call reactive APIs/functions that return `Monos and Fluxes` and your controllers will return `monos and fluxes`. </br>
+When you invoke an API that returns a mono or a flux, it will return immediately.</br>
+The function call results will be delivered to you through the mono or flux when they become available.
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-  %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 
+
+<img src="https://img.shields.io/badge/-  %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 ###### 
