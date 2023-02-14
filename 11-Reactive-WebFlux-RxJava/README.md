@@ -255,6 +255,8 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 
 ### [Spring_WebFlux_work_flow](#-)
 
+
+
 [Spring_WebFlux_work_flow - JavaTechie part 1](https://www.youtube.com/watch?v=ckfqcfzCg3w&ab_channel=JavaTechie) </br>
 [Spring_WebFlux_work_flow - JavaTechie part 2](https://www.youtube.com/watch?v=9x7G4f3o90Q&ab_channel=JavaTechie) </br>
 [Spring_WebFlux_work_flow - JavaTechie part 3](https://www.youtube.com/watch?v=UZEQiaRhB9A&ab_channel=JavaTechie) </br>
@@ -263,6 +265,9 @@ This could end up becoming overwhelming for the subscriber, consuming all of its
 []() </br>
 []() </br>
 
+Let's look at the Diagram :
+
+![image](https://user-images.githubusercontent.com/36256986/218866616-21fe801d-913b-4afc-8bca-2e21c6f2319b.png)
 
 
 
