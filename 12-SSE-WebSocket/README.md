@@ -6,8 +6,10 @@
 | :-: | :--------------------------------------------------- |
 |  1  | [SSE Server Send Event](#1_SSE_Server_Send_Event)             |
 |     | [1.1. links](#1_1_links)             |
-|  2  | [ServerSentEvent](#2_ServerSentEvent)             |
-|     | [2.1. POM](#2_1_pom)             |
+|  2  | [ServerSentEvent simple project](#2_ServerSentEvent_simple_project)             |
+|     | [2.1. BackEnd](#2_1_BackEnd)             |
+|     | [2.2. FrontEnd](#2_1_FrontEnd)             |
+|     | [2.3. test](#2_1_test)             |
 |  3  | [](#3_)       |
 |  4  | [](#4_)             |
 |     | [3.1. ](#3_1_)             |
@@ -82,6 +84,84 @@ eventSource.onmessage = function (event) {
 ---------------------------------------------------------------------------------------------------
 
 
+###### 2_ServerSentEvent_simple_project
+
+<img src="https://img.shields.io/badge/- 2_ServerSentEvent_simple_project %20-blue" height=40px>
+
+In this project I will show how SSE works
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
@@ -123,3 +203,4 @@ eventSource.onmessage = function (event) {
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------------
+
