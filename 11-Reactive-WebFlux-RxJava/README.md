@@ -288,9 +288,7 @@ If Publisher send (n) number of data, then there will be (n) time of `onNext()` 
 5. Once all records received by Subscriber, then Publisher will invoke one `onComplete()` method of Subscriber to confirm `I am done , execution was successful`. </br>
 if there is any error, then Publisher will fire `onError()` event.
 
-![image](https://user-images.githubusercontent.com/36256986/219144654-6dd58613-936f-47ff-a464-c6819937c1ae.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218880011-d4740777-d9d6-4b0e-8cb0-dc77082b256b.png)
+![image](https://user-images.githubusercontent.com/36256986/219157261-7ab7d09c-9014-4aec-96eb-db1a1bad0b7b.png)
 
 
 
