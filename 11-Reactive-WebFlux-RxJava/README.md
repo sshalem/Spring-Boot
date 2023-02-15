@@ -279,10 +279,14 @@ public void testFlux() {
 }
 ```
 
-1. Subscriber send a `subscribe()` to Publisher
-2. Publisher sends a `subscription()` to Subscriber
-3. Subscriber sends a `request` which he takes from the `subscription` 
-4. 
+1. Subscriber (Consumer) invoke `subscribe()` method in Publisher (Producer) and pass the instansce of `Subscriber` as an input.
+2. Publisher will sent a `Subscription` event to the Subscriber , sonfirming that subscription is successfull
+3. Subscriber will call `request()` method from `Subscription` Interface , to get the data from Publisher. </br>
+Subscriber can request any number of data `request(n)` from publisher
+4. Next, Publisher will send data stream to Subscriber by invoking `onNext()` method. </br>
+If Publisher send (n) number of data, then there will be (n) time of `onNext()` event process
+5. Once all records received by Subscriber, then Publisher will invoke one `onComplete()` method of Subscriber to confirm `I am done , execution was successful`. </br>
+if there is any error, then Publisher will fire `onError()` event.
 
 ![image](https://user-images.githubusercontent.com/36256986/219144654-6dd58613-936f-47ff-a464-c6819937c1ae.png)
 
