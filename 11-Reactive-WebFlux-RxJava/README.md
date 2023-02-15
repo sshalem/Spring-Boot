@@ -286,6 +286,9 @@ public void testFlux() {
 
 ![image](https://user-images.githubusercontent.com/36256986/219144654-6dd58613-936f-47ff-a464-c6819937c1ae.png)
 
+![image](https://user-images.githubusercontent.com/36256986/218880011-d4740777-d9d6-4b0e-8cb0-dc77082b256b.png)
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -323,18 +326,4 @@ public void testFlux() {
 
 ---------------------------------------------------------------------------------------------------
 
-![image](https://user-images.githubusercontent.com/36256986/218877883-868477d8-5580-46ac-adc9-e792b63a2f1d.png)
 
-![image](https://user-images.githubusercontent.com/36256986/218879568-8c6681f7-1caf-4f14-a8b6-f2de6bee34d7.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218879655-83b7df07-3a03-4519-99af-a8b10b14b246.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218879715-5044c014-2d16-44c7-a7cd-836c5bf5654f.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218879948-a44d21ab-7fa4-4f78-9c26-cd1aa47b77fb.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218880011-d4740777-d9d6-4b0e-8cb0-dc77082b256b.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218880275-5bbddeb9-dd07-45e8-a849-ab938f7e00ad.png)
-
-![image](https://user-images.githubusercontent.com/36256986/218880319-9da684dd-b116-4815-af09-ec3021dff7a3.png)
