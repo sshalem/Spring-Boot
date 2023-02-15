@@ -10,6 +10,7 @@
 |     | [1.2. Reactive Streams API](#1_2_Reactive_Streams_API)             |
 |  2  | [Spring_WebFlux](#2_Spring_WebFlux)       |
 |     | [2.1. Spring WebFlux work flow](#2_1_Spring_WebFlux_work_flow)             |
+|     | [2.2. Flux & Mono code example](#2_2_Flux_and_Mono_code_example)             |
 |  3  | [Spring boot Starter R2DBC](#3_Spring_boot_Starter_R2DBC)       |
 |  4  | [](#4_)             |
 |     | [4.1. ](#4_1_)             |
@@ -266,18 +267,7 @@ So it's the Subscriber that is responsible for the flow of the data, not the 
 [Spring_WebFlux_work_flow - JavaTechie part 3](https://www.youtube.com/watch?v=UZEQiaRhB9A&ab_channel=JavaTechie) </br>
 
 
-Let's look at the flow Diagram with the code below:
-
-```java
-@Test
-public void testFlux() {
-	// Update the Publisher
-	Flux<?> fluxString = Flux.just("Flux test", "Spring test", "Hibernate test").log();
-		
-	// Publisher send subscribe
-	fluxString.subscribe(System.out::println);
-}
-```
+Let's look at the flow Diagram :
 
 1. Subscriber (Consumer) invoke `subscribe()` method in Publisher (Producer) and pass the instansce of `Subscriber` as an input.
 2. Publisher will sent a `Subscription` event to the Subscriber , sonfirming that subscription is successfull
@@ -294,7 +284,39 @@ So it's the Subscriber that is responsible for the flow of the data, not the 
 
 ![image](https://user-images.githubusercontent.com/36256986/219157261-7ab7d09c-9014-4aec-96eb-db1a1bad0b7b.png)
 
+###### 2_2_Flux_and_Mono_code_example
 
+<img src="https://img.shields.io/badge/- 2_2_Flux_and_Mono_code_example %20- green" height=30px>
+
+Lets create a class under test folder of Spring boot app, and run the follwing code :
+
+```java
+@Test
+public void testFlux() {
+	// Update the Publisher
+	Flux<?> fluxString = Flux
+		.just("Flux test", "Spring test", "Hibernate test")
+		.log();
+		
+	// Publisher send subscribe
+	fluxString.subscribe(System.out::println);
+}
+```
+
+Console shows the following:
+
+```ssql
+23:03:39.059 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+23:03:39.074 [main] INFO reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
+23:03:39.076 [main] INFO reactor.Flux.Array.1 - | request(unbounded)
+23:03:39.076 [main] INFO reactor.Flux.Array.1 - | onNext(Flux test)
+Flux test
+23:03:39.076 [main] INFO reactor.Flux.Array.1 - | onNext(Spring test)
+Spring test
+23:03:39.076 [main] INFO reactor.Flux.Array.1 - | onNext(Hibernate test)
+Hibernate test
+23:03:39.077 [main] INFO reactor.Flux.Array.1 - | onComplete()
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
