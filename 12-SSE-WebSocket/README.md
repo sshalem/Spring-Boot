@@ -8,8 +8,8 @@
 |     | [1.1. links](#1_1_links)             |
 |  2  | [ServerSentEvent simple project](#2_ServerSentEvent_simple_project)             |
 |     | [2.1. BackEnd](#2_1_BackEnd)             |
-|     | [2.2. FrontEnd](#2_1_FrontEnd)             |
-|     | [2.3. test](#2_1_test)             |
+|     | [2.2. FrontEnd](#2_2_FrontEnd)             |
+|     | [2.3. test](#2_3_test)             |
 |  3  | [](#3_)       |
 |  4  | [](#4_)             |
 |     | [3.1. ](#3_1_)             |
@@ -90,23 +90,23 @@ eventSource.onmessage = function (event) {
 
 In this project I will show how SSE works
 
-###### x_
+###### 2_1_BackEnd
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_1_BackEnd %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
+###### 2_2_FrontEnd
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 2_2_FrontEnd %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 2_3_test
+
+<img src="https://img.shields.io/badge/- 2_3_test %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
