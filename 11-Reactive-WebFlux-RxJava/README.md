@@ -288,6 +288,10 @@ If Publisher send (n) number of data, then there will be (n) time of `onNext()` 
 5. Once all records received by Subscriber, then Publisher will invoke one `onComplete()` method of Subscriber to confirm `I am done , execution was successful`. </br>
 if there is any error, then Publisher will fire `onError()` event.
 
+Note : I can limit the `request(n)` to the number that I want. </br>
+`Backpressure` - The ability of the Subscriber to let the Publisher how many requests can it handle at the time. </br>
+So it's the Subscriber that is responsible for the flow of the data, not the Publisher as it just provides the data.
+
 ![image](https://user-images.githubusercontent.com/36256986/219157261-7ab7d09c-9014-4aec-96eb-db1a1bad0b7b.png)
 
 
