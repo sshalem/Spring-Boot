@@ -22,8 +22,9 @@
 
 <img src="https://img.shields.io/badge/- 1_SSE_Server_Send_Event %20-blue" height=40px>
 
-[`Server Sent Events (SSE)`](#-) is an HTTP standart that provides the capability to servers to push streaming data to client. </br>
-The flow is unidirectional from server to client and client receives updates when the server pushes some data.
+### [`Server Sent Events (SSE)`](#-) 
+* is an [`HTTP`](#-) standart that provides the capability to servers to push streaming data to client. </br>
+* The flow is unidirectional from server to client and client receives updates when the server pushes some data.
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/36256986/218595266-c53003dc-c890-48f2-a521-8982672dc85e.png" width=600 height=400 />
