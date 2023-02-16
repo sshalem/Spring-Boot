@@ -102,6 +102,15 @@ In this project I will show how SSE works
 
 <img src="https://img.shields.io/badge/- 2_2_FrontEnd %20- green" height=30px>
 
+On the fronEnd side I need to do the follwoing in order to be able to listen to the Evenets From Server:
+1. create new Object of [`EventSource`] and instanciate it with the url of server
+2. create 3 methods , which are :
+	* `eventSource.onopen`
+	* `eventSource.onerror`
+	* `eventSource.onmessage` (can be also eventListener , I will show implementaion with both cases)
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
