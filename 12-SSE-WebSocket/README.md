@@ -393,10 +393,21 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 5. Open 2 different browers (EDGE and Chrome)
 6. send via Postman , a `Post` request to the server, and lets see how the browsers react.
 
-
-
 ![image](https://user-images.githubusercontent.com/36256986/219902422-f62fe502-9a47-43f1-bd4d-854459700125.png)
 
+7. This is what we see in both browsers:
+
+### [Chrome](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/219902500-5e8847e2-9fc3-49c7-bdc7-3588edf299c5.png)
+
+### [Edge](#-)
+
+![image](https://user-images.githubusercontent.com/36256986/219902509-fa60b010-c07b-4c56-beb0-934e2ead068e.png)
+
+8. Both get the same data , with same type
+9. They Have differnet Id
+10. We can implement a code , to send only to a specific connection the data , By using `Map` and not `List`
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
