@@ -65,11 +65,11 @@ public class NewsController {
 		// and send event (push events) to all clients
 		for(SseEmitter emitter : emitters) {
 			try {
-				// Since I use eventListener in my front end
+				// SInce I use eventListener in my front end
 				// I need to define the same name in the listener here and in my backend
-				// BackEnd ---> "latestNews"
-				// FrontEnd eventListener ---> "message"
-				emitter.send(SseEmitter.event().name("message").data(freshNews));				
+				// BackEnd ---> custom name "latestNews" (and not message)
+				// FrontEnd eventListener ---> "latestNews"
+				emitter.send(SseEmitter.event().name("latestNews").data(freshNews));				
 			} catch (IOException e) {    
 				// Got error with below code
 				// e.printStackTrace();
