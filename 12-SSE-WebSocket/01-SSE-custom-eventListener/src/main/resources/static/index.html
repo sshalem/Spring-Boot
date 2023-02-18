@@ -34,7 +34,7 @@
         };
 
         // (2) custom eventListener second way:
-        // I used eventListener which listens to the "latestNews" coming from the server 
+        // I used eventListener which listens to the "latestNews" coming from the server
         eventSource.addEventListener('latestNews', function (event) {
           console.log(event);
           const message = JSON.parse(event.data);

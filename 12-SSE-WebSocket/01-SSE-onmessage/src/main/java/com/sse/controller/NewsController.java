@@ -2,6 +2,7 @@ package com.sse.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 @RestController
 public class NewsController {
@@ -39,7 +41,13 @@ public class NewsController {
 		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		try {
 			// First : send a connection request message to the client, to established connection 
-			sseEmitter.send(SseEmitter.event().name("Establish connection"));
+			SseEventBuilder sseEventBuilder = SseEmitter
+					.event()
+					.id(UUID.randomUUID().toString().substring(0, 8))
+					.name("this is the type field")
+					.data("connecting to server");			
+			
+			sseEmitter.send(sseEventBuilder);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
