@@ -49,6 +49,8 @@ public class NewsController {
 		// "java.lang.IllegalStateException: ResponseBodyEmitter is already set complete" 
 		// This code also handles the warning of "Async request timed out"         
 		sseEmitter.onCompletion(()-> emitters.remove(sseEmitter));
+		sseEmitter.onError((e) -> emitters.remove(sseEmitter));
+		sseEmitter.onTimeout(() -> emitters.remove(sseEmitter));
 		emitters.add(sseEmitter);
 		return sseEmitter;
 	}
