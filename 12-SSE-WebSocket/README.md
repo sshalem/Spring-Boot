@@ -382,6 +382,20 @@ On the fronEnd side I need to do the follwoing in order to be able to listen to 
 <img src="https://img.shields.io/badge/- 2_3_test %20- green" height=30px>
 
 Here run only project `01-SSE-custom-eventListener` (No need to run others).
+1. browse to localhost:8080. </br>
+2. Open developer tools, goto to network tab
+3. we can see , on left side, we have a `createConnection` - which is the url `GET` path of our Rest API 
+4. Click on `EventStream` as shown below , we can see the initial data sent from server when a connection is created.
+
+
+![image](https://user-images.githubusercontent.com/36256986/219902224-eefda340-6920-4900-aa66-87278512c8c5.png)
+
+5. Open 2 different browers (EDGE and Chrome)
+6. send via Postman , a `Post` request to the server, and lets see how the browsers react.
+
+
+
+![image](https://user-images.githubusercontent.com/36256986/219902422-f62fe502-9a47-43f1-bd4d-854459700125.png)
 
 
 
