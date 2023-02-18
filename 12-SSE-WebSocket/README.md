@@ -381,6 +381,8 @@ On the fronEnd side I need to do the follwoing in order to be able to listen to 
 
 <img src="https://img.shields.io/badge/- 2_3_test %20- green" height=30px>
 
+Here run only project `01-SSE-custom-eventListener` (No need to run others).
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
