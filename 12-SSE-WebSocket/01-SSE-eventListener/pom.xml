@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sse</groupId>
-	<artifactId>01-SSE</artifactId>
+	<artifactId>01-SSE-eventListener</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>01-SSE</name>
-	<description>demo 05-SSE</description>
+	<name>01-SSE-eventListener</name>
+	<description>demo SSE eventListener</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

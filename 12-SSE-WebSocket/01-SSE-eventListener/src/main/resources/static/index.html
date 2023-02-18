@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>events</h3>
+    <ul id="events"></ul>
+    <script>
+      const eventList = document.getElementById('events');
+
+      function addEvent(text) {
+        const newElement = document.createElement('li');
+        newElement.textContent = text;
+        eventList.appendChild(newElement);
+      }
+
+      function initialize() {
+        const eventSource = new EventSource('http://localhost:8080/createConnection');
+
+        eventSource.onopen = (event) => {
+          addEvent('Connected and subscribed');
+          console.log('open');
+        };
+
+        eventSource.onerror = (e) => {
+          if (e.readyState == EventSource.CLOSED) {
+            console.log('close');
+          } else {
+            console.log(e);
+          }
+        };
+
+        // (2) second way:
+        // I used eventListener which listens to the "latestNews" coming from the server
+        eventSource.addEventListener('latestNews', function (event) {
+          console.log(event);
+          const message = JSON.parse(event.data);
+          addEvent(`Message : ${message.freshNews}`);
+        });
+      }
+
+      window.onload = initialize;
+    </script>
+  </body>
+</html>

@@ -1,14 +1,16 @@
 package com.sse.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -19,9 +21,8 @@ public class NewsController {
 	 * I create this List<SseEmitter> because I can have multiple browsers sending
 	 * connection requests
 	 * 
-	 * @create a connection request (these 2 lines of JavaScript):
-	 *         const url = "http://localhost:8080/subscribe";
-	 *         const eventSource = new EventSource(url);
+	 * @create a connection request (the line below of JavaScript):
+	 *         const eventSource = new EventSource("http://localhost:8080/createConnection");
 	 * 
 	 * @CopyOnWriteArrayList is synchronized, thread safe , But is slower than ArrayList..
 	 */
@@ -33,15 +34,14 @@ public class NewsController {
 	 * @I must consume MediaType.ALL_VALUE
 	 */
 	@CrossOrigin
-	@RequestMapping(value = "/subscribe", consumes = MediaType.ALL_VALUE)
-	public SseEmitter subscribe() {
+	@RequestMapping(value = "/createConnection", consumes = MediaType.ALL_VALUE)
+	public SseEmitter createConnection() {
 
 		// I add here the Long timeout value Long.MAX_VALUE 
 		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		try {
-			// send event to the client that connection is established
-			// with name I gave it : "Establish connection"
-			sseEmitter.send(SseEmitter.event().name("Establish connection"));
+			// First : send a connection request message to the client, to established connection 
+			sseEmitter.send(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss")).toString());			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,14 +57,18 @@ public class NewsController {
 
 	// method for dispatching events to all clients
 	@PostMapping("/event")
-	public void dispatchEventsToClients(@RequestParam String freshNews) {
+	public void dispatchEventsToClients(@RequestBody Object freshNews) {
 
 				
 		// here I loop all over the emitters 
-		// and send event to all clients
+		// and send event (push events) to all clients
 		for(SseEmitter emitter : emitters) {
 			try {
-				emitter.send(SseEmitter.event().name("latestNews").data(new FreshNews(freshNews)));
+				// SInce I use eventListener in my front end
+				// I need to define the same name in the listener here and in my backend
+				// BackEnd ---> "latestNews"
+				// FrontEnd eventListener ---> "latestNews"
+				emitter.send(SseEmitter.event().name("latestNews").data(freshNews));				
 			} catch (IOException e) {    
 				// Got error with below code
 				// e.printStackTrace();
@@ -75,13 +79,12 @@ public class NewsController {
 		}
 	}
 	
-	class FreshNews {
+	static class FreshNews {
 		private String freshNews;
 
-		public FreshNews(String freshNews) {
-			super();
-			this.freshNews = freshNews;
-		}
+		public FreshNews() {
+			super();		
+		}		
 
 		public String getFreshNews() {
 			return freshNews;

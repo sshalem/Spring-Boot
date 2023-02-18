@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>events</h3>
+    <ul id="events"></ul>
+    <script>
+      const eventList = document.getElementById('events');
+
+      function addEvent(text) {
+        const newElement = document.createElement('li');
+        newElement.textContent = text;
+        eventList.appendChild(newElement);
+      }
+
+      function initialize() {
+        const eventSource = new EventSource('http://localhost:8080/createConnection');
+
+        eventSource.onopen = (event) => {
+          addEvent('Connected and subscribed');
+          console.log('open');
+        };
+
+        eventSource.onerror = (e) => {
+          if (e.readyState == EventSource.CLOSED) {
+            console.log('close');
+          } else {
+            console.log(e);
+          }
+        };
+
+        // there are 2 ways to read the data from the Server:
+
+        // In this project I use the event Hnadler `onmessage`
+        // In the other project I sue `eventListener` 
+        // If using the onmessage event handler ,
+        // I need to use the name "message" when I send the emitter in my backend:
+        eventSource.onmessage = function (event) {
+          console.log(event);
+          console.log('Im onmessage');
+          const message = JSON.parse(event.data);
+          addEvent(`Message : ${message.freshNews}`);
+        };
+
+      }
+
+      window.onload = initialize;
+    </script>
+  </body>
+</html>
