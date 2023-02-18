@@ -6,9 +6,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -32,7 +32,7 @@ public class NewsController {
 	 * @I must consume MediaType.ALL_VALUE
 	 */
 	@CrossOrigin
-	@RequestMapping(value = "/createConnection", consumes = MediaType.ALL_VALUE)
+	@GetMapping(path = "/createConnection", produces = MediaType.TEXT_EVENT_STREAM_VALUE)	
 	public SseEmitter createConnection() {
 
 		// I add here the Long timeout value Long.MAX_VALUE 
@@ -65,7 +65,9 @@ public class NewsController {
 		for(SseEmitter emitter : emitters) {
 			try {
 				// SInce I use event Handler on my front end
-				// Thus I need to define the name as ---> "message"
+				// Thus I need to :
+				// 1. define the  ---> name("message")
+				// 2. on frontEnd I use ---> eventSource.onmessage = function (event)
 				emitter.send(SseEmitter.event().name("message").data(freshNews));
 			} catch (IOException e) {    
 				// Got error with below code

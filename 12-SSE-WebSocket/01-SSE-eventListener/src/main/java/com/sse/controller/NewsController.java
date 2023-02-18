@@ -8,9 +8,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -34,7 +34,7 @@ public class NewsController {
 	 * @I must consume MediaType.ALL_VALUE
 	 */
 	@CrossOrigin
-	@RequestMapping(value = "/createConnection", consumes = MediaType.ALL_VALUE)
+	@GetMapping(path = "/createConnection", produces = MediaType.TEXT_EVENT_STREAM_VALUE)	
 	public SseEmitter createConnection() {
 
 		// I add here the Long timeout value Long.MAX_VALUE 
