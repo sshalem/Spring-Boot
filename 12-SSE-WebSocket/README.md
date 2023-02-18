@@ -95,6 +95,186 @@ In this project I will show how SSE works
 
 <img src="https://img.shields.io/badge/- 2_1_BackEnd %20- green" height=30px>
 
+### [Dependencies](#-)
+
+For backend prject jsut add following dependencies:
+
+1. Spring boot project 2.7.8 
+2. Web
+3. Dev-Tools
+
+### [Controller](#-)
+
+Controller need to have the following:
+1. a `GET` method to open a connection with Client
+2. a method to dispatch the changes to client
+
+### [1. Controller with implemented client side `message` event handler](#-)
+
+```java
+import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
+
+@RestController
+public class NewsController {
+
+	/**
+	 * I create this List<SseEmitter> because I can have multiple browsers sending
+	 * connection requests
+	 * 
+	 * @create a connection request (the line below of JavaScript):
+	 *         const eventSource = new EventSource("http://localhost:8080/createConnection");
+	 * 
+	 * @CopyOnWriteArrayList is synchronized, thread safe , But is slower than ArrayList..
+	 */
+	public List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
+
+	/**
+	 * method for client subscription, Establishes the Connection with Client.
+	 * 
+	 * @I must consume MediaType.ALL_VALUE
+	 */
+	@CrossOrigin
+	@GetMapping(path = "/createConnection", produces = MediaType.TEXT_EVENT_STREAM_VALUE)	
+	public SseEmitter createConnection() {
+
+		// I add here the Long timeout value Long.MAX_VALUE 
+		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
+		try {
+			// First : send a connection request message to the client, to established connection 
+			SseEventBuilder sseEventBuilder = SseEmitter
+					.event()
+					.id(UUID.randomUUID().toString().substring(0, 8))
+					.name("this is the type field")
+					.data("connecting to server");			
+			
+			sseEmitter.send(sseEventBuilder);	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// I need to add this line of code 
+		// Otherwise I will get error of :
+		// "java.lang.IllegalStateException: ResponseBodyEmitter is already set complete" 
+		// This code also handles the warning of "Async request timed out"         
+		sseEmitter.onCompletion(()-> emitters.remove(sseEmitter));
+		sseEmitter.onError((e) -> emitters.remove(sseEmitter));
+		sseEmitter.onTimeout(() -> emitters.remove(sseEmitter));
+		emitters.add(sseEmitter);
+		return sseEmitter;
+	}
+
+	// method for dispatching events to all clients
+	@PostMapping("/event")
+	public void dispatchEventsToClients(@RequestBody Object freshNews) {
+
+				
+		// here I loop all over the emitters 
+		// and send event (push events) to all clients
+		for(SseEmitter emitter : emitters) {
+			try {
+				// SInce I use event Handler on my front end
+				// Thus I need to :
+				// 1. define the  ---> name("message")
+				// 2. on frontEnd I use ---> eventSource.onmessage = function (event)
+				emitter.send(SseEmitter.event().name("message").data(freshNews));
+			} catch (IOException e) {    
+				// Got error with below code
+				// e.printStackTrace();
+				// Thus had to modify the code as follows:
+				// We need to remove the emitter from the list if it's not found
+				emitters.remove(emitter);
+			}
+		}
+	}
+	
+	static class FreshNews {
+		private String freshNews;
+
+		public FreshNews() {
+			super();		
+		}		
+
+		public String getFreshNews() {
+			return freshNews;
+		}
+
+		public void setFreshNews(String freshNews) {
+			this.freshNews = freshNews;
+		}		
+	}
+}
+```
+
+### [2. Controller with implemented client side `message` eventListener](#-)
+
+Only the dispatchEventsToClients is need to be as shown below:
+
+```java
+	// method for dispatching events to all clients
+	@PostMapping("/event")
+	public void dispatchEventsToClients(@RequestBody Object freshNews) {
+				
+		// here I loop all over the emitters 
+		// and send event (push events) to all clients
+		for(SseEmitter emitter : emitters) {
+			try {
+				// Since I use eventListener in my front end
+				// I need to define the same name in the listener here and in my backend
+				// BackEnd ---> "latestNews"
+				// FrontEnd eventListener ---> "message"
+				emitter.send(SseEmitter.event().name("message").data(freshNews));				
+			} catch (IOException e) {    
+				// Got error with below code
+				// e.printStackTrace();
+				// Thus had to modify the code as follows:
+				// We need to remove the emitter from the list if it's not found
+				emitters.remove(emitter);
+			}
+		}
+	}
+```
+
+### [3. Controller with implemented client side `newsFresh` custom eventListener](#-)
+
+In dispatchEventsToClients method , we can see that the `.name("latestNews")` is not `.name("message")` , thus , my client side also is modified
+
+```java
+	// method for dispatching events to all clients
+	@PostMapping("/event")
+	public void dispatchEventsToClients(@RequestBody Object freshNews) {
+				
+		// here I loop all over the emitters 
+		// and send event (push events) to all clients
+		for(SseEmitter emitter : emitters) {
+			try {
+				// SInce I use eventListener in my front end
+				// I need to define the same name in the listener here and in my backend
+				// BackEnd ---> custom name "latestNews" (and not message)
+				// FrontEnd eventListener ---> "latestNews"
+				emitter.send(SseEmitter.event().name("latestNews").data(freshNews));				
+			} catch (IOException e) {    
+				// Got error with below code
+				// e.printStackTrace();
+				// Thus had to modify the code as follows:
+				// We need to remove the emitter from the list if it's not found
+				emitters.remove(emitter);
+			}
+		}
+	}
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
@@ -109,6 +289,89 @@ On the fronEnd side I need to do the follwoing in order to be able to listen to 
 	* `eventSource.onerror`
 	* `eventSource.onmessage` (can be also eventListener , I will show implementaion with both cases)
 
+### [1. FornEnd with `message` event handler](#-)
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>events</h3>
+    <ul id="events"></ul>
+    <script>
+      const eventList = document.getElementById('events');
+
+      function addEvent(text) {
+        const newElement = document.createElement('li');
+        newElement.textContent = text;
+        eventList.appendChild(newElement);
+      }
+
+      function initialize() {
+        const eventSource = new EventSource('http://localhost:8080/createConnection');
+
+        eventSource.onopen = (event) => {
+          addEvent('Connected and subscribed');
+          console.log('open');
+        };
+
+        eventSource.onerror = (e) => {
+          if (e.readyState == EventSource.CLOSED) {
+            console.log('close');
+          } else {
+            console.log(e);
+          }
+        };
+
+        // there are 2 ways to read the data from the Server:
+
+        // In this project I use the event Handler `onmessage`
+        // In the other project I sue `eventListener` 
+        // If using the onmessage event handler ,
+        // I need to use the name "message" when I send the emitter in my backend:
+        eventSource.onmessage = function (event) {
+          console.log(event);
+          console.log('Im onmessage');
+          const message = JSON.parse(event.data);
+          addEvent(`Message : ${message.freshNews}`);
+        };
+
+      }
+
+      window.onload = initialize;
+    </script>
+  </body>
+</html>
+```
+
+### [2. FornEnd with `message` eventListener](#-)
+
+```js
+        // (2) second way:
+        // I used eventListener which listens to the "message" coming from the server
+        eventSource.addEventListener('message', function (event) {
+          console.log(event);
+          const message = JSON.parse(event.data);
+          addEvent(`Message : ${message.freshNews}`);
+        });
+```
+
+
+### [3. FornEnd with `latestNews` custom eventListener](#-)
+
+```js
+        // (2) custom eventListener second way:
+        // I used eventListener which listens to the "latestNews" coming from the server
+        eventSource.addEventListener('latestNews', function (event) {
+          console.log(event);
+          const message = JSON.parse(event.data);
+          addEvent(`Message : ${message.freshNews}`);
+        });
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -117,6 +380,8 @@ On the fronEnd side I need to do the follwoing in order to be able to listen to 
 ###### 2_3_test
 
 <img src="https://img.shields.io/badge/- 2_3_test %20- green" height=30px>
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
