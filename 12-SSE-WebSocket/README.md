@@ -10,7 +10,7 @@
 |     | [2.1. BackEnd](#2_1_BackEnd)             |
 |     | [2.2. FrontEnd](#2_2_FrontEnd)             |
 |     | [2.3. test](#2_3_test)             |
-|  3  | [](#3_)       |
+|  3  | [WebSocket](#3_WebSocket)       |
 |  4  | [](#4_)             |
 |     | [3.1. ](#3_1_)             |
 
@@ -412,6 +412,33 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+
+###### 3_WebSocket
+
+<img src="https://img.shields.io/badge/- 3_WebSocket %20-blue" height=40px>
+
+### [Articles](#-)
+
+[WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
+
+
+### [Video's](#-)
+
+[Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
+[Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
 
 ###### x_
 
@@ -422,15 +449,12 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 
 
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----------------------------------------------------------------------------------------------------
-
-
-
-######
-
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
