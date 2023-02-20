@@ -433,9 +433,31 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 
-#### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
+### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
 see link of Spring io [websocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
+
+The WebSocket protocol, RFC 6455, provides a standardized way to establish a full-duplex, two-way communication channel between client and server over a single TCP connection. It is a different TCP protocol from HTTP but is designed to work over HTTP, using ports 80 and 443 and allowing re-use of existing firewall rules.
+
+A WebSocket interaction begins with an HTTP request that uses the HTTP Upgrade header to upgrade or, in this case, to switch to the WebSocket protocol. The following example shows such an interaction:
+
+![image](https://user-images.githubusercontent.com/36256986/220074666-d059d100-1d38-40f5-958d-bdba127c4131.png)
+
+1. The Upgrade header.
+2. Using the Upgrade connection.
+
+Instead of the usual 200 status code, a server with WebSocket support returns output similar to the following:
+
+![image](https://user-images.githubusercontent.com/36256986/220074783-1d2062f3-f967-4e69-b770-0ce7a5bdcc9a.png)
+
+1. Protocol switch
+
+
+
+
+We can use 2 wyas to config WebSocket:
+1. implement the interface of `WebSocketConfigurer` 
+2. implement the interface of `WebSocketMessageBrokerConfigurer` - this way we use a Message Broker for (STOMP or any other Broker like RabbitMQ) 
 
 ### [What is SockJS](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket-fallback)
 
@@ -451,7 +473,7 @@ The goal of [`SockJS`](#-) is to let applications use a [`WebSocket API`](#-)  ,
 
 
 
-### [STOMP](#-)
+### [STOMP - Simple Text Oriented Messaging Protocol](#-)
 
 [STOMP - websocket - sockJS](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket-stomp-enable)
 
