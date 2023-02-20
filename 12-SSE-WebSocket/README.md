@@ -434,7 +434,7 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 
 
-### [Difference Between SockJS to WebSocket]
+### [Difference Between SockJS to WebSocket](#-)
 
 [STOMP - websocket - sockJS](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket-stomp-enable)
 
