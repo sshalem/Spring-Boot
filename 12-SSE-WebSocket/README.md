@@ -433,13 +433,34 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 
+#### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
-### [Difference Between SockJS to WebSocket](#-)
+see link of Spring io [websocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
+
+### [What is SockJS](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket-fallback)
+
+[SockJS - a websocket-fallback](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket-fallback)
+
+Over the public Internet, restrictive proxies outside your control may preclude WebSocket interactions, either because they are not configured to pass on the Upgrade header or because they close long-lived connections that appear to be idle.
+
+The solution to this problem is WebSocket emulation — that is, attempting to use WebSocket first and then falling back on HTTP-based techniques that emulate a WebSocket interaction and expose the same application-level API.
+
+On the Servlet stack, the Spring Framework provides both server (and also client) support for the [`SockJS protocol`](#-).
+
+The goal of [`SockJS`](#-) is to let applications use a [`WebSocket API`](#-)  ,but fall back to non-WebSocket alternatives when necessary at runtime, without the need to change application code.
+
+
+
+### [STOMP](#-)
 
 [STOMP - websocket - sockJS](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket-stomp-enable)
 
+STOMP over WebSocket support is available in the spring-messaging and spring-websocket modules. Once you have those dependencies, you can expose a STOMP endpoints, over WebSocket with SockJS Fallback, 
+
 For STOMP, At present the `JSteunou/webstomp-client` is the most actively maintained and evolving successor of that library. </br>
 The following example code is based on it:
+
+#### [connect from a browser](#-)
 
 ```js
 var socket = new SockJS("/spring-websocket-portfolio/portfolio");
