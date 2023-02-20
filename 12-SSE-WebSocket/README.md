@@ -426,11 +426,41 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 [WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
 [getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
+[spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
 
 ### [Video's](#-)
 
 [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
+
+
+### [Difference Between SockJS to WebSocket]
+
+[STOMP - websocket - sockJS](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#websocket-stomp-enable)
+
+For STOMP, At present the `JSteunou/webstomp-client` is the most actively maintained and evolving successor of that library. </br>
+The following example code is based on it:
+
+```js
+var socket = new SockJS("/spring-websocket-portfolio/portfolio");
+var stompClient = webstomp.over(socket);
+
+stompClient.connect({}, function(frame) {
+}
+```
+
+Alternatively, if you connect through WebSocket (without SockJS), you can use the following code:
+
+
+```js
+var socket = new WebSocket("/spring-websocket-portfolio/portfolio");
+var stompClient = Stomp.over(socket);
+
+stompClient.connect({}, function(frame) {
+}
+```
+
+
 
 ###### x_
 
