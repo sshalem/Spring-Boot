@@ -425,8 +425,8 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 #### [Articles](#-)
 
 * [WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
-* [getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
-* [refactorfirst - websockets-stomp-notifications](https://refactorfirst.com/spring-boot-websockets-stomp-notifications)
+* [Example : getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
+* [Example : refactorfirst - websockets-stomp-notifications](https://refactorfirst.com/spring-boot-websockets-stomp-notifications)
 * [spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
 
 #### [Video's](#-)
