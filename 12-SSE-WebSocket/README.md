@@ -424,14 +424,14 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 #### [Articles](#-)
 
-[WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
-[getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
-[spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
+* [WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
+* [getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
+* [spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
 
 #### [Video's](#-)
 
-[Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
-[Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
+* [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
+* [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 
 ### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
