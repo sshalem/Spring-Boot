@@ -438,6 +438,7 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 see explanations from [Spring io - websocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
 The WebSocket protocol, RFC 6455, provides a standardized way to establish a [`full-duplex, two-way communication channel`](#-) between client and server over a single [`TCP connection`](#-). </br>
+Before a client and server can exchange data, they must use the [`TCP`](#-) (Transport Control Protocol) layer to establish the connection. </br>
 It is a different TCP protocol from HTTP but is designed to work over HTTP, using ports 80 and 443 and allowing re-use of existing firewall rules.
 
 A WebSocket interaction begins with an HTTP request that uses the HTTP Upgrade header to upgrade or, in this case, to switch to the WebSocket protocol.</br>
@@ -454,12 +455,20 @@ Instead of the usual 200 status code, a server with WebSocket support returns ou
 
 1. Protocol switch
 
-
-
-
 We can use 2 wyas to config WebSocket:
 1. implement the interface of `WebSocketConfigurer` 
 2. implement the interface of `WebSocketMessageBrokerConfigurer` - this way we use a Message Broker for (STOMP or any other Broker like RabbitMQ) 
+
+### [When to use WebSocket](#-)
+
+the usage of WebSocket is in :
+* Social feeds
+* News feeds
+* chat's
+* Multiplayer games
+* Sports updates
+* Location-based apps
+* Online education
 
 ### [What is SockJS](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket-fallback)
 
