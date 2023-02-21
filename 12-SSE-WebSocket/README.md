@@ -422,20 +422,20 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 <img src="https://img.shields.io/badge/- 3_WebSocket %20-blue" height=40px>
 
-### [Articles](#-)
+#### [Articles](#-)
 
 [WebSockest from Spring io](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket) </br>
 [getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
 [spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
 
-### [Video's](#-)
+#### [Video's](#-)
 
 [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 [Spring Boot Using Websockets and STOMP](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 
 ### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
-see link of Spring io [websocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
+see explanations from [Spring io - websocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
 The WebSocket protocol, RFC 6455, provides a standardized way to establish a full-duplex, two-way communication channel between client and server over a single TCP connection. It is a different TCP protocol from HTTP but is designed to work over HTTP, using ports 80 and 443 and allowing re-use of existing firewall rules.
 
