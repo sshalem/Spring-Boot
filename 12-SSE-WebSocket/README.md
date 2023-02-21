@@ -428,6 +428,7 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 * [Example : getting-started-with-spring-websockets](https://www.section.io/engineering-education/getting-started-with-spring-websockets/)
 * [Example : refactorfirst - websockets-stomp-notifications](https://refactorfirst.com/spring-boot-websockets-stomp-notifications)
 * [spring io example](https://spring.io/guides/gs/messaging-stomp-websocket/)
+* [Sent message to specific user](https://www.toptal.com/java/stomp-spring-boot-websocket)
 
 #### [Video's](#-)
 
