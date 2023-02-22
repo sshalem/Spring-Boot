@@ -167,7 +167,11 @@ Simple RabbitMQ architecure
   <img src="https://user-images.githubusercontent.com/36256986/220596226-32b7350e-c395-477e-bc24-bba80647648a.png" width=600 height=100 />
 </p>
 
-RabbitMQ Architecture with multiple queues, in a complex Architecture
+High level RabbitMQ Architecture with multiple queues, in a complex Architecture.</br>
+The important component here , is the [Exchange](#-). </br>
+In this architecture 
+1. the Producer sends the message with a Routing key to Exchange. 
+2. The Exchange sends the message to Queue according to the Routing Key , SO now it's Binding Exchange to Queue
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/220596473-9a260db8-64b1-42b6-a36f-0a72809935c5.png" width=600 height=400 />
