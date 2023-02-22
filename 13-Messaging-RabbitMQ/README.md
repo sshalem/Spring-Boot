@@ -105,6 +105,15 @@ A message queue provides an [`asynchronous`](#-) communication between applicati
 
 <img src="https://img.shields.io/badge/- 1_2_What_is_a_RabbitMQ %20- green" height=30px>
 
+RabbitMQ is a message queue software (message broker/queue manager) that acts as [`ibtermediary`](#-) platform where different applications can send and receive messages. </br>
+RabbitMQ originally implements the [`AMQP`](#-) Advance Message Queueing Protocol. </br>
+But now RabbitMQ also supports several other API protocols , such as:
+* [`STOMP`](#-)
+* [`MQTT`](#-)
+* [`HTTP`](#-)
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
