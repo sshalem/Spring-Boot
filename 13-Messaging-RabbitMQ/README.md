@@ -9,7 +9,7 @@
 |     | [1.1. What is a Message Queueu](#1_1_What_is_a_Message_Queueu)             |
 |     | [1.2. What is a RabbitMQ](#1_2_What_is_a_RabbitMQ)             |
 |     | [1.3. RabbitMQ in Microservices](#1_3_RabbitMQ_in_microservices)             |
-|     | [1.4. What is a RabbitMQ](#1_4_What_is_a_RabbitMQ)             |
+|     | [1.4. RabbitMQ core concepts (Prodeucer , consumer etc...](#1_4_RabbitMQ_core_concepts)             |
 |     | [1.5. What is a RabbitMQ](#1_5_What_is_a_RabbitMQ)             |
 |     | [1.6. What is a RabbitMQ](#1_6_What_is_a_RabbitMQ)             |
 
@@ -69,15 +69,6 @@ We will learn the follwoing :
 </p>
 
 
-Lets' learn the follwoing concepts:
-* Producer
-* consumer
-* queue
-* exchange
-* binding
-* Routing key
-* message
-
 ###### 1_1_What_is_a_Message_Queueu
 
 <img src="https://img.shields.io/badge/- 1_1_What_is_a_Message_Queueu %20- green" height=30px>
@@ -135,9 +126,23 @@ RabbitMQ is one of the simplest freely available options for implementing messag
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
+###### 1_4_RabbitMQ_core_concepts
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1_4_RabbitMQ_core_concepts %20- green" height=30px>
+
+Lets' learn the follwoing concepts:
+* Producer
+* consumer
+* queue
+* exchange
+* binding
+* Routing key
+* message
+
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/220589155-968f9a48-a937-48e5-a915-0aed9336df30.png" width=600 height=200 />
+</p>
 
 <p align=center>
   <img src="" width=600 height=100 />
