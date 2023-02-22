@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+  </head>
+  <body>
+    <section>
+      <div>
+        <button id="sendMessage">Send</button>
+        <input type="text" id="message-input" placeholder="Text" />
+      </div>
+      <br />
+      <div id="messages"></div>
+    </section>
+    <script type="text/javascript">
+      // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
+      let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+
+      // (2) Create a new StompClient object with the WebSocket endpoint
+      let stompClient = Stomp.over(socket);
+
+      const headerConnection = {
+        'sender-name': 'sendername',
+        suuid: 'bb2c9039-0ed3-4d6f-b078-db965286944d',
+        ruuid: 'bb2c9039-0ed3-4d6f-b078-db965286944d',
+        'jwt-token': 'my-jwt-token',
+      };
+
+      // (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
+      //     this is the format of connect of stompClient.connect(header, onConnected, onError);
+      stompClient.connect(headerConnection, (frame) => {
+        console.log(frame);
+        stompClient.subscribe('/all/messages', function (result) {
+          show(JSON.parse(result.body));
+        });
+      });
+
+      // Original Code
+      //   stompClient.connect({}, (frame) => {
+      //     console.log(frame);
+      //     stompClient.subscribe('/all/messages', function (result) {
+      //       show(JSON.parse(result.body));
+      //     });
+      //   });
+
+      // (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
+      document.getElementById('sendMessage').addEventListener('click', (e) => {
+        let messageInput = document.getElementById('message-input').value;
+        const messageToSend = {
+          text: messageInput,
+        };
+
+        const headers = {
+          name: 'temp-Header1',
+          address: 'temp-Header2',
+        };
+        stompClient.send('/app/application', headers, JSON.stringify(messageToSend));
+      });
+
+      // This is helper method
+      function show(message) {
+        const response = document.getElementById('messages');
+        const p = document.createElement('p');
+        p.innerHTML = 'message: ' + message.text;
+        response.appendChild(p);
+      }
+    </script>
+  </body>
+</html>
