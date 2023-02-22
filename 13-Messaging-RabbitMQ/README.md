@@ -10,7 +10,7 @@
 |     | [1.2. What is a RabbitMQ](#1_2_What_is_a_RabbitMQ)             |
 |     | [1.3. RabbitMQ in Microservices](#1_3_RabbitMQ_in_microservices)             |
 |     | [1.4. RabbitMQ core concepts (Prodeucer , consumer etc...](#1_4_RabbitMQ_core_concepts)             |
-|     | [1.5. What is a RabbitMQ](#1_5_What_is_a_RabbitMQ)             |
+|     | [1.5. RabbitMQ Architecture](#1_5_RabbitMQ_architecture)             |
 |     | [1.6. What is a RabbitMQ](#1_6_What_is_a_RabbitMQ)             |
 
 
@@ -157,13 +157,24 @@ Lets' learn the follwoing concepts:
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
+###### 1_5_RabbitMQ_architecture
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1_5_RabbitMQ_architecture %20- green" height=30px>
+
+Simple RabbitMQ architecure
 
 <p align=center>
-  <img src="" width=600 height=100 />
+  <img src="https://user-images.githubusercontent.com/36256986/220596226-32b7350e-c395-477e-bc24-bba80647648a.png" width=600 height=100 />
 </p>
+
+RabbitMQ Architecture with multiple queues, in a complex Architecture
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/220596473-9a260db8-64b1-42b6-a36f-0a72809935c5.png" width=600 height=400 />
+</p>
+
+
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
