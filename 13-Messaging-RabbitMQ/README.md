@@ -37,7 +37,7 @@
 
 We will learn the follwoing :
 
-1. RabbitMQ concepts
+1. RabbitMQ concepts (Producer , consumer, queue, exchange, binding, Routing key, message)
 2. RabbitMQ Architecture
 3. Spring Boot + RabbitMQ with a  using AMQP (Advanced Message Queueing Protocol) library
 
