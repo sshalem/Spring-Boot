@@ -131,13 +131,13 @@ RabbitMQ is one of the simplest freely available options for implementing messag
 <img src="https://img.shields.io/badge/- 1_4_RabbitMQ_core_concepts %20- green" height=30px>
 
 Lets' learn the follwoing concepts:
-* Producer
-* consumer
-* queue
-* exchange
-* binding
-* Routing key
-* message
+1. [Prodcer](#-) is an application that sends messages only to the RabbitMQ broker.
+2. [Consumer](#-) is an application that reads messages from the RabbitMQ broker. there can be multiple consumenrs that can subscribe to RabbitMQ broker.
+3. [Queue](#-) is a buffer or a storage in a RabbitMQ broker to store the messages. the message is read , it is consumened and removed from the queue. A message can thus only be processed exactly once. we can do any number of queues in a broker.
+4. exchange
+5. binding
+6. Routing key
+7. message
 
 
 <p align=center>
