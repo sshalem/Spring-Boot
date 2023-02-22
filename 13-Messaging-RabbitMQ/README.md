@@ -15,6 +15,9 @@
 |  2  | [Install RabbitMQ](#2_Install_RabbitMQ)             |
 |     | [2.1. Install RabbitMQ on windows](#2_1_Install_RabbitMQ_on_Windows)             |
 |     | [2.2. Install RabbitMQ docker image](#2_2_Install_RabbitMQ_docker_image)             |
+|  3  | [Connect to RabbitMQ Message Broker](#3_Connect_to_RabbitMQ_Message_Broker)             |
+
+
 
 
 ------------------------------------------
@@ -237,37 +240,44 @@ To install RabbitMQ on windows do the following:
 13. Install RabbitMQ (Just CLick on next w/o changing anything)
 
 
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ------------------------------------------
 
-######
+###### 3_Connect_to_RabbitMQ_Message_Broker
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+1. Go to url of : http://localhost:15672/
+2. We get a `This site can’t be reached`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+###### 
+
+<img src="https://img.shields.io/badge/- X  %20-blue" height=40px>
 
 ###### x_
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
