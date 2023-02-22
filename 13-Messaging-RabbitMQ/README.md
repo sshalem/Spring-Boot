@@ -12,7 +12,9 @@
 |     | [1.4. RabbitMQ core concepts (Prodeucer , consumer etc...](#1_4_RabbitMQ_core_concepts)             |
 |     | [1.5. RabbitMQ Architecture](#1_5_RabbitMQ_architecture)             |
 |     | [1.6. What is a RabbitMQ](#1_6_What_is_a_RabbitMQ)             |
-
+|  2  | [Install RabbitMQ](#2_Install_RabbitMQ)             |
+|     | [2.1. Install RabbitMQ on windows](#2_1_Install_RabbitMQ_on_Windows)             |
+|     | [2.2. Install RabbitMQ docker image](#2_2_Install_RabbitMQ_docker_image)             |
 
 
 ------------------------------------------
@@ -183,63 +185,44 @@ In this architecture
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-<p align=center>
-  <img src="" width=600 height=100 />
-</p>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
 ------------------------------------------
 
-######
+###### 2_Install_RabbitMQ
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
+There are several ways to Install RabbitMQ:
+1. Install as server windows
+2. Install server with Docker image on windows
+
+
+###### 2_1_Install_RabbitMQ_on_Windows
+
+<img src="https://img.shields.io/badge/- 2_1_Install_RabbitMQ_on_Windows %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
----
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+------------------------------------------
 
 ######
 
