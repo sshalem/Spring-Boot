@@ -135,7 +135,7 @@ Lets' learn the follwoing concepts:
 2. [Consumer](#-) is an application that reads messages from the RabbitMQ broker. there can be multiple consumenrs that can subscribe to RabbitMQ broker.
 3. [Queue](#-) is a buffer or a storage in a RabbitMQ broker to store the messages. </br> The message is read , it is consumened and removed from the queue.</br> A message can thus only be processed exactly once.</br> We can do any number of queues in a broker.
 4. [Message](#-) is the information sent from producer to consumer via RabbitMQ. (can be String, JSON, Byte Array, plain text ,HTML)
-5. 
+5. [Exchange](#-) acts as an intermediary between the producer and the queue. </br> Instead of sending messages directly to a queue, a producer can send them to an exachange.</br> The exachange then sends those messages to one or more queues following a specified set of rules.</br> Thus, the producer does not need to know the queues that eventually receive those messages.
 6. 
 
 
@@ -144,7 +144,7 @@ Lets' learn the follwoing concepts:
 </p>
 
 <p align=center>
-  <img src="" width=600 height=100 />
+  <img src="https://user-images.githubusercontent.com/36256986/220592559-18465f82-23f7-4fe5-aea9-dfda99dbb829.png" width=600 height=150 />
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
