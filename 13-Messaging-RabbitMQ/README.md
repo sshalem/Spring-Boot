@@ -8,7 +8,7 @@
 |  1  | [RabbitMQ Introduction](#1_RabbitMQ_Introduction)             |
 |     | [1.1. What is a Message Queueu](#1_1_What_is_a_Message_Queueu)             |
 |     | [1.2. What is a RabbitMQ](#1_2_What_is_a_RabbitMQ)             |
-|     | [1.3. What is a RabbitMQ](#1_3_What_is_a_RabbitMQ)             |
+|     | [1.3. RabbitMQ in Microservices](#1_3_RabbitMQ_in_microservices)             |
 |     | [1.4. What is a RabbitMQ](#1_4_What_is_a_RabbitMQ)             |
 |     | [1.5. What is a RabbitMQ](#1_5_What_is_a_RabbitMQ)             |
 |     | [1.6. What is a RabbitMQ](#1_6_What_is_a_RabbitMQ)             |
@@ -122,12 +122,12 @@ But now RabbitMQ also supports several other API protocols , such as:
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
+###### 1_3_RabbitMQ_in_microservices
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1_3_RabbitMQ_in_microservices %20- green" height=30px>
 
 <p align=center>
-  <img src="" width=600 height=100 />
+  <img src="https://user-images.githubusercontent.com/36256986/220586740-b43e57d5-9327-42a6-b42e-ba11ba0e9f07.png" width=600 height=200 />
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
