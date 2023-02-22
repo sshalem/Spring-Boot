@@ -43,13 +43,13 @@ We will learn the follwoing :
   <img src="https://user-images.githubusercontent.com/36256986/220572000-0b9f01b9-f8d7-469c-8dd5-b0644be12ae1.png" width=500 height=200 />
 </p>
 
-4. Spring Boot + RabbitMQ flow for a String message
+4. Spring Boot + RabbitMQ flow for a [`String`](#-) message
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/220572355-cb2498d5-fe96-43a1-bea2-54533b5e4668.png" width=600 height=200 />
 </p>
 
-5. Spring Boot + RabbitMQ flow for a JSON message
+5. Spring Boot + RabbitMQ flow for a [`JSON`](#-) message
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/220572450-819bfa07-85ee-4bd4-a5d7-34265411854b.png" width=600 height=200 />
