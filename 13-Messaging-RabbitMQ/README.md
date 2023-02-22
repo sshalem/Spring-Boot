@@ -77,6 +77,22 @@ Lets' learn the follwoing concepts:
 
 <img src="https://img.shields.io/badge/- 1_1_What_is_a_Message_Queueu %20- green" height=30px>
 
+The message Queue provides [`temporary message storage`](#-) when the destination program is :
+* busy 
+* or not connected 
+
+A message queue is made up of a:
+1. produver
+2. a broker (the message queue software)
+3. and a consumenr
+
+A message queue provides an [`asynchronous`](#-) communication between applications.
+
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/220581787-026385f3-21d7-4ec5-b402-cfa633b5ffb4.png" width=500 height=200 />
+</p>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
