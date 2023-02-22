@@ -116,7 +116,7 @@ But now RabbitMQ also supports several other API protocols , such as:
 [Consumer](#-) is an application that `reads` messages from the RabbitMQ broker.
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/220585195-5d39c879-eb0f-4ddb-babc-fe0e8e00c70e.png" width=600 height=100 />
+  <img src="https://user-images.githubusercontent.com/36256986/220585195-5d39c879-eb0f-4ddb-babc-fe0e8e00c70e.png" width=600 height=200 />
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
