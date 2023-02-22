@@ -246,10 +246,45 @@ To install RabbitMQ on windows do the following:
 
 ###### 3_Connect_to_RabbitMQ_Message_Broker
 
+Links from RabbitMQ:
+
+* [Install-windows](https://www.rabbitmq.com/install-windows.html)
+* [usage-ui](https://www.rabbitmq.com/management.html#usage-ui)
+* [Default-user-access](https://www.rabbitmq.com/install-windows.html#default-user-access)
+* [Ports Access](https://www.rabbitmq.com/install-windows.html#ports)
+  * [Management Plugin](https://www.rabbitmq.com/management.html)
+  * [management getting-started](https://www.rabbitmq.com/management.html#getting-started)
+  * [management usage-ui](https://www.rabbitmq.com/management.html#usage-ui)
+  * 
+
 1. Go to url of : http://localhost:15672/
 2. We get a `This site can’t be reached`
-3. We need to give management rights to it, so need to install Management Plugin. Go to url [https://www.rabbitmq.com/management.html#usage-ui](https://www.rabbitmq.com/management.html#usage-ui)
-4.  
+3. We need to give management rights to it, so need to install Management Plugin. </br>
+it must be enabled before it can be used. That's done using rabbitmq-plugins.
+
+Open the RabbitMQ prompt :
+
+![image](https://user-images.githubusercontent.com/36256986/220650545-9aa27023-7709-4756-8400-2567a97f9145.png)
+
+4. type the follwoing command:, form the page of [Plugin for management](https://www.rabbitmq.com/management.html#getting-started) , use the command :
+* `rabbitmq-plugins enable rabbitmq_management`
+
+5. Go to url of : http://localhost:15672/
+6. Default user access can be found in the link of [Default-user-access](https://www.rabbitmq.com/install-windows.html#default-user-access)
+
+Unconfigured clients will in general use these credentials. By default, these credentials can only be used when connecting to the broker as localhost so you will need to take action before connecting from any other machine.
+
+![image](https://user-images.githubusercontent.com/36256986/220651238-3b3dbce5-4489-4b6c-8112-bafba5ded4d2.png)
+
+
+
+
+
+
+
+ 
+
+  
 
 
 
