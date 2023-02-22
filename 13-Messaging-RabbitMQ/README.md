@@ -134,10 +134,9 @@ Lets' learn the follwoing concepts:
 1. [Prodcer](#-) is an application that sends messages only to the RabbitMQ broker.
 2. [Consumer](#-) is an application that reads messages from the RabbitMQ broker. there can be multiple consumenrs that can subscribe to RabbitMQ broker.
 3. [Queue](#-) is a buffer or a storage in a RabbitMQ broker to store the messages. </br> The message is read , it is consumened and removed from the queue.</br> A message can thus only be processed exactly once.</br> We can do any number of queues in a broker.
-4. exchange
-5. binding
-6. Routing key
-7. message
+4. [Message](#-) is the information sent from producer to consumer via RabbitMQ. (can be String, JSON, Byte Array, plain text ,HTML)
+5. 
+6. 
 
 
 <p align=center>
