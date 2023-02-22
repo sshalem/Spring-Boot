@@ -126,6 +126,8 @@ But now RabbitMQ also supports several other API protocols , such as:
 
 <img src="https://img.shields.io/badge/- 1_3_RabbitMQ_in_microservices %20- green" height=30px>
 
+RabbitMQ is one of the simplest freely available options for implementing messaging queues in microservices architecture.
+
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/220586740-b43e57d5-9327-42a6-b42e-ba11ba0e9f07.png" width=600 height=300 />
 </p>
@@ -148,6 +150,10 @@ But now RabbitMQ also supports several other API protocols , such as:
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
@@ -155,8 +161,44 @@ But now RabbitMQ also supports several other API protocols , such as:
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 
