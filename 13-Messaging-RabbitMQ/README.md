@@ -233,18 +233,8 @@ To install RabbitMQ on windows do the following:
 
 ![image](https://user-images.githubusercontent.com/36256986/220639727-018c3a71-de13-44e9-a1fa-fb7248d3888f.png)
 
-
-
-
-
-
-
-
-
-* I've downloaded these version's :
-
-![image](https://user-images.githubusercontent.com/36256986/220632843-f1429155-0308-4738-a58b-f3fb3fd5e92a.png)
-
+12. Install Erlang (Just CLick on next w/o changing anything)
+13. Install RabbitMQ (Just CLick on next w/o changing anything)
 
 
 <p align=center>
