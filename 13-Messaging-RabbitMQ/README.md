@@ -39,7 +39,17 @@ We will learn the follwoing :
 2. RabbitMQ Architecture
 3. Spring Boot + RabbitMQ with a  using AMQP (Advanced Message Queueing Protocol) library
 
-![image](https://user-images.githubusercontent.com/36256986/220572000-0b9f01b9-f8d7-469c-8dd5-b0644be12ae1.png)
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/220572000-0b9f01b9-f8d7-469c-8dd5-b0644be12ae1.png" />
+</p>
+
+
+ 
+ 
+  
+
+  
+![image]()
 
 4. Spring Boot + RabbitMQ flow for a String message
 
