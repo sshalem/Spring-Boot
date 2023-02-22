@@ -31,6 +31,17 @@
 
 <img src="https://img.shields.io/badge/- 1. Caching Introduction %20-blue" height=40px>
 
+### [RabbitMQ core concepts](#-)
+
+Lets' learn the follwoing concepts:
+* Producer
+* consumer
+* queue
+* exchange
+* binding
+* Routing key
+* message
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
