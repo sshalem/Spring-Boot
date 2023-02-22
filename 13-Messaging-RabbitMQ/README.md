@@ -90,7 +90,7 @@ A message queue provides an [`asynchronous`](#-) communication between applicati
 
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/220581787-026385f3-21d7-4ec5-b402-cfa633b5ffb4.png" width=500 height=200 />
+  <img src="https://user-images.githubusercontent.com/36256986/220581787-026385f3-21d7-4ec5-b402-cfa633b5ffb4.png" width=600 height=150 />
 </p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
