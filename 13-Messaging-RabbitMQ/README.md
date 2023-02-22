@@ -199,6 +199,53 @@ There are several ways to Install RabbitMQ:
 ###### 2_1_Install_RabbitMQ_on_Windows
 
 <img src="https://img.shields.io/badge/- 2_1_Install_RabbitMQ_on_Windows %20- green" height=30px>
+ 
+To install RabbitMQ on windows do the following:
+
+1. Go to [RabbitMQ home page](https://www.rabbitmq.com/)
+2. Click on Get Started 
+
+![image](https://user-images.githubusercontent.com/36256986/220632096-b08ba0f6-245f-4d40-9bbc-caf5b748cc06.png)
+
+3. Click on DownLoad and Installation
+
+![image](https://user-images.githubusercontent.com/36256986/220632247-e5663785-622b-4246-baab-6486162bd747.png)
+
+4. The latest release of RabbitMQ on 22-02-2023 was 3.11.9. 
+5. On the page of `Downloading and Installing RabbitMQ`  click on `windows Installer` 
+
+![image](https://user-images.githubusercontent.com/36256986/220633773-362e7dc3-682c-48ec-9d1b-a8c2daa0b746.png)
+
+6. Click on `Using the officail Installer`
+
+![image](https://user-images.githubusercontent.com/36256986/220638363-b6b55bcb-09fa-41f8-b31a-e0b0ab4882e8.png)
+
+7. There must be only one `Erlang` version installed at a time. Erlang must be installed using an administrative account.
+8. got To [https://www.erlang.org/](https://www.erlang.org/) home page
+9. Download the latest version that compatibalibe with RabbitMQ version. </br> 
+10. Download the latest version of RabbitMQ
+
+* Check the Dependencies that ErLang and RabbitMQ , compatible with each other.
+
+![image](https://user-images.githubusercontent.com/36256986/220640207-95d48c9f-981e-4912-8cef-e8e1f23de59f.png)
+
+11. These are the version I've downloaded that are compatible with each Other.
+
+![image](https://user-images.githubusercontent.com/36256986/220639727-018c3a71-de13-44e9-a1fa-fb7248d3888f.png)
+
+
+
+
+
+
+
+
+
+* I've downloaded these version's :
+
+![image](https://user-images.githubusercontent.com/36256986/220632843-f1429155-0308-4738-a58b-f3fb3fd5e92a.png)
+
+
 
 <p align=center>
   <img src="" width=600 height=100 />
