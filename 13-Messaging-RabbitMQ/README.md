@@ -7,6 +7,11 @@
 |     | [Links](#Links)             |
 |  1  | [RabbitMQ Introduction](#1_RabbitMQ_Introduction)             |
 |     | [1.1. What is a Message Queueu](#1_1_What_is_a_Message_Queueu)             |
+|     | [1.2. What is a RabbitMQ](#1_2_What_is_a_RabbitMQ)             |
+|     | [1.3. What is a RabbitMQ](#1_3_What_is_a_RabbitMQ)             |
+|     | [1.4. What is a RabbitMQ](#1_4_What_is_a_RabbitMQ)             |
+|     | [1.5. What is a RabbitMQ](#1_5_What_is_a_RabbitMQ)             |
+|     | [1.6. What is a RabbitMQ](#1_6_What_is_a_RabbitMQ)             |
 
 
 
@@ -96,9 +101,9 @@ A message queue provides an [`asynchronous`](#-) communication between applicati
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### x_
+###### 1_2_What_is_a_RabbitMQ
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 1_2_What_is_a_RabbitMQ %20- green" height=30px>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
