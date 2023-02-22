@@ -143,12 +143,14 @@ Lets' learn the follwoing concepts:
 
 5. [Exchange](#-) acts as an intermediary between the producer and the queue. </br> Instead of sending messages directly to a queue, a producer can send them to an exachange.</br> The exachange then sends those messages to one or more queues following a specified set of rules.</br> Thus, the producer does not need to know the queues that eventually receive those messages.
 
+6. [Routing Key](#-) is a key that the Exchange looks at to decide how to route the message to queues. </br> The Routing Key is like an address for the message.
+7. [Binding](#-) a Binding is a link between a queue and an exachange.
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/220592559-18465f82-23f7-4fe5-aea9-dfda99dbb829.png" width=600 height=150 />
+  <img src="https://user-images.githubusercontent.com/36256986/220593190-b22a55b7-cf31-46c8-86db-29eecdb804ac.png" width=600 height=150 />
 </p>
 
-6. 
+
 
 
 
