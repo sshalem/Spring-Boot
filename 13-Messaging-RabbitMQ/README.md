@@ -6,6 +6,7 @@
 | :-: | :--------------------------------------------------- |
 |     | [Links](#Links)             |
 |  1  | [RabbitMQ Introduction](#1_RabbitMQ_Introduction)             |
+|     | [1.1. What is a Message Queueu](#1_1_What_is_a_Message_Queueu)             |
 
 
 
@@ -72,6 +73,48 @@ Lets' learn the follwoing concepts:
 * Routing key
 * message
 
+###### 1_1_What_is_a_Message_Queueu
+
+<img src="https://img.shields.io/badge/- 1_1_What_is_a_Message_Queueu %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -87,3 +130,17 @@ Lets' learn the follwoing concepts:
 
 ---
 
+######
+
+<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
