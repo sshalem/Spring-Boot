@@ -112,7 +112,20 @@ But now RabbitMQ also supports several other API protocols , such as:
 * [`MQTT`](#-)
 * [`HTTP`](#-)
 
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/220585195-5d39c879-eb0f-4ddb-babc-fe0e8e00c70e.png" width=600 height=100 />
+</p>
 
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### x_
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -121,12 +134,9 @@ But now RabbitMQ also supports several other API protocols , such as:
 
 <img src="https://img.shields.io/badge/- X %20- green" height=30px>
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<p align=center>
+  <img src="" width=600 height=100 />
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
