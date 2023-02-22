@@ -248,6 +248,12 @@ To install RabbitMQ on windows do the following:
 
 1. Go to url of : http://localhost:15672/
 2. We get a `This site can’t be reached`
+3. We need to give management rights to it, so need to install Management Plugin. Go to url [https://www.rabbitmq.com/management.html#usage-ui](https://www.rabbitmq.com/management.html#usage-ui)
+4.  
+
+
+
+
 
 
 
