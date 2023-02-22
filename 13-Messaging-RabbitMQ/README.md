@@ -147,7 +147,7 @@ Lets' learn the follwoing concepts:
 7. [Binding](#-) a Binding is a link between a queue and an exachange.
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/220593190-b22a55b7-cf31-46c8-86db-29eecdb804ac.png" width=600 height=150 />
+  <img src="https://user-images.githubusercontent.com/36256986/220593190-b22a55b7-cf31-46c8-86db-29eecdb804ac.png" width=600 height=200 />
 </p>
 
 
