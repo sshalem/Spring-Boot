@@ -577,7 +577,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
-		registry.enableSimpleBroker("/all", "/specific");
+		registry.enableSimpleBroker("/all");
 		registry.setApplicationDestinationPrefixes("/app");
 	}
 
