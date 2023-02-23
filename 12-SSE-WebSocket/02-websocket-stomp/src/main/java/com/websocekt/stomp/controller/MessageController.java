@@ -36,8 +36,8 @@ public class MessageController {
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
 		// This command gets the header of the 
-		// 'First' connection made
-		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("address");
+		// 'First' "SUBSCRIBE" connection made
+		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
 		System.out.println(addressNativeHeader);
 	
 		// This headers are made by the client each message he sends
