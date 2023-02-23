@@ -1,4 +1,4 @@
-package com.websocekt.stomp.controller;
+package com.websocket.stomp.controller;
 
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -7,7 +7,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
-import com.websocekt.stomp.entity.Message;
+import com.websocket.stomp.entity.Message;
 
 @Controller
 public class MessageController {
@@ -27,7 +27,7 @@ public class MessageController {
 	 *                 from one endpoint and redirecting to another
 	 * 
 	 *                 our method receives messages from /app/application. We also
-	 *                 have the @SendTo annotation with the value /topic/messages.
+	 *                 have the @SendTo annotation with the value /all/messages.
 	 */
 
 	// Mapped as /app/application
@@ -36,7 +36,7 @@ public class MessageController {
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
 		// This command gets the header of the 
-		// 'First' "SUBSCRIBE" connection made
+		// 'First' "SUBSCRIBE" connection made, then each time >>>SEND , the header is send
 		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
 		System.out.println(addressNativeHeader);
 	

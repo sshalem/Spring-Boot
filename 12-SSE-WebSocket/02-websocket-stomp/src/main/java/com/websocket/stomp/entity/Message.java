@@ -1,4 +1,4 @@
-package com.websocekt.stomp.entity;
+package com.websocket.stomp.entity;
 
 import java.io.Serializable;
 

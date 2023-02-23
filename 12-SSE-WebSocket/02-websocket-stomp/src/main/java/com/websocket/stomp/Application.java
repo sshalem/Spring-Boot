@@ -1,4 +1,4 @@
-package com.websocekt.stomp;
+package com.websocket.stomp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.websocekt.stomp;
+package com.websocket.stomp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
