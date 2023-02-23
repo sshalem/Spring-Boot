@@ -597,7 +597,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 ### [Controller](#-)
 
-In this Implementation , I hava a `@Controller` annotation
+In this Implementation :
+1. I hava a `@Controller` annotation
+2. `@MessageMapping("/application")` - which client sends 
+
+
 ```java
 @Controller
 public class MessageController {
@@ -622,7 +626,7 @@ public class MessageController {
 
 	// Mapped as /app/application
 	@MessageMapping("/application")
-	@SendTo("/all/messages")
+	@SendTo("/topic/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
 		// This command gets the header of the 
