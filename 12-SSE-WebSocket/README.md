@@ -568,7 +568,7 @@ In this configuration I have 2 methods I implement:
 1. `registerStompEndpoints` - define the EndPoint to connect with the FrontEnd stomp implementation.
 2. `configureMessageBroker` 
 	* define a prefix for the url --> `/app`
-	* define a path for the messages to go --> `/all`
+	* define a path url , which client will send to server  --> `/all`
 
 ```java
 import org.springframework.context.annotation.Configuration;
@@ -597,6 +597,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 ### [Controller](#-)
 
+In this Implementation , I hava a `@Controller` annotation
 ```java
 @Controller
 public class MessageController {
