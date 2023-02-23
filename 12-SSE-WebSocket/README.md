@@ -11,7 +11,8 @@
 |     | [2.2. FrontEnd](#2_2_FrontEnd)             |
 |     | [2.3. test](#2_3_test)             |
 |  3  | [WebSocket](#3_WebSocket)       |
-|  4  | [Chat App with ReactJS](#4_Chat_App_with_ReactJS)             |
+|     | [3.1. Simple project with WebSocket](#3_1_Simple_project_with_WebSocket)             |
+|  9  | [Chat App with ReactJS](#9_Chat_App_with_ReactJS)             |
 |     | [3.1. ](#3_1_)             |
 
 
@@ -518,9 +519,12 @@ stompClient.connect({}, function(frame) {
 
 
 
-###### x_
+###### 3_1_Simple_project_with_WebSocket
 
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 3_1_Simple_project_with_WebSocket %20- green" height=30px>
+
+In this Project I will show how to implement the WebSocket connection with Backend & Front End
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -549,7 +553,7 @@ stompClient.connect({}, function(frame) {
 ---------------------------------------------------------------------------------------------------
 
 
-###### 4_Chat_App_with_ReactJS
+###### 9_Chat_App_with_ReactJS
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
