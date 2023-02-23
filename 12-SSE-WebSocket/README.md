@@ -530,7 +530,7 @@ stompClient.connect({}, function(frame) {
 <img src="https://img.shields.io/badge/- 4_WebSocket_Simple_project %20-blue" height=40px>
 
 In this Project I will show the following:
-1. Implement the BackEnd configuration for WebSocket
+1. Implement the BackEnd configuration for WebSocket, using `STOMP`
 2. Implement the FrontEnd 
 3. Test the app 
 
@@ -564,6 +564,12 @@ public class Message implements Serializable {
 
 ### [Configuration with WebSocketConfig](#-)
 
+In this configuration I have 2 methods I implement:
+1. `registerStompEndpoints` - define the EndPoint to connect with the FrontEnd stomp implementation.
+2. `configureMessageBroker` 
+	* define a prefix for the url --> `/app`
+	* define a path url , which client will send to server  --> `/all`
+
 ```java
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -583,13 +589,18 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/ws-stomp-endpoint");
+		// withSockJS() - means that a Fallback to SockJS is possible
 		registry.addEndpoint("/ws-stomp-endpoint").withSockJS();		
 	}
 }
 ```
 
 ### [Controller](#-)
+
+In this Implementation :
+1. I hava a `@Controller` annotation
+2. `@MessageMapping("/application")` - which client sends 
+
 
 ```java
 @Controller
@@ -615,7 +626,7 @@ public class MessageController {
 
 	// Mapped as /app/application
 	@MessageMapping("/application")
-	@SendTo("/all/messages")
+	@SendTo("/topic/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
 		// This command gets the header of the 
