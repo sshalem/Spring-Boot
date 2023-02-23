@@ -27,7 +27,7 @@ public class MessageController {
 	 *                 from one endpoint and redirecting to another
 	 * 
 	 *                 our method receives messages from /app/application. We also
-	 *                 have the @SendTo annotation with the value /all/messages.
+	 *                 have the @SendTo annotation with the value `/all/messages` .
 	 *                 this `/all` comes from the configuration class `registry.enableSimpleBroker("/all")` 
 	 */
 
