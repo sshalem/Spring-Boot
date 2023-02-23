@@ -656,6 +656,80 @@ public class MessageController {
 
 <img src="https://img.shields.io/badge/- 4_2_FrontEnd %20- green" height=30px>
 
+This is how the frontend code looks. </br>
+I have the whole code in `index.html` file. 
+1. I add the cdn for `SockJS` and `Stomp` 
+
+
+```js
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+  </head>
+  <body>
+    <section>
+      <div>
+        <button id="sendMessage">Send</button>
+        <input type="text" id="message-input" placeholder="Text" />
+      </div>
+      <br />
+      <div id="messages"></div>
+    </section>
+    <script type="text/javascript">
+      // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
+      let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+
+      // (2) Create a new StompClient object with the WebSocket endpoint
+      let stompClient = Stomp.over(socket);
+
+      // (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
+      //     this is the format of connect: stompClient.connect(header, onConnected, onError);
+      stompClient.connect(
+        { 'connection-Header': 'connection-Header' },
+        function (frame) {
+          console.log(frame);
+
+          // this is the format of subscribe:
+          // stompClient.subscribe(destination, callback, headers)
+          stompClient.subscribe(
+            '/all/messages',
+            (result) => {
+              show(JSON.parse(result.body));
+            },
+            { 'send-Header': 'send-Header' }
+          );
+        },
+        function (error) {
+          console.error(error);
+        }
+      );
+
+      // (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
+      document.getElementById('sendMessage').addEventListener('click', (e) => {
+        let messageInput = document.getElementById('message-input').value;
+        const messageToSend = {
+          message: messageInput,
+        };
+
+        // this is the format of send:
+        // stompClient.send(destination, callback, headers)
+        stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+      });
+
+      // This is helper method
+      function show(message) {
+        const response = document.getElementById('messages');
+        const p = document.createElement('p');
+        p.innerHTML = 'message: ' + message.text;
+        response.appendChild(p);
+      }
+    </script>
+  </body>
+</html>
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
