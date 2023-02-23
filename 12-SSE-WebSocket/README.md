@@ -654,7 +654,7 @@ public class MessageController {
 
 ###### 4_2_FrontEnd
 
-<img src="https://img.shields.io/badge/- 4_2_FrontEnd %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 4.2. FrontEnd %20- green" height=30px>
 
 This is how the frontend code looks. </br>
 1. in `index.html` I add the cdn for `SockJS` and `Stomp` since I use those Libraries
@@ -691,8 +691,7 @@ in the app.js this is what we have:
 4. (4) eventListener (of `click` to send messages) that takes the types message and sends it to server `stompClient.send`
 
 ```js
-// (1) Set up WebSocket connection with the handshake at 
-//     `http://localhost:8080/ws-stomp-endpoint`
+// (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
 let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
 
 // (2) Create a new StompClient object with the WebSocket endpoint
@@ -701,43 +700,41 @@ let stompClient = Stomp.over(socket);
 // (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
 //     this is the format of connect: stompClient.connect(header, onConnected, onError);
 stompClient.connect(
-	{ 'connection-Header': 'connection-Header' },
-	function(frame) {
-		console.log(frame);
+  { 'connection-Header': 'connection-Header' },
+  function (frame) {
+    console.log(frame);
 
-		// this is the format of subscribe:
-		// stompClient.subscribe(destination, callback, headers)
-		stompClient.subscribe(
-			'/all/messages',
-			(result) => {
-				show(JSON.parse(result.body));
-			},
-			{ 'send-Header': 'send-Header' }
-		);
-	},
-	function(error) {
-		console.error(error);
-	}
+    // this is the format of subscribe:
+    // stompClient.subscribe(destination, callback, headers)
+    // I don't see the usage of headers when subscribing
+    stompClient.subscribe('/all/messages', (result) => {
+      console.log(result);
+      show(JSON.parse(result.body));
+    });
+  },
+  function (error) {
+    console.error(error);
+  }
 );
 
 // (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
 document.getElementById('sendMessage').addEventListener('click', (e) => {
-	let messageInput = document.getElementById('message-input').value;
-	const messageToSend = {
-		message: messageInput,
-	};
+  let messageInput = document.getElementById('message-input').value;
+  const messageToSend = {
+    message: messageInput,
+  };
 
-	// this is the format of send:
-	// stompClient.send(destination, callback, headers)
-	stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+  // this is the format of send:
+  // stompClient.send(destination, callback, headers)
+  stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
 });
 
 // This is helper method
 function show(message) {
-	const response = document.getElementById('messages');
-	const p = document.createElement('p');
-	p.innerHTML = 'message: ' + message.message;
-	response.appendChild(p);
+  const response = document.getElementById('messages');
+  const p = document.createElement('p');
+  p.innerHTML = 'message: ' + message.message;
+  response.appendChild(p);
 }
 ```
 
@@ -747,7 +744,9 @@ function show(message) {
 
 ###### 4_3_test
 
-<img src="https://img.shields.io/badge/- 4_3_test %20- green" height=30px>
+<img src="https://img.shields.io/badge/- 4.3. test %20- green" height=30px>
+
+Lets run project `02-websocket-stomp` and see the results.
 
 
 
