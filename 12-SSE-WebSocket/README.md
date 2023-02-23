@@ -632,8 +632,8 @@ public class MessageController {
 	@SendTo("/all/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
-		// This command gets the header of the 
-		// 'First' "SUBSCRIBE" connection made
+		// This command gets the header `send-Header` of the `stompClient.send` , and browser shows in console
+		// >>>SEND  the header is send
 		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
 		System.out.println(addressNativeHeader);
 	
@@ -643,7 +643,6 @@ public class MessageController {
 		
 		return message;
 	}
-
 }
 ```
 
