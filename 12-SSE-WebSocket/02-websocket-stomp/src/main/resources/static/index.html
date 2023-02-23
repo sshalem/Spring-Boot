@@ -20,29 +20,30 @@
       // (2) Create a new StompClient object with the WebSocket endpoint
       let stompClient = Stomp.over(socket);
 
-      const headerConnection = {
-        'sender-name': 'sendername',
-        suuid: 'bb2c9039-0ed3-4d6f-b078-db965286944d',
-        ruuid: 'bb2c9039-0ed3-4d6f-b078-db965286944d',
-        'jwt-token': 'my-jwt-token',
+      const connectionHeaders = {
+        'connection-Header': 'connection-Header',
       };
 
       // (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
       //     this is the format of connect of stompClient.connect(header, onConnected, onError);
-      stompClient.connect(headerConnection, (frame) => {
+      stompClient.connect(connectionHeaders, (frame) => {
         console.log(frame);
-        stompClient.subscribe('/all/messages', function (result) {
-          show(JSON.parse(result.body));
-        });
-      });
 
-      // Original Code
-      //   stompClient.connect({}, (frame) => {
-      //     console.log(frame);
-      //     stompClient.subscribe('/all/messages', function (result) {
-      //       show(JSON.parse(result.body));
-      //     });
-      //   });
+        const destination = '/all/messages';
+
+        const subscribeHeader = {
+          'send-Header': 'send-Header',
+        };
+
+        // (destination, callback, headers)
+        stompClient.subscribe(
+          destination,
+          function (result) {
+            show(JSON.parse(result.body));
+          },
+          subscribeHeader
+        );
+      });
 
       // (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
       document.getElementById('sendMessage').addEventListener('click', (e) => {
@@ -50,12 +51,14 @@
         const messageToSend = {
           text: messageInput,
         };
+        const body = JSON.stringify(messageToSend);
+        const destination = '/app/application';
 
-        const headers = {
-          name: 'temp-Header1',
-          address: 'temp-Header2',
+        const sendHeader = {
+          'send-Header': 'send-Header',
         };
-        stompClient.send('/app/application', headers, JSON.stringify(messageToSend));
+
+        stompClient.send(destination, sendHeader, body);
       });
 
       // This is helper method
