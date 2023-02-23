@@ -11,7 +11,10 @@
 |     | [2.2. FrontEnd](#2_2_FrontEnd)             |
 |     | [2.3. test](#2_3_test)             |
 |  3  | [WebSocket](#3_WebSocket)       |
-|     | [3.1. Simple project with WebSocket](#3_1_Simple_project_with_WebSocket)             |
+|  4  | [WebSocket Simple project](#4_WebSocket_Simple_project)       |
+|     | [4.1. BackEnd](#4_1_BackEnd)             |
+|     | [4.2. FrontEnd](#4_2_FrontEnd)             |
+|     | [4.3. test](#4_3_test)             |
 |  9  | [Chat App with ReactJS](#9_Chat_App_with_ReactJS)             |
 |     | [3.1. ](#3_1_)             |
 
