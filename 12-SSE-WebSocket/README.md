@@ -11,7 +11,11 @@
 |     | [2.2. FrontEnd](#2_2_FrontEnd)             |
 |     | [2.3. test](#2_3_test)             |
 |  3  | [WebSocket](#3_WebSocket)       |
-|  4  | [Chat App with ReactJS](#4_Chat_App_with_ReactJS)             |
+|  4  | [WebSocket Simple project](#4_WebSocket_Simple_project)       |
+|     | [4.1. BackEnd](#4_1_BackEnd)             |
+|     | [4.2. FrontEnd](#4_2_FrontEnd)             |
+|     | [4.3. test](#4_3_test)             |
+|  9  | [Chat App with ReactJS](#9_Chat_App_with_ReactJS)             |
 |     | [3.1. ](#3_1_)             |
 
 
@@ -516,40 +520,149 @@ stompClient.connect({}, function(frame) {
 }
 ```
 
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-
-###### x_
-
-<img src="https://img.shields.io/badge/- X %20- green" height=30px>
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 ---------------------------------------------------------------------------------------------------
 
+###### 4_WebSocket_Simple_project
 
-###### 4_Chat_App_with_ReactJS
+<img src="https://img.shields.io/badge/- 4_WebSocket_Simple_project %20-blue" height=40px>
+
+In this Project I will show the following:
+1. Implement the BackEnd configuration for WebSocket
+2. Implement the FrontEnd 
+3. Test the app 
+
+
+###### 4_1_BackEnd
+
+<img src="https://img.shields.io/badge/- 4.1. BackEnd %20- green" height=30px>
+
+### [Dependencies](#-)
+
+For backend prject jsut add following dependencies:
+
+1. Spring boot project 2.7.8 
+2. Spring boot starter WebSocket
+3. Dev-Tools
+
+![image](https://user-images.githubusercontent.com/36256986/220960634-22e464d1-7842-4dc9-8260-8b4c8d0243bb.png)
+
+### [Message Entity](#-)
+
+```java
+public class Message implements Serializable {
+
+	private static final long serialVersionUID = 1736015187911517445L;
+	private String text;
+	private String to;
+
+	Ctor/ G/ S / ToString
+}
+```
+
+### [Configuration with WebSocketConfig](#-)
+
+```java
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+	@Override
+	public void configureMessageBroker(MessageBrokerRegistry registry) {
+		registry.enableSimpleBroker("/all");
+		registry.setApplicationDestinationPrefixes("/app");
+	}
+
+	@Override
+	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		registry.addEndpoint("/ws-stomp-endpoint");
+		registry.addEndpoint("/ws-stomp-endpoint").withSockJS();		
+	}
+}
+```
+
+### [Controller](#-)
+
+```java
+@Controller
+public class MessageController {
+
+	/**
+	 * @MessageMapping annotation ensures that, if a message is sent to the
+	 *                 "/app/application" (/`@prefix from WebSocketConfig
+	 *                 class`/application) destination, the sendMessage() method is
+	 *                 called. Note the Spring adds the `/app` prefix for us
+	 * 
+	 *                 the sendMessage() method creates a Message object and returns
+	 *                 it. The return value is broadcast to all subscribers of
+	 *                 "/all/messages, as specified in the @SendTo annotation
+	 * 
+	 *                 We add this to tell Spring to send the return value to the
+	 *                 given endpoint. All we are doing here is taking messages sent
+	 *                 from one endpoint and redirecting to another
+	 * 
+	 *                 our method receives messages from /app/application. We also
+	 *                 have the @SendTo annotation with the value /topic/messages.
+	 */
+
+	// Mapped as /app/application
+	@MessageMapping("/application")
+	@SendTo("/all/messages")
+	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
+		
+		// This command gets the header of the 
+		// 'First' "SUBSCRIBE" connection made
+		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
+		System.out.println(addressNativeHeader);
+	
+		// This headers are made by the client each message he sends
+		MessageHeaders messageHeaders = stompHeaderAccessor.getMessageHeaders();
+		System.out.println(messageHeaders);	
+		
+		return message;
+	}
+
+}
+```
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+###### 4_2_FrontEnd
+
+<img src="https://img.shields.io/badge/- 4_2_FrontEnd %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+###### 4_3_test
+
+<img src="https://img.shields.io/badge/- 4_3_test %20- green" height=30px>
+
+
+
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+###### 9_Chat_App_with_ReactJS
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
 
