@@ -685,7 +685,8 @@ This is how the frontend code looks. </br>
 ### [app.js](#-)
 
 ```js
-// (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
+// (1) Set up WebSocket connection with the handshake at 
+//     `http://localhost:8080/ws-stomp-endpoint`
 let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
 
 // (2) Create a new StompClient object with the WebSocket endpoint
