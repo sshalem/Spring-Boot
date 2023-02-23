@@ -684,6 +684,12 @@ This is how the frontend code looks. </br>
 
 ### [app.js](#-)
 
+in the app.js this is what we have:
+1. (1) set up a connection to server with WebSocket 
+2. (2) create a stomp client (since we use a STOMP in our server)) 
+3. (3) connect to server with method of `stompClient.connect` , which listens (subscribe) to messages comig from server.
+4. (4) eventListener (of `click` to send messages) that takes the types message and sends it to server `stompClient.send`
+
 ```js
 // (1) Set up WebSocket connection with the handshake at 
 //     `http://localhost:8080/ws-stomp-endpoint`
