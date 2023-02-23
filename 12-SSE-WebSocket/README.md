@@ -438,6 +438,8 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 * [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 * [Spring Boot Using Websockets and STOMP - Great Link](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
+* [Java Techie example](https://www.youtube.com/watch?v=4Hyv4M1kFeM&ab_channel=JavaTechie)
+
 
 ### [What is WebSocket](https://docs.spring.io/spring-framework/docs/5.3.25/reference/html/web.html#websocket)
 
