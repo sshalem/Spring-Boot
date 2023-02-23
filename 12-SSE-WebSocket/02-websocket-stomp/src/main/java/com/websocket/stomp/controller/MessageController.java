@@ -28,6 +28,7 @@ public class MessageController {
 	 * 
 	 *                 our method receives messages from /app/application. We also
 	 *                 have the @SendTo annotation with the value /all/messages.
+	 *                 this `/all` comes from the configuration class `registry.enableSimpleBroker("/all")` 
 	 */
 
 	// Mapped as /app/application
