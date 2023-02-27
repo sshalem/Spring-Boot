@@ -20,7 +20,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
+
+//		setting an Iterceptor
 //		registry.addEndpoint("/ws-stomp-endpoint").withSockJS().setInterceptors(new HttpHandshakeInterceptor());
+		
+		// Setting HndShakeHandler
 		registry.addEndpoint("/ws-stomp-endpoint").setHandshakeHandler(handshakeHandler()).withSockJS();
 //		registry.addEndpoint("/ws-stomp-endpoint").withSockJS();
 	}
