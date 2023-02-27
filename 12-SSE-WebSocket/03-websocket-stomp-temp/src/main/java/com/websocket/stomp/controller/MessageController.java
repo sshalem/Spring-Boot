@@ -1,5 +1,7 @@
 package com.websocket.stomp.controller;
 
+import java.util.Map;
+
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -36,7 +38,10 @@ public class MessageController {
 	@SendTo("/all/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
-//		StompHeaderAccessor.wrap(Message);
+		Map<String,Object> sessionAttributes = stompHeaderAccessor.getSessionAttributes();
+		
+		System.out.println(sessionAttributes);
+		
 		
 		// This command gets the header `send-Header` of the `stompClient.send` , and browser shows in console
 		// >>>SEND  the header is send
