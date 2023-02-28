@@ -1,5 +1,8 @@
 // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
 let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+//let socket = new WebSocket('ws://localhost:8080/ws-stomp-endpoint');
+
+
 
 // (2) Create a new StompClient object with the WebSocket endpoint
 let stompClient = Stomp.over(socket);
