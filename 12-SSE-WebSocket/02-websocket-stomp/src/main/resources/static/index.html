@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Hello WebSocket</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
   </head>
   <body>
-    <section>
-      <div>
-        <button id="sendMessage">Send</button>
-        <input type="text" id="message-input" placeholder="Text" />
+    <div id="main-content" class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form class="form-inline">
+            <div class="form-group">
+              <label>WebSocket connection:</label>
+              <div id="connect" class="btn btn-default">Connect</div>
+              <div id="disconnect" class="btn btn-default" disabled="disabled">Disconnect</div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <!-- <form id="form-id" class="form-inline"> -->
+          <div class="form-group">
+            <label for="message-input">What is your name?</label>
+            <input type="text" id="message-input" class="form-control" placeholder="Your name here..." />
+          </div>
+          <div id="sendMsg" class="btn btn-default">Send</div>
+          <!-- </form> -->
+        </div>
       </div>
-      <br />
-      <div id="messages"></div>
-    </section>
+      <div class="row">
+        <div id="messages"></div>
+        <div class="col-md-12">
+          <table id="conversation" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Greetings WebSocket</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>

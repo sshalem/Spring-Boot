@@ -1,45 +1,67 @@
-// (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
-let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+const connect = document.getElementById('connect');
+const disconnect = document.getElementById('disconnect');
+const sendMsg = document.getElementById('sendMsg');
+const conversation = document.getElementById('conversation');
 
-// (2) Create a new StompClient object with the WebSocket endpoint
-let stompClient = Stomp.over(socket);
+let stompClient = null;
 
-// (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
-//     this is the format of connect: stompClient.connect(header, onConnected, onError);
-stompClient.connect(
-  { 'connection-Header': 'connection-Header' },
-  function (frame) {
-    console.log(frame);
-
-    // this is the format of subscribe:
-    // stompClient.subscribe(destination, callback, headers)
-    // I don't see the usage of headers when subscribing
-    stompClient.subscribe('/all/messages', (result) => {
-      console.log(result);
-      show(JSON.parse(result.body));
-    });
-  },
-  function (error) {
-    console.error(error);
+function setConnected(connected) {
+  if (connected) {
+    // $('#conversation').show();
+  } else {
+    // $('#conversation').hide();
   }
-);
+  // $('#greetings').html('');
+}
 
-// (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
-document.getElementById('sendMessage').addEventListener('click', (e) => {
-  let messageInput = document.getElementById('message-input').value;
-  const messageToSend = {
-    message: messageInput,
-  };
+function disconnecting() {
+  if (stompClient !== null) {
+    stompClient.disconnect();
+  }
+  setConnected(false);
+  console.log('Disconnected');
+}
 
-  // this is the format of send:
-  // stompClient.send(destination, callback, headers)
-  stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+connect.addEventListener('click', (e) => {
+  let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+
+  // (2) Create a new StompClient object with the WebSocket endpoint
+  stompClient = Stomp.over(socket);
+
+  stompClient.connect(
+    { 'connection-Header': 'connection-Header' },
+    function (frame) {
+      setConnected(true);
+      console.log('Connected: ' + frame);
+      stompClient.subscribe('/all/messages', (result) => {
+        console.log(result);
+        displayResult(JSON.parse(result.body));
+      });
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
 });
 
-// This is helper method
-function show(message) {
-  const response = document.getElementById('messages');
+sendMsg.addEventListener('submit', (e) => {
+  let messageInput = document.getElementById('message-input').value;
+
+  console.log(messageInput);
+
+  // const messageToSend = {
+  //   message: messageInput,
+  // };
+  // stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+});
+
+disconnect.addEventListener('click', (e) => {
+  disconnect();
+});
+
+function displayResult(message) {
+  const messages = document.getElementById('messages');
   const p = document.createElement('p');
-  p.innerHTML = 'message: ' + message.message;
+  p.innerHTML = 'message: ' + messages.message;
   response.appendChild(p);
 }
