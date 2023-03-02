@@ -501,29 +501,7 @@ The goal of [`SockJS`](#-) is to let applications use a [`WebSocket API`](#-)  ,
 
 STOMP over WebSocket support is available in the spring-messaging and spring-websocket modules. Once you have those dependencies, you can expose a STOMP endpoints, over WebSocket with SockJS Fallback, 
 
-For STOMP, At present the `JSteunou/webstomp-client` is the most actively maintained and evolving successor of that library. </br>
-The following example code is based on it:
-
-#### [connect from a browser](#-)
-
-```js
-var socket = new SockJS("/spring-websocket-portfolio/portfolio");
-var stompClient = webstomp.over(socket);
-
-stompClient.connect({}, function(frame) {
-}
-```
-
-Alternatively, if you connect through WebSocket (without SockJS), you can use the following code:
-
-
-```js
-var socket = new WebSocket("/spring-websocket-portfolio/portfolio");
-var stompClient = Stomp.over(socket);
-
-stompClient.connect({}, function(frame) {
-}
-```
+### [sending-stomp-messages-over-a-websocket-in-spring-boot](https://www.continuum.be/en/blog/sending-stomp-messages-over-a-websocket-in-spring-boot-2/)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
