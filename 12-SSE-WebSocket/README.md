@@ -768,6 +768,7 @@ Lets run project `02-websocket-stomp` and see the results.
 
 Follow the link from YouTube [https://www.youtube.com/watch?v=o_IjEDAuo8Y&ab_channel=InvolveInInnovation](https://www.youtube.com/watch?v=o_IjEDAuo8Y&ab_channel=InvolveInInnovation)
 
+git hub link for the project [https://github.com/JayaramachandranAugustin/ChatApplication](https://github.com/JayaramachandranAugustin/ChatApplication)
 
 ###### x_
 
