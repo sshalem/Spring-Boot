@@ -54,7 +54,7 @@ sendMessage.addEventListener('click', (e) => {
 
   // this is the format of send:
   // stompClient.send(destination, callback, headers)
-  stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+  stompClient.send('/app/application', { 'username-Header': `${messageInput.value}` }, JSON.stringify(messageToSend));
 
   messageInput.value = '';
 });
@@ -67,7 +67,7 @@ document.getElementById('message-input').addEventListener('keyup', (e) => {
   };
 
   if (e.key === 'Enter' && messageInput !== '') {
-    stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+    stompClient.send('/app/application', { 'username-Header': `${messageInput.value}` }, JSON.stringify(messageToSend));
     messageInput.value = '';
   }
 });
@@ -85,12 +85,8 @@ function setConnected(connected) {
   if (connected) {
     disconnect.classList.toggle('hide');
     connectSection.classList.toggle('hide');
-    // disconnect.classList.remove('hide');
-    // connectSection.classList.add('hide');
   } else {
     disconnect.classList.toggle('hide');
     connectSection.classList.toggle('hide');
-    // disconnect.classList.add('hide');
-    // connectSection.classList.remove('hide');
   }
 }
