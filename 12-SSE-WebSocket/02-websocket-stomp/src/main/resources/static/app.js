@@ -3,6 +3,7 @@ const disconnect = document.getElementById('disconnect');
 const sendMessage = document.getElementById('sendMessage');
 const conversation = document.getElementById('conversation');
 
+// Globaly define this variable
 let stompClient = null;
 
 connect.addEventListener('click', (e) => {
