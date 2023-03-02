@@ -1,6 +1,6 @@
 const connect = document.getElementById('connect');
 const disconnect = document.getElementById('disconnect');
-const sendMsg = document.getElementById('sendMsg');
+const sendMessage = document.getElementById('sendMessage');
 const conversation = document.getElementById('conversation');
 
 let stompClient = null;
@@ -44,24 +44,21 @@ connect.addEventListener('click', (e) => {
   );
 });
 
-sendMsg.addEventListener('submit', (e) => {
+sendMessage.addEventListener('click', (e) => {
   let messageInput = document.getElementById('message-input').value;
-
-  console.log(messageInput);
-
-  // const messageToSend = {
-  //   message: messageInput,
-  // };
-  // stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+  const messageToSend = {
+    message: messageInput,
+  };
+  stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
 });
 
 disconnect.addEventListener('click', (e) => {
   disconnect();
 });
 
-function displayResult(message) {
-  const messages = document.getElementById('messages');
+function displayResult(msg) {
+  const response = document.getElementById('messages');
   const p = document.createElement('p');
-  p.innerHTML = 'message: ' + messages.message;
+  p.innerHTML = 'message: ' + msg.message;
   response.appendChild(p);
 }
