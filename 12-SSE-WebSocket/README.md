@@ -501,7 +501,18 @@ The goal of [`SockJS`](#-) is to let applications use a [`WebSocket API`](#-)  ,
 
 STOMP over WebSocket support is available in the spring-messaging and spring-websocket modules. Once you have those dependencies, you can expose a STOMP endpoints, over WebSocket with SockJS Fallback, 
 
-### [sending-stomp-messages-over-a-websocket-in-spring-boot](https://www.continuum.be/en/blog/sending-stomp-messages-over-a-websocket-in-spring-boot-2/)
+### [Sending-stomp-messages-over-a-websocket-in-spring-boot](https://www.continuum.be/en/blog/sending-stomp-messages-over-a-websocket-in-spring-boot-2/)
+
+STOMP stands for `Simple Text Orientated Messaging Protocol`. </br>
+It provides an interoperable wire format in order to enable clients to communicate with message brokers,  as long as they `both understand STOMP`. </br>
+Using STOMP thus allows widespread messaging among many languages, platforms and brokers.
+
+STOMP defines a handful of `frame` types that map to WebSocket frames:
+* CONNECT: a frame used by the client to initiate the stream to the server
+* SUBSCRIBE: a frame used to register a subscription on a given destination. Messages sent to this destination will be routed to all active subscriptions on this destination
+* UNSUBSCRIBE: a frame used to remove an existing subscription. Once removed, the client will no longer be among the receivers of messages send to the destination;
+* ACK: a frame used to acknowledge the consumption of a message from a subscription, removing the message from the message queue if supported
+* SEND: a frame used to send a message to a specific destination in the messaging system. It consists of the required header “destination” which indicates where to send the message; the body of the frame is the message to be sent.
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
