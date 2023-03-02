@@ -496,11 +496,11 @@ It provides an interoperable wire format in order to enable clients to communica
 Using STOMP thus allows widespread messaging among many languages, platforms and brokers.
 
 STOMP defines a handful of `frame` types that map to WebSocket frames:
-1. CONNECT: a frame used by the client to initiate the stream to the server
-2. SUBSCRIBE: a frame used to register a subscription on a given destination. Messages sent to this destination will be routed to all active subscriptions on this destination
-3. UNSUBSCRIBE: a frame used to remove an existing subscription. Once removed, the client will no longer be among the receivers of messages send to the destination;
-4. ACK: a frame used to acknowledge the consumption of a message from a subscription, removing the message from the message queue if supported
-5. SEND: a frame used to send a message to a specific destination in the messaging system. It consists of the required header “destination” which indicates where to send the message; the body of the frame is the message to be sent.
+1. [`CONNECT`](#-): a frame used by the client to initiate the stream to the server
+2. [`SUBSCRIBE`](#-): a frame used to register a subscription on a given destination. Messages sent to this destination will be routed to all active subscriptions on this destination
+3. [`UNSUBSCRIBE`](#-): a frame used to remove an existing subscription. Once removed, the client will no longer be among the receivers of messages send to the destination;
+4. [`ACK`](#-): a frame used to acknowledge the consumption of a message from a subscription, removing the message from the message queue if supported
+5. [`SEND`](#-): a frame used to send a message to a specific destination in the messaging system. It consists of the required header “destination” which indicates where to send the message; the body of the frame is the message to be sent.
 
 These frames / commands allow management of the transfer of messages between client and server. Note that the WebSocket connection itself is not directly maintained with STOMP, but by the WebSocket client itself. Thus the WebSocket connection remains open as long as the client and/or server do not disconnect from the WebSocket connection. The STOMP client will handle the frames with instructions sent over the WebSocket connection to server and client.
 
