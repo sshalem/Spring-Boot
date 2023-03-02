@@ -39,7 +39,7 @@ public class MessageController {
 
 		// This command gets the header `send-Header` of the `stompClient.send` , and
 		// browser shows in console
-		// >>>SEND the header is send
+		// ( >>>SEND the header is send)
 		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
 		System.out.println(addressNativeHeader);
 
