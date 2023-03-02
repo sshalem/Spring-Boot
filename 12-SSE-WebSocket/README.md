@@ -560,8 +560,9 @@ For backend prject jsut add following dependencies:
 public class Message implements Serializable {
 
 	private static final long serialVersionUID = 1736015187911517445L;
-	private String text;
-	private String to;
+	private String senderName;
+	private String receiverName;
+	private String message;
 
 	Ctor/ G/ S / ToString
 }
@@ -649,9 +650,7 @@ public class MessageController {
 }
 ```
 
-
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
 
 
 ###### 4_2_FrontEnd
@@ -660,6 +659,7 @@ public class MessageController {
 
 This is how the frontend code looks. </br>
 1. in `index.html` I add the cdn for `SockJS` and `Stomp` since I use those Libraries
+2. I used Bootstrap for design CSS
 
 ### [index.html](#-)
 
@@ -667,76 +667,183 @@ This is how the frontend code looks. </br>
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello WebSocket</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
   </head>
   <body>
-    <section>
-      <div>
-        <button id="sendMessage">Send</button>
-        <input type="text" id="message-input" placeholder="Text" />
-      </div>
+    <div class="container">
+      <!-- Start Header Section -->
+      <header class="col-md-9">
+        <h1>WebSocket connection</h1>
+      </header>
+      <!-- End Header Section -->
+      <!-- Start Connect Section -->
+      <section class="col-md-9" id="connect-section">
+        <br />
+        <div class="form-group">
+          <label for="username-input">Write a Name</label>
+          <input type="text" id="username-input" class="form-control" placeholder="Write a name here..." />
+        </div>
+        <div id="connect-btn" class="btn btn-success">Connect</div>
+      </section>
+      <section class="col-md-9">
+        <div id="disconnect" class="btn btn-danger hide">Disconnect</div>
+      </section>
+      <!-- End Connect Section -->
+      <!-- Start write Message Section -->
+      <section class="col-md-9">
+        <br />
+        <div class="form-group">
+          <label for="message-input">Write a message</label>
+          <input type="text" id="message-input" class="form-control" placeholder="message here..." />
+        </div>
+        <div id="sendMessage" class="btn btn-primary">Send</div>
+      </section>
       <br />
-      <div id="messages"></div>
-    </section>
+      <!-- End write Message Section -->
+      <!-- Start Show Messages Section -->
+      <section class="col-md-9">
+        <br />
+        <div class="form-group" id="messages"></div>
+      </section>
+      <!-- End Show Messages Section -->
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>
+
 ```
 
 ### [app.js](#-)
 
 in the app.js this is what we have:
 1. (1) set up a connection to server with WebSocket 
-2. (2) create a stomp client (since we use a STOMP in our server)) 
-3. (3) connect to server with method of `stompClient.connect` , which listens (subscribe) to messages comig from server.
+2. (2) create a stomp client (since we use a STOMP in our server)
+3. (3) connect to server with method of `stompClient.connect` , which listens (subscribe) to messages coming from server (depends on Url ,can be for all or for private user)
 4. (4) eventListener (of `click` to send messages) that takes the types message and sends it to server `stompClient.send`
 
 ```js
-// (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
-let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+const connectSection = document.getElementById('connect-section');
+const connectBtn = document.getElementById('connect-btn');
+const disconnect = document.getElementById('disconnect');
+const sendMessage = document.getElementById('sendMessage');
+const conversation = document.getElementById('conversation');
+const usernameInput = document.getElementById('username-input');
+const displayMessages = document.getElementById('messages');
 
-// (2) Create a new StompClient object with the WebSocket endpoint
-let stompClient = Stomp.over(socket);
+// Globaly define this variable
+let stompClient = null;
 
-// (3) Start the STOMP communications, provide a callback for, when the CONNECT frame arrives.
-//     this is the format of connect: stompClient.connect(header, onConnected, onError);
-stompClient.connect(
-  { 'connection-Header': 'connection-Header' },
-  function (frame) {
-    console.log(frame);
+/*******************
+ * Event Listener
+ ******************/
+connectBtn.addEventListener('click', (e) => {
+  if (usernameInput.value === '') {
+    alert('must write a name here before connecting');
+  } else {
+    // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
+    let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
 
-    // this is the format of subscribe:
-    // stompClient.subscribe(destination, callback, headers)
-    // I don't see the usage of headers when subscribing
-    stompClient.subscribe('/all/messages', (result) => {
-      console.log(result);
-      show(JSON.parse(result.body));
-    });
-  },
-  function (error) {
-    console.error(error);
+    // (2) Create a new StompClient object with the WebSocket endpoint
+    stompClient = Stomp.over(socket);
+
+    // (3) in this function, we connect with STOMP , this will start:
+    //     (a) connecting for establishing communications
+    //     (b) Listening for url of '/all/messages'
+    //     (c) Provide a callback , when the CONNECT frame arrives.
+    //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
+    stompClient.connect(
+      { 'connection-Header': 'connection-Header' },
+      function (frame) {
+        setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/all/messages', (result) => {
+          console.log(result);
+          displayResult(JSON.parse(result.body));
+        });
+      },
+      function (error) {
+        console.error(error);
+      }
+    );
   }
-);
+});
 
-// (4) Take the value in the 'message-input' text field and send it to the server with empty headers.
-document.getElementById('sendMessage').addEventListener('click', (e) => {
-  let messageInput = document.getElementById('message-input').value;
+/*****************
+ * Event Listener
+ *****************/
+// (4) Take the value in the 'message-input' text field and send it to the server.
+sendMessage.addEventListener('click', (e) => {
+  let messageInput = document.getElementById('message-input');
   const messageToSend = {
-    message: messageInput,
+    senderName: usernameInput.value,
+    message: messageInput.value,
   };
 
   // this is the format of send:
   // stompClient.send(destination, callback, headers)
   stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+
+  messageInput.value = '';
 });
 
-// This is helper method
-function show(message) {
-  const response = document.getElementById('messages');
+/*****************
+ * Event Listener : This is for sending the message when pressing the Enter Key
+ *****************/
+document.getElementById('message-input').addEventListener('keyup', (e) => {
+  let messageInput = document.getElementById('message-input');
+  const messageToSend = {
+    senderName: usernameInput.value,
+    message: messageInput.value,
+  };
+
+  if (e.key === 'Enter' && messageInput !== '') {
+    stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
+    messageInput.value = '';
+  }
+});
+
+/******************
+ * Event Listener
+ ******************/
+disconnect.addEventListener('click', (e) => {
+  if (stompClient !== null) {
+    stompClient.disconnect();
+  }
+  usernameInput.value = '';
+  displayMessages.innerHTML = '';
+  setConnected(false);
+});
+
+/**********************************************************************
+ *                Helper Methods
+ **********************************************************************/
+function displayResult(msg) {
+  console.log(msg);
   const p = document.createElement('p');
-  p.innerHTML = 'message: ' + message.message;
-  response.appendChild(p);
+  p.innerHTML = `
+      <label style="margin-right:2rem; font-size:1.7rem">${msg.senderName} : </label>  ${msg.message}`;
+  displayMessages.appendChild(p);
+}
+
+function setConnected(connected) {
+  if (connected) {
+    disconnect.classList.toggle('hide');
+    connectSection.classList.toggle('hide');
+  } else {
+    disconnect.classList.toggle('hide');
+    connectSection.classList.toggle('hide');
+  }
 }
 ```
 
