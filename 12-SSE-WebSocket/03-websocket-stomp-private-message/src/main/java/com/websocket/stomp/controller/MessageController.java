@@ -27,23 +27,28 @@ public class MessageController {
 	 *                 from one endpoint and redirecting to another
 	 * 
 	 *                 our method receives messages from /app/application. We also
-	 *                 have the @SendTo annotation with the value /topic/messages.
+	 *                 have the @SendTo annotation with the value `/all/messages` .
+	 *                 this `/all` comes from the configuration class
+	 *                 `registry.enableSimpleBroker("/all")`
 	 */
 
 	// Mapped as /app/application
 	@MessageMapping("/application")
 	@SendTo("/all/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
-		
-		// This command gets the header of the 
-		// 'First' "SUBSCRIBE" connection made
+
+		// This command gets the header `send-Header` of the `stompClient.send` , and
+		// browser shows in console
+		// ( >>>SEND the header is send)
 		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
 		System.out.println(addressNativeHeader);
-	
+
+		System.out.println(" ------------------------------- ");
+
 		// This headers are made by the client each message he sends
 		MessageHeaders messageHeaders = stompHeaderAccessor.getMessageHeaders();
-		System.out.println(messageHeaders);	
-		
+		System.out.println(messageHeaders);
+
 		return message;
 	}
 

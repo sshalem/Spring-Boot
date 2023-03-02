@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello WebSocket</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web-socket-js/1.0.0/web_socket.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
   </head>
   <body>
-    <section>
-      <div>
-        <button id="sendMessage">Send</button>
-        <input type="text" id="message-input" placeholder="Text" />
-      </div>
+    <div class="container">
+      <!-- Start Header Section -->
+      <header class="col-md-9">
+        <h1>WebSocket connection</h1>
+      </header>
+      <!-- End Header Section -->
+      <!-- Start Connect Section -->
+      <section class="col-md-9" id="connect-section">
+        <br />
+        <div class="form-group">
+          <label for="username-input">Write a Name</label>
+          <input type="text" id="username-input" class="form-control" placeholder="Write a name here..." />
+        </div>
+        <div id="connect-btn" class="btn btn-success">Connect</div>
+      </section>
+      <section class="col-md-9">
+        <div id="disconnect" class="btn btn-danger hide">Disconnect</div>
+      </section>
+      <!-- End Connect Section -->
+      <!-- Start write Message Section -->
+      <section class="col-md-9">
+        <br />
+        <div class="form-group">
+          <label for="message-input">Write a message</label>
+          <input type="text" id="message-input" class="form-control" placeholder="message here..." />
+        </div>
+        <div id="sendMessage" class="btn btn-primary">Send</div>
+      </section>
       <br />
-      <div id="messages"></div>
-    </section>
+      <!-- End write Message Section -->
+      <!-- Start Show Messages Section -->
+      <section class="col-md-9">
+        <br />
+        <div class="form-group" id="messages"></div>
+      </section>
+      <!-- End Show Messages Section -->
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>

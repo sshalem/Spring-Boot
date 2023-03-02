@@ -44,5 +44,9 @@ public class Message implements Serializable {
 		this.message = message;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Message [senderName=" + senderName + ", receiverName=" + receiverName + ", message=" + message + "]";
+	}
+
 }

@@ -5,32 +5,48 @@ import java.io.Serializable;
 public class Message implements Serializable {
 
 	private static final long serialVersionUID = 1736015187911517445L;
-	private String text;
-	private String to;
+	private String senderName;
+	private String receiverName;
+	private String message;
 
 	public Message() {
 		super();
 	}
 
-	public String getText() {
-		return text;
+	public Message(String senderName, String receiverName, String message) {
+		super();
+		this.senderName = senderName;
+		this.receiverName = receiverName;
+		this.message = message;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public String getSenderName() {
+		return senderName;
 	}
 
-	public String getTo() {
-		return to;
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
 	}
 
-	public void setTo(String to) {
-		this.to = to;
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	@Override
 	public String toString() {
-		return "Message [text=" + text + ", to=" + to + "]";
+		return "Message [senderName=" + senderName + ", receiverName=" + receiverName + ", message=" + message + "]";
 	}
 
 }
