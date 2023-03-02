@@ -25,7 +25,7 @@ connectBtn.addEventListener('click', (e) => {
 const onConnected = (frame) => {
   setConnected(true);
   stompClient.subscribe('/all/messages', onMessageReceived);
-  stompClient.subscribe('/all/messages', onPrivateMessage);
+  stompClient.subscribe(`/user/${dsc}/private`, onPrivateMessage);
 };
 
 const onError = (error) => {
