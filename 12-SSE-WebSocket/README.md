@@ -439,7 +439,6 @@ Here run only project `01-SSE-custom-eventListener` (No need to run others).
 
 #### [Video's](#-)
 
-* [Daily Code Buffer](https://www.youtube.com/watch?v=n6ZqOwreFTA&ab_channel=DailyCodeBuffer) </br>
 * [Spring Boot Using Websockets and STOMP - Great Link](https://www.youtube.com/watch?v=QNMItUBPxaI&ab_channel=RefactorFirst)</br>
 * [Java Techie example](https://www.youtube.com/watch?v=4Hyv4M1kFeM&ab_channel=JavaTechie)
 
