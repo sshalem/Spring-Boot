@@ -23,14 +23,16 @@
 
       <!-- End Header Section -->
       <!-- Start Connect Section -->
-      <section class="col-md-9">
+      <section class="col-md-9" id="connect-section">
         <br />
         <div class="form-group">
-          <label for="username-input">Write your Name</label>
-          <input type="text" id="username-input" class="form-control" placeholder="Write Name here..." />
+          <label for="username-input">Write a Name</label>
+          <input type="text" id="username-input" class="form-control" placeholder="Write a name here..." />
         </div>
-        <div id="connect" class="btn btn-default">Connect</div>
-        <div id="disconnect" class="btn btn-default hide">Disconnect</div>
+        <div id="connect-btn" class="btn btn-success">Connect</div>
+      </section>
+      <section class="col-md-9">
+        <div id="disconnect" class="btn btn-danger hide">Disconnect</div>
       </section>
 
       <!-- End Connect Section -->
@@ -41,7 +43,7 @@
           <label for="message-input">Write a message</label>
           <input type="text" id="message-input" class="form-control" placeholder="message here..." />
         </div>
-        <div id="sendMessage" class="btn btn-default">Send</div>
+        <div id="sendMessage" class="btn btn-primary">Send</div>
       </section>
       <br />
       <!-- End write Message Section -->
