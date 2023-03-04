@@ -699,7 +699,6 @@ This is how the frontend code looks. </br>
     <script src="./app.js"></script>
   </body>
 </html>
-
 ```
 
 ### [app.js](#-)
@@ -740,23 +739,24 @@ connectBtn.addEventListener('click', (e) => {
     //     (b) Listening for url of '/all/messages'
     //     (c) Provide a callback , when the CONNECT frame arrives.
     //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
-    stompClient.connect(
-      { 'connection-Header': 'connection-Header' },
-      function (frame) {
-        setConnected(true);
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('/all/messages', (result) => {
-          console.log(result);
-          displayResult(JSON.parse(result.body));
-        });
-      },
-      function (error) {
-        console.error(error);
-      }
-    );
+    //          usually this header is empty object {} .
+
+    stompClient.connect({}, onConnected, onError);
   }
 });
 
+const onConnected = (frame) => {
+  setConnected(true);
+  stompClient.subscribe('/all/messages', onMessageReceived);
+};
+
+const onError = (error) => {
+  console.error(error);
+};
+
+const onMessageReceived = (payload) => {
+  displayResult(JSON.parse(payload.body));
+};
 /*****************
  * Event Listener
  *****************/
@@ -771,7 +771,6 @@ sendMessage.addEventListener('click', (e) => {
   // this is the format of send:
   // stompClient.send(destination, callback, headers)
   stompClient.send('/app/application', { 'send-Header': 'send-Header' }, JSON.stringify(messageToSend));
-
   messageInput.value = '';
 });
 
@@ -806,11 +805,10 @@ disconnect.addEventListener('click', (e) => {
 /**********************************************************************
  *                Helper Methods
  **********************************************************************/
-function displayResult(msg) {
-  console.log(msg);
+function displayResult(payload) {
   const p = document.createElement('p');
   p.innerHTML = `
-      <label style="margin-right:2rem; font-size:1.7rem">${msg.senderName} : </label>  ${msg.message}`;
+      <label style="margin-right:2rem; font-size:1.7rem">${payload.senderName} : </label>  ${payload.message}`;
   displayMessages.appendChild(p);
 }
 
