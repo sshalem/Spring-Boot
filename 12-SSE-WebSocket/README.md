@@ -728,19 +728,18 @@ connectBtn.addEventListener('click', (e) => {
   if (usernameInput.value === '') {
     alert('must write a name here before connecting');
   } else {
-    // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
-    let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
-
+    // Set up WebSocket connection with STOMP
+    // (1) create new Object of SockJS , handshake at "http://localhost:8080/ws-stomp-endpoint"
     // (2) Create a new StompClient object with the WebSocket endpoint
-    stompClient = Stomp.over(socket);
-
     // (3) in this function, we connect with STOMP , this will start:
     //     (a) connecting for establishing communications
-    //     (b) Listening for url of '/all/messages'
+    //     (b) Listening to url: in this example we listen for messages comping from url '/all/messages'
     //     (c) Provide a callback , when the CONNECT frame arrives.
     //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
     //          usually this header is empty object {} .
 
+    let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+    stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
   }
 });
@@ -845,15 +844,37 @@ Lets run project `02-websocket-stomp` and see the results. </br>
   <img src="https://user-images.githubusercontent.com/36256986/222926928-8445eb5d-03ca-494b-8cfa-7b051d23055a.png" />
 </p>
 
-we can see in Console the following:
+3. Let's undersatnd what we see in Console :
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/222927416-cfa39927-9023-41ef-bc30-a2d7ceacdedb.png" />
 </p>
 
+* Once we click on connect, Browser opens a connection with server  
+	* If successful we see `>>> CONNECT` and  `<<< CONNECTED` , if it was successful
+	* If not we get error : `Whoops! Lost connection to *** ` 
+* Ignore the connected to server undefined
+* `>>> SUBSCRIBE ` - Listens to messages coming from server url `/all/messages` 
+
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ###### 9_Chat_App_with_ReactJS
