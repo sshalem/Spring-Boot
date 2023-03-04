@@ -16,19 +16,18 @@ connectBtn.addEventListener('click', (e) => {
   if (usernameInput.value === '') {
     alert('must write a name here before connecting');
   } else {
-    // (1) Try to set up WebSocket connection with the handshake at "http://localhost:8080/ws-stomp-endpoint"
-    let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
-
+    // Set up WebSocket connection with STOMP
+    // (1) create new Object of SockJS , handshake at "http://localhost:8080/ws-stomp-endpoint"
     // (2) Create a new StompClient object with the WebSocket endpoint
-    stompClient = Stomp.over(socket);
-
     // (3) in this function, we connect with STOMP , this will start:
     //     (a) connecting for establishing communications
-    //     (b) Listening for url of '/all/messages'
+    //     (b) Listening to url: in this example we listen for messages comping from url '/all/messages'
     //     (c) Provide a callback , when the CONNECT frame arrives.
     //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
     //          usually this header is empty object {} .
 
+    let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
+    stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
   }
 });
