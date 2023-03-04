@@ -836,7 +836,7 @@ Let's open 2 browsers , Chrome & Edge , and open page to url of `localhost:/8080
 
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" />
+  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" width=700 height=300 />
 </p>
 
 
