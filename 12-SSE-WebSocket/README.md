@@ -855,8 +855,9 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 * `>>> SUBSCRIBE ` - Listens to messages coming from server url `/all/messages` 
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/222927416-cfa39927-9023-41ef-bc30-a2d7ceacdedb.png" />
+  <img src="https://user-images.githubusercontent.com/36256986/222932064-e2b9cab6-b4b7-47eb-a611-8b7d4e435a71.png" />
 </p>
+
 
 4. Lets type a message , click on send and see what console shows:
 
