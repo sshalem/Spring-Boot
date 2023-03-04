@@ -846,15 +846,23 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 
 3. Let's undersatnd what we see in Console :
 
-<p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/222927416-cfa39927-9023-41ef-bc30-a2d7ceacdedb.png" />
-</p>
-
 * Once we click on connect, Browser opens a connection with server  
 	* If successful we see `>>> CONNECT` and  `<<< CONNECTED` , if it was successful
 	* If not we get error : `Whoops! Lost connection to *** ` 
 * Ignore the connected to server undefined
 * `>>> SUBSCRIBE ` - Listens to messages coming from server url `/all/messages` 
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/222927416-cfa39927-9023-41ef-bc30-a2d7ceacdedb.png" />
+</p>
+
+4. Lets type a message , click on send and see what console shows:
+
+* `>>> SEND` - A send message with data to server is send , to url of `/app/application`
+* `<<< MESSAGE` - The message is send back `from server --> to client` from url that client listens to `/all/messages`
+
+![image](https://user-images.githubusercontent.com/36256986/222928178-6414601c-949d-4b43-b1b1-b441cb078e72.png)
+
 
 
 
