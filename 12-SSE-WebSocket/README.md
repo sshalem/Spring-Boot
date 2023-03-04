@@ -831,13 +831,13 @@ function setConnected(connected) {
 
 <img src="https://img.shields.io/badge/- 4.3. test %20- green" height=30px>
 
-Lets run project `02-websocket-stomp` and see the results.
+Lets run project `02-websocket-stomp` and see the results. </br>
+Let's open 2 browsers , Chrome & Edge , and open page to url of `localhost:/8080` </br>
 
 
-
-
-
-
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" />
+</p>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
