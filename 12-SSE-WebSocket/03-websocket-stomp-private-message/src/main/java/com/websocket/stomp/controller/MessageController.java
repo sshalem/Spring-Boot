@@ -17,7 +17,7 @@ public class MessageController {
 	private SimpMessagingTemplate simpMessagingTemplate;
 
 	@MessageMapping("/application")
-	@SendTo("/all/messages")
+	@SendTo("/topic/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		return message;
 	}

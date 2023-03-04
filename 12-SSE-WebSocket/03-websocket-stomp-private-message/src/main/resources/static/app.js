@@ -5,6 +5,7 @@ const sendMessage = document.getElementById('sendMessage');
 const conversation = document.getElementById('conversation');
 const usernameInput = document.getElementById('username-input');
 const displayMessages = document.getElementById('messages');
+const showConnectedUser = document.getElementById('showConnectedUser');
 
 // Globaly define this variable
 let stompClient = null;
@@ -16,6 +17,16 @@ connectBtn.addEventListener('click', (e) => {
   if (usernameInput.value === '') {
     alert('must write a name here before connecting');
   } else {
+    // Set up WebSocket connection with STOMP
+    // (1) create new Object of SockJS , handshake at "http://localhost:8080/ws-stomp-endpoint"
+    // (2) Create a new StompClient object with the WebSocket endpoint
+    // (3) in this function, we connect with STOMP , this will start:
+    //     (a) connecting for establishing communications
+    //     (b) Listening to url: in this example we listen for messages comping from url '/all/messages'
+    //     (c) Provide a callback , when the CONNECT frame arrives.
+    //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
+    //          usually this header is empty object {} .
+
     let socket = new SockJS('http://localhost:8080/ws-stomp-endpoint');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
@@ -24,8 +35,7 @@ connectBtn.addEventListener('click', (e) => {
 
 const onConnected = (frame) => {
   setConnected(true);
-  stompClient.subscribe('/all/messages', onMessageReceived);
-  stompClient.subscribe(`/user/${dsc}/private`, onPrivateMessage);
+  stompClient.subscribe('/topic/messages', onMessageReceived);
 };
 
 const onError = (error) => {
@@ -35,10 +45,6 @@ const onError = (error) => {
 const onMessageReceived = (payload) => {
   displayResult(JSON.parse(payload.body));
 };
-
-function onPrivateMessage(payload) {
-  displayResult(JSON.parse(payload.body));
-}
 /*****************
  * Event Listener
  *****************/
@@ -96,6 +102,7 @@ function displayResult(payload) {
 
 function setConnected(connected) {
   if (connected) {
+    disconnect.innerHTML = `Disconnect ${usernameInput.value}`;
     disconnect.classList.toggle('hide');
     connectSection.classList.toggle('hide');
   } else {
