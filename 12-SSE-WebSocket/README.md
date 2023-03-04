@@ -552,7 +552,7 @@ In this configuration I have 2 methods I implement:
 1. `registerStompEndpoints` - define the EndPoint to connect with the FrontEnd stomp implementation.
 2. `configureMessageBroker` 
 	* define a prefix for the url --> `/app`
-	* define a path url , which client will send to server  --> `/all`
+	* define a path url , which client will send to server  --> `/topic`
 
 ```java
 import org.springframework.context.annotation.Configuration;
@@ -567,7 +567,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
-		registry.enableSimpleBroker("/all");
+		registry.enableSimpleBroker("/topic");
 		registry.setApplicationDestinationPrefixes("/app");
 	}
 
@@ -598,20 +598,20 @@ public class MessageController {
 	 * 
 	 *                 the sendMessage() method creates a Message object and returns
 	 *                 it. The return value is broadcast to all subscribers of
-	 *                 "/all/messages, as specified in the @SendTo annotation
+	 *                 "/topic/messages, as specified in the @SendTo annotation
 	 * 
 	 *                 We add this to tell Spring to send the return value to the
 	 *                 given endpoint. All we are doing here is taking messages sent
 	 *                 from one endpoint and redirecting to another
 	 * 
 	 *                 our method receives messages from /app/application. We also
-	 *                 have the @SendTo annotation with the value /all/messages. 
-	 *		   this `/all` comes from the configuration class `registry.enableSimpleBroker("/all")` 
+	 *                 have the @SendTo annotation with the value /topic/messages. 
+	 *		   this `/topic` comes from the configuration class `registry.enableSimpleBroker("/topic")` 
 	 */
 
 	// Mapped as /app/application
 	@MessageMapping("/application")
-	@SendTo("/all/messages")
+	@SendTo("/topic/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 		
 		// This command gets the header `send-Header` of the `stompClient.send` , and browser shows in console
@@ -734,7 +734,7 @@ connectBtn.addEventListener('click', (e) => {
     // (2) Create a new StompClient object with the WebSocket endpoint
     // (3) in this function, we connect with STOMP , this will start:
     //     (a) connecting for establishing communications
-    //     (b) Listening to url: in this example we listen for messages comping from url '/all/messages'
+    //     (b) Listening to url: in this example we listen for messages comping from url '/topic/messages'
     //     (c) Provide a callback , when the CONNECT frame arrives.
     //     (d) this is the format of connect: stompClient.connect(header, onConnected, onError);
     //          usually this header is empty object {} .
@@ -747,7 +747,7 @@ connectBtn.addEventListener('click', (e) => {
 
 const onConnected = (frame) => {
   setConnected(true);
-  stompClient.subscribe('/all/messages', onMessageReceived);
+  stompClient.subscribe('/topic/messages', onMessageReceived);
 };
 
 const onError = (error) => {
