@@ -5,6 +5,7 @@ const sendMessage = document.getElementById('sendMessage');
 const conversation = document.getElementById('conversation');
 const usernameInput = document.getElementById('username-input');
 const displayMessages = document.getElementById('messages');
+const showConnectedUser = document.getElementById('showConnectedUser');
 
 // Globaly define this variable
 let stompClient = null;
@@ -101,6 +102,7 @@ function displayResult(payload) {
 
 function setConnected(connected) {
   if (connected) {
+    disconnect.innerHTML = `Disconnect ${usernameInput.value}`;
     disconnect.classList.toggle('hide');
     connectSection.classList.toggle('hide');
   } else {
