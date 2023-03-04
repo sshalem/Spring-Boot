@@ -866,11 +866,9 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 </p>
 
 * `>>> SEND` - A send message with data to server is send , to url of `/app/application`
-* `<<< MESSAGE` - The message is send back `from server --> to client` from url that client listens to `/all/messages`
+* `<<< MESSAGE` - The message is send back `from server --> to client` from url that client listens to `/topic/messages`
 
-![image](https://user-images.githubusercontent.com/36256986/222928178-6414601c-949d-4b43-b1b1-b441cb078e72.png)
-
-
+![image](https://user-images.githubusercontent.com/36256986/222932126-fda2d08a-23bd-4553-aa14-3304da3cacd0.png)
 
 
 
