@@ -34,7 +34,7 @@ public class MessageController {
 
 	// Mapped as /app/application
 	@MessageMapping("/application")
-	@SendTo("/all/messages")
+	@SendTo("/topic/messages")
 	public Message sendMessage(@Payload Message message, StompHeaderAccessor stompHeaderAccessor) throws Exception {
 
 		// This command gets the header `send-Header` of the `stompClient.send` , and

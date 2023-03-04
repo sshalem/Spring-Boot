@@ -35,7 +35,7 @@ connectBtn.addEventListener('click', (e) => {
 
 const onConnected = (frame) => {
   setConnected(true);
-  stompClient.subscribe('/all/messages', onMessageReceived);
+  stompClient.subscribe('/topic/messages', onMessageReceived);
 };
 
 const onError = (error) => {
