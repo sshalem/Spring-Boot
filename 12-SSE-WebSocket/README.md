@@ -832,13 +832,24 @@ function setConnected(connected) {
 <img src="https://img.shields.io/badge/- 4.3. test %20- green" height=30px>
 
 Lets run project `02-websocket-stomp` and see the results. </br>
-Let's open 2 browsers , Chrome & Edge , and open page to url of `localhost:/8080` </br>
+1. Let's open 2 browsers , Chrome & Edge , and open page to url of `localhost:/8080` </br>
 
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" width=700 height=300 />
+  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" />
 </p>
 
+2. let's type a name , and click on connect button on both browsers, for example :
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/222926928-8445eb5d-03ca-494b-8cfa-7b051d23055a.png" />
+</p>
+
+we can see in Console the following:
+
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/222927416-cfa39927-9023-41ef-bc30-a2d7ceacdedb.png" />
+</p>
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
