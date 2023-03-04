@@ -15,6 +15,10 @@
 |     | [4.1. BackEnd](#4_1_BackEnd)             |
 |     | [4.2. FrontEnd](#4_2_FrontEnd)             |
 |     | [4.3. test](#4_3_test)             |
+|  5  | [WebSocket private message](#5_WebSocket_private_message)       |
+|     | [5.1. BackEnd](#5_1_BackEnd)             |
+|     | [5.2. FrontEnd](#5_2_FrontEnd)             |
+|     | [5.3. test](#5_3_test)             |
 |  9  | [Chat App with ReactJS](#9_Chat_App_with_ReactJS)             |
 |     | [3.1. ](#3_1_)             |
 
@@ -877,7 +881,47 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 ---------------------------------------------------------------------------------------------------
 
 
+###### 5_WebSocket_private_message
 
+<img src="https://img.shields.io/badge/- 5_WebSocket_private_message %20-blue" height=40px>
+
+In previous project We saw how we can send messages to all connected users. </br>
+for that, I used the annotaion of `@SendTo` which send s the message to all clients. </br>
+In this example I will show how we can send a message to a private user. </br>
+From `Spring io` there are 2ways to send a private message:
+1. `@SendToUser` - is used to direct the output message to only the user associated with the input message
+2. `SimpMessagingTemplate` - we can use this, to send messages to connected clients from any part of the application.
+
+I will show both implementations in my code.
+
+###### 5_1_BackEnd
+
+<img src="https://img.shields.io/badge/- 5_1_BackEnd %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+###### 5_2_FrontEnd
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+###### 5_3_test
+
+<img src="https://img.shields.io/badge/- X %20- green" height=30px>
+
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
 
 
 
