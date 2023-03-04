@@ -852,7 +852,7 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 	* If successful we see `>>> CONNECT` and  `<<< CONNECTED` , if it was successful
 	* If not we get error : `Whoops! Lost connection to *** ` 
 * Ignore the connected to server undefined
-* `>>> SUBSCRIBE ` - Listens to messages coming from server url `/all/messages` 
+* `>>> SUBSCRIBE ` - Listens to messages coming from server url `/topic/messages` 
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/36256986/222932064-e2b9cab6-b4b7-47eb-a611-8b7d4e435a71.png" />
