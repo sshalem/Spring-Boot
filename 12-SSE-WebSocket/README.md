@@ -836,7 +836,7 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 
 
 <p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" />
+  <img src="https://user-images.githubusercontent.com/36256986/222925841-b885616c-c05e-45b4-bf64-cde866080dce.png" width=700 height=350/>
 </p>
 
 2. let's type a name , and click on connect button on both browsers, for example :
