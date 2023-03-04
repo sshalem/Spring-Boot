@@ -860,6 +860,10 @@ Lets run project `02-websocket-stomp` and see the results. </br>
 
 4. Lets type a message , click on send and see what console shows:
 
+<p align=center>
+  <img src="https://user-images.githubusercontent.com/36256986/222929066-a87043ff-7d8e-4aea-8474-3e7c73cd1f88.png" width=700 height=350/>
+</p>
+
 * `>>> SEND` - A send message with data to server is send , to url of `/app/application`
 * `<<< MESSAGE` - The message is send back `from server --> to client` from url that client listens to `/all/messages`
 
