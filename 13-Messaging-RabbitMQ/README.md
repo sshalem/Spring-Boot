@@ -30,6 +30,8 @@
 ### [Video](#-) 
 
 * [Spring Boot RabbitMQ Tutorial](https://www.youtube.com/playlist?list=PLGRDMO4rOGcMh2fAMOnwuBMDa8PxiKWoN) 
+* [from Udemy Course by building-microservices-with-spring-boot-and-spring-cloud](https://www.udemy.com/course/building-microservices-with-spring-boot-and-spring-cloud/learn/lecture/35874384?start=15#overview)
+
 
 
 
