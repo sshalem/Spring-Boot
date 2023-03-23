@@ -13,7 +13,7 @@
 |     | I.4. [How Server validates JWT from Client](#1_4_How_Server_validates_JWT_from_Client) |
 |  1  | [01-jwt-main-project](https://github.com/sshalem/spring-security/tree/main/03_JWT/01-jwt-main-project)                              
 |  2  | [02-jwt-main-with-authorities](https://github.com/sshalem/spring-security/tree/main/03_JWT/02-jwt-main-with-authorities)    
-|  3  | [03-jwt-main-refresh-token](https://github.com/sshalem/spring-security/tree/main/03_JWT/03-jwt-main-refresh-token)    
+|  3  | [03-jwt-main-refresh-token](https://github.com/sshalem/Spring-Boot/tree/main/08-Spring-Security/03_JWT/03-jwt-main-refresh-token)    
 |  4  | [04-jwt-main-refresh-token-inDB](https://github.com/sshalem/Spring-Boot/tree/main/08-Spring-Security/03_JWT/04-jwt-main-refresh-token-inDB)  | 
 |  5  | [05-jwt-auth-react-hooks](#05_jwt_auth_react_hooks)                                                             | 
 |  6  | [06-jwt-auth-react-redux](#06_jwt_auth_react_redux)                                                             |
