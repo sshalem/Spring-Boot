@@ -2003,16 +2003,8 @@ which we can use now for our app in a secured way</br>
 
 We also want to check the method of `deleteUserByEmail` because `UserEntity` is mapped with `RefreshTokenEntity` , and we want to see that It is properly works.</br>
 Example:
-	* Scenario1 - If `Shabtay` is connected and tries to delete himself , it won't be possible.
-	* Scenario1 - connect Shabtay  then connect Ariel. Now connect again with Shabtay and delete Ariel . This will work 
-
-
-
-
-
-
-
-
+* Scenario1 - If `Shabtay` is connected and tries to delete himself , it won't be possible.
+* Scenario1 - connect Shabtay  then connect Ariel. Now connect again with Shabtay and delete Ariel . This will work 
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
