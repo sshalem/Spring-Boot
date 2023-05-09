@@ -11,7 +11,7 @@
 |     |--- [Most Common way to Authenticate](#Most_Common_way_to_Authenticate)   | 
 |  1  |[Basic Authentication](https://github.com/sshalem/spring-security/tree/main/01_BasicAuth)   | 
 |  2  |[Form Login](https://github.com/sshalem/spring-security/tree/main/02_FormLogin)  |   
-|  3  |[JWT](https://github.com/sshalem/spring-security/tree/main/03_JWT)  |   
+|  3  |[JWT](https://github.com/sshalem/Spring-Boot/tree/main/08-Spring-Security/03_JWT)  |   
 |  4  |[OAuth](https://github.com/sshalem/spring-security/tree/main/04_OAuth)  |   
 
 
