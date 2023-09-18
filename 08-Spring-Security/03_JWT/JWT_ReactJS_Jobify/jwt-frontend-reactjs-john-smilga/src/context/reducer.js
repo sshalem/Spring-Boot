@@ -81,7 +81,8 @@ const reducer = (state, action) => {
   }
 
   if (action.type === LOGOUT_USER) {
-    return { ...state, token: null, user: null, register: null };
+    // return { ...state, token: null, user: null, register: null };
+    return { ...state, token: null };
   }
 
   if (action.type === UPDATE_USER_BEGIN) {
