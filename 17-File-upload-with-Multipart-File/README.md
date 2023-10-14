@@ -4,8 +4,8 @@
 
 |     | Subject                                                                                |
 | :-: | :------------------------------------------------------------------------------------- |
-|     | [Introduction for setup with Vite](#Introduction)                          |
-|  1  | [Vite setup](#1_vite_setup)                          |
+|     | [Introduction](#Introduction)                          |
+|  1  | [Simple setup with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
 |  2  | [index.html](#2_index_html)                          |
 |  3  | [index.css](#3_index_css)                          |
 |  4  | [main.jsx](#4_main_jsx)                          |
@@ -30,53 +30,79 @@ Links for Spring Boot File upload example with Multipart File
 ---
 
 
-###### 1_vite_setup
+###### 1_simple_setup_spring_and_html
 
 <img src="https://img.shields.io/badge/- 1. vite_setup  %20-blue" height=40px>
 
-For Vite Setup:
-1. need to use `.jsx` extensions
-2. `index.html` is in the main project folder (instead of public folder when using create-react-app)
-3. `assets` folder is under `src` folder 
-4. instead of `index.js` need to use `main.jsx`
-5. to run project use `npm run dev` instead of `npm start`
-6. the rest is the same
+Let's see a very simple example for uploading file to Backend. </br>
+I use the example from link of [file-upload-Spring-Boot-Ajax-example](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/file-upload-Spring-Boot-Ajax-example)
 
-Create React app with vite, following link [https://vitejs.dev/guide/](https://vitejs.dev/guide/)
+#### Backend Code
 
-### NOTE:
+```java
+package com.file.upload.controller;
 
-- My npm version is 6.14 thus I use this command
-- name of project : `my-react-app` 
-- I can select to create it also with TypeScript by typing `react-ts` instead of `react`.
+import java.io.File;
 
-The commands below dot he following:
-- create a react app with Vite (in 3sec)
-- install all dependencies in 20 secs (Instead 4min with create-react-app)
-- run `npm run dev` which will open browse on port 5173 .  this is similar to `npm start` 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+@RestController
+public class FileUploadController {
+
+	@PostMapping("/upload")
+	public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file) {
+		String fileName = file.getOriginalFilename();
+		try {
+			file.transferTo(new File("C:\\Localdata\\" + fileName));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+		return ResponseEntity.ok("File uploaded successfully.");
+
+	}
+}
 ```
-npm create vite@latest my-react-app --template react
-npm install
-npm run dev
+
+#### FrontEnd code
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="testUpload" type="file" name="fileupload" />
+    <button id="upload-button" onclick="uploadFile()">Upload</button>
+
+    <!-- Ajax JavaScript File Upload to Spring Boot Logic -->
+    <script>
+      async function uploadFile() {
+        let formData = new FormData();
+        console.log(formData);
+
+        formData.append('file', testUpload.files[0]);
+
+        let response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.status == 200) {
+          alert('File successfully uploaded.');
+        }
+      }
+    </script>
+  </body>
+</html>
 ```
-
-We can see it cretated it in 2.07 seconds. </br>
-Open the project folder with vscode and let's explore the folder structure
-
-<p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/236320717-5197bb59-f55a-40a8-b4ec-ed3f07f4c9ac.png" width=750 height=240 />
-</p>
-
-### [folder structure with vite](#-)
-
-This is how the structure of the folder arranged:
-
-<p align=center>
-  <img src="https://user-images.githubusercontent.com/36256986/236327351-b0ea0b4d-3769-4b1f-9f63-797caf9238bc.png"  />
-</p>
-
-
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
