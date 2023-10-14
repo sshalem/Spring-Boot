@@ -18,17 +18,11 @@
 
 <img src="https://img.shields.io/badge/- Introduction  %20-blue" height=40px>
 
-This tutorial shows How to create a React app from Scartch, with Vite :
+Links for Spring Boot File upload example with Multipart File
 
-### [https://vitejs.dev/](https://vitejs.dev/)
-
-See the main link from [vitejs.dev](https://vitejs.dev/) for:
-1. benefits.
-2. click on the `why` to see the explanation
-3. See John Smilga react course for explanation [Vite with john smilga](https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/36135356#search)
-
-https://blog.logrocket.com/vite-3-vs-create-react-app-comparison-migration-guide/
-
+1. [Bezkoder file-upload Using @Controller](https://www.bezkoder.com/spring-boot-file-upload/)
+2. [Multipart File Uploads using REST API](https://medium.com/@patelsajal2/how-to-create-a-spring-boot-rest-api-for-multipart-file-uploads-a-comprehensive-guide-b4d95ce3022b)
+3. 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
