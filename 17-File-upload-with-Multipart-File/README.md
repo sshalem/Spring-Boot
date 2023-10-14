@@ -5,8 +5,8 @@
 |     | Subject                                                                                |
 | :-: | :------------------------------------------------------------------------------------- |
 |     | [Introduction](#Introduction)                          |
-|  1  | [Simple setup with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
-|  2  | [index.html](#2_index_html)                          |
+|  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
+|  2  | [Upload/Download files to/from server](#2_upload_download_files)                          |
 |  3  | [index.css](#3_index_css)                          |
 |  4  | [main.jsx](#4_main_jsx)                          |
 |     | [4.1. x](#4_1_)                          |
@@ -32,12 +32,36 @@ Links for Spring Boot File upload example with Multipart File
 
 ###### 1_simple_setup_spring_and_html
 
-<img src="https://img.shields.io/badge/- 1. vite_setup  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1. simple upload file setup spring and html  %20-blue" height=40px>
 
 Let's see a very simple example for uploading file to Backend. </br>
 I use the example from link of [file-upload-Spring-Boot-Ajax-example](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/file-upload-Spring-Boot-Ajax-example)
 
 #### Backend Code
+
+Let’s fine tune the file upload properties for our application using application.properties file.
+
+```sql
+#Whether to enable support of multipart uploads.default is true
+#spring.servlet.multipart.enabled =true
+
+# All files uploaded through will be stored in this directory
+file.upload-dir=/Users/javadevjournal/uploads
+
+#Threshold after which files are written to disk.default is 0B
+spring.servlet.multipart.file-size-threshold = 3KB
+
+#Max file size.Default is 1MB
+spring.servlet.multipart.max-file-size= 2MB
+
+#Max request size.Default is 10MB
+spring.servlet.multipart.max-request-size= 20MB
+
+#Whether to resolve the multipart request lazily at the time of file or parameter access.Default is false
+spring.servlet.multipart.resolve-lazily=true
+```
+
+#### JAVA code
 
 ```java
 package com.file.upload.controller;
@@ -116,11 +140,17 @@ Run the app , upload a simple txt file and see the the backend code stores the f
 
 --- 
 
-###### 2_index_html
+###### 2_upload_download_files 
 
-<img src="https://img.shields.io/badge/- x  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2 upload download files from server %20-blue" height=40px>
 
+Uploading and downloading files are a common task for any web application. </br>
+In this example I wil  show how to :
+1. Upload file from server using @Controller/ @RestController
+2. Download file from server using @Controller/ @RestController
 
+Link : </br>
+[File Upload using @Controller or @RestController](https://www.javadevjournal.com/spring/spring-file-upload/)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
