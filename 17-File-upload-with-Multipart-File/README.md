@@ -106,7 +106,9 @@ Save the frontend code in `index.html` file at `static` forder
 </html>
 ```
 
-Test the code
+### Test the code
+
+Run the app , upload a simple txt file and see the the backend code stores the file in `localdata`.
 
 
 
