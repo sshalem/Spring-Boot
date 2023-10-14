@@ -70,6 +70,8 @@ public class FileUploadController {
 
 #### FrontEnd code
 
+Save the frontend code in `index.html` file at `static` forder
+
 ```js
 <!DOCTYPE html>
 <html lang="en">
@@ -103,6 +105,9 @@ public class FileUploadController {
   </body>
 </html>
 ```
+
+Test the code
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
