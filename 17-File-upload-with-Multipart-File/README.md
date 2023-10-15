@@ -23,7 +23,7 @@ Links for Spring Boot File upload example with Multipart File
 
 1. [Bezkoder file-upload Using @Controller](https://www.bezkoder.com/spring-boot-file-upload/)
 2. [Multipart File Uploads using REST API](https://medium.com/@patelsajal2/how-to-create-a-spring-boot-rest-api-for-multipart-file-uploads-a-comprehensive-guide-b4d95ce3022b)
-3. 
+3. [Java Techie](https://www.youtube.com/watch?v=XUL60-Ke-L8)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
