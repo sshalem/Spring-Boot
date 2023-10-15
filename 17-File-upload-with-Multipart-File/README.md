@@ -7,8 +7,9 @@
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
 |  2  | [Upload/Download files to/from server](#2_upload_download_files)                          |
-|  3  | [index.css](#3_index_css)                          |
-|  4  | [main.jsx](#4_main_jsx)                          |
+|  3  | [Java Techie - File System upload/download](#3_java_techie_file_system)                          |
+|  4  | [Java Techie - Data Base upload/download](#4_java_techie_data_base)                          |
+|  5  | [main.jsx](#4_main_jsx)                          |
 |     | [4.1. x](#4_1_)                          |
 
 
