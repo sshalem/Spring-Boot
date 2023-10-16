@@ -7,7 +7,7 @@
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
 |  2  | [Upload/Download files to/from server](#2_upload_download_files)                          |
-|  3  | [Java Techie - File System upload/download](#3_java_techie_file_system)                          |
+|  3  | [Java Techie - File System upload/download](#3_java_techie)                          |
 |     | [3.1. Java Techie - File System upload/download](#3_1_java_techie_file_system)                          |
 |     | [3.2. Java Techie - Data Base upload/download](#3_2_java_techie_data_base)                          |
 |  4  | [Bezkoder](#4_java_techie_file_system)                          |
@@ -166,9 +166,18 @@ GitHub code  </br>
 ---
 
 
-###### 3_java_techie_file_system
+###### 3_java_techie
 
 <img src="https://img.shields.io/badge/- 3_java_techie_file_system  %20-blue" height=40px>
+
+
+###### 3_1_java_techie_file_system
+
+<img src="https://img.shields.io/badge/- 3_1_java_techie_file_system  %20-yellow" height=40px>
+
+<img src="https://img.shields.io/badge/- 3_1_java_techie_file_system %20- green" height=32px>
+
+
 
 [Java Techie - download/upload from File System](https://www.youtube.com/watch?v=7L1BSy5pnGo)
 
@@ -178,9 +187,11 @@ GitHub code  </br>
 
 
 
-###### 4_java_techie_data_base
+###### 3_2_java_techie_data_base
 
-<img src="https://img.shields.io/badge/- 4_java_techie_data_base  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_2_java_techie_data_base  %20-yellow" height=40px>
+
+<img src="https://img.shields.io/badge/- 3_2_java_techie_data_base %20- green" height=32px>
 
 [java techie - upload/download from Data base](https://www.youtube.com/watch?v=XUL60-Ke-L8)
 
@@ -208,17 +219,17 @@ GitHub code  </br>
 
 
 
-###### 4_main_jsx
+###### 
 
-<img src="https://img.shields.io/badge/- 4_index_js  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/-   %20-blue" height=40px>
 
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
-###### 4_1_react_strict_mode_gotch
+###### 
 
-<img src="https://img.shields.io/badge/- index js ,React StrictMode gotcha%20- green" height=32px>
+<img src="https://img.shields.io/badge/-  %20- green" height=32px>
 
 
 
