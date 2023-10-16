@@ -15,16 +15,14 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public Attachment saveAttachment(MultipartFile file) throws Exception {
+
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
         try {
             if (fileName.contains("..")) {
-                throw new Exception("Filename contains invalid path sequence "
-                        + fileName);
+                throw new Exception("Filename contains invalid path sequence " + fileName);
             }
-            Attachment attachment
-                    = new Attachment(fileName,
-                    file.getContentType(),
-                    file.getBytes());
+            Attachment attachment = new Attachment(fileName, file.getContentType(), file.getBytes());
             return attachmentRepository.save(attachment);
         } catch (Exception e) {
             throw new Exception("Could not save File: " + fileName);
@@ -33,9 +31,6 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public Attachment getAttachment(String fileId) throws Exception {
-        return attachmentRepository
-                .findById(fileId)
-                .orElseThrow(
-                        () -> new Exception("File not found with Id: " + fileId));
+        return attachmentRepository.findById(fileId).orElseThrow(() -> new Exception("File not found with Id: " + fileId));
     }
 }

@@ -2,10 +2,7 @@ package com.file.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ATTACHMENT_TB")
@@ -17,6 +14,7 @@ public class Attachment {
     private String id;
     private String fileName;
     private String fileType;
+    @Lob
     private byte[] data;
 
     public Attachment() {
