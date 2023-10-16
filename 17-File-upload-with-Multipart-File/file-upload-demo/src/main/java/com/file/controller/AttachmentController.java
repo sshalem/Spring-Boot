@@ -23,6 +23,7 @@ public class AttachmentController {
     public ResponseData uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
 
         Attachment attachment = attachmentService.saveAttachment(file);
+        
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/shalem/")
                 .path(attachment.getId())
