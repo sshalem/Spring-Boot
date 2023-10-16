@@ -8,7 +8,11 @@
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
 |  2  | [Upload/Download files to/from server](#2_upload_download_files)                          |
 |  3  | [Java Techie - File System upload/download](#3_java_techie_file_system)                          |
-|  4  | [Java Techie - Data Base upload/download](#4_java_techie_data_base)                          |
+|     | [3.1. Java Techie - File System upload/download](#3_1_java_techie_file_system)                          |
+|     | [3.2. Java Techie - Data Base upload/download](#3_2_java_techie_data_base)                          |
+|  4  | [Bezkoder](#4_java_techie_file_system)                          |
+|     | [4.1. Bezkoder - File System upload/download](#4_1_bezkoder_file_system)                          |
+|     | [4.2. Bezkoder - Data Base upload/download](#4_2_bezkoder_data_base)                          |
 |  5  | [main.jsx](#4_main_jsx)                          |
 |     | [4.1. x](#4_1_)                          |
 
