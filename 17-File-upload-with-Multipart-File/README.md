@@ -6,7 +6,7 @@
 | :-: | :------------------------------------------------------------------------------------- |
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
-|  2  | [Upload/Download files to/from server](#2_upload_download_files)                          |
+|  2  | [Daily Code Buffer - Upload/Download files to/from server](#2_daily_code_buffer_upload_download_files)                          |
 |  3  | [Java Techie - File System upload/download](#3_java_techie)                          |
 |     | [3.1. Java Techie - File System upload/download](#3_1_java_techie_file_system)                          |
 |     | [3.2. Java Techie - Data Base upload/download](#3_2_java_techie_data_base)                          |
@@ -146,9 +146,9 @@ Run the app , upload a simple txt file and see the the backend code stores the f
 
 --- 
 
-###### 2_upload_download_files 
+###### 2_daily_code_buffer_upload_download_files 
 
-<img src="https://img.shields.io/badge/- 2 upload download files from server %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2_daily_code_buffer_upload_download_files %20-blue" height=40px>
 
 Uploading and downloading files are a common task for any web application. </br>
 In this example I wil  show how to :
@@ -156,10 +156,10 @@ In this example I wil  show how to :
 2. Download file from server using @Controller/ @RestController
 
 Link : </br>
-[File Upload using @Controller or @RestController](https://www.javadevjournal.com/spring/spring-file-upload/)
+[you tube video Daily Code Buffer spring file upload/download](https://www.youtube.com/watch?v=dqm9Ciy-cjc)
 
 GitHub code  </br>
-[GitHub - spring-boot-file-upload](https://github.com/javadevjournal/javadevjournal/tree/master/Spring-Boot/spring-boot-file-upload)
+[GitHub - DailyCodeBuffer spring-boot-file-upload](https://github.com/shabbirdwd53/spring-boot-file-upload)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
