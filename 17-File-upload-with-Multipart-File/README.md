@@ -51,9 +51,6 @@ Let’s fine tune the file upload properties for our application using applicati
 #Whether to enable support of multipart uploads.default is true
 #spring.servlet.multipart.enabled =true
 
-# All files uploaded through will be stored in this directory
-file.upload-dir=/Users/javadevjournal/uploads
-
 #Threshold after which files are written to disk.default is 0B
 spring.servlet.multipart.file-size-threshold = 3KB
 
