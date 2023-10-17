@@ -25,7 +25,7 @@ public class AttachmentController {
         Attachment attachment = attachmentService.saveAttachment(file);
 
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/download/shalem/")
+                .path("/download/") // this path need to same path of the @GetMapping
                 .path(attachment.getId())
                 .toUriString();
 
