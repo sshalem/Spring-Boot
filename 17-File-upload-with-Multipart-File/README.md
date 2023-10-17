@@ -6,7 +6,7 @@
 | :-: | :------------------------------------------------------------------------------------- |
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
-|  2  | [Daily Code Buffer - Upload/Download files to/from server](#2_daily_code_buffer_upload_download_files)                          |
+|  2  | [`LOB` , `BLOB` , `CLOB`](#2_daily_code_buffer_upload_download_files)                          |
 |  3  | [Java Techie - File System upload/download](#3_java_techie)                          |
 |     | [3.1. Java Techie - File System upload/download](#3_1_java_techie_file_system)                          |
 |     | [3.2. Java Techie - Data Base upload/download](#3_2_java_techie_data_base)                          |
@@ -30,6 +30,8 @@ Links for Spring Boot File upload example with Multipart File
 2. [Multipart File Uploads using REST API](https://medium.com/@patelsajal2/how-to-create-a-spring-boot-rest-api-for-multipart-file-uploads-a-comprehensive-guide-b4d95ce3022b)
 3. [Java Techie](https://www.youtube.com/watch?v=XUL60-Ke-L8)
 4. [Daily Code Buffer](https://www.youtube.com/watch?v=dqm9Ciy-cjc)
+
+[Definition of `LOB` , `BLOB` , `CLOB` ](https://www.geeksforgeeks.org/hibernate-save-image-and-other-types-of-values-to-database/)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -145,9 +147,18 @@ Run the app , upload a simple txt file and see the the backend code stores the f
 
 ###### 2_daily_code_buffer_upload_download_files 
 
-<img src="https://img.shields.io/badge/- 2_daily_code_buffer_upload_download_files %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2. LOB, CLOB, BLOB %20-blue" height=40px>
 
 Uploading and downloading files are a common task for any web application. </br>
+
+
+
+Since we add the `@Lob` annotation to the image we want to save in DB , the article below exaplains the differences between 
+- [Definition of `LOB` , `BLOB` , `CLOB` ](https://www.geeksforgeeks.org/hibernate-save-image-and-other-types-of-values-to-database/)
+- `LOB`
+- `CLOB`
+- `BLOB` 
+
 In this example I wil  show how to :
 1. Upload file from server using @Controller/ @RestController
 2. Download file from server using @Controller/ @RestController
