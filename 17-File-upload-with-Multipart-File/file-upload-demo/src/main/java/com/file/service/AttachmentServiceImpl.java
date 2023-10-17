@@ -16,22 +16,6 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public Attachment saveAttachment(MultipartFile file) throws Exception {
-        System.out.println(file);
-        System.out.println(file.getOriginalFilename());
-        byte[] bytes = file.getBytes();
-        System.out.println(file.getContentType());
-        System.out.println(file.getSize());
-
-        String name = file.getName();
-        System.out.println(name);
-
-        Resource resource = file.getResource();
-        System.out.println(file.getResource());
-
-
-        System.out.println(file.getInputStream());
-
-        System.out.println();
 
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
