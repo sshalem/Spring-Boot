@@ -7,7 +7,7 @@
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
 |  2  | [`LOB` , `BLOB` , `CLOB`](#2_daily_code_buffer_upload_download_files)                          |
-|  3  | [upload/download](#3_java_techie)                          |
+|  3  | [upload/download](#3_upload_download)                          |
 |     | [3.1. upload/download using File System](#3_1_upload_download_using_file_system)                          |
 |     | [3.2. upload/download using Data Base](#3_2_upload_download_using_data_base)                          |
 |  4  | [main.jsx](#4_main_jsx)                          |
@@ -179,14 +179,14 @@ GitHub code  </br>
 ---
 
 
-###### 3_java_techie
+###### 3_upload_download
 
-<img src="https://img.shields.io/badge/- 3_java_techie_file_system  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_upload_download  %20-blue" height=40px>
 
 
-###### 3_1_java_techie_file_system
+###### 3_1_upload_download_using_file_system
 
-<img src="https://img.shields.io/badge/- 3_1_java_techie_file_system  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 3_1_upload_download_using_file_system  %20-yellow" height=32px>
 
 
 
@@ -195,9 +195,9 @@ GitHub code  </br>
 
 
 
-###### 3_2_java_techie_data_base
+###### 3_2_upload_download_using_data_base
 
-<img src="https://img.shields.io/badge/- 3_2_java_techie_data_base  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 3_2_upload_download_using_data_base  %20-yellow" height=32px>
 
 
 
