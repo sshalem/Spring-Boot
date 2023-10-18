@@ -183,10 +183,16 @@ GitHub code  </br>
 
 <img src="https://img.shields.io/badge/- 3_upload_download  %20-blue" height=40px>
 
+After the FrontEnd uploads a file, There are 2 places where we can store file:
+1. File system (Meaning on local folder)
+2. Strore on Data Base
+
 
 ###### 3_1_upload_download_using_file_system
 
 <img src="https://img.shields.io/badge/- 3_1_upload_download_using_file_system  %20-yellow" height=32px>
+
+In this Example I will show how to store the file in the file System
 
 
 
