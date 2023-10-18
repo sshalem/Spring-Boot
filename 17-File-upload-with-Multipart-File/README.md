@@ -206,34 +206,7 @@ GitHub code  </br>
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-------
 
-###### 4_bezkoder
-
-<img src="https://img.shields.io/badge/- 4_bezkoder  %20-blue" height=40px>
-
-
-###### 4_1_bezkoder_file_system
-
-<img src="https://img.shields.io/badge/- 4_1_bezkoder_file_system  %20-yellow" height=32px>
-
-
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-
-
-###### 4_2_bezkoder_data_base
-
-<img src="https://img.shields.io/badge/- 4_2_bezkoder_data_base  %20-yellow" height=32px>
-
-
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 
