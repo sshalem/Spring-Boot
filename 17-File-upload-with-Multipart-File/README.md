@@ -10,10 +10,7 @@
 |  3  | [Java Techie - File System upload/download](#3_java_techie)                          |
 |     | [3.1. Java Techie - File System upload/download](#3_1_java_techie_file_system)                          |
 |     | [3.2. Java Techie - Data Base upload/download](#3_2_java_techie_data_base)                          |
-|  4  | [Bezkoder](#4_bezkoder)                          |
-|     | [4.1. Bezkoder - File System upload/download](#4_1_bezkoder_file_system)                          |
-|     | [4.2. Bezkoder - Data Base upload/download](#4_2_bezkoder_data_base)                          |
-|  5  | [main.jsx](#4_main_jsx)                          |
+|  4  | [main.jsx](#4_main_jsx)                          |
 |     | [4.1. x](#4_1_)                          |
 
 
@@ -31,9 +28,13 @@ Links for Spring Boot File upload example with Multipart File
 3. [Java Techie](https://www.youtube.com/watch?v=XUL60-Ke-L8)
 4. [Daily Code Buffer](https://www.youtube.com/watch?v=dqm9Ciy-cjc)
 
-#### [Bezkider](#-)
+#### [Bezkoder](#-)
 - [bezkoder - download/upload from File System](https://www.bezkoder.com/spring-boot-file-upload/)
 - [bezkoder - upload/download from Data base](https://www.bezkoder.com/spring-boot-upload-file-database/)
+
+#### [JavaTechie](#-)
+- [Java Techie - download/upload from File System](https://www.youtube.com/watch?v=7L1BSy5pnGo)
+- [java techie - upload/download from Data base](https://www.youtube.com/watch?v=XUL60-Ke-L8)
 
 [Definition of `LOB` , `BLOB` , `CLOB` ](https://www.geeksforgeeks.org/hibernate-save-image-and-other-types-of-values-to-database/)
 
@@ -189,7 +190,6 @@ GitHub code  </br>
 
 
 
-[Java Techie - download/upload from File System](https://www.youtube.com/watch?v=7L1BSy5pnGo)
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -200,7 +200,7 @@ GitHub code  </br>
 <img src="https://img.shields.io/badge/- 3_2_java_techie_data_base  %20-yellow" height=32px>
 
 
-[java techie - upload/download from Data base](https://www.youtube.com/watch?v=XUL60-Ke-L8)
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
