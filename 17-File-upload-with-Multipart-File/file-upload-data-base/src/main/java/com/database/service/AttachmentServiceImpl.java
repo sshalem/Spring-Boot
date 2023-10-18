@@ -1,12 +1,12 @@
-package com.file.service;
+package com.database.service;
 
-import com.file.entity.Attachment;
-import com.file.repository.AttachmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.database.entity.Attachment;
+import com.database.repository.AttachmentRepository;
 
 @Service
 public class AttachmentServiceImpl implements AttachmentService {

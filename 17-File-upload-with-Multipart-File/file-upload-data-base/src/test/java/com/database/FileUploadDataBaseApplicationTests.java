@@ -1,10 +1,10 @@
-package com.file;
+package com.database;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FileUploadDemoApplicationTests {
+class FileUploadDataBaseApplicationTests {
 
 	@Test
 	void contextLoads() {

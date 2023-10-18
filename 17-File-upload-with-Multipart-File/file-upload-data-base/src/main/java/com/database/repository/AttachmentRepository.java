@@ -1,8 +1,8 @@
-package com.file.repository;
+package com.database.repository;
 
-import com.file.entity.Attachment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.database.entity.Attachment;
 
 @Repository
 public interface AttachmentRepository extends JpaRepository<Attachment, String> {
