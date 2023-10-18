@@ -1,4 +1,4 @@
-package com.file.system;
+package com.filesystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

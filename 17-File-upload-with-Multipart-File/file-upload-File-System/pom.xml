@@ -8,11 +8,11 @@
 		<version>2.7.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.file.system</groupId>
-	<artifactId>file-upload-project</artifactId>
+	<groupId>com.filesystem</groupId>
+	<artifactId>file-upload-file-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>file-upload-File-System</name>
-	<description>file upload project file system</description>
+	<name>file-upload-file-system</name>
+	<description>file-upload-file-system-simple-setup</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

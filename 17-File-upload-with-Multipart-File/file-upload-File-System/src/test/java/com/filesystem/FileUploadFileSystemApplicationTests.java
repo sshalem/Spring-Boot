@@ -1,4 +1,4 @@
-package com.file.system;
+package com.filesystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
