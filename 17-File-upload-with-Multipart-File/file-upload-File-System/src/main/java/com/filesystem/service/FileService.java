@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import com.filesystem.entity.FileDataEntity;
 import com.filesystem.repository.FileDataRepository;
@@ -18,10 +19,13 @@ public class FileService {
 	
 	public FileDataEntity uploadToFileSystem(MultipartFile file) throws IOException {
 		
-		String path = FOLDER_PATH + file.getOriginalFilename();
+		// clean path removes any `/` or `.` from url
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		
+		String path = FOLDER_PATH + fileName;
 		
 		FileDataEntity fileDataEntity = new FileDataEntity();
-		fileDataEntity.setName(file.getOriginalFilename());
+		fileDataEntity.setName(fileName);
 		fileDataEntity.setFilePath(path);
 		fileDataEntity.setType(file.getContentType());
 

@@ -31,7 +31,7 @@ public class AttachmentController {
         
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/") // this path need to same path of the @GetMapping
-                .path(attachment.getId())
+                .path(attachment.getId()) // concatenate the Id of the attachment to the url
                 .toUriString();
 
         return new ResponseData(attachment.getFileName(), downloadURl, file.getContentType(), file.getSize());
