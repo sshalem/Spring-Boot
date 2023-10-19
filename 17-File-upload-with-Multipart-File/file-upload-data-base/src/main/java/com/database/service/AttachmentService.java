@@ -5,7 +5,7 @@ import com.database.entity.Attachment;
 
 public interface AttachmentService {
 
-	Attachment saveAttachment(MultipartFile file) throws Exception;
+	Attachment saveAttachment(MultipartFile multipartFile) throws Exception;
 
 	Attachment getAttachment(String fileId) throws Exception;
 }

@@ -15,15 +15,15 @@ public class AttachmentServiceImpl implements AttachmentService {
     private AttachmentRepository attachmentRepository;
 
     @Override
-    public Attachment saveAttachment(MultipartFile file) throws Exception {
+    public Attachment saveAttachment(MultipartFile multipartFile) throws Exception {
 
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
         try {
             if (fileName.contains("..")) {
                 throw new Exception("Filename contains invalid path sequence " + fileName);
             }
-            Attachment attachment = new Attachment(fileName, file.getContentType(), file.getBytes());
+            Attachment attachment = new Attachment(fileName, multipartFile.getContentType(), multipartFile.getBytes());
             return attachmentRepository.save(attachment);
         } catch (Exception e) {
             throw new Exception("Could not save File: " + fileName);

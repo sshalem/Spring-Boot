@@ -25,16 +25,16 @@ public class AttachmentController {
     private AttachmentService attachmentService;
 
     @PostMapping("/upload")
-    public ResponseData uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseData uploadFile(@RequestParam("file") MultipartFile multipartFile) throws Exception {
 
-        Attachment attachment = attachmentService.saveAttachment(file);
+        Attachment attachment = attachmentService.saveAttachment(multipartFile);
         
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/") // this path need to same path of the @GetMapping
                 .path(attachment.getId()) // concatenate the Id of the attachment to the url
                 .toUriString();
 
-        return new ResponseData(attachment.getFileName(), downloadURl, file.getContentType(), file.getSize());
+        return new ResponseData(attachment.getFileName(), downloadURl, multipartFile.getContentType(), multipartFile.getSize());
     }
 
     @GetMapping("/download/{fileId}")
