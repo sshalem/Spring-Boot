@@ -79,7 +79,7 @@ public class StorageServiceImpl implements StorageService {
 
 	@Override
 	public FileSystemAttachmentEntity downloadAttachmentFromFileSystem(String attachmentName) {
-		FileSystemAttachmentEntity returnedValue = fileSystemRepository.findByName(attachmentName).get();
+		FileSystemAttachmentEntity returnedValue = fileSystemRepository.findByFileName(attachmentName).get();
 		return returnedValue;
 	}
 }

@@ -8,5 +8,5 @@ import com.files.upload.download.entity.FileSystemAttachmentEntity;
 @Repository
 public interface FileSystemRepository extends JpaRepository<FileSystemAttachmentEntity, String> {
 
-	Optional<FileSystemAttachmentEntity> findByName(String fileName);
+	Optional<FileSystemAttachmentEntity> findByFileName(String fileName);
 }
