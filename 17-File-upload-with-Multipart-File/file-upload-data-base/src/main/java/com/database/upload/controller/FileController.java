@@ -60,7 +60,8 @@ public class FileController {
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+//				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+				.body(dataBaseAttachmentEntity.getData());
 	}
 
 }
