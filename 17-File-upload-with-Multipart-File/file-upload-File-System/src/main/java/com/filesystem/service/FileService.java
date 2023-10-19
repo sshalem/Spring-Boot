@@ -2,11 +2,13 @@ package com.filesystem.service;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import com.filesystem.entity.FileDataEntity;
+
+import com.filesystem.entity.FileSystemAttachmentEntity;
 import com.filesystem.repository.FileDataRepository;
 
 @Service
@@ -17,19 +19,19 @@ public class FileService {
 	
 	private final String FOLDER_PATH = "c:/Localdata/";
 	
-	public FileDataEntity uploadToFileSystem(MultipartFile file) throws IOException {
+	public FileSystemAttachmentEntity uploadToFileSystem(MultipartFile file) throws IOException {
 		
 		// clean path removes any `/` or `.` from url
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		
 		String path = FOLDER_PATH + fileName;
 		
-		FileDataEntity fileDataEntity = new FileDataEntity();
-		fileDataEntity.setName(fileName);
-		fileDataEntity.setFilePath(path);
-		fileDataEntity.setType(file.getContentType());
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
+		fileSystemAttachmentEntity.setName(fileName);
+		fileSystemAttachmentEntity.setFilePath(path);
+		fileSystemAttachmentEntity.setType(file.getContentType());
 
-		FileDataEntity returnedFileDataEntity = fileDataRepository.save(fileDataEntity);
+		FileSystemAttachmentEntity returnedFileDataEntity = fileDataRepository.save(fileSystemAttachmentEntity);
 
 		// this saves the file in the the filePath I declare
 		// transferTo - a method from `MultipartFile` class 
@@ -38,9 +40,9 @@ public class FileService {
         return returnedFileDataEntity;
     }
 
-	public FileDataEntity downloadFromFileSystem(String fileName) throws IOException {
+	public FileSystemAttachmentEntity downloadFromFileSystem(String fileName) throws IOException {
 
-		FileDataEntity fileDataEntity = fileDataRepository.findByName(fileName).get();
+		FileSystemAttachmentEntity fileDataEntity = fileDataRepository.findByName(fileName).get();
 		return fileDataEntity;
 	}
 }

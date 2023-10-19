@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import com.filesystem.entity.FileDataEntity;
+import com.filesystem.entity.FileSystemAttachmentEntity;
 import com.filesystem.model.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -30,7 +30,7 @@ public class FileController {
 	@PostMapping("/upload")
 	public ResponseEntity<?> uploadToFileSystem(@RequestParam("file") MultipartFile file) throws IOException {
 
-		FileDataEntity fileData = fileService.uploadToFileSystem(file);
+		FileSystemAttachmentEntity fileData = fileService.uploadToFileSystem(file);
 
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/download/") // this path need to same path of the @GetMapping
@@ -45,14 +45,14 @@ public class FileController {
 	@GetMapping("/download/{fileName}")
 	public ResponseEntity<?> downloadFromFileSystem(@PathVariable String fileName) throws IOException {
 
-		FileDataEntity fileDataEntity = fileService.downloadFromFileSystem(fileName);
-		String filePath = fileDataEntity.getFilePath();
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
+		String filePath = fileSystemAttachmentEntity.getFilePath();
 		byte[] data = Files.readAllBytes(new File(filePath).toPath());
 
 		return ResponseEntity
 				.ok()
-				.contentType(MediaType.parseMediaType(fileDataEntity.getType()))
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDataEntity.getName() + "\"")
+				.contentType(MediaType.parseMediaType(fileSystemAttachmentEntity.getType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getName() + "\"")
 				.body(new ByteArrayResource(data));
 	}
 	
