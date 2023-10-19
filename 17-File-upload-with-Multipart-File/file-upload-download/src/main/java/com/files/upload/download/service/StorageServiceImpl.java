@@ -17,8 +17,10 @@ import com.files.upload.download.repository.FileSystemRepository;
 public class StorageServiceImpl implements StorageService {
 
 	private final String FOLDER_PATH = "c:/Localdata/";
+	
 	@Autowired
 	private DataBaseRepository dataBaseRepository;
+	
 	@Autowired
 	private FileSystemRepository fileSystemRepository;
 
