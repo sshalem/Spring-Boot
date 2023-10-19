@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="file-upload-project-database" />
         <module name="file-upload-file-system" />
         <module name="file-upload-file-system-simple-setup" />
+        <module name="file-upload-download" />
+        <module name="file-upload-project-database" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="file-upload-data-base" options="-parameters" />
+      <module name="file-upload-download" options="-parameters" />
       <module name="file-upload-file-system" options="-parameters" />
       <module name="file-upload-file-system-simple-setup" options="-parameters" />
       <module name="file-upload-project-database" options="-parameters" />

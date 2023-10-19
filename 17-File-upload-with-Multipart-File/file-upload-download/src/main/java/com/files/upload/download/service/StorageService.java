@@ -8,11 +8,8 @@ import com.files.upload.download.entity.FileSystemAttachmentEntity;
 
 public interface StorageService {
 
-	DataBaseAttachmentEntity uploadAttachmentToDB(MultipartFile multipartFile);
-
-	DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId);
-
-	FileSystemAttachmentEntity uploadAttachmentToFileSystem(MultipartFile multipartFile) throws IllegalStateException, IOException;
-
-	FileSystemAttachmentEntity downloadAttachmentFromFileSystem(String attachmentName);
+    DataBaseAttachmentEntity uploadAttachmentToDB(MultipartFile multipartFile) throws Exception;
+    DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception;
+    FileSystemAttachmentEntity uploadAttachmentToFileSystem(MultipartFile multipartFile) throws IllegalStateException, IOException;
+    FileSystemAttachmentEntity downloadAttachmentFromFileSystem(String attachmentName);
 }

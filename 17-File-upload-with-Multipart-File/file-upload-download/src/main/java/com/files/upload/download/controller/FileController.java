@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import com.files.upload.download.entity.DataBaseAttachmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -33,16 +34,33 @@ public class FileController {
 	 **********************************************************/
 
 	@PostMapping
-	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile file) throws IOException {
-		String uploadImage = storageService.uploadAttachmentToDB(file);
-		return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
+	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
+
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
+
+		String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/download/") // this path need to same path of the @GetMapping
+				.path(dataBaseAttachmentEntity.getId()) // concatenate the Id of the attachment to the url
+				.toUriString();
+
+		ResponseData responseData = new ResponseData(
+				dataBaseAttachmentEntity.getFileName(),
+				downloadURl,
+				multipartFile.getContentType(),
+				multipartFile.getSize());
+
+		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
 	@GetMapping("/{fileName}")
-	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String fileName) {
-		byte[] imageData = storageService.downloadAttachmentFromDB(fileName);
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(imageData);
+	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String fileName) throws Exception {
 
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(fileName);
+
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
 	}
 
 	/**********************************************************

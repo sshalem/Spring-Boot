@@ -31,20 +31,28 @@ public class StorageServiceImpl implements StorageService {
 	 **********************************************************/
 	@Override
 	public DataBaseAttachmentEntity uploadAttachmentToDB(MultipartFile multipartFile) throws Exception {
-		return null;
+
+		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+		try {
+			if (fileName.contains("..")) {
+				throw new Exception("Filename contains invalid path sequence " + fileName);
+			}
+			DataBaseAttachmentEntity dataBaseAttachmentEntity = new DataBaseAttachmentEntity(fileName, multipartFile.getContentType(), multipartFile.getBytes());
+			return dataBaseRepository.save(dataBaseAttachmentEntity);
+		} catch (Exception e) {
+			throw new Exception("Could not save File: " + fileName);
+		}
 	}
 
 	@Override
 	public DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception {
-		return null;
+		return dataBaseRepository.findById(attachmentId).orElseThrow(() -> new Exception("File not found with Id: " + attachmentId));
 	}
 
 	/**********************************************************
-	 * 
+	 *
 	 * Upload/Download using File System
-	 * 
-	 * @throws IOException
-	 * @throws IllegalStateException
 	 * 
 	 **********************************************************/
 

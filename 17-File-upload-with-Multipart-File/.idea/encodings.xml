@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/file-upload-File-System/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/file-upload-data-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/file-upload-download/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/file-upload-file-system-simple-setup/src/main/java" charset="UTF-8" />
   </component>
 </project>
