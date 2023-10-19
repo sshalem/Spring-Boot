@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FILE_DATA")
-public class FileData {
+public class FileDataEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class FileData {
 	private String type;
 	private String filePath;
 
-	public FileData() {
+	public FileDataEntity() {
 		super();
 	}
 

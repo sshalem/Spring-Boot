@@ -1,7 +1,14 @@
 package com.filesystem.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+
+import com.filesystem.entity.FileDataEntity;
+import com.filesystem.model.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.filesystem.service.FileService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class FileController {
@@ -20,17 +28,31 @@ public class FileController {
 	private FileService fileService;
 
 	@PostMapping("/upload")
-	public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("file") MultipartFile file) throws IOException {
-		
-		String uploadImage = fileService.uploadImageToFileSystem(file);
-		return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
+	public ResponseEntity<?> uploadToFileSystem(@RequestParam("file") MultipartFile file) throws IOException {
+
+		FileDataEntity fileData = fileService.uploadToFileSystem(file);
+
+		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/download/") // this path need to same path of the @GetMapping
+				.path(fileData.getName())
+				.toUriString();
+
+		ResponseData responseData = new ResponseData(fileData.getName(), downloadUrl, file.getContentType(), file.getSize());
+
+		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
 	@GetMapping("/download/{fileName}")
-	public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
-		
-		byte[] imageData = fileService.downloadImageFromFileSystem(fileName);
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(imageData);
+	public ResponseEntity<?> downloadFromFileSystem(@PathVariable String fileName) throws IOException {
 
+		FileDataEntity fileDataEntity = fileService.downloadFromFileSystem(fileName);
+		String filePath = fileDataEntity.getFilePath();
+		byte[] data = Files.readAllBytes(new File(filePath).toPath());
+
+		return ResponseEntity
+				.ok()
+				.contentType(MediaType.parseMediaType(fileDataEntity.getType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDataEntity.getName() + "\"")
+				.body(new ByteArrayResource(data));
 	}
 }

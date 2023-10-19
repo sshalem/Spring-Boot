@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import com.filesystem.entity.FileData;
+import com.filesystem.entity.FileDataEntity;
 import com.filesystem.repository.FileDataRepository;
 
 @Service
@@ -16,30 +16,27 @@ public class FileService {
 	@Autowired
 	private FileDataRepository fileDataRepository;
 	
-	private final String FOLDER_PATH = "c:/Localdata";
+	private final String FOLDER_PATH = "c:/Localdata/";
 	
-	public String uploadImageToFileSystem(MultipartFile file) throws IOException {
+	public FileDataEntity uploadToFileSystem(MultipartFile file) throws IOException {
 		
 		String filePath = FOLDER_PATH + file.getOriginalFilename();
 		
-		FileData fileData = new FileData();
+		FileDataEntity fileData = new FileDataEntity();
 		fileData.setName(file.getOriginalFilename());
 		fileData.setFilePath(filePath);
 		fileData.setType(file.getContentType());
-		
-		FileData _fileData = fileDataRepository.save(fileData);
+
+		FileDataEntity returnedFileData = fileDataRepository.save(fileData);
 
 		file.transferTo(new File(filePath));
-		if (_fileData != null) {
-			return "file uploaded successfully : " + filePath;
-		}
-		return null;
-	}
 
-	public byte[] downloadImageFromFileSystem(String fileName) throws IOException {
-		Optional<FileData> fileData = fileDataRepository.findByName(fileName);
-		String filePath = fileData.get().getFilePath();
-		byte[] images = Files.readAllBytes(new File(filePath).toPath());
-		return images;
+        return returnedFileData;
+    }
+
+	public FileDataEntity downloadFromFileSystem(String fileName) throws IOException {
+
+		FileDataEntity fileData = fileDataRepository.findByName(fileName).get();
+		return fileData;
 	}
 }

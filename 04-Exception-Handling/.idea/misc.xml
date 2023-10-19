@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/A_Handle_RuntimeException/pom.xml" />
+        <option value="$PROJECT_DIR$/B_config_ExceptionMessage_applicationProperties/pom.xml" />
+        <option value="$PROJECT_DIR$/C_config_ExceptionMessage_AtController/pom.xml" />
+        <option value="$PROJECT_DIR$/D_Custom_ExceptionErrorMessage/pom.xml" />
+        <option value="$PROJECT_DIR$/E_ControllerAdvice_Custom_ExceptionErrorMessage/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

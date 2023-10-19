@@ -28,6 +28,7 @@ public class AttachmentController {
     public ResponseData uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
 
         Attachment attachment = attachmentService.saveAttachment(file);
+        System.out.println("done I'm here");
 
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/") // this path need to same path of the @GetMapping
