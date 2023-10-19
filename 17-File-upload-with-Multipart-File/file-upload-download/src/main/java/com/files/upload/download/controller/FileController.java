@@ -31,7 +31,7 @@ public class FileController {
 	 * 
 	 **********************************************************/
 
-	@PostMapping
+	@PostMapping(path = "/database/upload")
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
@@ -50,7 +50,7 @@ public class FileController {
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
-	@GetMapping("/{fileName}")
+	@GetMapping(path = "/database/download/{fileName}")
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String fileName) throws Exception {
 
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(fileName);
@@ -67,9 +67,9 @@ public class FileController {
 	 * 
 	 **********************************************************/
 
-	@PostMapping("/fileSystem")
-	public ResponseEntity<?> uploadAttachmentToFileSystem(@RequestParam("attachment") MultipartFile multipartFile)
-			throws IOException {
+	@PostMapping("/upload/fileSystem")
+	public ResponseEntity<?> uploadAttachmentToFileSystem(@RequestParam("attachment") MultipartFile multipartFile) throws IOException {
+		
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = storageService.uploadAttachmentToFileSystem(multipartFile);
 
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -86,7 +86,7 @@ public class FileController {
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
-	@GetMapping("/fileSystem/{fileName}")
+	@GetMapping("/download/fileSystem/{fileName}")
 	public ResponseEntity<?> downloadAttachmentFromFileSystem(@PathVariable String fileName) throws IOException {
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = storageService.downloadAttachmentFromFileSystem(fileName);
 		String filePath = fileSystemAttachmentEntity.getFilePath();
