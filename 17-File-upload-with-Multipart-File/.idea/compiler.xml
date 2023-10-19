@@ -9,11 +9,11 @@
         <module name="file-upload-file-system" />
         <module name="file-upload-file-system-simple-setup" />
         <module name="file-upload-download" />
-        <module name="file-upload-project-database" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="file-upload-data-base" target="11" />
+      <module name="file-upload-project-database" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
