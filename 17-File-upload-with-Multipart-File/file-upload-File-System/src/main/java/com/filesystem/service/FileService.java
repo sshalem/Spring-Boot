@@ -18,23 +18,25 @@ public class FileService {
 	
 	public FileDataEntity uploadToFileSystem(MultipartFile file) throws IOException {
 		
-		String filePath = FOLDER_PATH + file.getOriginalFilename();
+		String path = FOLDER_PATH + file.getOriginalFilename();
 		
-		FileDataEntity fileData = new FileDataEntity();
-		fileData.setName(file.getOriginalFilename());
-		fileData.setFilePath(filePath);
-		fileData.setType(file.getContentType());
+		FileDataEntity fileDataEntity = new FileDataEntity();
+		fileDataEntity.setName(file.getOriginalFilename());
+		fileDataEntity.setFilePath(path);
+		fileDataEntity.setType(file.getContentType());
 
-		FileDataEntity returnedFileData = fileDataRepository.save(fileData);
+		FileDataEntity returnedFileDataEntity = fileDataRepository.save(fileDataEntity);
 
-		file.transferTo(new File(filePath));
+		// this saves the file in the the filePath I declare
+		// transferTo - a method from `MultipartFile` class 
+		file.transferTo(new File(path));
 
-        return returnedFileData;
+        return returnedFileDataEntity;
     }
 
 	public FileDataEntity downloadFromFileSystem(String fileName) throws IOException {
 
-		FileDataEntity fileData = fileDataRepository.findByName(fileName).get();
-		return fileData;
+		FileDataEntity fileDataEntity = fileDataRepository.findByName(fileName).get();
+		return fileDataEntity;
 	}
 }
