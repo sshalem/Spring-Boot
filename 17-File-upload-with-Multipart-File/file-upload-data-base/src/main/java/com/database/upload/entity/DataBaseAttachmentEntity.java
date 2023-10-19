@@ -1,14 +1,16 @@
-package com.upload.database.entity;
+package com.database.upload.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "FILE_SYSTEM_ATTACHMENT_TB")
-public class FileSystemAttachmentEntity {
+@Table(name = "DB_ATTACHMENT_TB")
+public class DataBaseAttachmentEntity {
 
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -16,16 +18,16 @@ public class FileSystemAttachmentEntity {
 	private String id;
 	private String fileName;
 	private String fileType;
-	private String filePath;
+	@Lob
+	private byte[] data;
 
-	public FileSystemAttachmentEntity() {
+	public DataBaseAttachmentEntity() {
 	}
 
-	public FileSystemAttachmentEntity(String fileName, String fileType, String filePath) {
-		super();
+	public DataBaseAttachmentEntity(String fileName, String fileType, byte[] data) {
 		this.fileName = fileName;
 		this.fileType = fileType;
-		this.filePath = filePath;
+		this.data = data;
 	}
 
 	public String getId() {
@@ -52,11 +54,11 @@ public class FileSystemAttachmentEntity {
 		this.fileType = fileType;
 	}
 
-	public String getFilePath() {
-		return filePath;
+	public byte[] getData() {
+		return data;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 }

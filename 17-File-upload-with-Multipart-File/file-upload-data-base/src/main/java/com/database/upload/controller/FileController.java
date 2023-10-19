@@ -1,8 +1,4 @@
-package com.upload.database.controller;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+package com.database.upload.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -10,14 +6,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.upload.database.entity.DataBaseAttachmentEntity;
-import com.upload.database.entity.FileSystemAttachmentEntity;
-import com.upload.database.model.ResponseData;
-import com.upload.database.service.StorageService;
+import com.database.upload.entity.DataBaseAttachmentEntity;
+import com.database.upload.model.ResponseData;
+import com.database.upload.service.StorageService;
 
 @RestController
 public class FileController {
@@ -64,45 +63,4 @@ public class FileController {
 				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
 	}
 
-	/**********************************************************
-	 * 
-	 * Upload/Download using File System
-	 * 
-	 **********************************************************/
-
-	@PostMapping("/fileSystem/upload")
-	public ResponseEntity<?> uploadAttachmentToFileSystem(@RequestParam("attachment") MultipartFile multipartFile) throws IOException {
-
-		FileSystemAttachmentEntity fileSystemAttachmentEntity = storageService.uploadAttachmentToFileSystem(multipartFile);
-
-		// Here I setup the download URL
-		// Where FrontEnd will click the link
-		// and will download the file
-		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/download/") // this path need to same path of the @GetMapping
-				.path(fileSystemAttachmentEntity.getFileName())
-				.toUriString();
-
-		ResponseData responseData = new ResponseData(
-				fileSystemAttachmentEntity.getFileName(), 
-				downloadUrl, 
-				multipartFile.getContentType(), 
-				multipartFile.getSize());
-
-		return ResponseEntity.status(HttpStatus.OK).body(responseData);
-	}
-
-	@GetMapping("/fileSystem/download/{fileName}")
-	public ResponseEntity<?> downloadAttachmentFromFileSystem(@PathVariable String fileName) throws IOException {
-		FileSystemAttachmentEntity fileSystemAttachmentEntity = storageService.downloadAttachmentFromFileSystem(fileName);
-		String filePath = fileSystemAttachmentEntity.getFilePath();
-		byte[] data = Files.readAllBytes(new File(filePath).toPath());
-
-		return ResponseEntity
-				.ok()
-				.contentType(MediaType.parseMediaType(fileSystemAttachmentEntity.getFileType()))
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getFileName() + "\"")
-				.body(new ByteArrayResource(data));
-
-	}
 }

@@ -1,4 +1,4 @@
-package com.upload.database.model;
+package com.database.upload.model;
 
 public class ResponseData {
 
