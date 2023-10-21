@@ -7,7 +7,6 @@ function App() {
   const handleFileUpload = (event) => {
     // since the input type is `file`
     // thus, the event.traget.files[] is : array
-    console.log(event);
     setSelectedFile(event.target.files[0]);
   };
 
