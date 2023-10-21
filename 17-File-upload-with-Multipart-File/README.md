@@ -237,7 +237,26 @@ In this Example I will show how to store the file in the file System
 
 <img src="https://img.shields.io/badge/- 5_test_with_reactjs_code  %20-blue" height=40px>
 
+#### [Step 1:  create vite app](#-)
 
+```js
+npm create vite@latest frontend-file-upload --template react
+npm install
+```
+
+#### [step 2:  Install axios](#-)
+
+```js
+npm install axios
+```
+
+#### [step 3:  seup the CSS (Use index.css from Jobify project](#-)
+
+#### [step 4: Setup code to upload file (any file)](#-)
+
+```js
+
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
