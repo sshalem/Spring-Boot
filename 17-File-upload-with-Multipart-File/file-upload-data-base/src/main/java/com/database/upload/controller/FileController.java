@@ -39,7 +39,7 @@ public class FileController {
 		// Where FrontEnd will click the link
 		// and will download the file
 		String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/download/") // this path need to same path of the @GetMapping
+				.path("/database/download/") // this path need to same path of the @GetMapping
 				.path(dataBaseAttachmentEntity.getId()) // concatenate the Id of the attachment to the url
 				.toUriString();
 

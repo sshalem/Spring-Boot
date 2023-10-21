@@ -27,13 +27,13 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 
-	@PostMapping("/upload")
+	@PostMapping("/fileSystem/upload")
 	public ResponseEntity<?> uploadToFileSystem(@RequestParam("file") MultipartFile file) throws IOException {
 
 		FileSystemAttachmentEntity fileData = fileService.uploadToFileSystem(file);
 
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/download/") // this path need to same path of the @GetMapping
+				.path("/fileSystem/download/") // this path need to same path of the @GetMapping
 				.path(fileData.getName())
 				.toUriString();
 
@@ -42,7 +42,7 @@ public class FileController {
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
-	@GetMapping("/download/{fileName}")
+	@GetMapping("/fileSystem/download/{fileName}")
 	public ResponseEntity<?> downloadFromFileSystem(@PathVariable String fileName) throws IOException {
 
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
