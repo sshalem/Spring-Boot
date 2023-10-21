@@ -239,23 +239,65 @@ In this Example I will show how to store the file in the file System
 
 #### [Step 1:  create vite app](#-)
 
+- also Install `axios
+
 ```js
 npm create vite@latest frontend-file-upload --template react
 npm install
-```
-
-#### [step 2:  Install axios](#-)
-
-```js
 npm install axios
 ```
 
-#### [step 3:  seup the CSS (Use index.css from Jobify project](#-)
+#### [step 2: Setup code to upload file (any file)](#-)
 
-#### [step 4: Setup code to upload file (any file)](#-)
+Note : I used the css from `Jobify` project `index.css`
 
 ```js
+import { useState } from 'react';
+import axios from 'axios';
 
+function App() {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileUpload = (event) => {
+    // since the input type is `file`
+    // thus, the event.traget.files[] is : array
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append('attachment', selectedFile);
+
+    // to dislapy what are the key/value in formData
+    for (const data of formData.entries()) {
+      console.log(data);
+    }
+    upload(formData);
+  };
+
+  const upload = async (formData) => {
+    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    console.log(data);
+  };
+
+  return (
+    <>
+      <h3>file upload</h3>
+      <br />
+      <div>
+        <input className="btn" type="file" onChange={handleFileUpload} />
+      </div>
+      <br />
+      <div>
+        <button className="btn" onClick={handleUpload}>
+          Upload
+        </button>
+      </div>
+    </>
+  );
+}
+
+export default App;
 ```
 
 
