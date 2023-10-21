@@ -12,7 +12,7 @@
 |     | [3.2. upload/download using Data Base](#3_2_upload_download_using_data_base)                          |
 |  4  | [Test with postman](#4_test_with_postman)                          |
 |  5  | [Test with ReactJS code](#5_test_with_reactjs_code)                          |
-|  6  | [Test with postman](#4_main_jsx)                          |
+|  6  | [x](#4_main_jsx)                          |
 |     | [6.1. x](#4_1_)                          |
 
 
