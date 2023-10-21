@@ -5,14 +5,13 @@
 |     | Subject                                                                                |
 | :-: | :------------------------------------------------------------------------------------- |
 |     | [Introduction - links](#Introduction)                          |
-|  1  | [Simple Upload file with Spring boot + HTML](#1_simple_setup_spring_and_html)                          |
-|  2  | [`LOB` , `BLOB` , `CLOB`](#2_daily_code_buffer_upload_download_files)                          |
-|  3  | [upload/download](#3_upload_download)                          |
-|     | [3.1. upload/download using File System](#3_1_upload_download_using_file_system)                          |
-|     | [3.2. upload/download using Data Base](#3_2_upload_download_using_data_base)                          |
-|  4  | [Test with postman](#4_test_with_postman)                          |
-|  5  | [Test with ReactJS code](#5_test_with_reactjs_code)                          |
-|  6  | [x](#4_main_jsx)                          |
+|  1  | [`LOB` , `BLOB` , `CLOB`](#1_lob_blob_clob)                          |
+|  2  | [upload/download](#2_upload_download)                          |
+|     | [2.1. upload/download using File System](#2_1_upload_download_using_file_system)                          |
+|     | [2.2. upload/download using Data Base](#2_2_upload_download_using_data_base)                          |
+|  3  | [Test with postman](#3_test_with_postman)                          |
+|  4  | [Test with ReactJS code](#4_test_with_reactjs_code)                          |
+|  5  | [x](#5_main_jsx)                          |
 |     | [6.1. x](#4_1_)                          |
 
 
@@ -46,116 +45,10 @@ Links for Spring Boot File upload example with Multipart File
 ---
 
 
-###### 1_simple_setup_spring_and_html
 
-<img src="https://img.shields.io/badge/- 1. simple upload file setup spring and html  %20-blue" height=40px>
+###### 1_lob_blob_clob 
 
-Let's see a very simple example for uploading file to Backend. </br>
-I use the example from link of [file-upload-Spring-Boot-Ajax-example](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/file-upload-Spring-Boot-Ajax-example)
-
-#### Backend Code
-
-Let’s fine tune the file upload properties for our application using application.properties file.
-
-```sql
-#Whether to enable support of multipart uploads.default is true
-#spring.servlet.multipart.enabled =true
-
-#Threshold after which files are written to disk.default is 0B
-spring.servlet.multipart.file-size-threshold = 3KB
-
-#Max file size.Default is 1MB
-spring.servlet.multipart.max-file-size= 2MB
-
-#Max request size.Default is 10MB
-spring.servlet.multipart.max-request-size= 20MB
-
-#Whether to resolve the multipart request lazily at the time of file or parameter access.Default is false
-spring.servlet.multipart.resolve-lazily=true
-```
-
-#### JAVA code
-
-```java
-package com.file.upload.controller;
-
-import java.io.File;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-@RestController
-public class FileUploadController {
-
-	@PostMapping("/upload")
-	public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file) {
-		String fileName = file.getOriginalFilename();
-		try {
-			file.transferTo(new File("C:\\Localdata\\" + fileName));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-		}
-		return ResponseEntity.ok("File uploaded successfully.");
-
-	}
-}
-```
-
-#### FrontEnd code
-
-Save the frontend code in `index.html` file at `static` forder
-
-```js
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <input id="testUpload" type="file" name="fileupload" />
-    <button id="upload-button" onclick="uploadFile()">Upload</button>
-
-    <!-- Ajax JavaScript File Upload to Spring Boot Logic -->
-    <script>
-      async function uploadFile() {
-        let formData = new FormData();
-        console.log(formData);
-
-        formData.append('file', testUpload.files[0]);
-
-        let response = await fetch('/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (response.status == 200) {
-          alert('File successfully uploaded.');
-        }
-      }
-    </script>
-  </body>
-</html>
-```
-
-### Test the code
-
-Run the app , upload a simple txt file and see the the backend code stores the file in `localdata`.
-
-
-
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
---- 
-
-###### 2_daily_code_buffer_upload_download_files 
-
-<img src="https://img.shields.io/badge/- 2. LOB, CLOB, BLOB %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1. LOB, CLOB, BLOB %20-blue" height=40px>
 
 Uploading and downloading files are a common task for any web application. </br>
 
@@ -182,18 +75,18 @@ GitHub code  </br>
 ---
 
 
-###### 3_upload_download
+###### 2_upload_download
 
-<img src="https://img.shields.io/badge/- 3_upload_download  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 2_upload_download  %20-blue" height=40px>
 
 After the FrontEnd uploads a file, There are 2 places where we can store file:
 1. File system (Meaning on local folder)
 2. Strore on Data Base
 
 
-###### 3_1_upload_download_using_file_system
+###### 2_1_upload_download_using_file_system
 
-<img src="https://img.shields.io/badge/- 3_1_upload_download_using_file_system  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 2_1_upload_download_using_file_system  %20-yellow" height=32px>
 
 In this Example I will show how to store the file in the file System
 
@@ -204,9 +97,9 @@ In this Example I will show how to store the file in the file System
 
 
 
-###### 3_2_upload_download_using_data_base
+###### 2_2_upload_download_using_data_base
 
-<img src="https://img.shields.io/badge/- 3_2_upload_download_using_data_base  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 2_2_upload_download_using_data_base  %20-yellow" height=32px>
 
 
 
@@ -222,9 +115,9 @@ In this Example I will show how to store the file in the file System
 ----------------
 
 
-###### 4_test_with_postman
+###### 3_test_with_postman
 
-<img src="https://img.shields.io/badge/- 4_test_with_postman  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_test_with_postman  %20-blue" height=40px>
 
 
 
@@ -233,9 +126,9 @@ In this Example I will show how to store the file in the file System
 
 ----------------
 
-###### 5_test_with_reactjs_code
+###### 4_test_with_reactjs_code
 
-<img src="https://img.shields.io/badge/- 5_test_with_reactjs_code  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4_test_with_reactjs_code  %20-blue" height=40px>
 
 #### [Step 1:  create vite app](#-)
 
