@@ -132,7 +132,7 @@ In this Example I will show how to store the file in the file System
 
 #### [Step 1:  create vite app](#-)
 
-- also Install `axios
+- also Install `axios`
 
 ```js
 npm create vite@latest frontend-file-upload --template react
