@@ -33,7 +33,7 @@ function App() {
         <br />
         {/* option 1 for styling */}
         <div>
-          <input type="file" className="btn input-file" onChange={handleFileUpload} />
+          <input type="file" className="btn" onChange={handleFileUpload} />
         </div>
         <br />
         <div>
@@ -44,6 +44,11 @@ function App() {
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>
         <h5>The upload button ,is not configured for these options</h5>
+        {/* option 1 for styling */}
+        <div>
+          <input type="file" className="btn input-file" onChange={handleFileUpload} />
+        </div>
+        <br />
         <br />
         {/* option 2 for styling */}
         <div>
