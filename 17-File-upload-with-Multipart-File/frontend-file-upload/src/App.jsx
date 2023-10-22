@@ -10,7 +10,7 @@ function App() {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData();
     formData.append('attachment', selectedFile);
 
@@ -28,16 +28,36 @@ function App() {
 
   return (
     <>
-      <h3>file upload</h3>
-      <br />
-      <div>
-        <input className="btn" type="file" onChange={handleFileUpload} />
-      </div>
-      <br />
-      <div>
-        <button className="btn" onClick={handleUpload}>
-          Upload
-        </button>
+      <div style={{ padding: '2rem' }}>
+        <h3>file upload</h3>
+        <br />
+        {/* option 1 for styling */}
+        <div>
+          <input type="file" className="btn input-file" onChange={handleFileUpload} />
+        </div>
+        <br />
+        <div>
+          <button className="btn upload" onClick={handleUpload}>
+            Upload
+          </button>
+        </div>
+        <h3>------------------------------------------</h3>
+        <h5>More styling options for input-file </h5>
+        <h5>The upload button ,is not configured for these options</h5>
+        <br />
+        {/* option 2 for styling */}
+        <div>
+          <input type="file" className="input-file-option-2" />
+        </div>
+        <br />
+        {/* option 3 for styling by using the label tag along with input tag + htmlFor attrinute*/}
+        <div>
+          <label className="file-input-label-3" htmlFor="file-input">
+            Select a File
+          </label>
+          <input type="file" id="file-input" name="file-input" className="file-input-3" />
+        </div>
+        <br />
       </div>
     </>
   );
