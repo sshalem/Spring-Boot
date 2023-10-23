@@ -18,9 +18,9 @@ function App() {
     formData.append('attachment', selectedFile);
 
     // to dislapy what are the key/value in formData
-    for (const data of formData.entries()) {
-      console.log(data);
-    }
+    // for (const data of formData.entries()) {
+    //   console.log(data);
+    // }
     upload(formData);
   };
 
@@ -28,7 +28,6 @@ function App() {
     // const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
     const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
-    console.log(data);
   };
 
   const handleDownload = () => {
@@ -65,7 +64,7 @@ function App() {
         </div>
         <br />
         <div>
-          <img src={response} alt="" />
+          <img src={`data:image/jpg;base64, ${response}`} />
         </div>
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>
