@@ -152,7 +152,7 @@ button:disabled {
   background: var(--red-dark);
 }
 
-.upload {
+.upload-download {
   width: 10rem;
   display: inline-block;
   font-size: 0.9rem;

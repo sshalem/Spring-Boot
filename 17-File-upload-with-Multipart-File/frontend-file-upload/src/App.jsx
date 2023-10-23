@@ -22,7 +22,18 @@ function App() {
   };
 
   const upload = async (formData) => {
-    const response = await axios.post(`http://localhost:8080/database/upload`, formData);
+    // const response = await axios.post(`http://localhost:8080/database/upload`, formData);
+    const response = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+    console.log(response);
+  };
+
+  const handleDownload = () => {
+    download();
+  };
+
+  const download = async () => {
+    // const response = await axios.get(`http://localhost:8080/database/upload`);
+    const response = await axios.get(`http://localhost:8080/fileSystem/download/{fileName}`);
     console.log(response);
   };
 
@@ -37,8 +48,14 @@ function App() {
         </div>
         <br />
         <div>
-          <button className="btn upload" onClick={handleUpload}>
+          <button className="btn upload-download" onClick={handleUpload}>
             Upload
+          </button>
+        </div>
+        <br />
+        <div>
+          <button className="btn upload-download" onClick={handleDownload}>
+            Download
           </button>
         </div>
         <h3>------------------------------------------</h3>
