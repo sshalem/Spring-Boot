@@ -3,6 +3,8 @@ import axios from 'axios';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [fileName, setFileName] = useState(null);
+  const [response, setResponse] = useState(null);
 
   const handleFileUpload = (event) => {
     // since the input type is `file`
@@ -12,6 +14,7 @@ function App() {
 
   const handleUpload = async () => {
     const formData = new FormData();
+    // this is the @RequestParam with Spring Controller
     formData.append('attachment', selectedFile);
 
     // to dislapy what are the key/value in formData
@@ -22,9 +25,10 @@ function App() {
   };
 
   const upload = async (formData) => {
-    // const response = await axios.post(`http://localhost:8080/database/upload`, formData);
-    const response = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
-    console.log(response);
+    // const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+    setFileName(data.fileName);
+    console.log(data);
   };
 
   const handleDownload = () => {
@@ -32,9 +36,10 @@ function App() {
   };
 
   const download = async () => {
-    // const response = await axios.get(`http://localhost:8080/database/upload`);
-    const response = await axios.get(`http://localhost:8080/fileSystem/download/{fileName}`);
-    console.log(response);
+    // const { data } = await axios.get(`http://localhost:8080/database/upload`);
+    const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
+    setResponse(data);
+    console.log(data);
   };
 
   return (
@@ -57,6 +62,10 @@ function App() {
           <button className="btn upload-download" onClick={handleDownload}>
             Download
           </button>
+        </div>
+        <br />
+        <div>
+          <img src={response} alt="" />
         </div>
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>
