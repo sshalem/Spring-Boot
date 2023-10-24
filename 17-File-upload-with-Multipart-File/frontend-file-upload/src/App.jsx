@@ -28,6 +28,7 @@ function App() {
     // const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
     const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
+    console.log(data);
   };
 
   const handleDownload = () => {
@@ -64,7 +65,8 @@ function App() {
         </div>
         <br />
         <div>
-          <img src={`data:image/jpg;base64, ${response}`} />
+          <img src={response} />
+          <img src={`data:image/png;base64, ${response}`} />
         </div>
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>

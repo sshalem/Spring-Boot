@@ -12,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,22 +23,35 @@ import com.filesystem.service.FileService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
+@CrossOrigin
 public class FileController {
 
 	@Autowired
 	private FileService fileService;
 
 	@PostMapping("/fileSystem/upload")
-	public ResponseEntity<?> uploadToFileSystem(@RequestParam("file") MultipartFile file) throws IOException {
-
+	public ResponseEntity<?> uploadToFileSystem(@RequestParam("attachment") MultipartFile file) throws IOException {
+ 
+		/**
+		 * the @RequestParam("attachment") comes from frontEnd code:
+		 *  `formData.append('attachment', selectedFile);
+		 */
+		
 		FileSystemAttachmentEntity fileData = fileService.uploadToFileSystem(file);
-
+		
+		// Here I setup the download URL
+		// Where FrontEnd will click the link
+		// and will download the file
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/fileSystem/download/") // this path need to same path of the @GetMapping
 				.path(fileData.getName())
 				.toUriString();
 
-		ResponseData responseData = new ResponseData(fileData.getName(), downloadUrl, file.getContentType(), file.getSize());
+		ResponseData responseData = new ResponseData(
+				fileData.getName(), 
+				downloadUrl, 
+				file.getContentType(), 
+				file.getSize());
 
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
@@ -48,12 +62,22 @@ public class FileController {
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
 		String filePath = fileSystemAttachmentEntity.getFilePath();
 		byte[] data = Files.readAllBytes(new File(filePath).toPath());
-
+		ByteArrayResource returnedValue = new ByteArrayResource(data);
+		/**
+		 * I return in the response ByteArrayResource which build of byte[].
+		 * What it means?
+		 * This means , I will get the content of the file : 
+		 * text content, (can display right away as the content of a tag)
+		 * image content (display in img tag)
+		 * pdf content (use library, or down load the file then open it)
+		 * I can preview it : in Network tab at browser at the Preview 
+		 * 
+		 */
 		return ResponseEntity
 				.ok()
 				.contentType(MediaType.parseMediaType(fileSystemAttachmentEntity.getType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getName() + "\"")
-				.body(new ByteArrayResource(data));
+				.body(returnedValue);
 	}
 		
 }

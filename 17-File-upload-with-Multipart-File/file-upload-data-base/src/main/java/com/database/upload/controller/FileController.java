@@ -1,7 +1,6 @@
 package com.database.upload.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,6 +32,10 @@ public class FileController {
 	@PostMapping(path = "/database/upload")
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
+		/**
+		 * the @RequestParam("attachment") comes from frontEnd code:
+		 *  `formData.append('attachment', selectedFile);
+		 */
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
 
 		// Here I setup the download URL
@@ -56,7 +59,17 @@ public class FileController {
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
 
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
-
+		
+		/**
+		 * I return in the response byte[]. 
+		 * What it means?
+		 * This means , I will get the content of the file : 
+		 * text content, (can display right away as the content of a tag)
+		 * image content (display in img tag)
+		 * pdf content (use library, or down load the file then open it)
+		 * I can preview it : in Network tab at browser at the Preview 
+		 * 
+		 */
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
