@@ -23,7 +23,7 @@ import com.filesystem.service.FileService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class FileController {
 
 	@Autowired
