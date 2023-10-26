@@ -2,6 +2,7 @@ package com.database.upload.model;
 
 public class ResponseData {
 
+	private String id;
 	private String fileName;
 	private String downloadURL;
 	private String fileType;
@@ -10,12 +11,21 @@ public class ResponseData {
 	public ResponseData() {
 	}
 
-	public ResponseData(String fileName, String downloadURL, String fileType, long fileSize) {
+	public ResponseData(String id, String fileName, String downloadURL, String fileType, long fileSize) {
 		super();
+		this.id = id;
 		this.fileName = fileName;
 		this.downloadURL = downloadURL;
 		this.fileType = fileType;
 		this.fileSize = fileSize;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getFileName() {
@@ -49,5 +59,4 @@ public class ResponseData {
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
-
 }

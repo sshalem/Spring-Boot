@@ -37,18 +37,19 @@ public class FileController {
 		 *  `formData.append('attachment', selectedFile);
 		 */
 		
-		FileSystemAttachmentEntity fileData = fileService.uploadToFileSystem(file);
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(file);
 		
 		// Here I setup the download URL
 		// Where FrontEnd will click the link
 		// and will download the file
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/fileSystem/download/") // this path need to same path of the @GetMapping
-				.path(fileData.getName())
+				.path(fileSystemAttachmentEntity.getName())
 				.toUriString();
 
 		ResponseData responseData = new ResponseData(
-				fileData.getName(), 
+				fileSystemAttachmentEntity.getId(),
+				fileSystemAttachmentEntity.getName(), 
 				downloadUrl, 
 				file.getContentType(), 
 				file.getSize());

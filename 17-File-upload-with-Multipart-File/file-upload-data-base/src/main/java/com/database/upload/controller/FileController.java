@@ -49,6 +49,7 @@ public class FileController {
 				.toUriString();
 
 		ResponseData responseData = new ResponseData(
+				dataBaseAttachmentEntity.getId(),
 				dataBaseAttachmentEntity.getFileName(),
 				downloadURl,
 				multipartFile.getContentType(),

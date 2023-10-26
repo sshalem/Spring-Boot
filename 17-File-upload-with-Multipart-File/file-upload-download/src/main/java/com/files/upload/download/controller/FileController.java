@@ -46,6 +46,7 @@ public class FileController {
 				.toUriString();
 
 		ResponseData responseData = new ResponseData(
+				dataBaseAttachmentEntity.getId(),
 				dataBaseAttachmentEntity.getFileName(),
 				downloadURl,
 				multipartFile.getContentType(),
@@ -85,6 +86,7 @@ public class FileController {
 				.toUriString();
 
 		ResponseData responseData = new ResponseData(
+				fileSystemAttachmentEntity.getId(),
 				fileSystemAttachmentEntity.getFileName(), 
 				downloadUrl, 
 				multipartFile.getContentType(), 

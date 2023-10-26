@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.filesystem.entity.FileSystemAttachmentEntity;
 
 @Repository
-public interface FileDataRepository extends JpaRepository<FileSystemAttachmentEntity, Long> {
+public interface FileDataRepository extends JpaRepository<FileSystemAttachmentEntity, String> {
 
 	Optional<FileSystemAttachmentEntity> findByName(String fileName);
 }

@@ -2,50 +2,61 @@ package com.files.upload.download.model;
 
 public class ResponseData {
 
-    private String fileName;
-    private String downloadURL;
-    private String fileType;
-    private long fileSize;
+	private String id;
+	private String fileName;
+	private String downloadURL;
+	private String fileType;
+	private long fileSize;
 
-    public ResponseData() {
-    }
+	public ResponseData() {
+	}
 
-    public ResponseData(String fileName, String downloadURL, String fileType, long fileSize) {
-        this.fileName = fileName;
-        this.downloadURL = downloadURL;
-        this.fileType = fileType;
-        this.fileSize = fileSize;
-    }
+	public ResponseData(String id, String fileName, String downloadURL, String fileType, long fileSize) {
+		super();
+		this.id = id;
+		this.fileName = fileName;
+		this.downloadURL = downloadURL;
+		this.fileType = fileType;
+		this.fileSize = fileSize;
+	}
 
-    public String getFileName() {
-        return fileName;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getDownloadURL() {
-        return downloadURL;
-    }
+	public String getFileName() {
+		return fileName;
+	}
 
-    public void setDownloadURL(String downloadURL) {
-        this.downloadURL = downloadURL;
-    }
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-    public String getFileType() {
-        return fileType;
-    }
+	public String getDownloadURL() {
+		return downloadURL;
+	}
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
-    }
+	public void setDownloadURL(String downloadURL) {
+		this.downloadURL = downloadURL;
+	}
 
-    public long getFileSize() {
-        return fileSize;
-    }
+	public String getFileType() {
+		return fileType;
+	}
 
-    public void setFileSize(long fileSize) {
-        this.fileSize = fileSize;
-    }
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
+	}
 }

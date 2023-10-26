@@ -4,6 +4,7 @@ import axios from 'axios';
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
+  const [attachmentId, setAttachmentId] = useState(null);
   const [response, setResponse] = useState(null);
 
   const handleFileUpload = (event) => {
@@ -36,7 +37,7 @@ function App() {
   };
 
   const download = async () => {
-    // const { data } = await axios.get(`http://localhost:8080/database/upload`);
+    // const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
     setResponse(data);
     console.log(data);
