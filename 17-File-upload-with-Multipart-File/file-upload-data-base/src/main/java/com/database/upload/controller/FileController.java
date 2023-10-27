@@ -3,6 +3,7 @@ package com.database.upload.controller;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -88,13 +89,18 @@ public class FileController {
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-//				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
 				
-//				this converts the byte[] Array of String , which in each index the value is the byte as string, see the implementation inside Arrays.toString(x)
+//				option 1:
+				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+				
+//				option 2:
+//				this converts the byte[] Array , 
+//				which in each index the value is the byte as string, see the implementation inside Arrays.toString(x)
 //				.body(Arrays.toString(dataBaseAttachmentEntity.getData()));
 				
+//				option 3:
 //				this returns only byte[] 
-				.body(dataBaseAttachmentEntity.getData());
+//				.body(dataBaseAttachmentEntity.getData());
 		
 	}
 

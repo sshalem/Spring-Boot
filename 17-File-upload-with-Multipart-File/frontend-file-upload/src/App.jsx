@@ -56,11 +56,13 @@ function App() {
     // }
     // const base64String = btoa(binary);
 
-    const blob = new Blob([data]);
-    console.log(blob);
-    const bufferArray = await blob.arrayBuffer();
-    const base64String = btoa(String.fromCharCode(...new Uint8Array(bufferArray)));
-    console.log(base64String);
+    // option 3 (Not working as expected) I expect to convert the BLOB to byteArray and dsiplay to img:
+    // ----------
+    // const blob = new Blob([data]);
+    // console.log(blob);
+    // const bufferArray = await blob.arrayBuffer();
+    // const base64String = btoa(String.fromCharCode(...new Uint8Array(bufferArray)));
+    // console.log(base64String);
 
     setResponse(base64String);
   };
