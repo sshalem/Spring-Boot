@@ -1,5 +1,7 @@
 package com.database.upload.controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,6 +41,16 @@ public class FileController {
 		 *  `formData.append('attachment', selectedFile);
 		 */
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
+		
+//		byte[] data = dataBaseAttachmentEntity.getData();
+//		
+//		long length = data.length - 1;
+//		
+//		for (int i = 0; i < length ; i++) {
+//            System.out.println(data[i]);
+//        }
+		
+//       System.out.println(Arrays.toString(data));
 
 		// Here I setup the download URL
 		// Where FrontEnd will click the link
@@ -77,7 +89,13 @@ public class FileController {
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
 //				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+				
+//				this converts the byte[] Array of String , which in each index the value is the byte as string, see the implementation inside Arrays.toString(x)
+//				.body(Arrays.toString(dataBaseAttachmentEntity.getData()));
+				
+//				this returns only byte[] 
 				.body(dataBaseAttachmentEntity.getData());
+		
 	}
 
 }

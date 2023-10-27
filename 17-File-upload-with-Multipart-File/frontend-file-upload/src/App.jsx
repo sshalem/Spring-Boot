@@ -26,9 +26,10 @@ function App() {
   };
 
   const upload = async (formData) => {
-    // const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
-    const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
+    setAttachmentId(data.id);
     console.log(data);
   };
 
@@ -37,10 +38,31 @@ function App() {
   };
 
   const download = async () => {
-    // const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
-    const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
-    setResponse(data);
-    console.log(data);
+    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+    // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
+
+    // Option 1
+    // --------
+    // const base64String = btoa(String.fromCharCode(...new Uint8Array(data)));
+    // console.log(base64String);
+
+    // Option 2:
+    // ---------
+    // let binary = '';
+    // let bytes = new Uint8Array(data);
+    // let len = bytes.byteLength;
+    // for (var i = 0; i < len; i++) {
+    //   binary += String.fromCharCode(bytes[i]);
+    // }
+    // const base64String = btoa(binary);
+
+    const blob = new Blob([data]);
+    console.log(blob);
+    const bufferArray = await blob.arrayBuffer();
+    const base64String = btoa(String.fromCharCode(...new Uint8Array(bufferArray)));
+    console.log(base64String);
+
+    setResponse(base64String);
   };
 
   return (
@@ -67,8 +89,8 @@ function App() {
         <br />
         <div>
           {/* <img src={response} /> */}
-          <img src={`data:image/png; ${response}`} />
-          {/* <img src={`data:image/png;base64, ${response}`} /> */}
+          {/* <img src={`data:image/png; ${response}`} /> */}
+          <img src={`data:image/png;base64, ${response}`} />
         </div>
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>
