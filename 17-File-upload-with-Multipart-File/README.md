@@ -93,6 +93,42 @@ In this Example I will show how to store the file in the file System
 
 
 
+#### [How to convert byte[] array to String in Java ](#-)
+
+In Java, we can use `new String(bytes, StandardCharsets.UTF_8)` to convert a `byte[]` to a `String`.
+
+```java
+  // string to byte[]
+  byte[] bytes = "hello".getBytes(StandardCharsets.UTF_8);
+
+  // byte[] to string
+  String s = new String(bytes, StandardCharsets.UTF_8);
+```
+
+#### [1. byte[] in text and binary data](#-)
+
+For text or character data, we use `new String(bytes, StandardCharsets.UTF_8)` to convert the `byte[]` to a `String` directly. </br>
+However, for cases that `byte[]` is holding the binary data like the `image` or other `non-text` data, the best practice is to convert the `byte[]` into a `Base64` encoded string. </br>
+This Base64 encode decode string is still widely use in
+1. email attachment
+2. embed image files inside HTML or CSS
+
+```java
+  // convert file to byte[]
+  byte[] bytes = Files.readAllBytes(Paths.get("/path/image.png"));
+
+  // Java 8 - Base64 class, finally.
+
+  // encode, convert byte[] to base64 encoded string
+  String s = Base64.getEncoder().encodeToString(bytes);
+
+  System.out.println(s);
+
+  // decode, convert base64 encoded string back to byte[]
+  byte[] decode = Base64.getDecoder().decode(s);
+```
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
