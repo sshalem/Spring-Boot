@@ -74,12 +74,13 @@ public class FileController {
 		 * 
 		 */
 		
-		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
-		
-		// this converts the byte[] Array , to String 
+		// I must converts the byte[] Array , to String 
 		// see the implementation inside Arrays.toString(x)
-		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+		// And let the FrontENd , convert the byteArray to an image so I can display it on the page
 		
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
+		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+				
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")

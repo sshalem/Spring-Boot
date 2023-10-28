@@ -14,6 +14,15 @@ function App() {
   };
 
   const handleUpload = async () => {
+    // This code coverts the image file to byteArray
+
+    const buffer = await selectedFile.arrayBuffer();
+    let int8Array = new Int8Array(buffer);
+    let uint8Array = new Uint8Array(buffer);
+
+    console.log(int8Array);
+    console.log(uint8Array);
+
     const formData = new FormData();
     // this is the @RequestParam with Spring Controller
     formData.append('attachment', selectedFile);
@@ -22,6 +31,7 @@ function App() {
     // for (const data of formData.entries()) {
     //   console.log(data);
     // }
+
     upload(formData);
   };
 
@@ -41,37 +51,18 @@ function App() {
     const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
 
-    // Option 1
-    // --------
+    // The Uint8Array typed array represents an array of 8-bit unsigned integers
 
-    // const uint8Array = new Uint8Array(data);
-    // console.log([...uint8Array]);
-    // const base64String = btoa(String.fromCharCode([...uint8Array]));
-    // console.log(base64String);
-
-    // const base64String = btoa(String.fromCharCode(...new Uint8Array(data)));
-    // console.log(base64String);
-
-    // Option 2:
-    // ---------
+    // (Best Solution):
+    // -------------------------
     let binary = '';
-    let bytes = new Uint8Array([data]);
-
-    console.log(bytes);
-
-    let len = bytes.byteLength;
+    let uint8Array = new Uint8Array(data);
+    console.log(uint8Array);
+    let len = uint8Array.byteLength;
     for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
+      binary += String.fromCharCode(uint8Array[i]);
     }
     const base64String = btoa(binary);
-
-    // option 3 (Not working as expected) I expect to convert the BLOB to byteArray and dsiplay to img:
-    // ----------
-    // const blob = new Blob([data]);
-    // console.log(blob);
-    // const bufferArray = await blob.arrayBuffer();
-    // const base64String = btoa(String.fromCharCode(...new Uint8Array(bufferArray)));
-    // console.log(base64String);
 
     setResponse(base64String);
   };

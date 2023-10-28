@@ -3,6 +3,7 @@ package com.files.upload.download.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 
 import com.files.upload.download.entity.DataBaseAttachmentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,12 +59,28 @@ public class FileController {
 	@GetMapping(path = "/database/download/{attachmentId}")
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
 
+		/**
+		 * I return in the response byte[]. 
+		 * What it means?
+		 * This means , I will get the content of the file : 
+		 * text content, (can display right away as the content of a tag)
+		 * image content (display in img tag)
+		 * pdf content (use library, or down load the file then open it)
+		 * I can preview it : in Network tab at browser at the Preview 
+		 * 
+		 */
+		
+		// I must converts the byte[] Array , to String 
+		// see the implementation inside Arrays.toString(x)
+		// And let the FrontENd , convert the byteArray to an image so I can display it on the page
+		
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
-
+		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+				
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+				.body(byteArrayAsString);
 	}
 
 	/**********************************************************
