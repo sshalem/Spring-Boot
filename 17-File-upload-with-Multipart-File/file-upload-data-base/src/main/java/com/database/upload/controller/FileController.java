@@ -78,12 +78,12 @@ public class FileController {
 		
 		// this converts the byte[] Array , to String 
 		// see the implementation inside Arrays.toString(x)
-		String string = Arrays.toString(dataBaseAttachmentEntity.getData());
+		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
 		
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-				.body(string);
+				.body(byteArrayAsString);
 	}
 
 }
