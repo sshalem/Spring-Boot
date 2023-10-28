@@ -113,6 +113,10 @@ This Base64 encode decode string is still widely use in
 1. email attachment
 2. embed image files inside HTML or CSS
 
+Note:
+- For text data byte[], try `new String(bytes, StandardCharsets.UTF_8)`.
+- For binary data byte[] (images), try `Base64` encoding.
+
 ```java
   // convert file to byte[]
   byte[] bytes = Files.readAllBytes(Paths.get("/path/image.png"));
