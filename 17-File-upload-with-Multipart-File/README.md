@@ -90,22 +90,12 @@ After the FrontEnd uploads a file, There are 2 places where we can store file:
 
 In this Example I will show how to store the file in the file System
 
-
-
-
 #### [How to convert byte[] array to String in Java ](#-)
 
-In Java, we can use `new String(bytes, StandardCharsets.UTF_8)` to convert a `byte[]` to a `String`.
-
-```java
-  // string to byte[]
-  byte[] bytes = "hello".getBytes(StandardCharsets.UTF_8);
-
-  // byte[] to string
-  String s = new String(bytes, StandardCharsets.UTF_8);
-```
-
-#### [1. byte[] in text and binary data](#-)
+In Java ,to convert `byte[]` array to String, 2 ways:
+- text data byte[], try `new String(bytes, StandardCharsets.UTF_8)`.
+- binary data byte[] like images , try `Base64` encoding.
+- Another way to conver byte[] to String is use the method from `Arrays.toString(bytes)` , which return a String as a array format (see implemented code in the class)
 
 For text or character data, we use `new String(bytes, StandardCharsets.UTF_8)` to convert the `byte[]` to a `String` directly. </br>
 However, for cases that `byte[]` is holding the binary data like the `image` or other `non-text` data, the best practice is to convert the `byte[]` into a `Base64` encoded string. </br>
@@ -114,22 +104,27 @@ This Base64 encode decode string is still widely use in
 2. embed image files inside HTML or CSS
 
 Note:
-- For text data byte[], try `new String(bytes, StandardCharsets.UTF_8)`.
-- For binary data byte[] (images), try `Base64` encoding.
+
 
 ```java
-  // convert file to byte[]
-  byte[] bytes = Files.readAllBytes(Paths.get("/path/image.png"));
+  // string to byte[]
+  byte[] bytes = "hello".getBytes(StandardCharsets.UTF_8);
 
-  // Java 8 - Base64 class, finally.
+  // byte[] to string
+  String s = new String(bytes, StandardCharsets.UTF_8);
 
+//-------------------------------------------------------------
+
+ // Java 8 - Base64 class, finally.
+  byte[] bytes = (from image , non-text data)
   // encode, convert byte[] to base64 encoded string
   String s = Base64.getEncoder().encodeToString(bytes);
 
-  System.out.println(s);
-
   // decode, convert base64 encoded string back to byte[]
   byte[] decode = Base64.getDecoder().decode(s);
+
+  // Converts the byte[] array to String. The String formed as an array (see code implementation)
+  String byteArrayAsString = Arrays.toString(bytes);
 ```
 
 
