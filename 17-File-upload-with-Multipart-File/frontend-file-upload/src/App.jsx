@@ -43,18 +43,27 @@ function App() {
 
     // Option 1
     // --------
+
+    // const uint8Array = new Uint8Array(data);
+    // console.log([...uint8Array]);
+    // const base64String = btoa(String.fromCharCode([...uint8Array]));
+    // console.log(base64String);
+
     // const base64String = btoa(String.fromCharCode(...new Uint8Array(data)));
     // console.log(base64String);
 
     // Option 2:
     // ---------
-    // let binary = '';
-    // let bytes = new Uint8Array(data);
-    // let len = bytes.byteLength;
-    // for (var i = 0; i < len; i++) {
-    //   binary += String.fromCharCode(bytes[i]);
-    // }
-    // const base64String = btoa(binary);
+    let binary = '';
+    let bytes = new Uint8Array([data]);
+
+    console.log(bytes);
+
+    let len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    const base64String = btoa(binary);
 
     // option 3 (Not working as expected) I expect to convert the BLOB to byteArray and dsiplay to img:
     // ----------

@@ -37,23 +37,10 @@ public class FileController {
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
 		/**
-		 * the @RequestParam("attachment") comes from frontEnd code:
+		 *  the @RequestParam("attachment") comes from frontEnd code:
 		 *  `formData.append('attachment', selectedFile);
 		 */
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
-		
-//		byte[] data = dataBaseAttachmentEntity.getData();//		
-//		long length = data.length - 1;
-		
-//		for (int i = 0; i < length ; i++) {
-//            System.out.println(data[i]);
-//        }
-		
-//		This is same in 1 line of code
-//       System.out.println(Arrays.toString(data));
-
-//		System.out.println(dataBaseAttachmentEntity.getData());
-		
 		
 		// Here I setup the download URL
 		// Where FrontEnd will click the link
@@ -76,8 +63,6 @@ public class FileController {
 	@GetMapping(path = "/database/download/{attachmentId}")
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
 
-		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
-		
 		/**
 		 * I return in the response byte[]. 
 		 * What it means?
@@ -88,22 +73,17 @@ public class FileController {
 		 * I can preview it : in Network tab at browser at the Preview 
 		 * 
 		 */
+		
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
+		
+		// this converts the byte[] Array , to String 
+		// see the implementation inside Arrays.toString(x)
+		String string = Arrays.toString(dataBaseAttachmentEntity.getData());
+		
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-				
-//				option 1:
-//				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
-				
-//				option 2:
-//				this converts the byte[] Array , 
-//				which in each index the value is the byte as string, see the implementation inside Arrays.toString(x)
-				.body(Arrays.toString(dataBaseAttachmentEntity.getData()));
-				
-//				option 3:
-//				this returns only byte[] 
-//				.body(dataBaseAttachmentEntity.getData());
-		
+				.body(string);
 	}
 
 }
