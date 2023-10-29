@@ -734,6 +734,15 @@ npm install axios
 
 #### [step 2: Setup code to upload file (any file)](#-)
 
+Note: </br>
+In order to display image that I download from server I need to use `Data URLs`, so do the following in the `img` tag:
+
+```html
+<img src={`data:image/png;base64, ${response}`} />
+```
+
+Final code in `App.jsx` 
+
 ```js
 import { useState } from 'react';
 import axios from 'axios';
