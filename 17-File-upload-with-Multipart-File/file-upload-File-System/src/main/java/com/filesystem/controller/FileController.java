@@ -3,9 +3,8 @@ package com.filesystem.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Base64;
 
-import com.filesystem.entity.FileSystemAttachmentEntity;
-import com.filesystem.model.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -19,8 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.filesystem.service.FileService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.filesystem.entity.FileSystemAttachmentEntity;
+import com.filesystem.model.ResponseData;
+import com.filesystem.service.FileService;
 
 @RestController
 @CrossOrigin("*")
@@ -30,15 +32,10 @@ public class FileController {
 	private FileService fileService;
 
 	@PostMapping("/fileSystem/upload")
-	public ResponseEntity<?> uploadToFileSystem(@RequestParam("attachment") MultipartFile file) throws IOException {
- 
-		/**
-		 * the @RequestParam("attachment") comes from frontEnd code:
-		 *  `formData.append('attachment', selectedFile);
-		 */
-		
-		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(file);
-		
+	public ResponseEntity<?> uploadAttachmentToFileSystem(@RequestParam("attachment") MultipartFile multipartFile) throws IOException {
+
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(multipartFile);
+
 		// Here I setup the download URL
 		// Where FrontEnd will click the link
 		// and will download the file
@@ -51,34 +48,42 @@ public class FileController {
 				fileSystemAttachmentEntity.getId(),
 				fileSystemAttachmentEntity.getName(), 
 				downloadUrl, 
-				file.getContentType(), 
-				file.getSize());
+				multipartFile.getContentType(), 
+				multipartFile.getSize());
 
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
 	@GetMapping("/fileSystem/download/{fileName}")
-	public ResponseEntity<?> downloadFromFileSystem(@PathVariable String fileName) throws IOException {
-
+	public ResponseEntity<?> downloadAttachmentFromFileSystem(@PathVariable String fileName) throws IOException {
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
 		String filePath = fileSystemAttachmentEntity.getFilePath();
 		byte[] data = Files.readAllBytes(new File(filePath).toPath());
-		ByteArrayResource returnedValue = new ByteArrayResource(data);
-		/**
-		 * I return in the response ByteArrayResource which build of byte[].
-		 * What it means?
-		 * This means , I will get the content of the file : 
-		 * text content, (can display right away as the content of a tag)
-		 * image content (display in img tag)
-		 * pdf content (use library, or down load the file then open it)
-		 * I can preview it : in Network tab at browser at the Preview 
-		 * 
-		 */
+
 		return ResponseEntity
 				.ok()
 				.contentType(MediaType.parseMediaType(fileSystemAttachmentEntity.getType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getName() + "\"")
-				.body(returnedValue);
+				.body(new ByteArrayResource(data));
+
+	}
+	
+	/**
+	 * 
+	 * This method I use to load an image from server
+	 * And display it in an <img> tag as Base64
+	 * 
+	 */
+	@GetMapping(path = "/fileSystem/loadAttachment/{fileName}")
+	public ResponseEntity<?> loadAttachmentFromFileSystem(@PathVariable String fileName) throws Exception {
+
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
+		String filePath = fileSystemAttachmentEntity.getFilePath();
+		byte[] data = Files.readAllBytes(new File(filePath).toPath());
+		
+		String base64String = Base64.getEncoder().encodeToString(data);
+		
+		return ResponseEntity.ok().body(base64String);
 	}
 		
 }
