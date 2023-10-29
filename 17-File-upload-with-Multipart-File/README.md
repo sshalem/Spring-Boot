@@ -289,7 +289,8 @@ public class StorageServiceImpl implements StorageService {
 
 	@Override
 	public DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception {
-		return dataBaseRepository.findById(attachmentId).orElseThrow(() -> new Exception("File not found with Id: " + attachmentId));
+		return dataBaseRepository.findById(attachmentId)
+			.orElseThrow(() -> new Exception("File not found with Id: " + attachmentId));
 	}
 }
 ```
