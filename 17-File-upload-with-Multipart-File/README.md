@@ -449,8 +449,6 @@ npm install axios
 
 #### [step 2: Setup code to upload file (any file)](#-)
 
-Note : I used the css from `Jobify` project `index.css`
-
 ```js
 import { useState } from 'react';
 import axios from 'axios';
@@ -501,17 +499,18 @@ function App() {
     // Option 1: getting Array as string from server
     // ---------------------------------------------
 
-    // let binary = '';
-    // let uint8Array = new Uint8Array(data);
     // Doesn't work with Int8Array , throws error of
     // DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+
+    // let binary = '';
+    // let uint8Array = new Uint8Array(data);
     // let int8Array = new Int8Array(data);
-    // console.log(uint8Array);
-    // let len = uint8Array.byteLength;
-    // for (var i = 0; i < len; i++) {
+    // for (var i = 0; i < uint8Array.byteLength ; i++) {
     //   binary += String.fromCharCode(uint8Array[i]);
     // }
     // const base64String = btoa(binary);
+    // setResponse(base64String);
+
 
     // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
     // ---------------------------------------------
