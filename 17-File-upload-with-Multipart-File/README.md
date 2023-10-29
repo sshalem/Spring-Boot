@@ -711,6 +711,31 @@ public class FileController {
 
 <img src="https://img.shields.io/badge/- 3_test_with_postman  %20-blue" height=40px>
 
+###### 3_1_test_using_data_base
+
+<img src="https://img.shields.io/badge/- 3_1_test_using_data_base  %20-yellow" height=32px>
+
+Open Postman and send `POST` request to url of `localhost:8080/database/upload` and add to `body`: 
+- set `key` with name `attachment` , because I set this name in controller the `@RequestParam("attachment")`
+- change the type to `file`
+- choose the file to upload
+
+![image](https://github.com/sshalem/Spring-Boot/assets/36256986/7a511887-9ef5-4b2d-af1c-3d694aced913)
+
+
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+###### 3_2_test_using_file_system 
+
+
+
+
+<img src="https://img.shields.io/badge/- 3_2_test_using_file_system  %20-yellow" height=32px>
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
