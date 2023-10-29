@@ -457,6 +457,9 @@ import axios from 'axios';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [fileName, setFileName] = useState(null);
+  const [attachmentId, setAttachmentId] = useState(null);
+  const [response, setResponse] = useState(null);
 
   const handleFileUpload = (event) => {
     // since the input type is `file`
@@ -464,34 +467,83 @@ function App() {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData();
+    // this is the @RequestParam with Spring Controller
     formData.append('attachment', selectedFile);
 
     // to dislapy what are the key/value in formData
-    for (const data of formData.entries()) {
-      console.log(data);
-    }
+    // for (const data of formData.entries()) {
+    //   console.log(data);
+    // }
+
     upload(formData);
   };
 
   const upload = async (formData) => {
     const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+    setFileName(data.fileName);
+    setAttachmentId(data.id);
     console.log(data);
+  };
+
+  const handleDownload = () => {
+    download();
+  };
+
+  const download = async () => {
+    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+    // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
+
+    // The Uint8Array typed array represents an array of 8-bit unsigned integers
+
+    // Option 1: getting Array as string from server
+    // ---------------------------------------------
+
+    // let binary = '';
+    // let uint8Array = new Uint8Array(data);
+    // Doesn't work with Int8Array , throws error of
+    // DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+    // let int8Array = new Int8Array(data);
+    // console.log(uint8Array);
+    // let len = uint8Array.byteLength;
+    // for (var i = 0; i < len; i++) {
+    //   binary += String.fromCharCode(uint8Array[i]);
+    // }
+    // const base64String = btoa(binary);
+
+    // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
+    // ---------------------------------------------
+    const base64String = data;
+    setResponse(base64String);
   };
 
   return (
     <>
-      <h3>file upload</h3>
-      <br />
-      <div>
-        <input className="btn" type="file" onChange={handleFileUpload} />
-      </div>
-      <br />
-      <div>
-        <button className="btn" onClick={handleUpload}>
-          Upload
-        </button>
+      <div style={{ padding: '2rem' }}>
+        <h3>file upload</h3>
+        <br />
+        {/* option 1 for styling */}
+        <div>
+          <input type="file" className="btn" onChange={handleFileUpload} />
+        </div>
+        <br />
+        <div>
+          <button className="btn upload-download" onClick={handleUpload}>
+            Upload
+          </button>
+        </div>
+        <br />
+        <div>
+          <button className="btn upload-download" onClick={handleDownload}>
+            Download
+          </button>
+        </div>
+        <br />
+        <div>
+          <img src={`data:image/png;base64, ${response}`} />
+        </div>        
       </div>
     </>
   );
@@ -500,6 +552,234 @@ function App() {
 export default App;
 ```
 
+### [CSS] 
+
+```css
+/* ============= GLOBAL CSS =============== */
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+:root {
+  /* colors */
+  --primary-50: #e0fcff;
+  --primary-100: #bef8fd;
+  --primary-200: #87eaf2;
+  --primary-300: #54d1db;
+  --primary-400: #38bec9;
+  --primary-500: #2cb1bc;
+  --primary-600: #14919b;
+  --primary-700: #0e7c86;
+  --primary-800: #0a6c74;
+  --primary-900: #044e54;
+
+  /* grey */
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
+  /* rest of the colors */
+  --black: #222;
+  --white: #fff;
+  --red-light: #f8d7da;
+  --red-dark: #842029;
+  --green-light: #d1e7dd;
+  --green-dark: #0f5132;
+
+  --small-text: 0.875rem;
+  --extra-small-text: 0.7em;
+  /* rest of the vars */
+
+  --border-radius: 0.25rem;
+  --letter-spacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+  --fluid-width: 90vw;
+  --nav-height: 6rem;
+  /* box shadow*/
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* DARK MODE */
+
+  --background-color: var(--grey-50);
+  --text-color: var(--grey-900);
+  --background-secondary-color: var(--white);
+  --text-secondary-color: var(--grey-500);
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 3rem); /* Medium heading */
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* Small heading */
+}
+
+h4 {
+  font-size: clamp(1rem, 2vw, 2rem); /* Extra small heading */
+}
+
+h5 {
+  font-size: clamp(0.875rem, 1.5vw, 1.5rem); /* Tiny heading */
+}
+
+/* buttons */
+
+.btn {
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-500);
+  border: transparent;
+  border-radius: var(--border-radius);
+  letter-spacing: var(--letter-spacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--primary-700);
+  box-shadow: var(--shadow-3);
+}
+.btn-hipster {
+  color: var(--primary-500);
+  background: var(--primary-200);
+}
+.btn-hipster:hover {
+  color: var(--primary-200);
+  background: var(--primary-700);
+}
+.btn-block {
+  width: 100%;
+}
+button:disabled {
+  cursor: wait;
+}
+.danger-btn {
+  color: var(--red-dark);
+  background: var(--red-light);
+}
+.danger-btn:hover {
+  color: var(--white);
+  background: var(--red-dark);
+}
+
+.upload-download {
+  width: 10rem;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+/**************************
+  Option 1 for input CSS 
+***************************/
+
+.input-file {
+  width: 10rem;
+  color: transparent;
+}
+
+/* this css controlos the interanl css of input file tag */
+.input-file::before {
+  margin-left: 1rem;
+  display: inline-block;
+  content: 'my choose file';
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* this line disables the 'choose file' button */
+.input-file::file-selector-button {
+  display: none;
+}
+
+/**************************
+  Option 2 for input CSS 
+***************************/
+h3 {
+  margin: 2rem;
+}
+
+.input-file-option-2 {
+  width: 10rem;
+  border-radius: 7px;
+}
+
+.input-file-option-2::file-selector-button {
+  background-color: blue;
+  border-radius: 7px;
+  color: #fff;
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+}
+
+/**************************
+  Option 3 for input CSS 
+***************************/
+
+.file-input-3 {
+  display: none;
+}
+
+.file-input-label-3 {
+  cursor: pointer;
+  padding: 0.5rem 1.8rem;
+  display: inline-block;
+  border-radius: 7px;
+  font-size: 1.3em;
+  background-color: brown;
+  color: #fff;
+}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
