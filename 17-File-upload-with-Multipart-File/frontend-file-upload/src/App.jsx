@@ -53,17 +53,24 @@ function App() {
 
     // The Uint8Array typed array represents an array of 8-bit unsigned integers
 
-    // (Best Solution):
-    // -------------------------
-    let binary = '';
-    let uint8Array = new Uint8Array(data);
-    console.log(uint8Array);
-    let len = uint8Array.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(uint8Array[i]);
-    }
-    const base64String = btoa(binary);
+    // Option 1: getting Array as string from server
+    // ---------------------------------------------
 
+    // let binary = '';
+    // let uint8Array = new Uint8Array(data);
+    // Doesn't work with Int8Array , throws error of
+    // DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+    // let int8Array = new Int8Array(data);
+    // console.log(uint8Array);
+    // let len = uint8Array.byteLength;
+    // for (var i = 0; i < len; i++) {
+    //   binary += String.fromCharCode(uint8Array[i]);
+    // }
+    // const base64String = btoa(binary);
+
+    // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
+    // ---------------------------------------------
+    const base64String = data;
     setResponse(base64String);
   };
 

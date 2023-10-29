@@ -1,6 +1,7 @@
 package com.database.upload.controller;
 
 import java.util.Arrays;
+import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -79,12 +80,25 @@ public class FileController {
 		// And let the FrontENd , convert the byteArray to an image so I can display it on the page
 		
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
+
+		// Option 1: 
+		// convert Byte[] to String		
 		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
-				
+		
+//		return ResponseEntity.ok()
+//				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+//				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+//				.body(byteArrayAsString);
+		
+		
+		// Option 2: 
+		// convert Byte[] to Base64 String type	
+		String base64String = Base64.getEncoder().encodeToString(dataBaseAttachmentEntity.getData());
+		
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-				.body(byteArrayAsString);
+				.body(base64String);
 	}
 
 }
