@@ -364,6 +364,12 @@ public class FileController {
 	@Autowired
 	private StorageService storageService;
 
+	/**********************************************************
+	 * 
+	 * Upload/Download using Data Base
+	 * 
+	 **********************************************************/
+
 	@PostMapping(path = "/database/upload")
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
@@ -391,27 +397,47 @@ public class FileController {
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
+	/**
+	 * This method is used for downloading the image from server
+	 * the url MUST be same as the downloadURl I define in the POST method uploadAttachmentToDB 
+	 */
 	@GetMapping(path = "/database/download/{attachmentId}")
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
+
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
 		
-		// T ways to return data from server:
-    		// 1. convert byte[] Array to String . (see the implementation inside Arrays.toString(x) )
-		// 2. (Best Practice) convert Byte[] Arry to Base64 String type	
-    		// At FrontEnd , convert the received data to an image so I can display it on the page (see FrontEnd Implementation)
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+				.body(new ByteArrayResource(dataBaseAttachmentEntity.getData()));
+	}
+	
+	
+	/**
+	 * This method I use to load an image from server
+	 * And display it in an <img> tag as Base64
+	 * 
+	 */
+	@GetMapping(path = "/database/loadAttachment/{attachmentId}")
+	public ResponseEntity<?> loadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
+
+		// I must converts the byte[] Array , to String 
+		// see the implementation inside Arrays.toString(x)
+		// And let the FrontENd , convert the byteArray to an image so I can display it on the page
 		
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
 
 		// Option 1: 
 		// convert Byte[] to String		
-    		// String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+		// String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
 		
-    		// return ResponseEntity.ok()
-    		//    .contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
-    		//		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-    		//		.body(byteArrayAsString);
+		// return ResponseEntity.ok()
+		//		.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+		//		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+		//		.body(byteArrayAsString);
 		
 		
-		// Option 2 (Best Practice): 
+		// Option 2: 
 		// convert Byte[] to Base64 String type	
 		String base64String = Base64.getEncoder().encodeToString(dataBaseAttachmentEntity.getData());
 		
