@@ -88,8 +88,6 @@ function App() {
         </div>
         <br />
         <div>
-          {/* <img src={response} /> */}
-          {/* <img src={`data:image/png; ${response}`} /> */}
           <img src={`data:image/png;base64, ${response}`} />
         </div>
         <h3>------------------------------------------</h3>
