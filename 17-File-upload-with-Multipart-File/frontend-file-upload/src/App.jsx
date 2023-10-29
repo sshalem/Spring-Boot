@@ -5,7 +5,9 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
-  const [response, setResponse] = useState(null);
+  const [image, setImage] = useState(null);
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const [fileType, setFileType] = useState(null);
 
   const handleFileUpload = (event) => {
     // since the input type is `file`
@@ -31,15 +33,17 @@ function App() {
     // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
     setAttachmentId(data.id);
+    setDownloadUrl(data.downloadURL);
+    setFileType(data.fileType);
     console.log(data);
   };
 
-  const handleDownload = () => {
-    download();
+  const handleLoadImage = () => {
+    loadImage();
   };
 
-  const download = async () => {
-    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+  const loadImage = async () => {
+    const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
 
     // The Uint8Array typed array represents an array of 8-bit unsigned integers
@@ -62,7 +66,7 @@ function App() {
     // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
     // ---------------------------------------------
     const base64String = data;
-    setResponse(base64String);
+    setImage(base64String);
   };
 
   return (
@@ -77,19 +81,26 @@ function App() {
         <br />
         <div>
           <button className="btn upload-download" onClick={handleUpload}>
-            Upload
+            Upload to Server
           </button>
         </div>
         <br />
         <div>
-          <button className="btn upload-download" onClick={handleDownload}>
-            Download
+          <button className="btn upload-download" onClick={handleLoadImage}>
+            load image from Server
           </button>
         </div>
         <br />
         <div>
-          <img src={`data:image/png;base64, ${response}`} />
+          <button className="btn upload-download">Download image link</button>
+          <br />
+          <br />
+          <p>
+            <a href={downloadUrl}>{downloadUrl}</a>
+          </p>
         </div>
+        <br />
+        <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
         <h3>------------------------------------------</h3>
         <h5>More styling options for input-file </h5>
         <h5>The upload button ,is not configured for these options</h5>
