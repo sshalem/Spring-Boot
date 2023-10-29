@@ -128,6 +128,16 @@ Note:
   String byteArrayAsString = Arrays.toString(bytes);
 ```
 
+#### [FrontEnd](#-)
+
+This code converts the image file to a byeArray , then we can send it to server as `Uint8Array` , instead of sending a File ,and server will receive a `MultipartFile` object.
+
+```js
+const buffer = await selectedFile.arrayBuffer();
+let uint8Array = new Uint8Array(buffer);
+```
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
