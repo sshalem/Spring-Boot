@@ -69,6 +69,12 @@ function App() {
     setImage(base64String);
   };
 
+  const handleDownload = async () => {
+    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+    // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
+    console.log(data);
+  };
+
   return (
     <>
       <div style={{ padding: '2rem' }}>
@@ -92,10 +98,13 @@ function App() {
         </div>
         <br />
         <div>
-          <button className="btn upload-download">Download image link</button>
+          <button className="btn upload-download" onClick={handleDownload}>
+            Download image link
+          </button>
           <br />
           <br />
           <p>
+            <span>Image link : </span>
             <a href={downloadUrl}>{downloadUrl}</a>
           </p>
         </div>
