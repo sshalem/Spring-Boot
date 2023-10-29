@@ -1,6 +1,5 @@
 package com.database.upload.controller;
 
-import java.util.Arrays;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +82,7 @@ public class FileController {
 
 		// Option 1: 
 		// convert Byte[] to String		
-		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+//		String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
 		
 //		return ResponseEntity.ok()
 //				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))

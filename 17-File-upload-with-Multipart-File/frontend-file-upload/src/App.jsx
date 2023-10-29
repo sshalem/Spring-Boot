@@ -14,15 +14,6 @@ function App() {
   };
 
   const handleUpload = async () => {
-    // This code coverts the image file to byteArray
-
-    const buffer = await selectedFile.arrayBuffer();
-    let int8Array = new Int8Array(buffer);
-    let uint8Array = new Uint8Array(buffer);
-
-    console.log(int8Array);
-    console.log(uint8Array);
-
     const formData = new FormData();
     // this is the @RequestParam with Spring Controller
     formData.append('attachment', selectedFile);
