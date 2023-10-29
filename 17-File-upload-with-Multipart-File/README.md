@@ -395,20 +395,20 @@ public class FileController {
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
 		
 		// T ways to return data from server:
-    // 1. convert byte[] Array to String . (see the implementation inside Arrays.toString(x) )
+    		// 1. convert byte[] Array to String . (see the implementation inside Arrays.toString(x) )
 		// 2. (Best Practice) convert Byte[] Arry to Base64 String type	
-    // At FrontEnd , convert the received data to an image so I can display it on the page (see FrontEnd Implementation)
+    		// At FrontEnd , convert the received data to an image so I can display it on the page (see FrontEnd Implementation)
 		
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
 
 		// Option 1: 
 		// convert Byte[] to String		
-    // String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+    		// String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
 		
-    // return ResponseEntity.ok()
-    //    .contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
-    //		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
-    //		.body(byteArrayAsString);
+    		// return ResponseEntity.ok()
+    		//    .contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+    		//		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+    		//		.body(byteArrayAsString);
 		
 		
 		// Option 2 (Best Practice): 
@@ -444,7 +444,256 @@ I store a reference to the file in DB , in order to track it.
 
 ![image](https://github.com/sshalem/Spring-Boot/assets/36256986/86a4ce72-1a66-4779-a6ac-1224de64dc46)
 
+```js
+spring.output.ansi.enabled=always
 
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Enabling H2 Console
+spring.h2.console.enabled=true
+# Custom H2 Console URL from /h2-console to /h2
+spring.h2.console.path=/h2
+
+# spring.servlet.multipart.max-file-size: max file size for each request.
+spring.servlet.multipart.max-file-size=5000KB
+
+# spring.servlet.multipart.max-request-size: max request size for a multipart/form-data.
+spring.servlet.multipart.max-request-size=5000KB
+```
+
+### [2. Entity](#-)
+
+```java
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "FILE_DATA")
+public class FileSystemAttachmentEntity {
+
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String id;
+	private String name;
+	private String type;
+	private String filePath;
+
+	public FileSystemAttachmentEntity() {
+		super();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+}
+```
+
+### [3. Repository](#-)
+
+```java
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.filesystem.entity.FileSystemAttachmentEntity;
+
+@Repository
+public interface FileDataRepository extends JpaRepository<FileSystemAttachmentEntity, String> {
+
+	Optional<FileSystemAttachmentEntity> findByName(String fileName);
+}
+```
+
+### [4. Service](#-)
+
+```java
+import java.io.File;
+import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import com.filesystem.entity.FileSystemAttachmentEntity;
+import com.filesystem.repository.FileDataRepository;
+
+@Service
+public class FileService {
+
+	@Autowired
+	private FileDataRepository fileDataRepository;
+	
+	private final String FOLDER_PATH = "c:/Localdata/";
+	
+	public FileSystemAttachmentEntity uploadToFileSystem(MultipartFile file) throws IOException {
+		
+		// clean path removes any `/` or `.` from url
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		
+		String path = FOLDER_PATH + fileName;
+		
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
+		fileSystemAttachmentEntity.setName(fileName);
+		fileSystemAttachmentEntity.setFilePath(path);
+		fileSystemAttachmentEntity.setType(file.getContentType());
+
+		FileSystemAttachmentEntity returnedFileDataEntity = fileDataRepository.save(fileSystemAttachmentEntity);
+
+		// this saves the file in the the filePath I declare
+		// transferTo - a method from `MultipartFile` class 
+		file.transferTo(new File(path));
+
+        return returnedFileDataEntity;
+    }
+
+	public FileSystemAttachmentEntity downloadFromFileSystem(String fileName) throws IOException {
+
+		FileSystemAttachmentEntity fileDataEntity = fileDataRepository.findByName(fileName).get();
+		return fileDataEntity;
+	}
+}
+```
+
+
+### [5. Model](#-)
+
+```java
+public class ResponseData {
+
+	private String id;
+	private String fileName;
+	private String downloadURL;
+	private String fileType;
+	private long fileSize;
+
+	public ResponseData() {
+	}
+
+	G/S/ToString
+}
+```
+
+### [6. Contoller](#-)
+
+```java
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import com.filesystem.entity.FileSystemAttachmentEntity;
+import com.filesystem.model.ResponseData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import com.filesystem.service.FileService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+@RestController
+@CrossOrigin("*")
+public class FileController {
+
+	@Autowired
+	private FileService fileService;
+
+	@PostMapping("/fileSystem/upload")
+	public ResponseEntity<?> uploadToFileSystem(@RequestParam("attachment") MultipartFile file) throws IOException {
+ 
+		/**
+		 * the @RequestParam("attachment") comes from frontEnd code:
+		 *  `formData.append('attachment', selectedFile);
+		 */
+		
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(file);
+		
+		// Here I setup the download URL
+		// Where FrontEnd will click the link
+		// and will download the file
+		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/fileSystem/download/") // this path need to same path of the @GetMapping
+				.path(fileSystemAttachmentEntity.getName())
+				.toUriString();
+
+		ResponseData responseData = new ResponseData(
+				fileSystemAttachmentEntity.getId(),
+				fileSystemAttachmentEntity.getName(), 
+				downloadUrl, 
+				file.getContentType(), 
+				file.getSize());
+
+		return ResponseEntity.status(HttpStatus.OK).body(responseData);
+	}
+
+	@GetMapping("/fileSystem/download/{fileName}")
+	public ResponseEntity<?> downloadFromFileSystem(@PathVariable String fileName) throws IOException {
+
+		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);
+		String filePath = fileSystemAttachmentEntity.getFilePath();
+		byte[] data = Files.readAllBytes(new File(filePath).toPath());
+		
+
+		// Option 1: 
+		// convert Byte[] to String		
+    		// String byteArrayAsString = Arrays.toString(data);
+		
+    		// return ResponseEntity.ok()
+    		//    .contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+    		//		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getFileName() + "\"")
+    		//		.body(byteArrayAsString);
+		
+		
+		// Option 2 (Best Practice): 
+		// convert Byte[] to Base64 String type	
+		String base64String = Base64.getEncoder().encodeToString(data);
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(fileSystemAttachmentEntity.getFileType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileSystemAttachmentEntity.getFileName() + "\"")
+				.body(base64String);
+	}		
+}
+```
 
 
 
