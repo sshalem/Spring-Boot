@@ -145,6 +145,255 @@ let uint8Array = new Uint8Array(buffer);
 
 <img src="https://img.shields.io/badge/- 2_1_upload_download_using_data_base  %20-yellow" height=32px>
 
+In this example I use database to store the file (image text, none-text ) in DB. </br>
+
+#### [1. Packge layout](#-)
+
+![image](https://github.com/sshalem/Spring-Boot/assets/36256986/12b3c65f-5d33-4aab-9e09-568ddbd9002f)
+
+#### [2. Entity](#-)
+
+Notice , </br>
+In this example I save the file in DB as `byte []` byte Array. </br>
+I add to it the annotation of `@Lob` </br>
+The `@Lob` annotation specifies that the database should store the property as `Large Object`.  </br>
+Since we’re going to save `byte array`, we’re using `BLOB`. </br>
+- BLOB is for storing binary data, while
+- CLOB is for storing text data.
+
+```java
+package com.database.upload.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "DB_ATTACHMENT_TB")
+public class DataBaseAttachmentEntity {
+
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	private String id;
+	private String fileName;
+	private String fileType;
+	@Lob
+	private byte[] data;
+
+	public DataBaseAttachmentEntity() {
+	}
+
+	public DataBaseAttachmentEntity(String fileName, String fileType, byte[] data) {
+		this.fileName = fileName;
+		this.fileType = fileType;
+		this.data = data;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+}
+```
+
+
+#### [3. Repository](#-)
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.database.upload.entity.DataBaseAttachmentEntity;
+
+@Repository
+public interface DataBaseRepository extends JpaRepository<DataBaseAttachmentEntity, String> {
+}
+```
+
+#### [3. Service](#-)
+
+```java
+import org.springframework.web.multipart.MultipartFile;
+import com.database.upload.entity.DataBaseAttachmentEntity;
+
+public interface StorageService {
+    DataBaseAttachmentEntity uploadAttachmentToDB(MultipartFile multipartFile) throws Exception;
+    DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception; 
+}
+```
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import com.database.upload.entity.DataBaseAttachmentEntity;
+import com.database.upload.repository.DataBaseRepository;
+
+@Service
+public class StorageServiceImpl implements StorageService {
+	
+	@Autowired
+	private DataBaseRepository dataBaseRepository;
+
+	@Override
+	public DataBaseAttachmentEntity uploadAttachmentToDB(MultipartFile multipartFile) throws Exception {
+
+		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+		try {
+			if (fileName.contains("..")) {
+				throw new Exception("Filename contains invalid path sequence " + fileName);
+			}
+			DataBaseAttachmentEntity dataBaseAttachmentEntity = new DataBaseAttachmentEntity(fileName, multipartFile.getContentType(), multipartFile.getBytes());
+			return dataBaseRepository.save(dataBaseAttachmentEntity);
+		} catch (Exception e) {
+			throw new Exception("Could not save File: " + fileName);
+		}
+	}
+
+	@Override
+	public DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception {
+		return dataBaseRepository.findById(attachmentId).orElseThrow(() -> new Exception("File not found with Id: " + attachmentId));
+	}
+}
+```
+
+#### [4. Controller](#-)
+
+
+```java
+public class ResponseData {
+	private String id;
+	private String fileName;
+	private String downloadURL;
+	private String fileType;
+	private long fileSize;
+
+	public ResponseData() {
+	}
+
+  G/S/ToString
+}
+```
+
+```java
+import java.util.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.database.upload.entity.DataBaseAttachmentEntity;
+import com.database.upload.model.ResponseData;
+import com.database.upload.service.StorageService;
+
+@RestController
+@CrossOrigin("*")
+public class FileController {
+
+	@Autowired
+	private StorageService storageService;
+
+	@PostMapping(path = "/database/upload")
+	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
+
+		/**
+		 *  the @RequestParam("attachment") comes from frontEnd code:
+		 *  `formData.append('attachment', selectedFile);
+		 */
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
+		
+		// Here I setup the download URL
+		// Where FrontEnd will click the link
+		// and will download the file
+		String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/database/download/") // this path need to same path of the @GetMapping
+				.path(dataBaseAttachmentEntity.getId()) // concatenate the Id of the attachment to the url
+				.toUriString();
+
+		ResponseData responseData = new ResponseData(
+				dataBaseAttachmentEntity.getId(),
+				dataBaseAttachmentEntity.getFileName(),
+				downloadURl,
+				multipartFile.getContentType(),
+				multipartFile.getSize());
+
+		return ResponseEntity.status(HttpStatus.OK).body(responseData);
+	}
+
+	@GetMapping(path = "/database/download/{attachmentId}")
+	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
+		
+		// T ways to return data from server:
+    // 1. convert byte[] Array to String . (see the implementation inside Arrays.toString(x) )
+		// 2. (Best Practice) convert Byte[] Arry to Base64 String type	
+    // At FrontEnd , convert the received data to an image so I can display it on the page (see FrontEnd Implementation)
+		
+		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
+
+		// Option 1: 
+		// convert Byte[] to String		
+    // String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
+		
+    // return ResponseEntity.ok()
+    //    .contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+    //		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+    //		.body(byteArrayAsString);
+		
+		
+		// Option 2 (Best Practice): 
+		// convert Byte[] to Base64 String type	
+		String base64String = Base64.getEncoder().encodeToString(dataBaseAttachmentEntity.getData());
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
+				.body(base64String);
+	}
+}
+```
+
+
 
 
 
