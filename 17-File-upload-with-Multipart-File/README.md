@@ -216,37 +216,7 @@ public class DataBaseAttachmentEntity {
 		this.data = data;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public String getFileType() {
-		return fileType;
-	}
-
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
-	}
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public void setData(byte[] data) {
-		this.data = data;
-	}
+	G/S/ToString
 }
 ```
 
@@ -364,12 +334,6 @@ public class FileController {
 	@Autowired
 	private StorageService storageService;
 
-	/**********************************************************
-	 * 
-	 * Upload/Download using Data Base
-	 * 
-	 **********************************************************/
-
 	@PostMapping(path = "/database/upload")
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
@@ -398,8 +362,10 @@ public class FileController {
 	}
 
 	/**
+	 *
 	 * This method is used for downloading the image from server
-	 * the url MUST be same as the downloadURl I define in the POST method uploadAttachmentToDB 
+	 * the url MUST be same as the downloadURl I define in the POST method uploadAttachmentToDB
+	 *
 	 */
 	@GetMapping(path = "/database/download/{attachmentId}")
 	public ResponseEntity<?> downloadAttachmentFromDB(@PathVariable String attachmentId) throws Exception {
@@ -414,6 +380,7 @@ public class FileController {
 	
 	
 	/**
+	 *
 	 * This method I use to load an image from server
 	 * And display it in an <img> tag as Base64
 	 * 
@@ -515,37 +482,7 @@ public class FileSystemAttachmentEntity {
 		super();
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
+	G/S/ToString
 }
 ```
 
@@ -786,10 +723,15 @@ npm install axios
 #### [step 2: Setup code to upload file (any file)](#-)
 
 Note: </br>
-In order to display image that I download from server I need to use `Data URLs`, so do the following in the `img` tag:
+In order to display image that I download from server I need to use `Data URLs`, so do the following in the `img` tag. </br>
+In addition I need to set the fileType that I receive from server
+
 
 ```html
-<img src={`data:image/png;base64, ${response}`} />
+<img src={`data:image/png;base64, ${image}`} />
+
+// Modify with fileType from server
+<img src={`data:${fileType};base64, ${image}`} />
 ```
 
 Final code in `App.jsx` 
@@ -802,7 +744,9 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
-  const [response, setResponse] = useState(null);
+  const [image, setImage] = useState(null);
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const [fileType, setFileType] = useState(null);
 
   const handleFileUpload = (event) => {
     // since the input type is `file`
@@ -828,39 +772,39 @@ function App() {
     // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
     setAttachmentId(data.id);
+    setDownloadUrl(data.downloadURL);
+    setFileType(data.fileType);
     console.log(data);
   };
 
-  const handleDownload = () => {
-    download();
+  const handleLoadImage = () => {
+    loadImage();
   };
 
-  const download = async () => {
-    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+  const loadImage = async () => {
+    const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
 
     // The Uint8Array typed array represents an array of 8-bit unsigned integers
-
     // Option 1: getting Array as string from server
     // ---------------------------------------------
 
     // Doesn't work with Int8Array , throws error of
     // DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+    // let int8Array = new Int8Array(data);
 
     // let binary = '';
     // let uint8Array = new Uint8Array(data);
-    // let int8Array = new Int8Array(data);
     // for (var i = 0; i < uint8Array.byteLength ; i++) {
     //   binary += String.fromCharCode(uint8Array[i]);
     // }
     // const base64String = btoa(binary);
-    // setResponse(base64String);
 
 
     // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
-    // ---------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------------------
     const base64String = data;
-    setResponse(base64String);
+    setImage(base64String);
   };
 
   return (
@@ -875,19 +819,48 @@ function App() {
         <br />
         <div>
           <button className="btn upload-download" onClick={handleUpload}>
-            Upload
+            Upload to Server
           </button>
         </div>
         <br />
         <div>
-          <button className="btn upload-download" onClick={handleDownload}>
-            Download
+          <button className="btn upload-download" onClick={handleLoadImage}>
+            load image from Server
           </button>
         </div>
         <br />
         <div>
-          <img src={`data:image/png;base64, ${response}`} />
-        </div>        
+          <button className="btn upload-download">Download image link</button>
+          <br />
+          <br />
+          <p>
+            <a href={downloadUrl}>{downloadUrl}</a>
+          </p>
+        </div>
+        <br />
+        <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
+        <h3>-------------------------------------------------------------------------------</h3>
+        <h5>More styling options for input-file </h5>
+        <h5>The upload button ,is not configured for these options</h5>
+        {/* option 1 for styling */}
+        <div>
+          <input type="file" className="btn input-file" onChange={handleFileUpload} />
+        </div>
+        <br />
+        <br />
+        {/* option 2 for styling */}
+        <div>
+          <input type="file" className="input-file-option-2" />
+        </div>
+        <br />
+        {/* option 3 for styling by using the label tag along with input tag + htmlFor attrinute*/}
+        <div>
+          <label className="file-input-label-3" htmlFor="file-input">
+            Select a File
+          </label>
+          <input type="file" id="file-input" name="file-input" className="file-input-3" />
+        </div>
+        <br />
       </div>
     </>
   );
