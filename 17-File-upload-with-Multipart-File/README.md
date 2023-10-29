@@ -7,8 +7,9 @@
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [`LOB` , `BLOB` , `CLOB`](#1_lob_blob_clob)                          |
 |  2  | [upload/download](#2_upload_download)                          |
-|     | [2.1. upload/download using File System](#2_1_upload_download_using_file_system)                          |
-|     | [2.2. upload/download using Data Base](#2_2_upload_download_using_data_base)                          |
+|     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)                          |
+|     | [2.1. upload/download using Data Base](#2_1_upload_download_using_data_base)                          |
+|     | [2.2. upload/download using File System](#2_2_upload_download_using_file_system)                          |
 |  3  | [Test with postman](#3_test_with_postman)                          |
 |  4  | [Test with ReactJS code](#4_test_with_reactjs_code)                          |
 |  5  | [x](#5_main_jsx)                          |
@@ -83,14 +84,9 @@ After the FrontEnd uploads a file, There are 2 places where we can store file:
 1. File system (Meaning on local folder)
 2. Strore on Data Base
 
+###### 2_0_1_byte_array_conversion
 
-###### 2_1_upload_download_using_file_system
-
-<img src="https://img.shields.io/badge/- 2_1_upload_download_using_file_system  %20-yellow" height=32px>
-
-In this Example I will show how to store the file in the file System
-
-#### [How to convert byte[] array to String in Java ](#-)
+<img src="https://img.shields.io/badge/- 2_0_1_byte_array_conversion  %20-yellow" height=32px>
 
 In Java ,to convert `byte[]` array to String, 2 ways:
 - text data byte[], try `new String(bytes, StandardCharsets.UTF_8)`.
@@ -98,13 +94,13 @@ In Java ,to convert `byte[]` array to String, 2 ways:
 - Another way to conver byte[] to String is use the method from `Arrays.toString(bytes)` , which return a String as a array format (see implemented code in the class)
 
 For text or character data, we use `new String(bytes, StandardCharsets.UTF_8)` to convert the `byte[]` to a `String` directly. </br>
-However, for cases that `byte[]` is holding the binary data like the `image` or other `non-text` data, the best practice is to convert the `byte[]` into a `Base64` encoded string. </br>
-This Base64 encode decode string is still widely use in
+However, for cases that `byte[]` is holding the binary data like the `image` or other `non-text` data, </br>
+the best practice is to convert the `byte[]` into a `Base64` encoded string. </br>
+This `Base64` encode decode string is still widely use in
 1. email attachment
 2. embed image files inside HTML or CSS
 
 Note:
-
 
 ```java
   // string to byte[]
@@ -117,24 +113,41 @@ Note:
 
  // Java 8 - Base64 class, finally.
   byte[] bytes = (from image , non-text data)
+
+  // Option 1:
+  // ---------
   // encode, convert byte[] to base64 encoded string
   String s = Base64.getEncoder().encodeToString(bytes);
 
   // decode, convert base64 encoded string back to byte[]
   byte[] decode = Base64.getDecoder().decode(s);
 
+  // Option 2:
+  // ---------
   // Converts the byte[] array to String. The String formed as an array (see code implementation)
   String byteArrayAsString = Arrays.toString(bytes);
 ```
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+###### 2_1_upload_download_using_data_base 
+
+<img src="https://img.shields.io/badge/- 2_1_upload_download_using_data_base  %20-yellow" height=32px>
+
+
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
 
-###### 2_2_upload_download_using_data_base
+###### 2_2_upload_download_using_file_system
 
-<img src="https://img.shields.io/badge/- 2_2_upload_download_using_data_base  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 2_2_upload_download_using_file_system  %20-yellow" height=32px>
+
+
 
 
 
