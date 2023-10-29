@@ -147,9 +147,31 @@ let uint8Array = new Uint8Array(buffer);
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
 
-#### [1. Packge layout](#-)
+#### [1. Packge layout + application.properties](#-)
 
 ![image](https://github.com/sshalem/Spring-Boot/assets/36256986/12b3c65f-5d33-4aab-9e09-568ddbd9002f)
+
+```js
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Enabling H2 Console
+spring.h2.console.enabled=true
+# Custom H2 Console URL from /h2-console to /h2
+spring.h2.console.path=/h2
+
+# spring.servlet.multipart.max-file-size: max file size for each request.
+spring.servlet.multipart.max-file-size=5000KB
+
+# spring.servlet.multipart.max-request-size: max request size for a multipart/form-data.
+spring.servlet.multipart.max-request-size=5000KB
+
+# enable color on console
+spring.output.ansi.enabled=always
+```
+
 
 #### [2. Entity](#-)
 
@@ -414,7 +436,13 @@ public class FileController {
 
 <img src="https://img.shields.io/badge/- 2_2_upload_download_using_file_system  %20-yellow" height=32px>
 
+In this example , I store the file (image, text , not-text) in FileSystem. </br>
+But, </br>
+I store a reference to the file in DB , in order to track it.
 
+### [1. Package Layout](#-)
+
+![image](https://github.com/sshalem/Spring-Boot/assets/36256986/86a4ce72-1a66-4779-a6ac-1224de64dc46)
 
 
 
