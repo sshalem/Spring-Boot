@@ -290,7 +290,7 @@ public class StorageServiceImpl implements StorageService {
 }
 ```
 
-#### [4. Controller](#-)
+#### [4. Model](#-)
 
 
 ```java
@@ -307,6 +307,9 @@ public class ResponseData {
   G/S/ToString
 }
 ```
+
+#### [5. Controller](#-)
+
 
 ```java
 import java.util.Base64;
