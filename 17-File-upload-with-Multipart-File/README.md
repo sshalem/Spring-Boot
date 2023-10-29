@@ -276,7 +276,11 @@ public class StorageServiceImpl implements StorageService {
 			if (fileName.contains("..")) {
 				throw new Exception("Filename contains invalid path sequence " + fileName);
 			}
-			DataBaseAttachmentEntity dataBaseAttachmentEntity = new DataBaseAttachmentEntity(fileName, multipartFile.getContentType(), multipartFile.getBytes());
+			DataBaseAttachmentEntity dataBaseAttachmentEntity = new DataBaseAttachmentEntity(
+				fileName,
+				multipartFile.getContentType(),
+				multipartFile.getBytes());
+
 			return dataBaseRepository.save(dataBaseAttachmentEntity);
 		} catch (Exception e) {
 			throw new Exception("Could not save File: " + fileName);
