@@ -17,14 +17,14 @@ public class FileService {
 	@Autowired
 	private FileDataRepository fileDataRepository;
 	
-	private final String FOLDER_PATH = "c:/Localdata/";
-	
+	private final String FOLDER_PATH = System.getProperty("user.dir");
+
 	public FileSystemAttachmentEntity uploadToFileSystem(MultipartFile file) throws IOException {
 		
-		// clean path removes any `/` or `.` from url
+		// cleanPath removes any `/` or `.` from url
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		
-		String path = FOLDER_PATH + fileName;
+						
+		String path = FOLDER_PATH + "/src/main/resources/static/images/" + fileName;
 		
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
 		fileSystemAttachmentEntity.setName(fileName);
