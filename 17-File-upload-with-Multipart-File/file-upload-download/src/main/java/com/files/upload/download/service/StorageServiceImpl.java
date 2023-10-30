@@ -16,7 +16,7 @@ import com.files.upload.download.repository.FileSystemRepository;
 @Service
 public class StorageServiceImpl implements StorageService {
 
-	private final String FOLDER_PATH = "c:/Localdata/";
+	private final String FOLDER_PATH = System.getProperty("user.dir");
 	
 	@Autowired
 	private DataBaseRepository dataBaseRepository;
@@ -61,7 +61,7 @@ public class StorageServiceImpl implements StorageService {
 
 		// clean path : removes any `/` or `.` from url
 		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		String path = FOLDER_PATH + fileName;
+		String path = FOLDER_PATH + "/src/main/resources/static/images/" + fileName;
 
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
 		fileSystemAttachmentEntity.setFileName(fileName);
