@@ -1,0 +1,58 @@
+@echo off
+echo _
+echo _
+echo 		*************************
+echo 		* step 1 : git status   *
+echo 		************************* 
+@echo on
+git status
+@echo off
+::cls
+
+@echo off
+echo _
+echo _
+echo 		****************************
+echo 		* step 2 : git add --all   *
+echo 		**************************** 
+@echo on
+git add --all
+@echo off
+
+::cls
+@echo off
+echo _
+echo _
+echo 		*************************
+echo 		* step 3 :  git status  *
+echo 		************************* 
+@echo on
+git status
+@echo off
+pause
+cls
+@echo off
+echo 		*********************************************
+echo 		*	%DATE% , %TIME%							*
+echo 		*********************************************
+echo 		* step 4 : git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%" *
+echo 		********************************************* 
+@echo on
+git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"
+@echo off
+::pause
+
+@echo off
+echo _
+echo _
+echo 		*******************************
+echo 		* step 5 :  git push --all    *						
+echo 		*******************************
+@echo on
+git push --all
+@echo off
+echo _
+echo _
+cmd /k echo .......completed git update successfuly.......
+
+
