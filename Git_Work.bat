@@ -1,6 +1,17 @@
 @echo off
 echo _
 echo _
+echo 		*****************************
+echo 		* step 1 : git pull --all   *
+echo 		***************************** 
+@echo on
+git pull --all
+@echo off
+pause
+::cls
+@echo off
+echo _
+echo _
 echo 		*************************
 echo 		* step 1 : git status   *
 echo 		************************* 
@@ -30,7 +41,7 @@ echo 		*************************
 git status
 @echo off
 pause
-cls
+::cls
 @echo off
 echo 		*********************************************
 echo 		*	%DATE% , %TIME%							*
