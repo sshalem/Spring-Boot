@@ -9,15 +9,15 @@ function App() {
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
-  const handleFileUpload = (event) => {
+  const handleSelectedFileToUpload = (event) => {
     // since the input type is `file`
     // thus, the event.traget.files[] is : array
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = async () => {
+  const handleUploadToServer = async () => {
     const formData = new FormData();
-    // this is the @RequestParam with Spring Controller
+    // this is what the @RequestParam with Spring Controller
     formData.append('attachment', selectedFile);
 
     // to dislapy what are the key/value in formData
@@ -25,50 +25,43 @@ function App() {
     //   console.log(data);
     // }
 
-    upload(formData);
+    uploadToServer(formData);
   };
 
-  const upload = async (formData) => {
+  const uploadToServer = async (formData) => {
     const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
     // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
     setFileName(data.fileName);
     setAttachmentId(data.id);
+
+    /**
+     * This url, when I click it ,
+     * It triggers `download` from server
+     */
     setDownloadUrl(data.downloadURL);
     setFileType(data.fileType);
     console.log(data);
   };
 
-  const handleLoadImage = () => {
-    loadImage();
+  const handleLoadImageFromServer = () => {
+    getImageFromServer();
   };
 
-  const loadImage = async () => {
+  /**
+   * 1. this function , get image from server (load image) and display it on html page
+   * 2 .server send image type as Base64
+   * (Postman shows , this is faster to download + file size 3x smaller)
+   */
+  const getImageFromServer = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
-
-    // The Uint8Array typed array represents an array of 8-bit unsigned integers
-
-    // Option 1: getting Array as string from server
-    // ---------------------------------------------
-
-    // let binary = '';
-    // let uint8Array = new Uint8Array(data);
-    // Doesn't work with Int8Array , throws error of
-    // DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
-    // let int8Array = new Int8Array(data);
-    // console.log(uint8Array);
-    // let len = uint8Array.byteLength;
-    // for (var i = 0; i < len; i++) {
-    //   binary += String.fromCharCode(uint8Array[i]);
-    // }
-    // const base64String = btoa(binary);
-
-    // Option 2: getting getting Base64 as String from server (Postman shows , this is faster to download + file size 3x smaller)
-    // ---------------------------------------------
-    const base64String = data;
-    setImage(base64String);
+    setImage(data);
   };
 
+  /**
+   * This function , downloads an image from server
+   * and save it on local comuter
+   */
   const handleDownload = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
@@ -82,18 +75,18 @@ function App() {
         <br />
         {/* option 1 for styling */}
         <div>
-          <input type="file" className="btn" onChange={handleFileUpload} />
+          <input type="file" className="btn" onChange={handleSelectedFileToUpload} />
         </div>
         <br />
         <div>
-          <button className="btn upload-download" onClick={handleUpload}>
+          <button className="btn upload-download" onClick={handleUploadToServer}>
             Upload to Server
           </button>
         </div>
         <br />
         <div>
-          <button className="btn upload-download" onClick={handleLoadImage}>
-            load image from Server
+          <button className="btn upload-download" onClick={handleLoadImageFromServer}>
+            load (get) image from Server
           </button>
         </div>
         <br />
@@ -104,18 +97,22 @@ function App() {
           <br />
           <br />
           <p>
-            <span>Image link : </span>
+            <span>Image link , when clicked ,it will download image from server: </span>
             <a href={downloadUrl}>{downloadUrl}</a>
           </p>
         </div>
         <br />
         <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
-        <h3>------------------------------------------</h3>
-        <h5>More styling options for input-file </h5>
-        <h5>The upload button ,is not configured for these options</h5>
+
+        {/* ********************************************************** */}
+        {/* ********************************************************** */}
+        {/* ********************************************************** */}
+
+        <h3>More styling options for input-file </h3>
+        <h4>The upload button ,is not configured for these options</h4>
         {/* option 1 for styling */}
         <div>
-          <input type="file" className="btn input-file" onChange={handleFileUpload} />
+          <input type="file" className="btn input-file" onChange={handleSelectedFileToUpload} />
         </div>
         <br />
         <br />

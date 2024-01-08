@@ -89,7 +89,11 @@ public class FileController {
 		
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.downloadAttachmentFromDB(attachmentId);
 
-		// Option 1: 
+		// Option 1 Best Practice: 
+		// convert Byte[] to Base64 String type	
+		String base64String = Base64.getEncoder().encodeToString(dataBaseAttachmentEntity.getData());
+		
+		// Option 2: 
 		// convert Byte[] to String		
 		// String byteArrayAsString = Arrays.toString(dataBaseAttachmentEntity.getData());
 		
@@ -97,12 +101,7 @@ public class FileController {
 		//		.contentType(MediaType.parseMediaType(dataBaseAttachmentEntity.getFileType()))
 		//		.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dataBaseAttachmentEntity.getFileName() + "\"")
 		//		.body(byteArrayAsString);
-		
-		
-		// Option 2 Best Practice: 
-		// convert Byte[] to Base64 String type	
-		String base64String = Base64.getEncoder().encodeToString(dataBaseAttachmentEntity.getData());
-		
+					
 		return ResponseEntity.ok().body(base64String);
 	}
 
