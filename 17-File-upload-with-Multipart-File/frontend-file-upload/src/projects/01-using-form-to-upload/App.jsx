@@ -50,6 +50,9 @@ function App() {
    * [3] - downloads an image from server, and save it on local comuter
    */
   const handleDownload = async () => {
+    // I havve 2 urls
+    // 1. with Backend of uploading to Database
+    // 2. with Backend of uploading to fileSystem
     const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
     /**
