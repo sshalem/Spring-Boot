@@ -767,57 +767,45 @@ function App() {
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
+  /**
+   * save the selected file in a state
+   */
   const handleSelectedFileToUpload = (event) => {
     // since the input type is `file`
     // thus, the event.traget.files[] is : array
     setSelectedFile(event.target.files[0]);
   };
 
+  /**
+   * [1] - Upload file to server
+   */
   const handleUploadToServer = async () => {
     const formData = new FormData();
-    // this is what the @RequestParam with Spring Controller
+    // this is what the @RequestParam will see at Backend with Spring Controller
     formData.append('attachment', selectedFile);
-
-    // to dislapy what are the key/value in formData
-    // for (const data of formData.entries()) {
-    //   console.log(data);
-    // }
-
-    uploadToServer(formData);
-  };
-
-  const uploadToServer = async (formData) => {
     const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
     // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+
     setFileName(data.fileName);
     setAttachmentId(data.id);
-
-    /**
-     * This url, when I click it ,It triggers `download` from server
-     */
+    // This url, when I click it , It triggers `download` from server
     setDownloadUrl(data.downloadURL);
     setFileType(data.fileType);
     console.log(data);
   };
 
-  const handleLoadImageFromServer = () => {
-    getImageFromServer();
-  };
-
   /**
-   * 1. this function , get image from server (load image) and display it on html page
-   * 2 .server send image type as Base64
+   * [2] - get image (as Base64) from server (load image) and display it on html page
    * (Postman shows , this is faster to download + file size 3x smaller)
    */
-  const getImageFromServer = async () => {
+  const handleLoadImageFromServer = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
     setImage(data);
   };
 
   /**
-   * This function , downloads an image from server
-   * and save it on local comuter
+   * [3] - downloads an image from server, and save it on local comuter
    */
   const handleDownload = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
