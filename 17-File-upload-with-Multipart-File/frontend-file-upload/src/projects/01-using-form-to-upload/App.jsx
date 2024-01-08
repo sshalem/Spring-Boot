@@ -9,6 +9,9 @@ function App() {
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
+  /**
+   * save the selected file in a state
+   */
   const handleSelectedFileToUpload = (event) => {
     // since the input type is `file`
     // thus, the event.traget.files[] is : array
@@ -16,8 +19,7 @@ function App() {
   };
 
   /**
-   * [1]
-   * Upload file/files to server
+   * [1] - Upload file to server
    */
   const handleUploadToServer = async () => {
     const formData = new FormData();
@@ -35,9 +37,7 @@ function App() {
   };
 
   /**
-   * [2]
-   * this function , get image from server (load image) and display it on html page
-   * [Note] : server send image type as Base64
+   * [2] - get image (as Base64) from server (load image) and display it on html page
    * (Postman shows , this is faster to download + file size 3x smaller)
    */
   const handleLoadImageFromServer = async () => {
@@ -47,16 +47,16 @@ function App() {
   };
 
   /**
-   * [3]
-   * This function , downloads an image from server
-   * and save it on local comuter
+   * [3] - downloads an image from server, and save it on local comuter
    */
   const handleDownload = async () => {
-    // const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
-    const res = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
-    // console.log(data);
-    console.log(res);
+    /**
+     * the data I get from server (of the file) is a String as a Base64 .
+     * So need to conver the Base64 String back to an image
+     */
+    console.log(typeof data);
   };
 
   return (
