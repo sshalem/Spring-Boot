@@ -60,6 +60,16 @@ function App() {
      * So need to conver the Base64 String back to an image
      */
     console.log(typeof data);
+
+    let binary = '';
+    let uint8Array = new Uint8Array(data);
+
+    console.log(uint8Array);
+    let len = uint8Array.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(uint8Array[i]);
+    }
+    const base64String = btoa(binary);
   };
 
   return (
