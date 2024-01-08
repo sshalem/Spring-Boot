@@ -92,8 +92,8 @@ After the FrontEnd uploads a file, There are 2 places where we can store file:
 #### [Upload](#-)
 
 To upload file to server I need to have there are 2 ways  :
-1. By using `form` with , add for single file `<input type="file" >` , or , for multiple files use  `<input type="file" multiple>`
-2. Insead 
+1. By using `form` with input tags . for single file add `<input type="file" >` , or , for multiple files use  `<input type="file" multiple>`
+2. W/o using `form` tag 
 
 
 
