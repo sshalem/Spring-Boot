@@ -793,8 +793,7 @@ function App() {
     setAttachmentId(data.id);
 
     /**
-     * This url, when I click it ,
-     * It triggers `download` from server
+     * This url, when I click it ,It triggers `download` from server
      */
     setDownloadUrl(data.downloadURL);
     setFileType(data.fileType);
