@@ -7,6 +7,7 @@
 |     | [Introduction - links](#Introduction)                          |
 |  1  | [`LOB` , `BLOB` , `CLOB`](#1_lob_blob_clob)                          |
 |  2  | [upload/download](#2_upload_download)                          |
+|     | [2.0.0. Steps to Upload/Download](#2_0_0_steps_to_upload_download)                          |
 |     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)                          |
 |     | [2.1. upload/download using Data Base](#2_1_upload_download_using_data_base)                          |
 |     | [2.2. upload/download using File System](#2_2_upload_download_using_file_system)                          |
@@ -83,6 +84,24 @@ GitHub code  </br>
 After the FrontEnd uploads a file, There are 2 places where we can store file:
 1. File system (Meaning on local folder)
 2. Strore on Data Base
+
+###### 2_0_0_steps_to_upload_download
+
+<img src="https://img.shields.io/badge/- 2_0_1_byte_array_conversion  %20-yellow" height=32px>
+
+#### [Upload](#-)
+
+To upload file to server I need to have there are 2 ways  :
+1. By using `form` with , add for single file `<input type="file" >` , or , for multiple files use  `<input type="file" multiple>`
+2. Insead 
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+
 
 ###### 2_0_1_byte_array_conversion
 
