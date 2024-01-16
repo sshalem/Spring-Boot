@@ -162,7 +162,7 @@ let uint8Array = new Uint8Array(buffer);
 
 ###### 3_upload_download_using_data_base 
 
-<img src="https://img.shields.io/badge/- 3_upload_download_using_data_base  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 3_upload_download_using_data_base %20-blue" height=40px>
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
 This is a general diagram of FrontEnd / BackEnd
