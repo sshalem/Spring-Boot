@@ -5,67 +5,56 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
-  const [image, setImage] = useState(null);
+  const [baseImage, setBaseImage] = useState('');
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
   /**
+   * Option 1
+   */
+  // let reader = new FileReader();
+  // reader.onloadend = function (readerEvent) {
+  //   const imageFileToBase64 = readerEvent.target.result;
+  //   console.log(imageFileToBase64);    //
+  // };
+  // reader.readAsDataURL(event.target.files[0]);
+
+  /**
    * save the selected file in a state
    */
-  const handleSelectedFileToUpload = (event) => {
-    // since the input type is `file`
-    // thus, the event.traget.files[] is : array
-    setSelectedFile(event.target.files[0]);
-
-    /**
-     * Option 1
-     */
-    let reader = new FileReader();
-    const imageFileToBase64 = (reader.onloadend = function (readerEvent) {
-      return readerEvent.target.result;
-    });
-    reader.readAsDataURL(event.target.files[0]);
-    console.log(imageFileToBase64);
-
-    /**
-     * Option 2
-     * With JavaScript Promise
-     */
-    // const getBase64 = (file) =>
-    //   new Promise(function (resolve, reject) {
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(file);
-    //     reader.onload = () => resolve(reader.result);
-    //     reader.onerror = (error) => reject('Error: ', error);
-    //   });
-
-    // const convertToBase64 = async (file) => {
-    //   try {
-    //     const response = await getBase64(file);
-    //     console.log(response);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // convertToBase64(event.target.files[0]);
+  const handleSelectedFileToUpload = async (event) => {
+    const fileImage = event.target.files[0];
+    const base64Image = await convertToBase64(fileImage);
+    setBaseImage(base64Image);
   };
+
+  /**
+   * Option 2
+   * With JavaScript Promise
+   */
+  const convertToBase64 = async (file) =>
+    new Promise(function (resolve, reject) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject('Error: ', error);
+    });
 
   /**
    * [1] - Upload file to server
    */
   const handleUploadToServer = async () => {
-    const formData = new FormData();
-    // this is what the @RequestParam will see at Backend with Spring Controller
-    formData.append('attachment', selectedFile);
-    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
-
-    console.log(data);
-    setFileName(data.fileName);
-    setAttachmentId(data.id);
-    // This url, when I click it , It triggers `download` from server
-    setDownloadUrl(data.downloadURL);
-    setFileType(data.fileType);
+    console.log(image);
+    const dataToSend = {
+      image: image,
+    };
+    const { data } = await axios.post(`http://localhost:8080/database/upload`, dataToSend);
+    // console.log(data);
+    // setFileName(data.fileName);
+    // setAttachmentId(data.id);
+    // // This url, when I click it , It triggers `download` from server
+    // setDownloadUrl(data.downloadURL);
+    // setFileType(data.fileType);
   };
 
   /**
@@ -131,7 +120,7 @@ function App() {
           </div>
         </div>
         <br />
-        <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
+        <div>{baseImage ? <img src={`data:${fileType};base64, ${baseImage}`} /> : null}</div>
 
         {/* ********************************************************** */}
         {/* **********  More styling options for input-file     ****** */}
