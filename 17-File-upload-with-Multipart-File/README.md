@@ -165,9 +165,11 @@ let uint8Array = new Uint8Array(buffer);
 <img src="https://img.shields.io/badge/- 2_1_upload_download_using_data_base  %20-yellow" height=32px>
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
-This is a general diagram of FrontENd / BackEnd
+This is a general diagram of FrontEnd / BackEnd
 
-![image](https://github.com/sshalem/Spring-Boot/assets/36256986/e8d8e3ed-dd8c-4363-bd06-c30707b2f294)
+![image](https://github.com/sshalem/Spring-Boot/assets/36256986/008ed5e5-8b3b-4987-b344-1ee574abfb21)
+
+![image](https://github.com/sshalem/Spring-Boot/assets/36256986/ccb36307-5ddf-4252-940e-1c32b12399c1)
 
 
 #### [1. Packge layout + application.properties](#-)
