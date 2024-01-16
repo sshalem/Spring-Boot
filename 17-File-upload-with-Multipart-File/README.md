@@ -165,11 +165,25 @@ let uint8Array = new Uint8Array(buffer);
 <img src="https://img.shields.io/badge/- 3_upload_download_using_data_base %20-blue" height=40px>
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
-This is a general diagram of FrontEnd / BackEnd
 
-![image](https://github.com/sshalem/Spring-Boot/assets/36256986/008ed5e5-8b3b-4987-b344-1ee574abfb21)
+### [FrontEnd](#-)
 
-![image](https://github.com/sshalem/Spring-Boot/assets/36256986/ccb36307-5ddf-4252-940e-1c32b12399c1)
+In the `FrontEnd`  code I use :
+1. `input type=file` tag
+2. Function to Upload to DB by creating a Form instance and appending the file to the `form`
+3. Function to Download file From DB and save it in downloads folder
+4. Function to Load Image/File From Server
+
+### [BackEnd](#-)
+
+In this example ,I save the FIle/Image in DB. </br> 
+More precise, I will upload/download/load image </br>
+In `Controller` I have 3 methods
+1. `uploadAttachmentToDB` which receives a `MultipartFile` (the file inside is in a format of `byte[]` )
+2. `downloadAttachmentFromDB`
+3. `loadAttachmentFromDB` 
+
+In DB , I will save the image file as `byte[]` , which will have also the `@Lob` annotaion
 
 
 #### [1. Packge layout + application.properties](#-)
