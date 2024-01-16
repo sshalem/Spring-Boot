@@ -18,7 +18,7 @@ public class StorageServiceImpl implements StorageService {
 
 	/**********************************************************
 	 * 
-	 * Upload/Download using Data Base
+	 * Upload File /Image (save) to DataBase (using Data Base)
 	 * 
 	 **********************************************************/
 	@Override
@@ -37,6 +37,12 @@ public class StorageServiceImpl implements StorageService {
 		}
 	}
 
+	
+	/**********************************************************
+	 * 
+	 * Upload/Download using Data Base
+	 * 
+	 **********************************************************/
 	@Override
 	public DataBaseAttachmentEntity downloadAttachmentFromDB(String attachmentId) throws Exception {
 		return dataBaseRepository.findById(attachmentId).orElseThrow(() -> new Exception("File not found with Id: " + attachmentId));

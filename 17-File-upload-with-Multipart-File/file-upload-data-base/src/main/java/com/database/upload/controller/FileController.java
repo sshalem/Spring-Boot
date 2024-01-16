@@ -46,9 +46,11 @@ public class FileController {
 		 */
 		DataBaseAttachmentEntity dataBaseAttachmentEntity = storageService.uploadAttachmentToDB(multipartFile);
 		
-		// Here I setup the download URL
-		// Where FrontEnd will click the link
-		// and will download the file
+		/**
+		 * Here I setup the download URL
+		 * Where FrontEnd will click the link
+		 * and will download the file
+		 */
 		String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/database/download/") // this path need to same path of the @GetMapping
 				.path(dataBaseAttachmentEntity.getId()) // concatenate the Id of the attachment to the url

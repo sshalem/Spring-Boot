@@ -9,12 +9,12 @@
 |  2  | [upload/download](#2_upload_download)                          |
 |     | [2.0.0. Steps to Upload/Download](#2_0_0_steps_to_upload_download)                          |
 |     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)                          |
-|     | [2.1. upload/download using Data Base](#2_1_upload_download_using_data_base)                          |
-|     | [2.2. upload/download using File System](#2_2_upload_download_using_file_system)                          |
-|  3  | [Test with postman](#3_test_with_postman)                          |
-|  4  | [Test with ReactJS code](#4_test_with_reactjs_code)                          |
-|  5  | [x](#5_main_jsx)                          |
-|     | [6.1. x](#4_1_)                          |
+|  3  | [upload/download using Data Base](#3_upload_download_using_data_base)                          |
+|  4  | [upload/download using File System](#4_upload_download_using_file_system)                          |
+|  5  | [Test with postman](#3_test_with_postman)                          |
+|  6  | [Test with ReactJS code](#4_test_with_reactjs_code)                          |
+|  7  | [x](#5_main_jsx)                          |
+|  8  | [6.1. x](#4_1_)                          |
 
 
 
@@ -160,11 +160,31 @@ let uint8Array = new Uint8Array(buffer);
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 2_1_upload_download_using_data_base 
+###### 3_upload_download_using_data_base 
 
-<img src="https://img.shields.io/badge/- 2_1_upload_download_using_data_base  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 3_upload_download_using_data_base %20-blue" height=40px>
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
+
+### [FrontEnd](#-)
+
+In the `FrontEnd`  code I use :
+1. `input type=file` tag
+2. Function to Upload to DB by creating a Form instance and appending the file to the `form`
+3. Function to Download file From DB and save it in downloads folder
+4. Function to Load Image/File From Server
+
+### [BackEnd](#-)
+
+In this example ,I save the FIle/Image in DB. </br> 
+More precise, I will upload/download/load image </br>
+In `Controller` I have 3 methods
+1. `uploadAttachmentToDB` which receives a `MultipartFile` (the file inside is in a format of `byte[]` )
+2. `downloadAttachmentFromDB`
+3. `loadAttachmentFromDB` 
+
+In DB , I will save the image file as `byte[]` , which will have also the `@Lob` annotaion
+
 
 #### [1. Packge layout + application.properties](#-)
 
@@ -446,9 +466,9 @@ public class FileController {
 
 
 
-###### 2_2_upload_download_using_file_system
+###### 4_upload_download_using_file_system
 
-<img src="https://img.shields.io/badge/- 2_2_upload_download_using_file_system  %20-yellow" height=32px>
+<img src="https://img.shields.io/badge/- 4_upload_download_using_file_system  %20-blue" height=40px>
 
 In this example , I store the file (image, text , not-text) in FileSystem. </br>
 But, </br>
