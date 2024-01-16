@@ -24,7 +24,8 @@ public class FileService {
 		// cleanPath removes any `/` or `.` from url
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 						
-		String path = FOLDER_PATH + "/src/main/resources/static/images/" + fileName;
+		// String path = FOLDER_PATH + "/src/main/resources/static/images/" + fileName;
+		String path = FOLDER_PATH + "/src/main/resources/" + fileName;
 		
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
 		fileSystemAttachmentEntity.setName(fileName);
@@ -33,8 +34,10 @@ public class FileService {
 
 		FileSystemAttachmentEntity returnedFileDataEntity = fileDataRepository.save(fileSystemAttachmentEntity);
 
-		// this saves the file in the the filePath I declare
-		// transferTo - a method from `MultipartFile` class 
+		/**
+		 * this saves the file in the the filePath I declare
+		 * transferTo - a method from `MultipartFile` class 
+		 */
 		file.transferTo(new File(path));
 
         return returnedFileDataEntity;

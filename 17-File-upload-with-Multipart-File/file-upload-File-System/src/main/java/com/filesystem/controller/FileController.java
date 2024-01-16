@@ -36,9 +36,11 @@ public class FileController {
 
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(multipartFile);
 
-		// Here I setup the download URL
-		// Where FrontEnd will click the link
-		// and will download the file
+		/**
+		 * Here I setup the download URL
+		 * Where FrontEnd will click the link
+		 * and will download the file
+		 */
 		String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/fileSystem/download/") // this path need to same path of the @GetMapping
 				.path(fileSystemAttachmentEntity.getName())
@@ -54,6 +56,13 @@ public class FileController {
 		return ResponseEntity.status(HttpStatus.OK).body(responseData);
 	}
 
+	
+	/**
+	 * 
+	 * This method is used for downloading the image from server
+	 * the url MUST be same as the downloadURl I define in the POST method uploadAttachmentToFileSystem 
+	 * 
+	 */
 	@GetMapping("/fileSystem/download/{fileName}")
 	public ResponseEntity<?> downloadAttachmentFromFileSystem(@PathVariable String fileName) throws IOException {
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.downloadFromFileSystem(fileName);

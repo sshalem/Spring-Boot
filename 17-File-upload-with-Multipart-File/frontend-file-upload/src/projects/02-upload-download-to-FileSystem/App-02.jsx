@@ -25,7 +25,7 @@ function App() {
     const formData = new FormData();
     // this is what the @RequestParam will see at Backend with Spring Controller
     formData.append('attachment', selectedFile);
-    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
 
     console.log(data);
     setFileName(data.fileName);
@@ -40,7 +40,7 @@ function App() {
    * (Postman shows , this is faster to download + file size 3x smaller)
    */
   const handleLoadImageFromServer = async () => {
-    const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
+    const { data } = await axios.get(`http://localhost:8080/fileSystem/loadAttachment/${fileName}`);
     console.log(data);
     setImage(data);
   };
@@ -48,7 +48,9 @@ function App() {
   return (
     <>
       <div style={{ padding: '2rem' }}>
-        <h3>file upload</h3>
+        <h3>
+          file upload to <span>&#8594;</span> File System in Server
+        </h3>
         <br />
         {/* option 1 for styling */}
         <div>
