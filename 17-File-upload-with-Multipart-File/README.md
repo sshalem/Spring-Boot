@@ -11,8 +11,9 @@
 |     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)                          |
 |  3  | [upload/download file to Data Base](#3_upload_download_file_to_data_base)                          |
 |  4  | [upload/download file to File System](#4_upload_download_file_to_file_system)                          |
-|  5  | [Test with postman](#3_test_with_postman)                          |
-|  6  | [Test with ReactJS code](#6_test_with_reactjs_code)                          |
+|  5  | [upload file as Base64 (and not as form append)](#5_upload_file_as_base64_without_form_appending)                          |5
+|  6  | [Test with postman](#6_test_with_postman)                          |
+|  7  | [ReactJS code with CSS](#7_reactjs_code_with_css)                          |
 |  7  | [x](#5_main_jsx)                          |
 |  8  | [6.1. x](#4_1_)                          |
 
@@ -993,14 +994,31 @@ export default App;
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------
 
 
-----------------
 
 
-###### 3_test_with_postman
+###### 5_upload_file_as_base64_without_form_appending
 
-<img src="https://img.shields.io/badge/- 3_test_with_postman  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 5_upload_file_as_base64_without_form_appending  %20-blue" height=40px>
+
+In this example I will upload a file w/o the usage of a `form` Instance as in section 3. </br>
+Here, I will convert the file/image , to base64 , then I will send it to server. 
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+###### 6_test_with_postman
+
+<img src="https://img.shields.io/badge/- 6_test_with_postman  %20-blue" height=40px>
 
 ###### 3_1_test_using_data_base
 
@@ -1034,9 +1052,9 @@ Open Postman and send `POST` request to url of `localhost:8080/database/upload` 
 
 ----------------
 
-###### 6_test_with_reactjs_code
+###### 7_reactjs_code_with_css
 
-<img src="https://img.shields.io/badge/- 6_test_with_reactjs_code  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 7_reactjs_code_with_css  %20-blue" height=40px>
 
 #### [Step 1:  create vite app](#-)
 
