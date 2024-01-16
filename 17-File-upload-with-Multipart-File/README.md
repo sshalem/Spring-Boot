@@ -9,8 +9,8 @@
 |  2  | [upload/download](#2_upload_download)                          |
 |     | [2.0.0. Steps to Upload/Download](#2_0_0_steps_to_upload_download)                          |
 |     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)                          |
-|  3  | [upload/download using Data Base](#3_upload_download_using_data_base)                          |
-|  4  | [upload/download using File System](#4_upload_download_using_file_system)                          |
+|  3  | [upload/download file to Data Base](#3_upload_download_file_to_data_base)                          |
+|  4  | [upload/download file to File System](#4_upload_download_file_to_file_system)                          |
 |  5  | [Test with postman](#3_test_with_postman)                          |
 |  6  | [Test with ReactJS code](#6_test_with_reactjs_code)                          |
 |  7  | [x](#5_main_jsx)                          |
@@ -160,9 +160,9 @@ let uint8Array = new Uint8Array(buffer);
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
-###### 3_upload_download_using_data_base 
+###### 3_upload_download_file_to_data_base 
 
-<img src="https://img.shields.io/badge/- 3_upload_download_using_data_base %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3_upload_download_file_to_data_base %20-blue" height=40px>
 
 In this example I use database to store the file (image text, none-text ) in DB. </br>
 
@@ -466,9 +466,9 @@ public class FileController {
 
 
 
-###### 4_upload_download_using_file_system
+###### 4_upload_download_file_to_file_system
 
-<img src="https://img.shields.io/badge/- 4_upload_download_using_file_system  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4_upload_download_file_to_file_system  %20-blue" height=40px>
 
 In this example , I store the file (image, text , not-text) in FileSystem. </br>
 But, </br>
