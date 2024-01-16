@@ -6,6 +6,7 @@ function App() {
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
   const [image, setImage] = useState(null);
+  const [imageBlob, setImageBlob] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
@@ -25,6 +26,20 @@ function App() {
     const formData = new FormData();
     // this is what the @RequestParam will see at Backend with Spring Controller
     formData.append('attachment', selectedFile);
+
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+
+    for (const key of formData.keys()) {
+      console.log(key);
+    }
+
+    for (const pair of formData.entries()) {
+      console.log(pair);
+      console.log(`${pair[0]}, ${pair[1]}`);
+    }
+
     const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
     // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
 
@@ -33,7 +48,7 @@ function App() {
     // This url, when I click it , It triggers `download` from server
     setDownloadUrl(data.downloadURL);
     setFileType(data.fileType);
-    console.log(data);
+    // console.log(data);
   };
 
   /**
@@ -55,21 +70,23 @@ function App() {
     // 2. with Backend of uploading to fileSystem
     const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
     // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
+
     /**
-     * the data I get from server (of the file) is a String as a Base64 .
-     * So need to conver the Base64 String back to an image
+     * the data I get from server (the file) is a String in of a Base64 .
+     * So need to convert the Base64 String back to an image
      */
-    console.log(typeof data);
+    console.log(data);
 
-    let binary = '';
-    let uint8Array = new Uint8Array(data);
-
-    console.log(uint8Array);
-    let len = uint8Array.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(uint8Array[i]);
+    // let array = new Uint8Array(data.length);
+    let array = new Int8Array(data.length);
+    for (let i = 0; i < data.length; i++) {
+      array[i] = data.charCodeAt(i);
     }
-    const base64String = btoa(binary);
+    console.log(array);
+    // let end_file = new Blob([array], { type: type, name: name });
+    let imageBlobFile = new Blob([array], { type: 'image/png' });
+    setImageBlob(imageBlobFile);
+    // console.log(end_file);
   };
 
   return (
@@ -107,6 +124,11 @@ function App() {
         </div>
         <br />
         <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
+        {/*  */}
+        <br />
+        <br />
+        <br />
+        <div>{imageBlob ? <img src={imageBlob} /> : null}</div>
 
         {/* ********************************************************** */}
         {/* ********************************************************** */}

@@ -27,11 +27,19 @@ public class FileController {
 
 	@Autowired
 	private StorageService storageService;
+	
 
 
 	@PostMapping(path = "/database/upload")
 	public ResponseEntity<?> uploadAttachmentToDB(@RequestParam("attachment") MultipartFile multipartFile) throws Exception {
 
+		byte[] fileByteArray = multipartFile.getBytes();
+		
+		for (int i = 0; i < fileByteArray.length; i++) {
+			System.out.print("[" + fileByteArray[i] + "],");
+			if(i % 30  == 0)
+				System.out.println();
+		}
 		/**
 		 *  the @RequestParam("attachment") comes from frontEnd code:
 		 *  `formData.append('attachment', selectedFile);

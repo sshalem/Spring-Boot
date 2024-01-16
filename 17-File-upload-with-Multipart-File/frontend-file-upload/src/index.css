@@ -158,6 +158,11 @@ button:disabled {
   font-size: 0.9rem;
 }
 
+img {
+  width: 15rem;
+  border-radius: 10px;
+}
+
 /**************************
   Option 1 for input CSS 
 ***************************/
