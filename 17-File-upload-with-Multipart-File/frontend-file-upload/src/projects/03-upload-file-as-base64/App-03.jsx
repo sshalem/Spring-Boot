@@ -5,50 +5,39 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
-  const [baseImage, setBaseImage] = useState('');
+  const [base64Image, setBase64Image] = useState('');
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
-
-  /**
-   * Option 1
-   */
-  // let reader = new FileReader();
-  // reader.onloadend = function (readerEvent) {
-  //   const imageFileToBase64 = readerEvent.target.result;
-  //   console.log(imageFileToBase64);    //
-  // };
-  // reader.readAsDataURL(event.target.files[0]);
 
   /**
    * save the selected file in a state
    */
   const handleSelectedFileToUpload = async (event) => {
     const fileImage = event.target.files[0];
-    const base64Image = await convertToBase64(fileImage);
-    setBaseImage(base64Image);
+    const convertedBase64Image = await convertToBase64(fileImage);
+    setBase64Image(convertedBase64Image);
   };
 
-  /**
-   * Option 2
-   * With JavaScript Promise
-   */
-  const convertToBase64 = async (file) =>
-    new Promise(function (resolve, reject) {
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
+  const convertToBase64 = async (fileImage) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileImage);
+    const base64Data = await new Promise((resolve, reject) => {
       reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject('Error: ', error);
+      reader.onerror = (error) => reject(error);
     });
+    return base64Data;
+  };
 
   /**
    * [1] - Upload file to server
    */
   const handleUploadToServer = async () => {
-    console.log(image);
+    console.log(base64Image);
     const dataToSend = {
-      image: image,
+      image: base64Image,
     };
-    const { data } = await axios.post(`http://localhost:8080/database/upload`, dataToSend);
+
+    const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, dataToSend);
     // console.log(data);
     // setFileName(data.fileName);
     // setAttachmentId(data.id);
@@ -64,7 +53,7 @@ function App() {
   const handleLoadImageFromServer = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
     console.log(data);
-    setImage(data);
+    // setImage(data);
   };
 
   return (
@@ -120,7 +109,7 @@ function App() {
           </div>
         </div>
         <br />
-        <div>{baseImage ? <img src={`data:${fileType};base64, ${baseImage}`} /> : null}</div>
+        <div>{base64Image ? <img src={base64Image} /> : null}</div>
 
         {/* ********************************************************** */}
         {/* **********  More styling options for input-file     ****** */}
