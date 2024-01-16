@@ -6,6 +6,7 @@ function App() {
   const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
   const [image, setImage] = useState(null);
+  const [imageBlob, setImageBlob] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [fileType, setFileType] = useState(null);
 
@@ -25,14 +26,29 @@ function App() {
     const formData = new FormData();
     // this is what the @RequestParam will see at Backend with Spring Controller
     formData.append('attachment', selectedFile);
-    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
 
-    console.log(data);
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+
+    for (const key of formData.keys()) {
+      console.log(key);
+    }
+
+    for (const pair of formData.entries()) {
+      console.log(pair);
+      console.log(`${pair[0]}, ${pair[1]}`);
+    }
+
+    const { data } = await axios.post(`http://localhost:8080/database/upload`, formData);
+    // const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, formData);
+
     setFileName(data.fileName);
     setAttachmentId(data.id);
     // This url, when I click it , It triggers `download` from server
     setDownloadUrl(data.downloadURL);
     setFileType(data.fileType);
+    // console.log(data);
   };
 
   /**
@@ -41,8 +57,36 @@ function App() {
    */
   const handleLoadImageFromServer = async () => {
     const { data } = await axios.get(`http://localhost:8080/database/loadAttachment/${attachmentId}`);
-    console.log(data);
+    // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${fileName}`);
     setImage(data);
+  };
+
+  /**
+   * [3] - downloads an image from server, and save it on local comuter
+   */
+  const handleDownload = async () => {
+    // I havve 2 urls
+    // 1. with Backend of uploading to Database
+    // 2. with Backend of uploading to fileSystem
+    const { data } = await axios.get(`http://localhost:8080/database/download/${attachmentId}`);
+    // const { data } = await axios.get(`http://localhost:8080/fileSystem/download/${attachmentId}`);
+
+    /**
+     * the data I get from server (the file) is a String in of a Base64 .
+     * So need to convert the Base64 String back to an image
+     */
+    console.log(data);
+
+    // let array = new Uint8Array(data.length);
+    let array = new Int8Array(data.length);
+    for (let i = 0; i < data.length; i++) {
+      array[i] = data.charCodeAt(i);
+    }
+    console.log(array);
+    // let end_file = new Blob([array], { type: type, name: name });
+    let imageBlobFile = new Blob([array], { type: 'image/png' });
+    setImageBlob(imageBlobFile);
+    // console.log(end_file);
   };
 
   return (
@@ -63,48 +107,33 @@ function App() {
         <br />
         <div>
           <button className="btn upload-download" onClick={handleLoadImageFromServer}>
-            load (get Base64) image from Server
+            load (get) image from Server
           </button>
         </div>
         <br />
-        {/*  */}
-        {/* To download Image */}
-        {/*  */}
         <div>
-          ____________________________________________________________________________________________________________________________________
-        </div>
-        <br />
-        <h5>to download Image , (to dowanloads folder)</h5>
-        <h5>1. click on the button which triggers anchor tag with the url link of download from server</h5>
-        <h5>2. click on the anchor link whcih does the same</h5>
-        <br />
-        <div>
-          <a href={downloadUrl}>
-            <button className="btn upload-download">Download image link</button>
-          </a>
+          <button className="btn upload-download" onClick={handleDownload}>
+            Download image link
+          </button>
           <br />
           <br />
-          <div>
-            <p>
-              Image link , when clicked ,it will download image from server, to <em style={{ fontWeight: '700' }}>downloads folder</em>:
-            </p>
-            <div style={{ marginTop: '1rem' }}>
-              <a href={downloadUrl}>
-                {downloadUrl ? downloadUrl : <span style={{ color: 'red' }}>Only after I upload image I wll see the url link</span>}
-              </a>
-            </div>
-          </div>
+          <p>
+            <span>Image link , when clicked ,it will download image from server: </span>
+            <a href={downloadUrl}>{downloadUrl}</a>
+          </p>
         </div>
         <br />
         <div>{image ? <img src={`data:${fileType};base64, ${image}`} /> : null}</div>
+        {/*  */}
+        <br />
+        <br />
+        <br />
+        <div>{imageBlob ? <img src={imageBlob} /> : null}</div>
 
         {/* ********************************************************** */}
-        {/* **********  More styling options for input-file     ****** */}
-        {/* **********                                           ***** */}
         {/* ********************************************************** */}
-        <div>
-          ____________________________________________________________________________________________________________________________________
-        </div>
+        {/* ********************************************************** */}
+
         <h3>More styling options for input-file </h3>
         <h4>The upload button ,is not configured for these options</h4>
         {/* option 1 for styling */}
