@@ -18,6 +18,7 @@ public class FileSystemAttachmentEntity {
 	private String name;
 	private String type;
 	private String filePath;
+	private int size;
 
 	public FileSystemAttachmentEntity() {
 		super();
@@ -53,5 +54,13 @@ public class FileSystemAttachmentEntity {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 }

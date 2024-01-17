@@ -1,14 +1,15 @@
 package com.filesystem.service;
 
-import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.filesystem.entity.FileSystemAttachmentEntity;
+import com.filesystem.model.DataFile;
 import com.filesystem.repository.FileDataRepository;
 
 @Service
@@ -19,26 +20,41 @@ public class FileService {
 	
 	private final String FOLDER_PATH = System.getProperty("user.dir");
 
-	public FileSystemAttachmentEntity uploadToFileSystem(MultipartFile file) throws IOException {
+	public FileSystemAttachmentEntity uploadToFileSystem(DataFile file) throws IOException {
 		
 		// cleanPath removes any `/` or `.` from url
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		String fileName = StringUtils.cleanPath(file.getName());
 						
-		// String path = FOLDER_PATH + "/src/main/resources/static/images/" + fileName;
+		// String path = FOLDER_PATH + "/src/main/resources/" + fileName;
 		String path = FOLDER_PATH + "/src/main/resources/" + fileName;
 		
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = new FileSystemAttachmentEntity();
 		fileSystemAttachmentEntity.setName(fileName);
 		fileSystemAttachmentEntity.setFilePath(path);
-		fileSystemAttachmentEntity.setType(file.getContentType());
+		fileSystemAttachmentEntity.setType(file.getType());
+		fileSystemAttachmentEntity.setSize(file.getSize());
 
 		FileSystemAttachmentEntity returnedFileDataEntity = fileDataRepository.save(fileSystemAttachmentEntity);
 
 		/**
-		 * this saves the file in the the filePath I declare
-		 * transferTo - a method from `MultipartFile` class 
+		 * I convert the Bse64 file to a real Image 
 		 */
-		file.transferTo(new File(path));
+		String base64Image = file.getImage().substring(22);
+		byte[] decodeData = Base64.getDecoder().decode(base64Image);
+		
+		/**
+		 * This code writes the image, to a file 
+		 */
+		FileOutputStream out = null;
+		try {
+			out = new FileOutputStream(path);
+			for (int i = 0; i < decodeData.length; i++) {
+				out.write(decodeData[i]);
+			}
+		} finally {
+			if (out != null)
+				out.close();
+		}
 
         return returnedFileDataEntity;
     }

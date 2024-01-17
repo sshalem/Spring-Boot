@@ -2,18 +2,21 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [fileName, setFileName] = useState(null);
   const [attachmentId, setAttachmentId] = useState(null);
-  const [base64Image, setBase64Image] = useState('');
   const [downloadUrl, setDownloadUrl] = useState(null);
+  const [base64Image, setBase64Image] = useState('');
+  const [fileName, setFileName] = useState(null);
   const [fileType, setFileType] = useState(null);
-
+  const [fileSize, setFileSize] = useState(null);
   /**
    * save the selected file in a state
    */
   const handleSelectedFileToUpload = async (event) => {
     const fileImage = event.target.files[0];
+    console.log(fileImage);
+    setFileName(fileImage.name);
+    setFileType(fileImage.type);
+    setFileSize(fileImage.size);
     const convertedBase64Image = await convertToBase64(fileImage);
     setBase64Image(convertedBase64Image);
   };
@@ -32,18 +35,21 @@ function App() {
    * [1] - Upload file to server
    */
   const handleUploadToServer = async () => {
-    console.log(base64Image);
     const dataToSend = {
       image: base64Image,
+      name: fileName,
+      type: fileType,
+      size: fileSize,
     };
 
     const { data } = await axios.post(`http://localhost:8080/fileSystem/upload`, dataToSend);
-    // console.log(data);
-    // setFileName(data.fileName);
-    // setAttachmentId(data.id);
-    // // This url, when I click it , It triggers `download` from server
-    // setDownloadUrl(data.downloadURL);
-    // setFileType(data.fileType);
+
+    console.log(data);
+    setFileName(data.fileName);
+    setAttachmentId(data.id);
+    // This url, when I click it , It triggers `download` from server
+    setDownloadUrl(data.downloadURL);
+    setFileType(data.fileType);
   };
 
   /**
