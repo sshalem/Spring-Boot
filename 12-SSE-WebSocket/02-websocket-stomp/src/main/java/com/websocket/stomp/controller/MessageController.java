@@ -8,6 +8,7 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
 import com.websocket.stomp.entity.Message;
+import com.websocket.stomp.utils.Utils;
 
 @Controller
 public class MessageController {
@@ -41,13 +42,15 @@ public class MessageController {
 		// browser shows in console
 		// ( >>>SEND the header is send)
 		Object addressNativeHeader = stompHeaderAccessor.getFirstNativeHeader("send-Header");
-		System.out.println(addressNativeHeader);
+//		System.out.println(addressNativeHeader);
+		Utils.consoleAsJson(addressNativeHeader);
 
 		System.out.println(" ------------------------------- ");
 
 		// This headers are made by the client each message he sends
 		MessageHeaders messageHeaders = stompHeaderAccessor.getMessageHeaders();
-		System.out.println(messageHeaders);
+//		System.out.println(messageHeaders);
+		Utils.consoleAsJson(messageHeaders);
 
 		return message;
 	}
