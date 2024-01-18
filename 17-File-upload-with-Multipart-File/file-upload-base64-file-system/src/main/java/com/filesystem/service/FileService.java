@@ -43,7 +43,7 @@ public class FileService {
 		byte[] decodeData = Base64.getDecoder().decode(base64Image);
 		
 		/**
-		 * This code writes the image, to a file 
+		 * This code writes the decodeData[] , to a file 
 		 */
 		FileOutputStream out = null;
 		try {

@@ -35,9 +35,15 @@ public class FileController {
 	@PostMapping("/fileSystem/upload")
 	public ResponseEntity<?> uploadAttachmentToFileSystem(@RequestBody DataFile dataFile) throws IOException {
 
-		SysoutToJsonFormat.jsonFormat(dataFile);		
+//		SysoutToJsonFormat.jsonFormat(dataFile);
+//		System.out.println(dataFile);
+		
+		
+		
 		FileSystemAttachmentEntity fileSystemAttachmentEntity = fileService.uploadToFileSystem(dataFile);
 
+		System.out.println(fileSystemAttachmentEntity);
+		
 		/**
 		 * Here I setup the download URL
 		 * Where FrontEnd will click the link

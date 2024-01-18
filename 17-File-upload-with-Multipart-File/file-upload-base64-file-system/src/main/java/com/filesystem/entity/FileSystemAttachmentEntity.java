@@ -63,4 +63,11 @@ public class FileSystemAttachmentEntity {
 	public void setSize(int size) {
 		this.size = size;
 	}
+
+	@Override
+	public String toString() {
+		return "FileSystemAttachmentEntity [id=" + id + ", name=" + name + ", type=" + type + ", filePath=" + filePath
+				+ ", size=" + size + "]";
+	}
+
 }
