@@ -21,6 +21,9 @@
 |     | [5.3. test](#5_3_test)             |
 |  9  | [Chat App with ReactJS](#9_Chat_App_with_ReactJS)             |
 |     | [3.1. ](#3_1_)             |
+|  10 | [Real Time Chat Spring + ReactJS + WebSocket](#10_realTime_chat_spring_reactjs_websocket)             |
+|  11 | [Chatroom application - SpringBoot, Websocket, ReactJS](#11_chatroom_spring_reactjs_websocket)             |
+|  12 | [Whatsapp App](#12_whatsapp)             |
 
 
 ---------------------------------------------------------------------------------------------------
@@ -953,6 +956,82 @@ git hub link for the project [https://github.com/JayaramachandranAugustin/ChatAp
 
 ---------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+###### 10_realTime_chat_spring_reactjs_websocket
+
+<img src="https://img.shields.io/badge/- 10_realTime_chat_spring_reactjs_websocket %20-blue" height=40px>
+
+https://www.youtube.com/watch?v=ODGuq0XqG9A&ab_channel=ITGift
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+###### 11_chatroom_spring_reactjs_websocket
+
+<img src="https://img.shields.io/badge/- 11_chatroom_spring_reactjs_websocket %20-blue" height=40px>
+
+https://www.youtube.com/watch?v=o_IjEDAuo8Y&ab_channel=InvolveInInnovation
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+###### 12_whatsapp
+
+<img src="https://img.shields.io/badge/- 12_whatsapp %20-blue" height=40px>
+
+
+1. https://www.youtube.com/watch?v=_f5CyVdarXw&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=1&ab_channel=CodeWithZosh
+2. https://www.youtube.com/watch?v=iVLNDd6Wze4&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=2&ab_channel=CodeWithZosh
+3. https://www.youtube.com/watch?v=fDh068S-47I&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=3&ab_channel=CodeWithZosh
+4. https://www.youtube.com/watch?v=E3O6p92RNsQ&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=4&ab_channel=CodeWithZosh
+5. https://www.youtube.com/watch?v=OrdkQ5UsM_E&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=5&ab_channel=CodeWithZosh
+6. https://www.youtube.com/watch?v=fzYmsQvjzhg&list=PL7Oro2kvkIzKsDpydQkyO6I60uC0SyDje&index=6&ab_channel=CodeWithZosh
+
+
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###### 
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
@@ -972,6 +1051,7 @@ git hub link for the project [https://github.com/JayaramachandranAugustin/ChatAp
 ######
 
 <img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
