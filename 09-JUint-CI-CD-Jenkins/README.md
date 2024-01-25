@@ -315,9 +315,12 @@ class MovieRepositoryTest {
 
 <img src="https://img.shields.io/badge/- 3_2_Service_Layer_Testing %20- green" height=30px>
 
+*** In general - To run a kind of code , I can do it in the main Test Class under `src/test/java` in th main package where we have the annotaion of `@SpringBootTest`.
+
 In the Service Layer testing we will use:
 1. `Mockito` - with Mockito we use to mock the dummy implementation of MovieService
 2. `JUnit`
+
 
 See the following link for [well exaplnation of Mocking](https://blog.devgenius.io/spring-boot-deep-dive-on-unit-testing-92bbdf549594)
 
