@@ -186,6 +186,16 @@ Because of this cleaner approach, many Spring-based applications are using `Spri
 
 <img src="https://img.shields.io/badge/- Entity Id generic generator %20-blue" height=40px>
 
+With Spring JPA (Spring boot 3.2 and Up) , there are several options for @Id generator:
+
+See link form Baeldung [https://www.baeldung.com/hibernate-identifiers](https://www.baeldung.com/hibernate-identifiers)
+
+1. AUTO - `@GeneratedValue(strategy = GenerationType.AUTO)`
+2. IDENTITY - `@GeneratedValue(strategy = GenerationType.IDENTITY)`
+3. SEQUENCE - `@GeneratedValue(strategy = GenerationType.SEQUENCE)`
+4. UUID - `@GeneratedValue(strategy = GenerationType.UUID)`
+5. Identity - `@GeneratedValue(strategy = GenerationType.IDENTITY)`
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
