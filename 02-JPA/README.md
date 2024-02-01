@@ -5,6 +5,7 @@
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
 |     | [JDBC, Hibernate, JPA, Spring-data-jpa](#JDBC_Hibernate_JPA_Spring_data_jpa)            |
+|     | [Id generic generator](#id_generic_generator)        |
 |  1  | [One2Many_Bi_Eager](#1_One2Many_Bi_Eager)            |
 |  2  | [One2Many_Bi_Lazy](#2_One2Many_Bi_Lazy)              |
 |  3  | [One2Many_Uni_Eager](#3_One2Many_Uni_Eager)          |
