@@ -194,7 +194,7 @@ See link form Baeldung [https://www.baeldung.com/hibernate-identifiers](https://
 2. IDENTITY - `@GeneratedValue(strategy = GenerationType.IDENTITY)`
 3. SEQUENCE - `@GeneratedValue(strategy = GenerationType.SEQUENCE)`
 4. UUID - `@GeneratedValue(strategy = GenerationType.UUID)`
-5. Identity - `@GeneratedValue(strategy = GenerationType.IDENTITY)`
+5. Custom Generic Identifier 
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
