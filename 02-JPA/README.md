@@ -197,6 +197,65 @@ See link form Baeldung [https://www.baeldung.com/hibernate-identifiers](https://
 5. Custom Generic Identifier 
 
 
+### [Custom Id Generic Identifier](#-)
+
+In order to have a custom Id , int he way I want :
+1. Create a class `CustomIdentifierGenerator` that implements the `IdentifierGenerator`
+2. Use the `CustomIdentifierGenerator` in the `Entity` class
+
+#### [Custom generator class](#-)
+
+```java
+public class CustomIdentifierGenerator implements IdentifierGenerator {
+
+	private static final long serialVersionUID = 1411134855443728529L;
+	private final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+	@Override
+	public Object generate(SharedSessionContractImplementor session, Object object) {
+		Calendar calendar = Calendar.getInstance();
+		return "Any_Prefix_I_want_to_add" + generatedRandomId() + generateRandomStringId() + calendar.get(Calendar.YEAR);
+	}
+
+	public int generatedRandomId() {
+		Random random = new Random();
+		return random.nextInt(100);
+	}
+
+	public String generateRandomStringId() {
+		Random random = new Random();
+		StringBuilder generatedId = new StringBuilder();
+		// Here, I will generate a random String of length of 10 characters
+		for (int i = 0; i < 10; i++) {
+			;
+			generatedId.append(ALPHABET.charAt(random.nextInt(ALPHABET.length())));
+		}
+		return new String(generatedId);
+	}
+}
+```
+
+#### [Entity class](#-)
+
+```Java
+@Entity
+@Table(name = "USERS_TB")
+public class UserEntity {
+
+	@Id
+	@GenericGenerator(name = "custom_generic_id", type = CustomIdentifierGenerator.class)
+	@GeneratedValue(generator = "custom_generic_id")
+	private long id;
+	private long pid;
+	private String name;
+	private String email;
+	private String password;
+
+	CtorG/S/ToString
+```
+
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 ---------------------------------------------------------------------------------
