@@ -182,7 +182,7 @@ Because of this cleaner approach, many Spring-based applications are using `Spri
 
 ---------------------------------------------------------------------------------
 
-###### entity_id_generic_generator
+###### entity_id_generator
 
 <img src="https://img.shields.io/badge/- Entity Id generic generator %20-blue" height=40px>
 
