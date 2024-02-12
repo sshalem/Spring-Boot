@@ -197,7 +197,25 @@ See link form Baeldung [https://www.baeldung.com/hibernate-identifiers](https://
 5. Custom Generic Identifier 
 
 
-### [Custom Id Generic Identifier](#-)
+### [1. AUTO Id](#-)
+
+### [2. IDENTITY Id](#-)
+
+### [3. SEQUENCE Id to start from specific number](#-)
+
+```java
+	@Id
+	@SequenceGenerator(name = "userseq", initialValue = 20001, allocationSize = 50)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userseq")
+	@Column(name = "user_id")	
+	private long id;
+```
+
+### [4. UUID Id](#-)
+
+
+
+### [5. Custom Id Generic Identifier](#-)
 
 In order to have a custom Id , int he way I want :
 1. Create a class `CustomIdentifierGenerator` that implements the `IdentifierGenerator`
