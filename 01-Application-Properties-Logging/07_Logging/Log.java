@@ -1,4 +1,4 @@
-package com.react.query.utils;
+package com.excel.utils;
 
 import org.slf4j.Logger;
 
@@ -357,6 +357,80 @@ public class Log {
 		System.out.println(WHITE_BACKGROUND_BRIGHT + message + RESET);
 	}
 
+	
+	/******************************
+	 * SLF4J info Logger colors
+	 ******************************/
+
+	public static void infoRed(Logger LOGGER, Object message) {
+		LOGGER.info(RED + message + RESET);
+	}
+
+	public static void infoRedBackground(Logger LOGGER, Object message) {
+		LOGGER.info(RED_BACKGROUND + message + RESET);
+	}
+
+	public static void infoRedBackgroundBright(Logger LOGGER, Object message) {
+		LOGGER.info(RED_BACKGROUND_BRIGHT + message + RESET);
+	}
+
+	// -------------------------------------------------------------
+
+	public static void infoGreen(Logger LOGGER, Object message) {
+		LOGGER.info(GREEN + message + RESET);
+	}
+
+	public static void infowarnGreenBackground(Logger LOGGER, Object message) {
+		LOGGER.info(GREEN_BACKGROUND + message + RESET);
+	}
+
+	public static void infoGreenBackgroundBright(Logger LOGGER, Object message) {
+		LOGGER.info(GREEN_BACKGROUND_BRIGHT + message + RESET);
+	}
+
+	// -------------------------------------------------------------
+
+	public static void infoYellow(Logger LOGGER, Object message) {
+		LOGGER.info(YELLOW + message + RESET);
+	}
+
+	public static void infoYellowBackground(Logger LOGGER, Object message) {
+		LOGGER.info(YELLOW_BACKGROUND + message + RESET);
+	}
+
+	public static void infoYellowBackgroundBright(Logger LOGGER, Object message) {
+		LOGGER.info(YELLOW_BACKGROUND_BRIGHT + message + RESET);
+	}
+
+	// -------------------------------------------------------------
+
+	public static void infoBlue(Logger LOGGER, Object message) {
+		LOGGER.info(BLUE + message + RESET);
+	}
+
+	public static void infoBlueBackground(Logger LOGGER, Object message) {
+		LOGGER.info(BLUE_BACKGROUND + message + RESET);
+	}
+
+	public static void infoBlueBackgroundBright(Logger LOGGER, Object message) {
+		LOGGER.info(BLUE_BACKGROUND_BRIGHT + message + RESET);
+	}
+
+	// -------------------------------------------------------------
+
+	public static void infoPurple(Logger LOGGER, Object message) {
+		LOGGER.info(PURPLE + message + RESET);
+	}
+
+	public static void infoPurpleBackground(Logger LOGGER, Object message) {
+		LOGGER.info(PURPLE_BACKGROUND + message + RESET);
+	}
+
+	public static void infoPurpleBackgroundBright(Logger LOGGER, Object message) {
+		LOGGER.info(PURPLE_BACKGROUND_BRIGHT + message + RESET);
+	}
+
+	
 	/******************************
 	 * SLF4J Warning Logger colors
 	 ******************************/
