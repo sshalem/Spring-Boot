@@ -59,5 +59,10 @@ public class ExcelController {
 		
 		Log.infoYellow(LOGGER, "download excel");
 	}
+	
+	@GetMapping("/read")
+	public void readDataFromExcel() throws IOException {
+		excelService.readDataFromExcel();
+	}
 
 }

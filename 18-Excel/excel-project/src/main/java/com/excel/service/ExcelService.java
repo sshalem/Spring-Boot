@@ -1,11 +1,14 @@
 package com.excel.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -57,14 +60,17 @@ public class ExcelService {
 		}
 
 		// Finally,
-		// let’s write the content to a “temp.xlsx” file in the current directory
+		// let’s write the content to a “temp.xlsx” file in the current directory of the project
 		// and close the workbook
-		File currDir = new File(".");
-		String path = currDir.getAbsolutePath();
-		String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
+		
+		//		File currDir = new File(".");
+		//		String path = currDir.getAbsolutePath();
+		//		String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
 
-		// this will write the file to local directory
-		FileOutputStream outputStream = new FileOutputStream(fileLocation);
+		
+		// this line does the same 		
+		FileOutputStream outputStream = new FileOutputStream(new File("temp.xlsx"));
+		
 		workbook.write(outputStream);
 		workbook.close();
 		
@@ -109,4 +115,48 @@ public class ExcelService {
 
 		return workbook;
 	}
+	
+	
+	public void readDataFromExcel() throws IOException {
+		
+		/**
+		 * If I want a file to open a file inside src/main/resources , 
+		 * Then use the following command:
+		 * File file = ResourceUtils.getFile("classpath:temp.xlsx");
+		 */
+		
+		/**
+		 * This opens the Open Existing Workbook
+		 */
+		FileInputStream fileInputStream = new FileInputStream(new File("temp.xlsx"));
+		
+		// Get the workbook instance for XLSX file 
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+        
+        // It possible to get the sheet in 2 ways:
+        // by its name  :  XSSFSheet sheet = workbook.getSheet("Courses Info");
+        // by its index :  XSSFSheet sheet = workbook.getSheetAt(0) : this means get the first sheet         
+        XSSFSheet sheet = workbook.getSheetAt(0);
+
+        sheet.forEach(row -> {
+        	row.forEach(cell -> {
+        		Log.green(cell);
+        	});
+        });
+        
+        
+        
+        
+        
+
+        // (1) Get the workbook instance for XLSX file 
+//        XSSFWorkbook workbook = new XSSFWorkbook(fIP);
+
+//        if(file.isFile() && file.exists()) {
+//           System.out.println("openworkbook.xlsx file open successfully.");
+//        } else {
+//           System.out.println("Error to open openworkbook.xlsx file.");
+//        }
+	}
+	
 }

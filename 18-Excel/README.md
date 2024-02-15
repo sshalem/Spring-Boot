@@ -7,6 +7,7 @@
 |     | [Introduction](#Introduction)                                         |
 |  1  | [write to excel file](#1_write_to_excel_file)                         |
 |  2  | [download excel file from server](#2_download_excel_file_from_server) |
+|  3  | [read from excel file](#3_read_from_excel_file)                       |
 |     | [2.0.0. Steps to Upload/Download](#2_0_0_steps_to_upload_download)    |
 |     | [2.0.1. Byte Array conversion](#2_0_1_byte_array_conversion)          |
 
@@ -329,9 +330,41 @@ public class ExcelController {
 
 ---
 
-######
+###### 3_read_from_excel_file
 
-<img src="https://img.shields.io/badge/-   %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 3. read_from_excel_file %20-blue" height=40px>
+
+In this example OI will show hot to read data from excel sheet.
+
+```java
+	public void readDataFromExcel() throws IOException {
+
+		/**
+		 * If I want a file to open a file inside src/main/resources ,
+		 * Then use the following command:
+		 * File file = ResourceUtils.getFile("classpath:temp.xlsx");
+		 */
+
+		/**
+		 * This opens the Open Existing Workbook
+		 */
+		FileInputStream fileInputStream = new FileInputStream(new File("temp.xlsx"));
+
+		// Get the workbook instance for XLSX file
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+
+        // It possible to get the sheet in 2 ways:
+        // by its name  :  XSSFSheet sheet = workbook.getSheet("Courses Info");
+        // by its index :  XSSFSheet sheet = workbook.getSheetAt(0) : this means get the first sheet
+        XSSFSheet sheet = workbook.getSheetAt(0);
+
+        sheet.forEach(row -> {
+        	row.forEach(cell -> {
+        		Log.green(cell);
+        	});
+        });
+	}
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
