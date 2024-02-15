@@ -182,12 +182,16 @@ public class ExcelController {
 <img src="https://img.shields.io/badge/- 2. download_excel_file_from_server  %20-blue" height=40px>
 
 Let's see how we can download excel file from server.
+I can return excel file in 2 ways:
 
-I created new method , which:
+1. By retruning already an existing excel file
+2. By creating a workbook and retruning it
 
-- only to create an Excel format with data, `but` w/o saving it to local folder
-- I return it `workbook` bac to controller
-- In Controller I config that it will be a daonload file
+In this example, I created new method , which:
+
+- creates an Excel format with data, `but` w/o saving it to local folder
+- I return it `workbook` back to controller
+- I config the method in the controller, so it will be a download as a file
 
 ```java
 package com.excel.service;
@@ -219,69 +223,20 @@ public class ExcelService {
 			new CourseEntity(3, "ReactJS", "Very Good"),
 			new CourseEntity(4, "PYTHON", "Good"));
 
-	public void generateExcel() throws IOException {
-
-		// (1) create workbook
-		XSSFWorkbook workbook = new XSSFWorkbook();
-
-		// (2) create sheet
-		XSSFSheet sheet = workbook.createSheet("Courses Info");
-
-		// (3) create row - 0 refers as the first row
-		XSSFRow row = sheet.createRow(0);
-
-		// (4) create cells
-		row.createCell(0).setCellValue("ID");
-		row.createCell(1).setCellValue("Name");
-		row.createCell(2).setCellValue("Level");
-
-		// update cells with data
-		int dataRowIndex = 1;
-
-		for (CourseEntity courseEntity : courses) {
-			// I create a new row in the next line dataRowIndex =1 now
-			XSSFRow dataRow = sheet.createRow(dataRowIndex);
-			dataRow.createCell(0).setCellValue(courseEntity.getId());
-			dataRow.createCell(1).setCellValue(courseEntity.getName());
-			dataRow.createCell(2).setCellValue(courseEntity.getSkill());
-			// increment the row data
-			dataRowIndex++;
-		}
-
-		// Finally,
-		// let’s write the content to a “temp.xlsx” file in the current directory
-		// and close the workbook
-		File currDir = new File(".");
-		String path = currDir.getAbsolutePath();
-		String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
-
-		// this will write the file to local directory
-		FileOutputStream outputStream = new FileOutputStream(fileLocation);
-		workbook.write(outputStream);
-		workbook.close();
-
-		Log.infoGreen(LOGGER, "created Excel");
-	}
-
 
 
 	public XSSFWorkbook generateExcelToDownload() throws IOException {
 
-		// (1) create workbook
+
 		XSSFWorkbook workbook = new XSSFWorkbook();
-
-		// (2) create sheet
 		XSSFSheet sheet = workbook.createSheet("Courses Info");
-
-		// (3) create row - 0 refers as the first row
 		XSSFRow row = sheet.createRow(0);
 
-		// (4) create cells
 		row.createCell(0).setCellValue("ID");
 		row.createCell(1).setCellValue("Name");
 		row.createCell(2).setCellValue("Level");
 
-		// update cells with data
+
 		int dataRowIndex = 1;
 
 		for (CourseEntity courseEntity : courses) {
