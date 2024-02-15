@@ -127,6 +127,7 @@ public class ExcelService {
 		
 		/**
 		 * This opens the Open Existing Workbook
+		 * from the location of the projects folder
 		 */
 		FileInputStream fileInputStream = new FileInputStream(new File("temp.xlsx"));
 		
