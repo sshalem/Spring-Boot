@@ -125,11 +125,19 @@ public class ExcelService {
 		 * File file = ResourceUtils.getFile("classpath:temp.xlsx");
 		 */
 		
+		File file = new File("temp.xlsx");
+		
+        if(file.isFile() && file.exists()) {
+            Log.green("openworkbook.xlsx file open successfully.");
+         } else {
+        	 Log.red("Error to open openworkbook.xlsx file.");
+         }  
+        
 		/**
 		 * This opens the Open Existing Workbook
 		 * from the location of the projects folder
 		 */
-		FileInputStream fileInputStream = new FileInputStream(new File("temp.xlsx"));
+		FileInputStream fileInputStream = new FileInputStream(file);
 		
 		// Get the workbook instance for XLSX file 
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
@@ -146,11 +154,7 @@ public class ExcelService {
         });
           
 
-//        if(file.isFile() && file.exists()) {
-//           System.out.println("openworkbook.xlsx file open successfully.");
-//        } else {
-//           System.out.println("Error to open openworkbook.xlsx file.");
-//        }
+
 	}
 	
 }
