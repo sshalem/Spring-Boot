@@ -5,10 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -59,7 +57,7 @@ public class ExcelService {
 			dataRowIndex++;
 		}
 
-		// Finally,
+		// Now,
 		// let’s write the content to a “temp.xlsx” file in the current directory of the project
 		// and close the workbook
 		
@@ -152,8 +150,8 @@ public class ExcelService {
         		Log.green(cell);
         	});
         });
-          
-
+        
+        workbook.close();
 
 	}
 	
