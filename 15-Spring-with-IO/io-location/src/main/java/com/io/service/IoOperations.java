@@ -1,7 +1,6 @@
 package com.io.service;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -90,7 +89,7 @@ public class IoOperations {
 		 */
 	}
 
-	public void filePath_5() throws FileNotFoundException {
+	public void filePath_5() throws IOException {
 
 		System.out.println();
 
@@ -98,36 +97,34 @@ public class IoOperations {
 		 * File Location in src/main/resources
 		 * If I want a file to open a file inside src/main/resources , Then use the
 		 */
-		 
+			
 		/**
 		 * Option (1)
+		 * In Maven, the compiled classes and resources are put in the /target/ directory. 
+		 * That’s why this time, we got a path to a classpath resource.
 		 */
-		
 		File fileResources_1 = ResourceUtils.getFile("classpath:json_resources.json");
 		System.out.println("option 5 = " + fileResources_1.getAbsolutePath());
 		
 		/**
 		 * Option (2)
-		 */
-		String SRC_MAIN_RESOURCES = "src/main/resources/";
-		File fileResources_2 = new File(SRC_MAIN_RESOURCES + "json_resources.json");
+		 */		
+		File fileResources_2 = new File("src\\main\\resources\\json_resources.json");
 		System.out.println("option 5 = " + fileResources_2.getAbsolutePath());
-		
+					
 		/**
 		 * Option (3)
 		 */
-		 File file = new File("."); 
-		 String path = file.getAbsolutePath();
-		 String filePath = path.substring(0, path.length() - 1) + SRC_MAIN_RESOURCES + "json_resources.json";
+		 File _file = new File("."); 
+		 String path = _file.getAbsolutePath();
+		 String filePath = path.substring(0, path.length() - 1) + "src\\main\\resources\\json_resources.json";
 		 System.out.println("option 5 = " + filePath);
 		
 		 /**
-		  * option 5 = F:\Spring\workspace-STS.4.21.0\io-location\target\classes\json_resources.json
-		  * option 5 = F:\Spring\workspace-STS.4.21.0\io-location\src\main\resources\json_resources.json
-		  * option 5 = F:\Spring\workspace-STS.4.21.0\io-location\src/main/resources/json_resources.json
+		  * option 5 = F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\15-Spring-with-IO\io-location\target\classes\json_resources.json
+		  * option 5 = F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\15-Spring-with-IO\io-location\src\main\resources\json_resources.json
+		  * option 5 = F:\SHABTAY_Documents\__Software_folders__\_Git_SpringBoot\Spring-Boot\15-Spring-with-IO\io-location\src\main\resources\json_resources.json
 		  */
 	}
 	
-
-
 }
