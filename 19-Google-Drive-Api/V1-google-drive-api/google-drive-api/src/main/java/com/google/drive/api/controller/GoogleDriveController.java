@@ -36,8 +36,10 @@ public class GoogleDriveController {
 		}
 	}
 
-	@GetMapping("/getAllFiles")
-	public ResponseEntity<?> sample() throws IOException, GeneralSecurityException {
-		return ResponseEntity.ok(googleService.getAllFiles());
+	@GetMapping("getAllFilesList")
+	public ResponseEntity<?> getAllFilesList() throws IOException, GeneralSecurityException {
+		return ResponseEntity.ok(googleService.getAllFilesList());
 	}
+	
+	
 }

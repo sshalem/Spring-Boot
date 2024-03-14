@@ -87,8 +87,12 @@ public class GoogleService {
 			 * create(File content, AbstractInputStreamContent mediaContent)
 			 */
 			// This saves the file in google drive
-			File uploadedFile = drive.files().create(googleFileMetaData, inputStreamContent).setFields("id").execute();
-
+			File uploadedFile = drive
+					.files()					
+					.create(googleFileMetaData, inputStreamContent)					
+					.setFields("id")					
+					.execute();
+			
 			String imageUrl = "https://drive.google.com/uc?export=view&id=" + uploadedFile.getId();
 			System.out.println("IMAGE URL: " + imageUrl);
 
@@ -102,7 +106,7 @@ public class GoogleService {
 	}
 
 	
-	public List<File> getAllFiles() throws GeneralSecurityException, IOException {		
+	public List<File> getAllFilesList() throws GeneralSecurityException, IOException {		
 		Drive driveInstance = createDriveInstance();		
 		FileList fileList = driveInstance.files().list().execute();		
 		List<File> files = fileList.getFiles();
