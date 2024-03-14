@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.google.drive.api</groupId>
-	<artifactId>google-drive-api</artifactId>
+	<artifactId>v2-google-drive-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>google-drive-api</name>
+	<name>v2-google-drive-api</name>
 	<description>Demo React Table</description>
 	<properties>
 		<java.version>17</java.version>
