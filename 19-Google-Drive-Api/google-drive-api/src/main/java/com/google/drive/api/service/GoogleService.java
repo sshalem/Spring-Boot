@@ -118,7 +118,4 @@ public class GoogleService {
 
 		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).build();
 	}
-
-
-	
 }
