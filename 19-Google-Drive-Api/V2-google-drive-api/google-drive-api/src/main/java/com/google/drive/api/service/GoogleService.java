@@ -106,10 +106,17 @@ public class GoogleService {
 
 	
 	public List<File> getAllFilesList() throws GeneralSecurityException, IOException {		
-		Drive driveInstance = createDriveInstance();		
-		FileList fileList = driveInstance.files().list().execute();		
+		Drive drive = createDriveInstance();		
+		FileList fileList = drive.files().list().execute();		
 		List<File> files = fileList.getFiles();
 		return files;
+	}
+	
+	
+	public void downloadFile() throws GeneralSecurityException, IOException {		
+		Drive drive = createDriveInstance();	
+		
+		
 	}
 	
 	private Drive createDriveInstance() throws GeneralSecurityException, IOException {
