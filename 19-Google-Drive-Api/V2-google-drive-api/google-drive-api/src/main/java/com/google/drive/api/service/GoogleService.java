@@ -22,7 +22,6 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 
@@ -35,15 +34,19 @@ public class GoogleService {
 
 	private Set<String> SCOPES = Collections.singleton(DriveScopes.DRIVE);
 
-	/**
+	/**************************************************************
 	 * get the directory where the the credentials.json resides
-	 */
+	 **************************************************************/
 	private static String getPathToGoogleCredentials() {
 		String currentDirectory = System.getProperty("user.dir");
 		Path filePath = Paths.get(currentDirectory, "credentials.json");
 		return filePath.toString();
 	}
-
+	
+	
+	/*************************************
+	 * upload File To Drive operation
+	 *************************************/
 	public String uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 
 		try {
@@ -101,23 +104,40 @@ public class GoogleService {
 			System.out.println(e.getMessage());
 			return e.getMessage();
 		}
-
 	}
 
-	
-	public List<File> getAllFilesList() throws GeneralSecurityException, IOException {		
-		Drive drive = createDriveInstance();		
-		FileList fileList = drive.files().list().execute();		
-		List<File> files = fileList.getFiles();
+
+	/**********************
+	 * get List Of Files
+	 **********************/
+	public List<File> getListOfFiles() throws GeneralSecurityException, IOException {		
+		Drive drive = createDriveInstance();
+		
+		// I can set the fields according the Google Drive API Rest overview
+		// https://developers.google.com/drive/api/reference/rest/v3/files
+		
+		//Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
+		List<File> files = drive.files().list().execute().getFiles();	
+		
+		// This will return to FrontEnd a JSON with field : id
+		// List<File> files = drive.files().list().setFields("files(id)").execute().getFiles();	
+				
+		// This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
+		// List<File> files = drive.files().list().setFields("files(id,kind,name,mimeType,thumbnailLink,originalFilename)").execute().getFiles();
+		
+		files.forEach(file -> System.out.println(file));
+		
 		return files;
 	}
 	
-	
-	public void downloadFile() throws GeneralSecurityException, IOException {		
+	/********************
+	 * Delete operation
+	 ********************/	
+	public void deleteFile(String fileId) throws GeneralSecurityException, IOException {		
 		Drive drive = createDriveInstance();	
-		
-		
+		drive.files().delete(fileId).execute();		
 	}
+	
 	
 	private Drive createDriveInstance() throws GeneralSecurityException, IOException {
 
@@ -126,6 +146,7 @@ public class GoogleService {
 		HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(googleCredentials);
 		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 
-		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).build();
+		// setApplicationName - same as the name I gave in GCP console "spring-google-drive-upload"
+		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).setApplicationName("spring-google-drive-upload").build();
 	}
 }

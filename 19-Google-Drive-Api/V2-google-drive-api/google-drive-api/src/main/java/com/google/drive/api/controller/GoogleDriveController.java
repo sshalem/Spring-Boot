@@ -6,7 +6,9 @@ import java.security.GeneralSecurityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,10 +38,16 @@ public class GoogleDriveController {
 		}
 	}
 
-	@GetMapping("getAllFilesList")
-	public ResponseEntity<?> getAllFilesList() throws IOException, GeneralSecurityException {
-		return ResponseEntity.ok(googleService.getAllFilesList());
+	@GetMapping("getListOfFiles")
+	public ResponseEntity<?> getListOfFiles() throws IOException, GeneralSecurityException {
+		return ResponseEntity.ok(googleService.getListOfFiles());
 	}
 	
+	
+	@DeleteMapping("deleteFile/{fileId}")
+	public ResponseEntity<?> deleteFile(@PathVariable("fileId") String fileId) throws IOException, GeneralSecurityException {
+		googleService.deleteFile(fileId);
+		return ResponseEntity.ok().build();
+	}
 	
 }
