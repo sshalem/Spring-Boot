@@ -25,7 +25,6 @@ import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.drive.api.model.Response;
 
 @Service
 public class GoogleService {
@@ -45,7 +44,7 @@ public class GoogleService {
 		return filePath.toString();
 	}
 
-	public Response uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
+	public String uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 
 		try {
 			/**
@@ -96,11 +95,11 @@ public class GoogleService {
 			String imageUrl = "https://drive.google.com/uc?export=view&id=" + uploadedFile.getId();
 			System.out.println("IMAGE URL: " + imageUrl);
 
-			return Response.builder().setStatus(200).setMessage("Image Uploaded To Drive").setUrl(imageUrl).build();
+			return imageUrl;
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return Response.builder().setStatus(500).setMessage(e.getMessage()).build();
+			return e.getMessage();
 		}
 
 	}
