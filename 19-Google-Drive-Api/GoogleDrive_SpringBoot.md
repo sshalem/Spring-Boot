@@ -244,6 +244,8 @@ In mvnrepository search for
 2. google client api
 3. google auth library
 
+Use the following version , which are [compatible with each other.](#-)
+
 ```xml
 		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
 		<dependency>
@@ -251,12 +253,11 @@ In mvnrepository search for
 			<artifactId>google-api-services-drive</artifactId>
 			<version>v3-rev197-1.25.0</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
-			<version>2.3.0</version>
+			<version>1.32.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.google.auth/google-auth-library-oauth2-http -->
@@ -265,6 +266,7 @@ In mvnrepository search for
 			<artifactId>google-auth-library-oauth2-http</artifactId>
 			<version>1.23.0</version>
 		</dependency>
+
 ```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
