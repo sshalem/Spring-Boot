@@ -1,0 +1,124 @@
+package com.google.drive.api.service;
+
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.InputStreamContent;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.drive.Drive;
+import com.google.api.services.drive.DriveScopes;
+import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.FileList;
+import com.google.auth.http.HttpCredentialsAdapter;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.drive.api.model.Response;
+
+@Service
+public class GoogleService {
+
+	private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+
+	private static final String CREDENTIALS_FILE_KEY_PATH = getPathToGoogleCredentials();
+
+	private Set<String> SCOPES = Collections.singleton(DriveScopes.DRIVE);
+
+	/**
+	 * get the directory where the the credentials.json resides
+	 */
+	private static String getPathToGoogleCredentials() {
+		String currentDirectory = System.getProperty("user.dir");
+		Path filePath = Paths.get(currentDirectory, "credentials.json");
+		return filePath.toString();
+	}
+
+	public Response uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
+
+		try {
+			/**
+			 * this folderId is taken from google drive account where I created the
+			 * "files_upload" folder.
+			 * https://drive.google.com/drive/folders/1tjW0MfAqpG6aggXTuNSAyu7bZxCqkcy7 . I
+			 * take only the id which is : 1tjW0MfAqpG6aggXTuNSAyu7bZxCqkcy7
+			 */
+			String folderId = "1tjW0MfAqpG6aggXTuNSAyu7bZxCqkcy7";
+
+			Drive drive = createDriveInstance();
+
+			/**
+			 * File - used from from package of com.google.api.services.drive.model.File
+			 * File - and not from Java.io package
+			 */
+			File googleFileMetaData = new File();
+
+			googleFileMetaData.setName(multipartFile.getOriginalFilename());
+			googleFileMetaData.setParents(Collections.singletonList(folderId));
+
+			/**
+			 * File - used from "com.google.api.services.drive.model.File"
+			 * AbstractInputStreamContent - used from
+			 * "com.google.api.client.http.AbstractInputStreamContent" create(File content,
+			 * AbstractInputStreamContent mediaContent)
+			 */
+			String contentType = multipartFile.getContentType();
+
+			// first get the bytes[] of the multipartFile and place them in a
+			// ByteArrayInputStream
+			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(multipartFile.getBytes());
+
+			InputStreamContent inputStreamContent = new InputStreamContent(contentType, byteArrayInputStream);
+
+			/**
+			 * File - used from "com.google.api.services.drive.model.File"
+			 * AbstractInputStreamContent - used from "com.google.api.client.http.AbstractInputStreamContent" 
+			 * create(File content, AbstractInputStreamContent mediaContent)
+			 */
+			// This saves the file in google drive
+			File uploadedFile = drive.files().create(googleFileMetaData, inputStreamContent).setFields("id").execute();
+
+			String imageUrl = "https://drive.google.com/uc?export=view&id=" + uploadedFile.getId();
+			System.out.println("IMAGE URL: " + imageUrl);
+
+			return Response.builder().setStatus(200).setMessage("Image Uploaded To Drive").setUrl(imageUrl).build();
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Response.builder().setStatus(500).setMessage(e.getMessage()).build();
+		}
+
+	}
+
+	
+	public List<File> getAllFiles() throws GeneralSecurityException, IOException {		
+		Drive driveInstance = createDriveInstance();		
+		FileList fileList = driveInstance.files().list().execute();		
+		List<File> files = fileList.getFiles();
+		return files;
+	}
+	
+	private Drive createDriveInstance() throws GeneralSecurityException, IOException {
+
+		FileInputStream fileInputStream = new FileInputStream(CREDENTIALS_FILE_KEY_PATH);
+		GoogleCredentials googleCredentials = GoogleCredentials.fromStream(fileInputStream).createScoped(SCOPES);
+		HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(googleCredentials);
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+
+		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).build();
+	}
+
+
+	
+}
