@@ -283,7 +283,10 @@ Use the following version , which are [compatible with each other.](#-)
 
 
 ```java
+package com.google.drive.api.service;
+
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -292,6 +295,7 @@ import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -307,6 +311,7 @@ import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.drive.api.model.ResponseData;
 
 @Service
 public class GoogleService {
@@ -399,18 +404,46 @@ public class GoogleService {
 		// I can set the fields according the Google Drive API Rest overview
 		// https://developers.google.com/drive/api/reference/rest/v3/files
 		
-		//Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
+		// (1) Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
 		List<File> files = drive.files().list().execute().getFiles();	
 		
-		// This will return to FrontEnd a JSON with field : id
+		// (2) This will return to FrontEnd a JSON with field : id
 		// List<File> files = drive.files().list().setFields("files(id)").execute().getFiles();	
 				
-		// This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
+		// (3) This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
 		// List<File> files = drive.files().list().setFields("files(id,kind,name,mimeType,thumbnailLink,originalFilename)").execute().getFiles();
 		
 		files.forEach(file -> System.out.println(file));
 		
 		return files;
+	}
+	
+	/******************************************
+	 * Download file from google drive 
+	 ******************************************/
+	public ResponseData downloadFileFromGoogleDrive(String fileId) throws GeneralSecurityException, IOException {	
+		
+		Drive drive = createDriveInstance();		
+		
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();		
+		drive.files().get(fileId).executeMediaAndDownloadTo(byteArrayOutputStream);		
+				
+		// I use the filter in order to get the mimeType and the name of the file I want to download
+		List<File> list = drive
+				.files()
+				.list()
+				.execute()
+				.getFiles()
+				.stream().filter(file -> file.getId().equals(fileId)).collect(Collectors.toList());
+		
+		System.out.println(list);
+		
+		return ResponseData
+				.builder()
+				.setStream(byteArrayOutputStream)
+				.setMimeType(list.get(0).getMimeType())
+				.setFileName(list.get(0).getName())
+				.build();
 	}
 	
 	/******************************************
@@ -435,6 +468,98 @@ public class GoogleService {
 }
 ```
 
+ResponseData 
+
+```java
+package com.google.drive.api.model;
+
+import java.io.ByteArrayOutputStream;
+
+public class ResponseData {
+
+	private ByteArrayOutputStream byteArrayOutputStream;
+	private String mimeType;
+	private String fileName;
+
+	public ResponseData() {
+		super();
+	}
+
+	private ResponseData(ResponseDataBuilder responseDataBuilder) {
+		super();
+		this.byteArrayOutputStream = responseDataBuilder.byteArrayOutputStream;
+		this.mimeType = responseDataBuilder.mimeType;
+		this.fileName = responseDataBuilder.fileName;
+	}
+
+	public ByteArrayOutputStream getByteArrayOutputStream() {
+		return byteArrayOutputStream;
+	}
+
+	public void setByteArrayOutputStream(ByteArrayOutputStream byteArrayOutputStream) {
+		this.byteArrayOutputStream = byteArrayOutputStream;
+	}
+
+	public String getMimeType() {
+		return mimeType;
+	}
+
+	public void setMimeType(String mimeType) {
+		this.mimeType = mimeType;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	@Override
+	public String toString() {
+		return "ResponseData [byteArrayOutputStream=" + byteArrayOutputStream + ", mimeType=" + mimeType + ", fileName="
+				+ fileName + "]";
+	}
+
+	public static ResponseDataBuilder builder() {
+		return new ResponseDataBuilder();
+	}
+
+	/*****************
+	 * Builder class
+	 *****************/
+
+	public static class ResponseDataBuilder {
+
+		private ByteArrayOutputStream byteArrayOutputStream;
+		private String mimeType;
+		private String fileName;
+
+		public ResponseDataBuilder() {
+		}
+
+		public ResponseDataBuilder setStream(ByteArrayOutputStream byteArrayOutputStream) {
+			this.byteArrayOutputStream = byteArrayOutputStream;
+			return this;
+		}
+
+		public ResponseDataBuilder setMimeType(String mimeType) {
+			this.mimeType = mimeType;
+			return this;
+		}
+
+		public ResponseDataBuilder setFileName(String fileName) {
+			this.fileName = fileName;
+			return this;
+		}
+
+		public ResponseData build() {
+			return new ResponseData(this);
+		}
+	}
+}
+```
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
@@ -447,11 +572,15 @@ public class GoogleService {
 <img src="https://img.shields.io/badge/- 4.4. controller_layer %20- green" height=30px>
 
 ```java
+package com.google.drive.api.controller;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -462,15 +591,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.drive.api.model.ResponseData;
 import com.google.drive.api.service.GoogleService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class GoogleDriveController {
 
 	@Autowired
 	private GoogleService googleService;
 
+		
 	@PostMapping("/uploadToGoogleDrive")
 	public ResponseEntity<?> fileUpload(@RequestParam("image") MultipartFile multipartFile) {
 		if (multipartFile.isEmpty()) {
@@ -485,18 +616,30 @@ public class GoogleDriveController {
 		}
 	}
 
-	@GetMapping("getListOfFiles")
+	@GetMapping(path = "/download/{fileId}")
+	public ResponseEntity<?> downloadFileFromDrive(@PathVariable("fileId") String fileId) throws GeneralSecurityException, IOException{
+		
+		ResponseData responseData = googleService.downloadFileFromGoogleDrive(fileId);
+		
+		byte[] byteArray = responseData.getByteArrayOutputStream().toByteArray();
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(responseData.getMimeType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + responseData.getFileName())
+				.body(byteArray);
+	}
+	
+	@GetMapping("/getListOfFiles")
 	public ResponseEntity<?> getListOfFiles() throws IOException, GeneralSecurityException {
 		return ResponseEntity.ok(googleService.getListOfFiles());
 	}
 	
 	
-	@DeleteMapping("deleteFile/{fileId}")
+	@DeleteMapping("/deleteFile/{fileId}")
 	public ResponseEntity<?> deleteFile(@PathVariable("fileId") String fileId) throws IOException, GeneralSecurityException {
 		googleService.deleteFile(fileId);
 		return ResponseEntity.ok().build();
-	}
-	
+	}	
 }
 ```
 
