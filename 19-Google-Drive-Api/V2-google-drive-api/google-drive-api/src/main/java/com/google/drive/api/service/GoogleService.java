@@ -1,6 +1,7 @@
 package com.google.drive.api.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -9,6 +10,7 @@ import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +26,7 @@ import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.drive.api.model.ResponseData;
 
 @Service
 public class GoogleService {
@@ -116,18 +119,34 @@ public class GoogleService {
 		// I can set the fields according the Google Drive API Rest overview
 		// https://developers.google.com/drive/api/reference/rest/v3/files
 		
-		//Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
+		// (1) Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
 		List<File> files = drive.files().list().execute().getFiles();	
 		
-		// This will return to FrontEnd a JSON with field : id
+		// (2) This will return to FrontEnd a JSON with field : id
 		// List<File> files = drive.files().list().setFields("files(id)").execute().getFiles();	
 				
-		// This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
+		// (3) This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
 		// List<File> files = drive.files().list().setFields("files(id,kind,name,mimeType,thumbnailLink,originalFilename)").execute().getFiles();
 		
 		files.forEach(file -> System.out.println(file));
 		
 		return files;
+	}
+	
+	/******************************************
+	 * Download file from google drive 
+	 ******************************************/
+	public ResponseData downloadFileFromGoogleDrive(String fileId) throws GeneralSecurityException, IOException {				
+		Drive drive = createDriveInstance();		
+		
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();		
+		drive.files().get(fileId).executeMediaAndDownloadTo(byteArrayOutputStream);		
+				
+		List<File> list = drive.files().list().execute().getFiles().stream().filter(file -> file.getId().equals(fileId)).collect(Collectors.toList());
+		
+		System.out.println(list);
+		
+		return ResponseData.builder().setStream(byteArrayOutputStream).setMimeType(list.get(0).getMimeType()).setFileName(list.get(0).getName()).build();
 	}
 	
 	/******************************************

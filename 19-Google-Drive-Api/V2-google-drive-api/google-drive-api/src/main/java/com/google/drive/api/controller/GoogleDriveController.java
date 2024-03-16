@@ -1,10 +1,13 @@
 package com.google.drive.api.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.drive.api.model.ResponseData;
 import com.google.drive.api.service.GoogleService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class GoogleDriveController {
 
 	@Autowired
 	private GoogleService googleService;
 
+		
 	@PostMapping("/uploadToGoogleDrive")
 	public ResponseEntity<?> fileUpload(@RequestParam("image") MultipartFile multipartFile) {
 		if (multipartFile.isEmpty()) {
@@ -38,13 +43,25 @@ public class GoogleDriveController {
 		}
 	}
 
-	@GetMapping("getListOfFiles")
+	@GetMapping(path = "/download/{fileId}")
+	public ResponseEntity<?> downloadFileFromDrive(@PathVariable("fileId") String fileId) throws GeneralSecurityException, IOException{
+		ResponseData responseData = googleService.downloadFileFromGoogleDrive(fileId);
+		
+		byte[] byteArray = responseData.getByteArrayOutputStream().toByteArray();
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(responseData.getMimeType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + responseData.getFileName())
+				.body(byteArray);
+	}
+	
+	@GetMapping("/getListOfFiles")
 	public ResponseEntity<?> getListOfFiles() throws IOException, GeneralSecurityException {
 		return ResponseEntity.ok(googleService.getListOfFiles());
 	}
 	
 	
-	@DeleteMapping("deleteFile/{fileId}")
+	@DeleteMapping("/deleteFile/{fileId}")
 	public ResponseEntity<?> deleteFile(@PathVariable("fileId") String fileId) throws IOException, GeneralSecurityException {
 		googleService.deleteFile(fileId);
 		return ResponseEntity.ok().build();
