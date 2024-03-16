@@ -327,9 +327,9 @@ public class GoogleService {
 	}
 	
 	
-	/*************************************
-	 * upload File To Drive operation
-	 *************************************/
+	/*****************************************
+	 * upload File To google Drive operation
+	 *****************************************/
 	public String uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 
 		try {
@@ -390,9 +390,9 @@ public class GoogleService {
 	}
 
 
-	/**********************
-	 * get List Of Files
-	 **********************/
+	/******************************************
+	 * get List Of Files from google drive
+	 ******************************************/
 	public List<File> getListOfFiles() throws GeneralSecurityException, IOException {		
 		Drive drive = createDriveInstance();
 		
@@ -413,9 +413,9 @@ public class GoogleService {
 		return files;
 	}
 	
-	/********************
-	 * Delete operation
-	 ********************/	
+	/******************************************
+	 * Delete file from google drive operation
+	 ******************************************/	
 	public void deleteFile(String fileId) throws GeneralSecurityException, IOException {		
 		Drive drive = createDriveInstance();	
 		drive.files().delete(fileId).execute();		
