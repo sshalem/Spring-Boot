@@ -1,6 +1,5 @@
 package com.google.drive.api.controller;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
