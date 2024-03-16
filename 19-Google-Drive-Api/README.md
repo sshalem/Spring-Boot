@@ -283,8 +283,6 @@ Use the following version , which are [compatible with each other.](#-)
 
 
 ```java
-package com.google.drive.api.service;
-
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -307,10 +305,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.drive.api.model.Response;
 
 @Service
 public class GoogleService {
@@ -321,16 +317,20 @@ public class GoogleService {
 
 	private Set<String> SCOPES = Collections.singleton(DriveScopes.DRIVE);
 
-	/**
+	/**************************************************************
 	 * get the directory where the the credentials.json resides
-	 */
+	 **************************************************************/
 	private static String getPathToGoogleCredentials() {
 		String currentDirectory = System.getProperty("user.dir");
 		Path filePath = Paths.get(currentDirectory, "credentials.json");
 		return filePath.toString();
 	}
-
-	public Response uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
+	
+	
+	/*************************************
+	 * upload File To Drive operation
+	 *************************************/
+	public String uploadFileToDrive(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 
 		try {
 			/**
@@ -372,27 +372,55 @@ public class GoogleService {
 			 * create(File content, AbstractInputStreamContent mediaContent)
 			 */
 			// This saves the file in google drive
-			File uploadedFile = drive.files().create(googleFileMetaData, inputStreamContent).setFields("id").execute();
-
+			File uploadedFile = drive
+					.files()					
+					.create(googleFileMetaData, inputStreamContent)					
+					.setFields("id")					
+					.execute();
+			
 			String imageUrl = "https://drive.google.com/uc?export=view&id=" + uploadedFile.getId();
 			System.out.println("IMAGE URL: " + imageUrl);
 
-			return Response.builder().setStatus(200).setMessage("Image Uploaded To Drive").setUrl(imageUrl).build();
+			return imageUrl;
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return Response.builder().setStatus(500).setMessage(e.getMessage()).build();
+			return e.getMessage();
 		}
-
 	}
 
-	
-	public List<File> getAllFiles() throws GeneralSecurityException, IOException {		
-		Drive driveInstance = createDriveInstance();		
-		FileList fileList = driveInstance.files().list().execute();		
-		List<File> files = fileList.getFiles();
+
+	/**********************
+	 * get List Of Files
+	 **********************/
+	public List<File> getListOfFiles() throws GeneralSecurityException, IOException {		
+		Drive drive = createDriveInstance();
+		
+		// I can set the fields according the Google Drive API Rest overview
+		// https://developers.google.com/drive/api/reference/rest/v3/files
+		
+		//Since I don't use setFields() , thus,  This will return to FrontEnd a JSON with following fields : id, kind, mimeType, name
+		List<File> files = drive.files().list().execute().getFiles();	
+		
+		// This will return to FrontEnd a JSON with field : id
+		// List<File> files = drive.files().list().setFields("files(id)").execute().getFiles();	
+				
+		// This will return to FrontEnd a JSON with field : id, kind, name, mimeType, thumbnailLink, originalFilename		 	
+		// List<File> files = drive.files().list().setFields("files(id,kind,name,mimeType,thumbnailLink,originalFilename)").execute().getFiles();
+		
+		files.forEach(file -> System.out.println(file));
+		
 		return files;
 	}
+	
+	/********************
+	 * Delete operation
+	 ********************/	
+	public void deleteFile(String fileId) throws GeneralSecurityException, IOException {		
+		Drive drive = createDriveInstance();	
+		drive.files().delete(fileId).execute();		
+	}
+	
 	
 	private Drive createDriveInstance() throws GeneralSecurityException, IOException {
 
@@ -401,67 +429,13 @@ public class GoogleService {
 		HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(googleCredentials);
 		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 
-		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).build();
+		// setApplicationName - same as the name I gave in GCP console "spring-google-drive-upload"
+		return new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, requestInitializer).setApplicationName("spring-google-drive-upload").build();
 	}
 }
 ```
 
 
-```java
-public class Response {
-
-	private int status;
-	private String message;
-	private String url;
-
-	public Response() {
-	}
-
-	private Response(Builder builder) {
-		this.status = builder.status;
-		this.message = builder.message;
-		this.url = builder.url;
-	}
-
-	G/S/ToString
-
-	public static Builder builder() {
-		return new Builder();
-	}
-
-	// Internal Builder class
-	
-	public static class Builder {
-
-		private int status;
-		private String message;
-		private String url;
-
-		public Builder() {
-			super();
-		}
-
-		public Builder setStatus(int status) {
-			this.status = status;
-			return this;
-		}
-
-		public Builder setMessage(String message) {
-			this.message = message;
-			return this;
-		}
-
-		public Builder setUrl(String url) {
-			this.url = url;
-			return this;
-		}
-
-		public Response build() {
-			return new Response(this);
-		}
-	}
-}
-```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
@@ -473,15 +447,15 @@ public class Response {
 <img src="https://img.shields.io/badge/- 4.4. controller_layer %20- green" height=30px>
 
 ```java
-package com.google.drive.api.controller;
-
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -511,10 +485,18 @@ public class GoogleDriveController {
 		}
 	}
 
-	@GetMapping("/getAllFiles")
-	public ResponseEntity<?> sample() throws IOException, GeneralSecurityException {
-		return ResponseEntity.ok(googleService.getAllFiles());
+	@GetMapping("getListOfFiles")
+	public ResponseEntity<?> getListOfFiles() throws IOException, GeneralSecurityException {
+		return ResponseEntity.ok(googleService.getListOfFiles());
 	}
+	
+	
+	@DeleteMapping("deleteFile/{fileId}")
+	public ResponseEntity<?> deleteFile(@PathVariable("fileId") String fileId) throws IOException, GeneralSecurityException {
+		googleService.deleteFile(fileId);
+		return ResponseEntity.ok().build();
+	}
+	
 }
 ```
 
