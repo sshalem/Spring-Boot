@@ -143,11 +143,22 @@ public class GoogleService {
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();		
 		drive.files().get(fileId).executeMediaAndDownloadTo(byteArrayOutputStream);		
 				
-		List<File> list = drive.files().list().execute().getFiles().stream().filter(file -> file.getId().equals(fileId)).collect(Collectors.toList());
+		// I use the filter in order to get the mimeType and the name of the file I want to download
+		List<File> list = drive
+				.files()
+				.list()
+				.execute()
+				.getFiles()
+				.stream().filter(file -> file.getId().equals(fileId)).collect(Collectors.toList());
 		
 		System.out.println(list);
 		
-		return ResponseData.builder().setStream(byteArrayOutputStream).setMimeType(list.get(0).getMimeType()).setFileName(list.get(0).getName()).build();
+		return ResponseData
+				.builder()
+				.setStream(byteArrayOutputStream)
+				.setMimeType(list.get(0).getMimeType())
+				.setFileName(list.get(0).getName())
+				.build();
 	}
 	
 	/******************************************
