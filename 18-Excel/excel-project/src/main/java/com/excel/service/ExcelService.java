@@ -4,9 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -123,7 +126,7 @@ public class ExcelService {
 		 * File file = ResourceUtils.getFile("classpath:temp.xlsx");
 		 */
 		
-		File file = new File("temp.xlsx");
+		File file = new File("RQ-8011.xlsx");
 		
         if(file.isFile() && file.exists()) {
             Log.green("openworkbook.xlsx file open successfully.");
@@ -144,12 +147,18 @@ public class ExcelService {
         // by its name  :  XSSFSheet sheet = workbook.getSheet("Courses Info");
         // by its index :  XSSFSheet sheet = workbook.getSheetAt(0) : this means get the first sheet         
         XSSFSheet sheet = workbook.getSheetAt(0);
-
-        sheet.forEach(row -> {
-        	row.forEach(cell -> {
-        		Log.green(cell);
-        	});
-        });
+     
+        for (int i = 5; i < sheet.getPhysicalNumberOfRows(); i++) {
+        	XSSFCell cell_4 = sheet.getRow(i).getCell(4);
+        	XSSFCell cell_10 = sheet.getRow(i).getCell(10);
+        	LocalDateTime cell_4_Value = cell_4.getLocalDateTimeCellValue();
+        	
+        	int second = cell_4_Value.getSecond();
+        	int minute = cell_4_Value.getMinute();
+        	
+			String cell_10_Value = cell_10.getStringCellValue();
+			Log.yellow(cell_4_Value + " , " + " sec : " + second + " ,  min :" + minute + " , " + cell_10_Value.substring(26, 31));			
+		}
         
         workbook.close();
 
