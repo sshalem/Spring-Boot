@@ -1,6 +1,11 @@
 @echo off
 echo _
 echo _
+echo _
+echo _
+echo _
+echo _
+echo _
 echo 		*****************************
 echo 		* step 1 : git pull --all   *
 echo 		***************************** 
@@ -10,6 +15,11 @@ git pull --all
 ::pause
 ::cls
 @echo off
+echo _
+echo _
+echo _
+echo _
+echo _
 echo _
 echo _
 echo 		*************************
@@ -23,6 +33,11 @@ git status
 @echo off
 echo _
 echo _
+echo _
+echo _
+echo _
+echo _
+echo _
 echo 		****************************
 echo 		* step 3 : git add --all   *
 echo 		**************************** 
@@ -34,6 +49,11 @@ git add --all
 @echo off
 echo _
 echo _
+echo _
+echo _
+echo _
+echo _
+echo _
 echo 		*************************
 echo 		* step 4 :  git status  *
 echo 		************************* 
@@ -43,6 +63,11 @@ git status
 pause
 ::cls
 @echo off
+echo _
+echo _
+echo _
+echo _
+echo _
 echo 		*********************************************
 echo 		*	%DATE% , %TIME%							*
 echo 		*********************************************
@@ -56,12 +81,22 @@ git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"
 @echo off
 echo _
 echo _
+echo _
+echo _
+echo _
+echo _
+echo _
 echo 		*******************************
 echo 		* step 6 :  git push --all    *						
 echo 		*******************************
 @echo on
 git push --all
 @echo off
+echo _
+echo _
+echo _
+echo _
+echo _
 echo _
 echo _
 cmd /k echo .......completed git update successfuly.......
