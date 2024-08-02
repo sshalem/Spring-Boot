@@ -759,8 +759,8 @@ Thus, In order to add logging file in Spring boot app ,so I could diagnose/analy
 
 In `application.properties` add the follwoing lines
 
-```java
-logging.file.name=/home/logs/ShabtayShalem.log
+```js
+logging.file.name=/home/logs/app.log
 ```
 
 
