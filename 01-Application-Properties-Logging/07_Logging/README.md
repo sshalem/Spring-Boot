@@ -757,7 +757,22 @@ If both properties are set:
 
 Thus, In order to add logging file in Spring boot app ,so I could diagnose/analyse logging of my app .</br>
 
-In `application.properties` add the follwoing lines
+There are 4 possible options with logging file on production server
+
+![image](https://github.com/user-attachments/assets/a251b3a9-895a-4ca2-9a4a-5df3c0b284be)
+
+
+### [scenario 1: `none`](#-) 
+
+If I don't define a logging file in `application.properties` the logging will be logged only to console. </br>
+
+### Question : </br>
+If I upload the app to production server, In this situation , where can I find the console log of the app
+
+### Answer : </br>
+I can find it in the file `catalina.out` located in directory `/opt/tomcat/logs` 
+
+### [scenario 2: logging.file.name only](#-) 
 
 ```js
 logging.file.name=/home/logs/app.log
