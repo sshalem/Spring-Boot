@@ -774,9 +774,28 @@ I can find it in the file `catalina.out` located in directory `/opt/tomcat/logs`
 
 ### [scenario 2: logging.file.name only](#-) 
 
+Importnat note, there are several options where to find the `log` file:
+1. If Using `Jenkins` to upload Spring boot app (`War file`) , thus file will be located at jenkins directory
+
 ```js
-logging.file.name=/home/logs/app.log
+logging.file.name=__Shabtay_Shalem.log
 ```
 
+I had some problems to find the file this way , thus , I used the command in linux server:
+ 
+```js
+find / -iname '__Shabtay*'
+```
+
+Eventually I got the path of the file ,
+
+![image](https://github.com/user-attachments/assets/3d019efe-d8d3-4d16-ab06-8b9b1088879d)
+
+
+### [scenario 2: logging.file.name only with relative/absolute ](#-) 
+
+```js
+logging.file.name=/home/logs/CiCD.log
+```
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
