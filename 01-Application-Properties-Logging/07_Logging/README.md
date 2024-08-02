@@ -9,7 +9,7 @@
 |  1  |[Logback (SLF4J) ](#Logback_SLF4J)   | 
 |  2  |[logging file](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#features.logging)  |   
 |  3  |[Log.java](#log)  |  
-|  4  |[](#)  |  
+|  4  |[Spring logging file on linux server](#4_logging_file_on_linux_server)  |  
 
 There are several Logging API we can use </br>
 From spring 2.7.6 documentation : [spring-boot/docs/2.7.6/](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#features.logging)
@@ -738,8 +738,30 @@ public class Log {
 ------------------------------------------------------------------------------------
 
 
-###### 
+###### 4_logging_file_on_linux_server
 
-<img src="https://img.shields.io/badge/- X %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 4. Spring boot logging file on linux server %20-blue" height=40px>
+
+### [File Output](#-)
+
+[refernce - logging spring boot app 3.3.2](https://docs.spring.io/spring-boot/reference/features/logging.html)
+
+By default, Spring Boot logs only to the console and does not write log files.</br>
+If you want to write log files in addition to the console output, you need to set a :
+- `logging.file.name`
+- or `logging.file.path` property (for example, in your application.properties).
+
+If both properties are set:
+- `logging.file.path` is ignored
+- and only `logging.file.name` is used.
+
+Thus, In order to add logging file in Spring boot app ,so I could diagnose/analyse logging of my app .</br>
+
+In `application.properties` add the follwoing lines
+
+```java
+logging.file.name=/home/logs/ShabtayShalem.log
+```
+
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
