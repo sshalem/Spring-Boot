@@ -7,7 +7,8 @@
 |     |  Subject           |
 |:---:|:------------------------------| 
 |  1  |[Logback (SLF4J) ](#Logback_SLF4J)   | 
-|  2  |[logging file](https://docs.spring.io/spring-boot/docs/2.7.6/reference/htmlsingle/#features.logging)  |   
+|  2  |[Log4j2](https://howtodoinjava.com/log4j2/log4j2-tutorial/)  |  
+|     |2.1. [Log4j2 another example](https://howtodoinjava.com/spring-boot/spring-boot-log4j2-config/)  |  
 |  3  |[Log.java](#log)  |  
 |  4  |[Spring logging file on linux server](#4_logging_file_on_linux_server)  |  
 
