@@ -10,6 +10,7 @@
 |  2  |[Log4j2 tutorial](https://howtodoinjava.com/log4j2/log4j2-tutorial/)  |  
 |     |2.1. [Log4j2 config with xml](https://howtodoinjava.com/spring-boot/spring-boot-log4j2-config/)  |  
 |     |2.2. [Log4j2 config with properties](https://howtodoinjava.com/log4j2/log4j2-properties-example/)  |  
+|     |2.3. [Log4j2 config with xml geeks4geeks](https://www.geeksforgeeks.org/how-to-configure-log4j-2-logging-in-spring-boot/)  |  
 |  3  |[Log.java](#log)  |  
 |  4  |[Spring logging file on linux server](#4_logging_file_on_linux_server)  |  
 
