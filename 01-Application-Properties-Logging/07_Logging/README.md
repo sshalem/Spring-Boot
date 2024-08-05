@@ -84,7 +84,8 @@ This line of logger creates same format of logging in spring console:
 logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS}  %clr(%5p) %clr(${PID:- }){magenta}  --- [%15.15t]  %cyan(%-40.40logger{39}) : %msg %n
 
 # In a more readable way:
-logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS}  \
+logging.pattern.console=\
+	%d{dd-MM-yyyy HH:mm:ss.SSS}  \
 	%clr(%5p) \
 	%clr(${PID:- }){magenta}  \
 	--- \
