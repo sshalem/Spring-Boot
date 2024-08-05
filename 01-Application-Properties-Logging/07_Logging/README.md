@@ -125,7 +125,7 @@ logging.pattern.console=\
 
 
 
-### [Config pattern to a file](#-)
+### [logging.pattern.file : config example 1](#-)
 
 ```sql
 logging.file.name=app.log
@@ -141,7 +141,7 @@ This is how it is Viewed in Console & in log file :
  doStuff took input - {} 
 ```
 
-### Another example of logging config
+### [logging.pattern.file : config example 2](#-)
 
 ```
 logging.pattern.file=SYSTEM_%-5level      						\
