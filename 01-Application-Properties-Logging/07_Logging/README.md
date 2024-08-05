@@ -77,11 +77,27 @@ public class LogbackController {
 
 ### [Logging pattern conversion](#-)
 
+I have re-produce the same logging pattern that comes with deafult .</br>
 This line of logger creates same format of logging in spring console:
 
 ```sql
 logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS}  %clr(%5p) %clr(${PID:- }){magenta}  --- [%15.15t]  %cyan(%-40.40logger{39}) : %msg %n
+
+# In a more readable way:
+logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS}  \
+	%clr(%5p) \
+	%clr(${PID:- }){magenta}  \
+	--- \
+	[%15.15t]  \
+	%cyan(%-40.40logger{39}) : %msg %n
 ```
+
+This is how it's shown in console , same as the dafult behaviour :
+
+![image](https://github.com/user-attachments/assets/fd140e49-90e7-404c-99a3-294c096a7ff1)
+
+
+
 
 * logging.pattern.console= 
 * `%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint}` - Date and Time: Millisecond precision and easily sortable.
