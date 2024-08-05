@@ -6,14 +6,8 @@
 
 |     |  Subject           |
 |:---:|:------------------------------| 
-|  1  |[Logback (SLF4J) ](#Logback_SLF4J)   | 
-|  2  |[Log4j2 well explained](https://stackify.com/log4j2-java/)  |  
-|     |2.1. [Log4j2 home page](https://logging.apache.org/log4j/2.x/index.html)  |  
-|     |2.2. [Log4j2 config with xml](https://howtodoinjava.com/log4j2/log4j2-tutorial/)  |  
-|     |2.3. [Log4j2 config with xml](https://howtodoinjava.com/spring-boot/spring-boot-log4j2-config/)  |  
-|     |2.4. [Log4j2 config with properties](https://howtodoinjava.com/log4j2/log4j2-properties-example/)  |  
-|     |2.5. [Log4j2 config with xml geeks4geeks](https://www.geeksforgeeks.org/how-to-configure-log4j-2-logging-in-spring-boot/)  |  
-|     |2.6. [Log4j2 spring boot 3 check dependencies too add](https://medium.com/@bishalf98/log4j2-in-springboot3-095ab6f15763)  |  
+|  1  |[SLF4J or Logback](#Logback_SLF4J)   | 
+|  2  |[Log4j2](#2_log4j2)  |  
 |  3  |[Log.java](#log)  |  
 |  4  |[Spring logging file on linux server](#4_logging_file_on_linux_server)  |  
 
@@ -151,6 +145,27 @@ http://logback.qos.ch/manual/layouts.html#conversionWord
 
 ------------------------------------------------------------------------------------
 
+
+###### 2_log4j2
+
+<img src="https://img.shields.io/badge/- 2. Log4j2 %20-blue" height=40px>
+
+Links
+
+|  2  |[Log4j2 well explained](https://stackify.com/log4j2-java/)  |  
+|     |2.1. [Log4j2 home page](https://logging.apache.org/log4j/2.x/index.html)  |  
+|     |2.2. [Log4j2 config with xml](https://howtodoinjava.com/log4j2/log4j2-tutorial/)  |  
+|     |2.3. [Log4j2 config with xml](https://howtodoinjava.com/spring-boot/spring-boot-log4j2-config/)  |  
+|     |2.4. [Log4j2 config with properties](https://howtodoinjava.com/log4j2/log4j2-properties-example/)  |  
+|     |2.5. [Log4j2 config with xml geeks4geeks](https://www.geeksforgeeks.org/how-to-configure-log4j-2-logging-in-spring-boot/)  |  
+|     |2.6. [Log4j2 spring boot 3 check dependencies too add](https://medium.com/@bishalf98/log4j2-in-springboot3-095ab6f15763)  |  
+
+
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+------------------------------------------------------------------------------------
 
 ###### log
 
