@@ -93,17 +93,26 @@ This is how it is Viewed in Console & in log file :
  SYETEM-INFO  
  [Thread]: http-nio-8080-exec-1 ,  [Method]: getLog , [Package + Class]: com.log.web.LogbackController 
  doStuff took input - {} 
-	 
-19-03-2020 20:35:49.348 
- SYETEM-WARN  
- [Thread]: http-nio-8080-exec-1 ,  [Method]: getLog , [Package + Class]: com.log.web.LogbackController 
- doStuff needed to warn - {} 
-	 
-19-03-2020 20:35:49.348 
- SYETEM-ERROR 
- [Thread]: http-nio-8080-exec-1 ,  [Method]: getLog , [Package + Class]: com.log.web.LogbackController 
- doStuff encountered an error with value - {}
 ```
+
+Another example of logging config
+
+```
+logging.pattern.file=SYSTEM_%-5level      						\
+          %d{HH:mm:ss.SSS  dd-MM-yyyy}\
+          %n[Pkg.Class] : %logger \
+          %n[Method   ] : %M  \
+          [Message]  : %msg %n %n
+```
+
+This is how it is Viewed in Console & in log file 
+
+```
+SYSTEM_INFO       						16:19:36.832  05-08-2024
+[Pkg.Class] : org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener 
+[Method   ] : onApplicationEvent  [Message]  : Condition evaluation unchanged 
+```
+
 
 #### [More word conversions](#-)
 
