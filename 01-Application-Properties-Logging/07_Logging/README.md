@@ -75,16 +75,13 @@ public class LogbackController {
 }
 ```
 
-### [Logging pattern conversion](#-)
+### [Re-Produce Logback console Logging pattern](#-)
 
 From `logback`  [https://logback.qos.ch/manual/layouts.html](https://logback.qos.ch/manual/layouts.html) </br>
 I have re-produce the same logging pattern that comes with deafult .</br>
 This line of logger creates same format of logging in spring console:
 
 ```sql
-logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS}  %clr(%5p) %clr(${PID:- }){magenta}  --- [%15.15t]  %cyan(%-40.40logger{39}) : %msg %n
-
-# In a more readable way:
 logging.pattern.console=\
 	%d{dd-MM-yyyy HH:mm:ss.SSS}  \
 	%clr(%5p) \
@@ -101,7 +98,7 @@ This is how it's shown in console , same as the dafult behaviour :
 
 
 
-* logging.pattern.console= 
+logging.pattern.console exlpained:
 * `%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint}` - Date and Time: Millisecond precision and easily sortable.
 * `%clr(${LOG_LEVEL_PATTERN:-%5p})` - Log Level: ERROR, WARN, INFO, DEBUG, or TRACE.
 * `%clr(${PID:- }){magenta}` - Process ID.
@@ -112,6 +109,8 @@ This is how it's shown in console , same as the dafult behaviour :
 
 As shown in the link above : </br>
 https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+
+Another way to config it:
 
 ```sql
 logging.pattern.console=\
@@ -126,14 +125,10 @@ logging.pattern.console=\
 
 
 
-#### [application.properties](#-)
+### [Config pattern to a file](#-)
 
 ```sql
-logging.level.root=info
-logging.pattern.console=%highlight(%d{dd-MM-yyyy HH:mm:ss.SSS} %n SYETEM-%-5level %n [Thread]: %thread ,  [Method]: %M , [Package + Class]: %logger %n %msg) %n %n
- 
-logging.path=logs
-logging.file=${logging.path}/logging.log
+logging.file.name=app.log
 logging.pattern.file=%d{dd-MM-yyyy HH:mm:ss.SSS} %n SYETEM-%-5level %n [Thread]: %thread ,  [Method]: %M , [Package + Class]: %logger %n %msg %n %n
 ```
 
@@ -146,7 +141,7 @@ This is how it is Viewed in Console & in log file :
  doStuff took input - {} 
 ```
 
-Another example of logging config
+### Another example of logging config
 
 ```
 logging.pattern.file=SYSTEM_%-5level      						\
