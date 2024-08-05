@@ -160,6 +160,72 @@ Links
 |     |2.5. [Log4j2 config with xml geeks4geeks](https://www.geeksforgeeks.org/how-to-configure-log4j-2-logging-in-spring-boot/)  |  
 |     |2.6. [Log4j2 spring boot 3 check dependencies too add](https://medium.com/@bishalf98/log4j2-in-springboot3-095ab6f15763)  |  
 
+### [Dependencies](#-)
+
+
+Once I add the dependency for `spring-boot-starter-web` it includes several log sub-dependencies. </br>
+In order to be able to use Log4j2 , Need to to the follwoing:
+1. exlude `spring-boot-starter-logging` from `web` dependency
+2. add the `spring-boot-starter-log4j2` dependency
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-logging</artifactId>
+			</exclusion>
+		</exclusions
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+```
+
+
+### [config with XML](#-)
+
+1. create a file , must name it `log4j2.xml`
+2. place the file under `src/main/resources/`
+
+![image](https://github.com/user-attachments/assets/fa517d38-e4ad-4831-aecb-2395e42179d1)
+
+Copy and paste the following config (see explanations in the links above)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">	
+	<Properties>
+		<Property name="log-path">logs</Property>
+		<Property name="console_pattern">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Property>
+		<Property name="file_pattern">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Property>
+	</Properties>
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout pattern="${console_pattern}" />
+		</Console>
+		<RollingFile name="FileAppender" fileName="${log-path}/app.log" filePattern="${log-path}/app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${file_pattern}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			 <DefaultRolloverStrategy max="7" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
+```
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
