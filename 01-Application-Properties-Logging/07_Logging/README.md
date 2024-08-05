@@ -77,6 +77,7 @@ public class LogbackController {
 
 ### [Logging pattern conversion](#-)
 
+From `logback`  [https://logback.qos.ch/manual/layouts.html](https://logback.qos.ch/manual/layouts.html) </br>
 I have re-produce the same logging pattern that comes with deafult .</br>
 This line of logger creates same format of logging in spring console:
 
@@ -110,7 +111,7 @@ This is how it's shown in console , same as the dafult behaviour :
 * `%clr(:){faint} %m%n`- The log message.
 
 As shown in the link above : </br>
-https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.core.logging.pattern.console
+https://docs.spring.io/spring-boot/appendix/application-properties/index.html
 
 ```sql
 logging.pattern.console=\
@@ -122,8 +123,6 @@ logging.pattern.console=\
 	%clr(%-40.40logger{39}){cyan} \
 	%clr(:){faint} %m%n
 ```
-
-http://logback.qos.ch/manual/layouts.html#conversionWord
 
 
 
