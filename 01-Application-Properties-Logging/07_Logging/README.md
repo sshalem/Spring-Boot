@@ -144,7 +144,8 @@ This is how it is Viewed in Console & in log file :
 ### [logging.pattern.file : config example 2](#-)
 
 ```
-logging.pattern.file=SYSTEM_%-5level      						\
+logging.pattern.file=\
+	  SYSTEM_%-5level      						\
           %d{HH:mm:ss.SSS  dd-MM-yyyy}\
           %n[Pkg.Class] : %logger \
           %n[Method   ] : %M  \
