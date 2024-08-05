@@ -113,7 +113,14 @@ As shown in the link above : </br>
 https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.core.logging.pattern.console
 
 ```sql
-logging.pattern.console=%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n
+logging.pattern.console=\
+	%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} \
+	%clr(${LOG_LEVEL_PATTERN:-%5p}) \
+	%clr(${PID:- }){magenta} \
+	%clr(---){faint} \
+	%clr([%15.15t]){faint} \
+	%clr(%-40.40logger{39}){cyan} \
+	%clr(:){faint} %m%n
 ```
 
 http://logback.qos.ch/manual/layouts.html#conversionWord
