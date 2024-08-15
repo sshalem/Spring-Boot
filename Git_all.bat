@@ -17,40 +17,19 @@ if %ComputerName%==LAPTOP-AAAA (
     echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"     
 ) else if %ComputerName%==DESKTOP-T4E706U (
-    echo.           *********************************************
-    echo.           * step 5 : git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%" *
-    echo.           *********************************************
-    echo.           * computer name is = %ComputerName%            *    
-    echo.           *********************************************
-    echo.           *	%DATE% , %TIME%	    *
-    echo.           *********************************************
-    echo.
-    echo.
-    @echo on
+    echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+    echo.   [36mcomputer name is = %ComputerName% [0m
+    echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%"   
 ) else if %ComputerName%==ASUS (
-    echo.           *********************************************
-    echo.           * step 5 : git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%" *
-    echo.           *********************************************
-    echo.           * computer name is = %ComputerName%            *    
-    echo.           *********************************************
-    echo.           *	%DATE% , %TIME%	    *
-    echo.           *********************************************
-    echo.
-    echo.
-    @echo on
+    echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+    echo.   [36mcomputer name is = %ComputerName% [0m
+    echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%"      
 ) else if %ComputerName%==LT461676 (
-    echo.           *********************************************
-    echo.           * step 5 : git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%" *
-    echo.           *********************************************
-    echo.           * computer name is = %ComputerName%            *    
-    echo.           *********************************************
-    echo.           *	%DATE% , %TIME%	    *
-    echo.           *********************************************
-    echo.
-    echo.
-    @echo on
+    echo.[33mgit commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+    echo.   [36mcomputer name is = %ComputerName% [0m
+    echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"  
     @REM @echo off
 ) else (
