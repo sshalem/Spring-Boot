@@ -21,11 +21,14 @@ if %ComputerName%==LAPTOP-AAAA (
     echo.   [36mcomputer name is = %ComputerName% [0m
     echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%"   
-) else if %ComputerName%==ASUS (
-    echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+) else if %ComputerName%==LAPTOP-ASUS-SHA (
+    echo.[33mgit commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"  [0m
+    @REM echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+    @REM echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%" [0m
     echo.   [36mcomputer name is = %ComputerName% [0m
     echo.   [36m%DATE% , %TIME%	 [0m
-    git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%"      
+    git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"
+    @REM git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~12,4% %TIME:~0,2%:%TIME:~3,2%"      
 ) else if %ComputerName%==LT461676 (
     echo.[33mgit commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%" [0m
     echo.   [36mcomputer name is = %ComputerName% [0m
