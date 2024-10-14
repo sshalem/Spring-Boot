@@ -936,4 +936,10 @@ find /opt/tomcat/ -iname 'sshb.log'
 ![image](https://github.com/user-attachments/assets/69753b97-baf1-465b-a268-f01d218e84ea)
 
 
+I can also check the content of the file with cat command
+
+```batch
+root@localhost:~# cat /opt/tomcat/myapp/sshb.log
+```
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
