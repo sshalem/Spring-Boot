@@ -906,4 +906,32 @@ Eventually I got the path of the file ,
 logging.file.name=/home/logs/CiCD.log
 ```
 
+
+### [scenario 3: logging.file.name CLASSPATH ](#-) 
+
+If previous option doesn't work , I need to setup the path of the log file to be  same as CATALINA_BASE path :  `Environment="CATALINA_BASE=/opt/tomcat"` .
+
+![image](https://github.com/user-attachments/assets/f4323dd7-eb9b-4fd4-acde-ea7c4e8ec41b)
+
+Thus, in order to be able to see the log file in Linux server , set the log file as :
+
+```
+logging.file.name=/opt/tomcat/sshb.log
+```
+
+After APp is deployed to Linux server, now I search for log file in server 
+
+```
+find / -iname 'sshb.log'
+```
+
+Or 
+
+```
+find /opt/tomcat/ -iname 'sshb.log'
+```
+
+![image](https://github.com/user-attachments/assets/69753b97-baf1-465b-a268-f01d218e84ea)
+
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
