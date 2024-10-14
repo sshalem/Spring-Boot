@@ -907,7 +907,9 @@ logging.file.name=/home/logs/CiCD.log
 ```
 
 
-### [scenario 3: logging.file.name CLASSPATH ](#-) 
+### [scenario 3: logging.file.name CLASSPATH of CATALINA_BASE or CATALINA_HOME ](#-) 
+
+see link  https://stackoverflow.com/questions/3090398/tomcat-catalina-base-and-catalina-home-variables  
 
 If previous option doesn't work , I need to setup the path of the log file to be  same as CATALINA_BASE path :  `Environment="CATALINA_BASE=/opt/tomcat"` .
 
@@ -919,7 +921,7 @@ Thus, in order to be able to see the log file in Linux server , set the log file
 logging.file.name=/opt/tomcat/sshb.log
 ```
 
-After APp is deployed to Linux server, now I search for log file in server 
+After App is deployed to Linux server, now I search for log file in server 
 
 ```
 find / -iname 'sshb.log'
