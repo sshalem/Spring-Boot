@@ -938,7 +938,19 @@ find /opt/tomcat/ -iname 'sshb.log'
 
 I can also check the content of the file with cat command
 
-```terminal
+```batch
+root@localhost:~# cat /opt/tomcat/myapp/sshb.log
+```
+
+```xml
+root@localhost:~# cat /opt/tomcat/myapp/sshb.log
+```
+
+```js
+root@localhost:~# cat /opt/tomcat/myapp/sshb.log
+```
+
+```css
 root@localhost:~# cat /opt/tomcat/myapp/sshb.log
 ```
 
