@@ -917,19 +917,19 @@ If previous option doesn't work , I need to setup the path of the log file to be
 
 Thus, in order to be able to see the log file in Linux server , set the log file as :
 
-```
+```batch
 logging.file.name=/opt/tomcat/sshb.log
 ```
 
 After App is deployed to Linux server, now I search for log file in server 
 
-```
+```batch
 find / -iname 'sshb.log'
 ```
 
 Or 
 
-```
+```batch
 find /opt/tomcat/ -iname 'sshb.log'
 ```
 
