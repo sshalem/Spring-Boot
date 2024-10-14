@@ -870,7 +870,7 @@ There are 4 possible options with logging file on production server
 ![image](https://github.com/user-attachments/assets/a251b3a9-895a-4ca2-9a4a-5df3c0b284be)
 
 
-### [scenario 1: `none`](#-) 
+## [scenario 1: `none`](#-) 
 
 If I don't define a logging file in `application.properties` the logging will be logged only to console. </br>
 
@@ -880,7 +880,7 @@ If I upload the app to production server, In this situation , where can I find t
 ### Answer : </br>
 I can find it in the file `catalina.out` located in directory `/opt/tomcat/logs` 
 
-### [scenario 2: logging.file.name only](#-) 
+## [scenario 2: logging.file.name only](#-) 
 
 Importnat note, there are several options where to find the `log` file:
 1. If Using `Jenkins` to upload Spring boot app (`War file`) , thus file will be located at jenkins directory
@@ -907,7 +907,7 @@ logging.file.name=/home/logs/CiCD.log
 ```
 
 
-### [scenario 3: logging.file.name CLASSPATH of CATALINA_BASE or CATALINA_HOME ](#-) 
+## [scenario 3: logging.file.name CLASSPATH of CATALINA_BASE or CATALINA_HOME ](#-) 
 
 see link  https://stackoverflow.com/questions/3090398/tomcat-catalina-base-and-catalina-home-variables  
 
