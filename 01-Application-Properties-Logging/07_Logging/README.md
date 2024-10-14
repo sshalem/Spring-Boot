@@ -917,19 +917,19 @@ If previous option doesn't work , I need to setup the path of the log file to be
 
 Thus, in order to be able to see the log file in Linux server , set the log file as :
 
-```batch
+```css
 logging.file.name=/opt/tomcat/sshb.log
 ```
 
 After App is deployed to Linux server, now I search for log file in server 
 
-```batch
+```css
 find / -iname 'sshb.log'
 ```
 
 Or 
 
-```batch
+```css
 find /opt/tomcat/ -iname 'sshb.log'
 ```
 
@@ -937,18 +937,6 @@ find /opt/tomcat/ -iname 'sshb.log'
 
 
 I can also check the content of the file with cat command
-
-```batch
-root@localhost:~# cat /opt/tomcat/myapp/sshb.log
-```
-
-```xml
-root@localhost:~# cat /opt/tomcat/myapp/sshb.log
-```
-
-```js
-root@localhost:~# cat /opt/tomcat/myapp/sshb.log
-```
 
 ```css
 root@localhost:~# cat /opt/tomcat/myapp/sshb.log
