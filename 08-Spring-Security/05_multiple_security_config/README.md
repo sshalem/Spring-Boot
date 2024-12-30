@@ -5,7 +5,7 @@
 |     |  Subject           |
 |:---:|:------------------------------| 
 |     |[Links](#Links)   | 
-|     |--- [](#)   | 
+|     |--- [Security Config update](#)   | 
 |  1  |[Multiple User Type Authentication Authorization](#multiple_user_type_authentication_authorization)    | 
 |  2  |[Multiple Authentication Provider](#2_multiple_authentication_provider)  |   
 |  3  |[]()  |   
@@ -38,9 +38,24 @@ Articles:
 
 ---------------------------------------------------------------------------------------------
 
+###### security_config_update
+
+<img src="https://img.shields.io/badge/- security config update %20-blue" height=40px>
+
+
+link from bezkoder : https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/ </br>
+From Spring Boot 2.7, WebSecurityConfigurerAdapter is deprecated. In this tutorial, I will show you how to update your Web Security Config class in Spring Security without the WebSecurityConfigurerAdapter example. </br>
+
+[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
+
+
+
+---------------------------------------------------------------------------------------------
+
 ###### multiple_user_type_authentication_authorization
 
 <img src="https://img.shields.io/badge/- Multiple User Type Authentication Authorization %20-blue" height=40px>
+
 
 With multiple User type authentication , we can use different type of users. </br>
 Example:
