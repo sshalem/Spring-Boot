@@ -6,10 +6,8 @@
 |:---:|:------------------------------| 
 |     |[Links](#Links)   | 
 |     |--- [](#)   | 
-|     |--- [](#)   | 
-|     |--- [](#)   | 
 |  1  |[Multiple User Type Authentication Authorization](#multiple_user_type_authentication_authorization)    | 
-|  2  |[]()  |   
+|  2  |[Multiple Authentication Provider](#2_multiple_authentication_provider)  |   
 |  3  |[]()  |   
 |  4  |[]()  |   
 
