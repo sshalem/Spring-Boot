@@ -45,8 +45,9 @@ Articles:
 
 <img src="https://img.shields.io/badge/- multiple security config %20-blue" height=40px>
 
-* Authentication-Authorization With Multiple User Type (not Role Type) [authentication-authorization-with-multiple-user-type](https://medium.com/@muhammedkalabasi/authentication-authorization-with-multiple-user-type-in-spring-boot-169320c685e9)
-* Same explanation seen in [`stack-overflow`](https://stackoverflow.com/questions/76479689/how-to-use-multiple-userdetails-implementations-for-login-spring-security-and-s)
+1. https://medium.com/@muhammedkalabasi/authentication-authorization-with-multiple-user-type-in-spring-boot-169320c685e9
+2. https://medium.com/@ahmedkamal200427/multiple-users-authentication-using-spring-security-on-a-springboot-api-d823b57424e7
+3. https://stackoverflow.com/questions/76479689/how-to-use-multiple-userdetails-implementations-for-login-spring-security-and-s
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
