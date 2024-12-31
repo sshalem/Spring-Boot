@@ -46,6 +46,15 @@ Articles:
 link from bezkoder : https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/ </br>
 From Spring Boot 2.7, WebSecurityConfigurerAdapter is deprecated. In this tutorial, I will show you how to update your Web Security Config class in Spring Security without the WebSecurityConfigurerAdapter example. </br>
 
+
+	/**
+	 * Update Security Configuration Class with newer version of Spring Security:
+	 * If you use Spring Boot 2.7.0 that comes with Spring Security 5.7.1 or newer,
+	 * you should code the security configuration class as follows.
+	 * See Link from www.bezkoder.com
+	 * https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/
+	 */
+
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
 
