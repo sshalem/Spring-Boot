@@ -5,7 +5,7 @@
 |     |  Subject           |
 |:---:|:------------------------------| 
 |     |[Links](#Links)   | 
-|     |--- [Security Config update (deprecated class WebSecurityConfigurerAdapter) ](#)   | 
+|     |--- [Security Config update (deprecated class WebSecurityConfigurerAdapter) ](#security_config_update)   | 
 |  1  |[Multiple User Type Authentication Authorization](#multiple_user_type_authentication_authorization)    | 
 |  2  |[Multiple Authentication Provider](#2_multiple_authentication_provider)  |   
 |  3  |[]()  |   
