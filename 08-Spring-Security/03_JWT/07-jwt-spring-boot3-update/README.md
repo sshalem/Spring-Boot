@@ -11,12 +11,9 @@
 |     | I.2. [How to Create JWT](#1_2_How_to_Create_JWT)                                       |
 |     | I.3. [How JWT secures our data](#1_3_How_JWT_secures_our_data)                         |
 |     | I.4. [How Server validates JWT from Client](#1_4_How_Server_validates_JWT_from_Client) |
-|  1  | [01-jwt-main-project](https://github.com/sshalem/spring-security/tree/main/03_JWT/01-jwt-main-project)                              
-|  2  | [02-jwt-main-with-authorities](https://github.com/sshalem/spring-security/tree/main/03_JWT/02-jwt-main-with-authorities)    
-|  3  | [03-jwt-main-refresh-token](https://github.com/sshalem/Spring-Boot/tree/main/08-Spring-Security/03_JWT/03-jwt-main-refresh-token)    
-|  4  | [04-jwt-main-refresh-token-inDB](https://github.com/sshalem/Spring-Boot/tree/main/08-Spring-Security/03_JWT/04-jwt-main-refresh-token-inDB)  | 
-|  5  | [05-jwt-auth-react-hooks](#05_jwt_auth_react_hooks)                                                             | 
-|  6  | [06-jwt-auth-react-redux](#06_jwt_auth_react_redux)                                                             |
+|  1  | [01-jwt-spring-boot-3-update](#01_jwt_spring_boot_3_update)               |               
+|  2  | [](#)    
+
 
 https://www.bezkoder.com/spring-boot-refresh-token-jwt/
 
@@ -210,9 +207,6 @@ If it matches the Server’s signature, the JWT is valid.
 
 ------------------------------------------------------------------------------------------
 
-###### 04_jwt_auth_react_hooks
-
-<img src="https://img.shields.io/badge/- 04_jwt_auth_react_hooks %20-blue" height=40px>
 
 Link from bezkoder for Hooks:
 
@@ -221,13 +215,6 @@ Link from bezkoder for Hooks:
 * https://www.bezkoder.com/react-redux-jwt-auth/
 * https://www.bezkoder.com/react-hooks-redux-login-registration-example/
 
-[<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
-
-------------------------------------------------------------------------------------------
-
-###### 05_jwt_auth_react_redux
-
-<img src="https://img.shields.io/badge/- 05_jwt_auth_react_redux %20-blue" height=40px>
 
 Link from bezkoder for Redux:
 
