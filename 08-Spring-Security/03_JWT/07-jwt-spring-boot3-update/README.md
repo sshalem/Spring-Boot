@@ -212,7 +212,9 @@ If it matches the Server’s signature, the JWT is valid.
 
 <img src="https://img.shields.io/badge/- 1. jwt spring boot 3 update %20-blue" height=40px>
 
-This is the link from Bezkoder , how to config security with spring boot 3 
+* This is the link from Bezkoder , how to config security with spring boot 3
+* I used this configuration in my [`Jobify_v2`](#-) full stack project.
+
 
 link from bezkoder : https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/ </br>
 From Spring Boot 2.7, WebSecurityConfigurerAdapter is deprecated. In this tutorial, I will show you how to update your Web Security Config class in Spring Security without the WebSecurityConfigurerAdapter example. </br>
