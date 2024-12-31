@@ -208,18 +208,25 @@ If it matches the Server’s signature, the JWT is valid.
 ------------------------------------------------------------------------------------------
 
 
-Link from bezkoder for Hooks:
+###### 01_jwt_spring_boot_3_update
 
-[`https://www.bezkoder.com/react-hooks-jwt-auth/`](https://www.bezkoder.com/react-hooks-jwt-auth/)
+<img src="https://img.shields.io/badge/- 1. jwt spring boot 3 update %20-blue" height=40px>
 
-* https://www.bezkoder.com/react-redux-jwt-auth/
-* https://www.bezkoder.com/react-hooks-redux-login-registration-example/
+This is the link from Bezkoder , how to config security with spring boot 3 
+
+link from bezkoder : https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/ </br>
+From Spring Boot 2.7, WebSecurityConfigurerAdapter is deprecated. In this tutorial, I will show you how to update your Web Security Config class in Spring Security without the WebSecurityConfigurerAdapter example. </br>
 
 
-Link from bezkoder for Redux:
+	/**
+	 * Update Security Configuration Class with newer version of Spring Security:
+	 * If you use Spring Boot 2.7.0 that comes with Spring Security 5.7.1 or newer,
+	 * you should code the security configuration class as follows.
+	 * See Link from www.bezkoder.com
+	 * https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/
+	 */
 
-* [`https://www.bezkoder.com/react-redux-jwt-auth/`](https://www.bezkoder.com/react-redux-jwt-auth/)
-* Newer version with react Router 6 [`https://www.bezkoder.com/react-hooks-redux-login-registration-example/`](https://www.bezkoder.com/react-hooks-redux-login-registration-example/)
+
 
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
