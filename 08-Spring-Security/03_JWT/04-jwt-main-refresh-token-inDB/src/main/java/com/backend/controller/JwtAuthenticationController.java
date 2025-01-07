@@ -70,14 +70,18 @@ public class JwtAuthenticationController {
 			throw new BadCredentialsException(e.getMessage());
 		}
 
+		/**
+		 * AT the Filter class (See the JwtAuthenticationFilter), I instantiate
+		 * UsernamePasswordAuthenticationToken with principal of UserDetails.
+		 * 
+		 * Therefore , I can cast the `authenticate.getPricipal()` to (JwtUserDetails) 
+		 */
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
 		final String name = jwtUserDetails.getUsername();
 		final String accessToken = jwtTokenUtil.generateToken(jwtUserDetails);
-		final String refreshToken = refreshTokenDaoImpl.generateRefreshToken(jwtUserDetails.getUsername(),
-				SecurityConstants.INVOKED_LOGIN_URL, null);
+		final String refreshToken = refreshTokenDaoImpl.generateRefreshToken(jwtUserDetails.getUsername(), SecurityConstants.INVOKED_LOGIN_URL, null);
 
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(new JwtTokenResponse(name, accessToken, refreshToken));
+		return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
 	}
 
 	/**
@@ -89,9 +93,9 @@ public class JwtAuthenticationController {
 		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
 
 		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-			String _refreshToken = authorizationHeader.substring(14);			
-			refreshTokenDaoImpl.deleteRefreshToken(_refreshToken);				
-		}				
+			String _refreshToken = authorizationHeader.substring(14);
+			refreshTokenDaoImpl.deleteRefreshToken(_refreshToken);
+		}
 		LOGGER.info("User logged out Succeeded");
 		return ResponseEntity.ok(new LogoutResponse("User Logged Out"));
 	}
@@ -142,10 +146,9 @@ public class JwtAuthenticationController {
 				response.setStatus(HttpStatus.FORBIDDEN.value());
 				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-				new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);				
+				new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);
 			}
 		}
-		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
-				.body("Refresh Token Failed");
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Refresh Token Failed");
 	}
 }
