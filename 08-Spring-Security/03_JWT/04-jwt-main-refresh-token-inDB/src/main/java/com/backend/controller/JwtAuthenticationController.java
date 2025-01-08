@@ -70,12 +70,6 @@ public class JwtAuthenticationController {
 			throw new BadCredentialsException(e.getMessage());
 		}
 
-		/**
-		 * AT the Filter class (See the JwtAuthenticationFilter), I instantiate
-		 * UsernamePasswordAuthenticationToken with principal of UserDetails.
-		 * 
-		 * Therefore , I can cast the `authenticate.getPricipal()` to (JwtUserDetails) 
-		 */
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
 		final String name = jwtUserDetails.getUsername();
 		final String accessToken = jwtTokenUtil.generateToken(jwtUserDetails);
