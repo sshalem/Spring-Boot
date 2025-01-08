@@ -30,7 +30,7 @@ public class RefreshTokenEntity {
 
 	@OneToOne(fetch = FetchType.EAGER)			
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	@JsonIgnore
+	@JsonIgnore	
 	private UserEntity userEntity;
 
 	public RefreshTokenEntity() {
