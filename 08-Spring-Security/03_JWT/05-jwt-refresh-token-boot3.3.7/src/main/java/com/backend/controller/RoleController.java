@@ -42,7 +42,7 @@ public class RoleController {
 	 * GET methods
 	 ******************/
 	@GetMapping(path = "/getRoleByRolename/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getRoleByRolename(@PathVariable("role") String role) {
+	public ResponseEntity<?> getRoleByRolename(@PathVariable String role) {
 		return new ResponseEntity<>(roleDaoImpl.getRoleByRolename(role), HttpStatus.OK);
 	}
 
@@ -52,7 +52,7 @@ public class RoleController {
 	}
 
 	@GetMapping(path = "/getUsersWhoHasRole/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getUsersWhoHasRole(@PathVariable("role") String role) {
+	public ResponseEntity<?> getUsersWhoHasRole(@PathVariable String role) {
 		return new ResponseEntity<>(roleDaoImpl.getUsersWhoHasRole(role), HttpStatus.OK);
 	}
 
@@ -65,7 +65,7 @@ public class RoleController {
 	}
 
 	@PutMapping(path = "/addRoleToUser/{email}/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> addRoleToUser(@PathVariable("email") String email, @PathVariable("role") String role) {
+	public ResponseEntity<?> addRoleToUser(@PathVariable String email, @PathVariable String role) {
 		return new ResponseEntity<>(roleDaoImpl.addRoleToUser(email, role), HttpStatus.OK);
 	}
 
@@ -73,19 +73,18 @@ public class RoleController {
 	 * Delete methods
 	 ******************/
 	@DeleteMapping(path = "/deleteRoleByRoleName/{role}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> deleteRoleByRoleName(@PathVariable("role") String role) {
+	public ResponseEntity<Void> deleteRoleByRoleName(@PathVariable String role) {
 		roleDaoImpl.deleteRoleByRoleName(role);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = "/removeRoleFromUserByRoleName/{email}/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> removeRoleFromUserByRoleName(@PathVariable("email") String email,
-			@PathVariable("role") String role) {
+	public ResponseEntity<?> removeRoleFromUserByRoleName(@PathVariable String email, @PathVariable String role) {
 		return new ResponseEntity<>(roleDaoImpl.removeRoleFromUserByRoleName(email, role), HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = "/removeAllRolesFromUser/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> removeAllRolesFromUser(@PathVariable("email") String email) {
+	public ResponseEntity<?> removeAllRolesFromUser(@PathVariable String email) {
 		return new ResponseEntity<>(roleDaoImpl.removeAllRolesFromUser(email), HttpStatus.OK);
 	}
 
