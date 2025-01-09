@@ -45,7 +45,7 @@ public class RefreshTokenDaoImpl implements RefreshTokenDao {
 					refreshTokenEntity = new RefreshTokenEntity();
 					refreshTokenEntity.setUserEntity(userEntity);
 				} else {
-					LOGGER.warn("... ");
+					LOGGER.warn("Prevented SQL Error: 1062, SQLState: 23000, Duplicate entry key  . . .");
 					refreshTokenEntity = _userRefreshToken;
 				}
 			}				
