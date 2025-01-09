@@ -1989,8 +1989,10 @@ As we can See , the RefreshToken is a UUID string (Which we created)
 
 ### Send Logout request
 
-To Loggut we send a get request  with `logout` url , per code implementation we need to :
-- add to headers the `Authorization` key , with  value of `Refresh_token {{refresh token}}`
+To Logout we send a get request  with `logout` url , per code implementation we need to :
+- add to headers the
+	- Key : [`Authorization`](#-) key ,
+ 	- value : [`Refresh_token {{refresh token}}`](#-)
 
 ![image](https://github.com/user-attachments/assets/300ce72a-ae43-466c-9abe-d4fa79340e24)
 
@@ -1999,7 +2001,9 @@ To Loggut we send a get request  with `logout` url , per code implementation we 
 ### send `getUserByName` 
 
 Send `getUserByName`  few times till we get Expiration Error (after 5 seccs we get error)
-- add to headers the `Authorization` key , with  value of `Bearer {{accessToken}}`
+- add to headers the
+	- Key : [`Authorization`](#-) key ,
+ 	- value : [`Bearer {{accessToken}}`](#-)
   
 ![image](https://github.com/user-attachments/assets/40b308b5-1722-4630-b104-6dc7be1a2b59)
 
