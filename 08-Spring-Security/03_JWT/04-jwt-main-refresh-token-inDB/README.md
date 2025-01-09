@@ -1981,13 +1981,13 @@ With Postman :
 4. send right away (because we have a 5 sec gap before expiring) another `getUserByName` to see if new token is valid.
 
 
-### Send Login request
+### [Send Login request](#-)
 
 As we can See , the RefreshToken is a UUID string (Which we created)
 
 ![image](https://user-images.githubusercontent.com/36256986/214005306-b66cabc9-e902-4e84-83e2-5657ee9ce2e4.png)
 
-### Send Logout request
+### [Send Logout request](#-)
 
 To Logout we send a get request  with `logout` url , per code implementation we need to :
 - add to headers the
@@ -1998,7 +1998,7 @@ To Logout we send a get request  with `logout` url , per code implementation we 
 
 
 
-### send `getUserByName` 
+### [send `getUserByName`](#-)
 
 Send `getUserByName`  few times till we get Expiration Error (after 5 seccs we get error)
 - add to headers the
@@ -2011,7 +2011,7 @@ This is the response we get
 
 ![image](https://user-images.githubusercontent.com/36256986/213416005-832d7406-25dc-463f-84ed-3623d6e0531f.png)
 
-### send `refreshToken` request 
+### [send `refreshToken` request](#-)
 
 I got back :
 * new accessToken 
@@ -2022,7 +2022,7 @@ which we can use now for our app in a secured way</br>
 ![image](https://user-images.githubusercontent.com/36256986/213416186-b5140086-1356-49bd-97d6-4a88867fd8ee.png)
 
 
-### [Check `deleteUserByEmail` ](#-)
+### [Check `deleteUserByEmail`](#-)
 
 We also want to check the method of `deleteUserByEmail` because `UserEntity` is mapped with `RefreshTokenEntity` , and we want to see that It is properly works.</br>
 Example:
