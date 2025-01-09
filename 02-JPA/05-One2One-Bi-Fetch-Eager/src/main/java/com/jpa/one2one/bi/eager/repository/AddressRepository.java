@@ -18,7 +18,7 @@ public interface AddressRepository extends JpaRepository<AddressEntity, Long> {
 
 	// Query with Named Parameters
 	@Query("SELECT address from AddressEntity address WHERE user.id=:id")
-	AddressEntity jpqlFindById(@Param("id") long id);
+	AddressEntity findAddressByUserId(@Param("id") long id);
 
 	// *****************************************************************************
 	// *****************************************************************************

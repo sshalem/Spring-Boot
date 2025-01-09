@@ -3,6 +3,7 @@ package com.jpa.one2one.bi.eager.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.jpa.one2one.bi.eager.entity.AddressEntity;
@@ -29,9 +30,8 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public AddressEntity getAddressById(long id) {
 		
-//		AddressEntity addressEntity = addressRepository.findAddressById(id);
-		AddressEntity addressEntity = addressRepository.jpqlFindById(id);
-		
+		AddressEntity addressEntity = addressRepository.findAddressById(id);
+				
 		if(addressEntity == null)
 			// For Practice throwing NullPointerException
 			throw new NullPointerException("Not found Address Details with id = " + id);
@@ -64,11 +64,20 @@ public class AddressDaoImpl implements AddressDao {
 
 		UserEntity userEntity = userRepository.findUserById(userId);
 		
+		AddressEntity _addressEntity = addressRepository.findAddressByUserId(userId);
+		
 		if(userEntity == null) 
 			throw new ResourceNotFoundException("Not found User with id = " + userId);
-				
-		userEntity.setAddress(addressEntity);
+		/**
+		 * If I don't add this logic , I will get error of:
+		 *  SQL Error: 1062, SQLState: 23000
+		 *  Duplicate entry key 
+		 */
+		if(_addressEntity != null) {
+			throw new DataIntegrityViolationException("Usere already has an Address , this will cause a Duplicate Key , U can update the address");
+		}
 		
+		userEntity.setAddress(addressEntity);		
 		addressEntity.setUser(userEntity);		
 				
 		UserEntity returnedValue = userRepository.save(userEntity);
