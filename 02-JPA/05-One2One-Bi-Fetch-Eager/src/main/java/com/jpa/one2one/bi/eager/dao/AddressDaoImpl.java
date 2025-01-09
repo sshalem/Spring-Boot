@@ -73,6 +73,7 @@ public class AddressDaoImpl implements AddressDao {
 		 *  SQL Error: 1062, SQLState: 23000
 		 *  Duplicate entry key 
 		 */
+		// LOGGER.warn("... Prevented SQL Error: 1062, SQLState: 23000, Duplicate entry key  ");
 		if(_addressEntity != null) {
 			throw new DataIntegrityViolationException("Usere already has an Address , this will cause a Duplicate Key , U can update the address");
 		}
