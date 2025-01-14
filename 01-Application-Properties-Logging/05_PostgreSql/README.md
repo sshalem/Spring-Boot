@@ -10,18 +10,19 @@ Links :
 
 ![image](https://user-images.githubusercontent.com/36256986/206190313-2b44632b-a8fb-45bf-aa7d-886246666ebc.png)
 
-4.	Go to folder of “pgsql\bin” and open the CMD 
-5.	Type the following command :
+4.	Open CMD , go to directory [`C:\Localdata\DB\postgresql\pgsql\bin`](#-)
+5.	Type the following command below, It will install inside the folder of `pgsql_data` all th relevant data:
 
 ```
-initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\postgresql-15.1-1\pgsql_data
+initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\DB\postgresql\pgsql\pgsql_data
 ```
 
 6.	Enter new password for superuser:
   * User : postgres
   * Pass : postgres
   
-![image](https://github.com/user-attachments/assets/0be0e57c-5136-4722-b074-f3666b867a78)
+![image](https://github.com/user-attachments/assets/29dc11d3-3555-4b54-9d33-b04801dbb734)
+
 
 
 # [start PostgreSql server](#-)
