@@ -18,8 +18,8 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\postgresql-15.1-1\
 ```
 
 6.	Enter new password for superuser:
-  a. User : postgres
-  b. Pass : root
+  * User : postgres
+  * Pass : postgres
   
 ![image](https://user-images.githubusercontent.com/36256986/206190542-9a2ac955-272c-4aaa-9cdd-277d83107cdb.png)
 
