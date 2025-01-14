@@ -21,7 +21,8 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\postgresql-15.1-1\
   * User : postgres
   * Pass : postgres
   
-![image](https://user-images.githubusercontent.com/36256986/206190542-9a2ac955-272c-4aaa-9cdd-277d83107cdb.png)
+![image](https://github.com/user-attachments/assets/0be0e57c-5136-4722-b074-f3666b867a78)
+
 
 # [start PostgreSql server](#-)
 
