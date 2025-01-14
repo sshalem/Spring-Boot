@@ -5,8 +5,8 @@ Links :
 * https://roytuts.com/how-to-install-postgresql-zip-archive-in-windows/
 
 1.	Download the zip file
-2.	Uninstall it
-3.	Create a new folder as “pgsql_data” in the zipped folder.
+2.	Uninstall it , it will uninstall it to folder [`pgsql`](#-)
+3.	Create a new folder as [`pgsql_data`](#-) . 
 
 ![image](https://user-images.githubusercontent.com/36256986/206190313-2b44632b-a8fb-45bf-aa7d-886246666ebc.png)
 
