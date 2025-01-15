@@ -45,6 +45,7 @@ C:\Windows\System32>cd \Localdata\DB\postgresql\pgsql\bin
 C:\Localdata\DB\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pgsql^_data^" -l logfile stop
 ```
 
+![image](https://github.com/user-attachments/assets/e48643d0-428b-4ade-8bd0-cb7dc216e6d1)
 
 
 # [start pgAdmin4](#-)
