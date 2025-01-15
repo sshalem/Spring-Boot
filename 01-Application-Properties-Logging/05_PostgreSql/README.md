@@ -27,14 +27,10 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\DB\postgresql\pgsq
 
 # [start PostgreSql server](#-)
 
-1.	Paste the command below in the folder of 
+1.	Paste the command we got (See the image above) 
 
 ```
-C:\Localdata\postgresql-15.1-1\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\postgresql^-15^.1^-1^\pgsql^_data^" -l logfile start
-
-Since I modified the name of the folder use the following command:
-
-C:\Localdata\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\postgresql^\pgsql^_data^" -l logfile start
+C:\Localdata\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pgsql^_data^" -l logfile start
 ```
 
 ![image](https://user-images.githubusercontent.com/36256986/206190645-ad900729-ec3f-44b3-ad14-522d329c4e7b.png)
