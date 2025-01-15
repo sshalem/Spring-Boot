@@ -25,7 +25,7 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\DB\postgresql\pgsq
 
 
 
-# [start PostgreSql server](#-)
+# [Start PostgreSql server](#-)
 
 1.	Paste the command we got (See the image above) 
 
@@ -37,11 +37,20 @@ C:\Localdata\DB\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^
 
 ![image](https://github.com/user-attachments/assets/8d0bedf1-340c-4dad-a211-713154902c5e)
 
+# [Stop PostgreSql server](#-)
+
+```
+C:\Windows\System32>cd \Localdata\DB\postgresql\pgsql\bin
+
+C:\Localdata\DB\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pgsql^_data^" -l logfile stop
+```
+
+
 
 # [start pgAdmin4](#-)
 
-1.	Go to folder of [`C:\Localdata\DB\postgresql\pgsql\pgAdmin 4\bin`](#-) , click of the [`pgAdmin4.exe`](#-) file
-  * Type a password as root
+1.	Go to folder of [`C:\Localdata\DB\postgresql\pgsql\pgAdmin 4\runtime`](#-) , click of the [`pgAdmin4.exe`](#-) file
+  * Type a password as [`postgres`](#-)
 2.	Once the pgAdmin tool opens , create new server
   *	Right click on the servers -> Register -> Server
 
