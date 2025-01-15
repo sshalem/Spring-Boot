@@ -30,10 +30,13 @@ initdb.exe -U postgres -A password -E utf8 -W -D C:\Localdata\DB\postgresql\pgsq
 1.	Paste the command we got (See the image above) 
 
 ```
-C:\Localdata\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pgsql^_data^" -l logfile start
+C:\Windows\System32>cd \Localdata\DB\postgresql\pgsql\bin
+
+C:\Localdata\DB\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pgsql^_data^" -l logfile start
 ```
 
-![image](https://user-images.githubusercontent.com/36256986/206190645-ad900729-ec3f-44b3-ad14-522d329c4e7b.png)
+![image](https://github.com/user-attachments/assets/8d0bedf1-340c-4dad-a211-713154902c5e)
+
 
 # [start pgAdmin4](#-)
 
