@@ -37,10 +37,10 @@ C:\Localdata\postgresql\pgsql\bin>pg_ctl -D ^"C^:^\Localdata^\DB^\postgresql^\pg
 
 # [start pgAdmin4](#-)
 
-1.	Go to folder of `C:\Localdata\postgresql\pgsql\pgAdmin 4\bin` , click of the `pgAdmin4.exe` file
-  a.	Type a password as root
+1.	Go to folder of [`C:\Localdata\DB\postgresql\pgsql\pgAdmin 4\bin`](#-) , click of the [`pgAdmin4.exe`](#-) file
+  * Type a password as root
 2.	Once the pgAdmin tool opens , create new server
-  a.	Right click on the servers -> Register -> Server
+  *	Right click on the servers -> Register -> Server
 
 ![image](https://user-images.githubusercontent.com/36256986/206190837-7bd471b4-dd71-42b6-9f1d-ebb06ef2bbac.png)
 
