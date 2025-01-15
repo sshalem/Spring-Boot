@@ -4,6 +4,7 @@
 
 |     | Subject                                              |
 | :-: | :--------------------------------------------------- |
+|     | [PostgreSql Installed on my Desktop  Laptop](#1_postgresql_installed_on_desktop_laptop)            |
 |  1  | [PostgreSql](#1_postgresql)            |
 |  2  | [application properties](#2_application_properties)              |
 |  3  | [Install Postgres standalone windows](#3_install_postgres_standalone_windows)          |
@@ -13,10 +14,12 @@
 
 
 
-###### 1_postgresql
+###### 1_postgresql_installed_on_desktop_laptop
 
-<img src="https://img.shields.io/badge/- JDBC Hibernate JPA Spring_data_jpa  %20-blue" height=40px>
+<img src="https://img.shields.io/badge/- 1. postgresql installed on desktop laptop  %20-blue" height=40px>
 
+* Username : root
+* password : root
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
