@@ -18,8 +18,8 @@
 
 <img src="https://img.shields.io/badge/- 1. postgresql installed on desktop laptop  %20-blue" height=40px>
 
-* Username : root
-* password : root
+* Username : postgres
+* password : postgres
 
 [<img src="https://img.shields.io/badge/-Back to top%20-brown" height=22px>](#_)
 
