@@ -1,5 +1,3 @@
-package com.excel.utils;
-
 import org.slf4j.Logger;
 
 public class Log {
