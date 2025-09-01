@@ -1,8 +1,8 @@
 -----------------------------------
--- Set FOREIGN KEY CHECK to 0 
+-- Set FOREIGN KEY CHECK to 0
 -- TRUNCATE the data from tables
 ----------------------------------
-SET FOREIGN_KEY_CHECKS=0; 
+SET FOREIGN_KEY_CHECKS=0;
 TRUNCATE TABLE roles_tb;
 TRUNCATE TABLE users_tb;
 -- TRUNCATE TABLE tutorial_tags;
@@ -29,7 +29,7 @@ SET FOREIGN_KEY_CHECKS=1;
 --Insert into USERS_TB --
 -------------------------
 
--- When using PostgreSql I Insert w/o the id .This creates duplication error in postgres thus I use the above query w/o initializing the id field, 
+-- When using PostgreSql I Insert w/o the id .This creates duplication error in postgres thus I use the above query w/o initializing the id field,
 -- Otherwise I need to sync postgresql DB (See commects in my GIT hub)
 
 INSERT INTO users_tb(id , pid ,name ,email, password) VALUES (1, 1111 , 'shabtay shalem' , 'shabtay.shalem@gmail.com' ,123);
@@ -56,5 +56,3 @@ INSERT INTO roles_tb(id , pid ,role ,user_id) VALUES (10, 3333 , 'MANAGER' , 3);
 
 INSERT INTO roles_tb(id , pid ,role ,user_id) VALUES (11, 4444 , 'ADMIN' , 4);
 INSERT INTO roles_tb(id , pid ,role ,user_id) VALUES (12, 4444 , 'MANAGER' , 4);
-
-
