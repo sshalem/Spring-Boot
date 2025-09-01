@@ -95,10 +95,15 @@ public class UserDaoImpl implements UserDao {
 	 * @Transactional Annotation -
 	 * 			Should be only on
 	 * 			'PUBLIC' methods that returns value to higher level layer
+	 * 		And :
+	 * 		✅ Rule of Thumb
+	 * 			Any method that modifies entities (insert/update/delete) in JPA/Hibernate should usually be transactional
+	 * 			so Hibernate can flush changes	.
+	 * 			Read-only operations can be non-transactional (Unless I use Fetch.Lazy), but updates need @Transactional so Hibernate can flush changes.
 	 */
 
 	@Override
-//	@Transactional
+	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, String role) {
 
 		/**
@@ -123,6 +128,18 @@ public class UserDaoImpl implements UserDao {
 
 
 		/**
+		 * @Transactional Annotation -
+		 * 			Should be only on
+		 * 			'PUBLIC' methods that returns value to higher level layer
+		 * 		And :
+		 * 		✅ Rule of Thumb
+		 * 			Any method that modifies entities (insert/update/delete) in JPA/Hibernate should usually be transactional
+		 * 			so Hibernate can flush changes	.
+		 * 			Read-only operations can be non-transactional (Unless I use Fetch.Lazy), but updates need @Transactional so Hibernate can flush changes.
+		 */
+
+
+		/**
 		 * (1) - Not best approach
 		 * We Don't need to add @Transactional If we search with For loop
 		 * With this Implementation , NO NEED  orphanRemoval = true on the @OneToMany
@@ -133,8 +150,8 @@ public class UserDaoImpl implements UserDao {
 //		RoleEntity roleEntity = null;
 //
 //		need to check what's faster :
-//		[1] Fetching the role form DB
-//		[2] Iterate the roles and get the want role
+//		[1] Fetching the role form DB , as I do in the example (2) (3) (4)
+//		[2] Or, Iterate the roles and get the role I want
 
 //		for (RoleEntity r : roles) {
 //			if (r.getRole().equals(role)) {
@@ -157,36 +174,33 @@ public class UserDaoImpl implements UserDao {
 		 * Query from UserRepo will work only if orphanRemoval = true.
 		 * Note: CascadeType.REMOVE ,only propagates when the parent entity itself is removed.
 		 * and Here I remove a child (role), not parent (user) ,
-		 * Thus, Doesn't matter in this situation with or w/o CascadeType.REMOVE
+		 * Thus, Doesn't matter in this situation if Parent (User) is with or w/o CascadeType.REMOVE
 		 */
 		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
 		userEntity.removeRole(roleEntity);
-		UserEntity returnedValue = userRepository.save(userEntity);
-		return returnedValue;
+        return userRepository.save(userEntity);
 
 		/**
 		 * (3) Query from RoleRepo
          * 		 * Query from UserRepo will work only if orphanRemoval = true.
          * 		 * Note: CascadeType.REMOVE ,only propagates when the parent entity itself is removed.
          * 		 * and Here I remove a child (role), not parent (user) ,
-         * 		 * Thus, Doesn't matter in this situation with or w/o CascadeType.REMOVE
+         * 		 * Thus, Doesn't matter in this situation if Parent (User) is with or w/o CascadeType.REMOVE
 		 */
 //		RoleEntity roleEntity = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, role);
 //		userEntity.removeRole(roleEntity);
-// 		UserEntity returnedValue = userRepository.save(userEntity);
-//		return returnedValue;
+//        return userRepository.save(userEntity);
 
 		/**
 		 * (4) Query from RoleRepo
          * 		 * Query from UserRepo will work only if orphanRemoval = true.
          * 		 * Note: CascadeType.REMOVE ,only propagates when the parent entity itself is removed.
          * 		 * and Here I remove a child (role), not parent (user) ,
-         * 		 * Thus, Doesn't matter in this situation with or w/o CascadeType.REMOVE
+         * 		 * Thus, Doesn't matter in this situation if Parent (User) is with or w/o CascadeType.REMOVE
 		 */
 //		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
 // 		userEntity.removeRole(roleEntity);
-//		UserEntity returnedValue = userRepository.save(userEntity);
-//		return returnedValue;
+//        return userRepository.save(userEntity);
 
 	}
 }
