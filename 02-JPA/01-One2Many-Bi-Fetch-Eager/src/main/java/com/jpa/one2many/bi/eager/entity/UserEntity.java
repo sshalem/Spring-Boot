@@ -1,5 +1,7 @@
 package com.jpa.one2many.bi.eager.entity;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -22,9 +24,10 @@ public class UserEntity {
     private String name;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-//  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<RoleEntity> roles;
 
     public UserEntity() {
@@ -84,16 +87,28 @@ public class UserEntity {
             this.roles = new HashSet<>();
         }
         this.roles.add(role);
-        role.setUser(this);
+        role.setUser(this); // maintain both sides
     }
 
     public void removeRole(RoleEntity role) {
         this.roles.remove(role);
+//        role.setUser(null); // break relationship properly
     }
+//    @Override
+//    public String toString() {
+//        return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
+//                + password + "]";
+//    }
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
-                + password + "]";
+        return "UserEntity{" +
+                "id=" + id +
+                ", pid=" + pid +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

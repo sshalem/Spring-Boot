@@ -32,7 +32,7 @@
 INSERT INTO users_tb(pid ,name ,email, password) VALUES (1111 , 'shabtay shalem' , 'shabtay.shalem@gmail.com' ,123);
 INSERT INTO users_tb(pid ,name ,email, password) VALUES (2222 , 'karin shalem' , 'karin.shalem@gmail.com' ,456);
 INSERT INTO users_tb(pid ,name ,email, password) VALUES (3333 , 'avigail shalem' , 'avigail.shalem@gmail.com' ,789);
-INSERT INTO users_tb(pid ,name ,email, password) VALUES (4444 , 'odel shalem' , 'odel.shalem@gmail.com' ,012);
+--INSERT INTO users_tb(pid ,name ,email, password) VALUES (4444 , 'odel shalem' , 'odel.shalem@gmail.com' ,012);
 
 -- This creates duplication erro in postgres thus I use the above query w/o initializing the id field, 
 -- OtherwiseIn need to sync postgresql DB (See commects in my GIT hub)
@@ -59,8 +59,8 @@ INSERT INTO roles_tb(pid ,role ,user_id) VALUES (2222 , 'CEO' , 2);
 INSERT INTO roles_tb(pid ,role ,user_id) VALUES (3333 , 'ADMIN' , 3);
 INSERT INTO roles_tb(pid ,role ,user_id) VALUES (3333 , 'MANAGER' , 3);
 
-INSERT INTO roles_tb(pid ,role ,user_id) VALUES (4444 , 'ADMIN' , 4);
-INSERT INTO roles_tb(pid ,role ,user_id) VALUES (4444 , 'MANAGER' , 4);
+--INSERT INTO roles_tb(pid ,role ,user_id) VALUES (4444 , 'ADMIN' , 4);
+--INSERT INTO roles_tb(pid ,role ,user_id) VALUES (4444 , 'MANAGER' , 4);
 
 -- INSERT INTO roles_tb(id , pid ,role ,user_id) VALUES (1, 1111 , 'ADMIN' , 1);
 -- INSERT INTO roles_tb(id , pid ,role ,user_id) VALUES (2, 1111 , 'SUPER-ADMIN' , 1);

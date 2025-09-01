@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "ROLES_TB")
@@ -29,7 +29,7 @@ public class RoleEntity {
 //			fetch = FetchType.EAGER)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	@JsonIgnore
+	@JsonBackReference
 	private UserEntity user;
 
 	public RoleEntity() {

@@ -139,16 +139,25 @@ public class UserDaoImpl implements UserDao {
 		 * (2) Query from UserRepo  
 		 */
 //		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
+//		userEntity.removeRole(roleEntity);
+//		UserEntity returnedValue = userRepository.save(userEntity);
+//		return returnedValue;
 
 		/**
 		 * (3) Query from RoleRepo	
 		 */
 //		RoleEntity roleEntity = roleRepository.jpqlFindRoleByPidAndRoleName(userPid, role);
+//		userEntity.removeRole(roleEntity);
+// 		UserEntity returnedValue = userRepository.save(userEntity);
+//		return returnedValue;
 		
 		/**
 		 * (4) Query from RoleRepo
 		 */
 //		RoleEntity roleEntity = roleRepository.findByPidAndRole(userPid, role);
+// 		userEntity.removeRole(roleEntity);
+//		UserEntity returnedValue = userRepository.save(userEntity);
+//		return returnedValue;
 							
 		/**
 		 * With this Implementation , Must add orphanRemoval = true on the @OneToMany
