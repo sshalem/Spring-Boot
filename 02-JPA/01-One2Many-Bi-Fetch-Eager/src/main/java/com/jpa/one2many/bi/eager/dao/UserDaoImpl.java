@@ -113,8 +113,11 @@ public class UserDaoImpl implements UserDao {
 		 * 3. remove the Entity from the SET<RoleEntity> collection
 		 * 4. Save the the info to UserEntity
 		 * 5. I must add @Transactional annotation to the method `removeRoleFromUser()`
-		 * 	  which returns returnedValue(Of UserEntity) from service layer to controller layer,
-		 *    Only if I use a query from Repository
+		 * 
+		 * 		✅ Rule of Thumb
+		 * 			Any method that modifies entities (insert/update/delete) in JPA/Hibernate should usually be transactional
+		 * 			so Hibernate can flush changes	.
+		 * 			Read-only operations can be non-transactional (Unless I use Fetch.Lazy), but updates need @Transactional so Hibernate can flush changes.
 		 */
 
 		UserEntity userEntity = userRepository.findByPid(userPid);
