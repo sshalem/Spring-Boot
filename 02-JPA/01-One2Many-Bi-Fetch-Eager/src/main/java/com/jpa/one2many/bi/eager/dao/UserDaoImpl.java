@@ -98,7 +98,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	
 	@Override
-	@Transactional
+//	@Transactional
 	public UserEntity removeRoleFromUser(long userPid, String role) {
 
 		/**
@@ -125,6 +125,10 @@ public class UserDaoImpl implements UserDao {
 		/**
 		 * (1) We Don't need to add @Transactional If we search with For loop  
 		 */
+		/**
+		 * With this Implementation , NO NEED  orphanRemoval = true on the @OneToMany
+		 * also @OneToMany in w/o CascadeType.REMOVE
+		 */
 		Set<RoleEntity> roles = userEntity.getRoles();
 
 		RoleEntity roleEntity = null;
@@ -134,6 +138,10 @@ public class UserDaoImpl implements UserDao {
 				roleEntity = r;
 			}
 		}
+		userEntity.removeRole(roleEntity);
+		roleRepository.delete(roleEntity);
+		return userEntity;
+
 
 		/**
 		 * (2) Query from UserRepo  
@@ -166,17 +174,5 @@ public class UserDaoImpl implements UserDao {
 //		UserEntity returnedValue = userRepository.save(userEntity);		
 //		return returnedValue;
 				
-		/**
-		 * With this Implementation , NO NEED  orphanRemoval = true on the @OneToMany
-		 * also @OneToMany in w/o CascadeType.REMOVE
-		 */
-		userEntity.removeRole(roleEntity);
-		roleRepository.delete(roleEntity);
-		return userEntity;
-		
-		/**
-		 * Need to check which approach is better for performance
-		 */
-		
 	}
 }
