@@ -1,10 +1,8 @@
 package com.jpa.one2many.bi.eager.entity;
 
-import com.fasterxml.jackson.annotation.*;
-
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+//    @OneToMany(mappedBy = "user",
+//            fetch = FetchType.EAGER,
+//            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+//    @OneToMany(mappedBy = "user",
+//            fetch = FetchType.EAGER,
+//            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+//            orphanRemoval = true)
+//  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "USERS_TB")
@@ -24,15 +33,7 @@ public class UserEntity {
     private String name;
     private String email;
     private String password;
-//    @OneToMany(mappedBy = "user",
-//            fetch = FetchType.EAGER,
-//            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @OneToMany(mappedBy = "user",
-            fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
-            orphanRemoval = true)
-//  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = false)
     @JsonManagedReference
     private Set<RoleEntity> roles;
 
@@ -97,8 +98,8 @@ public class UserEntity {
     }
 
     public void removeRole(RoleEntity role) {
-        this.roles.remove(role);
-//        role.setUser(null); // break relationship properly
+        roles.remove(role);
+        role.setUser(null); // crucial: disconnect owning side
     }
 //    @Override
 //    public String toString() {

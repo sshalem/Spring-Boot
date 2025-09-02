@@ -21,14 +21,8 @@ public class RoleEntity {
 	private String role;
 	private long pid;
 
-//	@ManyToOne(cascade = {
-//					CascadeType.PERSIST,
-//					CascadeType.MERGE,
-//					CascadeType.REFRESH,
-//					CascadeType.DETACH}, 
-//			fetch = FetchType.EAGER)
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id" ,nullable = true)
 	@JsonBackReference
 	private UserEntity user;
 

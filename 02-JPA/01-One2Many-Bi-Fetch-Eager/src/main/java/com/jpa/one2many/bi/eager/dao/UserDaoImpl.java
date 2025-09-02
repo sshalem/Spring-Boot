@@ -181,7 +181,21 @@ public class UserDaoImpl implements UserDao {
 		 */
 		RoleEntity roleEntity = userRepository.getRoleByIdAndRole(userEntity.getId(), role);
 		userEntity.removeRole(roleEntity);
-        return userRepository.save(userEntity);
+
+		
+		// WHen I config orphanRemoval = flase , and NO CASCADE , I need do 
+		// do this line : roleRepository.save(roleEntity);
+		// and not this line userRepository.save(userEntity);
+		
+		// Question why: 		
+		// Why I do roleRepository.save(roleEntity) and No doing  userRepository.save(userEntity)
+		// Answer : this is so I won't delete the role from DB, but I set it to null , when I do the line of userEntity.removeRole(roleEntity);
+		
+		// But it still deleting role From DB : rrrrrrrrrrrrrrrrrrrrrrr  
+		
+		// return userRepository.save(userEntity);
+		// roleRepository.save(roleEntity);
+		return userEntity;
 
 		/**
 		 * (3) Query from RoleRepo
