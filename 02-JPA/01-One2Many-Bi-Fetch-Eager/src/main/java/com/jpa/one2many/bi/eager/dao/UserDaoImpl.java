@@ -193,8 +193,8 @@ public class UserDaoImpl implements UserDao {
 		
 		// But it still deleting role From DB : rrrrrrrrrrrrrrrrrrrrrrr  
 		
-		// return userRepository.save(userEntity);
-		// roleRepository.save(roleEntity);
+		userRepository.save(userEntity);
+//		 roleRepository.save(roleEntity);
 		return userEntity;
 
 		/**

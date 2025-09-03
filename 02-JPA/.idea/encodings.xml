@@ -2,5 +2,16 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/01-One2Many-Bi-Fetch-Eager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/02-One2Many-Bi-Fetch-Lazy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/03-One2Many-Uni-Fetch-Eager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/04-One2Many-Uni-Fetch-Lazy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/05-One2One-Bi-Fetch-Eager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/06-One2One-Bi-Fetch-Lazy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/07-One2One-Uni-Fetch-Eager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/08-One2One-Uni-Fetch-Lazy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09-Many2Many-Bi-Eager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10-Many2Many-Bi-Lazy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/11-Paging-and-Sorting/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-many-to-many-master/src/main/java" charset="UTF-8" />
   </component>
 </project>
