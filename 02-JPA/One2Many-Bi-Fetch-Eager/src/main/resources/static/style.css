@@ -1,0 +1,132 @@
+:root {
+  --colorUsers: rgb(0, 128, 255);
+  --colorRoles: rgb(14, 131, 8);
+  --colorTitle: rgb(222, 21, 61);
+}
+
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.users {
+  color: var(--colorUsers);
+}
+
+.roles {
+  color: var(--colorRoles);
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+div {
+  margin: 1.5rem 0;
+}
+
+span {
+  display: block;
+  font-weight: 900;
+  margin: 0.4rem 0;
+}
+
+.eager {
+  display: inline;
+  color: var(--colorTitle);
+  font-weight: 900;
+  font-style: italic;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.methods-container {
+  margin-left: 1.5rem;
+}
+
+button {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 1.5rem;
+  border-radius: 5px;
+  width: 19.5rem;
+  text-align: justify;
+}
+
+.users button {
+  background-color: var(--colorUsers);
+  border: 1px solid white;
+  color: white;
+  width: 10.5rem;
+}
+
+.roles button {
+  background-color: var(--colorRoles);
+  border: 1px solid white;
+  color: white;
+  width: 10.5rem;
+}
+
+.users button:hover {
+  cursor: pointer;
+  color: var(--colorUsers);
+  background-color: white;
+  border: 1px solid var(--colorUsers);
+}
+
+.roles button:hover {
+  cursor: pointer;
+  color: var(--colorRoles);
+  background-color: white;
+  border: 1px solid var(--colorRoles);
+}
+
+input {
+  height: 1.15rem;
+  margin-left: 0.2rem;
+}
+
+.users input {
+  color: var(--colorUsers);
+  background-color: white;
+  border: 1px solid var(--colorUsers);
+  border-radius: 5px;
+}
+
+.roles input {
+  color: var(--colorRoles);
+  background-color: white;
+  border: 1px solid var(--colorRoles);
+  border-radius: 5px;
+}
+
+#allUsers,
+#allRoles {
+  background-color: thistle;
+}
+
+.users input:hover {
+  border: 1.8px solid var(--colorUsers);
+}
+
+.users input:focus {
+  outline-color: var(--colorUsers);
+}
+
+.roles input:hover {
+  border: 1.8px solid var(--colorRoles);
+}
+
+.roles input:focus {
+  outline-color: var(--colorRoles);
+}
+
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width: 776px) {
+}

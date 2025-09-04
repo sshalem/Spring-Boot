@@ -7,23 +7,27 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="07-One2One-Uni-Fetch-Eager" />
-        <module name="spring-boot-many-to-many" />
-        <module name="02-One2Many-Bi-Fetch-Lazy" />
         <module name="06-One2One-Bi-Fetch-Lazy" />
         <module name="08-One2One-Uni-Fetch-Lazy" />
         <module name="09-Many2Many-Bi-Eager" />
-        <module name="03-One2Many-Uni-Fetch-Eager" />
         <module name="10-Many2Many-Bi-Lazy" />
+        <module name="04-One2Many-Uni-Fetch-Lazy" />
+        <module name="spring-boot-many-to-many" />
+        <module name="02-One2Many-Bi-Fetch-Lazy" />
+        <module name="03-One2Many-Uni-Fetch-Eager" />
         <module name="05-One2One-Bi-Fetch-Eager" />
         <module name="01-One2Many-Bi-Fetch-Eager" />
         <module name="11-Paging-and-Sorting" />
-        <module name="04-One2Many-Uni-Fetch-Lazy" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01-One2Many-Bi-Fetch-Eager (1)" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="01-One2Many-Bi-Fetch-Eager" options="-parameters" />
+      <module name="01-One2Many-Bi-Fetch-Eager (1)" options="-parameters" />
       <module name="02-One2Many-Bi-Fetch-Lazy" options="-parameters" />
       <module name="03-One2Many-Uni-Fetch-Eager" options="-parameters" />
       <module name="04-One2Many-Uni-Fetch-Lazy" options="-parameters" />
