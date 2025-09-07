@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.lazy.dao;
+package com.jpa.one2many.bi.lazy.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import com.jpa.one2many.bi.lazy.repository.RoleRepository;
 import com.jpa.one2many.bi.lazy.repository.UserRepository;
 
 @Service
-public class RoleDaoImpl implements RoleDao {
+public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleRepository roleRepository;

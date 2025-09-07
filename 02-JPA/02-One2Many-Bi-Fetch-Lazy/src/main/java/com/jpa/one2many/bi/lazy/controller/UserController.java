@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.one2many.bi.lazy.dao.UserDaoImpl;
+import com.jpa.one2many.bi.lazy.service.UserServiceImpl;
 import com.jpa.one2many.bi.lazy.dto.UserDto;
 import com.jpa.one2many.bi.lazy.entity.RoleEntity;
 import com.jpa.one2many.bi.lazy.entity.UserEntity;
@@ -24,7 +24,7 @@ import com.jpa.one2many.bi.lazy.entity.UserEntity;
 public class UserController {
 
 	@Autowired
-	private UserDaoImpl userDaoImpl;
+	private UserServiceImpl userServiceImpl;
 
 	/**
 	 * Here I return UserDto object,
@@ -39,7 +39,7 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
-		return new ResponseEntity<Object>(userDaoImpl.createUser(userEntity), null, HttpStatus.CREATED);
+		return new ResponseEntity<Object>(userServiceImpl.createUser(userEntity), null, HttpStatus.CREATED);
 	}
 	
 	// *********************
@@ -47,27 +47,27 @@ public class UserController {
 	// *********************
 	@GetMapping("/getUserById/{id}")
 	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
-		return new ResponseEntity<Object>(userDaoImpl.getUserById(id), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(userServiceImpl.getUserById(id), null, HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/getUserByPid/{pid}")
 	public ResponseEntity<UserDto> getUserByPid(@PathVariable("pid") long pid) {
-		return new ResponseEntity<UserDto>(userDaoImpl.getUserByPid(pid), null, HttpStatus.FOUND);
+		return new ResponseEntity<UserDto>(userServiceImpl.getUserByPid(pid), null, HttpStatus.FOUND);
 	}
 	 
 	@GetMapping("/getUserByName/{name}")
 	public ResponseEntity<?> getUserByName(@PathVariable("name") String name) {
-		return new ResponseEntity<Object>(userDaoImpl.getUserByName(name), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(userServiceImpl.getUserByName(name), null, HttpStatus.FOUND);
 	}
 
 	@GetMapping("/getUserByEmail/{email}")
 	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
-		return new ResponseEntity<Object>(userDaoImpl.getUserByEmail(email), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(userServiceImpl.getUserByEmail(email), null, HttpStatus.FOUND);
 	}
 		
 	@GetMapping("/allUsers")
 	public ResponseEntity<?> getAlltUser() {
-		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(userServiceImpl.getAllUsers(), null, HttpStatus.FOUND);
 	}
 
 	
@@ -77,7 +77,7 @@ public class UserController {
 	
 	@PutMapping("/addRole/{userPid}")
 	public ResponseEntity<?> addRoleToUser(@RequestBody RoleEntity roleEntity, @PathVariable("userPid") long userPid) {
-		UserDto returnedValue = userDaoImpl.addRoleToUser(userPid, roleEntity);
+		UserDto returnedValue = userServiceImpl.addRoleToUser(userPid, roleEntity);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
  
@@ -87,14 +87,14 @@ public class UserController {
 	
 	@DeleteMapping("/removeRole/{userPid}/{role}")
 	public ResponseEntity<?> removeRoleFromUser(@PathVariable("role") String role, @PathVariable("userPid") long userPid) {		
-		UserEntity returnedValue = userDaoImpl.removeRoleFromUser(userPid, role);
+		UserEntity returnedValue = userServiceImpl.removeRoleFromUser(userPid, role);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/removeUser/{userPid}")
 	public ResponseEntity<?> removeUser(@PathVariable("userPid") long userPid) {		
-		userDaoImpl.removeUserByPid(userPid);
-		return new ResponseEntity<Object>(userDaoImpl.getAllUsers(), null, HttpStatus.ACCEPTED);
+		userServiceImpl.removeUserByPid(userPid);
+		return new ResponseEntity<Object>(userServiceImpl.getAllUsers(), null, HttpStatus.ACCEPTED);
 	}
 
 }

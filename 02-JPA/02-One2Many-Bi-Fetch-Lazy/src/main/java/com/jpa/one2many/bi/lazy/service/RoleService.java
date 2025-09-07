@@ -1,11 +1,11 @@
-package com.jpa.one2many.bi.lazy.dao;
+package com.jpa.one2many.bi.lazy.service;
 
 import java.util.List;
 
 import com.jpa.one2many.bi.lazy.dto.RoleDto;
 import com.jpa.one2many.bi.lazy.dto.UserDto;
 
-public interface RoleDao {
+public interface RoleService {
 
 	List<RoleDto> getRoleById(long id);
 

@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.lazy.dao;
+package com.jpa.one2many.bi.lazy.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import com.jpa.one2many.bi.lazy.dto.UserDto;
 import com.jpa.one2many.bi.lazy.entity.RoleEntity;
 import com.jpa.one2many.bi.lazy.entity.UserEntity;
 
-public interface UserDao {
+public interface UserService {
 	
 	UserDto createUser(UserEntity userEntity);	
 	

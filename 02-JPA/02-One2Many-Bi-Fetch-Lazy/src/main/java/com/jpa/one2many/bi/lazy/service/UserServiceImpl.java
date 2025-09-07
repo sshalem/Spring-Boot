@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.lazy.dao;
+package com.jpa.one2many.bi.lazy.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import com.jpa.one2many.bi.lazy.exception.ResourceNotFoundException;
 import com.jpa.one2many.bi.lazy.repository.UserRepository;
 
 @Service
-public class UserDaoImpl implements UserDao {
+public class UserServiceImpl implements UserService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
 	private UserRepository userRepository;
