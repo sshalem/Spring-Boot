@@ -1,5 +1,6 @@
 package com.jpa.one2many.bi.lazy.controller;
 
+import org.springframework.beans.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -83,8 +84,9 @@ public class UserController {
 
 	@PutMapping("/addRoleUpdateUser/{userPid}")
 	public ResponseEntity<?> addRoleUpdateUser(@RequestBody UserEntity userEntity, @PathVariable("userPid") long userPid) {
-		UserEntity returnedValue = userServiceImpl.addRoleUpdateUser(userPid, userEntity);
-		System.out.println(returnedValue);
+		UserEntity updateUser = userServiceImpl.addRoleUpdateUser(userPid, userEntity);
+		UserDto returnedValue = new UserDto();
+		BeanUtils.copyProperties(updateUser, returnedValue);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 
