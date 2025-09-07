@@ -35,6 +35,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public UserEntity createUserWithRoles(UserEntity userEntity) {
+		LOGGER.info("method : createUserWithRoles(UserEntity userEntity)");
+        return userRepository.save(userEntity);
+	}
+
+	@Override
 	public UserDto getUserById(long id) {
 		UserDto userDto = new UserDto();
 		LOGGER.info("method : getUserById(long id)");
