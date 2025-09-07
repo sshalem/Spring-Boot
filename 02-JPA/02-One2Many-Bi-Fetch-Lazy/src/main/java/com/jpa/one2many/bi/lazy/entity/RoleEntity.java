@@ -28,8 +28,8 @@ public class RoleEntity implements Serializable {
 	// I add the "foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test")" just 
 	// For learning purpose , this will add CONTRAINTS to the foreign key in DB
 	//	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
-	@ManyToOne(fetch = FetchType.LAZY)	
-	@JoinColumn(name = "user_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id" ,nullable = true)
 	@JsonIgnore
 	private UserEntity user;
 

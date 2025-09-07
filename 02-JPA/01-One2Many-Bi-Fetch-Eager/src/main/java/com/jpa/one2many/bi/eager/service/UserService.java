@@ -1,11 +1,11 @@
-package com.jpa.one2many.bi.eager.dao;
+package com.jpa.one2many.bi.eager.service;
 
 import com.jpa.one2many.bi.eager.entity.RoleEntity;
 import com.jpa.one2many.bi.eager.entity.UserEntity;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserService {
 
     UserEntity createUser(UserEntity userEntity);
 
@@ -22,6 +22,8 @@ public interface UserDao {
     void removeUserByPid(long pid);
 
     UserEntity addRoleToUser(long userPid, RoleEntity roleEntity);
+
+    UserEntity addRoleUpdateUser(long userPid, UserEntity userEntity);
 
     UserEntity removeRoleFromUser(long userPid, String role);
 }

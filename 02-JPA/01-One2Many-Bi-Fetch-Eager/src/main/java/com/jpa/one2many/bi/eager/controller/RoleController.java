@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.one2many.bi.eager.dao.RoleDaoImpl;
+import com.jpa.one2many.bi.eager.service.RoleServiceImpl;
 
 @RestController
 @RequestMapping("/roles")
@@ -17,7 +17,7 @@ import com.jpa.one2many.bi.eager.dao.RoleDaoImpl;
 public class RoleController {
 
 	@Autowired
-	private RoleDaoImpl roleDaoImpl;
+	private RoleServiceImpl roleServiceImpl;
 
 	// *********************
 	// ***** Get Methods ***
@@ -25,22 +25,22 @@ public class RoleController {
 
 	@GetMapping("/allRoles")
 	public ResponseEntity<?> getAlltRoles() {
-		return new ResponseEntity<Object>(roleDaoImpl.getAllRoles(), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(roleServiceImpl.getAllRoles(), null, HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/getRolesById/{id}")
 	public ResponseEntity<?> getRolesById(@PathVariable("id") long id) {
-		return new ResponseEntity<Object>(roleDaoImpl.getRoleById(id), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(roleServiceImpl.getRoleById(id), null, HttpStatus.FOUND);
 	}
 
 	@GetMapping("/getUsersWithRoleName/{role}")
 	public ResponseEntity<?> getUsersWhoHaveRoleName(@PathVariable("role") String role) {
-		return new ResponseEntity<Object>(roleDaoImpl.getUsersWithRoleName(role), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(roleServiceImpl.getUsersWithRoleName(role), null, HttpStatus.FOUND);
 	}
 
 	@GetMapping("/getRolesByPid/{pid}")
 	public ResponseEntity<?> getRolesByPid(@PathVariable("pid") long pid) {
-		return new ResponseEntity<Object>(roleDaoImpl.getRoleByPid(pid), null, HttpStatus.FOUND);
+		return new ResponseEntity<Object>(roleServiceImpl.getRoleByPid(pid), null, HttpStatus.FOUND);
 	}
 
 }

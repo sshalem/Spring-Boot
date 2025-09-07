@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.eager.dao;
+package com.jpa.one2many.bi.eager.service;
 
 import com.jpa.one2many.bi.eager.entity.RoleEntity;
 import com.jpa.one2many.bi.eager.entity.UserEntity;

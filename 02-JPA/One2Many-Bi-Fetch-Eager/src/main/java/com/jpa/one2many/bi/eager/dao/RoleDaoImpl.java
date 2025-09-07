@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.eager.dao;
+package com.jpa.one2many.bi.eager.service;
 
 import java.util.List;
 

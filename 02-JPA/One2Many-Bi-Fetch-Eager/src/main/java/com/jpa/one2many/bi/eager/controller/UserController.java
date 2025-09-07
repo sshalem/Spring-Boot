@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.one2many.bi.eager.dao.UserDaoImpl;
+import com.jpa.one2many.bi.eager.service.UserDaoImpl;
 import com.jpa.one2many.bi.eager.entity.RoleEntity;
 import com.jpa.one2many.bi.eager.entity.UserEntity;
 

@@ -2,15 +2,7 @@ package com.jpa.one2many.bi.eager.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 //    @OneToMany(mappedBy = "user",
 //            fetch = FetchType.EAGER,
 //            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
@@ -20,98 +12,96 @@ import javax.persistence.Table;
 //            orphanRemoval = true)
 //  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "USERS_TB")
 public class UserEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private long pid;
-	private String name;
-	private String email;
-	private String password;
-	
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = false)
-	@JsonManagedReference
-	private Set<RoleEntity> roles;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private long pid;
+    private String name;
+    private String email;
+    private String password;
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER, orphanRemoval = false)
+    @JsonManagedReference
+    private Set<RoleEntity> roles;
 
-	public UserEntity() {
-		super();
-	}
+    public UserEntity() {
+        super();
+    }
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public long getPid() {
-		return pid;
-	}
+    public long getPid() {
+        return pid;
+    }
 
-	public void setPid(long pid) {
-		this.pid = pid;
-	}
+    public void setPid(long pid) {
+        this.pid = pid;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Set<RoleEntity> getRoles() {
-		return roles;
-	}
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
 
-	public void setRoles(Set<RoleEntity> roles) {
-		this.roles = roles;
-	}
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
+    }
 
-	public void addRole(RoleEntity role) {
-		if (this.roles == null) {
-			this.roles = new HashSet<>();
-		}
-		this.roles.add(role);
-		role.setUser(this); // maintain both sides
-	}
+    public void addRole(RoleEntity role) {
+        if (this.roles == null) {
+            this.roles = new HashSet<>();
+        }
+        this.roles.add(role);
+        role.setUser(this); // maintain both sides
+    }
 
-	public void removeRole(RoleEntity role) {
-		roles.remove(role);
-		role.setUser(null); // crucial: disconnect owning side
-	}
+    public void removeRole(RoleEntity role) {
+        roles.remove(role);
+        role.setUser(null); // crucial: disconnect owning side
+    }
 //    @Override
 //    public String toString() {
 //        return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
 //                + password + "]";
 //    }
 
-	@Override
-	public String toString() {
-		return "UserEntity{" + "id=" + id + ", pid=" + pid + ", name='" + name + '\'' + ", email='" + email + '\''
-				+ ", password='" + password + '\'' + ", roles=" + roles + '}';
-	}
+    @Override
+    public String toString() {
+        return "UserEntity{" + "id=" + id + ", pid=" + pid + ", name='" + name + '\'' + ", email='" + email + '\''
+                + ", password='" + password + '\'' + ", roles=" + roles + '}';
+    }
 }

@@ -4,8 +4,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/01-One2Many-Bi-Fetch-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/02-One2Many-Bi-Fetch-Lazy/pom.xml" />
+        <option value="$PROJECT_DIR$/01-transaction-management/pom.xml" />
+        <option value="$PROJECT_DIR$/02-transaction-propagation/pom.xml" />
+        <option value="$PROJECT_DIR$/03-transaction-rollback/pom.xml" />
       </list>
     </option>
   </component>

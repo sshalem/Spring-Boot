@@ -1,4 +1,4 @@
-package com.jpa.one2many.bi.eager.dao;
+package com.jpa.one2many.bi.eager.service;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.jpa.one2many.bi.eager.repository.RoleRepository;
 import com.jpa.one2many.bi.eager.repository.UserRepository;
 
 @Service
-public class RoleDaoImpl implements RoleDao {
+public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleRepository roleRepository;
