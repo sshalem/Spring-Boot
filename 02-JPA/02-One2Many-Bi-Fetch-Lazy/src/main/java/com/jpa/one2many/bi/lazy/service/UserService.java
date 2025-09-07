@@ -24,6 +24,8 @@ public interface UserService {
 	
 	UserDto addRoleToUser(long userPid, RoleEntity roleEntity);
 
+	UserEntity addRoleUpdateUser(long userPid, UserEntity userEntity);
+
 	UserEntity removeRoleFromUser(long userPid, String role);
 
 }

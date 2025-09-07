@@ -80,7 +80,13 @@ public class UserController {
 		UserDto returnedValue = userServiceImpl.addRoleToUser(userPid, roleEntity);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
- 
+
+	@PutMapping("/addRoleUpdateUser/{userPid}")
+	public ResponseEntity<?> addRoleUpdateUser(@RequestBody UserEntity userEntity, @PathVariable("userPid") long userPid) {
+		UserEntity returnedValue = userServiceImpl.addRoleUpdateUser(userPid, userEntity);
+		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
+	}
+
 	// **************************************
 	// ***** Delete Methods ***
 	// **************************************

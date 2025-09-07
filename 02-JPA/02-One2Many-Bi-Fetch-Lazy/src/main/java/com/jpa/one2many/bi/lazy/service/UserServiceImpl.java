@@ -163,6 +163,21 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(savedUserEntity, userDto);		
 		return userDto;		
 	}
+
+	@Override
+	@Transactional
+	public UserEntity addRoleUpdateUser(long userPid, UserEntity userEntity) {
+		System.out.println(userEntity);
+		UserEntity _userEntityDB = userRepository.findByPid(userPid);
+		if (_userEntityDB == null)
+			throw new ResourceNotFoundException("Not found User with userPid = " + userPid);
+		System.out.println(_userEntityDB);
+		_userEntityDB.setPassword(userEntity.getPassword());
+
+		userEntity.getRoles().forEach(role -> _userEntityDB.addRole(role));
+
+		return userRepository.save(_userEntityDB);
+	}
 	
 	/**
 	 * @Transactional Annotation - 
