@@ -1,5 +1,7 @@
 package com.jpa.one2many.bi.lazy.entity;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +29,8 @@ public class UserEntity implements Serializable {
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonManagedReference
 	private Set<RoleEntity> roles;
 
 	public UserEntity() {
@@ -92,13 +95,18 @@ public class UserEntity implements Serializable {
 
 	public void removeRole(RoleEntity role) {
 		this.roles.remove(role);
-//		role.setUser(null);
+		role.setUser(null);
 	}
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", pid=" + pid + ", name=" + name + ", email=" + email + ", password="
-				+ password + "]";
+		return "UserEntity{" +
+				"id=" + id +
+				", pid=" + pid +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", roles=" + roles +
+				'}';
 	}
-
 }

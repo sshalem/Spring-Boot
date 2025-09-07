@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity
 @Table(name = "ROLES_TB")
@@ -30,7 +30,7 @@ public class RoleEntity implements Serializable {
 	//	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_shabtay_shalem_test"))
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id" ,nullable = true)
-	@JsonIgnore
+	@JsonBackReference
 	private UserEntity user;
 
 	public RoleEntity() {
@@ -76,7 +76,10 @@ public class RoleEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "RoleEntity [id=" + id + ", role=" + role + ", pid=" + pid + "]";
+		return "RoleEntity{" +
+				"pid=" + pid +
+				", role='" + role + '\'' +
+				", id=" + id +
+				'}';
 	}
-
 }

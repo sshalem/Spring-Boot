@@ -84,6 +84,7 @@ public class UserController {
 	@PutMapping("/addRoleUpdateUser/{userPid}")
 	public ResponseEntity<?> addRoleUpdateUser(@RequestBody UserEntity userEntity, @PathVariable("userPid") long userPid) {
 		UserEntity returnedValue = userServiceImpl.addRoleUpdateUser(userPid, userEntity);
+		System.out.println(returnedValue);
 		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
 	}
 

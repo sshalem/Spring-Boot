@@ -167,14 +167,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public UserEntity addRoleUpdateUser(long userPid, UserEntity userEntity) {
-		UserEntity _userEntityDB = userRepository.findByPid(userPid);
-		if (_userEntityDB == null)
+		UserEntity _userDB = userRepository.findByPid(userPid);
+		if (_userDB == null)
 			throw new ResourceNotFoundException("Not found User with userPid = " + userPid);
-		_userEntityDB.setPassword(userEntity.getPassword());
+		_userDB.setPassword(userEntity.getPassword());
 
-		userEntity.getRoles().forEach(role -> _userEntityDB.addRole(role));
-
-		return userRepository.save(_userEntityDB);
+		userEntity.getRoles().forEach(role -> {
+			role.setPid(userPid);
+            _userDB.addRole(role);
+        });
+		UserEntity returnedValue = userRepository.save(_userDB);
+		System.out.println(returnedValue);
+		return returnedValue;
 	}
 
 	/**
