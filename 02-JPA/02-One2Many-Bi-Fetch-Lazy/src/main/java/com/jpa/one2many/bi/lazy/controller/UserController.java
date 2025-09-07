@@ -42,7 +42,15 @@ public class UserController {
 	public ResponseEntity<?> createUser(@RequestBody UserEntity userEntity) {
 		return new ResponseEntity<Object>(userServiceImpl.createUser(userEntity), null, HttpStatus.CREATED);
 	}
-	
+
+	@PostMapping("/createUserWithRoles")
+	public ResponseEntity<?> createUserWithRoles(@RequestBody UserEntity userEntity) {
+		UserDto returnedValue = new UserDto();
+		UserEntity user = userServiceImpl.createUserWithRoles(userEntity);
+		BeanUtils.copyProperties(user,returnedValue);
+		return new ResponseEntity<Object>(returnedValue, null, HttpStatus.CREATED);
+	}
+
 	// *********************
 	// ***** Get Methods ***
 	// *********************
