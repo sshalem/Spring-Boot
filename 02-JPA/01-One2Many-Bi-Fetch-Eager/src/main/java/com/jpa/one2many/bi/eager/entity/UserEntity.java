@@ -25,7 +25,7 @@ public class UserEntity {
     private String name;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER, orphanRemoval = false)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST,  CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private Set<RoleEntity> roles;
 

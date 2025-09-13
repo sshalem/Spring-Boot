@@ -2,19 +2,23 @@ package com.jpa.one2many.bi.eager.service;
 
 import java.util.List;
 
+import com.jpa.one2many.bi.eager.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.jpa.one2many.bi.eager.entity.RoleEntity;
 import com.jpa.one2many.bi.eager.entity.UserEntity;
 import com.jpa.one2many.bi.eager.exception.ResourceNotFoundException;
-import com.jpa.one2many.bi.eager.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
     public UserEntity createUser(UserEntity userEntity) {
@@ -174,7 +178,10 @@ public class UserServiceImpl implements UserService {
         // Answer : this is so I won't delete the role from DB, but I set it to null ,
         // when I do the line of userEntity.removeRole(roleEntity);
         // But it still deleting role From DB : rrrrrrrrrrrrrrrrrrrrrrr
+
         userRepository.save(userEntity);
+        //        roleRepository.delete(roleEntity);
+
 //		 roleRepository.save(roleEntity);
         return userEntity;
         /**

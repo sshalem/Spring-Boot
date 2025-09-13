@@ -4,25 +4,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/10-Many2Many-Bi-Lazy/pom.xml" />
         <option value="$PROJECT_DIR$/01-One2Many-Bi-Fetch-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/09-Many2Many-Bi-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/11-Paging-and-Sorting/pom.xml" />
-        <option value="$PROJECT_DIR$/06-One2One-Bi-Fetch-Lazy/pom.xml" />
         <option value="$PROJECT_DIR$/02-One2Many-Bi-Fetch-Lazy/pom.xml" />
-        <option value="$PROJECT_DIR$/05-One2One-Bi-Fetch-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/08-One2One-Uni-Fetch-Lazy/pom.xml" />
-        <option value="$PROJECT_DIR$/04-One2Many-Uni-Fetch-Lazy/pom.xml" />
-        <option value="$PROJECT_DIR$/07-One2One-Uni-Fetch-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/03-One2Many-Uni-Fetch-Eager/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-boot-many-to-many-master/pom.xml" />
-        <option value="$PROJECT_DIR$/One2Many-Bi-Fetch-Eager/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/One2Many-Bi-Fetch-Eager/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
