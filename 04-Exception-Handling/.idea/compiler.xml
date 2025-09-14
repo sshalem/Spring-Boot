@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="B_config_ExceptionMessage_applicationProperties" />
         <module name="E_ControllerAdvice_Custom_ExceptionErrorMessage" />
+        <module name="F_RestControllerAdviceCustom" />
         <module name="D_Custom_ExceptionErrorMessage" />
         <module name="A_Handle_RuntimeException" />
         <module name="C_config_ExceptionMessage_AtController" />
@@ -21,6 +22,7 @@
       <module name="C_config_ExceptionMessage_AtController" options="-parameters" />
       <module name="D_Custom_ExceptionErrorMessage" options="-parameters" />
       <module name="E_ControllerAdvice_Custom_ExceptionErrorMessage" options="-parameters" />
+      <module name="F_RestControllerAdviceCustom" options="-parameters" />
     </option>
   </component>
 </project>

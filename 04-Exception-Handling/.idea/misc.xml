@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/C_config_ExceptionMessage_AtController/pom.xml" />
         <option value="$PROJECT_DIR$/D_Custom_ExceptionErrorMessage/pom.xml" />
         <option value="$PROJECT_DIR$/E_ControllerAdvice_Custom_ExceptionErrorMessage/pom.xml" />
+        <option value="$PROJECT_DIR$/F_RestControllerAdviceCustom/pom.xml" />
       </list>
     </option>
   </component>

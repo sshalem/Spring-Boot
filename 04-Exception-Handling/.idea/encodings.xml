@@ -6,5 +6,6 @@
     <file url="file://$PROJECT_DIR$/C_config_ExceptionMessage_AtController/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/D_Custom_ExceptionErrorMessage/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/E_ControllerAdvice_Custom_ExceptionErrorMessage/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/F_RestControllerAdviceCustom/src/main/java" charset="UTF-8" />
   </component>
 </project>
