@@ -1,6 +1,6 @@
 package com.cachem.exception;
 
-public enum ErrorMessages {
+public enum ErrorMessagesEnum {
 
 	MISSING_REQUIRED_FIELD("Missing required field. Please check documentation for required fields"),
 	RECORD_ALREADY_EXISTS("Record already exists"), 
@@ -11,9 +11,9 @@ public enum ErrorMessages {
 	COULD_NOT_DELETE_RECORD("Could not delete record"),
 	EMAIL_ADDRESS_NOT_VERIFIED("Email address could not be verified");
 
-	private String errorMessage;
+	private final String errorMessage;
 
-	private ErrorMessages(String errorMessage) {
+	private ErrorMessagesEnum(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 
