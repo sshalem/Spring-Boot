@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/01-jwt-main-project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/02-jwt-main-with-authorities/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/03-jwt-main-refresh-token/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/04-jwt-main-refresh-token-inDB/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/05-jwt-refresh-token-boot3.3.7/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JWT_ReactJS_Jobify/jwt-backend-jobify/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JWT_ReactJS_Jobify/jwt-backend-spring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Jwt-Sergey-Kargopolov/Jwt-Users-Roles-Authorities/src/main/java" charset="UTF-8" />
+  </component>
+</project>
