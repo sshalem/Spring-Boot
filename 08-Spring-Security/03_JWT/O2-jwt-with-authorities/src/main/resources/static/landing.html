@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>landing</title>
+    <script src="https://kit.fontawesome.com/c3d49f7cef.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <section class="container">
+      <h1>landing page</h1>
+      <h3>get Book message from server</h3>
+      <button type="button" id="btn">get</button>
+    </section>
+    <script>
+      const btn = document.getElementById('btn');
+      btn.addEventListener('click', () => {
+        const jwtToken = sessionStorage.getItem('token');
+        console.log(jwtToken);
+        fetch('http://localhost:8080/book/get', {
+          method: 'get',
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        })
+          .then((res) => res.text())
+          .then((data) => console.log(data));
+      });
+    </script>
+  </body>
+</html>
