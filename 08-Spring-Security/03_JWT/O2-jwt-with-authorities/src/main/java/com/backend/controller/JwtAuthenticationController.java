@@ -1,5 +1,6 @@
 package com.backend.controller;
 
+import com.backend.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,6 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
-//	@Autowired
-//	private JwtUserDetailsService jwtUserDetailsService;
-
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 
@@ -58,37 +56,22 @@ public class JwtAuthenticationController {
 		}
 
 		/**
-		 * First Way:
-		 * If the authentication process is successful, we can get User’s information
-		 * such as username, password, authorities from an Authentication object.
+		 * 🔑 Why I do (JwtUserDetails) authenticate.getPrincipal()?
+		 * ✅ No extra DB call — I already have the authenticated JwtUserDetails inside the Authentication object.
+		 * ✅ Standard Spring Security way (this is why the Principal exists).
+		 * 🔑 Then Why, During request filtering (JWT validation), I call jwtUserDetailsService.loadUserByUsername(email) again?
+		 * ✅ It's because I only have the JWT’s subject (username) and need to reconstruct UserDetails for the SecurityContext.
 		 */
-				
+
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
 		final String name = jwtUserDetails.getUsername();
 		final String token = jwtTokenUtil.generateToken(jwtUserDetails);
 
 		return ResponseEntity.ok(new JwtTokenResponse(name, token));
-		
-		/**
-		 * Second way:
-		 * This is also a way to get the user-name since we are already authenticated,
-		 * (if no exception is thrown), we can get user details from
-		 * `loadUserByUsername`
-		 */
-		//		final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(authLoginReq.getEmail());
-		//		final String name = userDaoImpl.getUserName(authLoginReq.getEmail());
-		//		final String token = jwtTokenUtil.generateToken(userDetails);
-		//		return ResponseEntity.ok(new JwtTokenResponse(name, token));
-
-		// JwtTokenResponse jwtTokenResponse =
-		// JwtTokenResponse.name(name).token(token).build();
-		// return ResponseEntity.ok(jwtTokenResponse);
 	}
 
 	/**
 	 * Register Request
-	 * 
-	 * @throws EmailAlreadyExistException
 	 */
 	@PostMapping(path = SecurityConstants.REGISTER_URL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> signUp(@RequestBody UserRegisterRequest userRegisterRequest) {
