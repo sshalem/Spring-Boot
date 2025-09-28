@@ -22,8 +22,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
 		Exception exception = (Exception) request.getAttribute("exception");
 
-		System.out.println( authException.getMessage());
-		System.out.println(authException.getClass());
+		LOGGER.error(authException.getMessage());
+		LOGGER.error(authException.getClass());
 		
 		if (exception.getClass().getSimpleName().equals("ExpiredJwtException")) {
 			LOGGER.error("Getting -> " + HttpServletResponse.SC_UNAUTHORIZED + " - " + exception.getMessage());			

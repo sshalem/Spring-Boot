@@ -14,9 +14,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
-import com.backend.config.SecurityConstants;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -30,12 +27,15 @@ import io.jsonwebtoken.security.SignatureException;
 public class JwtTokenUtil implements Serializable {
 
 	private static final long serialVersionUID = 3540583232420968407L;
-
 	private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
+
+	// EXPIRATION_TIME = 1000 * 3; // -> set to 3 seconds, and check Expired Exception
+	// EXPIRATION_TIME = 1000 * 200; // -> this is 200 seconds
+	// EXPIRATION_TIME = 1000 * 60 * 15;	1000 * 60 * 15; // -> 15 minutes
+	public static final long EXPIRATION_TIME = 1000 * 200; // this is 200 seconds
 
 	@Value("${jwt.signing.key}")
 	private String secretKey;
-
 
 	public String extractUsernameFromToken(String token) {
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
@@ -43,54 +43,27 @@ public class JwtTokenUtil implements Serializable {
 		return claims.getSubject(); // subject is the user-name , in our case I use email as user-name
 	}
 
-	public Collection<? extends GrantedAuthority> extractRolesFromToken(String token) {
-		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
-		Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-		
-		System.out.println(claims);
-		
-		return (Collection<? extends GrantedAuthority>) claims.get("roles"); // subject is the user-name , in our case I use email as user-name
-	}
-
 	public String generateToken(UserDetails userDetails) {
-
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
 		Map<String, Object> claims = new HashMap<>();
-		
-		//	[1] One way to implement , check on JWT the header and payload of the JWT created by backend 
-		Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();		
+		Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
 		claims.put("roles", authorities);
-		
-		/**
-		 * This is another implementation , the Payload of the Token will be different
-		 * 
-		 * List<RoleEntity> listOfRoles = roleRepository.findAll();
-		 * listOfRoles.forEach(role -> {
-		 * 		if(authorities.contains(new SimpleGrantedAuthority("ROLE_" + role.getRole())))
-		 * 			claims.put("is" + role.getRole(), true);
-		 * 	}); 
-		 */
-		
-		
 		return Jwts
 				.builder()
-				.setHeaderParam("type", "JWT") // this is the Header of the token
+				.setHeaderParam("typ", "JWT") // this is the Header of the token
 				.setClaims(claims) // claims - It's a hash map where we can define several details
 				.setSubject(userDetails.getUsername()) // Subject - this is the user name
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
+				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
 				.signWith(key, SignatureAlgorithm.HS512)
 				.compact();
 	}
-	
-	
+
 	public boolean validateToken(String token) {
-		
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
-		
 		try {
 			Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-			return true;		
+			return true;
 		} catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
 			LOGGER.error(ex.getMessage());
 			throw new BadCredentialsException("INVALID_CREDENTIALS", ex);
