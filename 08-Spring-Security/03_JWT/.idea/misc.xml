@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/02-jwt-main-with-authorities/pom.xml" />
         <option value="$PROJECT_DIR$/04-jwt-main-refresh-token-inDB/pom.xml" />
         <option value="$PROJECT_DIR$/05-jwt-refresh-token-boot3.3.7/pom.xml" />
+        <option value="$PROJECT_DIR$/O2-jwt-with-authorities/pom.xml" />
       </list>
     </option>
   </component>

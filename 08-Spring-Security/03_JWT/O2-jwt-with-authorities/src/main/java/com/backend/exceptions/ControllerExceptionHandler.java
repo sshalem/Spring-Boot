@@ -23,7 +23,7 @@ public class ControllerExceptionHandler {
 	}
 
 	@ExceptionHandler(EmailAlreadyExistException.class)
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ResponseEntity<Object> emailAlreadyExistException(EmailAlreadyExistException ex, WebRequest request) {
 
 		Map<String, Object> response = new HashMap<>();
@@ -37,7 +37,7 @@ public class ControllerExceptionHandler {
 	}
 
 	@ExceptionHandler({ Exception.class })
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+//	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<Object> globalExceptionHandler(Exception ex, WebRequest request) {
 
 		Map<String, Object> response = new HashMap<>();
