@@ -6,7 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-	private final Logger LOGGER = Logger.getLogger(this.getClass());
+	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
@@ -23,7 +24,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 		Exception exception = (Exception) request.getAttribute("exception");
 
 		LOGGER.error(authException.getMessage());
-		LOGGER.error(authException.getClass());
+		LOGGER.error(authException.getClass().getName());
 		
 		if (exception.getClass().getSimpleName().equals("ExpiredJwtException")) {
 			LOGGER.error("Getting -> " + HttpServletResponse.SC_UNAUTHORIZED + " - " + exception.getMessage());			
