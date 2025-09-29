@@ -1,0 +1,28 @@
+package com.O2.jwt;
+
+import com.O2.entity.UserEntity;
+import com.O2.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtUserDetailsService implements UserDetailsService {
+
+	@Autowired
+	private UserRepository userRepo;
+
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+		UserEntity userEntity = userRepo.findByEmail(email);
+
+		if (userEntity == null)
+			throw new UsernameNotFoundException("user Email  :" + email + " not Exist");
+
+		return new JwtUserDetails(userEntity);
+	}
+
+}
