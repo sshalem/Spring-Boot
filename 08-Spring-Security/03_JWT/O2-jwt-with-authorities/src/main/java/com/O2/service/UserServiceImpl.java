@@ -18,8 +18,10 @@ import com.O2.model.UserRegisterRequest;
 import com.O2.model.UserRegisterResponse;
 import com.O2.repository.RoleRepository;
 import com.O2.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);

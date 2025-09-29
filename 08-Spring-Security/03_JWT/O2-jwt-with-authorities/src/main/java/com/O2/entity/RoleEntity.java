@@ -46,12 +46,7 @@ public class RoleEntity {
 	private long id;
 	private String role;
 
-	@ManyToMany(mappedBy = "roles", 
-			fetch = FetchType.EAGER, 
-			cascade = {
-					//	CascadeType.PERSIST,
-					//	CascadeType.MERGE
-	})
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<UserEntity> users = new HashSet<>();
 

@@ -14,8 +14,10 @@ import com.O2.entity.RoleEntity;
 import com.O2.exceptions.ResourceNotFoundException;
 import com.O2.repository.RoleRepository;
 import com.O2.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);

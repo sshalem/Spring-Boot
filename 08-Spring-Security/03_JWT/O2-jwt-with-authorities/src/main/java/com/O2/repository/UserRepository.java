@@ -17,6 +17,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	List<UserEntity> findByName(String name);
 
+	// Important: fetch join to initialize lazy roles in the same query
+	@Query("SELECT ue FROM UserEntity ue LEFT JOIN FETCH ue.roles WHERE ue.email=:email")
+	UserEntity findByEmailWithRoles(@Param("email") String email);
+
 	@Query("SELECT ue FROM UserEntity ue JOIN ue.roles AS rl WHERE rl.role=:role")
 	List<UserEntity> jpqlFindUsersWithRole(@Param("role") String role);
 
