@@ -8,13 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="02-jwt-main-with-authorities" />
         <module name="04-jwt-main-refresh-token-inDB" />
-        <module name="O2-jwt-with-authorities-v2-6-11" />
         <module name="05-jwt-refresh-token-3.3.7" />
         <module name="jwt-backend-spring" />
         <module name="jwt-backend-jobify" />
         <module name="01-jwt-main-project" />
         <module name="Jwt-Users-Roles-Authorities" />
         <module name="03-jwt-main-refresh-token" />
+        <module name="O2-jwt-authorities-v2-6-11" />
       </profile>
     </annotationProcessing>
   </component>
@@ -26,7 +26,7 @@
       <module name="04-jwt-main-refresh-token-inDB" options="-parameters" />
       <module name="05-jwt-refresh-token-3.3.7" options="-parameters" />
       <module name="Jwt-Users-Roles-Authorities" options="-parameters" />
-      <module name="O2-jwt-with-authorities-v2-6-11" options="-parameters" />
+      <module name="O2-jwt-authorities-v2-6-11" options="-parameters" />
       <module name="jwt-backend-jobify" options="-parameters" />
       <module name="jwt-backend-spring" options="-parameters" />
     </option>

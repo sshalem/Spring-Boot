@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>O2-jwt-with-authorities-v2-6-11</artifactId>
+	<artifactId>O2-jwt-authorities-v2-6-11</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>O2-jwt-authorities-v2-6-11</name>
 	<description>demo JWT with authorities</description>
