@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JwtUserDetailsService jwtUserDetailsService;
 	
 	@Bean
-	public PasswordEncoder passEncode() {
+	PasswordEncoder passEncode() {
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -47,29 +47,54 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.csrf().disable()		
-			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-		.and()
-			.authorizeRequests()
-			.antMatchers("/*", "/css/*", "/js/*").permitAll()
-			.antMatchers("/h2/**/**").permitAll() // Should not be in Production!
-			.antMatchers("/auth/**").permitAll()
-			.antMatchers("/api/users/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
-			.antMatchers("/api/roles/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
-			.anyRequest()
-			.authenticated()
-		.and()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http
+        	.csrf(csrf -> csrf.disable())
+        	.exceptionHandling(handling -> handling.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+            .authorizeRequests(requests -> requests
+            	.antMatchers("/*", "/css/*", "/js/*").permitAll()
+                .antMatchers("/h2/**/**").permitAll() // Should not be in Production!
+                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/api/users/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
+                .antMatchers("/api/roles/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
+                .anyRequest()
+                .authenticated())
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         // fix H2 database console: 
-		// Refused to display ' in a frame because it set 'X-Frame-Options' to 'deny'
-		http
-			.headers()
-			.frameOptions()
-			.sameOrigin() // H2 Console Needs this setting
-			.cacheControl(); // disable caching
+        // Refused to display ' in a frame because it set 'X-Frame-Options' to 'deny'
+        http.headers(headers -> headers
+        				.frameOptions()
+                        .sameOrigin() // H2 Console Needs this setting
+                        .cacheControl()); // disable caching
 	}
+	
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+//			.csrf().disable()		
+//			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+//		.and()
+//			.authorizeRequests()
+//			.antMatchers("/*", "/css/*", "/js/*").permitAll()
+//			.antMatchers("/h2/**/**").permitAll() // Should not be in Production!
+//			.antMatchers("/auth/**").permitAll()
+//			.antMatchers("/api/users/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
+//			.antMatchers("/api/roles/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
+//			.anyRequest()
+//			.authenticated()
+//		.and()
+//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//		
+//		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//
+//        // fix H2 database console: 
+//		// Refused to display ' in a frame because it set 'X-Frame-Options' to 'deny'
+//		http
+//			.headers()
+//			.frameOptions()
+//			.sameOrigin() // H2 Console Needs this setting
+//			.cacheControl(); // disable caching
+//	}
 }
