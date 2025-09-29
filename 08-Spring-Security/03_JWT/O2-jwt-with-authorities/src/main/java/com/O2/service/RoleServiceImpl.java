@@ -17,7 +17,6 @@ import com.O2.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class RoleServiceImpl implements RoleService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
@@ -32,6 +31,7 @@ public class RoleServiceImpl implements RoleService {
 	 * CREATE
 	 ***********************/
 	@Override
+	@Transactional
 	public RoleEntity createRole(RoleEntity roleEntity) {
 		LOGGER.info("invoke createRole() ");
 
@@ -71,6 +71,7 @@ public class RoleServiceImpl implements RoleService {
 	 ***************/
 
 	@Override
+	@Transactional
 	public RoleEntity updateRoleDetails(RoleEntity roleEntity) {
 		RoleEntity _roleEntity = roleRepository.findByRole(roleEntity.getRole());
 
@@ -83,6 +84,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	@Transactional
 	public UserEntity addRoleToUser(String email, String role) {
 		UserEntity _userEntity = userRepository.findByEmail(email);
 
@@ -108,6 +110,7 @@ public class RoleServiceImpl implements RoleService {
 	 * Delete
 	 ***************/
 	@Override
+	@Transactional
 	public void deleteRoleByRoleName(String role) {
 
 		List<UserEntity> _users = userRepository.findAll();
@@ -124,6 +127,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	@Transactional
 	public UserEntity removeRoleFromUserByRoleName(String email, String role) {
 		UserEntity _userEntity = userRepository.findByEmail(email);
 
@@ -136,6 +140,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	@Transactional
 	public Set<RoleEntity> removeAllRolesFromUser(String email) {
 		List<RoleEntity> _roles = roleRepository.jpqlFindRolesOfUserByEmail(email);
 
@@ -149,6 +154,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteAllRoles() {
 		List<RoleEntity> _roles = roleRepository.findAll();
 

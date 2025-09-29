@@ -21,7 +21,6 @@ import com.O2.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -39,6 +38,7 @@ public class UserServiceImpl implements UserService {
 	 * CREATE
 	 ***********************/
 	@Override
+	@Transactional
 	public UserRegisterResponse createUser(UserRegisterRequest userRegisterRequest) {
 
 		UserEntity userEntity = new UserEntity();
@@ -109,6 +109,7 @@ public class UserServiceImpl implements UserService {
 	 ***************/
 
 	@Override
+	@Transactional
 	public UserEntity updateUserDetails(String email, UserEntity userEntity) {
 		UserEntity _userEntity = this.getUserByEmail(email);
 		_userEntity.setName(userEntity.getName());
@@ -122,12 +123,14 @@ public class UserServiceImpl implements UserService {
 	 ***************/
 
 	@Override
+	@Transactional
 	public void deleteUserByEmail(String email) {
 		UserEntity _userEntity = this.getUserByEmail(email);
 		userRepository.delete(_userEntity);
 	}
 
 	@Override
+	@Transactional
 	public void removeAllUsersFromRole(String role) {
 		List<UserEntity> _users = userRepository.jpqlFindUsersWithRole(role);
 		RoleEntity roleEntity = roleRepository.findByRole(role);
@@ -139,6 +142,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteAllUsers() {
 		userRepository.deleteAll();
 	}
