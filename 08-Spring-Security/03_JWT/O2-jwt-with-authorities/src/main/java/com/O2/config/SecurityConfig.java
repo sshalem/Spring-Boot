@@ -57,7 +57,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/auth/**").permitAll()
 			.antMatchers("/api/users/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
 			.antMatchers("/api/roles/**").hasAnyRole("SUPER-ADMIN", "ADMIN")
-			.antMatchers("/api/book/**").authenticated()
 			.anyRequest()
 			.authenticated()
 		.and()

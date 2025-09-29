@@ -111,11 +111,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserEntity updateUserDetails(String email, UserEntity userEntity) {
 		UserEntity _userEntity = this.getUserByEmail(email);
-
 		_userEntity.setName(userEntity.getName());
 		_userEntity.setEmail(userEntity.getEmail());
 		_userEntity.setPassword(userEntity.getPassword());
-
 		return userRepository.save(_userEntity);
 	}
 
@@ -131,7 +129,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeAllUsersFromRole(String role) {
-
 		List<UserEntity> _users = userRepository.jpqlFindUsersWithRole(role);
 		RoleEntity roleEntity = roleRepository.findByRole(role);
 
