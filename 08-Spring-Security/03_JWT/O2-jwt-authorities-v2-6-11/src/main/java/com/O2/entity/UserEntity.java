@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "USERS_TB")
@@ -54,6 +55,7 @@ public class UserEntity {
 	@JoinTable(name = "user_role",
 			joinColumns = { @JoinColumn(name = "user_id") }, 
 			inverseJoinColumns = { @JoinColumn(name = "role_id") })
+//	@JsonManagedReference
 	@JsonIgnore
 	private Set<RoleEntity> roles = new HashSet<>();
 

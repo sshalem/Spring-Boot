@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public UserEntity getUserByEmail(String email) {
 		LOGGER.info("invoke getUserByEmail()");
 
