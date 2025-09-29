@@ -35,18 +35,18 @@ public class UserController {
 	// GET methods
 	// ********************************
 	@GetMapping(path = "/getUserByName/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getUserByName(@PathVariable("name") String name) {
+	public ResponseEntity<?> getUserByName(@PathVariable String name) {
 		LOGGER.info("getUserByName()");		
 		return new ResponseEntity<>(userServiceImpl.getUserByName(name), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/getUserByEmail/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
+	public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
 		return new ResponseEntity<>(userServiceImpl.getUserByEmail(email), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/getUsersWithRole/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getUsersWithRole(@PathVariable("role") String role) {
+	public ResponseEntity<?> getUsersWithRole(@PathVariable String role) {
 
 		List<UserEntity> _users = userServiceImpl.getUsersWithRole(role);
 		if (_users.isEmpty()) {
@@ -56,7 +56,7 @@ public class UserController {
 	}
 
 	@GetMapping(path = "/getAllRolesOfUser/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getAllRolesOfUser(@PathVariable("email") String email) {
+	public ResponseEntity<?> getAllRolesOfUser(@PathVariable String email) {
 
 		List<RoleEntity> _roles = userServiceImpl.getAllRolesOfUserByEmail(email);
 		if (_roles.isEmpty()) {
@@ -74,9 +74,7 @@ public class UserController {
 	// UPDATE methods
 	// ********************************
 	@PutMapping(path = "/updateUserDetails/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateUserDetails(@PathVariable("email") String email,
-			@RequestBody UserEntity userEntity) {
-
+	public ResponseEntity<?> updateUserDetails(@PathVariable String email, @RequestBody UserEntity userEntity) {
 		UserEntity _user = userServiceImpl.updateUserDetails(email, userEntity);
 		return new ResponseEntity<>(_user, HttpStatus.OK);
 	}
@@ -85,7 +83,7 @@ public class UserController {
 	// DELETE methods
 	// ********************************
 	@DeleteMapping(path = "/deleteUserByEmail/{email}")
-	public void deleteUserByEmail(@PathVariable("email") String email) {
+	public void deleteUserByEmail(@PathVariable String email) {
 		userServiceImpl.deleteUserByEmail(email);
 	}
 
@@ -93,7 +91,7 @@ public class UserController {
 	 * Need to check this API why its not working
 	 */
 	@DeleteMapping(path = "/removeAllUsersFromRole/{role}")
-	public ResponseEntity<Void> removeAllUsersFromRole(@PathVariable("role") String role) {
+	public ResponseEntity<Void> removeAllUsersFromRole(@PathVariable String role) {
 
 		userServiceImpl.removeAllUsersFromRole(role);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
