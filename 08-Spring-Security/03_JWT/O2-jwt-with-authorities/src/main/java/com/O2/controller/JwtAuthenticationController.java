@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.O2.config.SecurityConstants;
 import com.O2.jwt.JwtTokenUtil;
 import com.O2.jwt.JwtUserDetails;
 import com.O2.model.JwtTokenLoginRequest;
@@ -71,7 +70,7 @@ public class JwtAuthenticationController {
 	/**
 	 * Register Request
 	 */
-	@PostMapping(path = SecurityConstants.REGISTER_URL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> signUp(@RequestBody UserRegisterRequest userRegisterRequest) {
 
 		UserRegisterResponse userRegisterResponse = userServiceImpl.createUser(userRegisterRequest);
