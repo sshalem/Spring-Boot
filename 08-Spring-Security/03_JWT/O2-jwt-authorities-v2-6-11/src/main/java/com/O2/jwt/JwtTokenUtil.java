@@ -61,7 +61,7 @@ public class JwtTokenUtil implements Serializable {
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
 				.signWith(key, SignatureAlgorithm.HS512)
-				.compact();
+				.compact(); 
 	}
 
 	public boolean validateToken(String token) {
