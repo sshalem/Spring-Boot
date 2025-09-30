@@ -11,6 +11,7 @@
         <module name="05-jwt-refresh-token-3.3.7" />
         <module name="jwt-backend-spring" />
         <module name="jwt-backend-jobify" />
+        <module name="O2-jwt-authorities-v3-5-6" />
         <module name="01-jwt-main-project" />
         <module name="Jwt-Users-Roles-Authorities" />
         <module name="03-jwt-main-refresh-token" />
@@ -27,6 +28,7 @@
       <module name="05-jwt-refresh-token-3.3.7" options="-parameters" />
       <module name="Jwt-Users-Roles-Authorities" options="-parameters" />
       <module name="O2-jwt-authorities-v2-6-11" options="-parameters" />
+      <module name="O2-jwt-authorities-v3-5-6" options="-parameters" />
       <module name="jwt-backend-jobify" options="-parameters" />
       <module name="jwt-backend-spring" options="-parameters" />
     </option>

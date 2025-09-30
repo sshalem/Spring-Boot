@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.O2</groupId>
-	<artifactId>O2-jwt-authorities-p6spy</artifactId>
+	<artifactId>O2-jwt-authorities-v3-5-6</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>O2-jwt-authorities-v3-5-6</name>
 	<description>demo Spring JWT V3-5-6</description>
