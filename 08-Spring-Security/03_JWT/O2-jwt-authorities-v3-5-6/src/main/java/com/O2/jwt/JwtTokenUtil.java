@@ -30,10 +30,13 @@ public class JwtTokenUtil implements Serializable {
 	private static final long serialVersionUID = 3540583232420968407L;
 	private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
 
-	// EXPIRATION_TIME = 1000 * 3; // -> set to 3 seconds, and check Expired Exception
-	// EXPIRATION_TIME = 1000 * 200; // -> this is 200 seconds
-	// EXPIRATION_TIME = 1000 * 60 * 15;	1000 * 60 * 15; // -> 15 minutes
-	public static final long EXPIRATION_TIME = 1000 * 200; // this is 200 seconds
+//	 -> set to 3 seconds, and check Expired Exception
+//	 public static final long EXPIRATION_TIME = 1000 * 3;
+//	 -> this is 200 seconds
+	 public static final long EXPIRATION_TIME = 1000 * 200;
+//	 -> 1000 * 60 * 15; // -> 15 minutes
+//	 public static final long EXPIRATION_TIME = 1000 * 60 * 15;
+
 
 	@Value("${jwt.signing.key}")
 	private String secretKey;

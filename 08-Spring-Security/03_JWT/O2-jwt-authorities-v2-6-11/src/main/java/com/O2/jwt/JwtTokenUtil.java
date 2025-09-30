@@ -10,7 +10,11 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -29,10 +33,12 @@ public class JwtTokenUtil implements Serializable {
 	private static final long serialVersionUID = 3540583232420968407L;
 	private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
 
-	// EXPIRATION_TIME = 1000 * 3; // -> set to 3 seconds, and check Expired Exception
-	// EXPIRATION_TIME = 1000 * 200; // -> this is 200 seconds
-	// EXPIRATION_TIME = 1000 * 60 * 15;	1000 * 60 * 15; // -> 15 minutes
-	public static final long EXPIRATION_TIME = 1000 * 200; // this is 200 seconds
+//  -> set to 3 seconds, and check Expired Exception
+	public static final long EXPIRATION_TIME = 1000 * 3;
+//	-> this is 200 seconds
+//	public static final long EXPIRATION_TIME = 1000 * 200;
+//	-> 1000 * 60 * 15; // -> 15 minutes
+//	public static final long EXPIRATION_TIME = 1000 * 60 * 15;
 
 	@Value("${jwt.signing.key}")
 	private String secretKey;
@@ -67,9 +73,9 @@ public class JwtTokenUtil implements Serializable {
 		} catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
 			LOGGER.error(ex.getMessage());
 			throw new BadCredentialsException("INVALID_CREDENTIALS", ex);
-		} catch (ExpiredJwtException ex) {
+		} catch (ExpiredJwtException | DisabledException | LockedException | AccountExpiredException ex) {
 			LOGGER.error(ex.getMessage());
 			throw ex;
 		}
-	}
+    }
 }

@@ -30,17 +30,14 @@ public class UserEntity {
 	 * 
 	 * MySql DB :
 	 * 			@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 * 
-	 * PostGresql DB:
-	 * 			
 	 *
 	 * With PostGresql DB :     
-	 * 				@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
-	 *				@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
+	 * 				@SequenceGenerator(name = "userseq", initialValue = 20001, allocationSize = 50)
+	 *				@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userseq")
 	 *
-	 *if we look in the data.postgres.sql we can see that the id's satrt from 1 for each table
-	 * With postgresql , even though i have user id's from 1-10 , when I attempt to create a new record w/o specifiyng the ID
-	 * It pulls the value from sequence (1) thus i can get unique violation
+	 *if we look in the data.postgres.sql we can see that the id's start from 1 for each table
+	 * With postgresql , even though I have user id's from 1-10 , when I attempt to create a new record w/o specifiyng the ID
+	 * It pulls the value from sequence (1) thus I can get unique violation
 	 */
 	@Id
 	@SequenceGenerator(name = "userseq", initialValue = 20001, allocationSize = 50)
@@ -52,10 +49,7 @@ public class UserEntity {
 	private String password;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "user_role",
-			joinColumns = { @JoinColumn(name = "user_id") }, 
-			inverseJoinColumns = { @JoinColumn(name = "role_id") })
-//	@JsonManagedReference
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
 	@JsonIgnore
 	private Set<RoleEntity> roles = new HashSet<>();
 
