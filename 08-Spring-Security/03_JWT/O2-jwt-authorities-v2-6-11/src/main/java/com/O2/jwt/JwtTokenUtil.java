@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,9 +33,9 @@ public class JwtTokenUtil implements Serializable {
 	private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
 
 //  -> set to 3 seconds, and check Expired Exception
-	public static final long EXPIRATION_TIME = 1000 * 3;
+//	public static final long EXPIRATION_TIME = 1000 * 3;
 //	-> this is 200 seconds
-//	public static final long EXPIRATION_TIME = 1000 * 200;
+	public static final long EXPIRATION_TIME = 1000 * 200;
 //	-> 1000 * 60 * 15; // -> 15 minutes
 //	public static final long EXPIRATION_TIME = 1000 * 60 * 15;
 

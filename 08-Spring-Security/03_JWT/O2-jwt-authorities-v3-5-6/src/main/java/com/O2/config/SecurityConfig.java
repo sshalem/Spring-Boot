@@ -68,11 +68,12 @@ public class SecurityConfig {
 			);
 		
 		/**
-		 * Custom authentication provider
-		 * With Prev version I didn't add here the AuthenticationProvider
-		 * I DIsable this till I will test the App
-		 */		
-		//http.authenticationProvider(authenticationProvider());
+		 * Per ChatGPT:
+		 * Spring Boot finds UserDetailsService Bean + PasswordEncoder Bean,
+		 * Thus, No need to config authenticationProvider
+		 * since it will wire a provider for you automatically.
+		 */
+		http.authenticationProvider(authenticationProvider());
 				
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT filter
 		
