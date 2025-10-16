@@ -19,6 +19,7 @@ import com.jpa.many2many.bi.lazy.repository.CourseRepository;
 import com.jpa.many2many.bi.lazy.repository.StudentRepository;
 
 @Service
+@Transactional
 public class CourseDaoImpl implements CourseDao {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(CourseDaoImpl.class);

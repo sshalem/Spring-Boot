@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -33,7 +34,7 @@ public class StudentEntity {
     @JoinTable(name = "student_course",
             joinColumns = {@JoinColumn(name = "student_id")},
             inverseJoinColumns = {@JoinColumn(name = "course_id")})
-    @JsonManagedReference
+    @JsonIgnore
     private Set<CourseEntity> courses = new HashSet<>();
 
     public StudentEntity() {

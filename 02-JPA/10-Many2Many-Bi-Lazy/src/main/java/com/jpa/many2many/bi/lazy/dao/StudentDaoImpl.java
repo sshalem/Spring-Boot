@@ -16,6 +16,7 @@ import com.jpa.many2many.bi.lazy.repository.CourseRepository;
 import com.jpa.many2many.bi.lazy.repository.StudentRepository;
 
 @Service
+@Transactional
 public class StudentDaoImpl implements StudentDao {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(StudentDaoImpl.class);
@@ -45,6 +46,7 @@ public class StudentDaoImpl implements StudentDao {
 	 * GET
 	 ***********************/
 
+	@Transactional
 	@Override
 	public List<StudentEntity> getStudentsByFirstName(String firstName) {
 

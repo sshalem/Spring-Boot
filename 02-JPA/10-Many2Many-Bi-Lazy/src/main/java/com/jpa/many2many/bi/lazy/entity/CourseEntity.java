@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "COURSE_TB")
@@ -28,7 +29,7 @@ public class CourseEntity {
     private LocalDate endDate;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private Set<StudentEntity> students;
 
     public CourseEntity() {
