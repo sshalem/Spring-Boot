@@ -3,6 +3,7 @@ package com.jpa.pagination.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,16 @@ public class ProductController {
 		return new ApiResponse<List<ProductEntity>>(_products.size(), _products);
 	}
 
+	@GetMapping(path = "/getProductsByPageAndSizeAndReturnAsPage", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public Page<ProductEntity> getProductsByPageAndSizeAndReturnAsPage(
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "size", defaultValue = "25") int size) {
+		Page<ProductEntity> productsByPageAndSizeAndReturnAsPage = productDaoImpl.getProductsByPageAndSizeAndReturnAsPage(page, size);
+		return productsByPageAndSizeAndReturnAsPage;
+	}
+	
+	
+	
 	@GetMapping(path = "/getProductsWithPriceLessThan/{price}/{field}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ApiResponse<List<ProductEntity>> getProductsWithPriceLessThan(
 			@RequestParam(value = "page", defaultValue = "1") int page,

@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/02-One2Many-Bi-Fetch-Lazy/pom.xml" />
         <option value="$PROJECT_DIR$/10-Many2Many-Bi-Lazy/pom.xml" />
         <option value="$PROJECT_DIR$/09-Many2Many-Bi-Eager/pom.xml" />
+        <option value="$PROJECT_DIR$/11-Paging-and-Sorting/pom.xml" />
       </list>
     </option>
   </component>

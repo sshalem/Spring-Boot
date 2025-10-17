@@ -86,6 +86,16 @@ public class ProductDaoImpl implements ProductDao {
 		Page<ProductEntity> _pageOfProducts = productRepository.findProductsWithPriceLessThan(price, pageable);		
 		List<ProductEntity> _products = _pageOfProducts.getContent();		
 		return _products;
+	}
+
+	@Override
+	public Page<ProductEntity> getProductsByPageAndSizeAndReturnAsPage(int page, int size) {
+		if (page > 0) {
+			page = page - 1;
+		}	
+		Pageable pageable = PageRequest.of(page, size);
+		Page<ProductEntity> _pageOfProducts = productRepository.findAll(pageable);
+		return _pageOfProducts;
 	}	
 
 }
