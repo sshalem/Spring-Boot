@@ -6,18 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="02-jwt-main-with-authorities" />
         <module name="04-jwt-main-refresh-token-inDB" />
         <module name="05-jwt-refresh-token-3.3.7" />
         <module name="jwt-backend-spring" />
         <module name="jwt-backend-jobify" />
-        <module name="O2-jwt-authorities-v3-5-6" />
         <module name="01-jwt-main-project" />
         <module name="Jwt-Users-Roles-Authorities" />
         <module name="03-jwt-main-refresh-token" />
         <module name="O2-jwt-authorities-v2-6-11" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="02-jwt-main-with-authorities" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
