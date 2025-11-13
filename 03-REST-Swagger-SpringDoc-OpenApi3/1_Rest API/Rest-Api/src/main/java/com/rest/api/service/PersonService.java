@@ -9,4 +9,5 @@ public interface PersonService {
 	List<Person> getAllPersons();
 
 	Person getById(long id);
+
 }

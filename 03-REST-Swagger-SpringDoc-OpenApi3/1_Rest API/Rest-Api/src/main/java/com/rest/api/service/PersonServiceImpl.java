@@ -35,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@PostConstruct
 	public void initDB() {
-		List<Person> persons = IntStream.rangeClosed(1, 10)
+		List<Person> persons = IntStream.rangeClosed(1, 3)
 				.mapToObj(i -> {
 					return new Person(
 							UUID.randomUUID().toString().replaceAll("[^A-Za-z]", ""), 
