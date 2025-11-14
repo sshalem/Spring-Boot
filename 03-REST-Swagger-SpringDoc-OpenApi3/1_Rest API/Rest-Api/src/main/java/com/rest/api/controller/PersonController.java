@@ -40,7 +40,9 @@ public class PersonController {
 	}
 
 	@GetMapping(path = "/getAll/required")
-	public ResponseEntity<List<Person>> getAllPersonsRequired(@RequestParam(required = false) Long id, @RequestParam(required = true, defaultValue = "shalem") String firsName) {
+	public ResponseEntity<List<Person>> getAllPersonsRequired(
+			@RequestParam(required = false) Long id,
+			@RequestParam(required = true, defaultValue = "shalem") String firsName) {
 		System.out.println(id);
 		System.out.println(firsName);
 		return ResponseEntity.ok().body(personServiceImpl.getAllPersons());
