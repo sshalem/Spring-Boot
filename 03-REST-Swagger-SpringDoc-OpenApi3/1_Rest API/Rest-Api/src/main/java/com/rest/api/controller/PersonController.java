@@ -1,6 +1,7 @@
 package com.rest.api.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,17 +36,29 @@ public class PersonController {
 	}
 
 	@GetMapping(path = "/getAll")
-	public ResponseEntity<List<Person>> getAllPersons(@RequestParam long id, @RequestParam String firsName) {
-		return ResponseEntity.ok().body(personServiceImpl.getAllPersons());
+	public ResponseEntity<?> getAllPersons(@RequestParam long id, @RequestParam String firsName) {
+		return null;
 	}
 
 	@GetMapping(path = "/getAll/required")
-	public ResponseEntity<List<Person>> getAllPersonsRequired(
-			@RequestParam(required = false) Long id,
+	public ResponseEntity<?> getAllPersonsRequired(@RequestParam(required = false) Long id,
 			@RequestParam(required = true, defaultValue = "shalem") String firsName) {
 		System.out.println(id);
 		System.out.println(firsName);
 		return ResponseEntity.ok().body(personServiceImpl.getAllPersons());
 	}
 
+	@GetMapping(path = "/get/listParam")
+	public ResponseEntity<?> getListParam(@RequestParam List<String> tag) {
+		tag.forEach(i -> System.out.println(i));
+		return null;
+	}
+
+	@GetMapping(path = "/get/mapParam")
+	public ResponseEntity<?> getMapParam(@RequestParam Map<Object, Object> params) {
+		params.forEach((i,j) -> {			
+			System.out.println(i + " : " + j);
+		});
+		return null;
+	}
 }
