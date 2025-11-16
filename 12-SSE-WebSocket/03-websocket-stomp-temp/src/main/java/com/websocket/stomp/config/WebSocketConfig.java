@@ -32,10 +32,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	private WebSocketTransportHandler handshakeHandler() {
 		
 		HttpHandshakeInterceptor httpHandshakeInterceptor = new HttpHandshakeInterceptor();
-		
-		httpHandshakeInterceptor.
-		
-		WebSocketTransportHandler handler = new WebSocketTransportHandler();
+		WebSocketTransportHandler handler = new WebSocketTransportHandler(httpHandshakeInterceptor);
 		return null;
 	}
 
