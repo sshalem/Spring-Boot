@@ -34,48 +34,48 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 			LOGGER.error("Getting -> " + HttpServletResponse.SC_BAD_REQUEST + " - Access Denied, Probably Bad credentials");
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "400 - Access Denied, Probably Bad credentials");
 		}
-
-//		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//
-//		Exception exception = (Exception) request.getAttribute("exception");
-//
-//		String message;
-//
-//		/**
-//		 * This will check the Exception that is set from the JwtAuthenticationFilter
-//		 * Else 
-//		 * it will check if AuthenticationException authException is thrown by DaoAuthenticationProvider
-//		 */
-//		if (exception != null) {
-//			
-//			LOGGER.error(exception.getMessage());
-//			
-//			if (exception.getCause() != null) {
-//				message = exception.getCause().toString() + " " + exception.getMessage();
-//			} else {
-//				message = exception.getMessage();
-//			}
-//
-//			byte[] body = new ObjectMapper().writeValueAsBytes(Collections.singletonMap("error", message));
-//
-//			response.getOutputStream().write(body);
-//			
-//
-//		} else {
-//
-//			LOGGER.error(authException.getCause());
-//			
-//			if (authException.getCause() != null) {
-//				message = authException.getCause().toString() + " " + authException.getMessage();
-//			} else {
-//				message = authException.getMessage();
-//			}
-//
-//			byte[] body = new ObjectMapper().writeValueAsBytes(Collections.singletonMap("error", message));
-//
-//			response.getOutputStream().write(body);
-//		}
 	}
-
 }
+
+
+//response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//
+//Exception exception = (Exception) request.getAttribute("exception");
+//
+//String message;
+//
+///**
+// * This will check the Exception that is set from the JwtAuthenticationFilter
+// * Else 
+// * it will check if AuthenticationException authException is thrown by DaoAuthenticationProvider
+// */
+//if (exception != null) {
+//	
+//	LOGGER.error(exception.getMessage());
+//	
+//	if (exception.getCause() != null) {
+//		message = exception.getCause().toString() + " " + exception.getMessage();
+//	} else {
+//		message = exception.getMessage();
+//	}
+//
+//	byte[] body = new ObjectMapper().writeValueAsBytes(Collections.singletonMap("error", message));
+//
+//	response.getOutputStream().write(body);
+//	
+//
+//} else {
+//
+//	LOGGER.error(authException.getCause());
+//	
+//	if (authException.getCause() != null) {
+//		message = authException.getCause().toString() + " " + authException.getMessage();
+//	} else {
+//		message = authException.getMessage();
+//	}
+//
+//	byte[] body = new ObjectMapper().writeValueAsBytes(Collections.singletonMap("error", message));
+//
+//	response.getOutputStream().write(body);
+//}

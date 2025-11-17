@@ -1,6 +1,7 @@
 package com.O2.entity;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -85,11 +86,7 @@ public class RoleEntity {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -101,14 +98,6 @@ public class RoleEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		RoleEntity other = (RoleEntity) obj;
-		if (id != other.id)
-			return false;
-		if (role == null) {
-			if (other.role != null)
-				return false;
-		} else if (!role.equals(other.role))
-			return false;
-		return true;
+		return id == other.id;
 	}
-
 }
