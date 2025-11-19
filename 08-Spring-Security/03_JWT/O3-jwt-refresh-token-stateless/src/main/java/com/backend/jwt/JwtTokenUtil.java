@@ -15,8 +15,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.backend.config.SecurityConstants;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -34,6 +32,7 @@ public class JwtTokenUtil implements Serializable {
 
 //	 -> set to 3 seconds, and check Expired Exception
 	 public static final long EXPIRATION_TIME = 1000 * 5;
+	 public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 3_600_000;
 	
 //	 -> this is 200 seconds
 //	 public static final long EXPIRATION_TIME = 1000 * 200;
@@ -80,7 +79,7 @@ public class JwtTokenUtil implements Serializable {
 				.builder()
 				.setSubject(userDetails.getUsername())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms))
+				.setExpiration(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION_TIME_ms))
 				.signWith(key,SignatureAlgorithm.HS512)
 				.compact();
 	}
