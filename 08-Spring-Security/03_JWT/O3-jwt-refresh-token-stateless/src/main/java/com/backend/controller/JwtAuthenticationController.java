@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.config.SecurityConstants;
 import com.backend.jwt.JwtTokenUtil;
 import com.backend.jwt.JwtUserDetails;
 import com.backend.jwt.JwtUserDetailsService;
@@ -125,9 +124,9 @@ public class JwtAuthenticationController {
 	@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> refreshtoken(HttpServletRequest request) throws Exception {
 		
-		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
+		final String authorizationHeader = request.getHeader("Authorization");
 		
-		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
+		if (authorizationHeader != null && authorizationHeader.startsWith("Refresh_token ")) {
 			String refreshToken = authorizationHeader.substring(14);
 			
 			try {
