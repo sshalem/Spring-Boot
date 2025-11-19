@@ -1428,6 +1428,38 @@ In this package I have 4 controllers:
 ### [JwtAuthenticationController](#-)
 
 ```java
+package com.backend.controller;
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.backend.jwt.JwtTokenUtil;
+import com.backend.jwt.JwtUserDetails;
+import com.backend.jwt.JwtUserDetailsService;
+import com.backend.model.JwtTokenLoginRequest;
+import com.backend.model.JwtTokenResponse;
+import com.backend.model.UserRegisterRequest;
+import com.backend.model.UserRegisterResponse;
+import com.backend.service.UserServiceImpl;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(path = "/auth")
 public class JwtAuthenticationController {
@@ -1444,11 +1476,11 @@ public class JwtAuthenticationController {
 	private JwtUserDetailsService jwtUserDetailsService;
 
 	@Autowired
-	private UserDaoImpl userDaoImpl;
+	private UserServiceImpl userServiceImpl;
 
-	/**
+	/************************
 	 * Login Request
-	 */
+	 ***********************/
 	@PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenLoginRequest authLoginReq) throws Exception {
 
@@ -1462,9 +1494,12 @@ public class JwtAuthenticationController {
 		}
 
 		/**
-		 * First Way:
-		 * If the authentication process is successful, we can get User’s information
-		 * such as username, password, authorities from an Authentication object.
+		 * 🔑 Why I do (JwtUserDetails) authenticate.getPrincipal()? 
+		 * ✅ No extra DB call — I already have the authenticated JwtUserDetails inside the Authentication object. 
+		 * ✅ Standard Spring Security way (this is why the Principal exists). 
+		 * 
+		 * 🔑 Then Why, During request filtering (JWT validation), I call jwtUserDetailsService.loadUserByUsername(email) again? 
+		 * ✅ It's because I only have the JWT’s subject (username) and need to reconstruct UserDetails for the SecurityContext.
 		 */
 				
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
@@ -1473,73 +1508,73 @@ public class JwtAuthenticationController {
 		final String refreshToken = jwtTokenUtil.generateRefreshToken(jwtUserDetails);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
-		
-		// JwtTokenResponse jwtTokenResponse = JwtTokenResponse.name(name).accessToken(accessToken).refreshToken(refreshToken).build();
-		// return ResponseEntity.status(HttpStatus.CREATED).body(jwtTokenResponse);
 	}
 
-	/**
-	 * Register Request
-	 * 
-	 * @throws EmailAlreadyExistException
+
+	/************************************************
+	 * Why logout Request not implemented
+	 ************************************************/
+	
+	/*
+	 * When you use pure stateless JWTs (access + refresh tokens) 
+	 * and you do NOT store refresh tokens in a DB, then:
+	 * Thus , Client is responsible to delete both Tokens access_token and refresh_token
+	 * Therefore , there is NO NEED to implement LOGOUT
 	 */
-	@PostMapping(path = SecurityConstants.REGISTER_URL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	
+	/*
+	 * ✔ On logout: 
+	 * Client deletes accessToken
+	 * Client deletes refreshToken
+	 * Server does nothing
+	 * → Since tokens are stateless, server cannot invalidate them anyway.
+	 * 
+	 * ✔ Works fine if:
+	 * Short-lived access token (5–15 minutes)
+	 * Refresh token expiration is reasonable (7–30 days)
+	 * 🔧 Logout = clear tokens on the FrontEnd
+	 */
+	
+	// In this implementation I don't save the Refresh_Token in DB, I just generate it 
+	// Thus , Client is responsible to delete both Tokens access_token and refresh_token
+	// 
+	// The most secure way is (Refresh token rotation + DB) (see O4-jwt-refresh-DB project)
+		
+	
+	@PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> signUp(@RequestBody UserRegisterRequest userRegisterRequest) {
 
-		UserRegisterResponse userRegisterResponse = userDaoImpl.createUser(userRegisterRequest);
+		UserRegisterResponse userRegisterResponse = userServiceImpl.createUser(userRegisterRequest);
 		LOGGER.info("User registration Succeeded");
 		return ResponseEntity.ok(userRegisterResponse);
 	}
 	
 	
 	@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
-	public void refreshtoken(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ResponseEntity<?> refreshtoken(HttpServletRequest request) throws Exception {
 		
-		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
+		final String authorizationHeader = request.getHeader("Authorization");
 		
-		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-			String _refreshToken = authorizationHeader.substring(14);
+		if (authorizationHeader != null && authorizationHeader.startsWith("Refresh_token ")) {
+			String refreshToken = authorizationHeader.substring(14);
 			
 			try {
-				jwtTokenUtil.validateToken(_refreshToken);
-				
-				String email = jwtTokenUtil.extractUsernameFromToken(_refreshToken);
-				
+				jwtTokenUtil.validateToken(refreshToken);				
+				String email = jwtTokenUtil.extractUsernameFromToken(refreshToken);				
 				UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
+						
+				final String name = userDetails.getUsername();
+				final String accessToken = jwtTokenUtil.generateToken(userDetails);
 								
-				Map<String, String> jwtResponse = new HashMap<>();
-				jwtResponse.put("name", email);
-				jwtResponse.put("accessToken", jwtTokenUtil.generateToken(userDetails));
-				jwtResponse.put("refreshToken", jwtTokenUtil.generateRefreshToken(userDetails));
+				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
 				
-				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-				
-				new ObjectMapper().writeValue(response.getOutputStream(), jwtResponse);
-				
-				/**
-				 * Instead using ObjectMapper to add with HttpServletResponse
-				 * We can use same approach with login
-				 */
-//				final String name = userDetails.getUsername();
-//				final String accessToken = jwtTokenUtil.generateToken(userDetails);
-//				final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails);				
-//				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
-				
-			} catch (Exception ex) {
-				
-				
-				Map<String, String> errorResponse = new HashMap<>();
-				errorResponse.put("error", ex.getMessage());
-				
-				response.setHeader("error", ex.getMessage());
-				response.setStatus(HttpStatus.FORBIDDEN.value());
-				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-				
-				new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);
-				
+			} catch (Exception ex) {					
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", ex.getMessage()));				
 			}
 		}
-	}		
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Refresh token is missing"));
+	}			
 }
 ```
 
@@ -1828,7 +1863,7 @@ With Postman :
 
 I got back :
 * new accessToken 
-* new refreshToken
+* same refreshToken
 
 which we can use now for our app in a secured way</br>
 
