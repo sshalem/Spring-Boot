@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class O4JwtRefreshTokenDbV357Application {
+public class O4JwtRefreshTokenDBApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(O4JwtRefreshTokenDbV357Application.class, args);
+		SpringApplication.run(O4JwtRefreshTokenDBApplication.class, args);
 	}
 
 }

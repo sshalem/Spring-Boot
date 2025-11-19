@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>O4-jwt-refresh-token-DB-v3-5-7</artifactId>
+	<artifactId>O4-jwt-refresh-token-DB</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>O4-jwt-refresh-token-DB-v3-5-7</name>
+	<name>O4-jwt-refresh-token-DB</name>
 	<description>Demo JWT refresh token DB</description>
 	<url/>
 	<licenses>
