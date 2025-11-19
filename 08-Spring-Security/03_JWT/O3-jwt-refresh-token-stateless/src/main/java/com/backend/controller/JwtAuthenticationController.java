@@ -140,59 +140,10 @@ public class JwtAuthenticationController {
 				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
 				
 			} catch (Exception ex) {					
-				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", ex.getMessage()));				
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "refresh Token expired , need to re-login"));				
 			}
 		}
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Refresh token is missing"));
 	}		
 	
 }
-
-//@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
-//public void refreshtoken(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//	
-//	final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
-//	
-//	if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-//		String _refreshToken = authorizationHeader.substring(14);
-//		
-//		try {
-//			jwtTokenUtil.validateToken(_refreshToken);
-//			
-//			String email = jwtTokenUtil.extractUsernameFromToken(_refreshToken);
-//			
-//			UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
-//							
-//			Map<String, String> jwtResponse = new HashMap<>();
-//			jwtResponse.put("name", email);
-//			jwtResponse.put("accessToken", jwtTokenUtil.generateToken(userDetails));
-//			jwtResponse.put("refreshToken", jwtTokenUtil.generateRefreshToken(userDetails));
-//			
-//			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//			
-//			new ObjectMapper().writeValue(response.getOutputStream(), jwtResponse);
-//			
-//			/**
-//			 * Instead using ObjectMapper to add with HttpServletResponse
-//			 * We can use same approach with login
-//			 */
-////			final String name = userDetails.getUsername();
-////			final String accessToken = jwtTokenUtil.generateToken(userDetails);
-////			final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails);				
-////			return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
-//			
-//		} catch (Exception ex) {
-//			
-//			
-//			Map<String, String> errorResponse = new HashMap<>();
-//			errorResponse.put("error", ex.getMessage());
-//			
-//			response.setHeader("error", ex.getMessage());
-//			response.setStatus(HttpStatus.FORBIDDEN.value());
-//			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//			
-//			new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);
-//			
-//		}
-//	}
-//}	
