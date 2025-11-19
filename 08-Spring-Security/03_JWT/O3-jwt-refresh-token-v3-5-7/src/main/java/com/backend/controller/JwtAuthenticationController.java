@@ -65,13 +65,12 @@ public class JwtAuthenticationController {
 		}
 
 		/**
-		 * 🔑 Why I do (JwtUserDetails) authenticate.getPrincipal()? ✅ No extra DB call
-		 * — I already have the authenticated JwtUserDetails inside the Authentication
-		 * object. ✅ Standard Spring Security way (this is why the Principal exists). 🔑
-		 * Then Why, During request filtering (JWT validation), I call
-		 * jwtUserDetailsService.loadUserByUsername(email) again? ✅ It's because I only
-		 * have the JWT’s subject (username) and need to reconstruct UserDetails for the
-		 * SecurityContext.
+		 * 🔑 Why I do (JwtUserDetails) authenticate.getPrincipal()? 
+		 * ✅ No extra DB call — I already have the authenticated JwtUserDetails inside the Authentication object. 
+		 * ✅ Standard Spring Security way (this is why the Principal exists). 
+		 * 
+		 * 🔑 Then Why, During request filtering (JWT validation), I call jwtUserDetailsService.loadUserByUsername(email) again? 
+		 * ✅ It's because I only have the JWT’s subject (username) and need to reconstruct UserDetails for the SecurityContext.
 		 */
 				
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
@@ -83,14 +82,15 @@ public class JwtAuthenticationController {
 	}
 
 
-	/************************
-	 * logout Request
-	 ************************/
+	/************************************************
+	 * Why logout Request not implemented
+	 ************************************************/
 	
 	/*
 	 * When you use pure stateless JWTs (access + refresh tokens) 
 	 * and you do NOT store refresh tokens in a DB, then:
 	 * Thus , Client is responsible to delete both Tokens access_token and refresh_token
+	 * Therefore , there is NO NEED to implement LOGOUT
 	 */
 	
 	
@@ -111,17 +111,7 @@ public class JwtAuthenticationController {
 	// Thus , Client is responsible to delete both Tokens access_token and refresh_token
 	// 
 	// The most secure way is (Refresh token rotation + DB) (see O4-jwt-refresh-DB project)
-	@GetMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> logout(HttpServletRequest request) {
-
-		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
-		if (authorizationHeader != null && authorizationHeader.startsWith("Refresh_token ")) {
-		}
-		LOGGER.info("User logged out Succeeded");
-		return ResponseEntity.ok("User Logged Out");
-	}
-	
-	
+		
 	
 	@PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> signUp(@RequestBody UserRegisterRequest userRegisterRequest) {
@@ -138,16 +128,16 @@ public class JwtAuthenticationController {
 		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
 		
 		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-			String _refreshToken = authorizationHeader.substring(14);
+			String refreshToken = authorizationHeader.substring(14);
 			
 			try {
-				jwtTokenUtil.validateToken(_refreshToken);				
-				String email = jwtTokenUtil.extractUsernameFromToken(_refreshToken);				
+				jwtTokenUtil.validateToken(refreshToken);				
+				String email = jwtTokenUtil.extractUsernameFromToken(refreshToken);				
 				UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
 						
 				final String name = userDetails.getUsername();
 				final String accessToken = jwtTokenUtil.generateToken(userDetails);
-				final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails);				
+								
 				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
 				
 			} catch (Exception ex) {					
@@ -157,53 +147,53 @@ public class JwtAuthenticationController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Refresh token is missing"));
 	}		
 	
-	
-//	@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public void refreshtoken(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		
-//		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
-//		
-//		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-//			String _refreshToken = authorizationHeader.substring(14);
-//			
-//			try {
-//				jwtTokenUtil.validateToken(_refreshToken);
-//				
-//				String email = jwtTokenUtil.extractUsernameFromToken(_refreshToken);
-//				
-//				UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
-//								
-//				Map<String, String> jwtResponse = new HashMap<>();
-//				jwtResponse.put("name", email);
-//				jwtResponse.put("accessToken", jwtTokenUtil.generateToken(userDetails));
-//				jwtResponse.put("refreshToken", jwtTokenUtil.generateRefreshToken(userDetails));
-//				
-//				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//				
-//				new ObjectMapper().writeValue(response.getOutputStream(), jwtResponse);
-//				
-//				/**
-//				 * Instead using ObjectMapper to add with HttpServletResponse
-//				 * We can use same approach with login
-//				 */
-////				final String name = userDetails.getUsername();
-////				final String accessToken = jwtTokenUtil.generateToken(userDetails);
-////				final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails);				
-////				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
-//				
-//			} catch (Exception ex) {
-//				
-//				
-//				Map<String, String> errorResponse = new HashMap<>();
-//				errorResponse.put("error", ex.getMessage());
-//				
-//				response.setHeader("error", ex.getMessage());
-//				response.setStatus(HttpStatus.FORBIDDEN.value());
-//				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//				
-//				new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);
-//				
-//			}
-//		}
-//	}	
 }
+
+//@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
+//public void refreshtoken(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//	
+//	final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
+//	
+//	if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
+//		String _refreshToken = authorizationHeader.substring(14);
+//		
+//		try {
+//			jwtTokenUtil.validateToken(_refreshToken);
+//			
+//			String email = jwtTokenUtil.extractUsernameFromToken(_refreshToken);
+//			
+//			UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
+//							
+//			Map<String, String> jwtResponse = new HashMap<>();
+//			jwtResponse.put("name", email);
+//			jwtResponse.put("accessToken", jwtTokenUtil.generateToken(userDetails));
+//			jwtResponse.put("refreshToken", jwtTokenUtil.generateRefreshToken(userDetails));
+//			
+//			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//			
+//			new ObjectMapper().writeValue(response.getOutputStream(), jwtResponse);
+//			
+//			/**
+//			 * Instead using ObjectMapper to add with HttpServletResponse
+//			 * We can use same approach with login
+//			 */
+////			final String name = userDetails.getUsername();
+////			final String accessToken = jwtTokenUtil.generateToken(userDetails);
+////			final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails);				
+////			return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
+//			
+//		} catch (Exception ex) {
+//			
+//			
+//			Map<String, String> errorResponse = new HashMap<>();
+//			errorResponse.put("error", ex.getMessage());
+//			
+//			response.setHeader("error", ex.getMessage());
+//			response.setStatus(HttpStatus.FORBIDDEN.value());
+//			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//			
+//			new ObjectMapper().writeValue(response.getOutputStream(), errorResponse);
+//			
+//		}
+//	}
+//}	
