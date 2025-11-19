@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>O3-jwt-refresh-token-v3-5-7</artifactId>
+	<artifactId>O3-jwt-refresh-token-stateless</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>O3-jwt-refresh-token-v3-5-7</name>
+	<name>O3-jwt-refresh-token-stateless</name>
 	<description>Demo JWT refresh token</description>
 	<url/>
 	<licenses>
