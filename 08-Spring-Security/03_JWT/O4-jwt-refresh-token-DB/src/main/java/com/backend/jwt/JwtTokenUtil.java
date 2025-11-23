@@ -43,7 +43,7 @@ public class JwtTokenUtil implements Serializable {
 	}
 	
 
-	public String generateToken(UserDetails userDetails) {
+	public String generateAccessToken(UserDetails userDetails) {
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
 		Map<String, Object> claims = new HashMap<>();
 		Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
@@ -58,7 +58,7 @@ public class JwtTokenUtil implements Serializable {
 				.compact();
 	}
 	
-	
+
 	public String generateRefreshToken(UserDetails userDetails) {
 		
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
@@ -74,7 +74,7 @@ public class JwtTokenUtil implements Serializable {
 	}
 
 	
-	public boolean validateToken(String token) {
+	public boolean validateAccessToken(String token) {
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
 		try {
 			Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);

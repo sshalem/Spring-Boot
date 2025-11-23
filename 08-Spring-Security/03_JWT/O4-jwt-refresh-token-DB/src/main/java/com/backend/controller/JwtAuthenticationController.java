@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.config.SecurityConstants;
 import com.backend.jwt.JwtTokenUtil;
 import com.backend.jwt.JwtUserDetails;
 import com.backend.jwt.JwtUserDetailsService;
 import com.backend.model.JwtTokenLoginRequest;
 import com.backend.model.JwtTokenResponse;
+import com.backend.model.LogoutResponse;
 import com.backend.model.UserRegisterRequest;
 import com.backend.model.UserRegisterResponse;
+import com.backend.service.RefreshTokenServiceImpl;
 import com.backend.service.UserServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,17 +38,20 @@ public class JwtAuthenticationController {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationController.class);
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+	private final AuthenticationManager authenticationManager;
+	private final RefreshTokenServiceImpl refreshTokenServiceImpl;
+	private final JwtUserDetailsService jwtUserDetailsService;
+	private final UserServiceImpl userServiceImpl;
+	private final JwtTokenUtil jwtTokenUtil;
 
-	@Autowired
-	private JwtTokenUtil jwtTokenUtil;
-
-	@Autowired
-	private JwtUserDetailsService jwtUserDetailsService;
-
-	@Autowired
-	private UserServiceImpl userServiceImpl;
+	public JwtAuthenticationController(AuthenticationManager authenticationManager, RefreshTokenServiceImpl refreshTokenServiceImpl,
+			JwtUserDetailsService jwtUserDetailsService, UserServiceImpl userServiceImpl, JwtTokenUtil jwtTokenUtil) {
+		this.authenticationManager = authenticationManager;
+		this.refreshTokenServiceImpl = refreshTokenServiceImpl;
+		this.jwtUserDetailsService = jwtUserDetailsService;
+		this.userServiceImpl = userServiceImpl;
+		this.jwtTokenUtil = jwtTokenUtil;
+	}
 
 	/************************
 	 * Login Request
@@ -74,25 +79,13 @@ public class JwtAuthenticationController {
 				
 		final JwtUserDetails jwtUserDetails = (JwtUserDetails) authenticate.getPrincipal();
 		final String name = jwtUserDetails.getUsername();
-		final String accessToken = jwtTokenUtil.generateToken(jwtUserDetails);
-		final String refreshToken = jwtTokenUtil.generateRefreshToken(jwtUserDetails);
+		final String accessToken = jwtTokenUtil.generateAccessToken(jwtUserDetails);
+		final String refreshToken = refreshTokenServiceImpl.generateRefreshToken(jwtUserDetails.getUsername(), SecurityConstants.INVOKED_LOGIN_URL, null);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
 	}
 
 
-	/************************************************
-	 * Why logout Request not implemented
-	 ************************************************/
-	
-	/*
-	 * When you use pure stateless JWTs (access + refresh tokens) 
-	 * and you do NOT store refresh tokens in a DB, then:
-	 * Thus , Client is responsible to delete both Tokens access_token and refresh_token
-	 * Therefore , there is NO NEED to implement LOGOUT
-	 */
-	
-	
 	/*
 	 * ✔ On logout: 
 	 * Client deletes accessToken
@@ -106,10 +99,21 @@ public class JwtAuthenticationController {
 	 * 🔧 Logout = clear tokens on the FrontEnd
 	 */
 	
-	// In this implementation I don't save the Refresh_Token in DB, I just generate it 
-	// Thus , Client is responsible to delete both Tokens access_token and refresh_token
-	// 
-	// The most secure way is (Refresh token rotation + DB) (see O4-jwt-refresh-DB project)
+	/**
+	 * logout Request
+	 */
+	@GetMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<LogoutResponse> logout(HttpServletRequest request) {
+
+		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
+
+		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
+			String _refreshToken = authorizationHeader.substring(14);
+			refreshTokenServiceImpl.deleteRefreshToken(_refreshToken);
+		}
+		LOGGER.info("User logged out Succeeded");
+		return ResponseEntity.ok(new LogoutResponse("User Logged Out"));
+	}
 		
 	
 	@PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -124,20 +128,24 @@ public class JwtAuthenticationController {
 	@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> refreshtoken(HttpServletRequest request) throws Exception {
 		
-		final String authorizationHeader = request.getHeader("Authorization");
+		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
 		
-		if (authorizationHeader != null && authorizationHeader.startsWith("Refresh_token ")) {
+		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
 			String refreshToken = authorizationHeader.substring(14);
 			
 			try {
-				jwtTokenUtil.validateToken(refreshToken);				
-				String email = jwtTokenUtil.extractUsernameFromToken(refreshToken);				
+				refreshTokenServiceImpl.validateRefreshToken(refreshToken);				
+				String email = refreshTokenServiceImpl.getUserByRefreshToken(refreshToken).getEmail();				
 				UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
 						
 				final String name = userDetails.getUsername();
-				final String accessToken = jwtTokenUtil.generateToken(userDetails);
+				final String newAccessToken = jwtTokenUtil.generateAccessToken(userDetails);
+				final String newRefreshToken = refreshTokenServiceImpl.generateRefreshToken(
+						userDetails.getUsername(),
+						SecurityConstants.INVOKED_REFRESH_URL, 
+						refreshToken);
 								
-				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
+				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, newAccessToken, newRefreshToken));
 				
 			} catch (Exception ex) {					
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "refresh Token expired , need to re-login"));				
