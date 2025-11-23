@@ -15,6 +15,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.backend.config.SecurityConstants;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -32,9 +34,6 @@ public class JwtTokenUtil implements Serializable {
 
 //	 -> set to 5 seconds, and check Expired Exception
 	 public static final long EXPIRATION_TIME = 1000 * 10 ;
-//	 public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 3_600_000;
-	 
-	 public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 1000 * 15;
 	
 //	 -> this is 200 seconds
 //	 public static final long EXPIRATION_TIME = 1000 * 200;
@@ -59,8 +58,7 @@ public class JwtTokenUtil implements Serializable {
 		Map<String, Object> claims = new HashMap<>();
 		Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
 		claims.put("roles", authorities);
-		return Jwts
-				.builder()
+		return Jwts.builder()
 				.setHeaderParam("typ", "JWT") // this is the Header of the token
 				.setClaims(claims) // claims - It's a hash map where we can define several details
 				.setSubject(userDetails.getUsername()) // Subject - this is the user name
@@ -77,11 +75,10 @@ public class JwtTokenUtil implements Serializable {
 		
 		// Since this is a refreshToken It doesn't have to be A bearer token
 		
-		return Jwts
-				.builder()
+		return Jwts.builder()
 				.setSubject(userDetails.getUsername())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION_TIME_ms))
+				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms))
 				.signWith(key,SignatureAlgorithm.HS512)
 				.compact();
 	}

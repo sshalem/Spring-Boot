@@ -29,9 +29,11 @@ public class RefreshTokenEntity {
 	@Column(nullable = false)
 	private Instant expiryDate;
 
+	private boolean revoked;
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id" ,nullable = true)
-	@JsonIgnore	
+	@JoinColumn(name = "user_id", nullable = true)
+	@JsonIgnore
 	private UserEntity userEntity;
 
 	public RefreshTokenEntity() {
@@ -62,6 +64,14 @@ public class RefreshTokenEntity {
 		this.expiryDate = expiryDate;
 	}
 
+	public boolean isRevoked() {
+		return revoked;
+	}
+
+	public void setRevoked(boolean revoked) {
+		this.revoked = revoked;
+	}
+
 	public UserEntity getUserEntity() {
 		return userEntity;
 	}
@@ -86,4 +96,5 @@ public class RefreshTokenEntity {
 		RefreshTokenEntity other = (RefreshTokenEntity) obj;
 		return id == other.id;
 	}
+
 }
