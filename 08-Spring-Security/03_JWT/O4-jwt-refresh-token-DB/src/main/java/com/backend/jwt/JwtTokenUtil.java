@@ -32,26 +32,16 @@ public class JwtTokenUtil implements Serializable {
 	private static final long serialVersionUID = 3540583232420968407L;
 	private final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
 
-//	 -> set to 5 seconds, and check Expired Exception
-	 public static final long EXPIRATION_TIME = 1000 * 10 ;
-	
-//	 -> this is 200 seconds
-//	 public static final long EXPIRATION_TIME = 1000 * 200;
-	
-//	 -> 1000 * 60 * 15; // -> 15 minutes
-//	 public static final long EXPIRATION_TIME = 1000 * 60 * 15;
-
-
 	@Value("${jwt.signing.key}")
 	private String secretKey;
 
-
+	
 	public String extractUsernameFromToken(String token) {
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
 		Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
 		return claims.getSubject(); // subject is the user-name , in our case I use email as user-name
 	}
-		
+	
 
 	public String generateToken(UserDetails userDetails) {
 		Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
@@ -63,7 +53,7 @@ public class JwtTokenUtil implements Serializable {
 				.setClaims(claims) // claims - It's a hash map where we can define several details
 				.setSubject(userDetails.getUsername()) // Subject - this is the user name
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.JWT_EXPIRATION_TIME_ms))
 				.signWith(key, SignatureAlgorithm.HS512)
 				.compact();
 	}
