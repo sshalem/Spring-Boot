@@ -29,7 +29,7 @@ public class RefreshTokenEntity {
 	@Column(nullable = false)
 	private Instant expiryDate;
 
-	private boolean revoked;
+	private int rotate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = true)
@@ -64,12 +64,12 @@ public class RefreshTokenEntity {
 		this.expiryDate = expiryDate;
 	}
 
-	public boolean isRevoked() {
-		return revoked;
+	public int getRotate() {
+		return rotate;
 	}
 
-	public void setRevoked(boolean revoked) {
-		this.revoked = revoked;
+	public void setRotate(int rotate) {
+		this.rotate = rotate;
 	}
 
 	public UserEntity getUserEntity() {

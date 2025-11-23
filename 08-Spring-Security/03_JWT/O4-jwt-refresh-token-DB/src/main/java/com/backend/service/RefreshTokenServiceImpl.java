@@ -35,11 +35,15 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		if (invokedMethod.equals(SecurityConstants.INVOKED_LOGIN_URL)) {
 			UserEntity userEntity = userRepository.findByEmail(email);
 			refreshTokenEntity = new RefreshTokenEntity();
-			refreshTokenEntity.setUserEntity(userEntity);
+			refreshTokenEntity.setUserEntity(userEntity);			
 		} else if (invokedMethod.equals(SecurityConstants.INVOKED_REFRESH_URL)) {
 			refreshTokenEntity = refreshTokenRepository.findByToken(refreshToken).get();
 		}
-
+		
+		if (refreshTokenEntity.getRotate() > 2 ) {
+			throw new RefreshTokenExpiredException("refresh Token expired , need to re-login");
+		}
+		refreshTokenEntity.setRotate(refreshTokenEntity.getRotate() + 1);
 		refreshTokenEntity.setExpiryDate(Instant.now().plusMillis(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms));
 		refreshTokenEntity.setToken(UUID.randomUUID().toString());
 		refreshTokenEntity = refreshTokenRepository.save(refreshTokenEntity);
