@@ -43,7 +43,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		
 		if (refreshTokenEntity.getRotate() > 2 ) {
 			this.deleteRefreshToken(refreshToken);
-			throw new RefreshTokenExpiredException("refresh Token expired , need to re-login");
+			throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 		}
 		refreshTokenEntity.setRotate(refreshTokenEntity.getRotate() + 1);
 		refreshTokenEntity.setExpiryDate(Instant.now().plusMillis(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms));
@@ -57,10 +57,11 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	@Override
 	public RefreshTokenEntity validateRefreshToken(String refreshToken) {
 		RefreshTokenEntity refreshTokenEntity = refreshTokenRepository.findByToken(refreshToken).get();
-
+		
+		// I check Rotation , during generateRefreshToken() process
 		if (refreshTokenEntity.getExpiryDate().compareTo(Instant.now()) < 0) {
 			refreshTokenRepository.delete(refreshTokenEntity);			
-			throw new RefreshTokenExpiredException("Refresh token expired. Please make a new Login request");
+			throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 		}
 		return refreshTokenEntity;
 	}
