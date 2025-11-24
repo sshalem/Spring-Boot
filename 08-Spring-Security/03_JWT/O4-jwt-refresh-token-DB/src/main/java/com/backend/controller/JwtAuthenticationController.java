@@ -24,7 +24,6 @@ import com.backend.jwt.JwtUserDetails;
 import com.backend.jwt.JwtUserDetailsService;
 import com.backend.model.JwtTokenLoginRequest;
 import com.backend.model.JwtTokenResponse;
-import com.backend.model.LogoutResponse;
 import com.backend.model.UserRegisterRequest;
 import com.backend.model.UserRegisterResponse;
 import com.backend.service.RefreshTokenServiceImpl;
@@ -104,7 +103,7 @@ public class JwtAuthenticationController {
 	 * logout Request
 	 */
 	@GetMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<LogoutResponse> logout(HttpServletRequest request) {
+	public ResponseEntity<?> logout(HttpServletRequest request) {
 
 		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
 
@@ -112,8 +111,8 @@ public class JwtAuthenticationController {
 			String _refreshToken = authorizationHeader.substring(14);
 			refreshTokenServiceImpl.deleteRefreshToken(_refreshToken);
 		}
-		LOGGER.info("User logged out Succeeded");
-		return ResponseEntity.ok(new LogoutResponse("User Logged Out"));
+		LOGGER.info("User logged out ---  Succeeded");
+		return ResponseEntity.ok(Map.of("message","User Logged Out"));
 	}
 		
 	
