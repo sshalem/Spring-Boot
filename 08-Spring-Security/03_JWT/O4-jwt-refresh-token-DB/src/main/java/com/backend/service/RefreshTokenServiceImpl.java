@@ -3,7 +3,6 @@ package com.backend.service;
 import java.time.Instant;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +16,14 @@ import com.backend.repository.UserRepository;
 @Service
 public class RefreshTokenServiceImpl implements RefreshTokenService {
 
-	@Autowired
-	private RefreshTokenRepository refreshTokenRepository;
+	private final RefreshTokenRepository refreshTokenRepository;
+	private final UserRepository userRepository;
 
-	@Autowired
-	private UserRepository userRepository;
-
+	public RefreshTokenServiceImpl(RefreshTokenRepository refreshTokenRepository, UserRepository userRepository) {
+		super();
+		this.refreshTokenRepository = refreshTokenRepository;
+		this.userRepository = userRepository;
+	}
 
 	/*********************************************************************
 	 * ✅ Best Practice for RefreshToken 
@@ -41,6 +42,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		}
 		
 		if (refreshTokenEntity.getRotate() > 2 ) {
+			this.deleteRefreshToken(refreshToken);
 			throw new RefreshTokenExpiredException("refresh Token expired , need to re-login");
 		}
 		refreshTokenEntity.setRotate(refreshTokenEntity.getRotate() + 1);
@@ -72,6 +74,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		return userEntity;
 	}
 
+	
 	@Override
 	public void deleteRefreshToken(String refreshToken) {
 		refreshTokenRepository.delete(refreshTokenRepository.findByToken(refreshToken).get());

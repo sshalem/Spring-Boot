@@ -64,6 +64,7 @@ public class JwtAuthenticationController {
 		try {
 			authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authLoginReq.getEmail(), authLoginReq.getPassword()));
 		} catch (BadCredentialsException e) {
+			LOGGER.error(e.getMessage());
 			LOGGER.error("Authentication failed, throwing BadCredentialsException");
 			throw new BadCredentialsException(e.getMessage());
 		}
@@ -148,7 +149,7 @@ public class JwtAuthenticationController {
 				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, newAccessToken, newRefreshToken));
 				
 			} catch (Exception ex) {					
-				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "refresh Token expired , need to re-login"));				
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", ex.getMessage()));				
 			}
 		}
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Refresh token is missing"));
