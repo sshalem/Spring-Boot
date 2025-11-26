@@ -29,6 +29,7 @@ public class RefreshTokenEntity {
 	@Column(nullable = false)
 	private Instant expiryDate;
 
+	private boolean revoked;
 	private int rotate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -63,6 +64,14 @@ public class RefreshTokenEntity {
 	public void setExpiryDate(Instant expiryDate) {
 		this.expiryDate = expiryDate;
 	}
+	
+	public boolean isRevoked() {
+		return revoked;
+	}
+
+	public void setRevoked(boolean revoked) {
+		this.revoked = revoked;
+	}
 
 	public int getRotate() {
 		return rotate;
@@ -96,5 +105,5 @@ public class RefreshTokenEntity {
 		RefreshTokenEntity other = (RefreshTokenEntity) obj;
 		return id == other.id;
 	}
-
+	
 }

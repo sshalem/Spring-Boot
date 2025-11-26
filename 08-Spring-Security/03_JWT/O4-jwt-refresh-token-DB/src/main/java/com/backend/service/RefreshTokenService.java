@@ -12,4 +12,6 @@ public interface RefreshTokenService {
 	UserEntity getUserByRefreshToken(String refreshToken);
 
 	void deleteRefreshToken(String refreshToken);
+	
+	void scheduledRefreshTokenCleanup();
 }
