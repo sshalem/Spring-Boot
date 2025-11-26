@@ -49,6 +49,9 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		if (userEntity == null)
 			throw new ResourceNotFoundException("User with Email : " + email + " , Not Exist");
 
+		System.out.println(Instant.now());
+		
+		
 		RefreshTokenEntity newRefreshTokenEntity = new RefreshTokenEntity();
 		newRefreshTokenEntity.setUserEntity(userEntity);
 		newRefreshTokenEntity.setExpiryDate(Instant.now().plusMillis(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms));
