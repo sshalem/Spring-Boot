@@ -25,15 +25,20 @@ public class UserEntity {
 
 	/** Since I use data-xxxx.sql files for DB's 
 	 * Thus this is the preffered generator to use with each on:
-	 * h2 DB : @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 * h2 DB : 
+	 * 			@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 * 
-	 * MySql DB : @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 * MySql DB :
+	 * 			@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 * 
-	 * With PostGresql DB :     
-	 * 	@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
-	 *	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
+	 * PostGresql DB:
+	 * 			
 	 *
-	 * if we look in the data.postgres.sql we can see that the id's satrt from 1 for each table
+	 * With PostGresql DB :     
+	 * 				@SequenceGenerator(name = "studentseq", initialValue = 20001, allocationSize = 50)
+	 *				@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentseq")
+	 *
+	 *if we look in the data.postgres.sql we can see that the id's satrt from 1 for each table
 	 * With postgresql , even though i have user id's from 1-10 , when I attempt to create a new record w/o specifiyng the ID
 	 * It pulls the value from sequence (1) thus i can get unique violation
 	 */

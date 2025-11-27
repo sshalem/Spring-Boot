@@ -4,14 +4,17 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -82,7 +85,15 @@ public class JwtAuthenticationController {
 		final String accessToken = jwtTokenUtil.generateAccessToken(jwtUserDetails);
 		final String refreshToken = refreshTokenServiceImpl.generateRefreshToken(jwtUserDetails.getUsername(), SecurityConstants.INVOKED_LOGIN_URL, null);
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, accessToken, refreshToken));
+		ResponseCookie responseCookie = ResponseCookie.from("refreshToken",refreshToken)
+			.httpOnly(true)
+			.secure(true)
+			.path("/auth/refreshToken")
+			.maxAge(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms)
+			.sameSite("Strict")
+			.build();
+		
+		return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString()).body(new JwtTokenResponse(name, accessToken));
 	}
 
 
@@ -126,32 +137,37 @@ public class JwtAuthenticationController {
 	
 	
 	@GetMapping(path = "/refreshToken", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> refreshtoken(HttpServletRequest request) throws Exception {
+	public ResponseEntity<?> refreshtoken(@CookieValue(name = "refreshToken", required = false) String refreshToken) throws Exception {
 		
-		final String authorizationHeader = request.getHeader(SecurityConstants.AUTHORIZATION);
+	    if (refreshToken == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
 		
-		if (authorizationHeader != null && authorizationHeader.startsWith(SecurityConstants.REFRESH_TOKEN_PREFIX)) {
-			String refreshToken = authorizationHeader.substring(14);
-			
-			try {
-				refreshTokenServiceImpl.validateRefreshToken(refreshToken);				
-				String email = refreshTokenServiceImpl.getUserByRefreshToken(refreshToken).getEmail();				
-				UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
-						
-				final String name = userDetails.getUsername();
-				final String newAccessToken = jwtTokenUtil.generateAccessToken(userDetails);
-				final String newRefreshToken = refreshTokenServiceImpl.generateRefreshToken(
-						userDetails.getUsername(),
-						SecurityConstants.INVOKED_REFRESH_URL, 
-						refreshToken);
-								
-				return ResponseEntity.status(HttpStatus.CREATED).body(new JwtTokenResponse(name, newAccessToken, newRefreshToken));
+	    try {
+			refreshTokenServiceImpl.validateRefreshToken(refreshToken);				
+			String email = refreshTokenServiceImpl.getUserByRefreshToken(refreshToken).getEmail();				
+			UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
+					
+			final String name = userDetails.getUsername();
+			final String newAccessToken = jwtTokenUtil.generateAccessToken(userDetails);
+			final String newRefreshToken = refreshTokenServiceImpl.generateRefreshToken(
+					userDetails.getUsername(),
+					SecurityConstants.INVOKED_REFRESH_URL, 
+					refreshToken);
+							
+			ResponseCookie responseCookie = ResponseCookie.from("refreshToken", newRefreshToken)
+					.httpOnly(true)
+					.secure(true)
+					.path("/auth/refreshToken")
+					.maxAge(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms)
+					.sameSite("Strict")
+					.build();
 				
-			} catch (Exception ex) {					
-				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", ex.getMessage()));				
-			}
-		}
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Refresh token is missing"));
+			return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString()).body(new JwtTokenResponse(name, newAccessToken));			
+			
+		} catch (Exception ex) {					
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", ex.getMessage()));				
+		}      
 	}		
 	
 }

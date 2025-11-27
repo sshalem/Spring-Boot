@@ -105,5 +105,4 @@ public class RefreshTokenEntity {
 		RefreshTokenEntity other = (RefreshTokenEntity) obj;
 		return id == other.id;
 	}
-	
 }

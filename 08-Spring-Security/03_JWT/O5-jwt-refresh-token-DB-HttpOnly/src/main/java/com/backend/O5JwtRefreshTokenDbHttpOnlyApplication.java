@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-public class O4JwtRefreshTokenDBApplication {
+public class O5JwtRefreshTokenDbHttpOnlyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(O4JwtRefreshTokenDBApplication.class, args);
+		SpringApplication.run(O5JwtRefreshTokenDbHttpOnlyApplication.class, args);
 	}
 
 }

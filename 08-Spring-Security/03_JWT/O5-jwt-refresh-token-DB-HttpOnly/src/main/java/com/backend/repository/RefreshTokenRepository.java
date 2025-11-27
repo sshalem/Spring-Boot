@@ -17,11 +17,10 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshTokenEntity
 	Optional<RefreshTokenEntity> findByToken(String token);
 
 	void deleteByExpiryDateBefore(Instant currentDate);
-	
+
 	@Query("SELECT rteuse FROM RefreshTokenEntity rte JOIN rte.userEntity AS rteuse WHERE rte.token=:token")
 	UserEntity findUserByRefreshToken(@Param("token") String token);
-	
+
 	@Query("SELECT rte FROM RefreshTokenEntity rte JOIN rte.userEntity AS rteuse WHERE rteuse.id=:userId")
 	RefreshTokenEntity findRefreshTokenEntityByUserId(@Param("userId") long userId);
-	
 }
