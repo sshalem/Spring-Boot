@@ -22,21 +22,19 @@ public class ControllerExceptionHandler {
 	}
 
 	@ExceptionHandler(EmailAlreadyExistException.class)
-//	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ResponseEntity<Object> emailAlreadyExistException(EmailAlreadyExistException ex, WebRequest request) {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("timestamp", getCurrentTimestamp());
-		response.put("statusCode", HttpStatus.NOT_FOUND.value());
-		response.put("error", HttpStatus.valueOf(HttpStatus.NOT_FOUND.value()).getReasonPhrase());
+		response.put("statusCode", HttpStatus.CONFLICT.value());
+		response.put("error", HttpStatus.valueOf(HttpStatus.CONFLICT.value()).getReasonPhrase());
 		response.put("exception", ResourceNotFoundException.class.getName());
 		response.put("message", ex.getMessage());
 		response.put("uriDescription", request.getDescription(false));
-		return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.CONFLICT);
 	}
 
 	@ExceptionHandler({ Exception.class })
-//	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<Object> globalExceptionHandler(Exception ex, WebRequest request) {
 
 		Map<String, Object> response = new HashMap<>();
