@@ -24,7 +24,7 @@ public class RefreshTokenEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(columnDefinition = "uuid", nullable = false)
+//	@Column(columnDefinition = "uuid", nullable = false)	
 	private UUID refTokenUuid; 
 	
 	@Column(nullable = false, unique = true)

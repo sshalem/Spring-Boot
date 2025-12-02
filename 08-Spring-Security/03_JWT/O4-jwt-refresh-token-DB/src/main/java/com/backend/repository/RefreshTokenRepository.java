@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.entity.RefreshTokenEntity;
@@ -23,7 +24,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshTokenEntity
 	void deleteByExpiryDateBefore(Instant currentDate);
 	
 	@Modifying
-	@Transactional
+//	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@Query("DELETE FROM RefreshTokenEntity rte WHERE rte.refTokenUuid=:uuid")
 	void deleteByUuid(@Param("uuid") UUID uuid);
 	

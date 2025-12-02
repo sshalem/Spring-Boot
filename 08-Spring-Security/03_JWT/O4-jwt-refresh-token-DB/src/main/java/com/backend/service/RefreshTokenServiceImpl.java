@@ -41,7 +41,8 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	 * 		save it in DB for track
 	 * ✅ Then Generate new RefreshToken 
 	 *********************************************************************/
-	@Override	
+	@Override
+	@Transactional
 	public String generateRefreshToken(String email, String invokedMethod, String oldRefreshToken) {
 
 		LOGGER.info("invoke generateRefreshToken()");
@@ -49,9 +50,6 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		UserEntity userEntity = userRepository.findByEmail(email);
 		if (userEntity == null)
 			throw new ResourceNotFoundException("User with Email : " + email + " , Not Exist");
-
-		System.out.println(Instant.now());
-		
 		
 		RefreshTokenEntity newRefreshTokenEntity = new RefreshTokenEntity();
 		newRefreshTokenEntity.setUserEntity(userEntity);
@@ -65,14 +63,41 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		} else if (invokedMethod.equals(SecurityConstants.INVOKED_REFRESH_URL)) {
 			RefreshTokenEntity _oldRefreshTokenEntity = refreshTokenRepository.findByToken(oldRefreshToken).get();
 			int rotate = _oldRefreshTokenEntity.getRotate();
-			if (rotate > 3) {
+			if (rotate > 3) {				
 				refreshTokenRepository.deleteByUuid(_oldRefreshTokenEntity.getRefTokenUuid());
+				// Scenario 1: 
+				// Service w/o @Transactionl , Repository : with @Transactionl 
+				// This works  OK,
+				// But, Problem having @Transactionl in both places : Service , Repository
+				// Since I might want to have both operations of save() and delete in the same method.
+
+				// Scenario 2: 
+				// Service with @Transactionl , Repository : w/o @Transactionl 
+				// (1) the delete SQL runs as we see in console,
+				// (2) But, in DB it won't be delete, 
+				// (3) Why?  because throwing exception, causes a roll back 
+
+				
+				// Scenario 3 :
+				// Service with @Transactionl , Repository : with @Transactionl
+				// This is my case , where I want to use delete and save in the same method.
+				
+				// (1) the delete SQL runs as we see in console,
+				// (2) But, in DB it won't be delete, 
+				// (3) Why?  because throwing exception, causes a roll back 
+				
+				// Solution :		
+				// use Both Service & Repository with @Transactionl 
+				// And add in repository @Transactional(propagation = REQUIRES_NEW) on the delete method in Repository 
+				// ✔ Now delete will ALWAYS be committed
+				// ✔ Even if service method throws exception
+				// ✔ Recommended when delete must not be rolled back
 				throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 			} else {
 				_oldRefreshTokenEntity.setRevoked(true);
 				newRefreshTokenEntity.setRefTokenUuid(_oldRefreshTokenEntity.getRefTokenUuid());
 				newRefreshTokenEntity.setRotate(rotate + 1);								
-				refreshTokenRepository.save(_oldRefreshTokenEntity);
+				refreshTokenRepository.save(_oldRefreshTokenEntity);				
 			}
 		}
 
