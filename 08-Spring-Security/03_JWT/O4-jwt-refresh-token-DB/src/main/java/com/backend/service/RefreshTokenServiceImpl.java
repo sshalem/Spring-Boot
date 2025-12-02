@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.config.SecurityConstants;
 import com.backend.entity.RefreshTokenEntity;
@@ -40,7 +41,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	 * 		save it in DB for track
 	 * ✅ Then Generate new RefreshToken 
 	 *********************************************************************/
-	@Override
+	@Override	
 	public String generateRefreshToken(String email, String invokedMethod, String oldRefreshToken) {
 
 		LOGGER.info("invoke generateRefreshToken()");
@@ -59,16 +60,18 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		newRefreshTokenEntity.setRevoked(false);
 
 		if (invokedMethod.equals(SecurityConstants.INVOKED_LOGIN_URL)) {
+			newRefreshTokenEntity.setRefTokenUuid(UUID.randomUUID());
 			newRefreshTokenEntity.setRotate(1);
 		} else if (invokedMethod.equals(SecurityConstants.INVOKED_REFRESH_URL)) {
 			RefreshTokenEntity _oldRefreshTokenEntity = refreshTokenRepository.findByToken(oldRefreshToken).get();
 			int rotate = _oldRefreshTokenEntity.getRotate();
 			if (rotate > 3) {
-				refreshTokenRepository.deleteAll();
+				refreshTokenRepository.deleteByUuid(_oldRefreshTokenEntity.getRefTokenUuid());
 				throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 			} else {
-				newRefreshTokenEntity.setRotate(rotate + 1); 
 				_oldRefreshTokenEntity.setRevoked(true);
+				newRefreshTokenEntity.setRefTokenUuid(_oldRefreshTokenEntity.getRefTokenUuid());
+				newRefreshTokenEntity.setRotate(rotate + 1);								
 				refreshTokenRepository.save(_oldRefreshTokenEntity);
 			}
 		}

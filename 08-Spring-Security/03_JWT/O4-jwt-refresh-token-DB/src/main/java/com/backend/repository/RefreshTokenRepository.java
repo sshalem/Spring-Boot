@@ -2,14 +2,18 @@ package com.backend.repository;
 
 import java.time.Instant;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.entity.RefreshTokenEntity;
 import com.backend.entity.UserEntity;
+
 
 @Repository
 public interface RefreshTokenRepository extends JpaRepository<RefreshTokenEntity, Long> {
@@ -17,6 +21,11 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshTokenEntity
 	Optional<RefreshTokenEntity> findByToken(String token);
 
 	void deleteByExpiryDateBefore(Instant currentDate);
+	
+	@Modifying
+	@Transactional
+	@Query("DELETE FROM RefreshTokenEntity rte WHERE rte.refTokenUuid=:uuid")
+	void deleteByUuid(@Param("uuid") UUID uuid);
 	
 	@Query("SELECT rteuse FROM RefreshTokenEntity rte JOIN rte.userEntity AS rteuse WHERE rte.token=:token")
 	UserEntity findUserByRefreshToken(@Param("token") String token);
