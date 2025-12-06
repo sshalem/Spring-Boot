@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.config.SecurityConstants;
@@ -41,9 +40,10 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	 * 		update Rotation
 	 * 		save it in DB for track
 	 * ✅ Then Generate new RefreshToken 
+	 * ✅ I Don't Roll Back RefreshTokenExpiredException is thrown
 	 *********************************************************************/
 	@Override
-	@Transactional
+	@Transactional(noRollbackFor = RefreshTokenExpiredException.class)
 	public String generateRefreshToken(String email, String invokedMethod, String oldRefreshToken) {
 
 		LOGGER.info("invoke generateRefreshToken()");
@@ -65,48 +65,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 			RefreshTokenEntity _oldRefreshTokenEntity = refreshTokenRepository.findByToken(oldRefreshToken).get();
 			int rotate = _oldRefreshTokenEntity.getRotate();
 			if (rotate > 2) {				
-				
-				/****************************************************
-				 * Ask this in CHAT GPT to get the answer for it
-				 *****************************************************/
-				// Is there a way to throw exception in Service layer , 
-				// but DB won't roll back because of the exception?
-				
-				
-				// Scenario 1: 
-				// Service w/o @Transactionl , Repository : with @Transactionl 
-				// This works  OK,
-				// Note : Since I might want to have both operations of save() and delete in the same method.
-				// But, Problem comes when having @Transactionl in both places : Service , Repository 
-				// Because I throw exception after the delete action, the a roll-back is performed
-
-				// Scenario 2: 
-				// Service with @Transactionl , Repository : w/o @Transactionl 
-				// (1) the delete SQL runs as we see in console,
-				// (2) But, in DB it won't be delete, 
-				// (3) Why?  because throwing exception, causes a roll back 
-
-				
-				// Scenario 3 :
-				// Service with @Transactionl , Repository : with @Transactionl
-				// This is my case , where I want to use delete and save in the same method.
-				
-				// (1) the delete SQL runs as we see in console,
-				// (2) But, in DB it won't be delete, 
-				// (3) Why?  because throwing exception, causes a roll back 
-				
-				// Solution (1):		
-				// use Both Service & Repository with @Transactionl 
-				// And add in repository @Transactional(propagation = REQUIRES_NEW) on the delete method in Repository 
-				// ✔ Now delete will ALWAYS be committed
-				// ✔ Even if service method throws exception
-				// ✔ Recommended when delete must not be rolled back
-				
-				// Solution (2):		
-				// create a method of delete deleteByUuid() inside the service Layer ,
-				// And annotated it as @Transactional(propagation = Propagation.REQUIRES_NEW)
-				// Instead of in the Repository layer
-								
+																
 				refreshTokenRepository.deleteByUuid(_oldRefreshTokenEntity.getRefTokenUuid());
 				throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 			} else {
