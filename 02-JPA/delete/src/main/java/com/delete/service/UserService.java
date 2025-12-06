@@ -10,18 +10,29 @@ import com.delete.repository.UserRepository;
 @Service
 public class UserService {
 
-	public static int current = 1;
+	public static int currentIdCount = 1;
+	public static int currentEmailCount = 1;
 
 	@Autowired
 	private UserRepository userRepository;
 
-	@Transactional(noRollbackFor = RuntimeException.class)
-	public UserEntity deleteAndCreateTest(UserEntity user) {
-		if (current > 2) {
+	@Transactional
+	public UserEntity createAndDeleteById(UserEntity user) {
+		if (currentIdCount > 2) {
 			userRepository.deleteById(1L);
 			throw new RuntimeException("Check if delete User finsished or RollBack from DB performed");
 		}
-		current++;
+		currentIdCount++;
+		return userRepository.save(user);
+	}
+
+	@Transactional(noRollbackFor = RuntimeException.class)
+	public UserEntity createAndDeleteByEmail(UserEntity user) {
+		if (currentEmailCount > 2) {
+			userRepository.deleteByEmail(user.getEmail());
+			throw new RuntimeException("Check if delete User finsished or RollBack from DB performed");
+		}
+		currentEmailCount++;
 		return userRepository.save(user);
 	}
 

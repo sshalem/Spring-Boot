@@ -21,11 +21,21 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/deleteAndCreateTest")
-	public ResponseEntity<?> deleteAndCreateTest(@RequestBody UserEntity user) {
-		LOGGER.info("deleteAndCreateTest");
+	@PostMapping("/createAndDeleteById")
+	public ResponseEntity<?> createAndDeleteById(@RequestBody UserEntity user) {
 		try {
-			UserEntity returnValue = userService.deleteAndCreateTest(user);
+			UserEntity returnValue = userService.createAndDeleteById(user);
+			return ResponseEntity.ok(returnValue);
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			return null;
+		}
+	}
+	
+	@PostMapping("/createAndDeleteByEmail")
+	public ResponseEntity<?> createAndDeleteByEmail(@RequestBody UserEntity user) {
+		try {
+			UserEntity returnValue = userService.createAndDeleteByEmail(user);
 			return ResponseEntity.ok(returnValue);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
