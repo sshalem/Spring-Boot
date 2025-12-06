@@ -20,6 +20,8 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshTokenEntity
 
 	void deleteByExpiryDateBefore(Instant currentDate);
 
+	void deleteByRefTokenUuid(UUID refTokenUuid);
+	
 	@Modifying
 	@Query("DELETE FROM RefreshTokenEntity rte WHERE rte.refTokenUuid=:uuid")
 	void deleteByUuid(@Param("uuid") UUID uuid);
