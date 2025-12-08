@@ -28,7 +28,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	// (1) only  DELETE FROM user WHERE email = ? 
 	// This is better for performance
 
-	@Transactional
+//	@Transactional
 	@Modifying
 	@Query("DELETE FROM UserEntity u WHERE u.email = :email")
 	void deleteUserByEmail(@Param("email") String email);

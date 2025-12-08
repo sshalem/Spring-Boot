@@ -27,9 +27,12 @@ public class UserService {
 	}
 
 //	@Transactional(noRollbackFor = RuntimeException.class)
+//	userRepository.deleteByEmail(user.getEmail());
+	
+	@Transactional
 	public UserEntity createAndDeleteByEmail(UserEntity user) {
 		if (currentEmailCount > 2) {
-//			userRepository.deleteByEmail(user.getEmail());
+
 			userRepository.deleteUserByEmail(user.getEmail());
 			throw new RuntimeException("Check if RollBack from DB performed");
 		}
