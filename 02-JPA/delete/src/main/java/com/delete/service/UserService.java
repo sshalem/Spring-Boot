@@ -20,18 +20,18 @@ public class UserService {
 	public UserEntity createAndDeleteById(UserEntity user) {
 		if (currentIdCount > 2) {
 			userRepository.deleteById(1L);
-			throw new RuntimeException("Check if delete User finsished or RollBack from DB performed");
+			throw new RuntimeException("Check if RollBack from DB performed");
 		}
 		currentIdCount++;
 		return userRepository.save(user);
 	}
 
-	@Transactional(noRollbackFor = RuntimeException.class)
+//	@Transactional(noRollbackFor = RuntimeException.class)
 	public UserEntity createAndDeleteByEmail(UserEntity user) {
 		if (currentEmailCount > 2) {
 //			userRepository.deleteByEmail(user.getEmail());
 			userRepository.deleteUserByEmail(user.getEmail());
-			throw new RuntimeException("Check if delete User finsished or RollBack from DB performed");
+			throw new RuntimeException("Check if RollBack from DB performed");
 		}
 		currentEmailCount++;
 		return userRepository.save(user);

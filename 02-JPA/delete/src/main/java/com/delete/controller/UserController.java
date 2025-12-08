@@ -1,5 +1,7 @@
 package com.delete.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,8 @@ public class UserController {
 			UserEntity returnValue = userService.createAndDeleteById(user);
 			return ResponseEntity.ok(returnValue);
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage());
-			return null;
+			LOGGER.error(e.getMessage());			
+			return ResponseEntity.internalServerError().body(Map.of("error",e.getMessage()));
 		}
 	}
 	
@@ -39,7 +41,7 @@ public class UserController {
 			return ResponseEntity.ok(returnValue);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
-			return null;
+			return ResponseEntity.internalServerError().body(Map.of("error",e.getMessage()));
 		}
 	}
 

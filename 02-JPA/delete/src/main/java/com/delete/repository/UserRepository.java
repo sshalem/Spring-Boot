@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.delete.entity.UserEntity;
 
@@ -27,7 +28,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	// (1) only  DELETE FROM user WHERE email = ? 
 	// This is better for performance
 
-	// @Transactional
+	@Transactional
 	@Modifying
 	@Query("DELETE FROM UserEntity u WHERE u.email = :email")
 	void deleteUserByEmail(@Param("email") String email);
