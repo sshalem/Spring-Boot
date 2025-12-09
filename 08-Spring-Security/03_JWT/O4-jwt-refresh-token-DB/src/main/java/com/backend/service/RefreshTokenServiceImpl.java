@@ -65,7 +65,6 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 			RefreshTokenEntity _oldRefreshTokenEntity = refreshTokenRepository.findByToken(oldRefreshToken).get();
 			int rotate = _oldRefreshTokenEntity.getRotate();
 			if (rotate > 2) {				
-//				refreshTokenRepository.deleteByUuid(_oldRefreshTokenEntity.getRefTokenUuid());
 				refreshTokenRepository.deleteByRefTokenUuid(_oldRefreshTokenEntity.getRefTokenUuid());
 				throw new RefreshTokenExpiredException("Refresh token expired. Please send new Login request");
 			} else {
