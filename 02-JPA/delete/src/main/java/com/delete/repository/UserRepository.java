@@ -19,8 +19,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	// ✔ No annotations needed. 
 	// ✔ This will perform: 
 	//	(1) SELECT query
-	//  (2) DELETE FROM user WHERE email = ? 
+	//  (2) DELETE FROM user WHERE email = ?
+//	@Transactional
 	void deleteByEmail(String email);
+	
 
 
 	// ✔ Option 2 — Custom JPQL delete query	
@@ -31,5 +33,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 //	@Transactional
 	@Modifying
 	@Query("DELETE FROM UserEntity u WHERE u.email = :email")
-	void deleteUserByEmail(@Param("email") String email);
+	void deleteUserByEmailJPQL(@Param("email") String email);
 }

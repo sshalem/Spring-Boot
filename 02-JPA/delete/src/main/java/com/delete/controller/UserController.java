@@ -29,19 +29,30 @@ public class UserController {
 			UserEntity returnValue = userService.createAndDeleteById(user);
 			return ResponseEntity.ok(returnValue);
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage());			
-			return ResponseEntity.internalServerError().body(Map.of("error",e.getMessage()));
+			LOGGER.error(e.getMessage());
+			return ResponseEntity.internalServerError().body(Map.of("error", e.getMessage()));
 		}
 	}
-	
-	@PostMapping("/createAndDeleteByEmail")
-	public ResponseEntity<?> createAndDeleteByEmail(@RequestBody UserEntity user) {
+
+	@PostMapping("/createAndDeleteByEmailDerivedMethod")
+	public ResponseEntity<?> createAndDeleteByEmailDerivedMethod(@RequestBody UserEntity user) {
 		try {
-			UserEntity returnValue = userService.createAndDeleteByEmail(user);
+			UserEntity returnValue = userService.createAndDeleteByEmailDerivedMethod(user);
 			return ResponseEntity.ok(returnValue);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
-			return ResponseEntity.internalServerError().body(Map.of("error",e.getMessage()));
+			return ResponseEntity.internalServerError().body(Map.of("error", e.getMessage()));
+		}
+	}
+
+	@PostMapping("/createAndDeleteByEmailJPQL")
+	public ResponseEntity<?> createAndDeleteByEmailJPQL(@RequestBody UserEntity user) {
+		try {
+			UserEntity returnValue = userService.createAndDeleteByEmailJPQL(user);
+			return ResponseEntity.ok(returnValue);
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			return ResponseEntity.internalServerError().body(Map.of("error", e.getMessage()));
 		}
 	}
 

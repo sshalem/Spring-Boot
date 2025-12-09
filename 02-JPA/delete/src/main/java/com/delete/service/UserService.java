@@ -26,14 +26,24 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-//	@Transactional(noRollbackFor = RuntimeException.class)
-//	userRepository.deleteByEmail(user.getEmail());
-	
-	@Transactional
-	public UserEntity createAndDeleteByEmail(UserEntity user) {
+	@Transactional(noRollbackFor = RuntimeException.class)
+	public UserEntity createAndDeleteByEmailDerivedMethod(UserEntity user) {
 		if (currentEmailCount > 2) {
 
-			userRepository.deleteUserByEmail(user.getEmail());
+			userRepository.deleteByEmail(user.getEmail());
+//			userRepository.flush();
+			throw new RuntimeException("Check if RollBack from DB performed");
+		}
+		currentEmailCount++;
+		return userRepository.save(user);
+	}
+
+	@Transactional
+//	@Transactional(noRollbackFor = RuntimeException.class)
+	public UserEntity createAndDeleteByEmailJPQL(UserEntity user) {
+		if (currentEmailCount > 2) {
+
+			userRepository.deleteUserByEmailJPQL(user.getEmail());
 			throw new RuntimeException("Check if RollBack from DB performed");
 		}
 		currentEmailCount++;
