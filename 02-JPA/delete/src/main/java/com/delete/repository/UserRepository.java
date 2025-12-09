@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	// ✔ This will perform: 
 	//	(1) SELECT query
 	//  (2) DELETE FROM user WHERE email = ?
-	@Transactional
+//	@Transactional
 	void deleteByEmail(String email);
 	
 

@@ -16,7 +16,7 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-//	@Transactional
+	@Transactional(noRollbackFor = RuntimeException.class)
 	public UserEntity createAndDeleteById(UserEntity user) {
 		if (currentIdCount > 2) {			
 			userRepository.deleteById(1L);
@@ -26,12 +26,10 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-//	@Transactional
+	@Transactional(noRollbackFor = RuntimeException.class)
 	public UserEntity createAndDeleteByEmailDerivedMethod(UserEntity user) {
 		if (currentEmailCount > 2) {
-
-			userRepository.deleteByEmail(user.getEmail());
-			userRepository.flush();
+			userRepository.deleteByEmail(user.getEmail());			
 			throw new RuntimeException("Check if RollBack from DB performed");
 		}
 		currentEmailCount++;
