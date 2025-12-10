@@ -108,8 +108,17 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
 	
 	@Override
-	@Scheduled(cron = "0 0 */2 * * *") 
+	@Transactional
+	@Scheduled(cron = "0/30 * * * * *", zone = "Asia/Jerusalem")	
 	public void scheduledRefreshTokenCleanup() {
+		LOGGER.warn("scheduledRefreshTokenCleanup() --> cleanup" );
 		refreshTokenRepository.deleteByExpiryDateBefore(Instant.now());		
 	}
+	
+//	@Override
+//	@Transactional
+//	@Scheduled(cron = "0 0 */2 * * *" , zone = "Asia/Jerusalem") 
+//	public void scheduledRefreshTokenCleanup() {
+//		refreshTokenRepository.deleteByExpiryDateBefore(Instant.now());		
+//	}
 }

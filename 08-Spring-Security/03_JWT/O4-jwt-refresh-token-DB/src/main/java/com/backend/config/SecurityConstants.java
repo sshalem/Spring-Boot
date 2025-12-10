@@ -12,7 +12,7 @@ public class SecurityConstants {
 	/******************
 	 * JWT AccessToken
 	 *****************/
-	public static final long JWT_EXPIRATION_TIME_ms = 1_000 * 5;
+	public static final long JWT_EXPIRATION_TIME_ms = 1_000 * 10;
 //	public static final long JWT_EXPIRATION_TIME_ms = 1_000 * 10;
 //	public static final long JWT_EXPIRATION_TIME_ms = 1_000 * 200;
 //  public static final long JWT_EXPIRATION_TIME_ms = 1_000 * 60 * 15;
@@ -22,7 +22,7 @@ public class SecurityConstants {
 	 ********************/
 	
 //	public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 3_600_000;
-	public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 1_000 * 60 * 5;
+	public static final long REFRESH_TOKEN_EXPIRATION_TIME_ms = 1_000 * 20;
 
 	public static final String INVOKED_LOGIN_URL = "loginUrlInvoked";
 	public static final String INVOKED_REFRESH_URL = "refreshUrlInvoked";
