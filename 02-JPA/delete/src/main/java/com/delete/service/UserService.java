@@ -16,7 +16,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Transactional(noRollbackFor = RuntimeException.class)
+	@Transactional
+//	@Transactional(noRollbackFor = RuntimeException.class)
 	public UserEntity createAndDeleteById(UserEntity user) {
 		if (currentIdCount > 2) {			
 			userRepository.deleteById(1L);
