@@ -54,6 +54,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 		
 		RefreshTokenEntity newRefreshTokenEntity = new RefreshTokenEntity();
 		newRefreshTokenEntity.setUserEntity(userEntity);
+		newRefreshTokenEntity.setCreatedAt(Instant.now());
 		newRefreshTokenEntity.setExpiryDate(Instant.now().plusMillis(SecurityConstants.REFRESH_TOKEN_EXPIRATION_TIME_ms));
 		newRefreshTokenEntity.setToken(UUID.randomUUID().toString());
 		newRefreshTokenEntity.setRevoked(false);
@@ -107,18 +108,18 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	}
 
 	
-	@Override
-	@Transactional
-	@Scheduled(cron = "0/30 * * * * *", zone = "Asia/Jerusalem")	
-	public void scheduledRefreshTokenCleanup() {
-		LOGGER.warn("scheduledRefreshTokenCleanup() --> cleanup" );
-		refreshTokenRepository.deleteByExpiryDateBefore(Instant.now());		
-	}
-	
 //	@Override
 //	@Transactional
-//	@Scheduled(cron = "0 0 */2 * * *" , zone = "Asia/Jerusalem") 
+//	@Scheduled(cron = "0/30 * * * * *", zone = "Asia/Jerusalem")	
 //	public void scheduledRefreshTokenCleanup() {
+//		LOGGER.warn("scheduledRefreshTokenCleanup() --> cleanup" );
 //		refreshTokenRepository.deleteByExpiryDateBefore(Instant.now());		
 //	}
+	
+	@Override
+	@Transactional
+	@Scheduled(cron = "0 0 */2 * * *" , zone = "Asia/Jerusalem") 
+	public void scheduledRefreshTokenCleanup() {
+		refreshTokenRepository.deleteByExpiryDateBefore(Instant.now());		
+	}
 }

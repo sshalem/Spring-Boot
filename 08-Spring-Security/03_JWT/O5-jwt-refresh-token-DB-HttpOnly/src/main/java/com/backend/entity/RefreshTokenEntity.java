@@ -31,6 +31,9 @@ public class RefreshTokenEntity {
 	private String token;
 
 	@Column(nullable = false)
+	private Instant createdAt;
+
+	@Column(nullable = false)
 	private Instant expiryDate;
 
 	private boolean revoked;
@@ -67,6 +70,14 @@ public class RefreshTokenEntity {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Instant getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Instant createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public Instant getExpiryDate() {
