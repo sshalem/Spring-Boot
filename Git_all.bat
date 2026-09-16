@@ -16,7 +16,12 @@ if %ComputerName%==LAPTOP-AAAA (
     echo.   [36mcomputer name is = %ComputerName% [0m
     echo.   [36m%DATE% , %TIME%	 [0m
     git commit -m "%DATE:~0,2%-%DATE:~3,2%-%DATE:~6,4% %TIME:~0,2%:%TIME:~3,2%"     
-) else if %ComputerName%==DESKTOP-T4E706U (
+) else if %ComputerName%==AVIGAIL (
+    echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%" [0m
+    echo.   [36mcomputer name is = %ComputerName% [0m
+    echo.   [36m%DATE% , %TIME%	 [0m
+    git commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%"   
+) else if %ComputerName%==LAPTOP-LENOVO-S (
     echo.[33mgit commit -m "%DATE:~7,2%-%DATE:~4,2%-%DATE:~10,4% %TIME:~0,2%:%TIME:~3,2%" [0m
     echo.   [36mcomputer name is = %ComputerName% [0m
     echo.   [36m%DATE% , %TIME%	 [0m
